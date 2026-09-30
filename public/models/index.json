@@ -100,7 +100,7 @@
   "slug": "colosseum",
   "title": "Colosseum",
   "location": "Rome, Italy",
-  "blurb": "The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore 128 components across 9 systems, from the 80 travertine arches to the 240 velarium mast corbels.",
+  "blurb": "The Colosseum in Rome, the largest ancient amphitheatre ever built, in simplified schematic form. Explore 128 named components across 9 systems, from the travertine arcades and the velarium awning to the cavea seating, the arena and the hypogeum tunnels below.",
   "sourceUrls": [
    {
     "label": "Colosseum, Wikipedia",
@@ -176,10 +176,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "colosseum",
+    "slug": "colosseum-simple",
     "parts": 128,
     "systems": 9,
-    "blurb": "The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore 128 components across 9 systems, from the 80 travertine arches to the 240 velarium mast corbels."
+    "blurb": "The Colosseum in Rome, the largest ancient amphitheatre ever built, in simplified schematic form. Explore 128 named components across 9 systems, from the travertine arcades and the velarium awning to the cavea seating, the arena and the hypogeum tunnels below."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "colosseum",
+    "parts": 165,
+    "systems": 11,
+    "blurb": "The Colosseum in Rome, the largest ancient amphitheatre ever built, inaugurated in AD 80 and seating about 50,000 spectators. Explore 165 named components across 11 systems, from the tier-by-tier arcade bays and the velarium rigging to the cavea wedges, the arena, the hypogeum machinery and the 1349 collapse ruins."
    }
   ]
  },
@@ -187,7 +195,7 @@
   "slug": "el-castillo",
   "title": "El Castillo",
   "location": "Chichen Itza, Mexico",
-  "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps. The model includes its buried inner pyramid, offering chambers, and the water filled cenote beneath the bedrock.",
+  "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps, in simplified schematic form. Explore 121 named components across 7 systems, including the buried inner pyramid, offering chambers, and the water filled cenote below.",
   "sourceUrls": [
    {
     "label": "El Castillo, Chichen Itza on Wikipedia",
@@ -249,10 +257,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "el-castillo",
+    "slug": "el-castillo-simple",
     "parts": 121,
     "systems": 7,
-    "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps. The model includes its buried inner pyramid, offering chambers, and the water filled cenote beneath the bedrock."
+    "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps, in simplified schematic form. Explore 121 named components across 7 systems, including the buried inner pyramid, offering chambers, and the water filled cenote below."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "el-castillo",
+    "parts": 165,
+    "systems": 10,
+    "blurb": "The Temple of Kukulcan at Chichen Itza: a 30 meter Maya step pyramid with nine terraces and four stairways of 91 steps each. Explore 165 named components across 10 systems, from the battered terrace panels and tread by tread stairways to the summit temple, the buried inner pyramid with its offering chambers, and the astronomy of the equinox serpent."
    }
   ]
  },
@@ -260,7 +276,7 @@
   "slug": "empire-state",
   "title": "Empire State Building",
   "location": "New York City, USA",
-  "blurb": "The 102 story Art Deco skyscraper at 350 Fifth Avenue in Manhattan, the world's tallest building from 1931 to 1970. Its Indiana limestone tower, twin observatories, and dirigible mooring mast made it a global icon.",
+  "blurb": "The Empire State Building in New York City, the 443.2 m Art Deco skyscraper completed in 1931, in simplified schematic form. Explore 109 named components across 10 systems, from the limestone base and the 81-story setback shaft to the observatories, the mooring mast and the Art Deco lobby.",
   "sourceUrls": [
    {
     "label": "Empire State Building, Wikipedia",
@@ -329,10 +345,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "empire-state",
+    "slug": "empire-state-simple",
     "parts": 109,
     "systems": 10,
-    "blurb": "The 102 story Art Deco skyscraper at 350 Fifth Avenue in Manhattan, the world's tallest building from 1931 to 1970. Its Indiana limestone tower, twin observatories, and dirigible mooring mast made it a global icon."
+    "blurb": "The Empire State Building in New York City, the 443.2 m Art Deco skyscraper completed in 1931, in simplified schematic form. Explore 109 named components across 10 systems, from the limestone base and the 81-story setback shaft to the observatories, the mooring mast and the Art Deco lobby."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "empire-state",
+    "parts": 139,
+    "systems": 11,
+    "blurb": "The Empire State Building in New York City, the 443.2 m Art Deco skyscraper completed in 1931, its 102 stories rising on a riveted steel frame. Explore 139 named components across 11 systems, from the five-story base and the setback shaft to the 86th and 102nd floor observatories, the mooring mast, the broadcast aerials, the 1,200 LED crown lights and the three-story lobby."
    }
   ]
  },
@@ -340,7 +364,7 @@
   "slug": "golden-gate",
   "title": "Golden Gate Bridge",
   "location": "San Francisco, USA",
-  "blurb": "The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each.",
+  "blurb": "The Golden Gate Bridge in San Francisco, the 2,737 m suspension bridge opened in 1937, in simplified schematic form. Explore 111 named components across 11 systems, from the 746 ft Art Deco towers and the spun main cables to the deck, the anchorages and the Fort Point arch.",
   "sourceUrls": [
    {
     "label": "Golden Gate Bridge District: Facts and Figures",
@@ -426,10 +450,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "golden-gate",
+    "slug": "golden-gate-simple",
     "parts": 111,
     "systems": 11,
-    "blurb": "The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each."
+    "blurb": "The Golden Gate Bridge in San Francisco, the 2,737 m suspension bridge opened in 1937, in simplified schematic form. Explore 111 named components across 11 systems, from the 746 ft Art Deco towers and the spun main cables to the deck, the anchorages and the Fort Point arch."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "golden-gate",
+    "parts": 144,
+    "systems": 13,
+    "blurb": "The Golden Gate Bridge in San Francisco, the 2,737 m suspension bridge opened in 1937, its two main cables each spun from 27,572 wires. Explore 144 named components across 13 systems, from the tower portal bracing and cable bands to the stiffening truss, the six-lane deck with its markings, the anchorages, the Fort Point arch and the toll plaza."
    }
   ]
  },
@@ -1186,7 +1218,7 @@
   "slug": "sydney-opera-house",
   "title": "Sydney Opera House",
   "location": "Sydney, Australia",
-  "blurb": "Jørn Utzon’s 1973 performing arts centre on Sydney Harbour. Its precast concrete shells are all sections of a single 75.2 m sphere, set on a granite podium.",
+  "blurb": "Sydney Opera House on Sydney Harbour, Jorn Utzon's 1973 performing arts center with its fourteen shell vaults, in simplified schematic form. Explore 125 named components across 8 systems, from the pink granite podium and the tile clad shells to the glass walls, interiors, and supporting structure.",
   "sourceUrls": [
    {
     "label": "Wikipedia: Sydney Opera House",
@@ -1257,10 +1289,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "sydney-opera-house",
+    "slug": "sydney-opera-house-simple",
     "parts": 125,
     "systems": 8,
-    "blurb": "Jørn Utzon’s 1973 performing arts centre on Sydney Harbour. Its precast concrete shells are all sections of a single 75.2 m sphere, set on a granite podium."
+    "blurb": "Sydney Opera House on Sydney Harbour, Jorn Utzon's 1973 performing arts center with its fourteen shell vaults, in simplified schematic form. Explore 125 named components across 8 systems, from the pink granite podium and the tile clad shells to the glass walls, interiors, and supporting structure."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "sydney-opera-house",
+    "parts": 154,
+    "systems": 10,
+    "blurb": "Jorn Utzon's 1973 performing arts center on Sydney Harbour: fourteen precast concrete shell vaults, every one a section of a single 75.2 m sphere. Explore 154 named components across 10 systems, from the rib fans and chevron tile lids to the steel mullion glass walls, the opened podium with its five venues, and the foundations."
    }
   ]
  },
@@ -1268,7 +1308,7 @@
   "slug": "taj-mahal",
   "title": "Taj Mahal",
   "location": "Agra, India",
-  "blurb": "The Taj Mahal is a 17th-century Mughal mausoleum complex in Agra, India, commissioned by Shah Jahan for Mumtaz Mahal. This schematic model shows the full walled complex: riverfront terrace, marble mausoleum, four minarets, great gate, mosque, jawab, charbagh garden with its waterworks, forecourt, and subsidiary tombs.",
+  "blurb": "The Taj Mahal in Agra, the marble mausoleum commissioned by Shah Jahan, in simplified schematic form. Explore 130 named components across 11 systems, from the riverfront terrace and the dome cluster to the great gate, the charbagh garden and its waterworks.",
   "sourceUrls": [
    {
     "label": "Taj Mahal, Wikipedia",
@@ -1362,10 +1402,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "taj-mahal",
+    "slug": "taj-mahal-simple",
     "parts": 130,
     "systems": 11,
-    "blurb": "The Taj Mahal is a 17th-century Mughal mausoleum complex in Agra, India, commissioned by Shah Jahan for Mumtaz Mahal. This schematic model shows the full walled complex: riverfront terrace, marble mausoleum, four minarets, great gate, mosque, jawab, charbagh garden with its waterworks, forecourt, and subsidiary tombs."
+    "blurb": "The Taj Mahal in Agra, the marble mausoleum commissioned by Shah Jahan, in simplified schematic form. Explore 130 named components across 11 systems, from the riverfront terrace and the dome cluster to the great gate, the charbagh garden and its waterworks."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "taj-mahal",
+    "parts": 170,
+    "systems": 12,
+    "blurb": "The Taj Mahal in Agra, the white marble mausoleum commissioned by Shah Jahan in 1632, standing on its 300 m riverfront terrace. Explore 170 named components across 12 systems, from the pishtaq arches and the 23 m onion dome to the minaret tiers, the burial chamber, the Darwaza-i rauza gate, the mosque and jawab, and the charbagh waterworks."
    }
   ]
  },
@@ -1373,7 +1421,7 @@
   "slug": "tower",
   "title": "Eiffel Tower",
   "location": "Paris, France",
-  "blurb": "The Eiffel Tower is a 330 m wrought iron lattice tower on the Champ de Mars in Paris, built as the centerpiece of the 1889 Exposition Universelle. It is the most visited monument with an entrance fee in the world.",
+  "blurb": "The 330 m wrought iron lattice tower on the Champ de Mars in Paris, built for the 1889 Exposition Universelle, in simplified schematic form. Explore 119 named components across 8 systems, from the four lattice legs and their foundations to the three visitor platforms and the summit crown.",
   "sourceUrls": [
    {
     "label": "Eiffel Tower, Wikipedia",
@@ -1428,10 +1476,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "tower",
+    "slug": "tower-simple",
     "parts": 119,
     "systems": 8,
-    "blurb": "The Eiffel Tower is a 330 m wrought iron lattice tower on the Champ de Mars in Paris, built as the centerpiece of the 1889 Exposition Universelle. It is the most visited monument with an entrance fee in the world."
+    "blurb": "The 330 m wrought iron lattice tower on the Champ de Mars in Paris, built for the 1889 Exposition Universelle, in simplified schematic form. Explore 119 named components across 8 systems, from the four lattice legs and their foundations to the three visitor platforms and the summit crown."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "tower",
+    "parts": 145,
+    "systems": 11,
+    "blurb": "The 330 m wrought iron lattice tower on the Champ de Mars in Paris, built for the 1889 Exposition Universelle. Explore 145 named components across 11 systems, from the lattice legs, elevators and hydraulic machinery to the restaurants, the 72-name frieze, the sparkling illumination and the summit broadcasting aerials."
    }
   ]
  },
@@ -1588,7 +1644,7 @@
   "slug": "white-house",
   "title": "White House",
   "location": "Washington, D.C., USA",
-  "blurb": "A procedural model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Explode the view to lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction.",
+  "blurb": "The White House in Washington, D.C., the official residence and workplace of the president of the United States, in simplified schematic form. Explore 129 named components across 12 systems, from the north and south porticoes to the West Wing, the Truman-era steel frame and the 18-acre grounds.",
   "sourceUrls": [
    {
     "label": "White House, Wikipedia",
@@ -1699,10 +1755,18 @@
    {
     "id": "simple",
     "label": "Simple",
-    "slug": "white-house",
+    "slug": "white-house-simple",
     "parts": 129,
     "systems": 12,
-    "blurb": "A procedural model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Explode the view to lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction."
+    "blurb": "The White House in Washington, D.C., the official residence and workplace of the president of the United States, in simplified schematic form. Explore 129 named components across 12 systems, from the north and south porticoes to the West Wing, the Truman-era steel frame and the 18-acre grounds."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "white-house",
+    "parts": 167,
+    "systems": 14,
+    "blurb": "The White House in Washington, D.C., the official residence and workplace of the president of the United States, its sandstone walls first occupied in 1800. Explore 167 named components across 14 systems, from the column-by-column porticoes and the State Floor rooms to the Oval Office and Resolute desk, the Truman-era steel frame and the 18-acre grounds."
    }
   ]
  }

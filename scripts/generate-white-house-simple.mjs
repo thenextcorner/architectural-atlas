@@ -1,43 +1,36 @@
-// Procedural White House (DETAILED) for the Architectural Atlas.
+// Procedural White House for the Architectural Atlas.
 //
-// Builds a deep, correctly proportioned White House in code and writes it
-// in the atlas binary format: public/models/white-house/atlas.json +
-// public/models/white-house/white-house-0.bin
+// Builds a schematic, correctly proportioned White House in code and writes it
+// in the atlas binary format: public/models/white-house-simple/atlas.json +
+// public/models/white-house-simple/white-house-simple-0.bin
 //
-// Dimensions used (all from the research file research/white-house.md and
-// the attribution file research/white-house-attribution.md):
+// Dimensions used (all from the research file research/white-house.md):
 //   Executive Residence footprint about 170 x 85 ft (52 x 26 m)
 //   South Portico 61 ft wide, 6 Ionic columns, finished 1824
 //   Curved double stairs rise almost 13 ft
 //   North Portico tetrastyle (4 Ionic columns), 1829-1831
 //   Six levels: Ground, State, Second, Third + two-story basement, 55,000 sq ft
 //   North-side basement 12 to 13 ft below grade
-//   East Room 40 x 82 ft with a 22 ft ceiling; State Dining Room about 48 x 36 ft,
-//   seats 140; 132 rooms, 35 bathrooms, 412 doors, 147 windows,
+//   East Room 40 x 82 ft; 132 rooms, 35 bathrooms, 412 doors, 147 windows,
 //   28 fireplaces, 8 staircases, 3 elevators, 5 full-time chefs
-//   Oval Office: 35 ft 10 in by 29 ft, 18 ft 6 in high, about 816 sq ft
-//   Resolute desk: gift of Queen Victoria to Rutherford B. Hayes, 1880,
-//   built from oak timbers of HMS Resolute
 //   Hip roof with 1927 shed dormers; Truman steel frame 1948-52;
 //   two sub-basements with bomb shelter; $5.7M project, done March 27, 1952
-//   Rooftop flag: the U.S. flag flies at all times; since September 1970 it is
-//   not lowered when the president leaves
 //   Rose Garden: Mellon 1962 redesign, 50 by 100 ft central lawn, 12 ft borders
 //   Jacqueline Kennedy Garden: 36 by 19 m, I. M. Pei pergola, dedicated 1965
 //   Grounds: just over 18 acres (7.3 ha); 1935 Olmsted Jr. layout
 //   Fence: over 3,500 ft of steel; 6 ft 6 in fence replaced by ~13 ft fence
-//   from 2019 with an 18-inch stone base; six vehicular and nine pedestrian gates
+//   from 2019; six vehicular and nine pedestrian gates
 //
 // The model shows the PRE-2025 configuration (the original East Wing was
 // demolished in 2025). No reliable published overall height exists, so every
 // vertical dimension above grade is a schematic proportion derived from the
 // documented 170 x 85 ft footprint and is never stated as fact in the UI.
 //
-// Granularity: ~160 named parts across 14 systems. Every explanation is either
+// Granularity: 129 named parts across 12 systems. Every explanation is either
 // a sourced fact (see ~/workspace/architectural-atlas/research/
 // white-house-attribution.md) or explicitly marked schematic.
 //
-// Usage: node scripts/generate-white-house.mjs
+// Usage: node scripts/generate-white-house-simple.mjs
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import fs from 'node:fs';
@@ -45,7 +38,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const outDir = path.join(here, '..', 'public', 'models', 'white-house');
+const outDir = path.join(here, '..', 'public', 'models', 'white-house-simple');
 fs.mkdirSync(outDir, { recursive: true });
 
 // Atlas units: 52 m (main block length) maps to 2.4 units.
@@ -88,130 +81,42 @@ function segPediment(r, d) {
   g.rotateX(Math.PI / 2);
   return g;
 }
-// Ionic column split into base, shaft and capital geometry groups.
-function columnParts(x, z, y0, h, r) {
-  const shaft = [];
-  const sh = new THREE.CylinderGeometry(r * 0.92, r, h, 16);
-  sh.translate(x, y0 + h / 2, z);
-  shaft.push(sh);
-  const base = [];
-  const plinth = new THREE.BoxGeometry(r * 2.8, r * 0.5, r * 2.8);
-  plinth.translate(x, y0 + r * 0.25, z);
-  base.push(plinth);
-  const torus = new THREE.TorusGeometry(r * 1.02, r * 0.22, 8, 16);
-  torus.rotateX(Math.PI / 2);
-  torus.translate(x, y0 + r * 0.62, z);
-  base.push(torus);
-  const scotia = new THREE.CylinderGeometry(r * 1.12, r * 1.22, r * 0.3, 16);
-  scotia.translate(x, y0 + r * 0.85, z);
-  base.push(scotia);
-  const capital = [];
-  const ech = new THREE.BoxGeometry(r * 2.6, r * 0.9, r * 2.6);
-  ech.translate(x, y0 + h + r * 0.45, z);
-  capital.push(ech);
+// Ionic-ish column: tapered shaft, capital box, abacus, volute scroll hints.
+function ionicColumn(x, z, y0, h, r) {
+  const geoms = [];
+  const shaft = new THREE.CylinderGeometry(r * 0.92, r, h, 14);
+  shaft.translate(x, y0 + h / 2, z);
+  geoms.push(shaft);
+  const cap = new THREE.BoxGeometry(r * 2.6, r * 0.9, r * 2.6);
+  cap.translate(x, y0 + h + r * 0.45, z);
+  geoms.push(cap);
   const abacus = new THREE.BoxGeometry(r * 3.0, r * 0.35, r * 3.0);
   abacus.translate(x, y0 + h + r * 0.9 + r * 0.175, z);
-  capital.push(abacus);
+  geoms.push(abacus);
   for (const s of [-1, 1]) {
     const vol = new THREE.CylinderGeometry(r * 0.32, r * 0.32, r * 2.6, 10);
     vol.rotateX(Math.PI / 2);
     vol.translate(x, y0 + h + r * 0.45, z + s * r * 1.15);
-    capital.push(vol);
+    geoms.push(vol);
   }
-  return { base, shaft, capital };
+  return geoms;
 }
-// Closed solid slab over 3 or 4 corner points (hip roof slopes). The outward
-// hint vector decides the face winding so normals point out.
-function slopeSolid(pts, hint, t = 0.35) {
-  let p = pts.map((q) => [...q]);
-  const va = new THREE.Vector3(...p[0]);
-  const vb = new THREE.Vector3(...p[1]);
-  const vc = new THREE.Vector3(...p[2]);
-  let n = new THREE.Vector3().subVectors(vb, va).cross(new THREE.Vector3().subVectors(vc, va));
-  const hv = new THREE.Vector3(...hint);
-  if (n.dot(hv) < 0) p = p.reverse();
-  n = new THREE.Vector3()
-    .subVectors(new THREE.Vector3(...p[1]), new THREE.Vector3(...p[0]))
-    .cross(new THREE.Vector3().subVectors(new THREE.Vector3(...p[2]), new THREE.Vector3(...p[0])))
-    .normalize();
-  const off = p.map((q) => [q[0] - n.x * t, q[1] - n.y * t, q[2] - n.z * t]);
-  const verts = [];
-  const push = (q) => verts.push(q[0], q[1], q[2]);
-  for (let i = 1; i < p.length - 1; i++) { push(p[0]); push(p[i]); push(p[i + 1]); }
-  for (let i = 1; i < off.length - 1; i++) { push(off[0]); push(off[i + 1]); push(off[i]); }
-  for (let i = 0; i < p.length; i++) {
-    const j = (i + 1) % p.length;
-    push(p[i]); push(p[j]); push(off[j]);
-    push(p[i]); push(off[j]); push(off[i]);
-  }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-  g.setIndex([...Array(verts.length / 3).keys()]);
-  g.computeVertexNormals();
-  return g;
-}
-// Straight run of the ~13 ft perimeter fence: stone-capped posts, two rails,
-// pickets, and angled anti-climb caps on every third post.
-function fenceRun(x0, z0, x1, z1, ox, oz) {
+// Straight run of perimeter fence: pickets, two rails, posts every 6 units.
+function fenceRun(x0, z0, x1, z1) {
   const geoms = [];
   const len = Math.hypot(x1 - x0, z1 - z0);
-  geoms.push(strut([x0, 4.3, z0], [x1, 4.3, z1], 0.18));
-  geoms.push(strut([x0, 0.7, z0], [x1, 0.7, z1], 0.18));
+  geoms.push(strut([x0, 3.7, z0], [x1, 3.7, z1], 0.18));
+  geoms.push(strut([x0, 0.6, z0], [x1, 0.6, z1], 0.18));
   const n = Math.max(2, Math.round(len / 6));
-  let pi = 0;
   for (let i = 0; i <= n; i++) {
     const t = i / n;
-    const px = x0 + (x1 - x0) * t;
-    const pz = z0 + (z1 - z0) * t;
-    geoms.push(cyl(0.16, 0.16, 4.6, 8, px, 2.3, pz));
-    geoms.push(box(0.7, 0.5, 0.7, px, 4.75, pz));
-    if (pi % 3 === 0) geoms.push(strut([px, 4.9, pz], [px + ox * 0.7, 5.6, pz + oz * 0.7], 0.12));
-    pi++;
+    geoms.push(cyl(0.14, 0.14, 4, 8, x0 + (x1 - x0) * t, 2, z0 + (z1 - z0) * t));
   }
-  const pk = Math.max(2, Math.round(len / 0.9));
-  for (let i = 0; i <= pk; i++) {
-    const t = i / pk;
-    geoms.push(box(0.08, 3.8, 0.08, x0 + (x1 - x0) * t, 2.35, z0 + (z1 - z0) * t));
+  const p = Math.max(2, Math.round(len / 0.9));
+  for (let i = 0; i <= p; i++) {
+    const t = i / p;
+    geoms.push(box(0.07, 3.2, 0.07, x0 + (x1 - x0) * t, 2.1, z0 + (z1 - z0) * t));
   }
-  return geoms;
-}
-function vehicleGate(gx, gz) {
-  const geoms = [
-    box(0.8, 5.2, 0.8, gx - 4.4, 2.6, gz),
-    box(0.8, 5.2, 0.8, gx + 4.4, 2.6, gz),
-    box(1.1, 0.4, 1.1, gx - 4.4, 5.4, gz),
-    box(1.1, 0.4, 1.1, gx + 4.4, 5.4, gz),
-  ];
-  const leafL = new THREE.BoxGeometry(4, 3.8, 0.12);
-  leafL.translate(-2, 0, 0);
-  leafL.rotateY(0.35);
-  leafL.translate(gx - 4, 2.4, gz);
-  const leafR = new THREE.BoxGeometry(4, 3.8, 0.12);
-  leafR.translate(2, 0, 0);
-  leafR.rotateY(-0.35);
-  leafR.translate(gx + 4, 2.4, gz);
-  geoms.push(leafL, leafR);
-  return geoms;
-}
-function guardBooth(bx, bz) {
-  return [
-    box(2.4, 2.6, 2.4, bx, 1.3, bz),
-    box(3, 0.3, 3, bx, 2.75, bz),
-    box(2.0, 0.7, 0.1, bx, 1.9, bz - 1.15),
-    box(2.0, 0.7, 0.1, bx, 1.9, bz + 1.15),
-  ];
-}
-function pedestrianGate(gx, gz) {
-  const geoms = [
-    box(0.6, 4.4, 0.6, gx - 1.6, 2.2, gz),
-    box(0.6, 4.4, 0.6, gx + 1.6, 2.2, gz),
-    box(0.9, 0.3, 0.9, gx - 1.6, 4.55, gz),
-    box(0.9, 0.3, 0.9, gx + 1.6, 4.55, gz),
-  ];
-  const leaf = new THREE.BoxGeometry(2.8, 3.4, 0.1);
-  leaf.rotateY(0.5);
-  leaf.translate(gx - 1.4, 2.1, gz);
-  geoms.push(leaf);
   return geoms;
 }
 
@@ -298,10 +203,7 @@ const addPart = (id, name, system, geoms, explanation) => {
     [box(52.8, 0.6, 26.8, 0, 17.3, 0), box(53.2, 0.3, 27.2, 0, 17.65, 0)],
     'The main cornice band below the balustraded parapet. Shown schematically.');
   const chim = [];
-  for (const cx of [-14, 14]) for (const cz of [-5, 5]) {
-    chim.push(box(1.6, 3, 1.6, cx, 19.5, cz));
-    chim.push(box(2.0, 0.4, 2.0, cx, 21.1, cz));
-  }
+  for (const cx of [-14, 14]) for (const cz of [-5, 5]) chim.push(box(1.6, 3, 1.6, cx, 19.5, cz));
   addPart('shell-chimneys', 'roof chimney stacks', 'shell', chim,
     'Chimney stacks rising above the hip roof. The house has 28 fireplaces; stack count and placement shown schematically.');
 }
@@ -317,17 +219,13 @@ const addPart = (id, name, system, geoms, explanation) => {
     'The horizontal entablature carried by the four Ionic columns. It spans the full width of the tetrastyle front.');
   const colX = [-6, -2, 2, 6];
   colX.forEach((x, i) => {
-    const cp = columnParts(x, -17, 1.0, 14.6, 0.75);
-    addPart(`np-column-${i + 1}-shaft`, `north portico column ${i + 1} shaft and base`, 'northportico',
-      [...cp.shaft, ...cp.base],
-      'The tapered shaft and molded base of one of four Ionic columns of the tetrastyle North Portico, called the most notable four-columned portico in the United States. The columns rise from the ground to the roof pediment; column height shown schematically.');
-    addPart(`np-column-${i + 1}-capital`, `north portico column ${i + 1} capital`, 'northportico',
-      cp.capital,
-      'The Ionic capital of one of the four North Portico columns, with volute scrolls. A variation on the Ionic order was devised for this portico, with a swag of roses between the volutes; capital profile shown schematically.');
+    addPart(`np-column-${i + 1}`, `north portico column ${i + 1}`, 'northportico',
+      ionicColumn(x, -17, 1.0, 14.6, 0.75),
+      'One of four Ionic columns of the tetrastyle North Portico, called the most notable four-columned portico in the United States. The columns rise from the ground to the roof pediment; column height shown schematically.');
   });
   const plinths = [box(16, 0.5, 7, 0, 2.35, -16.5)];
   for (const x of colX) plinths.push(box(1.8, 1.0, 1.8, x, 0.5, -17));
-  addPart('np-plinths', 'north portico plinths and porte cochere floor', 'northportico', plinths,
+  addPart('np-plinths', 'north portico floor and plinths', 'northportico', plinths,
     'Square plinths raise the Ionic columns above the portico floor. The porte cochere floor sits above the carriage drive.');
   addPart('np-ramp', 'porte cochere carriage ramp', 'northportico',
     [strut([0, 0, -28], [0, 2.6, -20], 8, 0.4)],
@@ -353,14 +251,16 @@ const addPart = (id, name, system, geoms, explanation) => {
     const a = (deg * Math.PI) / 180;
     const x = 9.3 * Math.sin(a);
     const z = 13 + 9.3 * Math.cos(a);
-    const cp = columnParts(x, z, 4.8, 8.4, 0.7);
-    addPart(`sp-column-${i + 1}-shaft`, `south portico column ${i + 1} shaft and base`, 'southportico',
-      [...cp.shaft, ...cp.base],
-      'The shaft and molded base of one of six Ionic columns of the semicircular South Portico, finished in 1824. The shafts are Seneca sandstone made in sections and pinned at their centers with iron, raised on square plinths; column height shown schematically.');
-    addPart(`sp-column-${i + 1}-capital`, `south portico column ${i + 1} capital`, 'southportico',
-      cp.capital,
-      'The Ionic capital of one of the six South Portico columns, with volute scrolls. Capital profile shown schematically.');
+    addPart(`sp-column-${i + 1}`, `south portico column ${i + 1}`, 'southportico',
+      ionicColumn(x, z, 4.8, 8.4, 0.7),
+      'One of six Ionic columns of the semicircular South Portico, finished in 1824. The shafts are Seneca sandstone made in sections and pinned at their centers with iron; column height shown schematically.');
   });
+  const plinths = angles.map((deg) => {
+    const a = (deg * Math.PI) / 180;
+    return box(1.6, 0.8, 1.6, 9.3 * Math.sin(a), 4.4, 13 + 9.3 * Math.cos(a));
+  });
+  addPart('sp-plinths', 'south portico column plinths', 'southportico', plinths,
+    'Square plinths raise each column shaft above the podium. The shafts were raised on square plinths when the portico was built.');
   const stair = (sign) => {
     const geoms = [];
     for (let k = 0; k < 12; k++) {
@@ -441,35 +341,30 @@ const addPart = (id, name, system, geoms, explanation) => {
   brail.translate(0, 10.05, 13);
   balc.push(brail);
   addPart('sp-balcony', 'truman balcony', 'southportico', balc,
-    'The second-floor balcony added to the South Portico by President Truman, reached from the second floor family quarters. Shown at the second-floor level.');
+    'The second-floor balcony added to the South Portico by President Truman. Shown at the second-floor level.');
 }
 
 // ================= 4. Vaults and undercroft =================
 {
-  const groinBay = (cx, cz, s, ySpring) => {
-    const geoms = [];
+  const vaults = [];
+  const bay = (cx, cz, s, ySpring) => {
     const diag = (Math.SQRT2 * s) / 2;
     for (const a of [Math.PI / 4, -Math.PI / 4]) {
       const t = new THREE.TorusGeometry(diag, 0.16, 6, 14, Math.PI);
       t.rotateY(a);
       t.translate(cx, ySpring, cz);
-      geoms.push(t);
+      vaults.push(t);
     }
     for (const a of [0, Math.PI / 2, Math.PI, -Math.PI / 2]) {
       const t = new THREE.TorusGeometry(s / 2, 0.14, 6, 12, Math.PI);
       t.rotateY(a);
       t.translate(cx + Math.sin(a) * s / 2, ySpring, cz + Math.cos(a) * s / 2);
-      geoms.push(t);
+      vaults.push(t);
     }
-    return geoms;
   };
-  const bayNames = ['west', 'central', 'east'];
-  [-3.4, 0, 3.4].forEach((cx, i) => {
-    const geoms = [];
-    for (const cz of [14.6, 17.8]) geoms.push(...groinBay(cx, cz, 3.2, 2.0));
-    addPart(`v-groin-${bayNames[i]}`, `south portico ${bayNames[i]} groin vault bays`, 'vaults', geoms,
-      'Groin vaults carry the South Portico floor and remain as Hoban built them, among the only historic structural systems still doing their original job. Vault geometry shown schematically.');
-  });
+  for (const cx of [-3.4, 0, 3.4]) for (const cz of [14.6, 17.8]) bay(cx, cz, 3.2, 2.0);
+  addPart('v-groin', 'south portico groin vaults', 'vaults', vaults,
+    'Groin vaults carry the South Portico floor and remain as Hoban built them, among the only historic structural systems still doing their original job. Vault geometry shown schematically.');
   const seg = new THREE.CylinderGeometry(2.2, 2.2, 13, 16, 1, true, 0, Math.PI);
   seg.rotateZ(Math.PI / 2);
   seg.translate(0, 0, -16.5);
@@ -532,22 +427,14 @@ const addPart = (id, name, system, geoms, explanation) => {
   addPart('ww-block', 'west wing office block', 'westwing',
     [box(24, 9, 18, -46, 4.5, 0), box(24.6, 0.4, 18.6, -46, 9.2, 0)],
     'Theodore Roosevelt had all work offices relocated to the newly constructed West Wing in 1902. Footprint and height shown schematically.');
-  const oval = new THREE.CylinderGeometry(1, 1, 5.6, 24);
-  oval.scale(5.5, 1, 4.4);
-  oval.translate(-38, 2.8, 8);
+  const oval = new THREE.CylinderGeometry(1, 1, 4.5, 24);
+  oval.scale(4.2, 1, 3.4);
+  oval.translate(-38, 2.25, 9);
   const ovalRoof = new THREE.CylinderGeometry(1, 1, 0.3, 24);
-  ovalRoof.scale(5.7, 1, 4.6);
-  ovalRoof.translate(-38, 5.7, 8);
+  ovalRoof.scale(4.4, 1, 3.6);
+  ovalRoof.translate(-38, 4.6, 9);
   addPart('ww-oval', 'oval office', 'westwing', [oval, ovalRoof],
-    'The Oval Office measures 35 ft 10 in by 29 ft and stands 18 ft 6 in high. It was created in 1909 by William Howard Taft with architect Nathan C. Wyeth, and moved to its present location at the southeast corner of the West Wing, adjacent to the Rose Garden, under Franklin D. Roosevelt in the 1930s. Shown schematically within the West Wing.');
-  const desk = [
-    box(2.4, 0.18, 1.3, -38, 1.15, 8),
-    box(0.55, 1.05, 1.2, -38.85, 0.55, 8),
-    box(0.55, 1.05, 1.2, -37.15, 0.55, 8),
-    box(1.15, 0.75, 0.08, -38, 0.65, 8.62),
-  ];
-  addPart('ww-resolute-desk', 'resolute desk', 'westwing', desk,
-    'The Resolute desk, a gift from Queen Victoria to President Rutherford B. Hayes in 1880, built from the oak timbers of the British Arctic exploration ship HMS Resolute. Jacqueline Kennedy moved it into the Oval Office in 1961. Shown schematically.');
+    'The Oval Office was created in 1909 by William Howard Taft with architect Nathan C. Wyeth, and moved to its present location at the southeast corner of the West Wing, adjacent to the Rose Garden, under Franklin D. Roosevelt in the 1930s. Shown schematically within the West Wing.');
   addPart('ww-cabinet-room', 'cabinet room', 'westwing',
     [
       box(9, 4, 7, -38, 2.25, 0.5),
@@ -580,12 +467,6 @@ const addPart = (id, name, system, geoms, explanation) => {
   addPart('ww-basement', 'west wing staff basement', 'westwing',
     [box(24, 3.2, 18, -46, -1.6, 0)],
     'Expanded staff basement beneath the West Wing. Shown schematically.');
-  addPart('ww-lobby-offices', 'west wing lobby and upper offices', 'westwing',
-    [
-      box(8, 4, 2.6, -40, 2.2, -6.8),
-      box(16, 3.4, 10, -46, 6.9, 0),
-    ],
-    'The West Wing lobby, the working entrance used by staff and visitors, with staff offices on the upper level of the wing. Layout shown schematically.');
 }
 
 // ================= 7. East Wing (pre-2025) =================
@@ -625,199 +506,129 @@ const addPart = (id, name, system, geoms, explanation) => {
     'The below-grade Presidential Emergency Operations Center beneath the East Wing, built in 1942. Shown schematically in the pre-2025 configuration.');
 }
 
-// ================= 8. State Floor interiors =================
+// ================= 8. Floors and circulation =================
 {
-  addPart('sf-plate', 'state floor plate', 'statefloor',
-    [box(50.8, 0.4, 24.8, 0, 4.4, 0)],
-    'The State Floor slab, holding the principal reception rooms including the 40 by 82 ft East Room, the largest on the floor. Heights shown schematically.');
-  addPart('sf-east-room', 'east room', 'statefloor',
-    [box(25, 4, 12, 12.5, 6.6, 0)],
-    'The East Room, 40 by 82 ft with a 22 ft ceiling, the largest room in the White House. Large receptions are usually held here. Layout shown schematically.');
-  const blue = cyl(6.5, 6.5, 4, 24, 0, 6.6, 5);
-  blue.scale(1, 1, 0.8);
-  addPart('sf-blue-room', 'blue room', 'statefloor', [blue],
-    'The elliptical Blue Room, the scene of many social, diplomatic, and official receptions. Layout shown schematically.');
-  addPart('sf-red-room', 'red room', 'statefloor',
-    [box(8, 4, 9, -11, 6.6, 5)],
-    'The Red Room, used for private and quasi-official gatherings. Layout shown schematically.');
-  addPart('sf-green-room', 'green room', 'statefloor',
-    [box(8, 4, 9, 11, 6.6, 5)],
-    'The Green Room on the State Floor. Layout shown schematically.');
-  addPart('sf-state-dining-room', 'state dining room', 'statefloor',
-    [box(14.6, 4, 11, -18, 6.6, 0)],
-    'The State Dining Room, about 48 by 36 ft and seating 140 guests for state dinners. It incorporates the space Thomas Jefferson used as a private office. Layout shown schematically.');
-  addPart('sf-state-dining-mantel', 'state dining room mantel', 'statefloor',
-    [
-      box(0.5, 2.4, 3.2, -24.9, 5.9, 0),
-      box(0.7, 0.4, 3.6, -24.8, 7.2, 0),
-    ],
-    'The mantel of the State Dining Room, into which President Franklin D. Roosevelt had John Adams\'s blessing for the house carved. Mantel shown schematically.');
-  addPart('sf-cross-hall', 'cross hall', 'statefloor',
-    [box(34, 3.6, 2.6, 0, 6.5, -10)],
-    'The Cross Hall, which connects the State Dining Room and the East Room on the State Floor. Layout shown schematically.');
-  addPart('sf-grand-foyer', 'grand foyer', 'statefloor',
-    [box(12, 4, 10, 0, 6.6, -4)],
-    'The Grand Foyer, the entrance hall at the center of the State Floor beneath the North Portico. Layout shown schematically.');
-  addPart('sf-family-dining-room', 'family dining room', 'statefloor',
-    [box(10, 4, 9, 19, 6.6, -6)],
-    'The Family Dining Room on the State Floor, used for private family meals. Layout shown schematically.');
-}
-
-// ================= 9. Second and Third Floors =================
-{
-  addPart('uf-second-plate', 'second floor plate', 'upperfloors',
-    [box(50.8, 0.4, 24.8, 0, 8.8, 0)],
-    'The Second Floor slab, the private family quarters level. Heights shown schematically.');
-  addPart('uf-third-plate', 'third floor plate', 'upperfloors',
-    [box(50.8, 0.4, 24.8, 0, 13.2, 0)],
-    'The Third Floor slab, converted from attic to living quarters in 1927. Heights shown schematically.');
-  addPart('uf-yellow-oval-room', 'yellow oval room', 'upperfloors',
-    [box(10, 3.8, 7, 0, 10.9, 4)],
-    'The Yellow Oval Room in the second floor family residence. Layout shown schematically.');
-  addPart('uf-lincoln-bedroom', 'lincoln bedroom', 'upperfloors',
-    [box(8, 3.8, 7, -15, 10.9, -2)],
-    'The Lincoln Bedroom in the second floor family residence. Layout shown schematically.');
-  addPart('uf-lincoln-sitting-room', 'lincoln sitting room', 'upperfloors',
-    [box(6, 3.8, 6, -15, 10.9, 4)],
-    'The Lincoln Sitting Room adjoining the Lincoln Bedroom on the second floor. Layout shown schematically.');
-  addPart('uf-queens-bedroom', 'queens\' bedroom', 'upperfloors',
-    [box(8, 3.8, 7, 15, 10.9, -2)],
-    'The Queens\' Bedroom, a second floor guest suite named for the many queens who have stayed there. Layout shown schematically.');
-  addPart('uf-treaty-room', 'treaty room', 'upperfloors',
-    [box(8, 3.8, 7, 15, 10.9, 4)],
-    'The Treaty Room on the second floor, used by the president as a study. Layout shown schematically.');
-  addPart('uf-east-sitting-hall', 'east sitting hall', 'upperfloors',
-    [box(10, 3.8, 6, 8, 10.9, -6)],
-    'The East Sitting Hall, a family parlor on the second floor above the East Room. Layout shown schematically.');
-  addPart('uf-west-sitting-hall', 'west sitting hall', 'upperfloors',
-    [box(8, 3.8, 6, -10, 10.9, -6)],
-    'The West Sitting Hall on the second floor of the family residence. Layout shown schematically.');
-  addPart('uf-family-kitchen', 'family kitchen', 'upperfloors',
-    [box(8, 3.8, 6, -6, 10.9, 6)],
-    'The family kitchen on the second floor, serving the private apartments of the first family. Layout shown schematically.');
-}
-
-// ================= 10. Ground Floor, basement and circulation =================
-{
-  addPart('gf-plate', 'ground floor plate', 'servicefloors',
-    [box(50.8, 0.4, 24.8, 0, -0.2, 0)],
-    'The Ground Floor slab of the six-level stack. Floor-to-floor heights shown schematically.');
-  addPart('gf-basement', 'two-story basement', 'servicefloors',
+  const plates = [
+    ['f-ground', 'ground floor plate', -0.2,
+      'The Ground Floor slab of the six-level stack. Floor-to-floor heights shown schematically.'],
+    ['f-state', 'state floor plate', 4.4,
+      'The State Floor slab, holding the principal reception rooms including the 40 by 82 ft East Room, the largest on the floor. Heights shown schematically.'],
+    ['f-second', 'second floor plate', 8.8,
+      'The Second Floor slab, the private family quarters level. Heights shown schematically.'],
+    ['f-third', 'third floor plate', 13.2,
+      'The Third Floor slab, converted from attic to living quarters in 1927. Heights shown schematically.'],
+  ];
+  for (const [id, name, y, expl] of plates) {
+    addPart(id, name, 'floors', [box(50.8, 0.4, 24.8, 0, y, 0)], expl);
+  }
+  addPart('f-basement', 'two-story basement', 'floors',
     [box(50, 7.6, 24, 0, -3.8, 0)],
     'The two-story basement beneath the Ground Floor, part of the six levels totaling 55,000 sq ft. The north-side basement runs 12 to 13 ft below grade.');
-  addPart('gf-diplomatic-reception-room', 'diplomatic reception room', 'servicefloors',
+  // State Floor rooms (slab top at 4.6).
+  addPart('f-east-room', 'east room', 'floors',
+    [box(24, 4, 12, 13, 6.6, 0)],
+    'The East Room, 40 by 82 ft, the largest room in the White House. Large receptions are usually held here. Layout shown schematically.');
+  const blue = cyl(6.5, 6.5, 4, 24, 0, 6.6, 5);
+  blue.scale(1, 1, 0.8);
+  addPart('f-blue-room', 'blue room', 'floors', [blue],
+    'The elliptical Blue Room, the scene of many social, diplomatic, and official receptions. Layout shown schematically.');
+  addPart('f-red-room', 'red room', 'floors',
+    [box(8, 4, 9, -11, 6.6, 5)],
+    'The Red Room, used for private and quasi-official gatherings. Layout shown schematically.');
+  addPart('f-green-room', 'green room', 'floors',
+    [box(8, 4, 9, 11, 6.6, 5)],
+    'The Green Room on the State Floor. Layout shown schematically.');
+  addPart('f-state-dining-room', 'state dining room', 'floors',
+    [box(12, 4, 11, -18, 6.6, 0)],
+    'The State Dining Room. President Franklin D. Roosevelt had John Adams\'s blessing for the house carved into the mantel here. Layout shown schematically.');
+  addPart('f-cross-hall', 'cross hall', 'floors',
+    [box(34, 3.6, 2.6, 0, 6.5, -10)],
+    'The Cross Hall, which connects the State Dining Room and the East Room on the State Floor. Layout shown schematically.');
+  // Ground Floor rooms.
+  addPart('f-diplomatic-reception-room', 'diplomatic reception room', 'floors',
     [box(10, 3.8, 8, 0, 1.9, 3)],
     'The Diplomatic Reception Room on the Ground Floor. Jacqueline Kennedy installed the antique Vue de l\'Amerique Nord wallpaper, designed by Zuber and Cie in 1834, here. Layout shown schematically.');
-  addPart('gf-main-kitchen', 'main kitchen', 'servicefloors',
+  addPart('f-main-kitchen', 'main kitchen', 'floors',
     [box(12, 3.8, 8, -15, 1.9, 3)],
     'The main kitchen on the Ground Floor. The house has five full-time chefs. Layout shown schematically.');
-  addPart('gf-library', 'white house library', 'servicefloors',
+  addPart('f-library', 'white house library', 'floors',
     [box(10, 3.8, 8, 15, 1.9, -3)],
     'The Library on the Ground Floor. Under Truman its walls were paneled in wood from the original timber frame, along with the Vermeil, China, and Map Rooms. Layout shown schematically.');
-  addPart('gf-vermeil-room', 'vermeil room', 'servicefloors',
-    [box(8, 3.8, 7, -6, 1.9, -4)],
-    'The Vermeil Room on the Ground Floor, paneled under Truman in wood from the original timber frame. Layout shown schematically.');
-  addPart('gf-china-room', 'china room', 'servicefloors',
-    [box(8, 3.8, 7, 6, 1.9, -4)],
-    'The China Room on the Ground Floor, paneled under Truman in wood from the original timber frame. Layout shown schematically.');
-  addPart('gf-map-room', 'map room', 'servicefloors',
-    [box(8, 3.8, 7, -18, 1.9, -4)],
-    'The Map Room on the Ground Floor, paneled under Truman in wood from the original timber frame. Layout shown schematically.');
-  addPart('gf-corridor', 'ground floor corridor', 'servicefloors',
-    [box(40, 3.2, 2.4, 0, 1.6, -9)],
-    'The Ground Floor corridor linking the service rooms. Layout shown schematically.');
-  addPart('gf-bowling-alley', 'white house bowling alley', 'servicefloors',
+  // Second Floor rooms.
+  addPart('f-yellow-oval-room', 'yellow oval room', 'floors',
+    [box(10, 3.8, 7, 0, 10.9, 4)],
+    'The Yellow Oval Room in the second floor family residence. Layout shown schematically.');
+  addPart('f-lincoln-bedroom', 'lincoln bedroom', 'floors',
+    [box(8, 3.8, 7, -15, 10.9, -2)],
+    'The Lincoln Bedroom in the second floor family residence. Layout shown schematically.');
+  // Basement recreation.
+  addPart('f-bowling-alley', 'white house bowling alley', 'floors',
     [
       box(13, 0.25, 1.4, -8, -3.2, 8),
       box(2, 0.25, 1.4, -0.5, -3.2, 8),
       box(1.2, 1.6, 2.2, 1.2, -2.6, 8),
     ],
     'The single-lane bowling alley added to the White House basement during the Nixon administration. Layout shown schematically.');
-  addPart('gf-elevators', 'elevator shafts', 'servicefloors',
-    [
-      box(2, 21.2, 2, -15, 3, -8),
-      box(2, 21.2, 2, 0, 3, -8),
-      box(2, 21.2, 2, 15, 3, -8),
-    ],
-    'The house has 3 elevators; their shafts run the full height of the stack. Shown schematically.');
-  addPart('gf-grand-staircase', 'grand staircase', 'servicefloors',
+  addPart('f-stairs', 'grand staircase', 'floors',
     [
       strut([10, 0, 5], [10, 4.4, -5], 3, 0.5),
       strut([10, 4.4, -5], [10, 8.8, 5], 3, 0.5),
       box(3, 0.4, 3, 10, 4.2, -5),
     ],
     'The Grand Staircase linking the state floors; the house has 8 staircases in total. Shown schematically.');
-  addPart('gf-service-stairs', 'service staircases', 'servicefloors',
+  addPart('f-elevators', 'elevator shafts', 'floors',
     [
-      strut([-18, 0, 8], [-18, 8.8, -8], 2.2, 0.5),
-      strut([18, 0, 8], [18, 8.8, -8], 2.2, 0.5),
+      box(2, 21.2, 2, -15, 3, -8),
+      box(2, 21.2, 2, 0, 3, -8),
+      box(2, 21.2, 2, 15, 3, -8),
     ],
-    'Service staircases at the east and west ends of the house. The house has 8 staircases in total; shown schematically.');
+    'The house has 3 elevators; their shafts run the full height of the stack. Shown schematically.');
 }
 
-// ================= 11. Roof and Truman-era structure =================
+// ================= 9. Roof and Truman-era structure =================
 {
-  // Hip roof as four separate slope slabs: ridge along x, eaves rectangle.
-  const rx = 13, ex = 26.75, ez = 13.75, y0 = 17.8, y1 = 23.2;
-  addPart('r-slope-north', 'north hip roof slope', 'roof',
-    [slopeSolid([[-rx, y1, 0], [rx, y1, 0], [ex, y0, -ez], [-ex, y0, -ez]], [0, 0.5, -1])],
-    'The north slope of the hip roof over the main block. Roof height shown schematically.');
-  addPart('r-slope-south', 'south hip roof slope', 'roof',
-    [slopeSolid([[rx, y1, 0], [-rx, y1, 0], [-ex, y0, ez], [ex, y0, ez]], [0, 0.5, 1])],
-    'The south slope of the hip roof over the main block. Roof height shown schematically.');
-  addPart('r-slope-east', 'east hip roof slope', 'roof',
-    [slopeSolid([[rx, y1, 0], [ex, y0, -ez], [ex, y0, ez]], [1, 0.5, 0])],
-    'The east hip end of the roof over the main block. Roof height shown schematically.');
-  addPart('r-slope-west', 'west hip roof slope', 'roof',
-    [slopeSolid([[-rx, y1, 0], [-ex, y0, ez], [-ex, y0, -ez]], [-1, 0.5, 0])],
-    'The west hip end of the roof over the main block. Roof height shown schematically.');
+  const hip = new THREE.ConeGeometry(1, 5.4, 4, 1);
+  hip.rotateY(Math.PI / 4);
+  hip.scale(52 / Math.SQRT2, 1, 26 / Math.SQRT2);
+  hip.translate(0, 17.6 + 2.7, 0);
+  addPart('r-hip', 'hip roof', 'roof', [hip],
+    'The hip roof over the main block, augmented in 1927 with long shed dormers when the attic became living quarters. Roof height shown schematically.');
   const ds = box(30, 1.6, 2.2, 0, 20.8, 7.0);
   ds.rotateX(-0.39);
   const dsw = box(30, 0.9, 0.3, 0, 20.3, 8.15);
-  addPart('r-dormers-south', '1927 south shed dormers', 'roof', [ds, dsw],
-    'Long shed dormers on the south slope, added in 1927 to light the converted third-floor attic. Shown schematically.');
   const dn = box(30, 1.6, 2.2, 0, 20.8, -7.0);
   dn.rotateX(0.39);
   const dnw = box(30, 0.9, 0.3, 0, 20.3, -8.15);
-  addPart('r-dormers-north', '1927 north shed dormers', 'roof', [dn, dnw],
-    'Long shed dormers on the north slope, added in 1927 to light the converted third-floor attic. Shown schematically.');
+  addPart('r-dormers', '1927 shed dormers', 'roof', [ds, dsw, dn, dnw],
+    'Long shed dormers added in 1927 to light the converted third-floor attic. Shown schematically.');
   addPart('r-solarium', 'third floor solarium', 'roof',
     [box(6, 2.6, 4.5, 10, 21.6, 5), box(6.4, 0.3, 4.9, 10, 23.0, 5)],
     'The Truman-era solarium on the third floor. Shown schematically.');
   addPart('r-penthouse', '1952 rooftop penthouse', 'roof',
     [box(8, 2.6, 6, 0, 18.9, -5), box(8.4, 0.3, 6.4, 0, 20.35, -5)],
     'The rooftop penthouse added during the Truman reconstruction in 1952. Shown schematically.');
-  addPart('r-flagpole', 'rooftop flagpole', 'roof',
-    [
-      cyl(0.12, 0.16, 7, 10, 5, 26.7, 0),
-      box(2.2, 1.4, 0.08, 6.25, 29.2, 0),
-      new THREE.SphereGeometry(0.25, 10, 8).translate(5, 30.35, 0),
-    ],
-    'The rooftop flagpole. The U.S. flag flies from it at all times; since September 1970 it is not lowered when the president leaves, a practice mandated by President Nixon. Pole height shown schematically.');
-  const cols = [];
-  for (const x of [-20, -12, -4, 4, 12, 20]) for (const z of [-8, 0, 8]) cols.push(box(0.5, 17.6, 0.5, x, 8.8, z));
-  addPart('r-steel-columns', 'truman steel frame columns', 'roof', cols,
-    'Under Truman the interior rooms were completely dismantled and a new internal load-bearing steel frame was built inside the walls, completed in 1952. In the exploded view the sandstone shell lifts off this frame.');
-  const beams = [];
+  const steel = [];
+  const xs = [-20, -12, -4, 4, 12, 20];
+  const zs = [-8, 0, 8];
+  for (const x of xs) for (const z of zs) steel.push(box(0.5, 17.6, 0.5, x, 8.8, z));
   for (const y of [4.4, 8.8, 13.2]) {
-    for (const z of [-8, 0, 8]) beams.push(box(41, 0.5, 0.4, 0, y, z));
-    for (const x of [-20, -12, -4, 4, 12, 20]) beams.push(box(0.4, 0.5, 17, x, y, 0));
+    for (const z of zs) steel.push(box(41, 0.5, 0.4, 0, y, z));
+    for (const x of xs) steel.push(box(0.4, 0.5, 17, x, y, 0));
   }
-  addPart('r-steel-beams', 'truman steel frame beams', 'roof', beams,
-    'The floor beams of the internal steel frame installed during the 1948 to 1952 Truman reconstruction. Shown schematically.');
+  addPart('r-steel', 'truman steel frame', 'roof', steel,
+    'Under Truman the interior rooms were completely dismantled and a new internal load-bearing steel frame was built inside the walls, completed in 1952. In the exploded view the sandstone shell lifts off this frame.');
   addPart('r-subbasement', 'sub-basements and bomb shelter', 'roof',
     [box(40, 7.6, 20, 0, -11.4, 0), box(8, 3, 6, 10, -13.6, 0)],
     'Two additional sub-basements were added under Truman, providing workrooms, storage and a bomb shelter; the 5.7 million dollar project finished with the Trumans returning March 27, 1952. Shown schematically.');
 }
 
-// ================= 12. Ornament and fenestration =================
+// ================= 10. Ornament and fenestration =================
 {
   const garland = new THREE.TorusGeometry(1.6, 0.28, 8, 18, Math.PI);
   garland.translate(0, 7.4, -12.55);
   addPart('o-garland', 'north door carved garland', 'ornament', [garland],
     'A carved rose-and-acorn garland over the north door. A variation on the Ionic order was devised for the North Portico, with a swag of roses between the volutes.');
-  const triPeds = [];
-  const segPeds = [];
+  const peds = [];
   const winX = [];
   for (let x = -22; x <= 22; x += 4) winX.push(x);
   let n = 0;
@@ -831,7 +642,7 @@ const addPart = (id, name, system, geoms, explanation) => {
     }
     if (!alongX) g.rotateY(Math.PI / 2);
     g.translate(px, py, pz);
-    (n % 2 === 0 ? triPeds : segPeds).push(g);
+    peds.push(g);
     n++;
   };
   for (const x of winX) {
@@ -842,10 +653,8 @@ const addPart = (id, name, system, geoms, explanation) => {
     placePed(26.45, 11.5, z, false);
     placePed(-26.45, 11.5, z, false);
   }
-  addPart('o-pediments-triangular', 'triangular window pediments', 'ornament', triPeds,
-    'Triangular pediments crowning the upper windows, alternating with segmental ones and inspired by Leinster House in Dublin. Shown schematically.');
-  addPart('o-pediments-segmental', 'segmental window pediments', 'ornament', segPeds,
-    'Segmented pediments crowning the upper windows, alternating with triangular ones and inspired by Leinster House in Dublin. Shown schematically.');
+  addPart('o-pediments', 'window pediments', 'ornament', peds,
+    'Alternating triangular and segmented pediments crown the upper windows, inspired by Leinster House in Dublin. Shown schematically.');
   const fish = [];
   for (let x = -22; x <= 22; x += 2) {
     fish.push(cyl(0.28, 0.28, 0.12, 8, x, 9.9, -13.42));
@@ -877,27 +686,9 @@ const addPart = (id, name, system, geoms, explanation) => {
   }
   addPart('o-stonework', 'italian-carved portico stonework', 'ornament', stone,
     'Italian artisans brought to Washington for the Capitol carved the decorative stonework on both porticos.');
-  const keys = [];
-  const keyAt = (x, y, z) => keys.push(box(0.4, 0.5, 0.15, x, y, z));
-  for (let x = -22; x <= 22; x += 4) {
-    if (Math.abs(x) >= 10) { keyAt(x, 8.0, -13.42); keyAt(x, 12.4, -13.42); }
-    keyAt(x, 8.0, 13.42); keyAt(x, 12.4, 13.42);
-  }
-  for (let z = -12; z <= 12; z += 4) {
-    keyAt(26.42, 8.0, z); keyAt(26.42, 12.4, z);
-    keyAt(-26.42, 8.0, z); keyAt(-26.42, 12.4, z);
-  }
-  addPart('o-keystones', 'window keystone blocks', 'ornament', keys,
-    'Keystone blocks above the window bays. Shown schematically.');
-  const coffers = [];
-  for (let x = -7; x <= 7; x += 2) {
-    for (let z = -19.5; z <= -14.5; z += 1.6) coffers.push(box(1.2, 0.15, 1.0, x, 15.5, z));
-  }
-  addPart('o-coffers', 'north portico soffit coffers', 'ornament', coffers,
-    'Coffered panels of the North Portico ceiling. Shown schematically.');
 }
 
-// ================= 13. White House grounds =================
+// ================= 11. White House grounds =================
 {
   addPart('g-north-lawn', 'north lawn', 'grounds',
     [box(120, 0.15, 42, 0, 0.02, -41)],
@@ -946,15 +737,6 @@ const addPart = (id, name, system, geoms, explanation) => {
   addPart('g-rose-platform', 'rose garden west platform', 'grounds',
     [box(6, 0.5, 8, -49.5, 0.25, 24)],
     'The platform at the west end of the Rose Garden, near the Oval Office, in Mellon\'s 1962 plan. Shown schematically.');
-  const mags = [];
-  for (const [mx, mz] of [[-46, 16], [-24, 16], [-35, 33]]) {
-    mags.push(cyl(0.25, 0.35, 2.6, 8, mx, 1.3, mz));
-    const crown = new THREE.SphereGeometry(1.8, 10, 8);
-    crown.translate(mx, 3.6, mz);
-    mags.push(crown);
-  }
-  addPart('g-rose-magnolias', 'rose garden magnolia trees', 'grounds', mags,
-    'Magnolia trees planted in the Rose Garden under Mellon\'s 1962 plan. Shown schematically.');
   // Jacqueline Kennedy Garden: south of the East Colonnade.
   addPart('g-jk-central-panel', 'jacqueline kennedy garden central panel', 'grounds',
     [box(30, 0.2, 12, 33, 0.1, 24)],
@@ -988,16 +770,17 @@ const addPart = (id, name, system, geoms, explanation) => {
   }
   addPart('g-beehives', 'south lawn beehives', 'grounds', bees,
     'Beehives on the South Lawn. White House carpenter Charlie Brandt began beekeeping on the complex as a hobby, and the honey is used in food preparation and as official gifts. Shown schematically.');
-  addPart('g-tennis-court', 'tennis court and pavilion', 'grounds',
+  addPart('g-tennis-court', 'tennis court', 'grounds',
     [
       box(12, 0.15, 24, 44, 0.08, 48),
       box(0.15, 1, 12, 44, 0.6, 48),
       box(0.15, 0.9, 0.15, 44, 0.45, 42.2),
       box(0.15, 0.9, 0.15, 44, 0.45, 53.8),
-      box(6, 2.4, 4, 52, 1.2, 56),
-      box(6.6, 0.3, 4.6, 52, 2.55, 56),
     ],
     'The tennis court on the grounds. First Lady Melania Trump oversaw the design and construction of the White House Tennis Pavilion during her husband\'s first term. Court position shown schematically.');
+  addPart('g-putting-green', 'putting green', 'grounds',
+    [cyl(5, 5, 0.15, 20, -40, 0.08, 48)],
+    'The putting green on the grounds. Shown schematically.');
   const track = new THREE.TorusGeometry(16, 1.4, 6, 48);
   track.rotateX(Math.PI / 2);
   track.scale(1.4, 1, 1);
@@ -1020,47 +803,60 @@ const addPart = (id, name, system, geoms, explanation) => {
     'The outdoor swimming pool southwest of the West Wing, built under President Gerald Ford. Position shown schematically.');
 }
 
-// ================= 14. Perimeter fence and gates =================
+// ================= 12. Perimeter fence and gates =================
 {
   addPart('p-fence-north', 'north fence run', 'perimeter',
-    fenceRun(-66, -62, 66, -62, 0, -1),
-    'The north fence run along Pennsylvania Avenue. The fence largely dated to the early 1900s, when a 6 ft 6 in fence was set on a stone wall added in Jefferson\'s time; the model shows the taller replacement. Run shown schematically.');
+    fenceRun(-66, -62, 66, -62),
+    'The north fence run along Pennsylvania Avenue. The fence largely dated to the early 1900s, when a 6 ft 6 in fence was set on a stone wall added in Jefferson\'s time. Run shown schematically.');
   addPart('p-fence-south', 'south fence run', 'perimeter',
-    fenceRun(-66, 72, 66, 72, 0, 1),
+    fenceRun(-66, 72, 66, 72),
     'The south fence run. Beginning in 2019 the 6 ft 6 in fence was replaced by an approximately 13 ft fence with anti-climb and intrusion detection features; the model shows the taller fence. Run shown schematically.');
   addPart('p-fence-east', 'east fence run', 'perimeter',
-    fenceRun(66, -62, 66, 72, 1, 0),
+    fenceRun(66, -62, 66, 72),
     'The east fence run. The fence encompasses the 18-acre complex with over 3,500 ft of steel fencing. Run shown schematically.');
   addPart('p-fence-west', 'west fence run', 'perimeter',
-    fenceRun(-66, -62, -66, 72, -1, 0),
+    fenceRun(-66, -62, -66, 72),
     'The west fence run. In 1976 the 1818 to 1819 wrought-iron gates on Pennsylvania Avenue were replaced by reinforced steel gates built to withstand automobile crashes. Run shown schematically.');
-  addPart('p-fence-base', 'fence stone base wall', 'perimeter',
-    [
-      strut([-66, 0.25, -62], [66, 0.25, -62], 1.1, 0.5),
-      strut([-66, 0.25, 72], [66, 0.25, 72], 1.1, 0.5),
-      strut([66, 0.25, -62], [66, 0.25, 72], 1.1, 0.5),
-      strut([-66, 0.25, -62], [-66, 0.25, 72], 1.1, 0.5),
-    ],
-    'The 18-inch stone base wall carrying the replacement fence, continuing the stone wall added in Jefferson\'s time. Shown schematically.');
-  addPart('p-gate-northwest', 'northwest vehicle gate', 'perimeter', vehicleGate(-52, -62),
+  const gate = (gx, gz) => {
+    const geoms = [
+      box(0.8, 4.6, 0.8, gx - 4.4, 2.3, gz),
+      box(0.8, 4.6, 0.8, gx + 4.4, 2.3, gz),
+      box(1.1, 0.4, 1.1, gx - 4.4, 4.8, gz),
+      box(1.1, 0.4, 1.1, gx + 4.4, 4.8, gz),
+    ];
+    const leafL = new THREE.BoxGeometry(4, 3.2, 0.12);
+    leafL.translate(-2, 0, 0);
+    leafL.rotateY(0.35);
+    leafL.translate(gx - 4, 2.1, gz);
+    const leafR = new THREE.BoxGeometry(4, 3.2, 0.12);
+    leafR.translate(2, 0, 0);
+    leafR.rotateY(-0.35);
+    leafR.translate(gx + 4, 2.1, gz);
+    geoms.push(leafL, leafR);
+    return geoms;
+  };
+  const booth = (bx, bz) => [
+    box(2.4, 2.6, 2.4, bx, 1.3, bz),
+    box(3, 0.3, 3, bx, 2.75, bz),
+    box(2.0, 0.7, 0.1, bx, 1.9, bz - 1.15),
+    box(2.0, 0.7, 0.1, bx, 1.9, bz + 1.15),
+  ];
+  addPart('p-gate-northwest', 'northwest gate', 'perimeter', gate(-52, -62),
     'The northwest vehicle gate in the perimeter fence. The fence has six vehicular and nine pedestrian gates; gate positions shown schematically.');
-  addPart('p-booth-northwest', 'northwest gate guard booth', 'perimeter', guardBooth(-58, -62),
+  addPart('p-booth-northwest', 'northwest gate guard booth', 'perimeter', booth(-58, -62),
     'Guard booth beside the northwest gate. Shown schematically.');
-  addPart('p-gate-northeast', 'northeast vehicle gate', 'perimeter', vehicleGate(52, -62),
+  addPart('p-gate-northeast', 'northeast gate', 'perimeter', gate(52, -62),
     'The northeast vehicle gate in the perimeter fence. Gate positions shown schematically.');
-  addPart('p-booth-northeast', 'northeast gate guard booth', 'perimeter', guardBooth(58, -62),
+  addPart('p-booth-northeast', 'northeast gate guard booth', 'perimeter', booth(58, -62),
     'Guard booth beside the northeast gate. Shown schematically.');
-  addPart('p-gate-southwest', 'southwest vehicle gate', 'perimeter', vehicleGate(-52, 72),
+  addPart('p-gate-southwest', 'southwest gate', 'perimeter', gate(-52, 72),
     'The southwest vehicle gate in the perimeter fence. Gate positions shown schematically.');
-  addPart('p-booth-southwest', 'southwest gate guard booth', 'perimeter', guardBooth(-58, 72),
+  addPart('p-booth-southwest', 'southwest gate guard booth', 'perimeter', booth(-58, 72),
     'Guard booth beside the southwest gate. Shown schematically.');
-  addPart('p-gate-southeast', 'southeast vehicle gate', 'perimeter', vehicleGate(52, 72),
+  addPart('p-gate-southeast', 'southeast gate', 'perimeter', gate(52, 72),
     'The southeast vehicle gate in the perimeter fence. Gate positions shown schematically.');
-  addPart('p-booth-southeast', 'southeast gate guard booth', 'perimeter', guardBooth(58, 72),
+  addPart('p-booth-southeast', 'southeast gate guard booth', 'perimeter', booth(58, 72),
     'Guard booth beside the southeast gate. Shown schematically.');
-  addPart('p-gate-pedestrian', 'pedestrian gates', 'perimeter',
-    [...pedestrianGate(30, -62), ...pedestrianGate(-30, 72)],
-    'Pedestrian gates in the north and south fence runs. The fence has six vehicular and nine pedestrian gates; gate positions shown schematically.');
 }
 
 // ---------------------------------------------------------------- serialize
@@ -1120,21 +916,19 @@ for (const r of records) {
   r.nor.copy(buffer, r.norOff);
   r.idx.copy(buffer, r.idxOff);
 }
-fs.writeFileSync(path.join(outDir, 'white-house-0.bin'), buffer);
+fs.writeFileSync(path.join(outDir, 'white-house-simple-0.bin'), buffer);
 
 const systems = [
-  { id: 'shell', name: 'Executive Residence massing', color: '#f3eee2', description: 'The main block is about 170 by 85 ft of Aquia Creek sandstone painted white, with a rusticated ground floor, pilastrade, cornice and balustraded parapet. Heights above grade are shown schematically since no reliable published overall height exists.' },
-  { id: 'northportico', name: 'North Portico', color: '#c9c2b2', description: 'Tetrastyle Ionic portico of 1829 to 1831, called the most notable four-columned portico in the United States. Each column is shown as shaft, capital and base over a porte cochere carriage drive.' },
-  { id: 'southportico', name: 'South Portico', color: '#d6cdb8', description: 'Semicircular colonnade of six Ionic columns, finished in 1824 and 61 ft wide, on a tall podium pierced by seven arched openings. A curved double stair rises almost 13 ft from the ground to the portico floor.' },
+  { id: 'shell', name: 'Executive Residence massing', color: '#f3eee2', description: 'The main block is about 170 by 85 ft of Aquia Creek sandstone painted white. Heights above grade are shown schematically since no reliable published overall height exists.' },
+  { id: 'northportico', name: 'North Portico', color: '#c9c2b2', description: 'Tetrastyle Ionic portico of 1829 to 1831, called the most notable four-columned portico in the United States. Its columns rise from the ground to the roof pediment over a porte cochere carriage drive.' },
+  { id: 'southportico', name: 'South Portico', color: '#d6cdb8', description: 'Semicircular colonnade of six Ionic columns, finished in 1824 and 61 ft wide. A curved double stair rises almost 13 ft from the ground to the portico floor.' },
   { id: 'vaults', name: 'Vaults and undercroft', color: '#a8a088', description: 'Groin and segmental vaults beneath the porticoes, among the only historic structural systems still doing their original job. Shown schematically below the portico floors.' },
   { id: 'colonnades', name: 'Colonnades and terraces', color: '#eae3d3', description: 'The East and West Colonnades were added by Jefferson with Benjamin Henry Latrobe to conceal stables and storage. They now link the residence with the East and West Wings.' },
-  { id: 'westwing', name: 'West Wing', color: '#efe8d7', description: 'Theodore Roosevelt moved all work offices to the newly built West Wing in 1902. The Oval Office, Cabinet Room, Roosevelt Room, press briefing room and Situation Room are shown inside; footprint and height shown schematically.' },
+  { id: 'westwing', name: 'West Wing', color: '#efe8d7', description: 'Theodore Roosevelt moved all work offices to the newly built West Wing in 1902. Footprint and height shown schematically.' },
   { id: 'eastwing', name: 'East Wing, pre-2025', color: '#e4ddca', description: 'Built in the early 1940s as a reception area for social events, with office alterations completed in 1946. The original East Wing was demolished in 2025, so this model shows the pre-2025 block.' },
-  { id: 'statefloor', name: 'State Floor interiors', color: '#cdbb97', description: 'The principal reception rooms on the State Floor, including the 40 by 82 ft East Room, the elliptical Blue Room, and the State Dining Room that seats 140. Layouts shown schematically.' },
-  { id: 'upperfloors', name: 'Second and Third Floors', color: '#c2b49a', description: 'The private family apartments of the second floor, with historic guest rooms and the president\'s study, under the third floor plates. Layouts shown schematically.' },
-  { id: 'servicefloors', name: 'Ground Floor, basement and circulation', color: '#bda98d', description: 'Service rooms of the Ground Floor and the two-story basement, part of the six levels totaling 55,000 sq ft, with the grand staircase, service stairs and three elevator shafts. Layouts shown schematically.' },
-  { id: 'roof', name: 'Roof and Truman-era structure', color: '#6d7f92', description: 'Hip roof with long shed dormers added when the attic became living quarters in 1927, the rooftop flagpole, and inside the shell the 1948 to 1952 Truman reconstruction steel frame with two sub-basements and a bomb shelter.' },
-  { id: 'ornament', name: 'Ornament and fenestration', color: '#d9c48f', description: 'Carved garlands, alternating triangular and segmental window pediments, keystones, coffered portico soffits and the entrance fanlight. Italian artisans brought to Washington for the Capitol carved the portico stonework.' },
+  { id: 'floors', name: 'Floors and circulation', color: '#bda98d', description: 'Six levels: Ground Floor, State Floor, Second Floor and Third Floor over a two-story basement, totaling 55,000 sq ft. Floor-to-floor heights are shown schematically.' },
+  { id: 'roof', name: 'Roof and Truman-era structure', color: '#6d7f92', description: 'Hip roof with long shed dormers added when the attic became living quarters in 1927. Inside the shell, the 1948 to 1952 Truman reconstruction installed a new load-bearing steel frame and two sub-basements with a bomb shelter.' },
+  { id: 'ornament', name: 'Ornament and fenestration', color: '#d9c48f', description: 'Carved garlands, alternating window pediments and the entrance fanlight. Italian artisans brought to Washington for the Capitol carved the portico stonework.' },
   { id: 'grounds', name: 'White House grounds', color: '#9cb380', description: 'The White House and grounds cover just over 18 acres (about 7.3 hectares). The general layout of the grounds today is based on the 1935 design by Frederick Law Olmsted Jr. Lawn extents and garden layouts are shown schematically.' },
   { id: 'perimeter', name: 'Perimeter fence and gates', color: '#8f959c', description: 'Steel fencing encloses the 18-acre complex, over 3,500 ft of fence. The 6 ft 6 in fence was replaced by an approximately 13 ft fence with anti-climb features beginning in 2019. Fence runs, gates and booths are shown schematically.' },
 ];
@@ -1144,20 +938,14 @@ const atlas = {
   source: 'Architectural Atlas procedural model',
   scope: 'White House, Washington, D.C.',
   title: 'White House',
-  location: 'Washington, D.C.',
-  blurb: 'A detailed exploded-view model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction, and look deeper: the groin vaults that survived the rebuild, the State Floor reception rooms, the Oval Office with the Resolute desk, the pre-2025 East Wing, Jefferson\'s colonnades, and the 18-acre grounds with the Rose Garden, the Jacqueline Kennedy Garden and the 13 ft perimeter fence.',
+  location: 'Washington, D.C., USA',
+  blurb: 'A procedural model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Explode the view to lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction.',
   sourceUrls: [
     { label: 'White House, Wikipedia', url: 'https://en.wikipedia.org/wiki/White_House' },
     { label: 'East Wing, Wikipedia', url: 'https://en.wikipedia.org/wiki/East_Wing' },
     { label: 'Roosevelt Room, Wikipedia', url: 'https://en.wikipedia.org/wiki/Roosevelt_Room' },
     { label: 'Situation Room, Wikipedia', url: 'https://en.wikipedia.org/wiki/Situation_Room' },
-    { label: 'Oval Office, Wikipedia', url: 'https://en.wikipedia.org/wiki/Oval_Office' },
-    { label: 'Resolute desk, Wikipedia', url: 'https://en.wikipedia.org/wiki/Resolute_desk' },
-    { label: 'State Dining Room of the White House, Wikipedia', url: 'https://en.wikipedia.org/wiki/State_Dining_Room_of_the_White_House' },
-    { label: 'Executive Residence, Wikipedia', url: 'https://en.wikipedia.org/wiki/Executive_Residence' },
-    { label: 'Flags at the White House, Wikipedia', url: 'https://en.wikipedia.org/wiki/Flags_at_the_White_House' },
     { label: 'In a White House Passageway, White House Historical Association', url: 'https://www.whitehousehistory.org/in-a-white-house-passageway' },
-    { label: 'State Dining Room, White House Historical Association', url: 'https://www.whitehousehistory.org/white-house-tour/state-dining-room' },
     { label: 'White House Fence Timeline, White House Historical Association', url: 'https://d1y822qhq55g6.cloudfront.net/pdfs/White-House-Fence-Timeline_historianupdates.pdf' },
     { label: 'Rose Garden, National Park Service', url: 'https://www.nps.gov/whho/learn/historyculture/rose-garden.htm' },
     { label: 'Jacqueline Kennedy Garden, National Park Service', url: 'https://www.nps.gov/whho/learn/historyculture/jacqueline-kennedy-garden.htm' },
@@ -1180,9 +968,8 @@ const atlas = {
     bounds: r.bounds,
   })),
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
-  chunks: [{ url: '/models/white-house/white-house-0.bin', bytes: offset }],
+  chunks: [{ url: '/models/white-house-simple/white-house-simple-0.bin', bytes: offset }],
   triangles,
-  spread: 1.4,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
 

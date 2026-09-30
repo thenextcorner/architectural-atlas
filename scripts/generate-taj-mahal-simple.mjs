@@ -1,19 +1,10 @@
-// Procedural Taj Mahal complex, DETAILED variant, for the Architectural Atlas.
+// Procedural Taj Mahal complex for the Architectural Atlas.
 //
-// Deepens scripts/generate-taj-mahal-simple.mjs: the simple model kept whole
-// assemblies as single parts (one shaft per minaret, one chhatri-row part for
-// the gate, one part per corner chhatri, mosque and jawab sharing one system).
-// This script splits those assemblies into their components: minaret shafts
-// as three separate tiers with two balconies, corner chhatris as kiosk and
-// dome, per-facade gate chhatri rows, individual gate corner towers and
-// ornamental minarets, split mosque and jawab systems, split khiyaban
-// walkways, and newly visible components (river ghat steps, drum arcade
-// niches, inner-dome sun motif, muqarnas vault, channel and tank fountain
-// nozzles, underground reservoir and aqueduct, forecourt south gate, per-side
-// Saheli Burj platform/tomb/garden).
-//
-// Writes public/models/taj-mahal/atlas.json + public/models/taj-mahal/taj-mahal-0.bin
-// (in-dir files only; no top-level copy).
+// Builds a schematic, correctly proportioned model of the full preserved
+// complex (riverfront terrace, mausoleum, four minarets, great gate, mosque,
+// jawab, charbagh garden and waterworks, jilaukhana forecourt, subsidiary
+// tombs) and writes it in the atlas binary format:
+// public/models/taj-mahal-simple/atlas.json + public/models/taj-mahal-simple/taj-mahal-simple-0.bin
 //
 // Dimensions used (Koch/Barraud 2006 survey via wonders-of-the-world.net,
 // Taj Mahal Wikipedia article, Structurae, Archnet, Citizendium):
@@ -22,31 +13,32 @@
 //   pishtaq arches 33 m per facade; two partly covered stair flights (south);
 //   drum 12 m high, 18.4 m inner diameter, rope moulding at the dome junction;
 //   outer dome 23 m high, 17.7 m diameter; finial 9.6 m with crescent moon;
-//   inner dome decorated with a sun motif (motif geometry schematic);
 //   minarets 43.02 m high, 5.65 m diameter, three tapered tiers, two balconies
 //   each, slight outward lean (angle schematic);
 //   great gate 41.2 x 34 m, 23.07 m high; central pishtaq 33 m high, 19 m wide;
 //   no external dome on the gate (internal dome only); 11 chhatris per facade;
-//   ornamental minarets about 30 m; red sandstone muqarnas in the entry iwan;
-//   mosque 56.6 x 23.38 m, 20.3 m high, three domes over three bays (bay
-//   divisions and dome sizes schematic);
+//   ornamental minarets about 30 m; mosque 56.6 x 23.38 m, 20.3 m high, three
+//   domes over three bays (bay divisions schematic);
 //   charbagh 296.31 m square; channels 120 m long, 6 m wide; central tank
-//   platform 40 m wide with a 10 m square water space and five fountains
-//   (nozzle positions schematic); fountain head from 9.47 m high walls;
-//   octagonal chamber with 7.3 m sides; Mumtaz cenotaph on a 1.5 x 2.5 m marble
-//   base; actual graves below (slab forms schematic);
+//   platform 40 m wide with a 10 m square water space and five fountains;
+//   fountain head from 9.47 m high walls; octagonal chamber with 7.3 m sides;
+//   Mumtaz cenotaph on a 1.5 x 2.5 m marble base;
 //   jilaukhana forecourt 153 gaz (about 124 m) deep; Saheli Burj tombs, bazaar
 //   streets, and Khawasspura courtyards are schematic in plan.
+// The component heights sum to 68 m without the finial, matching Koch's
+// 67.97 m mausoleum height, and to 77.6 m with it; the 73 m total-height
+// figure in other sources differs by a few meters, which is normal for
+// pre-modern monuments. No total height is stated anywhere in the UI.
 // Undocumented details (arch profiles, chhatri diameters, minaret tier
-// spacing, exact lean angle, parterre planting, forecourt layout, ghat steps,
-// drum niches, reservoir/aqueduct placement, fountain positions) are schematic.
+// spacing, exact lean angle, parterre planting, forecourt layout) are
+// schematic.
 //
 // Layout: x = east, z = south, y = up, garden ground at y = 0.
 // The terrace sits at the north (z -111.89..0), the garden south of it
 // (z 0..296.31), the great gate on the garden's south edge, and the
 // jilaukhana forecourt south of the gate.
 //
-// Usage: node scripts/generate-taj-mahal.mjs
+// Usage: node scripts/generate-taj-mahal-simple.mjs
 import * as THREE from 'three';
 import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import fs from 'node:fs';
@@ -54,7 +46,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const outDir = path.join(here, '..', 'public', 'models', 'taj-mahal');
+const outDir = path.join(here, '..', 'public', 'models', 'taj-mahal-simple');
 fs.mkdirSync(outDir, { recursive: true });
 
 // Atlas units: the complex is about 300 m wide, mapped to 2.4 units.
@@ -137,34 +129,28 @@ function pishtaqPanel(w, h, t) {
   return geoms;
 }
 // Chhatri: columned kiosk with an onion dome. Base width ~4.4 m at s = 1.
-// Returns [kioskGeoms, domeGeoms] so detailed models can split them.
-function chhatriSplit(x, y, z, s = 1) {
-  const kiosk = [];
+function chhatri(x, y, z, s = 1) {
+  const geoms = [];
   const b = 4.4 * s, hh = 3.2 * s;
-  kiosk.push(box(b, 0.5 * s, b, x, y + 0.25 * s, z));
+  geoms.push(box(b, 0.5 * s, b, x, y + 0.25 * s, z));
   for (const [ox, oz] of [[-1, -1], [1, -1], [-1, 1], [1, 1], [-1, 0], [1, 0], [0, -1], [0, 1]]) {
-    kiosk.push(cyl(0.18 * s, 0.22 * s, hh, x + ox * b * 0.38, y + 0.5 * s + hh / 2, z + oz * b * 0.38, 8));
+    geoms.push(cyl(0.18 * s, 0.22 * s, hh, x + ox * b * 0.38, y + 0.5 * s + hh / 2, z + oz * b * 0.38, 8));
   }
-  kiosk.push(cyl(b * 0.62, b * 0.62, 0.4 * s, x, y + 0.5 * s + hh + 0.2 * s, z, 8));
-  const dome = [];
-  const d = onionDome(b * 0.34, 2.2 * s, 16);
-  d.translate(x, y + 0.5 * s + hh + 0.4 * s, z);
-  dome.push(d);
+  geoms.push(cyl(b * 0.62, b * 0.62, 0.4 * s, x, y + 0.5 * s + hh + 0.2 * s, z, 8));
+  const dome = onionDome(b * 0.34, 2.2 * s, 16);
+  dome.translate(x, y + 0.5 * s + hh + 0.4 * s, z);
+  geoms.push(dome);
   const ball = new THREE.SphereGeometry(0.22 * s, 8, 6);
   ball.translate(x, y + 0.5 * s + hh + 0.4 * s + 2.2 * s + 0.2 * s, z);
-  dome.push(ball);
-  return [kiosk, dome];
-}
-function chhatri(x, y, z, s = 1) {
-  const [kiosk, dome] = chhatriSplit(x, y, z, s);
-  return [...kiosk, ...dome];
+  geoms.push(ball);
+  return geoms;
 }
 
 // ---------------------------------------------------------------- parts
 const parts = [];
 const addPart = (id, name, system, geoms) => parts.push({ id, name, system, geoms });
 
-// --- Riverfront terrace (7).
+// --- Riverfront terrace (5).
 addPart('terrace-platform', 'Terrace platform', 'terrace', [
   box(300, TERR_H, 111.89, 0, TERR_H / 2, -55.945),
 ]);
@@ -191,22 +177,8 @@ addPart('terrace-east-wall', 'East boundary wall', 'terrace', [
   geoms.push(box(64, 0.8, 1, 0, 4.9, -111.4));
   addPart('tahkhana-rooms', 'Tahkhana river rooms', 'terrace', geoms);
 }
-{
-  // Steps descending from the riverfront edge to the Yamuna; schematic.
-  const geoms = [];
-  for (let i = 0; i < 7; i++) {
-    geoms.push(box(48, 0.55, 1.6, 0, TERR_H - 0.275 - i * 0.55, -111.89 - 0.8 - i * 1.6));
-  }
-  addPart('river-ghat-steps', 'River ghat steps', 'terrace', geoms);
-}
-{
-  // Open kiosks marking the riverfront corners of the terrace; schematic.
-  const [k1, d1] = chhatriSplit(-142, TERR_H, -102, 0.8);
-  const [k2, d2] = chhatriSplit(142, TERR_H, -102, 0.8);
-  addPart('terrace-corner-chhatris', 'Terrace corner chhatris', 'terrace', [...k1, ...d1, ...k2, ...d2]);
-}
 
-// --- Mausoleum base (28).
+// --- Mausoleum base (24).
 addPart('marble-plinth', 'Marble plinth', 'mausoleum', [
   box(PLINTH, PLINTH_H, PLINTH, 0, TERR_H + PLINTH_H / 2, zc),
 ]);
@@ -239,14 +211,6 @@ function placeOnFace(geoms, f) {
   merged.translate(f.x, TERR_H, f.z);
   return [merged];
 }
-function sideBayTier(sx, py, ph) {
-  const bays = [];
-  for (const pg of pishtaqPanel(6, ph, 1.2)) {
-    pg.translate(sx, py, 0);
-    bays.push(pg);
-  }
-  return bays;
-}
 for (const f of FACES) {
   // Central 33 m iwan arch with spandrel shoulders.
   const arch = [];
@@ -260,13 +224,17 @@ for (const f of FACES) {
     box(1.4, 28, 0.3, 6.6, 15, 0.95),
   ];
   addPart(`calligraphy-band-${f.id}`, `${f.name} pishtaq calligraphy band`, 'mausoleum', placeOnFace(band, f));
-  // Two tiers of smaller arched bays flanking the central iwan, split by tier.
-  const lower = [];
-  for (const sx of [-10.5, 10.5]) lower.push(...sideBayTier(sx, 0, 12));
-  addPart(`side-bays-lower-${f.id}`, `${f.name} side arched bays, lower tier`, 'mausoleum', placeOnFace(lower, f));
-  const upper = [];
-  for (const sx of [-10.5, 10.5]) upper.push(...sideBayTier(sx, 13.5, 12));
-  addPart(`side-bays-upper-${f.id}`, `${f.name} side arched bays, upper tier`, 'mausoleum', placeOnFace(upper, f));
+  // Two tiers of smaller arched bays flanking the central iwan.
+  const bays = [];
+  for (const sx of [-10.5, 10.5]) {
+    for (const [py, ph] of [[0, 12], [13.5, 12]]) {
+      for (const pg of pishtaqPanel(6, ph, 1.2)) {
+        pg.translate(sx, py, 0);
+        bays.push(pg);
+      }
+    }
+  }
+  addPart(`side-bays-${f.id}`, `${f.name} side arched bays`, 'mausoleum', placeOnFace(bays, f));
   // Bas-relief dado panels at the base of the facade.
   addPart(`dado-panels-${f.id}`, `${f.name} dado panels`, 'mausoleum',
     placeOnFace([box(18, 4, 0.4, 0, 2, 0.9)], f));
@@ -301,7 +269,7 @@ function stairFlight(x0, id, name) {
 stairFlight(-8, 'south-stairs-west', 'South access stairs, west flight');
 stairFlight(8, 'south-stairs-east', 'South access stairs, east flight');
 
-// --- Dome cluster (21).
+// --- Dome cluster (15).
 addPart('dome-drum', 'Dome drum', 'dome', [
   cyl(10, 10, DRUM_H, 0, BLOCK_TOP + DRUM_H / 2, zc, 24),
 ]);
@@ -312,23 +280,6 @@ addPart('dome-drum', 'Dome drum', 'dome', [
   rope.rotateX(Math.PI / 2);
   rope.translate(0, BLOCK_TOP + DRUM_H - 0.9, zc);
   addPart('drum-rope-moulding', 'Drum rope moulding', 'dome', [ring, rope]);
-}
-{
-  // Arched niches ringing the drum below the dome; forms are schematic.
-  const geoms = [];
-  for (let i = 0; i < 12; i++) {
-    const a = (i * Math.PI) / 6;
-    const niche = [
-      box(0.9, 7, 0.8, -1.05, 3.5, 0),
-      box(0.9, 7, 0.8, 1.05, 3.5, 0),
-      box(3, 1.1, 0.8, 0, 7.55, 0),
-    ];
-    const merged = mergeGeometries(niche.map(prep), false);
-    merged.rotateY(Math.PI / 2 - a);
-    merged.translate(10 * Math.cos(a), BLOCK_TOP + 2.5, zc + 10 * Math.sin(a));
-    geoms.push(merged);
-  }
-  addPart('drum-arcade-niches', 'Drum arcade niches', 'dome', geoms);
 }
 {
   const dome = onionDome(DOME_D / 2, DOME_H, 28);
@@ -358,18 +309,6 @@ addPart('dome-drum', 'Dome drum', 'dome', [
   addPart('inner-false-dome', 'Inner false dome', 'dome', [dome]);
 }
 {
-  // Sun motif decorating the inner dome; motif geometry is schematic.
-  const geoms = [cyl(1.8, 1.8, 0.3, 0, PLINTH_TOP + 25 + 8.6, zc, 16)];
-  for (let i = 0; i < 12; i++) {
-    const a = (i * Math.PI * 2) / 12;
-    const ray = box(2.2, 0.25, 0.5, 3.0 * Math.cos(a), 0, 3.0 * Math.sin(a));
-    ray.rotateY(-a);
-    ray.translate(0, PLINTH_TOP + 25 + 8.6, zc);
-    geoms.push(ray);
-  }
-  addPart('inner-dome-sun-motif', 'Inner dome sun motif', 'dome', geoms);
-}
-{
   // 9.6 m gilded finial: shaft and stacked orbs (the crescent is separate).
   const geoms = [cyl(0.25, 0.5, 6, 0, DOME_TOP + 3, zc, 10)];
   const o1 = new THREE.SphereGeometry(0.9, 12, 10);
@@ -389,9 +328,8 @@ for (const [id, name, sx, sz] of [
   ['ne', 'Northeast', 1, -1], ['nw', 'Northwest', -1, -1],
   ['se', 'Southeast', 1, 1], ['sw', 'Southwest', -1, 1],
 ]) {
-  const [kiosk, domeGeoms] = chhatriSplit(sx * 22, BLOCK_TOP, zc + sz * 22, 1.0);
-  addPart(`chhatri-${id}-kiosk`, `${name} corner chhatri kiosk`, 'dome', kiosk);
-  addPart(`chhatri-${id}-dome`, `${name} corner chhatri dome`, 'dome', domeGeoms);
+  addPart(`chhatri-${id}`, `${name} corner chhatri`, 'dome',
+    chhatri(sx * 22, BLOCK_TOP, zc + sz * 22, 1.0));
 }
 for (const [id, ex, ez] of [
   ['north', 0, -1], ['south', 0, 1], ['west', -1, 0], ['east', 1, 0],
@@ -409,10 +347,9 @@ for (const [id, ex, ez] of [
   addPart(`guldasta-${id}`, `Guldasta spires, ${id} edge`, 'dome', geoms);
 }
 
-// --- Minarets (28): base, three separate tiers, two balconies, chhatri cap.
+// --- Minarets (20): base, three-tier shaft, two balconies, chhatri cap each.
 const LEAN = (1.75 * Math.PI) / 180;
 const TIER_H = 12.5, BASE_R = 2.825;
-const TIER_IDS = [['lower', 'Lower', 0], ['middle', 'Middle', 1], ['upper', 'Upper', 2]];
 for (const [id, name, sx, sz] of [
   ['ne', 'Northeast', 1, -1], ['nw', 'Northwest', -1, -1],
   ['se', 'Southeast', 1, 1], ['sw', 'Southwest', -1, 1],
@@ -423,11 +360,13 @@ for (const [id, name, sx, sz] of [
   const cx = sx * PLINTH / 2, cz = zc + sz * PLINTH / 2;
   addPart(`minaret-${id}-base`, `${name} minaret base`, 'minarets',
     finalize([box(8, 2, 8, 0, 1, 0)], quat, cx, TERR_H, cz));
-  for (const [tid, tlabel, t] of TIER_IDS) {
+  const shaft = [];
+  for (let t = 0; t < 3; t++) {
     const r0 = BASE_R * (1 - 0.12 * t), r1 = BASE_R * (1 - 0.12 * (t + 1));
-    addPart(`minaret-${id}-tier-${tid}`, `${name} minaret ${tlabel.toLowerCase()} tier`, 'minarets',
-      finalize([cyl(r1, r0, TIER_H, 0, 2 + t * TIER_H + TIER_H / 2, 0, 16)], quat, cx, TERR_H, cz));
+    shaft.push(cyl(r1, r0, TIER_H, 0, 2 + t * TIER_H + TIER_H / 2, 0, 16));
   }
+  addPart(`minaret-${id}-shaft`, `${name} minaret shaft`, 'minarets',
+    finalize(shaft, quat, cx, TERR_H, cz));
   for (const [bid, label, t] of [['lower', 'lower', 0], ['upper', 'upper', 1]]) {
     const r1 = BASE_R * (1 - 0.12 * (t + 1));
     const by = 2 + (t + 1) * TIER_H;
@@ -455,7 +394,7 @@ for (const [id, name, sx, sz] of [
     finalize(cap, quat, cx, TERR_H, cz));
 }
 
-// --- Interior chamber (15).
+// --- Interior chamber (13).
 {
   // Octagonal chamber: 7.3 m sides, 25 m walls, arched openings per face.
   const R = 7.3 / (2 * Math.sin(Math.PI / 8));
@@ -474,26 +413,26 @@ for (const [id, name, sx, sz] of [
   }
   addPart('octagonal-chamber', 'Octagonal burial chamber', 'interior', geoms);
 }
-function interiorPishtaqTier(ty) {
-  // One tier of eight pishtaq arches lining the chamber walls.
+{
+  // Two tiers of eight pishtaq arches lining the chamber walls.
   const R = 7.3 / (2 * Math.sin(Math.PI / 8));
   const geoms = [];
-  for (let i = 0; i < 8; i++) {
-    const a = (i * Math.PI) / 4;
-    const arch = [
-      box(1.4, 6, 0.6, -2.9, 3, 0),
-      box(1.4, 6, 0.6, 2.9, 3, 0),
-      box(7.2, 1.4, 0.6, 0, 6.7, 0),
-    ];
-    const merged = mergeGeometries(arch.map(prep), false);
-    merged.rotateY(Math.PI / 2 - a);
-    merged.translate(R * Math.cos(a), PLINTH_TOP + ty, zc + R * Math.sin(a));
-    geoms.push(merged);
+  for (const ty of [8, 18]) {
+    for (let i = 0; i < 8; i++) {
+      const a = (i * Math.PI) / 4;
+      const arch = [
+        box(1.4, 6, 0.6, -2.9, 3, 0),
+        box(1.4, 6, 0.6, 2.9, 3, 0),
+        box(7.2, 1.4, 0.6, 0, 6.7, 0),
+      ];
+      const merged = mergeGeometries(arch.map(prep), false);
+      merged.rotateY(Math.PI / 2 - a);
+      merged.translate(R * Math.cos(a), PLINTH_TOP + ty, zc + R * Math.sin(a));
+      geoms.push(merged);
+    }
   }
-  return geoms;
+  addPart('interior-pishtaq-tiers', 'Interior pishtaq tiers', 'interior', geoms);
 }
-addPart('interior-pishtaq-lower', 'Interior pishtaq arches, lower tier', 'interior', interiorPishtaqTier(8));
-addPart('interior-pishtaq-upper', 'Interior pishtaq arches, upper tier', 'interior', interiorPishtaqTier(18));
 addPart('mumtaz-cenotaph', 'Mumtaz cenotaph', 'interior', [
   box(1.5, 1.0, 2.5, 0, PLINTH_TOP + 0.5, zc - 1),
   box(1.1, 1.2, 2.1, 0, PLINTH_TOP + 1.0 + 0.6, zc - 1),
@@ -525,7 +464,7 @@ addPart('shah-jahan-cenotaph', 'Shah Jahan cenotaph', 'interior', [
   }
 }
 {
-  // Plain rectangular basement chamber shell (the actual graves are separate).
+  // Plain rectangular basement chamber with the actual graves.
   const geoms = [
     box(12, 0.5, 8, 0, TERR_H + 0.25, zc),
     box(12, 3.5, 0.6, 0, TERR_H + 0.5 + 1.75, zc - 3.7),
@@ -533,19 +472,13 @@ addPart('shah-jahan-cenotaph', 'Shah Jahan cenotaph', 'interior', [
     box(0.6, 3.5, 8, -5.7, TERR_H + 0.5 + 1.75, zc),
     box(0.6, 3.5, 8, 5.7, TERR_H + 0.5 + 1.75, zc),
     box(12, 0.5, 8, 0, TERR_H + 4.25, zc),
-  ];
-  addPart('lower-tomb-chamber', 'Lower tomb chamber', 'interior', geoms);
-}
-{
-  // The plain graves of Mumtaz Mahal and Shah Jahan; slab forms schematic.
-  const geoms = [
     box(2.2, 0.9, 1.2, -1.5, TERR_H + 0.5 + 0.45, zc),
     box(2.2, 0.9, 1.2, 1.5, TERR_H + 0.5 + 0.45, zc),
   ];
-  addPart('actual-graves', 'Actual graves', 'interior', geoms);
+  addPart('lower-tomb-chamber', 'Lower tomb chamber', 'interior', geoms);
 }
 
-// --- Great gate (15), centered on the garden's south edge.
+// --- Great gate (9), centered on the garden's south edge.
 addPart('gate-body', 'Great gate body', 'gate', [
   box(41.2, 23.07, 34, 0, 23.07 / 2, GZ),
 ]);
@@ -575,41 +508,46 @@ addPart('gate-body', 'Great gate body', 'gate', [
   }
   addPart('gate-flanking-arches', 'Gate flanking arches', 'gate', geoms);
 }
-for (const [fid, flabel, sz] of [['north', 'North', -1], ['south', 'South', 1]]) {
-  // Row of 11 white chhatris along one facade roofline.
+{
+  // Rows of 11 white chhatris along each facade roofline.
   const geoms = [];
-  for (let i = 0; i < 11; i++) {
-    const x = -18 + i * 3.6;
-    geoms.push(box(1.4, 0.5, 1.4, x, 23.07 + 0.25, GZ + sz * 16.3));
-    const dome = new THREE.SphereGeometry(0.85, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2);
-    dome.translate(x, 23.07 + 0.5, GZ + sz * 16.3);
-    geoms.push(dome);
+  for (const sz of [-1, 1]) {
+    for (let i = 0; i < 11; i++) {
+      const x = -18 + i * 3.6;
+      geoms.push(box(1.4, 0.5, 1.4, x, 23.07 + 0.25, GZ + sz * 16.3));
+      const dome = new THREE.SphereGeometry(0.85, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2);
+      dome.translate(x, 23.07 + 0.5, GZ + sz * 16.3);
+      geoms.push(dome);
+    }
   }
-  addPart(`gate-chhatri-row-${fid}`, `Gate chhatri row, ${flabel.toLowerCase()} facade`, 'gate', geoms);
+  addPart('gate-chhatri-rows', 'Gate chhatri rows', 'gate', geoms);
 }
-for (const [id, name, sx, sz] of [
-  ['ne', 'Northeast', 1, -1], ['nw', 'Northwest', -1, -1],
-  ['se', 'Southeast', 1, 1], ['sw', 'Southwest', -1, 1],
-]) {
-  // One octagonal corner tower with its larger chhatri.
-  const x = sx * 18.5, z = GZ + sz * 15;
-  addPart(`gate-corner-tower-${id}`, `${name} gate corner tower`, 'gate', [
-    cyl(3.2, 3.6, 27, x, 13.5, z, 8),
-    ...chhatri(x, 27, z, 0.9),
-  ]);
-}
-for (const [fid, flabel, sz] of [['north', 'North', -1], ['south', 'South', 1]]) {
-  // Two thin ornamental minarets, about 30 m, on one facade.
+{
+  // Four octagonal corner towers with larger chhatris.
   const geoms = [];
-  for (const sx of [-7, 7]) {
-    const x = sx, z = GZ + sz * 17.8;
-    geoms.push(cyl(0.5, 0.8, 30, x, 15, z, 10));
-    const ball = new THREE.SphereGeometry(0.7, 10, 8);
-    ball.translate(x, 30.4, z);
-    geoms.push(ball);
-    geoms.push(cyl(0.08, 0.08, 1.6, x, 31.4, z, 6));
+  for (const sx of [-1, 1]) {
+    for (const sz of [-1, 1]) {
+      const x = sx * 18.5, z = GZ + sz * 15;
+      geoms.push(cyl(3.2, 3.6, 27, x, 13.5, z, 8));
+      geoms.push(...chhatri(x, 27, z, 0.9));
+    }
   }
-  addPart(`gate-mini-minarets-${fid}`, `Gate ornamental minarets, ${flabel.toLowerCase()} facade`, 'gate', geoms);
+  addPart('gate-corner-towers', 'Gate corner towers', 'gate', geoms);
+}
+{
+  // Thin ornamental minarets, about 30 m, flanking each facade.
+  const geoms = [];
+  for (const sz of [-1, 1]) {
+    for (const sx of [-7, 7]) {
+      const x = sx, z = GZ + sz * 17.8;
+      geoms.push(cyl(0.5, 0.8, 30, x, 15, z, 10));
+      const ball = new THREE.SphereGeometry(0.7, 10, 8);
+      ball.translate(x, 30.4, z);
+      geoms.push(ball);
+      geoms.push(cyl(0.08, 0.08, 1.6, x, 31.4, z, 6));
+    }
+  }
+  addPart('gate-mini-minarets', 'Gate ornamental minarets', 'gate', geoms);
 }
 {
   // Black calligraphy inlay panels on the facades.
@@ -633,41 +571,30 @@ for (const [fid, flabel, sz] of [['north', 'North', -1], ['south', 'South', 1]])
   dome.translate(0, 14, GZ);
   addPart('gate-internal-dome', 'Gate internal dome', 'gate', [dome]);
 }
-{
-  // Honeycomb muqarnas vaulting in red sandstone inside the entry iwan.
-  // The vault geometry is schematic.
-  const geoms = [];
-  for (const sz of [-1, 1]) {
-    for (let layer = 0; layer < 4; layer++) {
-      geoms.push(box(12 - layer * 2.4, 0.55, 2.2 - layer * 0.45, 0, 17.5 - layer * 0.7, GZ + sz * (17 - 2.5 - layer * 0.4)));
-    }
-  }
-  addPart('gate-muqarnas-vault', 'Gate muqarnas vault', 'gate', geoms);
-}
 
-// --- Mosque (west) and jawab (east), mirrored across the mausoleum.
+// --- Mosque (west) and jawab (east), mirrored across the mausoleum (17).
 function prayerHouse(cx, mirror) {
   const s = mirror ? 'jawab' : 'mosque';
   const S = mirror ? 'Jawab' : 'Mosque';
   const bayWord = mirror ? 'hall bay' : 'prayer bay';
-  const ents = [];
+  const parts = [];
   // Three bays under the three domes; divisions are schematic.
   const bays = [
-    ['central', 'Central', 20, zc], ['west', 'West', 18.3, zc - 19.15], ['east', 'East', 18.3, zc + 19.15],
+    ['central', 20, zc], ['west', 18.3, zc - 19.15], ['east', 18.3, zc + 19.15],
   ];
-  for (const [bid, blabel, bd, bz] of bays) {
-    ents.push([`${s}-${bid}-bay`, `${S} ${blabel.toLowerCase()} ${bayWord}`, [
+  for (const [bid, bd, bz] of bays) {
+    parts.push([`${s}-${bid}-bay`, `${S} ${bid} ${bayWord}`, [
       box(23.38, 20.3, bd, cx, TERR_H + 10.15, bz),
     ]]);
   }
   // Three domes: the central dome is the largest.
   const dc = onionDome(4.5, 7, 20);
   dc.translate(cx, TERR_H + 20.3, zc);
-  ents.push([`${s}-central-dome`, `${S} central dome`, [dc]]);
-  for (const [did, dlabel, dz] of [['north', 'North', -18], ['south', 'South', 18]]) {
+  parts.push([`${s}-central-dome`, `${S} central dome`, [dc]]);
+  for (const [did, dz] of [['north-side-dome', -18], ['south-side-dome', 18]]) {
     const d = onionDome(3.2, 5, 16);
     d.translate(cx, TERR_H + 20.3, zc + dz);
-    ents.push([`${s}-${did}-side-dome`, `${S} ${dlabel.toLowerCase()} side dome`, [d]]);
+    parts.push([`${s}-${did}`, `${S} ${did.replace(/-/g, ' ')}`, [d]]);
   }
   {
     // Great arched front facing the mausoleum.
@@ -677,29 +604,32 @@ function prayerHouse(cx, mirror) {
       pg.translate(cx + (mirror ? -1 : 1) * (23.38 / 2 + 0.75), TERR_H, zc);
       geoms.push(pg);
     }
-    ents.push([`${s}-pishtaq`, `${S} pishtaq`, geoms]);
+    parts.push([`${s}-pishtaq`, `${S} pishtaq`, geoms]);
   }
-  for (const [mid, mlabel, dz] of [['north', 'North', -26], ['south', 'South', 26]]) {
-    // One slender minaret flanking the front corners.
+  {
+    // Slender minarets flanking the front corners.
+    const geoms = [];
     const fx = cx + (mirror ? -1 : 1) * 10.5;
-    const geoms = [cyl(0.7, 1.0, 24, fx, TERR_H + 12, zc + dz, 10)];
-    const d = onionDome(1.1, 2.2, 12);
-    d.translate(fx, TERR_H + 24, zc + dz);
-    geoms.push(d);
-    ents.push([`${s}-minaret-${mid}`, `${S} ${mlabel.toLowerCase()} minaret`, geoms]);
+    for (const dz of [-26, 26]) {
+      geoms.push(cyl(0.7, 1.0, 24, fx, TERR_H + 12, zc + dz, 10));
+      const d = onionDome(1.1, 2.2, 12);
+      d.translate(fx, TERR_H + 24, zc + dz);
+      geoms.push(d);
+    }
+    parts.push([`${s}-minarets`, `${S} minarets`, geoms]);
   }
   if (!mirror) {
     // Prayer niche in the west wall, marking the direction of Mecca.
-    ents.push(['mosque-mihrab', 'Mosque mihrab', [
+    parts.push(['mosque-mihrab', 'Mosque mihrab', [
       box(1.2, 8, 3, cx - 23.38 / 2 - 0.6, TERR_H + 4, zc),
     ]]);
   }
-  return ents;
+  return parts;
 }
 for (const [id, name, geoms] of prayerHouse(-89.44, false)) addPart(id, name, 'mosque', geoms);
-for (const [id, name, geoms] of prayerHouse(89.44, true)) addPart(id, name, 'jawab', geoms);
+for (const [id, name, geoms] of prayerHouse(89.44, true)) addPart(id, name, 'mosque', geoms);
 
-// --- Charbagh garden (12).
+// --- Charbagh garden (11).
 addPart('garden-platform', 'Charbagh garden platform', 'charbagh', [
   box(296.31, 0.6, 296.31, 0, 0.3, GC),
 ]);
@@ -749,18 +679,12 @@ for (const [id, name, qx, qz] of [
   addPart('garden-tree-rows', 'Garden tree rows', 'charbagh', geoms);
 }
 {
-  // Raised walkways edging the north-south water channels.
+  // Raised walkways edging the water channels.
   const geoms = [
     box(3, 0.35, 120, -4.5, 0.775, GC), box(3, 0.35, 120, 4.5, 0.775, GC),
-  ];
-  addPart('khiyaban-walkways-ns', 'Khiyaban walkways, north-south', 'charbagh', geoms);
-}
-{
-  // Raised walkways edging the east-west water channels.
-  const geoms = [
     box(120, 0.35, 3, 0, 0.775, GC - 4.5), box(120, 0.35, 3, 0, 0.775, GC + 4.5),
   ];
-  addPart('khiyaban-walkways-ew', 'Khiyaban walkways, east-west', 'charbagh', geoms);
+  addPart('khiyaban-walkways', 'Khiyaban walkways', 'charbagh', geoms);
 }
 {
   // Low walled enclosure marking Mumtaz Mahal's temporary burial site in the
@@ -772,7 +696,7 @@ for (const [id, name, qx, qz] of [
   addPart('temporary-burial-enclosure', 'Temporary burial enclosure', 'charbagh', geoms);
 }
 
-// --- Waterworks (10).
+// --- Waterworks (7).
 {
   // Four straight channels, 120 m long and 6 m wide, split into reaches.
   addPart('channel-ns-north', 'North-south channel, north reach', 'waterworks', [
@@ -796,15 +720,10 @@ for (const [id, name, qx, qz] of [
     box(0.4, 0.6, 10.8, -5.2, 2.0, GC), box(0.4, 0.6, 10.8, 5.2, 2.0, GC),
     box(9.6, 0.4, 9.6, 0, 1.9, GC),
   ];
-  addPart('central-tank', 'Central water tank', 'waterworks', geoms);
-}
-{
-  // The five fountain nozzles of the raised central tank; positions schematic.
-  const geoms = [];
   for (const [fx, fz] of [[0, 0], [-3, -3], [3, -3], [-3, 3], [3, 3]]) {
     geoms.push(cyl(0.12, 0.12, 2.2, fx, 3.1, GC + fz, 8));
   }
-  addPart('tank-fountain-nozzles', 'Tank fountain nozzles', 'waterworks', geoms);
+  addPart('central-tank', 'Central water tank', 'waterworks', geoms);
 }
 {
   // Widened reflecting basin on the north-south axis, north of the tank.
@@ -812,31 +731,16 @@ for (const [id, name, qx, qz] of [
   addPart('reflecting-pool', 'Reflecting pool', 'waterworks', geoms);
 }
 {
-  // Fountain nozzles set along the water channels; positions are schematic.
+  // Gravity-fed system: raised tanks with elevated conduits to the center.
   const geoms = [];
-  for (let z = 30; z <= 130; z += 10) geoms.push(cyl(0.1, 0.15, 0.7, 0, 1.1, z, 6));
-  for (let z = 166; z <= 266; z += 10) geoms.push(cyl(0.1, 0.15, 0.7, 0, 1.1, z, 6));
-  for (let x = 30; x <= 130; x += 10) {
-    geoms.push(cyl(0.1, 0.15, 0.7, x, 1.1, GC, 6));
-    geoms.push(cyl(0.1, 0.15, 0.7, -x, 1.1, GC, 6));
+  for (const tz of [100, 150, 200]) {
+    geoms.push(cyl(3, 3, 9.47, 138, 9.47 / 2, tz, 14));
+    geoms.push(strut([138, 1.25, tz], [20, 1.25, tz], 0.6));
   }
-  addPart('channel-fountain-nozzles', 'Channel fountain nozzles', 'waterworks', geoms);
-}
-{
-  // Underground reservoir receiving Yamuna water; form and position schematic.
-  const geoms = [box(30, 4, 20, -120, -2, 200)];
-  addPart('underground-reservoir', 'Underground reservoir', 'waterworks', geoms);
-}
-{
-  // Elevated conduits from the reservoir toward the garden center; schematic.
-  const geoms = [strut([-105, 1, 200], [-22, 1, GC], 0.8)];
-  for (let x = -100; x <= -30; x += 14) {
-    geoms.push(box(0.8, 2.5, 0.8, x, 0.2, 200 + (GC - 200) * ((x + 105) / 83)));
-  }
-  addPart('aqueduct-conduits', 'Aqueduct conduits', 'waterworks', geoms);
+  addPart('garden-waterworks', 'Garden waterworks', 'waterworks', geoms);
 }
 
-// --- Jilaukhana forecourt (9), south of the great gate.
+// --- Jilaukhana forecourt (7), south of the great gate.
 addPart('jilaukhana-court', 'Jilaukhana forecourt', 'forecourt', [
   box(296, 0.4, JL, 0, 0.2, JZC),
 ]);
@@ -871,61 +775,47 @@ bazaarStreet(-1, 'bazaar-street-west', 'West bazaar street');
   ]);
 }
 {
-  // Southern gate of the forecourt, leading to the Taj Ganji quarter.
-  // The gate form is schematic.
-  const gz = JZ0 + JL;
-  const geoms = [
-    box(2, 6, 2, -4, 3, gz), box(2, 6, 2, 4, 3, gz),
-    box(10, 1.5, 2.5, 0, 6.75, gz),
-    box(8, 0.6, 2.2, 0, 5.9, gz),
-  ];
-  addPart('forecourt-south-gate', 'Forecourt south gate', 'forecourt', geoms);
-}
-for (const [id, label, sx] of [['east', 'East', 1], ['west', 'West', -1]]) {
-  // One attendant courtyard in a northern corner of the forecourt.
-  const cxk = sx * 118, czk = JZ0 + 26;
-  const geoms = [
-    box(32, 0.3, 32, cxk, 0.55, czk),
-    box(32, 2.6, 0.8, cxk, 1.6, czk - 15.6),
-    box(32, 2.6, 0.8, cxk, 1.6, czk + 15.6),
-    box(0.8, 2.6, 32, cxk - 15.6, 1.6, czk),
-    box(0.8, 2.6, 32, cxk + 15.6, 1.6, czk),
-    box(10, 3, 8, cxk - 8, 1.8, czk),
-    box(10, 3, 8, cxk + 8, 1.8, czk),
-  ];
-  addPart(`khawasspura-courtyard-${id}`, `Khawasspura ${label.toLowerCase()} courtyard`, 'forecourt', geoms);
+  // Twin attendant courtyards in the northern corners of the forecourt.
+  const geoms = [];
+  for (const sx of [-1, 1]) {
+    const cxk = sx * 118, czk = JZ0 + 26;
+    geoms.push(box(32, 0.3, 32, cxk, 0.55, czk));
+    geoms.push(box(32, 2.6, 0.8, cxk, 1.6, czk - 15.6));
+    geoms.push(box(32, 2.6, 0.8, cxk, 1.6, czk + 15.6));
+    geoms.push(box(0.8, 2.6, 32, cxk - 15.6, 1.6, czk));
+    geoms.push(box(0.8, 2.6, 32, cxk + 15.6, 1.6, czk));
+    geoms.push(box(10, 3, 8, cxk - 8, 1.8, czk));
+    geoms.push(box(10, 3, 8, cxk + 8, 1.8, czk));
+  }
+  addPart('khawasspura-courtyards', 'Khawasspura attendant courtyards', 'forecourt', geoms);
 }
 
-// --- Subsidiary tombs (6): the Saheli Burj at the forecourt's south corners.
+// --- Subsidiary tombs (2): the Saheli Burj at the forecourt's south corners.
 function saheliBurj(sx, id, name) {
   // Miniature replica of the main complex: raised platform, octagonal tomb,
   // flanking buildings, and a small charbagh in front. Plan is schematic.
+  const geoms = [];
   const cxb = sx * 118, czb = JZ0 + JL - 30;
-  const platform = [box(24, 2, 24, cxb, 1, czb)];
+  geoms.push(box(24, 2, 24, cxb, 1, czb));
   for (let i = 0; i < 5; i++) {
-    platform.push(box(6, 0.4, 1, cxb, 0.2 + i * 0.4, czb - 14 + i));
+    geoms.push(box(6, 0.4, 1, cxb, 0.2 + i * 0.4, czb - 14 + i));
   }
-  addPart(`${id}-platform`, `${name} platform`, 'tombs', platform);
-  const tomb = [
-    box(10, 0.3, 2.5, cxb, 2.15, czb - 6),
-    cyl(5, 5.5, 6, cxb, 2 + 3, czb, 8),
-  ];
+  geoms.push(cyl(5, 5.5, 6, cxb, 2 + 3, czb, 8));
+  geoms.push(box(10, 0.3, 2.5, cxb, 2.15, czb - 6));
   const dome = onionDome(3.4, 4.5, 16);
   dome.translate(cxb, 2 + 6, czb);
-  tomb.push(dome);
-  tomb.push(box(6, 4, 8, cxb - 10, 4, czb));
-  tomb.push(box(6, 4, 8, cxb + 10, 4, czb));
-  addPart(`${id}-tomb`, `${name} tomb`, 'tombs', tomb);
-  const garden = [];
+  geoms.push(dome);
+  geoms.push(box(6, 4, 8, cxb - 10, 4, czb));
+  geoms.push(box(6, 4, 8, cxb + 10, 4, czb));
   for (const px of [-4.5, 4.5]) {
     for (const pz of [-4.5, 4.5]) {
-      garden.push(box(8, 0.25, 8, cxb + px, 0.725, czb - 26 + pz));
+      geoms.push(box(8, 0.25, 8, cxb + px, 0.725, czb - 26 + pz));
     }
   }
-  addPart(`${id}-garden`, `${name} garden`, 'tombs', garden);
+  addPart(id, name, 'tombs', geoms);
 }
-saheliBurj(1, 'saheli-burj-east', 'East Saheli Burj');
-saheliBurj(-1, 'saheli-burj-west', 'West Saheli Burj');
+saheliBurj(1, 'saheli-burj-east', 'East Saheli Burj tomb');
+saheliBurj(-1, 'saheli-burj-west', 'West Saheli Burj tomb');
 
 // ---------------------------------------------------------------- serialize
 let offset = 0;
@@ -981,19 +871,18 @@ for (const r of records) {
   r.nor.copy(buffer, r.norOff);
   r.idx.copy(buffer, r.idxOff);
 }
-fs.writeFileSync(path.join(outDir, 'taj-mahal-0.bin'), buffer);
+fs.writeFileSync(path.join(outDir, 'taj-mahal-simple-0.bin'), buffer);
 
 const systems = [
   { id: 'terrace', name: 'Riverfront Terrace', color: '#b0532f', description: 'The 300 m riverfront platform on the Yamuna and its boundary walls, the foundation of the whole composition.' },
-  { id: 'mausoleum', name: 'Mausoleum Base', color: '#f2ede2', description: 'The 6 m marble plinth and the main tomb block with its four 33 m pishtaq arches, opened arch by arch.' },
-  { id: 'dome', name: 'Dome Cluster', color: '#e3d7b8', description: 'The 12 m drum, the 23 m onion dome, the 9.6 m gilded finial, and the roof chhatris, split into their layers.' },
-  { id: 'minarets', name: 'Minarets', color: '#faf7ef', description: 'Four 43.02 m marble minarets at the plinth corners, each shown tier by tier with its balconies and crowning chhatri.' },
-  { id: 'interior', name: 'Interior Chamber', color: '#7f96ad', description: 'The octagonal burial chamber with its cenotaphs, the marble jali screen, and the lower tomb.' },
+  { id: 'mausoleum', name: 'Mausoleum Base', color: '#f2ede2', description: 'The 6 m marble plinth and the main tomb block with its four 33 m pishtaq arches.' },
+  { id: 'dome', name: 'Dome Cluster', color: '#e3d7b8', description: 'The 12 m drum, the 23 m onion dome, the 9.6 m gilded finial, and the roof chhatris.' },
+  { id: 'minarets', name: 'Minarets', color: '#faf7ef', description: 'Four 43.02 m marble minarets at the plinth corners, leaning slightly outward by design.' },
+  { id: 'interior', name: 'Interior Chamber', color: '#7f96ad', description: 'The octagonal burial chamber with its cenotaphs, marble screen, and lower tomb.' },
   { id: 'gate', name: 'Great Gate', color: '#96452c', description: 'The 23.07 m red sandstone gateway, Darwaza-i rauza, closing the garden on the south.' },
-  { id: 'mosque', name: 'Mosque', color: '#bd5a33', description: 'The red sandstone mosque west of the tomb, with its three domes, prayer bays, and mihrab.' },
-  { id: 'jawab', name: 'Jawab', color: '#aa5c34', description: 'The eastern mirror of the mosque, built for architectural symmetry rather than worship.' },
-  { id: 'charbagh', name: 'Charbagh Garden', color: '#4a7c44', description: 'The 296.31 m square four-part garden with sunken parterres and raised walkways.' },
-  { id: 'waterworks', name: 'Waterworks', color: '#3f7fae', description: 'The 120 m water channels, the central tank with its fountains, and the gravity-fed supply system.' },
+  { id: 'mosque', name: 'Mosque and Jawab', color: '#bd5a33', description: 'The red sandstone mosque and its mirror, the jawab, flanking the tomb on the terrace.' },
+  { id: 'charbagh', name: 'Charbagh Garden', color: '#4a7c44', description: 'The 296.31 m square four-part garden with sunken parterres and walkways.' },
+  { id: 'waterworks', name: 'Waterworks', color: '#3f7fae', description: 'The 120 m water channels, central tank, reflecting pool, and gravity-fed fountain system.' },
   { id: 'forecourt', name: 'Jilaukhana Forecourt', color: '#a8622d', description: 'The entrance forecourt south of the great gate: bazaar streets, enclosure walls, and the attendants quarters, the worldly side of the complex.' },
   { id: 'tombs', name: 'Subsidiary Tombs', color: '#c8b28a', description: 'The Saheli Burj: two mirror-image tombs at the southern corners of the forecourt, conceived as miniature replicas of the main complex.' },
 ];
@@ -1004,71 +893,66 @@ const explanations = {
   'west boundary wall': 'Crenellated red sandstone wall closing the west side of the riverfront terrace.',
   'east boundary wall': 'Crenellated red sandstone wall closing the east side of the riverfront terrace.',
   'tahkhana river rooms': 'A galleried suite of rooms under the terrace opening toward the river, used by the imperial retinue during celebrations; the room layout is schematic.',
-  'river ghat steps': 'Steps descending from the riverfront edge of the terrace to the Yamuna, the ceremonial water gate of the complex. The steps are schematic.',
-  'terrace corner chhatris': 'Open pillared kiosks marking the riverfront corners of the terrace. Their positions and sizes are schematic.',
   'marble plinth': 'A 6 m high square plinth with 95.5 m sides, faced in white marble from Makrana, raising the tomb above the terrace. Its top carries an interlocking pattern of octagonal marble pieces set into four-pointed red sandstone stars.',
   'main octagonal block': 'A multi-chambered cube with chamfered corners forming an eight-sided structure, 56.9 m square with long sides near 57.3 m.',
   'south access stairs, west flight': 'One of two partly covered flights of stairs on the south side of the platform, facing the garden; they provide the only access from ground level up to the mausoleum. Stair placement is schematic.',
   'south access stairs, east flight': 'One of two partly covered flights of stairs on the south side of the platform, facing the garden; they provide the only access from ground level up to the mausoleum. Stair placement is schematic.',
   'dome drum': 'A 12 m high cylindrical drum with an 18.4 m inner diameter, carrying the outer dome.',
   'drum rope moulding': 'An ornamental moulding with a twisted rope design in the intermediate zone between the drum and the dome.',
-  'drum arcade niches': 'Arched niches ringing the drum below the dome, lightening its mass. The niche forms are schematic.',
   'outer onion dome': 'A 23 m high marble onion dome, 17.7 m in diameter, built as a larger outer shell over the inner dome.',
   'dome lotus base': 'A lotus flower design ringing the base of the dome, matching the lotus ornament on the domes; the petal forms are schematic.',
   'inner false dome': 'A smaller separate interior dome over the burial chamber, decorated with a sun motif; it rises about 35 m from the ground.',
-  'inner dome sun motif': 'The sun motif decorating the smaller interior dome, the luminous counterpart to the crescent on the outer finial. The motif geometry is schematic.',
   'gilded finial': 'A 9.6 m high finial of stacked orbs on a shaft, originally gold and replaced by a gilded bronze copy in the early 19th century. A 4.6 m gold shield that once covered it was carried off in the 18th century Jat despoliation.',
   'crescent moon': 'The finial is topped by a moon, a typical Islamic motif whose horns point heavenward, and it forms the tamga, the seal of the Mughal Empire.',
   'octagonal burial chamber': 'The main inner chamber is an octagon with 7.3 m sides, entered from each face, with walls about 25 m high.',
-  'interior pishtaq arches, lower tier': 'The lower tier of eight pishtaq arches lining the chamber walls; the arch forms are schematic.',
-  'interior pishtaq arches, upper tier': 'The upper tier of eight pishtaq arches lining the chamber walls, the four central upper arches forming viewing balconies; the arch forms are schematic.',
+  'interior pishtaq tiers': 'Two tiers of eight pishtaq arches line the chamber walls, the four central upper arches forming viewing balconies; the arch forms are schematic.',
   'mumtaz cenotaph': 'The cenotaph of Mumtaz Mahal on a 1.5 by 2.5 m marble base at the center of the chamber, aligned north-south with the head to the north and the face turned west toward Mecca.',
   'shah jahan cenotaph': 'The cenotaph of Shah Jahan on a larger base to the west, the only asymmetric element in the chamber; the pen box on top denotes a male tomb.',
-  'lower tomb chamber': 'The plain rectangular basement chamber shell holding the actual graves, below the cenotaphs, with an undecorated coved ceiling.',
-  'actual graves': 'The plain graves of Mumtaz Mahal and Shah Jahan in the basement chamber, below the ornamental cenotaphs. The slab forms are schematic.',
+  'lower tomb chamber': 'The plain rectangular basement chamber holding the actual graves, below the cenotaphs, with an undecorated coved ceiling.',
   'great gate body': 'The great gate, Darwaza-i rauza, measures 41.2 by 34 m and stands 23.07 m high, built of red sandstone with white marble accents.',
   'gate central arch': 'A recessed two-story central arch, 33 m high and 19 m wide, framed in white marble with a triple rope moulding; the frame carries the Daybreak sura in thuluth script and the entry iwan holds muqarnas in red sandstone.',
   'gate flanking arches': 'Two pairs of smaller decorative iwans flanking the central arch on each facade; the gate has five iwans per facade and the smaller ones are purely decorative.',
+  'gate chhatri rows': 'Matching rows of 11 white chhatris run along each facade of the gate in a contiguous gallery, an arrangement found nowhere else in the complex.',
+  'gate corner towers': 'Four octagonal corner towers capped with larger chhatris, giving the gate a defensive appearance.',
+  'gate ornamental minarets': 'Thin ornamental minarets rising to about 30 m flank the gate facades, rising like arrows toward the sky.',
   'gate calligraphy panels': 'Black calligraphy inlay panels set into the red sandstone facades; the southern gate inscription invites the soul at rest to return to the Lord at peace.',
   'gate side chambers': 'Side chambers of the gate\'s nine-part plan; the internal layout is schematic.',
   'gate internal dome': 'The large central space of the gate is crowned by an internal dome that receives no outward expression: external domes were reserved for tombs and mosques. The dome form is schematic.',
-  'gate muqarnas vault': 'Honeycomb muqarnas vaulting in red sandstone inside the entry iwan. The vault geometry is schematic.',
   'mosque pishtaq': 'The great arched prayer front of the mosque, facing the mausoleum.',
+  'mosque minarets': 'Slender minarets flanking the mosque facade; their positions are schematic.',
   'mosque mihrab': 'The prayer niche in the mosque\'s west wall marking the direction of Mecca; the jawab has inlaid floors but no mihrab. The niche form is schematic.',
   'jawab pishtaq': 'The great arched front of the jawab, mirroring the mosque for architectural symmetry.',
+  'jawab minarets': 'Slender minarets flanking the jawab facade; their positions are schematic.',
   'charbagh garden platform': 'The charbagh is a 296.31 m square garden divided into four quadrants, each quarter further split into 16 sunken parterres.',
   'charbagh south enclosure wall': 'Crenellated red sandstone enclosure wall on the garden\'s south side, pierced by the great gate.',
   'charbagh west enclosure wall': 'Crenellated red sandstone enclosure wall on the garden\'s west side; the inner sides of the complex walls carry columned arcades with chhatris and the Music House, modeled schematically.',
   'charbagh east enclosure wall': 'Crenellated red sandstone enclosure wall on the garden\'s east side; the inner sides of the complex walls carry columned arcades with chhatris and the Music House, modeled schematically.',
   'garden tree rows': 'Avenues of trees line the garden; early accounts describe roses, daffodils, and fruit trees in abundance, and the British later replanted cypresses. Tree positions are schematic.',
-  'khiyaban walkways, north-south': 'Raised walkways edging the north-south water channels, the main promenades of the garden.',
-  'khiyaban walkways, east-west': 'Raised walkways edging the east-west water channels, the main promenades of the garden.',
+  'khiyaban walkways': 'Raised walkways edging the water channels, the main promenades of the garden.',
   'temporary burial enclosure': 'A low walled enclosure in the western garden near the riverfront terrace marks where Mumtaz Mahal\'s body rested temporarily after its arrival from Burhanpur. The enclosure form is schematic.',
   'north-south channel, north reach': 'The four straight channels of the garden are each 120 m long and 6 m wide, a little shorter than half the garden to leave room for the central fountain.',
   'north-south channel, south reach': 'The four straight channels of the garden are each 120 m long and 6 m wide, a little shorter than half the garden to leave room for the central fountain.',
   'east-west channel, west reach': 'The four straight channels of the garden are each 120 m long and 6 m wide, a little shorter than half the garden to leave room for the central fountain.',
   'east-west channel, east reach': 'The four straight channels of the garden are each 120 m long and 6 m wide, a little shorter than half the garden to leave room for the central fountain.',
   'central water tank': 'The raised marble tank al Hawd al-Kawthar with five fountains at the center of the garden.',
-  'tank fountain nozzles': 'The five fountain nozzles of the raised central tank al Hawd al-Kawthar. Their exact positions are schematic.',
   'reflecting pool': 'The long reflecting pool on the north-south axis mirrors the mausoleum.',
-  'channel fountain nozzles': 'Fountain nozzles set along the water channels, fed by the garden waterworks. The nozzle positions are schematic.',
-  'underground reservoir': 'The underground reservoir that received Yamuna water through a channel before it was lifted to the aqueduct. The reservoir form and position are schematic.',
-  'aqueduct conduits': 'Elevated conduits carrying water from the reservoir toward the garden center, feeding the channels and fountains. The conduit route is schematic.',
+  'garden waterworks': 'Water came from the Yamuna through a channel to an underground reservoir, was lifted by animal-powered pulleys to an aqueduct, and ran through copper vessels and earthenware pipes; the drop from 9.47 m high walls drove the fountains.',
   'jilaukhana forecourt': 'The entrance forecourt south of the great gate, about 124 m deep (153 gaz), where visitors dismounted from horses and elephants and assembled in style before entering the tomb complex.',
   'east bazaar street': 'Bazaar street leading from the east gate to the center of the forecourt, lined by colonnades with cusped arches; shops traded here from the construction until 1996, and their tax revenue maintained the complex. The street layout is schematic.',
   'west bazaar street': 'Bazaar street leading from the west gate to the center of the forecourt, lined by colonnades with cusped arches; shops traded here from the construction until 1996, and their tax revenue maintained the complex. The street layout is schematic.',
   'forecourt east wall': 'Red sandstone enclosure wall of the forecourt with an entrance gate opening onto the east bazaar street.',
   'forecourt west wall': 'Red sandstone enclosure wall of the forecourt with an entrance gate opening onto the west bazaar street.',
   'forecourt south wall': 'Red sandstone enclosure wall of the forecourt; its southern gate leads to the Taj Ganji quarter.',
-  'forecourt south gate': 'The southern gate of the forecourt, leading to the Taj Ganji quarter. The gate form is schematic.',
+  'khawasspura attendant courtyards': 'Twin courtyards in the northern corners of the forecourt housing the tomb attendants and the Hafiz, the Quran reciters; restored under Lord Curzon between 1900 and 1908. The courtyard layout is schematic.',
+  'east saheli burj tomb': 'The eastern Saheli Burj, "tower of the female friend": a miniature replica of the main complex on a raised platform with steps, an octagonal tomb flanked by smaller buildings with a charbagh garden in front. The 1789 Daniell plan marks it as the tomb of Akbarabadi Mahal; the plan is schematic.',
+  'west saheli burj tomb': 'The western Saheli Burj, "tower of the female friend": a miniature replica of the main complex on a raised platform with steps, an octagonal tomb flanked by smaller buildings with a charbagh garden in front. The 1789 Daniell plan marks it as the tomb of Fatehpuri Mahal; the plan is schematic.',
 };
 for (const f of FACES) {
   const fl = f.id;
   const fn = f.name;
   explanations[`${fn.toLowerCase()} iwan arch`] = `A 33 m high vaulted pishtaq arch framing the iwan on the ${fl} facade, with two stacked arched bays on either side; the arch profile is schematic.`;
   explanations[`${fn.toLowerCase()} pishtaq calligraphy band`] = `Quranic calligraphy inlaid around the pishtaq arch on the ${fl} facade, a hallmark of the complex; the panel sizes and positions are schematic.`;
-  explanations[`${fn.toLowerCase()} side arched bays, lower tier`] = `The lower tier of smaller arched bays flanking the central iwan on the ${fl} facade; the bay profiles are schematic.`;
-  explanations[`${fn.toLowerCase()} side arched bays, upper tier`] = `The upper tier of smaller arched bays flanking the central iwan on the ${fl} facade; the bay profiles are schematic.`;
+  explanations[`${fn.toLowerCase()} side arched bays`] = `Two tiers of smaller arched bays flanking the central iwan on the ${fl} facade; the bay profiles are schematic.`;
   explanations[`${fn.toLowerCase()} dado panels`] = `White marble dado panels with ornamental bas relief of plants and flowers at the base of the ${fl} facade; the layout is schematic.`;
 }
 for (const [id, name] of [
@@ -1076,16 +960,12 @@ for (const [id, name] of [
 ]) {
   const nl = name.toLowerCase();
   explanations[`${nl} corner bay`] = 'Arched recesses on the chamfered corners of the main block, facing the minarets; the facade arch motif repeated at a smaller scale.';
-  explanations[`${nl} corner chhatri kiosk`] = 'The columned kiosk of one of four smaller onion domes on columns at the corners of the mausoleum roof; they repeat the main dome\'s shape and bring light to the interior.';
-  explanations[`${nl} corner chhatri dome`] = 'The onion dome cap of one of four smaller domes on columns at the corners of the mausoleum roof; the dome sizes are schematic.';
+  explanations[`${nl} corner chhatri`] = 'One of four smaller onion domes on columns at the corners of the mausoleum roof; they repeat the main dome\'s shape and bring light to the interior.';
   explanations[`${nl} minaret base`] = 'Plinth of the 43.02 m high marble minaret, 5.65 m in diameter, standing at a plinth corner facing the chamfered corners of the tomb.';
-  explanations[`${nl} minaret lower tier`] = 'The lowest of the three nearly equal tapered tiers of the minaret shaft; the tier divisions are schematic.';
-  explanations[`${nl} minaret middle tier`] = 'The middle of the three nearly equal tapered tiers of the minaret shaft; the tier divisions are schematic.';
-  explanations[`${nl} minaret upper tier`] = 'The upper of the three nearly equal tapered tiers of the minaret shaft; the tier divisions are schematic.';
+  explanations[`${nl} minaret shaft`] = 'Three almost equal tapered tiers of the minaret. The tower leans slightly outward by design so that in a collapse it would fall away from the tomb; the lean angle is schematic.';
   explanations[`${nl} minaret lower balcony`] = 'Balcony ring at a junction of the shaft tiers, in the manner of a mosque minaret from which the muezzin calls the faithful to prayer; the ring size is schematic.';
   explanations[`${nl} minaret upper balcony`] = 'Balcony ring at a junction of the shaft tiers, in the manner of a mosque minaret from which the muezzin calls the faithful to prayer; the ring size is schematic.';
-  explanations[`${nl} minaret chhatri cap`] = 'The crowning chhatri and finial of the minaret, with rectangular openings below the dome giving light and air at the top of the internal stair. The tower leans slightly outward by design so that in a collapse it would fall away from the tomb; the lean angle is schematic.';
-  explanations[`${nl} gate corner tower`] = 'One of four octagonal corner towers of the great gate, capped with a larger chhatri, giving the gate a defensive appearance.';
+  explanations[`${nl} minaret chhatri cap`] = 'The crowning chhatri and finial of the minaret, with rectangular openings below the dome giving light and air at the top of the internal stair.';
 }
 for (const id of ['north', 'south', 'east', 'west']) {
   explanations[`guldasta spires, ${id} edge`] = 'Tall decorative spires edging the mausoleum roofline; their heights and count are schematic.';
@@ -1096,9 +976,10 @@ for (const [id, label] of [
 ]) {
   explanations[`${id} jali screen panel`] = 'One of eight pierced marble panels (mahjar-i mushabbak) enclosing the cenotaphs, inlaid with semi-precious stones; the marble screen replaced a gold one in 1643.';
 }
-for (const [fid, flabel] of [['north', 'North'], ['south', 'South']]) {
-  explanations[`gate chhatri row, ${fid} facade`] = `One of two matching rows of 11 white chhatris along the ${fid} facade of the gate, an arrangement found nowhere else in the complex.`;
-  explanations[`gate ornamental minarets, ${fid} facade`] = 'Thin ornamental minarets, about 30 m high, on the gate facade, rising like arrows toward the sky.';
+for (const [id, label] of [
+  ['nw', 'Northwest'], ['ne', 'Northeast'], ['sw', 'Southwest'], ['se', 'Southeast'],
+]) {
+  explanations[`${label.toLowerCase()} quadrant parterres`] = `Sixteen sunken planting beds in the ${id === 'nw' ? 'northwest' : id === 'ne' ? 'northeast' : id === 'sw' ? 'southwest' : 'southeast'} quadrant of the charbagh; the planting is schematic.`;
 }
 for (const s of ['mosque', 'jawab']) {
   const S = s === 'mosque' ? 'Mosque' : 'Jawab';
@@ -1109,23 +990,7 @@ for (const s of ['mosque', 'jawab']) {
   explanations[`${s} central dome`] = `The largest of the three domes crowning the ${s}; the dome sizes are schematic.`;
   explanations[`${s} north side dome`] = `One of the two smaller domes flanking the central dome of the ${s}; the dome sizes are schematic.`;
   explanations[`${s} south side dome`] = `One of the two smaller domes flanking the central dome of the ${s}; the dome sizes are schematic.`;
-  explanations[`${s} north minaret`] = `A slender minaret flanking the ${s} facade; its position is schematic.`;
-  explanations[`${s} south minaret`] = `A slender minaret flanking the ${s} facade; its position is schematic.`;
 }
-for (const [id, label] of [
-  ['nw', 'Northwest'], ['ne', 'Northeast'], ['sw', 'Southwest'], ['se', 'Southeast'],
-]) {
-  explanations[`${label.toLowerCase()} quadrant parterres`] = `Sixteen sunken planting beds in the ${label.toLowerCase()} quadrant of the charbagh; the planting is schematic.`;
-}
-for (const [id, label] of [['east', 'East'], ['west', 'West']]) {
-  explanations[`khawasspura ${id} courtyard`] = `The ${label.toLowerCase()} courtyard in the northern corners of the forecourt housing the tomb attendants and the Hafiz, the Quran reciters; restored under Lord Curzon between 1900 and 1908. The courtyard layout is schematic.`;
-}
-explanations['east saheli burj platform'] = 'The raised platform of the eastern Saheli Burj with its approach steps. The 1789 Daniell plan marks it as the tomb of Akbarabadi Mahal; the plan is schematic.';
-explanations['east saheli burj tomb'] = 'The octagonal tomb of the eastern Saheli Burj under its small onion dome, flanked by smaller buildings.';
-explanations['east saheli burj garden'] = 'The small charbagh garden laid out in front of the eastern Saheli Burj tomb; the planting is schematic.';
-explanations['west saheli burj platform'] = 'The raised platform of the western Saheli Burj with its approach steps. The 1789 Daniell plan marks it as the tomb of Fatehpuri Mahal; the plan is schematic.';
-explanations['west saheli burj tomb'] = 'The octagonal tomb of the western Saheli Burj under its small onion dome, flanked by smaller buildings.';
-explanations['west saheli burj garden'] = 'The small charbagh garden laid out in front of the western Saheli Burj tomb; the planting is schematic.';
 
 const atlas = {
   version: '1',
@@ -1133,7 +998,7 @@ const atlas = {
   scope: 'Taj Mahal, Agra',
   title: 'Taj Mahal',
   location: 'Agra, India',
-  blurb: 'A detailed schematic model of the Taj Mahal complex in Agra, India, the 17th-century Mughal mausoleum commissioned by Shah Jahan for Mumtaz Mahal. This deeper cut opens up the full walled complex in 170 named parts: the Yamuna riverfront terrace, the marble plinth and 33 m pishtaq arches, the drum and onion dome with its 9.6 m gilded finial, four 43.02 m minarets shown tier by tier, the octagonal burial chamber with its cenotaphs and marble jali screen, the 23.07 m great gate, the mosque and jawab, the 296.31 m charbagh garden with its water channels and fountains, the jilaukhana forecourt, and the Saheli Burj subsidiary tombs.',
+  blurb: 'The Taj Mahal is a 17th-century Mughal mausoleum complex in Agra, India, commissioned by Shah Jahan for Mumtaz Mahal. This schematic model shows the full walled complex: riverfront terrace, marble mausoleum, four minarets, great gate, mosque, jawab, charbagh garden with its waterworks, forecourt, and subsidiary tombs.',
   sourceUrls: [
     { label: 'Taj Mahal, Wikipedia', url: 'https://en.wikipedia.org/wiki/Taj_Mahal' },
     { label: 'Taj Mahal, Structurae', url: 'https://structurae.net/en/structures/taj-mahal' },
@@ -1145,7 +1010,6 @@ const atlas = {
   ],
   systems,
   explanations,
-  spread: 1.4,
   parts: records.map((r) => ({
     id: r.part.id,
     name: r.part.name,
@@ -1160,7 +1024,7 @@ const atlas = {
     bounds: r.bounds,
   })),
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
-  chunks: [{ url: '/models/taj-mahal/taj-mahal-0.bin', bytes: offset }],
+  chunks: [{ url: '/models/taj-mahal-simple/taj-mahal-simple-0.bin', bytes: offset }],
   triangles,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
@@ -1173,5 +1037,3 @@ console.log(
 console.log('Systems:', JSON.stringify(bySystem));
 const missing = records.filter((r) => !explanations[r.part.name.toLowerCase()]);
 if (missing.length) console.log('Missing explanations:', missing.map((r) => r.part.id).join(', '));
-const dup = records.map((r) => r.part.name.toLowerCase()).filter((n, i, a) => a.indexOf(n) !== i);
-if (dup.length) console.log('Duplicate names:', dup.join(', '));

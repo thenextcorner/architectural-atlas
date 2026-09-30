@@ -1,15 +1,13 @@
-// Procedural Golden Gate Bridge (DETAILED) for the Architectural Atlas.
+// Procedural Golden Gate Bridge for the Architectural Atlas.
 //
-// Deepening of scripts/generate-golden-gate-simple.mjs: the same schematic,
-// correctly proportioned bridge with finer assemblies (cable bands, portal
-// cross bracing, floor beams, lane markings, expansion joints, arch hangers,
-// approach bracing, split toll booths, maintenance traveler cabs).
-// Writes: public/models/golden-gate/atlas.json + golden-gate-0.bin
+// Builds a schematic, correctly proportioned Golden Gate Bridge in code and
+// writes it in the atlas binary format:
+//   public/models/golden-gate-simple/atlas.json + public/models/golden-gate-simple/golden-gate-simple-0.bin
 //
-// Dimensions used (all verified from the research files
-// research/golden-gate-bridge.md and research/golden-gate-attribution.md,
-// sources [G1] goldengate.org facts page, [W] Wikipedia, [S] Structurae,
-// [G2] district NTSB statement, [G3] district Art Deco PDF):
+// Dimensions used (all verified from the research file
+// research/golden-gate-bridge.md, sources [G1] goldengate.org facts page,
+// [W] Wikipedia, [S] Structurae, [G2] district NTSB statement, [G3] district
+// Art Deco PDF; see research/golden-gate-attribution.md):
 //   total length 2,737 m, main span 1,280 m, suspended span 1,966 m,
 //   tower height 227 m above water / 152 m above roadway,
 //   deck width 27 m at about 75 m above water, 6 lanes, 2 walkways,
@@ -24,18 +22,17 @@
 //
 // Schematic (not stated as fact anywhere in the UI): the 343 m side spans are
 // derived from two official figures; the cable parabola is derived from the
-// tower top and deck heights; suspender spacing, cable band positions, tower
-// leg section boundaries and setback step dimensions, portal cross bracing
-// layout, truss member sizes, floor beam layout, lane marking dashes,
-// expansion joint geometry, arch hanger layout, anchorage concrete shape,
-// fender profile, approach geometry, toll booth layout, and maintenance
-// traveler rail and cab layout are all procedural approximations. Part
-// section splits are schematic groupings for the exploded view.
+// tower top and deck heights; suspender spacing and the ten suspender groups,
+// tower leg section boundaries and setback step dimensions, truss member
+// sizes, anchorage concrete shape, fender profile, approach geometry,
+// toll booth layout, and maintenance traveler rail layout are all procedural
+// approximations. Part section splits (deck halves, cable side sections,
+// truss halves, portal levels) are schematic groupings for the exploded view.
 //
 // Axes: X along the bridge (south at -X, north at +X), Y up, Z across.
 // y = 0 is the fender base (lowest modeled point); water surface is at y = 12.
 //
-// Usage: node scripts/generate-golden-gate.mjs
+// Usage: node scripts/generate-golden-gate-simple.mjs
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import fs from 'node:fs';
@@ -43,10 +40,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const outDir = path.join(here, '..', 'public', 'models', 'golden-gate');
+const outDir = path.join(here, '..', 'public', 'models', 'golden-gate-simple');
 fs.mkdirSync(outDir, { recursive: true });
 
-// Atlas units: same framing as the simple model, full 2,737 m maps to 2.4.
+// Atlas units: the viewer handles thin objects via the explode layout, so the
+// full 2,737 m length maps to 2.4 units.
 const S = 2.4 / 2737;
 
 // ---------------------------------------------------------------- constants
@@ -108,9 +106,8 @@ const parts = [];
 const addPart = (id, name, system, geoms) => parts.push({ id, name, system, geoms });
 
 // --- Towers: each Art Deco leg split into below-deck, lower tier, and upper
-//     tier sections; portal struts, fluted housings, portal cross bracing,
-//     and cable saddles split per portal level; chevron ornament per level on
-//     the south tower. 20 parts north, 24 south.
+//     tier sections; portal struts, fluted housings, and chevron ornament
+//     split per portal level; cable saddles split per side. 36 parts.
 const LEG_Z = 14;
 const TIERS = [
   // [y0, y1, x-width, z-width]
@@ -137,18 +134,6 @@ const PORTAL_W = [6, 5.2, 4.4, 3.6]; // portals narrow as the tower rises [G3]
 function portalStrutLevel(tx, level) {
   const i = level - 1;
   return [box(PORTAL_W[i], 4, LEG_Z * 2, tx, PORTALS[i], 0)];
-}
-function portalBracingLevel(tx, level) {
-  // Diagonal cross bracing inside the portal opening below the portal strut,
-  // tying the two legs against lateral loads. Layout is schematic.
-  const i = level - 1;
-  const yTop = PORTALS[i] - 2.4;
-  const yBot = PORTALS[i] - 9.5;
-  const z0 = LEG_Z - 3;
-  return [
-    strut([tx, yBot, -z0], [tx, yTop, z0], 0.6),
-    strut([tx, yBot, z0], [tx, yTop, -z0], 0.6),
-  ];
 }
 function flutedHousingLevel(tx, level) {
   // Wide vertical fluting stamped into the steel plate housings [G3].
@@ -195,7 +180,6 @@ for (const tower of TOWERS) {
   }
   for (let level = 1; level <= 4; level++) {
     addPart(`${tower.id}-portal-strut-${level}`, `${tower.name} tower portal strut, level ${level}`, tower.system, portalStrutLevel(tower.tx, level));
-    addPart(`${tower.id}-portal-bracing-${level}`, `${tower.name} tower portal bracing, level ${level}`, tower.system, portalBracingLevel(tower.tx, level));
     addPart(`${tower.id}-fluted-housing-${level}`, `${tower.name} tower fluted housing, level ${level}`, tower.system, flutedHousingLevel(tower.tx, level));
     if (tower.chevron) {
       addPart(`${tower.id}-chevron-ornament-${level}`, `${tower.name} tower chevron ornament, level ${level}`, tower.system, chevronLevel(tower.tx, level));
@@ -297,30 +281,10 @@ for (const [sz, side] of [[1, 'east'], [-1, 'west']]) {
   }
 }
 
-// --- Cable bands: steel bands clamped around each main cable at every
-//     suspender attachment point, carrying the suspender sockets. Split per
-//     cable and per half span. Positions follow the schematic suspender
-//     spacing.
-const SUSP_N = 250;
-const SUSP_DX = (2 * SUSP_END) / SUSP_N; // about 7.86 m per pair, derived
-function cableBandSet(i0, i1, sz) {
-  const geoms = [];
-  for (let i = i0; i < i1; i++) {
-    const x = -SUSP_END + (i + 0.5) * SUSP_DX;
-    geoms.push(box(2.2, 1.7, 1.7, x, cableY(x), sz * CABLE_Z));
-  }
-  return geoms;
-}
-for (const [sz, side] of [[1, 'east'], [-1, 'west']]) {
-  const sc = side[0].toUpperCase() + side.slice(1);
-  addPart(`cable-band-${side}-main-span-south-half`, `${sc} main cable bands, south half`, 'cable-bands', cableBandSet(44, 128, sz));
-  addPart(`cable-band-${side}-main-span-north-half`, `${sc} main cable bands, north half`, 'cable-bands', cableBandSet(128, 206, sz));
-  addPart(`cable-band-${side}-side-span-south`, `${sc} side span cable bands, south`, 'cable-bands', cableBandSet(0, 44, sz));
-  addPart(`cable-band-${side}-side-span-north`, `${sc} side span cable bands, north`, 'cable-bands', cableBandSet(206, 250, sz));
-}
-
 // --- Suspender ropes: 250 pairs [S], grouped into 10 schematic groups of
 //     about 25 pairs each along the 6,450 ft suspended span.
+const SUSP_N = 250;
+const SUSP_DX = (2 * SUSP_END) / SUSP_N; // about 7.86 m per pair, derived
 function suspenderGroup(i0, i1) {
   const geoms = [];
   for (let i = i0; i < i1; i++) {
@@ -349,9 +313,8 @@ for (const [id, name, i0, i1] of SUSP_GROUPS) {
 }
 
 // --- Stiffening truss: main span trusses split east/west and north/south
-//     halves, side span trusses split east/west, the 1953 to 1954 retrofit
-//     bracing split into north and south halves, and transverse floor beams
-//     tying the two trusses under the roadway. 16 parts.
+//     halves, side span trusses split east/west, and the 1953 to 1954
+//     retrofit bracing split into north and south halves. 12 parts.
 function trussRun(x0, x1, sz) {
   const geoms = [];
   const top = DECK - 1;
@@ -399,22 +362,6 @@ addPart('retrofit-lateral-south', 'Lateral bracing retrofit, south half', 'stiff
 addPart('retrofit-lateral-north', 'Lateral bracing retrofit, north half', 'stiffening-truss', retrofitBracing('lateral', 0, TOWER_X));
 addPart('retrofit-diagonal-south', 'Diagonal bracing retrofit, south half', 'stiffening-truss', retrofitBracing('diagonal', -TOWER_X, 0));
 addPart('retrofit-diagonal-north', 'Diagonal bracing retrofit, north half', 'stiffening-truss', retrofitBracing('diagonal', 0, TOWER_X));
-function floorBeams(x0, x1) {
-  // Transverse floor beams under the roadway tying the two truss chords.
-  // Layout is schematic.
-  const geoms = [];
-  const y = DECK - 2;
-  const step = 20;
-  const dir = x1 > x0 ? 1 : -1;
-  for (let x = x0; dir > 0 ? x < x1 : x > x1; x += dir * step) {
-    geoms.push(strut([x, y, -CABLE_Z], [x, y, CABLE_Z], 0.7));
-  }
-  return geoms;
-}
-addPart('floor-beams-main-span-south', 'Floor beams, main span south half', 'stiffening-truss', floorBeams(-TOWER_X, 0));
-addPart('floor-beams-main-span-north', 'Floor beams, main span north half', 'stiffening-truss', floorBeams(0, TOWER_X));
-addPart('floor-beams-south-side-span', 'Floor beams, south side span', 'stiffening-truss', floorBeams(-SUSP_END, -TOWER_X));
-addPart('floor-beams-north-side-span', 'Floor beams, north side span', 'stiffening-truss', floorBeams(TOWER_X, SUSP_END));
 
 // --- Deck: roadway split into main span halves and side spans, walkways and
 //     railings split east/west, movable median barrier split per span.
@@ -456,36 +403,6 @@ addPart('median-barrier-north-side-span', 'North side span median barrier', 'dec
   box(SIDE_SPAN, 1.0, 0.6, (TOWER_X + SUSP_END) / 2, DECK + 0.5, 0),
 ]);
 
-// --- Roadway markings and joints: dashed lane dividers for the six lanes and
-//     expansion joints at the towers. Dash length, spacing, and joint
-//     geometry are schematic.
-function laneMarkings(x0, x1) {
-  const geoms = [];
-  const zs = [-9, -4.5, 0, 4.5, 9]; // five dividers for six lanes
-  const y = DECK + 0.06;
-  const xStart = Math.min(x0, x1);
-  const xEnd = Math.max(x0, x1);
-  for (const z of zs) {
-    for (let x = xStart; x < xEnd; x += 9) {
-      const len = Math.min(4.5, xEnd - x);
-      geoms.push(box(len, 0.06, 0.18, x + len / 2, y, z));
-    }
-  }
-  return geoms;
-}
-addPart('lane-markings-main-span', 'Lane markings, main span', 'roadway-markings', laneMarkings(-TOWER_X, TOWER_X));
-addPart('lane-markings-south-side-span', 'Lane markings, south side span', 'roadway-markings', laneMarkings(-SUSP_END, -TOWER_X));
-addPart('lane-markings-north-side-span', 'Lane markings, north side span', 'roadway-markings', laneMarkings(TOWER_X, SUSP_END));
-function expansionJoint(tx) {
-  const geoms = [box(2.4, 0.5, 27, tx, DECK + 0.12, 0)];
-  for (let k = 0; k < 9; k++) {
-    geoms.push(box(1.2, 0.7, 0.5, tx, DECK + 0.15, -12 + k * 3));
-  }
-  return geoms;
-}
-addPart('expansion-joint-south-tower', 'Deck expansion joint, south tower', 'roadway-markings', expansionJoint(-TOWER_X));
-addPart('expansion-joint-north-tower', 'Deck expansion joint, north tower', 'roadway-markings', expansionJoint(TOWER_X));
-
 // --- Anchorages: each block split into base plinth and main block, with the
 //     splay chambers split east/west. The main cables are fixed in concrete
 //     at each end [S]. Concrete shapes are schematic.
@@ -506,30 +423,28 @@ for (const [sx, end] of [[-1, 'south'], [1, 'north']]) {
   }
 }
 
-// --- Fort Point arch and approaches: arch ribs split east/west with separate
-//     hanger and cross bracing parts; approach viaducts split into deck,
-//     piers, and cross bracing per side; entrance pylons split south/north.
+// --- Fort Point arch: ribs split east/west with a separate cross bracing
+//     part; approach viaducts split into deck and piers per side; entrance
+//     pylons split into south and north pairs.
 {
   // Graceful steel arch spanning about 320 ft (98 m) over Fort Point [S].
   // Charles Ellis designed it as a bridge within a bridge to avoid
-  // demolishing the fort below [W]. Rib and hanger geometry is schematic.
+  // demolishing the fort below [W]. Rib geometry is schematic.
   const ax0 = -1030;
   const ax1 = -1128;
   const apex = (ax0 + ax1) / 2;
   const ribY = (x) => 60 + 26 * (1 - ((x - apex) / 49) ** 2);
   for (const [sz, side] of [[1, 'east'], [-1, 'west']]) {
-    const ribGeoms = [];
-    const hangerGeoms = [];
+    const geoms = [];
     const N = 20;
     for (let i = 0; i < N; i++) {
       const x = ax0 + ((ax1 - ax0) * i) / N;
       const nx = ax0 + ((ax1 - ax0) * (i + 1)) / N;
-      ribGeoms.push(strut([x, ribY(x), sz * 11], [nx, ribY(nx), sz * 11], 1.4));
+      geoms.push(strut([x, ribY(x), sz * 11], [nx, ribY(nx), sz * 11], 1.4));
       const hx = (x + nx) / 2;
-      hangerGeoms.push(strut([hx, ribY(hx), sz * 11], [hx, DECK - 1.25, sz * 11], 0.5));
+      geoms.push(strut([hx, ribY(hx), sz * 11], [hx, DECK - 1.25, sz * 11], 0.5));
     }
-    addPart(`fort-point-arch-${side}-rib`, `Fort Point arch, ${side} rib`, 'fort-point', ribGeoms);
-    addPart(`fort-point-arch-${side}-hangers`, `Fort Point arch, ${side} hangers`, 'fort-point', hangerGeoms);
+    addPart(`fort-point-arch-${side}-rib`, `Fort Point arch, ${side} rib`, 'fort-point', geoms);
   }
   const braceGeoms = [];
   for (let i = 0; i <= 20; i += 2) {
@@ -556,23 +471,10 @@ function approachPiers(sx, x0, x1) {
   }
   return geoms;
 }
-function approachBracing(x0, x1) {
-  // Cross bracing between the approach viaduct piers. Layout is schematic.
-  const geoms = [];
-  const xStart = Math.min(x0, x1);
-  const xEnd = Math.max(x0, x1);
-  for (let x = xStart + 24; x < xEnd; x += 48) {
-    geoms.push(strut([x, 32, -9], [x, DECK - 3.5, 9], 0.5));
-    geoms.push(strut([x, 32, 9], [x, DECK - 3.5, -9], 0.5));
-  }
-  return geoms;
-}
 addPart('approach-south-deck', 'South approach viaduct deck', 'fort-point', approachDeck(-1, -1128, -HALF));
 addPart('approach-south-piers', 'South approach viaduct piers', 'fort-point', approachPiers(-1, -1128, -HALF));
-addPart('approach-south-bracing', 'South approach viaduct cross bracing', 'fort-point', approachBracing(-1128, -HALF));
 addPart('approach-north-deck', 'North approach viaduct deck', 'fort-point', approachDeck(1, SUSP_END + 47, HALF));
 addPart('approach-north-piers', 'North approach viaduct piers', 'fort-point', approachPiers(1, SUSP_END + 47, HALF));
-addPart('approach-north-bracing', 'North approach viaduct cross bracing', 'fort-point', approachBracing(SUSP_END + 47, HALF));
 {
   // Angular concrete pylons mark the entrance to the bridge [G3].
   for (const [sx, end] of [[-1, 'south'], [1, 'north']]) {
@@ -587,22 +489,17 @@ addPart('approach-north-bracing', 'North approach viaduct cross bracing', 'fort-
   }
 }
 
-// --- Toll plaza: canopy, booths split east/west, and columns split apart;
-//     light standards split into south approach, suspended span, and north
-//     approach runs.
+// --- Toll plaza: canopy, booths, and columns split apart; light standards
+//     split into south approach, suspended span, and north approach runs.
 {
   // Toll plaza at the southern end, tolls southbound only [S][W].
   // Booth count and canopy layout are schematic.
   const px = -1300;
-  const eastBooths = [];
-  const westBooths = [];
+  const booths = [];
   for (let k = -2; k <= 2; k++) {
-    const booth = box(3, 3.2, 2.6, px, DECK + 1.6, k * 5);
-    if (k >= 0) eastBooths.push(booth);
-    else westBooths.push(booth);
+    booths.push(box(3, 3.2, 2.6, px, DECK + 1.6, k * 5));
   }
-  addPart('toll-booths-east-lanes', 'Toll booths, east lanes', 'toll-plaza', eastBooths);
-  addPart('toll-booths-west-lanes', 'Toll booths, west lanes', 'toll-plaza', westBooths);
+  addPart('toll-booths', 'Toll booths', 'toll-plaza', booths);
   addPart('toll-plaza-canopy', 'Toll plaza canopy', 'toll-plaza', [
     box(30, 1.5, 27, px, DECK + 7, 0),
   ]);
@@ -643,10 +540,8 @@ addPart('light-standards-north', 'Art Deco light standards, north approach', 'to
   addPart('foghorns-south-tower', 'South tower foghorns', 'toll-plaza', geoms);
 }
 
-// --- Maintenance access: under deck traveler rails per span section and a
-//     maintenance traveler cab per section.
-//     Rail and traveler layout is schematic; the district maintains the
-//     bridge continuously.
+// --- Maintenance access: under deck traveler rails per span section.
+//     Rail layout is schematic; the district maintains the bridge continuously.
 function travelerRail(x0, x1) {
   const geoms = [];
   const y = DECK - 7.6;
@@ -658,25 +553,9 @@ function travelerRail(x0, x1) {
   }
   return geoms;
 }
-function travelerCab(xc) {
-  // Hanging cab for painters and inspectors riding the under deck rails.
-  // Layout is schematic.
-  const geoms = [];
-  const y = DECK - 7.6;
-  geoms.push(box(6, 3, 4, xc, y - 3.2, 0));
-  for (const ox of [-2.4, 2.4]) {
-    for (const oz of [-1.6, 1.6]) {
-      geoms.push(strut([xc + ox, y - 1.7, oz], [xc + ox, y, oz > 0 ? 8 : -8], 0.25));
-    }
-  }
-  return geoms;
-}
 addPart('traveler-rail-main-span', 'Under-deck traveler rail, main span', 'maintenance-access', travelerRail(-TOWER_X, TOWER_X));
 addPart('traveler-rail-south-side-span', 'Under-deck traveler rail, south side span', 'maintenance-access', travelerRail(-SUSP_END, -TOWER_X));
 addPart('traveler-rail-north-side-span', 'Under-deck traveler rail, north side span', 'maintenance-access', travelerRail(TOWER_X, SUSP_END));
-addPart('traveler-cab-main-span', 'Maintenance traveler cab, main span', 'maintenance-access', travelerCab(0));
-addPart('traveler-cab-south-side-span', 'Maintenance traveler cab, south side span', 'maintenance-access', travelerCab((-TOWER_X - SUSP_END) / 2));
-addPart('traveler-cab-north-side-span', 'Maintenance traveler cab, north side span', 'maintenance-access', travelerCab((TOWER_X + SUSP_END) / 2));
 
 // ---------------------------------------------------------------- serialize
 let offset = 0;
@@ -735,23 +614,21 @@ for (const r of records) {
   r.nor.copy(buffer, r.norOff);
   r.idx.copy(buffer, r.idxOff);
 }
-fs.writeFileSync(path.join(outDir, 'golden-gate-0.bin'), buffer);
+fs.writeFileSync(path.join(outDir, 'golden-gate-simple-0.bin'), buffer);
 
 // ---------------------------------------------------------------- metadata
 const SYSTEMS = [
-  { id: 'north-tower', name: 'North tower', color: '#c0362c', description: 'Marin side tower. Art Deco steel tower rising 746 ft above the water, with stepped back legs, four portals, fluted housings, and portal cross bracing.' },
-  { id: 'south-tower', name: 'South tower', color: '#b53428', description: 'San Francisco side tower. Art Deco steel tower rising 746 ft above the water, with stepped back legs, four portals, fluted housings, chevron ornament, and portal cross bracing.' },
+  { id: 'north-tower', name: 'North tower', color: '#c0362c', description: 'Marin side tower. Art Deco steel tower rising 746 ft above the water.' },
+  { id: 'south-tower', name: 'South tower', color: '#b53428', description: 'San Francisco side tower. Art Deco steel tower rising 746 ft above the water.' },
   { id: 'tower-piers', name: 'Tower piers and fender', color: '#8b8f93', description: 'Tower foundations and the south fender. The south pier is anchored to bedrock beneath the water; the north pier stands half on land and half in water.' },
   { id: 'main-cables', name: 'Main cables', color: '#a03028', description: 'The two main cables, each 36 3/8 in in diameter and 7,650 ft long, spun from 27,572 wires.' },
-  { id: 'cable-bands', name: 'Cable bands', color: '#96352c', description: 'Steel bands clamped around the main cables at each suspender attachment, carrying the suspender sockets. Band positions follow the schematic suspender spacing.' },
   { id: 'suspenders', name: 'Suspender ropes', color: '#cf4a3c', description: '250 pairs of vertical suspender ropes hang the roadway from the two main cables.' },
   { id: 'stiffening-truss', name: 'Stiffening truss and bracing', color: '#bd3a2e', description: 'The stiffening truss plus the lateral and diagonal bracing retrofitted in 1953 to 1954 to keep the deck rigid.' },
   { id: 'deck', name: 'Deck, lanes, and walkways', color: '#33373b', description: 'The 90 ft wide deck with six lanes of US 101 and SR 1, two walkways, railings, and a movable median barrier.' },
-  { id: 'roadway-markings', name: 'Roadway markings and joints', color: '#d8d8d0', description: 'Dashed lane dividers for the six lanes and expansion joints at the towers. Marking and joint geometry is schematic.' },
   { id: 'anchorages', name: 'Anchorages', color: '#9a9da1', description: 'Concrete blocks that fix the main cables at each end of the bridge.' },
   { id: 'fort-point', name: 'Fort Point arch and approaches', color: '#7f858a', description: 'The steel arch over Fort Point, the approach viaducts, and the angular entrance pylons.' },
   { id: 'toll-plaza', name: 'Toll plaza, lighting, and signals', color: '#4b5055', description: 'The southern toll plaza, the Art Deco light standards, and the south tower foghorns.' },
-  { id: 'maintenance-access', name: 'Maintenance access', color: '#5e6a72', description: 'Under deck rails and maintenance travelers for inspection and repair. Rail and traveler layout is schematic; the bridge is continuously maintained, with 38 painters keeping up the paintwork.' },
+  { id: 'maintenance-access', name: 'Maintenance access', color: '#5e6a72', description: 'Under deck rails for maintenance travelers. Rail layout is schematic; the bridge is continuously maintained, with 38 painters keeping up the paintwork.' },
 ];
 
 // Keyed by lowercase part name. Every fact comes from one of the sources
@@ -768,7 +645,6 @@ for (const tower of TOWERS) {
   }
   for (let level = 1; level <= 4; level++) {
     EXPLANATIONS[`${nl} tower portal strut, level ${level}`] = `Level ${level} of four rectangular portals tying the two ${nl} tower legs together. The portals decrease in width as the stepped back tower rises ladderlike from the roadway. Portal sizes in the model are schematic.`;
-    EXPLANATIONS[`${nl} tower portal bracing, level ${level}`] = `Diagonal cross bracing inside the portal opening at level ${level}, tying the two ${nl} tower legs together against lateral loads. Bracing layout in the model is schematic.`;
     EXPLANATIONS[`${nl} tower fluted housing, level ${level}`] = `Wide vertical fluting is stamped into the steel plate housings covering the horizontal bracing struts at portal level ${level}. The fluting is pure Art Deco ornament on structural steel.`;
     if (tower.chevron) {
       EXPLANATIONS[`${nl} tower chevron ornament, level ${level}`] = `Chevron and fluting ornament in the Art Deco style dresses the south tower steelwork at portal level ${level}. Morrow shaped the decorative character of the whole bridge.`;
@@ -789,13 +665,6 @@ for (const side of ['east', 'west']) {
     EXPLANATIONS[`${sc.toLowerCase()} side span cable, ${end}`] = `The ${end} side span run of the ${side} main cable, from the tower saddle down to the anchorage. Each cable runs 7,650 ft from anchorage to anchorage.`;
     EXPLANATIONS[`${sc.toLowerCase()} wire bundle, ${end} anchorage`] = `Each cable is composed of 27,572 steel wires spun in place over the towers; the two cables together hold 80,000 miles of wire. This cutaway shows the cable opening into its wires before it is anchored. Wire packing in the model is schematic.`;
   }
-  const sl = side;
-  for (const [id, half] of [['main-span-south-half', 'south half of the main span'], ['main-span-north-half', 'north half of the main span']]) {
-    EXPLANATIONS[`${sl} main cable bands, ${half.split(' ')[0]} half`] = `Steel bands clamped around the ${sl} main cable at each suspender attachment in the ${half}. The bands carry the suspender sockets that grip the cable. Band positions follow the schematic suspender spacing.`;
-  }
-  for (const end of ['south', 'north']) {
-    EXPLANATIONS[`${sl} side span cable bands, ${end}`] = `Steel bands clamped around the ${sl} main cable at each suspender attachment along the ${end} side span. The bands carry the suspender sockets that grip the cable. Band positions follow the schematic suspender spacing.`;
-  }
 }
 for (const [, name] of SUSP_GROUPS) {
   EXPLANATIONS[name.toLowerCase()] = 'One of ten schematic suspender groups along the 6,450 ft suspended span. The roadway weight is hung from 250 pairs of vertical suspender ropes attached to the two main cables.';
@@ -812,10 +681,6 @@ EXPLANATIONS['lateral bracing retrofit, south half'] = 'In 1953 to 1954, lateral
 EXPLANATIONS['lateral bracing retrofit, north half'] = 'In 1953 to 1954, lateral and diagonal bracing was retrofitted to connect the lower chords of the two side trusses, stiffening the deck in torsion against wind. Bracing layout in the model is schematic.';
 EXPLANATIONS['diagonal bracing retrofit, south half'] = 'Diagonal bracing added in 1953 to 1954 ties the truss chords together against wind loads. Bracing layout in the model is schematic.';
 EXPLANATIONS['diagonal bracing retrofit, north half'] = 'Diagonal bracing added in 1953 to 1954 ties the truss chords together against wind loads. Bracing layout in the model is schematic.';
-EXPLANATIONS['floor beams, main span south half'] = 'Transverse floor beams under the roadway tie the two stiffening trusses together across the south half of the main span. The beams carry the deck loads into the truss chords. Beam layout in the model is schematic.';
-EXPLANATIONS['floor beams, main span north half'] = 'Transverse floor beams under the roadway tie the two stiffening trusses together across the north half of the main span. The beams carry the deck loads into the truss chords. Beam layout in the model is schematic.';
-EXPLANATIONS['floor beams, south side span'] = 'Transverse floor beams under the roadway tie the two stiffening trusses together across the south side span. The beams carry the deck loads into the truss chords. Beam layout in the model is schematic.';
-EXPLANATIONS['floor beams, north side span'] = 'Transverse floor beams under the roadway tie the two stiffening trusses together across the north side span. The beams carry the deck loads into the truss chords. Beam layout in the model is schematic.';
 EXPLANATIONS['main span roadway deck, south half'] = 'The 90 ft wide deck carries 6 lanes of US 101 and SR 1 and stands about 245 ft above the water. From 1982 to 1986 the original concrete deck was replaced in 747 sections with steel orthotropic panels 40 percent lighter. The deck split in the model is schematic.';
 EXPLANATIONS['main span roadway deck, north half'] = 'The 90 ft wide deck carries 6 lanes of US 101 and SR 1 and stands about 245 ft above the water. The deck split in the model is schematic.';
 EXPLANATIONS['south side span roadway deck'] = 'Side span decks continue the 90 ft roadway from the main span toward the anchorages. The deck split in the model is schematic.';
@@ -827,11 +692,6 @@ EXPLANATIONS['west walkway railing'] = 'Railing separating the west walkway from
 EXPLANATIONS['main span median barrier'] = 'A movable barrier divides the six lanes and is shifted several times daily to match traffic direction patterns. The barrier system was installed in January 2015.';
 EXPLANATIONS['south side span median barrier'] = 'The movable barrier continues over the south side span. It is shifted several times daily to match traffic direction patterns.';
 EXPLANATIONS['north side span median barrier'] = 'The movable barrier continues over the north side span. It is shifted several times daily to match traffic direction patterns.';
-EXPLANATIONS['lane markings, main span'] = 'Dashed lane dividers for the six lanes of US 101 and SR 1 across the main span. Dash length and spacing in the model are schematic.';
-EXPLANATIONS['lane markings, south side span'] = 'Dashed lane dividers for the six lanes of US 101 and SR 1 across the south side span. Dash length and spacing in the model are schematic.';
-EXPLANATIONS['lane markings, north side span'] = 'Dashed lane dividers for the six lanes of US 101 and SR 1 across the north side span. Dash length and spacing in the model are schematic.';
-EXPLANATIONS['deck expansion joint, south tower'] = 'Steel expansion joint at the south tower, absorbing deck movement as the 8,981 ft bridge expands and contracts. Joint geometry in the model is schematic.';
-EXPLANATIONS['deck expansion joint, north tower'] = 'Steel expansion joint at the north tower, absorbing deck movement as the 8,981 ft bridge expands and contracts. Joint geometry in the model is schematic.';
 for (const end of ['south', 'north']) {
   EXPLANATIONS[`${end} anchorage base plinth`] = `The concrete base where the ${end} cables are fixed at the end of the bridge. The bridge weighs 840 million lb, not counting the concrete anchorages. Anchorage geometry is schematic.`;
   EXPLANATIONS[`${end} anchorage main block`] = end === 'south'
@@ -842,19 +702,14 @@ for (const end of ['south', 'north']) {
 }
 EXPLANATIONS['fort point arch, east rib'] = 'A graceful steel arch spanning about 320 ft carries the roadway over Fort Point to the southern anchorage. Charles Ellis designed it as a bridge within a bridge to avoid demolishing the Civil War era fort below. Rib geometry is schematic.';
 EXPLANATIONS['fort point arch, west rib'] = 'A graceful steel arch spanning about 320 ft carries the roadway over Fort Point to the southern anchorage. Charles Ellis designed it as a bridge within a bridge to avoid demolishing the Civil War era fort below. Rib geometry is schematic.';
-EXPLANATIONS['fort point arch, east hangers'] = 'Steel hangers drop from the east arch rib to the roadway, carrying the deck over Fort Point. Hanger layout in the model is schematic.';
-EXPLANATIONS['fort point arch, west hangers'] = 'Steel hangers drop from the west arch rib to the roadway, carrying the deck over Fort Point. Hanger layout in the model is schematic.';
 EXPLANATIONS['fort point arch cross bracing'] = 'Cross bracing ties the two ribs of the Fort Point arch together. Bracing layout in the model is schematic.';
 EXPLANATIONS['south approach viaduct deck'] = 'Truss causeways carry the roadway from the anchorage to the toll plaza. The bridge is 8,981 ft long from abutment to abutment. Viaduct geometry is schematic.';
 EXPLANATIONS['south approach viaduct piers'] = 'Support piers under the southern approach viaduct. Pier geometry is schematic.';
-EXPLANATIONS['south approach viaduct cross bracing'] = 'Cross bracing between the southern approach viaduct piers stiffens the approach against lateral loads. Bracing layout in the model is schematic.';
 EXPLANATIONS['north approach viaduct deck'] = 'Truss causeways carry the roadway from the north anchorage toward the Marin abutment. Viaduct geometry is schematic.';
 EXPLANATIONS['north approach viaduct piers'] = 'Support piers under the northern approach viaduct. Pier geometry is schematic.';
-EXPLANATIONS['north approach viaduct cross bracing'] = 'Cross bracing between the northern approach viaduct piers stiffens the approach against lateral loads. Bracing layout in the model is schematic.';
 EXPLANATIONS['entrance pylons, south pair'] = 'Angular concrete pylons mark the entrance to the bridge. They belong to the bridge Art Deco styling.';
 EXPLANATIONS['entrance pylons, north pair'] = 'Angular concrete pylons mark the entrance to the bridge. They belong to the bridge Art Deco styling.';
-EXPLANATIONS['toll booths, east lanes'] = 'Toll booths on the east lanes at the southern end of the bridge. Tolls are collected southbound only. Booth count and layout in the model are schematic.';
-EXPLANATIONS['toll booths, west lanes'] = 'Toll booths on the west lanes at the southern end of the bridge. Tolls are collected southbound only. Booth count and layout in the model are schematic.';
+EXPLANATIONS['toll booths'] = 'Toll booths at the southern end of the bridge. Tolls are collected southbound only. Booth count and layout in the model are schematic.';
 EXPLANATIONS['toll plaza canopy'] = 'The toll plaza sits at the southern end of the bridge. Tolls are collected southbound only, and clearance at the toll gates is 14 ft. Canopy geometry is schematic.';
 EXPLANATIONS['toll plaza canopy columns'] = 'Columns supporting the toll plaza canopy. Column layout in the model is schematic.';
 EXPLANATIONS['art deco light standards, south approach'] = 'Morrow designed streamlined angled light standards for the roadway. They line the full 8,981 ft length. Light standard placement in the model is schematic.';
@@ -864,17 +719,6 @@ EXPLANATIONS['south tower foghorns'] = 'Two foghorns are mounted at the base of 
 EXPLANATIONS['under-deck traveler rail, main span'] = 'Under deck rails carry maintenance travelers for inspection and repair along the main span. The bridge is continuously maintained, with 38 painters keeping up the international orange paintwork. Rail layout in the model is schematic.';
 EXPLANATIONS['under-deck traveler rail, south side span'] = 'Under deck rails carry maintenance travelers for inspection and repair along the south side span. Rail layout in the model is schematic.';
 EXPLANATIONS['under-deck traveler rail, north side span'] = 'Under deck rails carry maintenance travelers for inspection and repair along the north side span. Rail layout in the model is schematic.';
-EXPLANATIONS['maintenance traveler cab, main span'] = 'A maintenance traveler cab hangs from the under deck rails along the main span, carrying painters and inspectors to the steelwork. The bridge is continuously maintained, with 38 painters keeping up the international orange paintwork. Traveler layout in the model is schematic.';
-EXPLANATIONS['maintenance traveler cab, south side span'] = 'A maintenance traveler cab hangs from the under deck rails along the south side span, carrying painters and inspectors to the steelwork. Traveler layout in the model is schematic.';
-EXPLANATIONS['maintenance traveler cab, north side span'] = 'A maintenance traveler cab hangs from the under deck rails along the north side span, carrying painters and inspectors to the steelwork. Traveler layout in the model is schematic.';
-
-// Sanity check: every part name must have an explanation keyed by its
-// lowercase name.
-for (const p of parts) {
-  if (!EXPLANATIONS[p.name.toLowerCase()]) {
-    throw new Error(`Missing explanation for part "${p.name}"`);
-  }
-}
 
 const atlas = {
   version: '1',
@@ -882,7 +726,7 @@ const atlas = {
   scope: 'Golden Gate Bridge, San Francisco',
   title: 'Golden Gate Bridge',
   location: 'San Francisco, USA',
-  blurb: 'A detailed procedural model of the 2,737 m Golden Gate Bridge: two 746 ft Art Deco towers, 7,650 ft main cables spun from 27,572 wires each, 250 suspender pairs with cable bands, the stiffening truss, the Fort Point arch, anchorages, toll plaza, and south tower foghorns.',
+  blurb: 'The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each.',
   sourceUrls: [
     { label: 'Golden Gate Bridge District: Facts and Figures', url: 'https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/' },
     { label: 'Wikipedia: Golden Gate Bridge', url: 'https://en.wikipedia.org/wiki/Golden_Gate_Bridge' },
@@ -906,9 +750,8 @@ const atlas = {
     bounds: r.bounds,
   })),
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
-  chunks: [{ url: '/models/golden-gate/golden-gate-0.bin', bytes: offset }],
+  chunks: [{ url: '/models/golden-gate-simple/golden-gate-simple-0.bin', bytes: offset }],
   triangles,
-  spread: 1.0,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
 

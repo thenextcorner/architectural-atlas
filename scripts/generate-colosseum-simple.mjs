@@ -1,26 +1,15 @@
-// Procedural Colosseum (Flavian Amphitheatre, Rome), DETAILED model for the
-// Architectural Atlas.
+// Procedural Colosseum (Flavian Amphitheatre, Rome) for the Architectural Atlas.
 //
 // Builds the COMPLETE ORIGINAL form as dedicated in AD 80 (not the ruin),
 // including Domitian's hypogeum and the wooden top gallery, and writes it in
-// the atlas binary format: public/models/colosseum/atlas.json +
-// public/models/colosseum/colosseum-0.bin (plus the top-level copy the
-// validator resolves).
-//
-// Sagrada-level granularity: 161 named parts across 11 systems, deepening the
-// simple model's 9 systems. New splits: facade bays in groups of 8 per tier,
-// the velarium as its own system (masts, rigging ropes, sail panels per
-// quadrant), numbered entrances per quadrant, the imperial passage, the
-// maenianum primum split into lower and upper rows, the podium bronze
-// balustrade, vomitoria split by tier junction, radial stairs per quadrant,
-// arena floor/sand/wall per quadrant, the hypogeum brick pavement, a small
-// ruin system (1349 collapse traces, 1807/1827 shoring wedges), and an iron
-// clamp material sample.
+// the atlas binary format: public/models/colosseum-simple/atlas.json +
+// public/models/colosseum-simple/colosseum-simple-0.bin
 //
 // Dimensions used (all from the research file
-// ~/workspace/architectural-atlas/research/colosseum-research.md and the
-// attribution file
-// ~/workspace/architectural-atlas/research/colosseum-attribution.md):
+// ~/workspace/architectural-atlas/research/colosseum-research.md, sourced from
+// Wikipedia, Ancient Rome Live / Platner's Topographical Dictionary, and
+// Structurae; the 2026-09-30 deepening pass re-read those three in full and
+// added thecolosseum.org and ancient-history-sites.com):
 //   outer ellipse 189 x 156 m, outer wall 48 m, perimeter 545 m,
 //   ground arch 7.05 m high / 4.20 m wide, piers 2.40 m, entablature 2.35 m (Doric),
 //   second arch 6.45 m, entablature 2.10 m, attic 1.95 m (Ionic),
@@ -29,21 +18,19 @@
 //   3 consoles between each pair of pilasters, 40 bronze clipea shields,
 //   velarium covered two thirds of the arena, worked by Misenum sailors,
 //   about 160 statues in the second and third arcades,
-//   80 hypogeum shafts, arena floor 83 x 48 m, arena wall 5 m, podium about 4 m
-//   with bronze balustrade, seating about 20 rows (primum) + about 16 rows (secundum),
-//   hypogeum walls 5.50-6.08 m on a brick pavement, inner walls 5.80 m / 4.50 m apart,
-//   pavement 17.50 m wide, cippi posts 18 m out (5 survive, east side),
-//   1349 earthquake collapsed the outer south side, surviving arches XXIII to LIV,
-//   triangular brick shoring wedges added 1807 and 1827,
-//   300 tons of iron clamps in the travertine shell,
-//   wide passage from the north entrance directly to the imperial box (pulvinar).
-// Plan geometry (true ellipse), seat widths, velarium fabric shape and rope
-// layout, exact cunei counts, grand staircase routing, imperial passage
-// routing, balustrade form, shoring wedge and fallen block positions, and the
-// detailed hypogeum room layout are schematic stand-ins and are not stated as
-// facts anywhere in the UI.
+//   80 hypogeum shafts, arena floor 83 x 48 m, arena wall 5 m, podium about 4 m,
+//   seating about 20 rows (primum) + about 16 rows (secundum),
+//   hypogeum walls 5.50-6.08 m, inner walls 5.80 m / 4.50 m apart,
+//   pavement 17.50 m wide, cippi posts 18 m out (5 survive, east side).
+// Plan geometry (true ellipse), seat widths, velarium fabric shape, exact
+// cunei counts, grand staircase routing, and the detailed hypogeum room layout
+// are schematic stand-ins and are not stated as facts anywhere in the UI.
 //
-// Usage: node scripts/generate-colosseum.mjs
+// Granularity: 128 named parts across 9 systems. Every explanation is either
+// a sourced fact (see ~/workspace/architectural-atlas/research/
+// colosseum-attribution.md) or explicitly marked schematic.
+//
+// Usage: node scripts/generate-colosseum-simple.mjs
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import fs from 'node:fs';
@@ -51,7 +38,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const outDir = path.join(here, '..', 'public', 'models', 'colosseum');
+const outDir = path.join(here, '..', 'public', 'models', 'colosseum-simple');
 fs.mkdirSync(outDir, { recursive: true });
 
 // Atlas units: 189 m (major axis) maps to 2.4 units.
@@ -144,25 +131,6 @@ function cylAt(r, h, x, y, z, seg = 10) {
   g.translate(x, y, z);
   return g;
 }
-function triPrism(w, h, d, x, y, z, yaw = 0) {
-  const s = new THREE.Shape();
-  s.moveTo(-w / 2, 0);
-  s.lineTo(w / 2, 0);
-  s.lineTo(-w / 2, h);
-  s.closePath();
-  const g = new THREE.ExtrudeGeometry(s, { depth: d, bevelEnabled: false });
-  g.translate(0, 0, -d / 2);
-  if (yaw) g.rotateY(yaw);
-  g.translate(x, y, z);
-  return g;
-}
-function blockAt(w, h, d, x, y, z, ry = 0, rz = 0) {
-  const g = new THREE.BoxGeometry(w, h, d);
-  if (rz) g.rotateZ(rz);
-  if (ry) g.rotateY(ry);
-  g.translate(x, y, z);
-  return g;
-}
 
 // ---------------------------------------------------------------- quadrants
 // World angles: x = a cos t, z = b sin t, z+ = south.
@@ -237,23 +205,23 @@ const CORNICE_H = 2.0;
 const parts = [];
 const addPart = (id, name, system, geoms) => parts.push({ id, name, system, geoms });
 
-// --- System: facade. 3 tiers x 10 bay groups of 8.
+// --- System: facade. 3 tiers x 8 bay groups of 10.
 const TIERS = [
   { key: 'ground', label: 'Ground arcade', order: 'Doric', t: T1 },
   { key: 'second', label: 'Second arcade', order: 'Ionic', t: T2 },
   { key: 'third', label: 'Third arcade', order: 'Corinthian', t: T3 },
 ];
 for (const tier of TIERS) {
-  for (let g = 0; g < 10; g++) {
+  for (let g = 0; g < 8; g++) {
     const geoms = [];
-    for (let i = g * 8; i < (g + 1) * 8; i++) {
+    for (let i = g * 10; i < (g + 1) * 10; i++) {
       const th = bayTheta(i);
       geoms.push(placeBay(bayGeom(tier.t.tierH, tier.t.arch), th, tier.t.y0));
       geoms.push(halfColumn(th, tier.t.y0, tier.t.arch, -3.3));
       geoms.push(halfColumn(th, tier.t.y0, tier.t.arch, 3.3));
     }
-    const a = g * 8 + 1;
-    const b = (g + 1) * 8;
+    const a = g * 10 + 1;
+    const b = (g + 1) * 10;
     addPart(
       `facade-${tier.key}-bays-${a}-${b}`,
       `${tier.label} bays ${a}-${b} (${tier.order})`,
@@ -263,7 +231,7 @@ for (const tier of TIERS) {
   }
 }
 
-// --- System: attic and crown.
+// --- System: attic, crown, velarium.
 for (const q of QUAD_ARCS) {
   const ql = q.name.toLowerCase();
   // Solid attic wall quarter + 20 flat Corinthian pilasters.
@@ -323,61 +291,31 @@ for (const q of QUAD_ARCS) {
   const ql = q.name.toLowerCase();
   // 60 velarium mast corbels per quadrant.
   const corbels = [];
+  // 60 velarium masts per quadrant.
+  const masts = [];
   for (let j = 0; j < 240; j++) {
     if (quadOfMast(j) !== q.name) continue;
     const ph = (j / 240) * Math.PI * 2;
     corbels.push(
       boxAt(0.9, 1.2, 0.9, 96.2 * Math.cos(ph), CORNICE_Y0 + CORNICE_H + 0.6, 79.5 * Math.sin(ph)),
     );
-  }
-  addPart(`attic-corbels-${ql}`, `${q.name} velarium mast corbels (60)`, 'attic', corbels);
-}
-
-// --- System: velarium awning.
-const MAST_TOP_Y = CORNICE_Y0 + CORNICE_H + 12.6; // 60.0
-const RING_Y = CORNICE_Y0 + CORNICE_H; // 47.4, canopy inner ring height
-const RING_A = 28; // canopy inner radius
-const RING_B = (28 * 78.5) / 95; // z-scaled inner radius
-for (const q of QUAD_ARCS) {
-  const ql = q.name.toLowerCase();
-  // 60 velarium masts per quadrant.
-  const masts = [];
-  // 60 rigging ropes per quadrant, mast top to central ring.
-  const ropes = [];
-  for (let j = 0; j < 240; j++) {
-    if (quadOfMast(j) !== q.name) continue;
-    const ph = (j / 240) * Math.PI * 2;
     masts.push(
       beam(
         96.2 * Math.cos(ph), CORNICE_Y0 + CORNICE_H, 79.5 * Math.sin(ph),
-        88 * Math.cos(ph), MAST_TOP_Y, 72.6 * Math.sin(ph),
+        88 * Math.cos(ph), CORNICE_Y0 + CORNICE_H + 12.6, 72.6 * Math.sin(ph),
         0.24,
       ),
     );
-    ropes.push(
-      beam(
-        88 * Math.cos(ph), MAST_TOP_Y, 72.6 * Math.sin(ph),
-        RING_A * Math.cos(ph), RING_Y, RING_B * Math.sin(ph),
-        0.08,
-      ),
-    );
   }
-  addPart(`velarium-masts-${ql}`, `${q.name} velarium masts (60)`, 'velarium', masts);
-  addPart(`velarium-ropes-${ql}`, `${q.name} velarium rigging ropes (60)`, 'velarium', ropes);
+  addPart(`attic-corbels-${ql}`, `${q.name} velarium mast corbels (60)`, 'attic', corbels);
+  addPart(`velarium-masts-${ql}`, `${q.name} velarium masts (60)`, 'attic', masts);
 }
 {
-  // Velarium canopy (schematic fabric), split into quadrant sail panels.
-  // Cylinder theta maps to world angle t by t = PI/2 - theta (x = r sin theta,
-  // z = r cos theta, then z-scaled), so the quadrant starts below place each
-  // shell in its world quadrant.
-  const SAIL_THETA = { se: 0, ne: Math.PI / 2, nw: Math.PI, sw: (3 * Math.PI) / 2 };
-  for (const q of QUAD_ARCS) {
-    const ql = q.name.toLowerCase();
-    const shell = new THREE.CylinderGeometry(28, 95, 9.4, 12, 1, true, SAIL_THETA[ql], Math.PI / 2);
-    shell.scale(1, 1, 78.5 / 95);
-    shell.translate(0, CORNICE_Y0 + CORNICE_H - 4.7, 0);
-    addPart(`velarium-sail-${ql}`, `${q.name} velarium sail panels`, 'velarium', [shell]);
-  }
+  // Velarium canopy (schematic fabric).
+  const fabric = new THREE.CylinderGeometry(28, 95, 9.4, 48, 1, true);
+  fabric.scale(1, 1, 78.5 / 95);
+  fabric.translate(0, CORNICE_Y0 + CORNICE_H - 4.7, 0);
+  addPart('velarium-canopy', 'Velarium canopy', 'attic', [fabric]);
 }
 {
   // Stylobate: raised two-step ring under the outer wall.
@@ -431,28 +369,18 @@ for (const [bay, id, name] of [
   geoms.push(boxAt(7.0, 1.4, 1.4, lnx, T1.y0 + 13.0, lnz, yaw));
   addPart(id, name, 'entrances', geoms);
 }
-for (const q of QUAD_ARCS) {
-  // 19 numbered spectator entrances per quadrant: recessed door panels in
-  // the ground arches (the 4 axial bays are excluded, 76 total).
+{
+  // 76 numbered spectator entrances: recessed door panels in the ground arches.
   const axialBays = new Set([0, 20, 40, 60]);
   const geoms = [];
   for (let i = 0; i < BAYS; i++) {
-    if (axialBays.has(i) || quadOfBay(i) !== q.name) continue;
+    if (axialBays.has(i)) continue;
     const th = bayTheta(i);
     const f = bayFrame(th);
     const [wx, wz] = f(0, WALL_T / 2 - 0.9);
     geoms.push(boxAt(3.6, 6.4, 0.15, wx, T1.y0 + 3.2, wz, Math.atan2(wx, wz)));
   }
-  addPart(`entrances-numbered-${q.name.toLowerCase()}`, `${q.name} numbered entrances (19)`, 'entrances', geoms);
-}
-{
-  // Wide passage from the northern imperial entrance to the imperial box.
-  // Schematic routing.
-  addPart('imperial-passage', 'Imperial passage to the pulvinar', 'entrances', [
-    boxAt(8, 0.5, 42, 0, 0.25, -55),
-    boxAt(1, 4, 42, -4.5, 2, -55),
-    boxAt(1, 4, 42, 4.5, 2, -55),
-  ]);
+  addPart('entrances-numbered', 'Numbered spectator entrances (76)', 'entrances', geoms);
 }
 function arenaGate(xSign, id, name) {
   const geoms = [];
@@ -472,18 +400,18 @@ function seatRowsArc(aStart, yStart, n, depth, rise, th0, th1) {
   let a = aStart;
   let y = yStart;
   for (let j = 0; j < n; j++) {
-    geoms.push(arcBand(a + depth, a, y, y + rise, th0, th1, KA, 16));
+    geoms.push(arcBand(a + depth, a, y, y + rise, th0, th1, KA, 20));
     a += depth;
     y += rise;
   }
   return geoms;
 }
-// Tier geometry: primum lower 51.5/4.2 + 10 x (1.1, 0.85), primum upper
-// 62.5/12.7 + 10 x (1.1, 0.85); secinf 73.5/21.2 + 8 x (1.0, 0.8);
-// secsup 81.5/27.6 + 8 x (1.0, 0.8); wooden 89.5/34.0 + 5 x (0.9, 0.7).
+// Tier geometry: primum 51.5/4.2 + 20 x (1.1, 0.85); secinf 73.5/21.2 + 8 x
+// (1.0, 0.8); secsup 81.5/27.6 + 8 x (1.0, 0.8); wooden 89.5/34.0 + 5 x
+// (0.9, 0.7). Ends: primum 73.5/21.2, secinf 81.5/27.6, secsup 89.5/34.0,
+// wooden 94.0/37.5.
 const SEAT_TIERS = [
-  { key: 'primum-lower', label: 'lower maenianum primum', a0: 51.5, y0: 4.2, n: 10, depth: 1.1, rise: 0.85 },
-  { key: 'primum-upper', label: 'upper maenianum primum', a0: 62.5, y0: 12.7, n: 10, depth: 1.1, rise: 0.85 },
+  { key: 'primum', label: 'maenianum primum', a0: 51.5, y0: 4.2, n: 20, depth: 1.1, rise: 0.85 },
   { key: 'secinf', label: 'maenianum secundum inferius', a0: 73.5, y0: 21.2, n: 8, depth: 1.0, rise: 0.8 },
   { key: 'secsup', label: 'maenianum secundum superius', a0: 81.5, y0: 27.6, n: 8, depth: 1.0, rise: 0.8 },
   { key: 'wooden', label: 'wooden gallery', a0: 89.5, y0: 34.0, n: 5, depth: 0.9, rise: 0.7 },
@@ -491,15 +419,6 @@ const SEAT_TIERS = [
 {
   // Podium ring for senators, about 4 m above the arena.
   addPart('podium', 'Podium ring', 'seating', [ellBand(51.5, 45.2, 0, 4.2, KA, 0, 72)]);
-}
-{
-  // Bronze balustrade fronting the senators podium. Schematic form.
-  const geoms = [ellBand(45.6, 0, 5.1, 5.3, KA, 0.14, 64)];
-  for (let k = 0; k < 64; k++) {
-    const ph = (k / 64) * Math.PI * 2;
-    geoms.push(cylAt(0.09, 1.0, 45.6 * Math.cos(ph), 4.7, 45.6 * KA * Math.sin(ph), 6));
-  }
-  addPart('podium-balustrade', 'Podium bronze balustrade', 'seating', geoms);
 }
 for (const tier of SEAT_TIERS) {
   for (const q of QUAD_ARCS) {
@@ -555,22 +474,22 @@ for (const tier of SEAT_TIERS) {
 
 // --- System: circulation.
 addPart('ambulatory-outer', 'Ground floor outer ambulatory', 'circulation', [
-  ellBand(93.15, 88.7, 0, 0.6, K, 0, 64),
+  ellBand(93.15, 88.7, 0, 0.6, K, 0, 96),
 ]);
 addPart('ambulatory-inner', 'Ground floor inner ambulatory', 'circulation', [
-  ellBand(86.7, 84.2, 0, 0.6, K, 0, 64),
+  ellBand(86.7, 84.2, 0, 0.6, K, 0, 96),
 ]);
 addPart('corridors-second-outer', 'Second floor outer corridor', 'circulation', [
-  ellBand(93.15, 88.7, 10.4, 11.0, K, 0, 64),
+  ellBand(93.15, 88.7, 10.4, 11.0, K, 0, 96),
 ]);
 addPart('corridors-second-inner', 'Second floor inner corridor', 'circulation', [
-  ellBand(86.7, 84.2, 10.4, 11.0, K, 0, 64),
+  ellBand(86.7, 84.2, 10.4, 11.0, K, 0, 96),
 ]);
 addPart('corridors-third-outer', 'Third floor outer corridor', 'circulation', [
-  ellBand(93.15, 88.7, 20.9, 21.5, K, 0, 64),
+  ellBand(93.15, 88.7, 20.9, 21.5, K, 0, 96),
 ]);
 addPart('corridors-third-inner', 'Third floor inner corridor', 'circulation', [
-  ellBand(86.7, 84.2, 20.9, 21.5, K, 0, 64),
+  ellBand(86.7, 84.2, 20.9, 21.5, K, 0, 96),
 ]);
 function grandStaircase(zSign) {
   // Monumental stair from the ground ambulatory (y=0) to the second floor
@@ -590,38 +509,36 @@ function grandStaircase(zSign) {
 addPart('grand-staircase-north', 'Grand staircase, north', 'circulation', grandStaircase(-1));
 addPart('grand-staircase-south', 'Grand staircase, south', 'circulation', grandStaircase(1));
 {
-  // Vomitoria: passage mouths in fours at the two main tier junctions,
-  // split into lower and upper sets.
-  const slope = (r) => 4.2 + (r - 51.5) * ((37.5 - 4.2) / (94.0 - 51.5));
-  const lower = [];
-  const upper = [];
-  for (let k = 0; k < 16; k++) {
-    const ph = (k / 16) * Math.PI * 2;
-    const mouth = (r, arr) =>
-      arr.push(
-        boxAt(2.4, 3.0, 0.6, r * Math.cos(ph), slope(r) + 0.6, r * KA * Math.sin(ph), Math.atan2(Math.cos(ph), KA * Math.sin(ph))),
-      );
-    mouth(73.5, lower);
-    mouth(81.5, upper);
-  }
-  addPart('vomitoria-lower', 'Lower vomitoria mouths (16)', 'circulation', lower);
-  addPart('vomitoria-upper', 'Upper vomitoria mouths (16)', 'circulation', upper);
-}
-for (const q of QUAD_ARCS) {
-  // 4 radial stair flights per quadrant climbing the cavea slope.
+  // Vomitoria: passage mouths in fours at the two main tier junctions.
   const geoms = [];
   const slope = (r) => 4.2 + (r - 51.5) * ((37.5 - 4.2) / (94.0 - 51.5));
-  for (let k = 0; k < 4; k++) {
-    const ph = q.th0 + ((k + 0.5) / 4) * (q.th1 - q.th0);
+  for (const r of [73.5, 81.5]) {
+    for (let k = 0; k < 16; k++) {
+      const ph = (k / 16) * Math.PI * 2;
+      geoms.push(
+        boxAt(2.4, 3.0, 0.6, r * Math.cos(ph), slope(r) + 0.6, r * KA * Math.sin(ph), Math.atan2(Math.cos(ph), KA * Math.sin(ph))),
+      );
+    }
+  }
+  addPart('vomitoria', 'Vomitoria passages', 'circulation', geoms);
+}
+{
+  // Radial stair flights climbing the cavea slope.
+  const geoms = [];
+  const slope = (r) => 4.2 + (r - 51.5) * ((37.5 - 4.2) / (94.0 - 51.5));
+  for (let k = 0; k < 16; k++) {
+    const ph = ((k + 0.5) / 16) * Math.PI * 2;
+    const r1 = 54;
+    const r2 = 91;
     geoms.push(
       beam(
-        54 * Math.cos(ph), slope(54) + 0.25, 54 * KA * Math.sin(ph),
-        91 * Math.cos(ph), slope(91) + 0.25, 91 * KA * Math.sin(ph),
+        r1 * Math.cos(ph), slope(r1) + 0.25, r1 * KA * Math.sin(ph),
+        r2 * Math.cos(ph), slope(r2) + 0.25, r2 * KA * Math.sin(ph),
         1.5, 0.25,
       ),
     );
   }
-  addPart(`radial-stairs-${q.name.toLowerCase()}`, `${q.name} radial stair flights (4)`, 'circulation', geoms);
+  addPart('radial-stairs', 'Radial stair flights', 'circulation', geoms);
 }
 
 // --- System: support structure.
@@ -681,19 +598,11 @@ for (const q of QUAD_ARCS) {
 const KARENA = 55 / 87;
 for (const q of QUAD_ARCS) {
   addPart(`arena-floor-${q.name.toLowerCase()}`, `${q.name} arena floor planks`, 'arena', [
-    arcDisc(41.5, 0, 0.4, q.th0, q.th1, KARENA, 18),
+    arcDisc(41.5, 0, 0.4, q.th0, q.th1, KARENA, 24),
   ]);
 }
-for (const q of QUAD_ARCS) {
-  addPart(`arena-sand-${q.name.toLowerCase()}`, `${q.name} arena sand surface`, 'arena', [
-    arcDisc(41.5, 0.4, 0.55, q.th0, q.th1, KARENA, 18),
-  ]);
-}
-for (const q of QUAD_ARCS) {
-  addPart(`arena-wall-${q.name.toLowerCase()}`, `${q.name} arena wall section`, 'arena', [
-    arcBand(45.2, 43.5, 0, 5, q.th0, q.th1, KARENA, 18),
-  ]);
-}
+addPart('arena-sand', 'Arena sand surface', 'arena', [ellDisc(41.5, 0.4, 0.55, KARENA, 72)]);
+addPart('arena-wall', 'Arena wall', 'arena', [ellBand(45.2, 43.5, 0, 5, KARENA, 0, 72)]);
 addPart('arena-fence', 'Arena fence', 'arena', [
   ellBand(44.3, 43.5, 5, 6.0, KARENA, 0, 72),
 ]);
@@ -819,34 +728,6 @@ for (const q of QUAD_ARCS) {
     boxAt(3.5, 3, 60, 35, -4.5, 0),
   ]);
 }
-{
-  // Brick pavement under the hypogeum substructure walls.
-  addPart('hypogeum-brick-pavement', 'Hypogeum brick pavement', 'hypogeum', [
-    ellDisc(58, -6.2, -6.0, KARENA, 48),
-  ]);
-}
-
-// --- System: ruin and restoration. Later history shown against the complete
-// AD 80 form; positions are schematic.
-{
-  // Fallen travertine blocks from the outer south arcades, collapsed in the
-  // earthquake of 1349, shown displaced on the pavement south of the building.
-  const geoms = [
-    blockAt(6, 2.4, 3, 18, 1.2, 86, 0.3, 0),
-    blockAt(5, 2.4, 3, 8, 1.2, 90, -0.2, 0.06),
-    blockAt(7, 2.4, 3.4, -4, 1.2, 85, 0.15, -0.05),
-    blockAt(4.5, 2.4, 3, -14, 3.4, 89, 0.5, 0.1),
-    blockAt(6, 2.4, 3, -14, 1.2, 89, 0.1, 0),
-    blockAt(5.5, 2, 3, 28, 1.0, 83, -0.35, 0),
-  ];
-  addPart('ruin-collapsed-south-blocks', 'Collapsed south wall, fallen blocks', 'ruin', geoms);
-}
-addPart('ruin-shoring-1807', '1807 brick shoring wedge', 'ruin', [
-  triPrism(10, 14, 7, 66, 0, 62, -0.6),
-]);
-addPart('ruin-shoring-1827', '1827 brick shoring wedge', 'ruin', [
-  triPrism(10, 14, 7, -66, 0, 62, 0.6),
-]);
 
 // --- System: materials. Representative samples on the ground, south side.
 const MAT_Z = 100;
@@ -873,49 +754,39 @@ addPart('mat-marble', 'Marble seat sample', 'materials', [
   boxAt(4, 0.6, 1.6, 30, 0.9, MAT_Z - 0.4),
   boxAt(4, 0.6, 0.9, 30, 1.5, MAT_Z - 0.75),
 ]);
-addPart('mat-iron-clamps', 'Iron clamp sample', 'materials', [
-  boxAt(4, 1.2, 2, 50, 0.6, MAT_Z),
-  boxAt(4, 1.2, 2, 50, 1.8, MAT_Z),
-  boxAt(0.18, 0.5, 2.2, 48.8, 1.2, MAT_Z),
-  boxAt(0.18, 0.5, 2.2, 51.2, 1.2, MAT_Z),
-  boxAt(2.2, 0.18, 0.5, 50, 2.5, MAT_Z),
-]);
 
 // ---------------------------------------------------------------- metadata
-// Schematic travertine-and-marble palette, kept light like the simple model;
-// only the Eiffel Tower is dark.
+// Schematic travertine-and-marble palette; only the Eiffel Tower is dark.
 const SYSTEMS = [
-  { id: 'facade', name: 'Outer Facade Arcades', color: '#E3CF9F', description: 'Eighty travertine bays in three superimposed orders, Doric below, Ionic in the middle, Corinthian above, grouped ten ways per tier.' },
-  { id: 'attic', name: 'Attic and Crown', color: '#C69A5B', description: 'The solid attic story with Corinthian pilasters and windows, the crowning cornice, and the 240 mast corbels of the velarium.' },
-  { id: 'velarium', name: 'Velarium Awning', color: '#EFE3C2', description: 'Masts, rigging ropes, and canvas sail panels of the retractable awning that shaded the crowd, worked by sailors from Misenum.' },
-  { id: 'entrances', name: 'Main Entrances', color: '#9C6B4F', description: 'Four unnumbered axial entrances, 76 numbered spectator entrances, and the imperial passage to the pulvinar.' },
-  { id: 'seating', name: 'Seating Cavea', color: '#EDEDED', description: 'Tiered marble seating for about 50,000 spectators, strictly ordered by class, from the senators podium to the wooden top gallery.' },
-  { id: 'circulation', name: 'Circulation', color: '#8E9AA8', description: 'Annular corridors, vomitoria, and stairs that filled and emptied the building in a few minutes.' },
-  { id: 'support', name: 'Support Structure', color: '#A9503C', description: 'Radial and annular walls, inner wall rings, and the travertine pressure skeleton carrying the cavea.' },
-  { id: 'arena', name: 'Arena', color: '#D9A441', description: 'The wooden sand covered floor, its 5 m surrounding wall, the protective fence, and the marble passage.' },
-  { id: 'hypogeum', name: 'Hypogeum', color: '#6F6459', description: 'The subterranean two level network of corridors, chambers, animal dens, and lifting machinery beneath the arena.' },
-  { id: 'ruin', name: 'Ruin and Restoration', color: '#B08968', description: 'Later history against the complete form: the 1349 earthquake collapse of the south outer wall and the 19th century brick shoring.' },
-  { id: 'materials', name: 'Materials', color: '#5D7A8C', description: 'Representative samples of the building materials: travertine, brick faced concrete, tuff, marble, and iron clamps.' },
+  { id: 'facade', name: 'Outer Facade', color: '#E3CF9F', description: 'Travertine arcade tiers: Doric, Ionic, and Corinthian bays around the full ellipse.' },
+  { id: 'attic', name: 'Attic and Velarium', color: '#C69A5B', description: 'Upper attic story, crowning cornice, and the retractable velarium awning.' },
+  { id: 'entrances', name: 'Main Entrances', color: '#9C6B4F', description: 'Four unnumbered axial entrances and 76 numbered spectator entrances.' },
+  { id: 'seating', name: 'Seating Cavea', color: '#EDEDED', description: 'Tiered marble seating for about 50,000 spectators, strictly ordered by class.' },
+  { id: 'circulation', name: 'Circulation', color: '#8E9AA8', description: 'Annular corridors, vomitoria, and stairs that moved the crowd.' },
+  { id: 'support', name: 'Support Structure', color: '#A9503C', description: 'Radial and annular walls carrying the cavea.' },
+  { id: 'arena', name: 'Arena', color: '#D9A441', description: 'Wooden sand covered floor and its surrounding wall.' },
+  { id: 'hypogeum', name: 'Hypogeum', color: '#6F6459', description: "Domitian's subterranean tunnels, cages, and lifting machinery." },
+  { id: 'materials', name: 'Materials', color: '#5D7A8C', description: "Representative samples of the building's key materials." },
 ];
 const EXPLANATIONS = {
   'bronze shields (clipea)': 'Bronze shields (clipea) fixed in the spaces between the attic pilasters, directly beneath the uppermost cornice. Their exact positions are schematic.',
-  'entablature and cornice': 'Entablatures of 2.35 m and 2.10 m and attic bands of 1.95 m and 2.10 m separate the tiers; the crowning cornice carried the mast sockets of the velarium.',
+  'velarium canopy': 'The velarium was a canvas covered, net like structure made of ropes with a hole in the center. It covered two thirds of the arena and sloped down toward the center to catch the wind and give the audience a breeze. The fabric shape is schematic.',
   'stylobate base ring': 'The outer wall stands on a raised two step travertine stylobate.',
   'travertine pavement and cippi': 'A 17.50 m wide travertine pavement surrounds the building; five stone cippi posts still stand on the east side, 18 m out from the perimeter.',
+  'entablature and cornice': 'Entablatures of 2.35 m and 2.10 m and attic bands of 1.95 m and 2.10 m separate the tiers; the crowning cornice carried the mast sockets of the velarium.',
   'north axial entrance portal': 'The northern axial entrance was reserved for the Roman Emperor and his aides. Its arches were wider and more highly ornamented than the rest, and a wide passage led from it directly to the imperial box (pulvinar) on the podium.',
   'north entrance arch': 'The decorated arch framing the northern imperial entrance. All four axial entrances were richly decorated with painted stucco reliefs, of which fragments survive.',
   'south axial entrance portal': 'The southern axial entrance, at the south end of the minor axis, served the imperial family. Like the northern entrance, its arches were wider and more highly ornamented than the rest.',
   'south entrance arch': 'The decorated arch framing the southern imperial entrance, richly decorated with painted stucco reliefs like the other three axial entrances.',
   'east axial entrance': 'The major axis entrances led directly into the arena, admitting processions and equipment.',
   'west axial entrance': 'The western major axis entrance led directly into the arena.',
-  'imperial passage to the pulvinar': 'A wide passage led from the northern imperial entrance directly to the imperial box (pulvinar) on the podium. Its routing is schematic.',
+  'numbered spectator entrances (76)': '76 of the 80 ground arches were numbered entrances for ordinary spectators; entrances XXIII to LIIII still survive on the north side.',
   'porta triumphalis (east arena gate)': 'The Porta Triumphalis, the eastern gate of the arena at the end of the major axis, through which gladiators and wild animals entered and by which victorious combatants departed.',
   'porta libitinensis (west arena gate)': 'The Porta Libitinensis, the western gate of the arena, through which the mortally wounded and the dead were carried out.',
-  'podium ring': 'Senators sat on a marble podium raised about 4 m above the arena, fronted by a bronze balustrade.',
-  'podium bronze balustrade': 'A bronze balustrade fronted the senators marble podium above the arena. Its form is schematic.',
+  'podium ring': "Senators sat on a marble podium raised about 4 m above the arena, fronted by a bronze balustrade.",
   'imperial box (pulvinar)': 'The pulvinar, the imperial box, on the podium at the north end of the minor axis, reached by a wide passage from the northern entrance.',
   'imperial box canopy': 'The canopy sheltering the imperial box (pulvinar). Its form is schematic.',
-  'box of the praefectus urbi': 'The prefect of the city had his own box on the podium, opposite the imperial box.',
+  'box of the praefectus urbi': "The prefect of the city had his own box on the podium, opposite the imperial box.",
   'roof standing room': 'About 5,000 of the poorest spectators, the pullati, stood on the flat roof behind a 5 m colonnaded wall.',
   'praecinctiones and baltei': 'Horizontal walkways (praecinctiones) and low parapet walls (baltei) divided the seating tiers by social class.',
   'ground floor outer ambulatory': 'The outer of two lofty arched corridors encircling the building at ground level between the outer wall and the third wall.',
@@ -926,59 +797,54 @@ const EXPLANATIONS = {
   'third floor inner corridor': 'The inner corridor of the third story, with ingeniously arranged flights of steps leading to the topmost story and the upper part of the second tier of seats.',
   'grand staircase, north': 'A monumental stair near the northern axial entrance, connecting the ground floor ambulatory with the upper corridors. Its exact form and routing are schematic.',
   'grand staircase, south': 'A monumental stair near the southern axial entrance, connecting the ground floor ambulatory with the upper corridors. Its exact form and routing are schematic.',
-  'lower vomitoria mouths (16)': 'Sixteen vomitoria mouths at the junction between the maenianum primum and the maenianum secundum. Stair passages arranged in fours could disgorge the crowd in only a few minutes. Positions are schematic.',
-  'upper vomitoria mouths (16)': 'Sixteen vomitoria mouths at the junction between the maenianum secundum and the wooden gallery. Stair passages arranged in fours could disgorge the crowd in only a few minutes. Positions are schematic.',
+  'vomitoria passages': 'Stair passages were arranged in fours and could disgorge the crowd in only a few minutes; the name vomitoria comes from this spewing forth.',
+  'radial stair flights': 'Radial stair flights climbed the cavea slope between the wedge shaped seating sections.',
   'inner annular support wall': 'The inner of the concentric annular walls tying the radial walls together beneath the seating slope. Its exact radius is schematic.',
   'outer annular support wall': 'The outer of the concentric annular walls tying the radial walls together beneath the seating slope. Its exact radius is schematic.',
   'second inner wall': 'The second inner wall stands 5.80 m inside the outer wall.',
   'third inner wall': 'The third inner wall stands 4.50 m inside the second.',
+  'arena sand surface': 'The sand (harena, the origin of the word arena) strewn over the wooden arena floor. The surface is schematic.',
+  'arena wall': 'A 5 m high wall ringed the arena, above which the seating rose.',
   'arena fence': 'A fence built to protect the spectators from the attacks of the wild beasts, running all round the arena.',
-  'marble passage behind the fence': 'A narrow marble paved passage behind the arena fence, below the senators podium.',
+  'marble passage behind the fence': "A narrow marble paved passage behind the arena fence, below the senators' podium.",
   'hypogeum central corridor': 'The central gallery of the hypogeum, running along the major axis between substructure walls 5.50 to 6.08 m high standing on a brick pavement.',
   'north hypogeum chambers': 'North side chambers of the hypogeum, where gladiators and animals were held before contests. The internal room layout is a simplified schematic grid.',
   'south hypogeum chambers': 'South side chambers of the hypogeum, where gladiators and animals were held before contests. The internal room layout is a simplified schematic grid.',
   'north animal dens': 'North dens for wild beasts in the hypogeum substructures. Their exact positions are schematic.',
   'south animal dens': 'South dens for wild beasts in the hypogeum substructures. Their exact positions are schematic.',
-  'east gladiator passage': "East gladiator passage: the hypogeum held gladiators before contests, and tunnels linked it to the outside, including the gladiators barracks at the Ludus Magnus to the east. Passage routing is schematic.",
+  'east gladiator passage': "East gladiator passage: the hypogeum held gladiators before contests, and tunnels linked it to the outside, including the gladiators' barracks at the Ludus Magnus to the east. Passage routing is schematic.",
   'west gladiator passage': 'West gladiator passage: the hypogeum held gladiators before contests, and tunnels linked it to points outside the building. Passage routing is schematic.',
   'lower tunnel corridors': "The lower level corridors of Domitian's two level subterranean tunnel network.",
   'tunnel connecting ramps': 'Ramps connecting the two levels of the hypogeum tunnel network. Their exact routing is schematic.',
   'elevator winch drums': 'Slave powered winch drums that worked the elevators and trapdoors of the hypogeum.',
   'pulley rigging posts': 'Elevators and pulleys that raised and lowered scenery, props, and caged animals to the surface for release.',
-  'east hegmata platforms': 'East hinged hegmata platforms, which tilted up through trapdoors to deliver animals, scenery, and even elephants to the arena.',
-  'west hegmata platforms': 'West hinged hegmata platforms, which tilted up through trapdoors to deliver animals, scenery, and even elephants to the arena.',
   'major axis subterranean passage': 'A subterranean passage on the line of the major axis, by which the hypogeum substructures were entered.',
   'minor axis subterranean passage': 'A subterranean passage on the line of the minor axis, by which the hypogeum substructures were entered.',
   'cryptoporticus of commodus': 'The cryptoporticus of Commodus was a vaulted underground passage linking the imperial areas to the arena.',
-  'hypogeum brick pavement': 'The hypogeum substructure walls stand 5.50 to 6.08 m high on a brick pavement, shown here beneath the tunnel network.',
-  'collapsed south wall, fallen blocks': 'Fallen travertine blocks from the outer south arcades, which collapsed in the earthquake of 1349. They are shown displaced on the pavement for reference; the rest of the model shows the complete building as dedicated in AD 80.',
-  '1807 brick shoring wedge': 'Triangular brick wedge added in 1807 to shore the broken ends of the surviving arcades after the 1349 earthquake collapsed the south outer wall. Its position is schematic; the rest of the model shows the complete building as dedicated in AD 80.',
-  '1827 brick shoring wedge': 'Triangular brick wedge added in 1827 to shore the broken ends of the surviving arcades after the 1349 earthquake collapsed the south outer wall. Its position is schematic; the rest of the model shows the complete building as dedicated in AD 80.',
   'travertine block sample': 'The outer wall used over 100,000 cubic meters of travertine set without mortar, held by 300 tons of iron clamps. Representative sample shown.',
   'brick faced concrete sample': 'Inner walls are concrete with and without brick facing. Representative sample shown.',
   'tuff and sperone sample': 'Tuff and sperone, volcanic stones, were used in the lower parts of the inner walls. Representative sample shown.',
-  'marble seat sample': 'Marble faced the seats of the cavea and the podium. Representative sample shown.',
-  'iron clamp sample': 'The travertine blocks of the outer wall were set without mortar and locked with 300 tons of iron clamps. Representative sample shown.',
+  'marble seat sample': "Marble faced the seats of the cavea and the podium. Representative sample shown.",
 };
-// Facade bay groups: 10 groups of 8 per tier, with axial-bay notes on the
-// ground tier (axial bays 1, 21, 41, 61 fall in groups 1-8, 17-24, 41-48, 57-64).
+// Facade bay groups: 8 groups of 10 per tier, with axial-bay notes on the
+// ground tier.
 const AXIAL_NOTE = {
-  '1-8': ' It includes the unnumbered eastern axial bay, which led directly into the arena.',
-  '17-24': ' It includes the unnumbered southern axial bay, reserved for the imperial family, with wider and more highly ornamented arches.',
-  '41-48': ' It includes the unnumbered western axial bay, which led directly into the arena.',
-  '57-64': ' It includes the unnumbered northern axial bay, reserved for the Emperor and his aides.',
+  '1-10': ' It includes the unnumbered eastern axial bay, which led directly into the arena.',
+  '21-30': ' It includes the unnumbered southern axial bay, reserved for the imperial family with wider and more ornamented arches.',
+  '41-50': ' It includes the unnumbered western axial bay, which led directly into the arena.',
+  '61-70': ' It includes the unnumbered northern axial bay, reserved for the Emperor and his aides.',
 };
-for (let g = 0; g < 10; g++) {
-  const a = g * 8 + 1;
-  const b = (g + 1) * 8;
+for (let g = 0; g < 8; g++) {
+  const a = g * 10 + 1;
+  const b = (g + 1) * 10;
   EXPLANATIONS[`ground arcade bays ${a}-${b} (doric)`] =
-    `Ground arcade bays ${a}-${b} (Doric): arches 7.05 m high and 4.20 m wide on 2.40 m piers, framed by engaged Doric columns. Eight of the eighty ground floor bays.${AXIAL_NOTE[`${a}-${b}`] || ''}`;
+    `Ground arcade bays ${a}-${b} (Doric): arches 7.05 m high and 4.20 m wide on 2.40 m piers, framed by engaged Doric columns. Ten of the eighty ground floor bays.${AXIAL_NOTE[`${a}-${b}`] || ''}`;
   EXPLANATIONS[`second arcade bays ${a}-${b} (ionic)`] =
-    `Second arcade bays ${a}-${b} (Ionic): arches 6.45 m high under a 2.10 m entablature, framed by Ionic half columns. Eight of the eighty bays; the second and third arcades together once framed about 160 statues of divinities and mythological figures.`;
+    `Second arcade bays ${a}-${b} (Ionic): arches 6.45 m high under a 2.10 m entablature, framed by Ionic half columns. Ten of the eighty bays; the second and third arcades together once framed about 160 statues of divinities and mythological figures.`;
   EXPLANATIONS[`third arcade bays ${a}-${b} (corinthian)`] =
-    `Third arcade bays ${a}-${b} (Corinthian): arches 6.40 m high in the Corinthian order. Eight of the eighty bays.`;
+    `Third arcade bays ${a}-${b} (Corinthian): arches 6.40 m high in the Corinthian order. Ten of the eighty bays.`;
 }
-// Attic and velarium quadrants.
+// Attic quadrants.
 for (const q of ['NE', 'NW', 'SE', 'SW']) {
   const ql = q.toLowerCase();
   EXPLANATIONS[`${ql} attic pilaster bays`] =
@@ -988,18 +854,11 @@ for (const q of ['NE', 'NW', 'SE', 'SW']) {
   EXPLANATIONS[`${ql} velarium mast corbels (60)`] =
     `${q} velarium mast corbels: sixty of the 240 stone corbels ringed around the top of the attic, three socketed consoles between each pair of pilasters, carrying the masts of the retractable velarium.`;
   EXPLANATIONS[`${ql} velarium masts (60)`] =
-    `${q} velarium masts: sixty of the 240 masts that carried the retractable canvas awning, worked by sailors specially enlisted from the naval headquarters at Misenum. Mast angles are schematic; the rigging ropes are shown as a separate part.`;
-  EXPLANATIONS[`${ql} velarium rigging ropes (60)`] =
-    `${q} velarium rigging ropes: sixty ropes running from the mast tops to the central ring, carrying the canvas panels in a net like structure with a hole in the center. Rope layout is schematic.`;
-  EXPLANATIONS[`${ql} velarium sail panels`] =
-    `${q} velarium sail panels: canvas panels of the retractable awning. The velarium covered two thirds of the arena, and the sailors who worked it were housed in the nearby Castra Misenatium. The fabric shape is schematic.`;
-  EXPLANATIONS[`${ql} numbered entrances (19)`] =
-    `${q} numbered entrances: nineteen of the 76 numbered ground floor entrances for ordinary spectators. Entrances XXIII to LIIII still survive on the north side. Door panels are schematic.`;
+    `${q} velarium masts: sixty of the 240 masts that carried the retractable canvas awning, worked by sailors specially enlisted from the naval headquarters at Misenum. Mast angles and rigging are schematic.`;
 }
 // Seating wedge quadrants.
 const SEAT_EXPL = {
-  'primum-lower': (q) => `${q} wedges of the lower maenianum primum: the lower half of about 20 rows of marble covered seats reserved for the knightly class (equites). The seating was divided into wedge shaped sections (cunei) by steps and aisles, and each seat could be designated by its row, wedge, and number. The four way split is schematic.`,
-  'primum-upper': (q) => `${q} wedges of the upper maenianum primum: the upper half of about 20 rows of marble covered seats reserved for the knightly class (equites). The four way split is schematic.`,
+  primum: (q) => `${q} wedges of the maenianum primum: about 20 rows of marble covered seats reserved for the knightly class (equites). The seating was divided into wedge shaped sections (cunei) by steps and aisles, and each seat could be designated by its row, wedge, and number. The four way split is schematic.`,
   secinf: (q) => `${q} wedges of the maenianum secundum inferius: the lower half of the middle tier, about 8 of its 16 rows, for wealthy citizens. The four way split is schematic.`,
   secsup: (q) => `${q} wedges of the maenianum secundum superius: the upper half of the middle tier, for poor citizens. The four way split is schematic.`,
   wooden: (q) => `${q} wedges of the wooden top gallery (maenianum summum in ligneis), added by Domitian for the common poor, slaves, and women. The four way split is schematic.`,
@@ -1014,14 +873,8 @@ for (const q of ['NE', 'NW', 'SE', 'SW']) {
   const ql = q.toLowerCase();
   EXPLANATIONS[`${ql} radial support walls (20)`] =
     `${q} radial support walls: twenty of the eighty radiating walls that matched the lower arcade piers in number and carried the sloping cavea floor with its marble seats.`;
-  EXPLANATIONS[`${ql} radial stair flights (4)`] =
-    `${q} radial stair flights: four flights climbing the cavea slope between the wedge shaped seating sections. Positions are schematic.`;
   EXPLANATIONS[`${ql} arena floor planks`] =
     `${q} planks of the wooden arena floor, 83 by 48 m, resting on the hypogeum substructures and strewn with sand. The quadrant split is schematic.`;
-  EXPLANATIONS[`${ql} arena sand surface`] =
-    `The sand (harena, the origin of the word arena) strewn over the ${q} quarter of the wooden arena floor. The quadrant split is schematic.`;
-  EXPLANATIONS[`${ql} arena wall section`] =
-    `The ${q} section of the 5 m high wall that ringed the arena, above which the seating rose.`;
   EXPLANATIONS[`${ql} vertical shafts (20)`] =
     `${q} vertical shafts: twenty of the eighty shafts that gave caged animals and scenery instant access to the arena floor.`;
 }
@@ -1029,6 +882,10 @@ EXPLANATIONS['east travertine pressure skeleton'] =
   "East half of Vespasian's inner travertine skeleton, which carried the greatest structural loads and rose no higher than the second story. Column positions are schematic.";
 EXPLANATIONS['west travertine pressure skeleton'] =
   "West half of Vespasian's inner travertine skeleton, which carried the greatest structural loads and rose no higher than the second story. Column positions are schematic.";
+EXPLANATIONS['east hegmata platforms'] =
+  'East hinged hegmata platforms, which tilted up through trapdoors to deliver animals, scenery, and even elephants to the arena.';
+EXPLANATIONS['west hegmata platforms'] =
+  'West hinged hegmata platforms, which tilted up through trapdoors to deliver animals, scenery, and even elephants to the arena.';
 
 // ---------------------------------------------------------------- serialize
 for (const p of parts) {
@@ -1097,10 +954,10 @@ for (const r of records) {
   r.nor.copy(buffer, r.norOff);
   r.idx.copy(buffer, r.idxOff);
 }
-fs.writeFileSync(path.join(outDir, 'colosseum-0.bin'), buffer);
+fs.writeFileSync(path.join(outDir, 'colosseum-simple-0.bin'), buffer);
 // The repo's validate-atlas.mjs resolves chunk files against public/models/
 // (basename only), so keep a copy there too; the app uses the chunk url below.
-fs.copyFileSync(path.join(outDir, 'colosseum-0.bin'), path.join(outDir, '..', 'colosseum-0.bin'));
+fs.copyFileSync(path.join(outDir, 'colosseum-simple-0.bin'), path.join(outDir, '..', 'colosseum-simple-0.bin'));
 
 const explanations = {};
 for (const r of records) explanations[r.part.name.toLowerCase()] = EXPLANATIONS[r.part.name.toLowerCase()];
@@ -1111,7 +968,8 @@ const atlas = {
   scope: 'Colosseum, Rome',
   title: 'Colosseum',
   location: 'Rome, Italy',
-  blurb: `The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore ${records.length} components across ${SYSTEMS.length} systems: eighty arcade bays in three classical orders, the velarium rigging, 76 numbered entrances, class ordered seating for about 50,000, and the subterranean machinery of the arena.`,
+  blurb:
+    "The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore 128 components across 9 systems, from the 80 travertine arches to the 240 velarium mast corbels.",
   sourceUrls: [
     { label: 'Colosseum, Wikipedia', url: 'https://en.wikipedia.org/wiki/Colosseum' },
     {
@@ -1138,9 +996,8 @@ const atlas = {
     bounds: r.bounds,
   })),
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
-  chunks: [{ url: '/models/colosseum/colosseum-0.bin', bytes: offset }],
+  chunks: [{ url: '/models/colosseum-simple/colosseum-simple-0.bin', bytes: offset }],
   triangles,
-  spread: 1.4,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
 

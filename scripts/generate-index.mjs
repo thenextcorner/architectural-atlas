@@ -81,6 +81,54 @@ const VARIANTS={
   {id:'detailed',label:'Detailed',slug:'pyramid-of-the-sun',
    blurb:'The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD. Explore {parts} named components across {systems} systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city.'},
  ],
+ 'tower':[
+  {id:'simple',label:'Simple',slug:'tower-simple',
+   blurb:'The 330 m wrought iron lattice tower on the Champ de Mars in Paris, built for the 1889 Exposition Universelle, in simplified schematic form. Explore {parts} named components across {systems} systems, from the four lattice legs and their foundations to the three visitor platforms and the summit crown.'},
+  {id:'detailed',label:'Detailed',slug:'tower',
+   blurb:'The 330 m wrought iron lattice tower on the Champ de Mars in Paris, built for the 1889 Exposition Universelle. Explore {parts} named components across {systems} systems, from the lattice legs, elevators and hydraulic machinery to the restaurants, the 72-name frieze, the sparkling illumination and the summit broadcasting aerials.'},
+ ],
+ 'colosseum':[
+  {id:'simple',label:'Simple',slug:'colosseum-simple',
+   blurb:'The Colosseum in Rome, the largest ancient amphitheatre ever built, in simplified schematic form. Explore {parts} named components across {systems} systems, from the travertine arcades and the velarium awning to the cavea seating, the arena and the hypogeum tunnels below.'},
+  {id:'detailed',label:'Detailed',slug:'colosseum',
+   blurb:'The Colosseum in Rome, the largest ancient amphitheatre ever built, inaugurated in AD 80 and seating about 50,000 spectators. Explore {parts} named components across {systems} systems, from the tier-by-tier arcade bays and the velarium rigging to the cavea wedges, the arena, the hypogeum machinery and the 1349 collapse ruins.'},
+ ],
+ 'white-house':[
+  {id:'simple',label:'Simple',slug:'white-house-simple',
+   blurb:'The White House in Washington, D.C., the official residence and workplace of the president of the United States, in simplified schematic form. Explore {parts} named components across {systems} systems, from the north and south porticoes to the West Wing, the Truman-era steel frame and the 18-acre grounds.'},
+  {id:'detailed',label:'Detailed',slug:'white-house',
+   blurb:'The White House in Washington, D.C., the official residence and workplace of the president of the United States, its sandstone walls first occupied in 1800. Explore {parts} named components across {systems} systems, from the column-by-column porticoes and the State Floor rooms to the Oval Office and Resolute desk, the Truman-era steel frame and the 18-acre grounds.'},
+ ],
+ 'taj-mahal':[
+  {id:'simple',label:'Simple',slug:'taj-mahal-simple',
+   blurb:'The Taj Mahal in Agra, the marble mausoleum commissioned by Shah Jahan, in simplified schematic form. Explore {parts} named components across {systems} systems, from the riverfront terrace and the dome cluster to the great gate, the charbagh garden and its waterworks.'},
+  {id:'detailed',label:'Detailed',slug:'taj-mahal',
+   blurb:'The Taj Mahal in Agra, the white marble mausoleum commissioned by Shah Jahan in 1632, standing on its 300 m riverfront terrace. Explore {parts} named components across {systems} systems, from the pishtaq arches and the 23 m onion dome to the minaret tiers, the burial chamber, the Darwaza-i rauza gate, the mosque and jawab, and the charbagh waterworks.'},
+ ],
+ 'golden-gate':[
+  {id:'simple',label:'Simple',slug:'golden-gate-simple',
+   blurb:'The Golden Gate Bridge in San Francisco, the 2,737 m suspension bridge opened in 1937, in simplified schematic form. Explore {parts} named components across {systems} systems, from the 746 ft Art Deco towers and the spun main cables to the deck, the anchorages and the Fort Point arch.'},
+  {id:'detailed',label:'Detailed',slug:'golden-gate',
+   blurb:'The Golden Gate Bridge in San Francisco, the 2,737 m suspension bridge opened in 1937, its two main cables each spun from 27,572 wires. Explore {parts} named components across {systems} systems, from the tower portal bracing and cable bands to the stiffening truss, the six-lane deck with its markings, the anchorages, the Fort Point arch and the toll plaza.'},
+ ],
+ 'empire-state':[
+  {id:'simple',label:'Simple',slug:'empire-state-simple',
+   blurb:'The Empire State Building in New York City, the 443.2 m Art Deco skyscraper completed in 1931, in simplified schematic form. Explore {parts} named components across {systems} systems, from the limestone base and the 81-story setback shaft to the observatories, the mooring mast and the Art Deco lobby.'},
+  {id:'detailed',label:'Detailed',slug:'empire-state',
+   blurb:'The Empire State Building in New York City, the 443.2 m Art Deco skyscraper completed in 1931, its 102 stories rising on a riveted steel frame. Explore {parts} named components across {systems} systems, from the five-story base and the setback shaft to the 86th and 102nd floor observatories, the mooring mast, the broadcast aerials, the 1,200 LED crown lights and the three-story lobby.'},
+ ],
+ 'el-castillo':[
+  {id:'simple',label:'Simple',slug:'el-castillo-simple',
+   blurb:'The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps, in simplified schematic form. Explore {parts} named components across {systems} systems, including the buried inner pyramid, offering chambers, and the water filled cenote below.'},
+  {id:'detailed',label:'Detailed',slug:'el-castillo',
+   blurb:'The Temple of Kukulcan at Chichen Itza: a 30 meter Maya step pyramid with nine terraces and four stairways of 91 steps each. Explore {parts} named components across {systems} systems, from the battered terrace panels and tread by tread stairways to the summit temple, the buried inner pyramid with its offering chambers, and the astronomy of the equinox serpent.'},
+ ],
+ 'sydney-opera-house':[
+  {id:'simple',label:'Simple',slug:'sydney-opera-house-simple',
+   blurb:'Sydney Opera House on Sydney Harbour, Jorn Utzon\'s 1973 performing arts center with its fourteen shell vaults, in simplified schematic form. Explore {parts} named components across {systems} systems, from the pink granite podium and the tile clad shells to the glass walls, interiors, and supporting structure.'},
+  {id:'detailed',label:'Detailed',slug:'sydney-opera-house',
+   blurb:'Jorn Utzon\'s 1973 performing arts center on Sydney Harbour: fourteen precast concrete shell vaults, every one a section of a single 75.2 m sphere. Explore {parts} named components across {systems} systems, from the rib fans and chevron tile lids to the steel mullion glass walls, the opened podium with its five venues, and the foundations.'},
+ ],
 };
 
 const dir=new URL('../public/models/',import.meta.url);
