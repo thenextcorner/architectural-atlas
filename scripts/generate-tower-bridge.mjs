@@ -925,7 +925,10 @@ const atlas = {
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
   chunks: [{ url: '/models/tower-bridge/tower-bridge-0.bin', bytes: offset }],
   triangles,
-  spread: 1.0,
+  // The exploded cloud lifts +1 above the assembled centre while the camera
+  // targets the model centre, so compact packings clip at the top of the
+  // frame. 1.4 restores full framing (same value as Sagrada Familia detailed).
+  spread: 1.4,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
 

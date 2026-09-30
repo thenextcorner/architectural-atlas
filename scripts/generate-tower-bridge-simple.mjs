@@ -469,7 +469,10 @@ const atlas = {
   concepts: records.map((r) => ({ id: r.part.id, name: r.part.name, elements: [r.part.id] })),
   chunks: [{ url: '/models/tower-bridge-simple/tower-bridge-simple-0.bin', bytes: offset }],
   triangles,
-  spread: 1.0,
+  // The exploded cloud lifts +1 above the assembled centre while the camera
+  // targets the model centre, so this compact 32-part packing clips its
+  // tallest cards (the towers) at the top of the frame below ~2.3.
+  spread: 2.3,
 };
 fs.writeFileSync(path.join(outDir, 'atlas.json'), JSON.stringify(atlas));
 

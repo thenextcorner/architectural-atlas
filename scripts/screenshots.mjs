@@ -75,6 +75,10 @@ return __ofetch(u,o);};
   await send('Page.navigate', { url: 'about:blank' });
   await new Promise((r) => setTimeout(r, 400));
   await send('Page.navigate', { url: 'file://' + work + '/index.html#/viewer/' + slug });
+  // Wait for the "Preparing the structure" card to appear (it renders a beat
+  // after navigation) and then disappear, so the assembled screenshot never
+  // catches the loading overlay.
+  for (let i = 0; i < 20; i++) { if (await evaluate(`!!document.querySelector('.loading')`)) break; await new Promise((r) => setTimeout(r, 500)); }
   let ready = false;
   for (let i = 0; i < 60; i++) { if (await evaluate(`!document.querySelector('.loading')`)) { ready = true; break; } await new Promise((r) => setTimeout(r, 500)); }
   if (!ready) { console.log(slug, 'WARNING: loading indicator never cleared'); continue; }

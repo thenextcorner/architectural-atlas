@@ -1,5 +1,102 @@
 [
  {
+  "slug": "brandenburg-gate",
+  "title": "Brandenburg Gate",
+  "location": "Berlin, Germany",
+  "blurb": "The Brandenburg Gate in Berlin, Germany’s first great Greek Revival building, in simplified schematic form. Explore 31 named components across 7 systems, from the twelve 15 m Doric columns and the five passageways to the copper Quadriga of Victoria driving her four-horse chariot.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Brandenburg Gate",
+    "url": "https://en.wikipedia.org/wiki/Brandenburg_Gate"
+   },
+   {
+    "label": "visitBerlin.de: Brandenburg Gate",
+    "url": "https://www.visitberlin.de/en/brandenburg-gate?ref=trip101com"
+   },
+   {
+    "label": "thebettervacation.com: Brandenburg Gate visitor guide",
+    "url": "https://thebettervacation.com/berlin/brandenburg-gate/"
+   },
+   {
+    "label": "intercityhotelberlin.com: Brandenburg Gate history",
+    "url": "https://intercityhotelberlin.com/brandenburg-gate-berlins-majestic-symbol-of-unity-and-peace/"
+   },
+   {
+    "label": "budowle.pl: Brandenburg Gate facts",
+    "url": "https://www.budowle.pl/building/brandenburg-gate"
+   },
+   {
+    "label": "tropter.com: Brandenburg Gate",
+    "url": "https://tropter.com/en/germany/berlin/brandenburg-gate"
+   },
+   {
+    "label": "ad-hoc-news.de: Brandenburger Tor and the Quadriga",
+    "url": "https://www.ad-hoc-news.de/unterhaltung/reisen/brandenburger-tor-and-the-quadriga-above-berlin/70173237"
+   },
+   {
+    "label": "Alamy: Quadriga copper sculpture caption",
+    "url": "https://www.alamy.com/atop-the-brandenburg-gate-is-the-quadriga-a-chariot-drawn-by-four-horses-driven-by-victoria-the-roman-goddess-of-victory-the-brandenburg-gate-is-cr-image679503479.html"
+   }
+  ],
+  "systems": [
+   {
+    "id": "colonnade",
+    "name": "Doric colonnades",
+    "color": "#ded3ba"
+   },
+   {
+    "id": "passageway-walls",
+    "name": "Passageway walls and reliefs",
+    "color": "#d3c8ae"
+   },
+   {
+    "id": "entablature",
+    "name": "Entablature",
+    "color": "#c9bfa5"
+   },
+   {
+    "id": "attic",
+    "name": "Attic storey",
+    "color": "#d3c8ae"
+   },
+   {
+    "id": "quadriga",
+    "name": "Quadriga",
+    "color": "#b87333"
+   },
+   {
+    "id": "side-wings",
+    "name": "Side wings",
+    "color": "#cfc4a4"
+   },
+   {
+    "id": "base",
+    "name": "Steps and platform",
+    "color": "#b5aa92"
+   }
+  ],
+  "partCount": 31,
+  "conceptCount": 31,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "brandenburg-gate-simple",
+    "parts": 31,
+    "systems": 7,
+    "blurb": "The Brandenburg Gate in Berlin, Germany’s first great Greek Revival building, in simplified schematic form. Explore 31 named components across 7 systems, from the twelve 15 m Doric columns and the five passageways to the copper Quadriga of Victoria driving her four-horse chariot."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "brandenburg-gate",
+    "parts": 129,
+    "systems": 8,
+    "blurb": "The Brandenburg Gate in Berlin, built 1788 to 1791 to Carl Gotthard Langhans’ design as one of Germany’s first Greek Revival buildings. Explore 129 named components across 8 systems, from the twelve 15 m Doric columns, the Labors of Hercules reliefs and the sixteen metopes on each long face to the Triumph of Peace relief and the copper Quadriga of Victoria driving her four-horse chariot."
+   }
+  ]
+ },
+ {
   "slug": "colosseum",
   "title": "Colosseum",
   "location": "Rome, Italy",
@@ -333,6 +430,671 @@
     "parts": 111,
     "systems": 11,
     "blurb": "The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each."
+   }
+  ]
+ },
+ {
+  "slug": "great-pyramid-of-giza",
+  "title": "Great Pyramid of Giza",
+  "location": "Giza, Egypt",
+  "blurb": "The Great Pyramid of Giza, tomb of Pharaoh Khufu built around 2560 BC, in simplified schematic form. Explore 31 named components across 7 systems, from the 146.6 m pyramid and its vanished Tura limestone casing to the Grand Gallery, the granite King’s Chamber, and the funerary complex in outline. The Sphinx belongs to Khafre’s complex and is not modeled.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Great Pyramid of Giza",
+    "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+   },
+   {
+    "label": "Wikipedia: Giza pyramid complex",
+    "url": "https://en.wikipedia.org/wiki/Giza_pyramid_complex"
+   },
+   {
+    "label": "Smarthistory: Pyramid of Khufu",
+    "url": "https://smarthistory.org/pyramid-of-khufu/"
+   },
+   {
+    "label": "Egypt for Travel: What Is Inside the Pyramids",
+    "url": "https://www.egyptfortravel.com/egypt-travel-blog/what-is-inside-the-pyramids"
+   },
+   {
+    "label": "Egypt for Travel: How Were the Pyramids Built",
+    "url": "https://www.egyptfortravel.com/egypt-travel-blog/how-were-the-pyramids-built"
+   },
+   {
+    "label": "The Daily Galaxy: the Big Void and the north-face corridor",
+    "url": "https://dailygalaxy.com/2026/04/scientists-discover-great-pyramid-giza-hidden-void/"
+   }
+  ],
+  "systems": [
+   {
+    "id": "pyramid",
+    "name": "Pyramid mass",
+    "color": "#e4dbc6"
+   },
+   {
+    "id": "entrance",
+    "name": "Entrance",
+    "color": "#6e6257"
+   },
+   {
+    "id": "passages",
+    "name": "Passages",
+    "color": "#8a8478"
+   },
+   {
+    "id": "chambers",
+    "name": "Chambers",
+    "color": "#a0655e"
+   },
+   {
+    "id": "discoveries",
+    "name": "Modern discoveries",
+    "color": "#5f7a8c"
+   },
+   {
+    "id": "funerary-complex",
+    "name": "Funerary complex",
+    "color": "#b5ad96"
+   },
+   {
+    "id": "site",
+    "name": "Bedrock platform",
+    "color": "#b0a890"
+   }
+  ],
+  "partCount": 31,
+  "conceptCount": 31,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "great-pyramid-of-giza-simple",
+    "parts": 31,
+    "systems": 7,
+    "blurb": "The Great Pyramid of Giza, tomb of Pharaoh Khufu built around 2560 BC, in simplified schematic form. Explore 31 named components across 7 systems, from the 146.6 m pyramid and its vanished Tura limestone casing to the Grand Gallery, the granite King’s Chamber, and the funerary complex in outline. The Sphinx belongs to Khafre’s complex and is not modeled."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "great-pyramid-of-giza",
+    "parts": 100,
+    "systems": 12,
+    "blurb": "The Great Pyramid of Giza, tomb of Pharaoh Khufu built around 2560 BC. Explore 100 named components across 12 systems, from the stepped core of 2.3 million blocks and the vanished Tura limestone casing to the 47 m Grand Gallery, the King’s Chamber with its granite sarcophagus and five relieving chambers, and the mortuary temple, causeway and valley temple in outline. The Sphinx belongs to Khafre’s complex and is not modeled."
+   }
+  ]
+ },
+ {
+  "slug": "himeji-castle",
+  "title": "Himeji Castle",
+  "location": "Himeji, Japan",
+  "blurb": "Japan’s White Heron Castle in Himeji, in simplified schematic form. Explore 34 named components across 7 systems, from the 46.4 m main keep and its cluster of smaller keeps to the maze of gates, stone walls and three concentric moats.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Himeji Castle",
+    "url": "https://en.wikipedia.org/wiki/Himeji_Castle"
+   },
+   {
+    "label": "UNESCO: Himejijo nomination document",
+    "url": "https://whc.Unesco.org/document/153975"
+   },
+   {
+    "label": "Highlighting Japan: A Castle Reborn (2015)",
+    "url": "http://www.gov-online.go.jp/eng/publicity/book/hlj/html/201509/201509_05_en.html"
+   },
+   {
+    "label": "japan-guide.com: Himeji Castle",
+    "url": "https://www.japan-guide.com/e/e3501.html"
+   }
+  ],
+  "systems": [
+   {
+    "id": "keeps",
+    "name": "Keeps",
+    "color": "#f4efe3"
+   },
+   {
+    "id": "corridors",
+    "name": "Connecting corridors",
+    "color": "#ded4ba"
+   },
+   {
+    "id": "gates",
+    "name": "Gates",
+    "color": "#e9e1cd"
+   },
+   {
+    "id": "walls",
+    "name": "Walls and turrets",
+    "color": "#a09a8e"
+   },
+   {
+    "id": "west-bailey",
+    "name": "West bailey",
+    "color": "#e9e1cd"
+   },
+   {
+    "id": "moats",
+    "name": "Moats and water",
+    "color": "#86aec9"
+   },
+   {
+    "id": "baileys",
+    "name": "Baileys and courtyards",
+    "color": "#b3a88f"
+   }
+  ],
+  "partCount": 34,
+  "conceptCount": 34,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "himeji-castle-simple",
+    "parts": 34,
+    "systems": 7,
+    "blurb": "Japan’s White Heron Castle in Himeji, in simplified schematic form. Explore 34 named components across 7 systems, from the 46.4 m main keep and its cluster of smaller keeps to the maze of gates, stone walls and three concentric moats."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "himeji-castle",
+    "parts": 102,
+    "systems": 10,
+    "blurb": "Japan’s White Heron Castle in Himeji, built from 1601 to 1609 by Ikeda Terumasa and never taken in battle. Explore 102 named components across 10 systems, from the 46.4 m main keep with its thousand-mat room and great pillars to the three subsidiary keeps, the roofed connecting corridors, the maze of gates, and the legendary Okiku well."
+   }
+  ]
+ },
+ {
+  "slug": "london-eye",
+  "title": "London Eye",
+  "location": "London, United Kingdom",
+  "blurb": "The London Eye, originally the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the Thames in London, in simplified schematic form. Explore 33 named components across 6 systems, from the 120 m steel rim and its tensioned cables to the 32 passenger capsules and the leaning A-frame.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: London Eye",
+    "url": "http://en.wikipedia.org/wiki/London_Eye"
+   },
+   {
+    "label": "New Civil Engineer: Eye’s wide open in time for Millennium",
+    "url": "https://www.newcivilengineer.com/archive/eyes-wide-open-in-time-for-millennium-14-10-1999/"
+   },
+   {
+    "label": "New Civil Engineer: A view to a thrill",
+    "url": "https://www.newcivilengineer.com/archive/a-view-to-a-thrill-31-05-1999/"
+   },
+   {
+    "label": "New Civil Engineer: Turning to analysis",
+    "url": "https://www.newcivilengineer.com/archive/turning-to-analysis-a-structure-without-parallel-will-soon-stand-high-above-the-thames-lisa-russell-reports-on-the-design-of-the-british-airways-london-eye-10-12-1998/"
+   },
+   {
+    "label": "Mechanical Engineering: Building the world’s biggest wheel",
+    "url": "https://www.thefreelibrary.com/Building+the+world%27s+biggest+wheel%3A+engineers+use+tricks+of+the+trade...-a0175549203"
+   }
+  ],
+  "systems": [
+   {
+    "id": "rim",
+    "name": "Wheel rim",
+    "color": "#e9e7e1"
+   },
+   {
+    "id": "cables",
+    "name": "Tension cables",
+    "color": "#9aa0a6"
+   },
+   {
+    "id": "hub",
+    "name": "Hub and spindle",
+    "color": "#cfcabf"
+   },
+   {
+    "id": "capsules",
+    "name": "Passenger capsules",
+    "color": "#f4f2ec"
+   },
+   {
+    "id": "structure",
+    "name": "Support structure",
+    "color": "#d8d5cc"
+   },
+   {
+    "id": "boarding",
+    "name": "Boarding and lighting",
+    "color": "#c9b795"
+   }
+  ],
+  "partCount": 33,
+  "conceptCount": 33,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "london-eye-simple",
+    "parts": 33,
+    "systems": 6,
+    "blurb": "The London Eye, originally the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the Thames in London, in simplified schematic form. Explore 33 named components across 6 systems, from the 120 m steel rim and its tensioned cables to the 32 passenger capsules and the leaning A-frame."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "london-eye",
+    "parts": 112,
+    "systems": 9,
+    "blurb": "The London Eye, originally the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the Thames in London, opened to the public in 2000. Explore 112 named components across 9 systems, from the 120 m steel rim and 64 tensioned cables to the 32 passenger capsules, the 22 m spindle, and the leaning A-frame."
+   }
+  ]
+ },
+ {
+  "slug": "machu-picchu",
+  "title": "Machu Picchu",
+  "location": "Cusco Region, Peru",
+  "blurb": "The 15th-century Inca citadel on a 2,430 m mountain ridge in Peru, in simplified schematic form. Explore 34 named components across 6 systems, from the semicircular Temple of the Sun and the bedrock-carved Intihuatana to the Temple of the Three Windows, the Main Temple, the Temple of the Condor, the fountains, and the agricultural terraces. This model covers the key structures, not the whole mountain.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Machu Picchu",
+    "url": "http://en.wikipedia.org/wiki/Machu_Picchu"
+   },
+   {
+    "label": "Smarthistory: Machu Picchu, c. 1450-1540",
+    "url": "https://human.libretexts.org/Bookshelves/Art/Art_History_and_Theory/SmartHistory_of_Art_2e/SmartHistory_of_Art_XIa_-_Th%E2%80%A6/4.2.13.7%253A%2bMachu%2bPicchu.pdf"
+   },
+   {
+    "label": "The Only Peru Guide: Temple of the Sun / Intiwasi",
+    "url": "https://www.theonlyperuguide.com/peru-guide/machu-picchu/highlights/temple-sun-intiwasi/"
+   },
+   {
+    "label": "Kenneth R. Wright: Water Supply and Drainage at Machu Picchu",
+    "url": "http://www.waterhistory.org/histories/machu/machu.pdf"
+   },
+   {
+    "label": "UNEP-WCMC: Historic Sanctuary of Machu Picchu",
+    "url": "http://world-heritage-datasheets.unep-wcmc.org/datasheet/output/site/historic-sanctuary-of-machu-picchu/"
+   }
+  ],
+  "systems": [
+   {
+    "id": "temples",
+    "name": "Temples",
+    "color": "#ddd6c6"
+   },
+   {
+    "id": "ritual-stones",
+    "name": "Ritual stones",
+    "color": "#cfc9ba"
+   },
+   {
+    "id": "terraces",
+    "name": "Agricultural terraces",
+    "color": "#a9bd8f"
+   },
+   {
+    "id": "residential",
+    "name": "Residential sector",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "water",
+    "name": "Water",
+    "color": "#a9c3cf"
+   },
+   {
+    "id": "setting",
+    "name": "Setting",
+    "color": "#9aa78c"
+   }
+  ],
+  "partCount": 34,
+  "conceptCount": 34,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "machu-picchu-simple",
+    "parts": 34,
+    "systems": 6,
+    "blurb": "The 15th-century Inca citadel on a 2,430 m mountain ridge in Peru, in simplified schematic form. Explore 34 named components across 6 systems, from the semicircular Temple of the Sun and the bedrock-carved Intihuatana to the Temple of the Three Windows, the Main Temple, the Temple of the Condor, the fountains, and the agricultural terraces. This model covers the key structures, not the whole mountain."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "machu-picchu",
+    "parts": 119,
+    "systems": 11,
+    "blurb": "The 15th-century Inca citadel on a 2,430 m mountain ridge in Peru, built around 1450 as an estate for the emperor Pachacuti. Explore 119 named components across 11 systems, from the curved ashlar wall of the Temple of the Sun, the Royal Tomb, the Intihuatana and the Temple of the Three Windows to the Stairway of Fountains, the terraces, and the residential sector in outline. This model covers the key structures, not the whole mountain."
+   }
+  ]
+ },
+ {
+  "slug": "neuschwanstein-castle",
+  "title": "Neuschwanstein Castle",
+  "location": "Hohenschwangau, Bavaria, Germany",
+  "blurb": "Ludwig II of Bavaria’s Romanesque Revival palace above the Pöllat Gorge, in simplified schematic form. Explore 36 named components across 6 systems, from the red-brick Gatehouse and the two courtyard levels to the five-storey Palas with its 65 m tower, the tallest castle in the world.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Neuschwanstein Castle",
+    "url": "https://en.wikipedia.org/wiki/Neuschwanstein_Castle"
+   },
+   {
+    "label": "German Federal Foreign Office: UNESCO inscription 2025",
+    "url": "https://unesco.diplo.de/unesco-en/inscription-of-the-castles-of-king-ludwig-ii-of-bavaria-to-the-list-of-unesco-world-heritage-sites-2727496"
+   },
+   {
+    "label": "TravelPulse: Bavaria’s palaces added to UNESCO list",
+    "url": "https://www.travelpulse.ca/news/destinations/bavaria-s-fairy-tale-palaces-added-to-unesco-world-heritage-list"
+   },
+   {
+    "label": "History Tools: The Fantastical History of Neuschwanstein Castle",
+    "url": "https://www.historytools.org/stories/the-fantastical-history-of-neuschwanstein-castle"
+   }
+  ],
+  "systems": [
+   {
+    "id": "gatehouse",
+    "name": "Gatehouse",
+    "color": "#d9c48f"
+   },
+   {
+    "id": "courtyards",
+    "name": "Courtyards",
+    "color": "#cfc8b4"
+   },
+   {
+    "id": "palas",
+    "name": "Palas",
+    "color": "#e8e2d4"
+   },
+   {
+    "id": "towers",
+    "name": "Towers",
+    "color": "#e8e2d4"
+   },
+   {
+    "id": "interiors",
+    "name": "Interiors",
+    "color": "#c9a227"
+   },
+   {
+    "id": "terrain",
+    "name": "Rock terrace and gorge",
+    "color": "#9a938a"
+   }
+  ],
+  "partCount": 36,
+  "conceptCount": 36,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "neuschwanstein-castle-simple",
+    "parts": 36,
+    "systems": 6,
+    "blurb": "Ludwig II of Bavaria’s Romanesque Revival palace above the Pöllat Gorge, in simplified schematic form. Explore 36 named components across 6 systems, from the red-brick Gatehouse and the two courtyard levels to the five-storey Palas with its 65 m tower, the tallest castle in the world."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "neuschwanstein-castle",
+    "parts": 101,
+    "systems": 10,
+    "blurb": "Ludwig II of Bavaria’s Romanesque Revival palace above the Pöllat Gorge, built from 1869 as an inhabitable stage set for Wagner’s operas. Explore 101 named components across 10 systems, from the Gatehouse and the courtyards to the Throne Hall, the Hall of the Singers, and the foundations of the unbuilt 90 m keep."
+   }
+  ]
+ },
+ {
+  "slug": "notre-dame-de-paris",
+  "title": "Notre-Dame de Paris",
+  "location": "Paris, France",
+  "blurb": "Notre-Dame de Paris on the Île de la Cité, the great French Gothic cathedral begun in 1163, in simplified schematic form. Explore 35 named components across 7 systems, from the 69 m west towers and three sculpted portals to the flying buttresses and the 96 m crossing spire, rebuilt after the 2019 fire.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Notre-Dame de Paris",
+    "url": "https://en.wikipedia.org/wiki/Notre-Dame_de_Paris"
+   },
+   {
+    "label": "Wikipedia: Spire of Notre-Dame de Paris",
+    "url": "https://en.wikipedia.org/wiki/Spire_of_Notre-Dame_de_Paris"
+   },
+   {
+    "label": "National Geographic: 800-year history",
+    "url": "https://www.nationalgeographic.com/history/history-magazine/article/notre-dame-de-paris?loggedin=true"
+   },
+   {
+    "label": "French Moments: dimensions",
+    "url": "https://frenchmoments.eu/notre-dame-de-paris/"
+   },
+   {
+    "label": "Dezeen: the rebuilt spire revealed",
+    "url": "https://www.dezeen.com/2024/03/07/notre-dame-cathedral-new-spire/"
+   },
+   {
+    "label": "Notre-Dame de Paris: the grand organ",
+    "url": "https://www.notredamedeparis.fr/en/appointment-of-four-organists-at-notre-dame-paris/"
+   }
+  ],
+  "systems": [
+   {
+    "id": "west-front",
+    "name": "West front",
+    "color": "#e3d9c2"
+   },
+   {
+    "id": "body",
+    "name": "Nave, transept and choir",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "apse",
+    "name": "Chevet and apse",
+    "color": "#d5ccb6"
+   },
+   {
+    "id": "buttresses",
+    "name": "Flying buttresses",
+    "color": "#c4bba4"
+   },
+   {
+    "id": "fleche",
+    "name": "Crossing spire",
+    "color": "#9aa39b"
+   },
+   {
+    "id": "interior",
+    "name": "Interior",
+    "color": "#e8e0cd"
+   },
+   {
+    "id": "parvis",
+    "name": "Parvis",
+    "color": "#b9b2a0"
+   }
+  ],
+  "partCount": 35,
+  "conceptCount": 35,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "notre-dame-de-paris-simple",
+    "parts": 35,
+    "systems": 7,
+    "blurb": "Notre-Dame de Paris on the Île de la Cité, the great French Gothic cathedral begun in 1163, in simplified schematic form. Explore 35 named components across 7 systems, from the 69 m west towers and three sculpted portals to the flying buttresses and the 96 m crossing spire, rebuilt after the 2019 fire."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "notre-dame-de-paris",
+    "parts": 107,
+    "systems": 12,
+    "blurb": "Notre-Dame de Paris on the Île de la Cité, the great French Gothic cathedral begun in 1163 under Bishop Maurice de Sully. Explore 107 named components across 12 systems, from the 69 m west towers, the three west portals and the 28 kings of the gallery to the flying buttresses, the three rose windows, the great organ of 8,000 pipes, and the 96 m crossing spire rebuilt after the fire of 15 April 2019."
+   }
+  ]
+ },
+ {
+  "slug": "palace-of-westminster",
+  "title": "Palace of Westminster",
+  "location": "London, England",
+  "blurb": "The Palace of Westminster in London, meeting place of the UK Parliament, in simplified schematic form. Explore 32 named components across 6 systems, from the 98.5 m Victoria Tower and the Elizabeth Tower with its Great Bell Big Ben to the octagonal Central Tower and the 20.7 by 73.2 m Westminster Hall.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Palace of Westminster",
+    "url": "https://en.wikipedia.org/wiki/Palace_of_Westminster"
+   },
+   {
+    "label": "Wikipedia: Big Ben (Elizabeth Tower)",
+    "url": "https://en.wikipedia.org/wiki/Clock_Tower,_Palace_of_Westminster"
+   },
+   {
+    "label": "Wikipedia: Victoria Tower",
+    "url": "https://en.wikipedia.org/wiki/Victoria_Tower"
+   },
+   {
+    "label": "parliament.uk: Palace of Westminster factsheet",
+    "url": "http://www.parliament.uk/documents/lords-information-office/2013/palace-of-westminster-factsheet.pdf"
+   },
+   {
+    "label": "parliament.uk: House of Commons factsheet G11",
+    "url": "https://b5d7ac.staticwbm.com/20131203040742/http://www.parliament.uk/documents/commons-information-office/g11.pdf"
+   }
+  ],
+  "systems": [
+   {
+    "id": "towers",
+    "name": "Towers",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "chambers",
+    "name": "Chambers and lobbies",
+    "color": "#a89a80"
+   },
+   {
+    "id": "centre",
+    "name": "Centre",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "frontage",
+    "name": "Frontage and roofs",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "hall",
+    "name": "Westminster Hall",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "grounds",
+    "name": "Courtyards and grounds",
+    "color": "#b9b2a0"
+   }
+  ],
+  "partCount": 32,
+  "conceptCount": 32,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "palace-of-westminster-simple",
+    "parts": 32,
+    "systems": 6,
+    "blurb": "The Palace of Westminster in London, meeting place of the UK Parliament, in simplified schematic form. Explore 32 named components across 6 systems, from the 98.5 m Victoria Tower and the Elizabeth Tower with its Great Bell Big Ben to the octagonal Central Tower and the 20.7 by 73.2 m Westminster Hall."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "palace-of-westminster",
+    "parts": 103,
+    "systems": 12,
+    "blurb": "The Palace of Westminster in London, meeting place of the UK Parliament, rebuilt 1840 to 1876 in Perpendicular Gothic Revival style. Explore 103 named components across 12 systems, from the 98.5 m Victoria Tower, the 96.3 m Elizabeth Tower and the 91 m octagonal Central Tower to the two debating chambers and Westminster Hall, completed in 1099."
+   }
+  ]
+ },
+ {
+  "slug": "pyramid-of-the-sun",
+  "title": "Pyramid of the Sun",
+  "location": "Teotihuacan, Mexico",
+  "blurb": "The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD, in simplified schematic form. Explore 32 named components across 8 systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city.",
+  "sourceUrls": [
+   {
+    "label": "Pyramid of the Sun, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Pyramid_of_the_Sun"
+   },
+   {
+    "label": "Teotihuacan, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Teotihuac%C3%A1n"
+   },
+   {
+    "label": "Live Science: Teotihuacan, Ancient City of Pyramids",
+    "url": "https://www.livescience.com/22545-teotihuacan.html&lang=en"
+   },
+   {
+    "label": "Smarthistory: Pyramid of the Moon and Pyramid of the Sun",
+    "url": "https://smarthistory.org/moon-and-sun-pyramid-teotihuacan"
+   },
+   {
+    "label": "e-a-a.com: Pyramid of the Sun architecture",
+    "url": "https://www.e-a-a.com/pyramid-of-the-sun-teotihuacan-mexico/"
+   }
+  ],
+  "systems": [
+   {
+    "id": "tiers",
+    "name": "Stepped tiers",
+    "color": "#c4a982"
+   },
+   {
+    "id": "staircase",
+    "name": "Grand staircase",
+    "color": "#b3a08c"
+   },
+   {
+    "id": "summit",
+    "name": "Summit and temple remnants",
+    "color": "#d3c4a4"
+   },
+   {
+    "id": "adosada",
+    "name": "Adosada platform",
+    "color": "#bb9c76"
+   },
+   {
+    "id": "avenue",
+    "name": "Avenue of the Dead frontage",
+    "color": "#d5cab2"
+   },
+   {
+    "id": "plaza",
+    "name": "Surrounding plaza",
+    "color": "#c8b28e"
+   },
+   {
+    "id": "cave",
+    "name": "Sacred cave and tunnel",
+    "color": "#8a7a66"
+   },
+   {
+    "id": "site",
+    "name": "Site",
+    "color": "#e8dfcb"
+   }
+  ],
+  "partCount": 32,
+  "conceptCount": 32,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "pyramid-of-the-sun-simple",
+    "parts": 32,
+    "systems": 8,
+    "blurb": "The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD, in simplified schematic form. Explore 32 named components across 8 systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "pyramid-of-the-sun",
+    "parts": 123,
+    "systems": 11,
+    "blurb": "The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD. Explore 123 named components across 11 systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city."
    }
   ]
  },
@@ -747,6 +1509,78 @@
     "parts": 101,
     "systems": 9,
     "blurb": "London’s Grade I listed combined bascule and suspension bridge over the Thames, opened in 1894. Explore 101 named components across 9 systems, from the 213 ft towers, 1,070-ton bascules and steam-driven hydraulics to the high-level walkways and 270 ft suspension side spans."
+   }
+  ]
+ },
+ {
+  "slug": "trevi-fountain",
+  "title": "Trevi Fountain",
+  "location": "Rome, Italy",
+  "blurb": "Rome’s Trevi Fountain, the largest Baroque fountain in the world, in simplified schematic form. Explore 37 named components across 6 systems, from Oceanus and his tritons to the Palazzo Poli facade, the rockwork reef, and the great basin.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Trevi Fountain",
+    "url": "http://en.wikipedia.org/wiki/Trevi_Fountain"
+   },
+   {
+    "label": "Art & Object: A Brief History of the Trevi Fountain",
+    "url": "https://www.artandobject.com/news/brief-history-trevi-fountain?page=0"
+   },
+   {
+    "label": "Cultural Heritage Online: Trevi Fountain",
+    "url": "https://www.culturalheritageonline.com/location-48_Fontana-di-Trevi.php"
+   }
+  ],
+  "systems": [
+   {
+    "id": "facade",
+    "name": "Palazzo Poli facade",
+    "color": "#e8ddc8"
+   },
+   {
+    "id": "sculpture",
+    "name": "Sculpture",
+    "color": "#f0ece2"
+   },
+   {
+    "id": "rockwork",
+    "name": "Rockwork reef",
+    "color": "#c9bda6"
+   },
+   {
+    "id": "water",
+    "name": "Water",
+    "color": "#4fa3c7"
+   },
+   {
+    "id": "basin",
+    "name": "Great basin",
+    "color": "#d9cfae"
+   },
+   {
+    "id": "setting",
+    "name": "Setting",
+    "color": "#b8b2a6"
+   }
+  ],
+  "partCount": 37,
+  "conceptCount": 37,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "trevi-fountain-simple",
+    "parts": 37,
+    "systems": 6,
+    "blurb": "Rome’s Trevi Fountain, the largest Baroque fountain in the world, in simplified schematic form. Explore 37 named components across 6 systems, from Oceanus and his tritons to the Palazzo Poli facade, the rockwork reef, and the great basin."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "trevi-fountain",
+    "parts": 105,
+    "systems": 11,
+    "blurb": "Rome’s 18th century Trevi Fountain, the largest Baroque fountain in the world at 26.3 m high and 49.15 m wide. Explore 105 named components across 11 systems, from Oceanus on his shell chariot and the giant Corinthian pilasters of Palazzo Poli to the travertine reef, the great basin, and the Acqua Vergine waterworks."
    }
   ]
  },

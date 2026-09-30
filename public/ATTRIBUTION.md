@@ -236,6 +236,24 @@ schematic and is never presented as sourced fact.
 - AZoBuild: Building La Sagrada Familia - https://www.azobuild.com/article.aspx?ArticleID=8127
 - Sagrada Familia, WikiArquitectura - https://en.wikiarquitectura.com/building/sagrada-familia/
 
+## Trevi Fountain (`public/models/trevi-fountain/`, `public/models/trevi-fountain-simple/`)
+
+All Trevi Fountain facts in the models (dimensions in the generator header
+comments, and every fact in the `atlas.json` explanations maps, system
+descriptions, and blurbs) come from the pages listed below, all opened in
+full on 2026-09-30. Geometry not stated on these pages (pilaster
+count and spacing, window count and placement, niche and relief dimensions,
+column heights, exedra radius, attic proportions, statue sizes, rockwork
+reef outline, boulder, grotto and cascade-shelf profiles, plant placement,
+basin ellipse dimensions, rim profile, step flights, figure poses and
+proportions, papal arms and inscription panel geometry, and pump, pipe,
+drain, LED, barrier and coin positions) is schematic and is never
+presented as sourced fact.
+
+- Trevi Fountain, Wikipedia - http://en.wikipedia.org/wiki/Trevi_Fountain
+- A Brief History of the Trevi Fountain, Art & Object - https://www.artandobject.com/news/brief-history-trevi-fountain?page=0
+- Trevi Fountain, Cultural Heritage Online - https://www.culturalheritageonline.com/location-48_Fontana-di-Trevi.php
+
 ## Viewer code attribution
 
 The interactive viewer is a fork of Human Atlas by ashemag, used under the MIT License
