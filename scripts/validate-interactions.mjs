@@ -1,12 +1,20 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 import {createExplosionLayout} from '../app/explosion-layout.ts';
 import {PointerTap} from '../app/pointer-tap.ts';
 import {atlasTools} from '../app/agent-tools.ts';
 
-for (const file of ['atlas.json']) {
-  const atlas=JSON.parse(await readFile(new URL(`../public/models/${file}`,import.meta.url)));
-  const groups=[atlas.parts,...[...new Set(atlas.parts.map(p=>p.system))].map(system=>atlas.parts.filter(p=>p.system===system))];
+const modelsDir=new URL('../public/models/',import.meta.url);
+const index=JSON.parse(await readFile(new URL('index.json',modelsDir),'utf8'));
+assert.ok(index.length>=1,'index.json lists no buildings');
+for (const entry of index) {
+  const atlas=JSON.parse(await readFile(new URL(`${entry.slug}/atlas.json`,modelsDir)));
+  for(const key of ['title','location','blurb','systems','explanations'])assert.ok(atlas[key],`${entry.slug}: atlas.json is missing "${key}"`);
+  assert.equal(entry.partCount,atlas.parts.length,`${entry.slug}: index part count mismatch`);
+  const systemIds=new Set(atlas.systems.map(s=>s.id));
+  for(const p of atlas.parts)assert.ok(systemIds.has(p.system),`${entry.slug}: part ${p.id} has unknown system ${p.system}`);
+  for(const [k,v] of Object.entries(atlas.explanations))assert.ok(v&&v.trim(),`${entry.slug}: empty explanation for ${k}`);
+  const groups=[atlas.parts,...[...systemIds].map(system=>atlas.parts.filter(p=>p.system===system))];
   for(const group of groups) for(const aspect of [.46,1,1.7]) {
     const layout=createExplosionLayout(group,aspect),cells=[...layout.cells.values()];
     assert.equal(cells.length,group.length);
@@ -22,14 +30,15 @@ for (const file of ['atlas.json']) {
   }
   let selected=null;
   const [find,inspect]=atlasTools(atlas,c=>{selected=c;});
-  const results=find.execute({query:'femur'});
-  assert.ok(results.length>0);
+  const seed=atlas.concepts[0].name.split(' ')[0];
+  const results=find.execute({query:seed});
+  assert.ok(results.length>0,`${entry.slug}: search for "${seed}" returned nothing`);
   inspect.execute({id:results[0].id});
   const previous=selected;
   assert.throws(()=>inspect.execute({id:'nonexistent-structure'}));
   assert.equal(selected,previous);
   assert.throws(()=>find.execute({query:' '}));
-  console.log(`${file}: packing at desktop/mobile aspect ratios and search/inspection contracts passed.`);
+  console.log(`${entry.slug}: ${atlas.parts.length} parts, ${atlas.systems.length} systems, packing at desktop/mobile aspect ratios and search/inspection contracts passed.`);
 }
 const tap=new PointerTap();
 tap.down(1,10,10,5);assert.equal(tap.up(1,12,11),true);

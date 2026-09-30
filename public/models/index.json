@@ -1,0 +1,730 @@
+[
+ {
+  "slug": "colosseum",
+  "title": "Colosseum",
+  "location": "Rome, Italy",
+  "blurb": "The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore 128 components across 9 systems, from the 80 travertine arches to the 240 velarium mast corbels.",
+  "sourceUrls": [
+   {
+    "label": "Colosseum, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Colosseum"
+   },
+   {
+    "label": "Colosseum (Flavian Amphitheatre), Ancient Rome Live",
+    "url": "https://ancientromelive.org/colosseum-flavian-amphitheatre/"
+   },
+   {
+    "label": "Colosseum (Rome, 80), Structurae",
+    "url": "https://structurae.net/en/structures/colosseum"
+   },
+   {
+    "label": "Inside the Colosseum, thecolosseum.org",
+    "url": "https://www.thecolosseum.org/inside/"
+   },
+   {
+    "label": "Colosseum, ancient-history-sites.com",
+    "url": "https://www.ancient-history-sites.com/sites/colosseum/"
+   }
+  ],
+  "systems": [
+   {
+    "id": "facade",
+    "name": "Outer Facade",
+    "color": "#E3CF9F"
+   },
+   {
+    "id": "attic",
+    "name": "Attic and Velarium",
+    "color": "#C69A5B"
+   },
+   {
+    "id": "entrances",
+    "name": "Main Entrances",
+    "color": "#9C6B4F"
+   },
+   {
+    "id": "seating",
+    "name": "Seating Cavea",
+    "color": "#EDEDED"
+   },
+   {
+    "id": "circulation",
+    "name": "Circulation",
+    "color": "#8E9AA8"
+   },
+   {
+    "id": "support",
+    "name": "Support Structure",
+    "color": "#A9503C"
+   },
+   {
+    "id": "arena",
+    "name": "Arena",
+    "color": "#D9A441"
+   },
+   {
+    "id": "hypogeum",
+    "name": "Hypogeum",
+    "color": "#6F6459"
+   },
+   {
+    "id": "materials",
+    "name": "Materials",
+    "color": "#5D7A8C"
+   }
+  ],
+  "partCount": 128,
+  "conceptCount": 128
+ },
+ {
+  "slug": "el-castillo",
+  "title": "El Castillo",
+  "location": "Chichen Itza, Mexico",
+  "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps. The model includes its buried inner pyramid, offering chambers, and the water filled cenote beneath the bedrock.",
+  "sourceUrls": [
+   {
+    "label": "El Castillo, Chichen Itza on Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/El_Castillo,_Chichen_Itza"
+   },
+   {
+    "label": "Chichen Itza on Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Chichen_Itza"
+   },
+   {
+    "label": "Chichen Itza by National Geographic",
+    "url": "https://www.nationalgeographic.com/travel/world-heritage/article/chichen-itza"
+   },
+   {
+    "label": "Chichen-Itza, INAH (UNESCO World Heritage listing)",
+    "url": "https://lugares.inah.gob.mx/en/node/6131"
+   }
+  ],
+  "systems": [
+   {
+    "id": "base-platforms",
+    "name": "Base and Platforms",
+    "color": "#CDBB92"
+   },
+   {
+    "id": "terraces",
+    "name": "Terraces",
+    "color": "#D3C8A4"
+   },
+   {
+    "id": "stairways",
+    "name": "Grand Stairways",
+    "color": "#BFAE85"
+   },
+   {
+    "id": "balustrades",
+    "name": "Balustrades and Serpents",
+    "color": "#6FA287"
+   },
+   {
+    "id": "summit-temple",
+    "name": "Summit Temple",
+    "color": "#C9B489"
+   },
+   {
+    "id": "inner-substructure",
+    "name": "Inner Substructure",
+    "color": "#B2693C"
+   },
+   {
+    "id": "foundation-hydrology",
+    "name": "Foundation and Hydrology",
+    "color": "#6E8CA3"
+   }
+  ],
+  "partCount": 121,
+  "conceptCount": 121
+ },
+ {
+  "slug": "empire-state",
+  "title": "Empire State Building",
+  "location": "New York City, USA",
+  "blurb": "The 102 story Art Deco skyscraper at 350 Fifth Avenue in Manhattan, the world's tallest building from 1931 to 1970. Its Indiana limestone tower, twin observatories, and dirigible mooring mast made it a global icon.",
+  "sourceUrls": [
+   {
+    "label": "Empire State Building, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Empire_State_Building"
+   },
+   {
+    "label": "Empire State Building (Manhattan, 1931), Structurae",
+    "url": "https://structurae.net/en/structures/empire-state-building"
+   }
+  ],
+  "systems": [
+   {
+    "id": "foundations",
+    "name": "Foundations",
+    "color": "#8A8D91"
+   },
+   {
+    "id": "base",
+    "name": "Base",
+    "color": "#E9DFC6"
+   },
+   {
+    "id": "shaft",
+    "name": "Shaft",
+    "color": "#DFD2B4"
+   },
+   {
+    "id": "terraces",
+    "name": "Setback terraces",
+    "color": "#6F7F5E"
+   },
+   {
+    "id": "observatories",
+    "name": "Observatories",
+    "color": "#8FB8D8"
+   },
+   {
+    "id": "mast",
+    "name": "Mast",
+    "color": "#C7CCD1"
+   },
+   {
+    "id": "lighting",
+    "name": "Crown lighting",
+    "color": "#FFD97A"
+   },
+   {
+    "id": "lobby",
+    "name": "Lobby",
+    "color": "#C9B896"
+   },
+   {
+    "id": "steel-frame",
+    "name": "Steel frame",
+    "color": "#5A626B"
+   },
+   {
+    "id": "elevators",
+    "name": "Elevators",
+    "color": "#B08D57"
+   }
+  ],
+  "partCount": 109,
+  "conceptCount": 109
+ },
+ {
+  "slug": "golden-gate",
+  "title": "Golden Gate Bridge",
+  "location": "San Francisco, USA",
+  "blurb": "The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each.",
+  "sourceUrls": [
+   {
+    "label": "Golden Gate Bridge District: Facts and Figures",
+    "url": "https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+   },
+   {
+    "label": "Wikipedia: Golden Gate Bridge",
+    "url": "https://en.wikipedia.org/wiki/Golden_Gate_Bridge"
+   },
+   {
+    "label": "Structurae: Golden Gate Bridge",
+    "url": "https://structurae.net/en/structures/golden-gate-bridge"
+   },
+   {
+    "label": "Golden Gate Bridge District: NTSB statement",
+    "url": "https://www.goldengate.org/golden-gate-bridge-district-statement-on-recent-ntsb-report/"
+   },
+   {
+    "label": "Golden Gate Bridge District: Art Deco Style",
+    "url": "https://www.goldengate.org/assets/1/6/art_deco_ggb1.pdf"
+   }
+  ],
+  "systems": [
+   {
+    "id": "north-tower",
+    "name": "North tower",
+    "color": "#c0362c"
+   },
+   {
+    "id": "south-tower",
+    "name": "South tower",
+    "color": "#b53428"
+   },
+   {
+    "id": "tower-piers",
+    "name": "Tower piers and fender",
+    "color": "#8b8f93"
+   },
+   {
+    "id": "main-cables",
+    "name": "Main cables",
+    "color": "#a03028"
+   },
+   {
+    "id": "suspenders",
+    "name": "Suspender ropes",
+    "color": "#cf4a3c"
+   },
+   {
+    "id": "stiffening-truss",
+    "name": "Stiffening truss and bracing",
+    "color": "#bd3a2e"
+   },
+   {
+    "id": "deck",
+    "name": "Deck, lanes, and walkways",
+    "color": "#33373b"
+   },
+   {
+    "id": "anchorages",
+    "name": "Anchorages",
+    "color": "#9a9da1"
+   },
+   {
+    "id": "fort-point",
+    "name": "Fort Point arch and approaches",
+    "color": "#7f858a"
+   },
+   {
+    "id": "toll-plaza",
+    "name": "Toll plaza, lighting, and signals",
+    "color": "#4b5055"
+   },
+   {
+    "id": "maintenance-access",
+    "name": "Maintenance access",
+    "color": "#5e6a72"
+   }
+  ],
+  "partCount": 111,
+  "conceptCount": 111
+ },
+ {
+  "slug": "sagrada-familia",
+  "title": "Sagrada Familia",
+  "location": "Barcelona, Spain",
+  "blurb": "Antoni Gaudi’s unfinished basilica in Barcelona. Its forest of branching columns carries hyperboloid vaults up to 75 m, and its planned 18 spires rise to 172.5 m, the tallest church tower in the world since February 2026.",
+  "sourceUrls": [
+   {
+    "label": "Sagrada Familia official booklet 10: Towers",
+    "url": "https://sagradafamilia.org/documents/20142/1205286/SF_Booklet_10_20240415_digital_AF.pdf/504e0081-e3b7-43ff-be2c-0efb05e2ebaf"
+   },
+   {
+    "label": "Sagrada Familia official booklet 7: Passion Facade",
+    "url": "https://sagradafamilia.org/documents/20142/1000561/Booklet_07.pdf/1d9c8f31-1c73-d9bd-4eee-024a935ecac4"
+   },
+   {
+    "label": "Sagrada Familia official booklet 8: Glory Facade",
+    "url": "https://sagradafamilia.org/documents/20142/1000561/Booklet_08.pdf"
+   },
+   {
+    "label": "Wikipedia: Sagrada Familia",
+    "url": "http://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
+   },
+   {
+    "label": "Popular Science: Tower of Jesus completed February 2026",
+    "url": "https://www.popsci.com/technology/sagrada-familia-church-construction/"
+   },
+   {
+    "label": "AZoBuild: Building La Sagrada Familia",
+    "url": "https://www.azobuild.com/article.aspx?ArticleID=8127"
+   }
+  ],
+  "systems": [
+   {
+    "id": "spires-apostles",
+    "name": "Apostle towers",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "spires-evangelists",
+    "name": "Evangelist towers",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "spires-central",
+    "name": "Jesus and Mary towers",
+    "color": "#e6ddc9"
+   },
+   {
+    "id": "facade-nativity",
+    "name": "Nativity Facade",
+    "color": "#e0d3b8"
+   },
+   {
+    "id": "facade-passion",
+    "name": "Passion Facade",
+    "color": "#c9c4b8"
+   },
+   {
+    "id": "facade-glory",
+    "name": "Glory Facade",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "nave",
+    "name": "Nave and branching columns",
+    "color": "#a89a80"
+   },
+   {
+    "id": "vaults",
+    "name": "Roofs and vaults",
+    "color": "#e8e2d4"
+   },
+   {
+    "id": "apse",
+    "name": "Apse and ambulatory",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "cloister",
+    "name": "Cloister and chapels",
+    "color": "#cfc8b4"
+   },
+   {
+    "id": "crypt",
+    "name": "Crypt and foundations",
+    "color": "#6e6a60"
+   },
+   {
+    "id": "glass",
+    "name": "Stained glass",
+    "color": "#4a7ba6"
+   }
+  ],
+  "partCount": 134,
+  "conceptCount": 134
+ },
+ {
+  "slug": "sydney-opera-house",
+  "title": "Sydney Opera House",
+  "location": "Sydney, Australia",
+  "blurb": "Jørn Utzon’s 1973 performing arts centre on Sydney Harbour. Its precast concrete shells are all sections of a single 75.2 m sphere, set on a granite podium.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Sydney Opera House",
+    "url": "https://en.wikipedia.org/wiki/Sydney_Opera_House"
+   },
+   {
+    "label": "Structurae: Sydney Opera House",
+    "url": "https://structurae.net/en/structures/sydney-opera-house"
+   },
+   {
+    "label": "Sydney Opera House: Renewing an icon (official stories)",
+    "url": "https://stories.sydneyoperahouse.com/renewing-an-icon/"
+   },
+   {
+    "label": "Sydney Opera House Trust: Regulatory Impact Statement (Forecourt capacity)",
+    "url": "https://sydneyoperahouse.api.collaboro.com/media/regulatory-impact-statement"
+   },
+   {
+    "label": "Sydney Opera House: visitor map (Broadwalk, Central Passage, Box Office)",
+    "url": "https://sydneyoperahouse.api.collaboro.com/media/open-house-weekend-digital-map"
+   }
+  ],
+  "systems": [
+   {
+    "id": "podium",
+    "name": "Podium",
+    "color": "#9a968e"
+   },
+   {
+    "id": "shells-concert",
+    "name": "Concert Hall shells",
+    "color": "#f6f2e7"
+   },
+   {
+    "id": "shells-opera",
+    "name": "Opera Theatre shells",
+    "color": "#f2eee1"
+   },
+   {
+    "id": "shells-restaurant",
+    "name": "Restaurant shells",
+    "color": "#ede9da"
+   },
+   {
+    "id": "glass",
+    "name": "Glass walls",
+    "color": "#7fa3b8"
+   },
+   {
+    "id": "interiors",
+    "name": "Interiors",
+    "color": "#c98f4e"
+   },
+   {
+    "id": "steps",
+    "name": "Steps and terraces",
+    "color": "#b3aea1"
+   },
+   {
+    "id": "structure",
+    "name": "Structure",
+    "color": "#8b8e91"
+   }
+  ],
+  "partCount": 125,
+  "conceptCount": 125
+ },
+ {
+  "slug": "taj-mahal",
+  "title": "Taj Mahal",
+  "location": "Agra, India",
+  "blurb": "The Taj Mahal is a 17th-century Mughal mausoleum complex in Agra, India, commissioned by Shah Jahan for Mumtaz Mahal. This schematic model shows the full walled complex: riverfront terrace, marble mausoleum, four minarets, great gate, mosque, jawab, charbagh garden with its waterworks, forecourt, and subsidiary tombs.",
+  "sourceUrls": [
+   {
+    "label": "Taj Mahal, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Taj_Mahal"
+   },
+   {
+    "label": "Taj Mahal, Structurae",
+    "url": "https://structurae.net/en/structures/taj-mahal"
+   },
+   {
+    "label": "Dimensions of the Taj Mahal, wonders-of-the-world.net",
+    "url": "https://www.wonders-of-the-world.net/Taj-Mahal/Dimensions-of-the-Taj-Mahal.php"
+   },
+   {
+    "label": "Taj Mahal, vocal.media (Britannica text)",
+    "url": "https://vocal.media/earth/taj-mahal-cm1oi0ai9"
+   },
+   {
+    "label": "Origins and architecture of the Taj Mahal, Citizendium",
+    "url": "https://en.citizendium.org/wiki/index.php?title=Origins_and_architecture_of_the_Taj_Mahal&printable=yes"
+   },
+   {
+    "label": "Taj Mahal Complex, Archnet",
+    "url": "https://www.archnet.org/sites/1559"
+   },
+   {
+    "label": "Great gate of the Taj Mahal, wonders-of-the-world.net",
+    "url": "https://www.wonders-of-the-world.net/Taj-Mahal/Great-gate-of-the-Taj-Mahal.php"
+   }
+  ],
+  "systems": [
+   {
+    "id": "terrace",
+    "name": "Riverfront Terrace",
+    "color": "#b0532f"
+   },
+   {
+    "id": "mausoleum",
+    "name": "Mausoleum Base",
+    "color": "#f2ede2"
+   },
+   {
+    "id": "dome",
+    "name": "Dome Cluster",
+    "color": "#e3d7b8"
+   },
+   {
+    "id": "minarets",
+    "name": "Minarets",
+    "color": "#faf7ef"
+   },
+   {
+    "id": "interior",
+    "name": "Interior Chamber",
+    "color": "#7f96ad"
+   },
+   {
+    "id": "gate",
+    "name": "Great Gate",
+    "color": "#96452c"
+   },
+   {
+    "id": "mosque",
+    "name": "Mosque and Jawab",
+    "color": "#bd5a33"
+   },
+   {
+    "id": "charbagh",
+    "name": "Charbagh Garden",
+    "color": "#4a7c44"
+   },
+   {
+    "id": "waterworks",
+    "name": "Waterworks",
+    "color": "#3f7fae"
+   },
+   {
+    "id": "forecourt",
+    "name": "Jilaukhana Forecourt",
+    "color": "#a8622d"
+   },
+   {
+    "id": "tombs",
+    "name": "Subsidiary Tombs",
+    "color": "#c8b28a"
+   }
+  ],
+  "partCount": 130,
+  "conceptCount": 130
+ },
+ {
+  "slug": "tower",
+  "title": "Eiffel Tower",
+  "location": "Paris, France",
+  "blurb": "The Eiffel Tower is a 330 m wrought iron lattice tower on the Champ de Mars in Paris, built as the centerpiece of the 1889 Exposition Universelle. It is the most visited monument with an entrance fee in the world.",
+  "sourceUrls": [
+   {
+    "label": "Eiffel Tower, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Eiffel_Tower"
+   }
+  ],
+  "systems": [
+   {
+    "id": "foundations",
+    "name": "Foundations",
+    "color": "#6b6f75"
+   },
+   {
+    "id": "legs",
+    "name": "Legs",
+    "color": "#26262b"
+   },
+   {
+    "id": "platforms",
+    "name": "Platforms",
+    "color": "#3a3f45"
+   },
+   {
+    "id": "lattice",
+    "name": "Lattice ironwork",
+    "color": "#1f1f24"
+   },
+   {
+    "id": "arches",
+    "name": "Arches",
+    "color": "#2b2b31"
+   },
+   {
+    "id": "elevators",
+    "name": "Elevators",
+    "color": "#4a5560"
+   },
+   {
+    "id": "stairs",
+    "name": "Stairs",
+    "color": "#33373d"
+   },
+   {
+    "id": "crown",
+    "name": "Crown",
+    "color": "#1c1c20"
+   }
+  ],
+  "partCount": 119,
+  "conceptCount": 119
+ },
+ {
+  "slug": "white-house",
+  "title": "White House",
+  "location": "Washington, D.C., USA",
+  "blurb": "A procedural model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Explode the view to lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction.",
+  "sourceUrls": [
+   {
+    "label": "White House, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/White_House"
+   },
+   {
+    "label": "East Wing, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/East_Wing"
+   },
+   {
+    "label": "Roosevelt Room, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Roosevelt_Room"
+   },
+   {
+    "label": "Situation Room, Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Situation_Room"
+   },
+   {
+    "label": "In a White House Passageway, White House Historical Association",
+    "url": "https://www.whitehousehistory.org/in-a-white-house-passageway"
+   },
+   {
+    "label": "White House Fence Timeline, White House Historical Association",
+    "url": "https://d1y822qhq55g6.cloudfront.net/pdfs/White-House-Fence-Timeline_historianupdates.pdf"
+   },
+   {
+    "label": "Rose Garden, National Park Service",
+    "url": "https://www.nps.gov/whho/learn/historyculture/rose-garden.htm"
+   },
+   {
+    "label": "Jacqueline Kennedy Garden, National Park Service",
+    "url": "https://www.nps.gov/whho/learn/historyculture/jacqueline-kennedy-garden.htm"
+   },
+   {
+    "label": "Portico, Wikipedia",
+    "url": "http://en.wikipedia.org/wiki/Portico"
+   },
+   {
+    "label": "White House, Columbia Electronic Encyclopedia via FactMonster",
+    "url": "https://www.factmonster.com/encyclopedia/places/north-america/us-national-parks/white-house"
+   }
+  ],
+  "systems": [
+   {
+    "id": "shell",
+    "name": "Executive Residence massing",
+    "color": "#f3eee2"
+   },
+   {
+    "id": "northportico",
+    "name": "North Portico",
+    "color": "#c9c2b2"
+   },
+   {
+    "id": "southportico",
+    "name": "South Portico",
+    "color": "#d6cdb8"
+   },
+   {
+    "id": "vaults",
+    "name": "Vaults and undercroft",
+    "color": "#a8a088"
+   },
+   {
+    "id": "colonnades",
+    "name": "Colonnades and terraces",
+    "color": "#eae3d3"
+   },
+   {
+    "id": "westwing",
+    "name": "West Wing",
+    "color": "#efe8d7"
+   },
+   {
+    "id": "eastwing",
+    "name": "East Wing, pre-2025",
+    "color": "#e4ddca"
+   },
+   {
+    "id": "floors",
+    "name": "Floors and circulation",
+    "color": "#bda98d"
+   },
+   {
+    "id": "roof",
+    "name": "Roof and Truman-era structure",
+    "color": "#6d7f92"
+   },
+   {
+    "id": "ornament",
+    "name": "Ornament and fenestration",
+    "color": "#d9c48f"
+   },
+   {
+    "id": "grounds",
+    "name": "White House grounds",
+    "color": "#9cb380"
+   },
+   {
+    "id": "perimeter",
+    "name": "Perimeter fence and gates",
+    "color": "#8f959c"
+   }
+  ],
+  "partCount": 129,
+  "conceptCount": 129
+ }
+]
