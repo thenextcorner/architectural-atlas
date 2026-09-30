@@ -97,6 +97,165 @@
   ]
  },
  {
+  "slug": "burj-al-arab",
+  "title": "Burj Al Arab",
+  "location": "Dubai, United Arab Emirates",
+  "blurb": "Dubai’s sail-shaped Burj Al Arab hotel on its artificial island, in simplified schematic form. Explore 30 named components across 8 systems, from the fabric sail and V-shaped mast to the 180 m atrium and the helipad.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Burj Al Arab",
+    "url": "https://en.wikipedia.org/wiki/Burj_Al_Arab"
+   },
+   {
+    "label": "MEED: Burj al-Arab",
+    "url": "https://www.meed.com/burj-al-arab/"
+   },
+   {
+    "label": "Building: Fantasy island",
+    "url": "https://www.building.co.uk/fantasy-island/1374.article"
+   }
+  ],
+  "systems": [
+   {
+    "id": "island",
+    "name": "Island and foundations",
+    "color": "#cfc4a8"
+   },
+   {
+    "id": "podium",
+    "name": "Podium and entrance",
+    "color": "#e0d8c0"
+   },
+   {
+    "id": "suites",
+    "name": "Suites",
+    "color": "#e9e4d6"
+   },
+   {
+    "id": "sail",
+    "name": "Sail and mast",
+    "color": "#f4f6f8"
+   },
+   {
+    "id": "atrium",
+    "name": "Atrium",
+    "color": "#e8e2d2"
+   },
+   {
+    "id": "dining",
+    "name": "Restaurants and bars",
+    "color": "#e3dcc9"
+   },
+   {
+    "id": "helipad",
+    "name": "Helipad",
+    "color": "#5b6670"
+   },
+   {
+    "id": "services",
+    "name": "Services",
+    "color": "#8a94a0"
+   }
+  ],
+  "partCount": 30,
+  "conceptCount": 30,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "burj-al-arab-simple",
+    "parts": 30,
+    "systems": 8,
+    "blurb": "Dubai’s sail-shaped Burj Al Arab hotel on its artificial island, in simplified schematic form. Explore 30 named components across 8 systems, from the fabric sail and V-shaped mast to the 180 m atrium and the helipad."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "burj-al-arab",
+    "parts": 109,
+    "systems": 10,
+    "blurb": "Dubai’s sail-shaped Burj Al Arab, the 321 m luxury hotel on an artificial island 280 m offshore, opened in 1999. Explore 109 named components across 10 systems, from the Teflon-coated fiberglass sail and V-shaped mast to the 180 m atrium, the 202 suites, and the helipad 210 m up."
+   }
+  ]
+ },
+ {
+  "slug": "burj-khalifa",
+  "title": "Burj Khalifa",
+  "location": "Dubai, United Arab Emirates",
+  "blurb": "The Burj Khalifa in Dubai, the world’s tallest building, in simplified schematic form. Explore 30 named components across 7 systems, from the Y-shaped buttressed core and spiraling setbacks to the spire reaching 828 m.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Burj Khalifa",
+    "url": "https://en.wikipedia.org/wiki/Burj_Khalifa"
+   },
+   {
+    "label": "Wikipedia: Dubai Fountain",
+    "url": "https://en.wikipedia.org/wiki/Dubai_Fountain"
+   },
+   {
+    "label": "SOM: Design and Construction of the Burj Khalifa (PDF)",
+    "url": "https://9c37fc0c-69fe-4903-930f-0c39119df934.filesusr.com/ugd/718de4_c97a2cb7083948868e5f8f720d6f1878.pdf"
+   }
+  ],
+  "systems": [
+   {
+    "id": "substructure",
+    "name": "Substructure",
+    "color": "#b0a898"
+   },
+   {
+    "id": "podium",
+    "name": "Podium",
+    "color": "#d5d0c4"
+   },
+   {
+    "id": "massing",
+    "name": "Tower massing",
+    "color": "#dde2e6"
+   },
+   {
+    "id": "cladding",
+    "name": "Cladding",
+    "color": "#a9cfe0"
+   },
+   {
+    "id": "program",
+    "name": "Program",
+    "color": "#e3d3b3"
+   },
+   {
+    "id": "vertical",
+    "name": "Vertical circulation",
+    "color": "#8a97a3"
+   },
+   {
+    "id": "lake",
+    "name": "Lake and park",
+    "color": "#7fb3d5"
+   }
+  ],
+  "partCount": 30,
+  "conceptCount": 30,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "burj-khalifa-simple",
+    "parts": 30,
+    "systems": 7,
+    "blurb": "The Burj Khalifa in Dubai, the world’s tallest building, in simplified schematic form. Explore 30 named components across 7 systems, from the Y-shaped buttressed core and spiraling setbacks to the spire reaching 828 m."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "burj-khalifa",
+    "parts": 103,
+    "systems": 11,
+    "blurb": "The Burj Khalifa in Dubai, the world’s tallest building at 828 m, opened in 2010. Explore 103 named components across 11 systems, from the Y-shaped buttressed core and the spiraling setback tiers to the 200 m spire, the 57 elevators, and the lake and fountains below."
+   }
+  ]
+ },
+ {
   "slug": "colosseum",
   "title": "Colosseum",
   "location": "Rome, Italy",
@@ -961,6 +1120,88 @@
   ]
  },
  {
+  "slug": "one-world-trade-center",
+  "title": "One World Trade Center",
+  "location": "New York City, United States",
+  "blurb": "One World Trade Center in New York, in simplified schematic form. Explore 31 named components across 8 systems, from the 185 ft fortified base and the tapering chamfered cube to the spire reaching the symbolic 1,776 ft.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: One World Trade Center",
+    "url": "https://en.wikipedia.org/wiki/One_World_Trade_Center"
+   },
+   {
+    "label": "Wikipedia: One World Observatory",
+    "url": "https://en.wikipedia.org/wiki/One_World_Observatory"
+   },
+   {
+    "label": "Architectural Record: One World Trade Center (2015)",
+    "url": "https://www.architecturalrecord.com/articles/7991-one-world-trade-center"
+   }
+  ],
+  "systems": [
+   {
+    "id": "base",
+    "name": "Base and podium",
+    "color": "#c9c2b2"
+   },
+   {
+    "id": "facade",
+    "name": "Tower facets",
+    "color": "#bcd7e8"
+   },
+   {
+    "id": "corners",
+    "name": "Chamfered corners",
+    "color": "#9fb8cc"
+   },
+   {
+    "id": "crown",
+    "name": "Crown and observatory",
+    "color": "#cfe8f5"
+   },
+   {
+    "id": "core",
+    "name": "Concrete core",
+    "color": "#b3aa97"
+   },
+   {
+    "id": "spire",
+    "name": "Spire and ring",
+    "color": "#d5d9de"
+   },
+   {
+    "id": "mechanical",
+    "name": "Mechanical levels",
+    "color": "#9aa5ad"
+   },
+   {
+    "id": "site",
+    "name": "Site context",
+    "color": "#d8d2c4"
+   }
+  ],
+  "partCount": 31,
+  "conceptCount": 31,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "one-world-trade-center-simple",
+    "parts": 31,
+    "systems": 8,
+    "blurb": "One World Trade Center in New York, in simplified schematic form. Explore 31 named components across 8 systems, from the 185 ft fortified base and the tapering chamfered cube to the spire reaching the symbolic 1,776 ft."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "one-world-trade-center",
+    "parts": 117,
+    "systems": 10,
+    "blurb": "One World Trade Center in New York, rising to the symbolic height of 1,776 ft, opened in 2014. Explore 117 named components across 10 systems, from the 185 ft fortified base and the eight-triangle chamfered facade to the observatory, the 408 ft spire, and the memorial plaza."
+   }
+  ]
+ },
+ {
   "slug": "palace-of-westminster",
   "title": "Palace of Westminster",
   "location": "London, England",
@@ -1037,6 +1278,88 @@
     "parts": 103,
     "systems": 12,
     "blurb": "The Palace of Westminster in London, meeting place of the UK Parliament, rebuilt 1840 to 1876 in Perpendicular Gothic Revival style. Explore 103 named components across 12 systems, from the 98.5 m Victoria Tower, the 96.3 m Elizabeth Tower and the 91 m octagonal Central Tower to the two debating chambers and Westminster Hall, completed in 1099."
+   }
+  ]
+ },
+ {
+  "slug": "pentagon",
+  "title": "The Pentagon",
+  "location": "Arlington, Virginia, United States",
+  "blurb": "The Pentagon in Arlington, Virginia, in simplified schematic form. Explore 30 named components across 8 systems, from the five concentric rings around the central courtyard to the limestone facades and the five entrances.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Pentagon (United States)",
+    "url": "https://en.wikipedia.org/wiki/Pentagon_(United_States)"
+   },
+   {
+    "label": "DoD: Renovation of the Pentagon (1999)",
+    "url": "https://www.esd.whs.mil/Portals/54/Documents/FOID/Reading%20Room/Acquisition_Budget_and_Financial_Matters/Renovation_1March1999.pdf?ver=2017-05-15-134520-047"
+   },
+   {
+    "label": "GlobalSecurity.org: The Pentagon",
+    "url": "http://www.globalsecurity.org/military/facility/pentagon.htm"
+   }
+  ],
+  "systems": [
+   {
+    "id": "s-rings",
+    "name": "Concentric ring blocks",
+    "color": "#ded3b8"
+   },
+   {
+    "id": "s-corridors",
+    "name": "Radial corridor spokes",
+    "color": "#c8bfa8"
+   },
+   {
+    "id": "s-courtyard",
+    "name": "Central courtyard",
+    "color": "#8fbf6f"
+   },
+   {
+    "id": "s-entrances",
+    "name": "Entrance masses",
+    "color": "#d9cfbb"
+   },
+   {
+    "id": "s-facades",
+    "name": "Limestone shell",
+    "color": "#e8e0cc"
+   },
+   {
+    "id": "s-roofs",
+    "name": "Roof forms",
+    "color": "#6b7a8a"
+   },
+   {
+    "id": "s-below",
+    "name": "Below ground",
+    "color": "#a8a096"
+   },
+   {
+    "id": "s-grounds",
+    "name": "Grounds",
+    "color": "#9aa08f"
+   }
+  ],
+  "partCount": 30,
+  "conceptCount": 30,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "pentagon-simple",
+    "parts": 30,
+    "systems": 8,
+    "blurb": "The Pentagon in Arlington, Virginia, in simplified schematic form. Explore 30 named components across 8 systems, from the five concentric rings around the central courtyard to the limestone facades and the five entrances."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "pentagon",
+    "parts": 101,
+    "systems": 10,
+    "blurb": "The Pentagon in Arlington, Virginia, among the world’s largest office buildings at about 6.5 million sq ft, built from 1941 to 1943. Explore 101 named components across 10 systems, from the five concentric rings A through E and the 17.5 miles of corridors to the 5-acre central courtyard, the limestone facades, and the heliport."
    }
   ]
  },
@@ -1637,6 +1960,165 @@
     "parts": 105,
     "systems": 11,
     "blurb": "Rome’s 18th century Trevi Fountain, the largest Baroque fountain in the world at 26.3 m high and 49.15 m wide. Explore 105 named components across 11 systems, from Oceanus on his shell chariot and the giant Corinthian pilasters of Palazzo Poli to the travertine reef, the great basin, and the Acqua Vergine waterworks."
+   }
+  ]
+ },
+ {
+  "slug": "trump-tower-chicago",
+  "title": "Trump International Hotel and Tower",
+  "location": "Chicago, United States",
+  "blurb": "Trump International Hotel and Tower in Chicago, in simplified schematic form. Explore 31 named components across 7 systems, from the three setback tiers and the riverfront podium to the spire at 1,389 ft.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Trump International Hotel and Tower (Chicago)",
+    "url": "http://en.wikipedia.org/wiki/Trump_International_Hotel_and_Tower_(Chicago)"
+   },
+   {
+    "label": "New Civil Engineer: Windy City Wonder",
+    "url": "https://www.newcivilengineer.com/archive/windy-city-wonder-25-10-2007/"
+   },
+   {
+    "label": "NPR Illinois: Trump Stands Firm On Giant Chicago Sign",
+    "url": "https://www.nprillinois.org/2014-06-21/trump-stands-firm-on-giant-chicago-sign"
+   }
+  ],
+  "systems": [
+   {
+    "id": "base",
+    "name": "Base and podium",
+    "color": "#c4b898"
+   },
+   {
+    "id": "step-1",
+    "name": "First step",
+    "color": "#c8d4dc"
+   },
+   {
+    "id": "step-2",
+    "name": "Second step",
+    "color": "#ccd8e0"
+   },
+   {
+    "id": "step-3",
+    "name": "Third step",
+    "color": "#d0dce4"
+   },
+   {
+    "id": "crown",
+    "name": "Crown and spire",
+    "color": "#d4e0e8"
+   },
+   {
+    "id": "core",
+    "name": "Concrete core",
+    "color": "#a89e8c"
+   },
+   {
+    "id": "riverfront",
+    "name": "Riverfront",
+    "color": "#8fbf7f"
+   }
+  ],
+  "partCount": 31,
+  "conceptCount": 31,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "trump-tower-chicago-simple",
+    "parts": 31,
+    "systems": 7,
+    "blurb": "Trump International Hotel and Tower in Chicago, in simplified schematic form. Explore 31 named components across 7 systems, from the three setback tiers and the riverfront podium to the spire at 1,389 ft."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "trump-tower-chicago",
+    "parts": 106,
+    "systems": 10,
+    "blurb": "Trump International Hotel and Tower in Chicago, 1,389 ft tall with its spire, completed in 2009. Explore 106 named components across 10 systems, from the three setbacks and the stainless steel facade to the hotel and residential floors, the concrete core, and the riverwalk."
+   }
+  ]
+ },
+ {
+  "slug": "us-capitol",
+  "title": "United States Capitol",
+  "location": "Washington, D.C., United States",
+  "blurb": "The United States Capitol in Washington DC, in simplified schematic form. Explore 30 named components across 8 systems, from the cast iron dome and the Rotunda to the Senate and House wings.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: United States Capitol",
+    "url": "http://en.wikipedia.org/wiki/United_States_Capitol"
+   },
+   {
+    "label": "Wikipedia: United States Capitol dome",
+    "url": "https://en.wikipedia.org/wiki/United_States_Capitol_dome"
+   },
+   {
+    "label": "Architect of the Capitol: Frederick Law Olmsted",
+    "url": "https://www.aoc.gov/explore-capitol-campus/frederick-law-olmsted"
+   }
+  ],
+  "systems": [
+   {
+    "id": "dome",
+    "name": "Dome",
+    "color": "#ddd9cd"
+   },
+   {
+    "id": "rotunda",
+    "name": "Rotunda",
+    "color": "#e6dcc3"
+   },
+   {
+    "id": "center-crypt",
+    "name": "Center and Crypt",
+    "color": "#e6dcc3"
+   },
+   {
+    "id": "senate-wing",
+    "name": "Senate Wing",
+    "color": "#efece2"
+   },
+   {
+    "id": "house-wing",
+    "name": "House Wing",
+    "color": "#efece2"
+   },
+   {
+    "id": "porticos",
+    "name": "Porticos and Terraces",
+    "color": "#e8e4d6"
+   },
+   {
+    "id": "grounds",
+    "name": "Grounds",
+    "color": "#7fae6a"
+   },
+   {
+    "id": "corridors",
+    "name": "Corridors",
+    "color": "#d9cba8"
+   }
+  ],
+  "partCount": 30,
+  "conceptCount": 30,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "us-capitol-simple",
+    "parts": 30,
+    "systems": 8,
+    "blurb": "The United States Capitol in Washington DC, in simplified schematic form. Explore 30 named components across 8 systems, from the cast iron dome and the Rotunda to the Senate and House wings."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "us-capitol",
+    "parts": 104,
+    "systems": 11,
+    "blurb": "The United States Capitol in Washington DC, seat of the US Congress, crowned by Thomas U. Walter’s cast iron dome completed in 1866. Explore 104 named components across 11 systems, from the 288 ft dome and the 19.5 ft Statue of Freedom to the Rotunda, the two wings, and the crypt below."
    }
   ]
  },

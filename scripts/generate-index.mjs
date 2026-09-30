@@ -129,6 +129,42 @@ const VARIANTS={
   {id:'detailed',label:'Detailed',slug:'sydney-opera-house',
    blurb:'Jorn Utzon\'s 1973 performing arts center on Sydney Harbour: fourteen precast concrete shell vaults, every one a section of a single 75.2 m sphere. Explore {parts} named components across {systems} systems, from the rib fans and chevron tile lids to the steel mullion glass walls, the opened podium with its five venues, and the foundations.'},
  ],
+ 'burj-al-arab':[
+  {id:'simple',label:'Simple',slug:'burj-al-arab-simple',
+   blurb:'Dubai’s sail-shaped Burj Al Arab hotel on its artificial island, in simplified schematic form. Explore {parts} named components across {systems} systems, from the fabric sail and V-shaped mast to the 180 m atrium and the helipad.'},
+  {id:'detailed',label:'Detailed',slug:'burj-al-arab',
+   blurb:'Dubai’s sail-shaped Burj Al Arab, the 321 m luxury hotel on an artificial island 280 m offshore, opened in 1999. Explore {parts} named components across {systems} systems, from the Teflon-coated fiberglass sail and V-shaped mast to the 180 m atrium, the 202 suites, and the helipad 210 m up.'},
+ ],
+ 'burj-khalifa':[
+  {id:'simple',label:'Simple',slug:'burj-khalifa-simple',
+   blurb:'The Burj Khalifa in Dubai, the world’s tallest building, in simplified schematic form. Explore {parts} named components across {systems} systems, from the Y-shaped buttressed core and spiraling setbacks to the spire reaching 828 m.'},
+  {id:'detailed',label:'Detailed',slug:'burj-khalifa',
+   blurb:'The Burj Khalifa in Dubai, the world’s tallest building at 828 m, opened in 2010. Explore {parts} named components across {systems} systems, from the Y-shaped buttressed core and the spiraling setback tiers to the 200 m spire, the 57 elevators, and the lake and fountains below.'},
+ ],
+ 'one-world-trade-center':[
+  {id:'simple',label:'Simple',slug:'one-world-trade-center-simple',
+   blurb:'One World Trade Center in New York, in simplified schematic form. Explore {parts} named components across {systems} systems, from the 185 ft fortified base and the tapering chamfered cube to the spire reaching the symbolic 1,776 ft.'},
+  {id:'detailed',label:'Detailed',slug:'one-world-trade-center',
+   blurb:'One World Trade Center in New York, rising to the symbolic height of 1,776 ft, opened in 2014. Explore {parts} named components across {systems} systems, from the 185 ft fortified base and the eight-triangle chamfered facade to the observatory, the 408 ft spire, and the memorial plaza.'},
+ ],
+ 'us-capitol':[
+  {id:'simple',label:'Simple',slug:'us-capitol-simple',
+   blurb:'The United States Capitol in Washington DC, in simplified schematic form. Explore {parts} named components across {systems} systems, from the cast iron dome and the Rotunda to the Senate and House wings.'},
+  {id:'detailed',label:'Detailed',slug:'us-capitol',
+   blurb:'The United States Capitol in Washington DC, seat of the US Congress, crowned by Thomas U. Walter’s cast iron dome completed in 1866. Explore {parts} named components across {systems} systems, from the 288 ft dome and the 19.5 ft Statue of Freedom to the Rotunda, the two wings, and the crypt below.'},
+ ],
+ 'pentagon':[
+  {id:'simple',label:'Simple',slug:'pentagon-simple',
+   blurb:'The Pentagon in Arlington, Virginia, in simplified schematic form. Explore {parts} named components across {systems} systems, from the five concentric rings around the central courtyard to the limestone facades and the five entrances.'},
+  {id:'detailed',label:'Detailed',slug:'pentagon',
+   blurb:'The Pentagon in Arlington, Virginia, among the world’s largest office buildings at about 6.5 million sq ft, built from 1941 to 1943. Explore {parts} named components across {systems} systems, from the five concentric rings A through E and the 17.5 miles of corridors to the 5-acre central courtyard, the limestone facades, and the heliport.'},
+ ],
+ 'trump-tower-chicago':[
+  {id:'simple',label:'Simple',slug:'trump-tower-chicago-simple',
+   blurb:'Trump International Hotel and Tower in Chicago, in simplified schematic form. Explore {parts} named components across {systems} systems, from the three setback tiers and the riverfront podium to the spire at 1,389 ft.'},
+  {id:'detailed',label:'Detailed',slug:'trump-tower-chicago',
+   blurb:'Trump International Hotel and Tower in Chicago, 1,389 ft tall with its spire, completed in 2009. Explore {parts} named components across {systems} systems, from the three setbacks and the stainless steel facade to the hotel and residential floors, the concrete core, and the riverwalk.'},
+ ],
 };
 
 const dir=new URL('../public/models/',import.meta.url);
