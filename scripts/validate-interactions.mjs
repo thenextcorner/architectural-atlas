@@ -8,9 +8,16 @@ const modelsDir=new URL('../public/models/',import.meta.url);
 const index=JSON.parse(await readFile(new URL('index.json',modelsDir),'utf8'));
 assert.ok(index.length>=1,'index.json lists no buildings');
 for (const entry of index) {
-  const atlas=JSON.parse(await readFile(new URL(`${entry.slug}/atlas.json`,modelsDir)));
-  for(const key of ['title','location','blurb','systems','explanations'])assert.ok(atlas[key],`${entry.slug}: atlas.json is missing "${key}"`);
-  assert.equal(entry.partCount,atlas.parts.length,`${entry.slug}: index part count mismatch`);
+  // Every variant ships its own model dataset; validate each one.
+  const variants=entry.variants?.length?entry.variants:[{id:'simple',slug:entry.slug,parts:entry.partCount,systems:entry.systems.length}];
+  const fallback=variants.find(v=>v.id==='simple')??variants[0];
+  assert.equal(entry.partCount,fallback.parts,`${entry.slug}: index part count mismatch`);
+  assert.equal(entry.systems.length,fallback.systems,`${entry.slug}: index system count mismatch`);
+  for (const variant of variants) {
+  const atlas=JSON.parse(await readFile(new URL(`${variant.slug}/atlas.json`,modelsDir)));
+  for(const key of ['title','location','blurb','systems','explanations'])assert.ok(atlas[key],`${variant.slug}: atlas.json is missing "${key}"`);
+  assert.equal(variant.parts,atlas.parts.length,`${variant.slug}: index part count mismatch`);
+  assert.equal(variant.systems,atlas.systems.length,`${variant.slug}: index system count mismatch`);
   const systemIds=new Set(atlas.systems.map(s=>s.id));
   for(const p of atlas.parts)assert.ok(systemIds.has(p.system),`${entry.slug}: part ${p.id} has unknown system ${p.system}`);
   for(const [k,v] of Object.entries(atlas.explanations))assert.ok(v&&v.trim(),`${entry.slug}: empty explanation for ${k}`);
@@ -38,7 +45,8 @@ for (const entry of index) {
   assert.throws(()=>inspect.execute({id:'nonexistent-structure'}));
   assert.equal(selected,previous);
   assert.throws(()=>find.execute({query:' '}));
-  console.log(`${entry.slug}: ${atlas.parts.length} parts, ${atlas.systems.length} systems, packing at desktop/mobile aspect ratios and search/inspection contracts passed.`);
+  console.log(`${variant.slug}: ${atlas.parts.length} parts, ${atlas.systems.length} systems, packing at desktop/mobile aspect ratios and search/inspection contracts passed.`);
+ }
 }
 const tap=new PointerTap();
 tap.down(1,10,10,5);assert.equal(tap.up(1,12,11),true);

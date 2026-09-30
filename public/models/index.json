@@ -74,7 +74,17 @@
    }
   ],
   "partCount": 128,
-  "conceptCount": 128
+  "conceptCount": 128,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "colosseum",
+    "parts": 128,
+    "systems": 9,
+    "blurb": "The Flavian Amphitheatre in Rome, modeled in its complete original form as dedicated in AD 80, including Domitian's hypogeum and the wooden top gallery. Explore 128 components across 9 systems, from the 80 travertine arches to the 240 velarium mast corbels."
+   }
+  ]
  },
  {
   "slug": "el-castillo",
@@ -137,7 +147,17 @@
    }
   ],
   "partCount": 121,
-  "conceptCount": 121
+  "conceptCount": 121,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "el-castillo",
+    "parts": 121,
+    "systems": 7,
+    "blurb": "The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps. The model includes its buried inner pyramid, offering chambers, and the water filled cenote beneath the bedrock."
+   }
+  ]
  },
  {
   "slug": "empire-state",
@@ -207,7 +227,17 @@
    }
   ],
   "partCount": 109,
-  "conceptCount": 109
+  "conceptCount": 109,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "empire-state",
+    "parts": 109,
+    "systems": 10,
+    "blurb": "The 102 story Art Deco skyscraper at 350 Fifth Avenue in Manhattan, the world's tallest building from 1931 to 1970. Its Indiana limestone tower, twin observatories, and dirigible mooring mast made it a global icon."
+   }
+  ]
  },
  {
   "slug": "golden-gate",
@@ -294,13 +324,23 @@
    }
   ],
   "partCount": 111,
-  "conceptCount": 111
+  "conceptCount": 111,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "golden-gate",
+    "parts": 111,
+    "systems": 11,
+    "blurb": "The 2,737 m Golden Gate Bridge carries six lanes of US 101 across the strait between San Francisco and Marin County, hung from two 227 m Art Deco towers by cables spun from 27,572 wires each."
+   }
+  ]
  },
  {
   "slug": "sagrada-familia",
   "title": "Sagrada Familia",
   "location": "Barcelona, Spain",
-  "blurb": "Antoni Gaudi’s unfinished basilica in Barcelona. Its forest of branching columns carries hyperboloid vaults up to 75 m, and its planned 18 spires rise to 172.5 m, the tallest church tower in the world since February 2026.",
+  "blurb": "Antoni Gaudi’s unfinished basilica in Barcelona, in simplified schematic form. Explore 33 named components across 6 systems, from the branching nave columns to the planned 18 spires rising to 172.5 m, the tallest church tower in the world since February 2026.",
   "sourceUrls": [
    {
     "label": "Sagrada Familia official booklet 10: Towers",
@@ -329,68 +369,56 @@
   ],
   "systems": [
    {
-    "id": "spires-apostles",
-    "name": "Apostle towers",
-    "color": "#d9cfbb"
-   },
-   {
-    "id": "spires-evangelists",
-    "name": "Evangelist towers",
-    "color": "#d9cfbb"
-   },
-   {
-    "id": "spires-central",
-    "name": "Jesus and Mary towers",
+    "id": "spires",
+    "name": "Spires",
     "color": "#e6ddc9"
    },
    {
-    "id": "facade-nativity",
-    "name": "Nativity Facade",
-    "color": "#e0d3b8"
-   },
-   {
-    "id": "facade-passion",
-    "name": "Passion Facade",
-    "color": "#c9c4b8"
-   },
-   {
-    "id": "facade-glory",
-    "name": "Glory Facade",
-    "color": "#d9cfbb"
+    "id": "facades",
+    "name": "Facades",
+    "color": "#d8cdb2"
    },
    {
     "id": "nave",
-    "name": "Nave and branching columns",
+    "name": "Nave and columns",
     "color": "#a89a80"
    },
    {
     "id": "vaults",
-    "name": "Roofs and vaults",
+    "name": "Vaults",
     "color": "#e8e2d4"
    },
    {
     "id": "apse",
-    "name": "Apse and ambulatory",
+    "name": "Apse",
     "color": "#d9cfbb"
    },
    {
-    "id": "cloister",
-    "name": "Cloister and chapels",
-    "color": "#cfc8b4"
-   },
-   {
-    "id": "crypt",
-    "name": "Crypt and foundations",
-    "color": "#6e6a60"
-   },
-   {
-    "id": "glass",
-    "name": "Stained glass",
-    "color": "#4a7ba6"
+    "id": "base",
+    "name": "Cloister and crypt",
+    "color": "#b9b2a0"
    }
   ],
-  "partCount": 134,
-  "conceptCount": 134
+  "partCount": 33,
+  "conceptCount": 33,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "sagrada-familia-simple",
+    "parts": 33,
+    "systems": 6,
+    "blurb": "Antoni Gaudi’s unfinished basilica in Barcelona, in simplified schematic form. Explore 33 named components across 6 systems, from the branching nave columns to the planned 18 spires rising to 172.5 m, the tallest church tower in the world since February 2026."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "sagrada-familia",
+    "parts": 134,
+    "systems": 12,
+    "blurb": "Antoni Gaudi’s unfinished basilica in Barcelona. Explore 134 named components across 12 systems, from the branching nave columns and hyperboloid vaults to the planned 18 spires rising to 172.5 m, the tallest church tower in the world since February 2026."
+   }
+  ]
  },
  {
   "slug": "sydney-opera-house",
@@ -462,7 +490,17 @@
    }
   ],
   "partCount": 125,
-  "conceptCount": 125
+  "conceptCount": 125,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "sydney-opera-house",
+    "parts": 125,
+    "systems": 8,
+    "blurb": "Jørn Utzon’s 1973 performing arts centre on Sydney Harbour. Its precast concrete shells are all sections of a single 75.2 m sphere, set on a granite podium."
+   }
+  ]
  },
  {
   "slug": "taj-mahal",
@@ -557,7 +595,17 @@
    }
   ],
   "partCount": 130,
-  "conceptCount": 130
+  "conceptCount": 130,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "taj-mahal",
+    "parts": 130,
+    "systems": 11,
+    "blurb": "The Taj Mahal is a 17th-century Mughal mausoleum complex in Agra, India, commissioned by Shah Jahan for Mumtaz Mahal. This schematic model shows the full walled complex: riverfront terrace, marble mausoleum, four minarets, great gate, mosque, jawab, charbagh garden with its waterworks, forecourt, and subsidiary tombs."
+   }
+  ]
  },
  {
   "slug": "tower",
@@ -613,7 +661,94 @@
    }
   ],
   "partCount": 119,
-  "conceptCount": 119
+  "conceptCount": 119,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "tower",
+    "parts": 119,
+    "systems": 8,
+    "blurb": "The Eiffel Tower is a 330 m wrought iron lattice tower on the Champ de Mars in Paris, built as the centerpiece of the 1889 Exposition Universelle. It is the most visited monument with an entrance fee in the world."
+   }
+  ]
+ },
+ {
+  "slug": "tower-bridge",
+  "title": "Tower Bridge",
+  "location": "London, United Kingdom",
+  "blurb": "London’s Grade I listed combined bascule and suspension bridge over the Thames, in simplified schematic form. Explore 32 named components across 7 systems, from the 213 ft towers and 1,070-ton bascules to the high-level walkways and 270 ft suspension side spans.",
+  "sourceUrls": [
+   {
+    "label": "Wikipedia: Tower Bridge",
+    "url": "http://en.wikipedia.org/wiki/Tower_Bridge"
+   },
+   {
+    "label": "RIBA Pix: Tower Bridge",
+    "url": "https://www.ribapix.com/tower-bridge"
+   },
+   {
+    "label": "London Wiki: Tower Bridge",
+    "url": "https://london.fandom.com/wiki/Tower_Bridge"
+   }
+  ],
+  "systems": [
+   {
+    "id": "substructure",
+    "name": "Substructure",
+    "color": "#b0a898"
+   },
+   {
+    "id": "towers",
+    "name": "Towers",
+    "color": "#ded3b8"
+   },
+   {
+    "id": "bascules",
+    "name": "Bascules",
+    "color": "#5b8ab5"
+   },
+   {
+    "id": "walkways",
+    "name": "High-level walkways",
+    "color": "#dfe4e8"
+   },
+   {
+    "id": "suspension",
+    "name": "Suspension side spans",
+    "color": "#7fa8c9"
+   },
+   {
+    "id": "deck",
+    "name": "Roadway and footways",
+    "color": "#c8c2b2"
+   },
+   {
+    "id": "hydraulics",
+    "name": "Hydraulic machinery",
+    "color": "#6b7a8a"
+   }
+  ],
+  "partCount": 32,
+  "conceptCount": 32,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "tower-bridge-simple",
+    "parts": 32,
+    "systems": 7,
+    "blurb": "London’s Grade I listed combined bascule and suspension bridge over the Thames, in simplified schematic form. Explore 32 named components across 7 systems, from the 213 ft towers and 1,070-ton bascules to the high-level walkways and 270 ft suspension side spans."
+   },
+   {
+    "id": "detailed",
+    "label": "Detailed",
+    "slug": "tower-bridge",
+    "parts": 101,
+    "systems": 9,
+    "blurb": "London’s Grade I listed combined bascule and suspension bridge over the Thames, opened in 1894. Explore 101 named components across 9 systems, from the 213 ft towers, 1,070-ton bascules and steam-driven hydraulics to the high-level walkways and 270 ft suspension side spans."
+   }
+  ]
  },
  {
   "slug": "white-house",
@@ -725,6 +860,16 @@
    }
   ],
   "partCount": 129,
-  "conceptCount": 129
+  "conceptCount": 129,
+  "variants": [
+   {
+    "id": "simple",
+    "label": "Simple",
+    "slug": "white-house",
+    "parts": 129,
+    "systems": 12,
+    "blurb": "A procedural model of the White House in its pre-2025 configuration, before the original East Wing was demolished. Explode the view to lift the white-painted Aquia Creek sandstone shell off the hidden steel frame built inside it during the 1948 to 1952 Truman reconstruction."
+   }
+  ]
  }
 ]

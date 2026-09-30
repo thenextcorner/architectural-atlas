@@ -9,9 +9,11 @@ export interface Atlas {
  parts:Part[];concepts:Concept[];
  chunks:{url:string;bytes:number;gzip?:string;gzipBytes?:number}[];triangles:number;spread?:number;
 }
+export interface BuildingVariant {id:string;label:string;slug:string;parts:number;systems:number;blurb:string}
 export interface BuildingIndexEntry {
  slug:string;title:string;location:string;blurb:string;sourceUrls:SourceUrl[];
  systems:{id:string;name:string;color:string}[];partCount:number;conceptCount:number;
+ variants:BuildingVariant[];
 }
 export type View = 'three-quarter'|'front'|'back'|'side';
 export interface SceneState {inspectorOpen?:boolean;explode:number;visible:string[];selected:string[];isolate:boolean;view:View;rotate:boolean;reset:number}

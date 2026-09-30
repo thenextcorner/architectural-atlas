@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react';
 import {ArrowUpRight,Coffee} from 'lucide-react';
 import {Badge} from '@/components/ui/badge';
-import {COFFEE_URL,OWNER_URL} from './config';
+import {COFFEE_URL,OWNER_URL,REPO_URL} from './config';
 import {openCookieSettings} from './consent';
 import type {BuildingIndexEntry} from './atlas';
 export default function IndexPage(){
@@ -39,6 +39,7 @@ export default function IndexPage(){
      <a href="/terms/">Terms</a>
      <button type="button" className="foot-link-btn" onClick={openCookieSettings}>Cookie settings</button>
      <a href={OWNER_URL} target="_blank" rel="noreferrer">dennisgoedegebuure.com</a>
+     <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub</a>
     </nav>
     <span>Viewer code is a fork of <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">Human Atlas by ashemag</a>, MIT licensed.</span>
    </footer>

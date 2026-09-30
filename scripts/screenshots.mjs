@@ -31,7 +31,12 @@ const chrome = spawn(CHROME, [
   `--remote-debugging-port=${PORT}`, 'about:blank',
 ], { stdio: 'ignore' });
 await new Promise((r) => setTimeout(r, 1500));
-const targets = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json();
+let targets = null;
+for (let i = 0; i < 30; i++) {
+  try { targets = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json(); break; }
+  catch { await new Promise((r) => setTimeout(r, 1000)); }
+}
+if (!targets) throw new Error('Chrome DevTools did not come up on port ' + PORT);
 const ws = new WebSocket(targets.find((t) => t.type === 'page').webSocketDebuggerUrl);
 await new Promise((r) => (ws.onopen = r));
 let id = 0; const pending = new Map();

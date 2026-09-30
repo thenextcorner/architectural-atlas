@@ -9,11 +9,17 @@ import {Switch} from '@/components/ui/switch';
 import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sheet';
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import BuildingScene from './scene';
-import {COFFEE_URL} from './config';
-import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingSystem,type Concept,type SceneState,type View} from './atlas';
+import {COFFEE_URL,REPO_URL} from './config';
+import {trackEvent} from './analytics';
+import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View} from './atlas';
+const variantStorageKey=(building:string)=>`atlas_detail_variant:${building}`;
+const readStoredVariant=(building:string):string|null=>{try{return localStorage.getItem(variantStorageKey(building));}catch{return null;}};
+const writeStoredVariant=(building:string,id:string)=>{try{localStorage.setItem(variantStorageKey(building),id);}catch{}};
 export default function Viewer({slug}:{slug:string}){
  const detailTitle=useRef<HTMLHeadingElement>(null);
  const [atlas,setAtlas]=useState<Atlas|null>(null),
+ [variants,setVariants]=useState<BuildingVariant[]|null>(null),
+ [variantId,setVariantId]=useState<string|null>(null),
  [state,setState]=useState<SceneState>({explode:0,visible:[],selected:[],isolate:false,view:'three-quarter',rotate:false,reset:0}),
  [progress,setProgress]=useState(0),[error,setError]=useState(''),
  [panel,setPanel]=useState<'layers'|'search'|null>(null),
@@ -21,12 +27,38 @@ export default function Viewer({slug}:{slug:string}){
  [query,setQuery]=useState(''),[chosen,setChosen]=useState<Concept|null>(null);
  useEffect(()=>{const abort=new AbortController();
   setProgress(0);setError('');setAtlas(null);setChosen(null);setDetails(false);setPanel(null);
+  setVariants(null);setVariantId(null);
+  // Resolve the building's model variants from the catalogue. Defaults to the
+  // simple variant; a stored choice wins. Falls back to the legacy single-model
+  // path when the catalogue cannot be read, so the viewer never goes blank.
+  const single:BuildingVariant[]=[{id:'simple',label:'Simple',slug,parts:0,systems:0,blurb:''}];
+  fetch('/models/index.json',{signal:abort.signal})
+   .then(r=>{if(!r.ok)throw new Error('catalogue');return r.json() as Promise<BuildingIndexEntry[]>;})
+   .then((entries:BuildingIndexEntry[])=>{
+     const found=entries.find(e=>e.slug===slug)?.variants;
+     const vs=found&&found.length?found:single;
+     const stored=readStoredVariant(slug);
+     const initial=vs.some(v=>v.id===stored)?stored as string:(vs.some(v=>v.id==='simple')?'simple':vs[0].id);
+     if(!abort.signal.aborted){setVariants(vs);setVariantId(initial);}
+   })
+   .catch(()=>{if(!abort.signal.aborted){setVariants(single);setVariantId('simple');}});
+  return()=>abort.abort();},[slug]);
+ const activeVariant=variants?.find(v=>v.id===variantId)??null;
+ const modelSlug=activeVariant?.slug??null;
+ const switchVariant=(id:string)=>{
+  if(id===variantId||!variants?.some(v=>v.id===id))return;
+  writeStoredVariant(slug,id);
+  trackEvent('detail_toggle',{building:slug,variant:id});
+  setVariantId(id);
+ };
+ useEffect(()=>{if(!modelSlug)return;const abort=new AbortController();
+  setProgress(0);setError('');setAtlas(null);setChosen(null);setDetails(false);setPanel(null);
   setState(s=>({...s,explode:0,visible:[],selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));
-  fetch(`/models/${slug}/atlas.json`,{signal:abort.signal})
+  fetch(`/models/${modelSlug}/atlas.json`,{signal:abort.signal})
    .then(r=>{if(!r.ok)throw new Error('This building could not be loaded.');return r.json();})
    .then(data=>{const a=data as Atlas;setAtlas(a);setState(s=>({...s,visible:a.systems.map(sys=>sys.id)}));})
    .catch(e=>{if(e.name!=='AbortError')setError(e.message);});
-  return()=>abort.abort();},[slug]);
+  return()=>abort.abort();},[slug,modelSlug]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
  const systems:BuildingSystem[]=useMemo(()=>atlas?.systems??[],[atlas]);
  const parts=useMemo(()=>new Map(atlas?.parts.map(p=>[p.id,p])),[atlas]);
@@ -46,7 +78,7 @@ export default function Viewer({slug}:{slug:string}){
  return <main className="studio">
   {atlas&&<BuildingScene atlas={atlas} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
-  <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div></header>
+  <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
   <nav className="top-actions" aria-label="Explorer panels"><a className="back-link" href="#/"><ArrowLeft size={16}/><span>All buildings</span></a><a className="back-link coffee-link" href={COFFEE_URL} target="_blank" rel="noreferrer"><Coffee size={16}/><span>Buy me a coffee</span></a><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search components"><Search size={18}/><span>Find a component</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label="About this model" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
   <section className={`layers-panel glass ${panel==='layers'?'mobile-open':''}`} aria-label="Structural layers">
    <div className="panel-heading"><span>Systems</span><Button variant="ghost" className="mobile-only icon-button" onClick={()=>setPanel(null)} aria-label="Close systems"><X size={18}/></Button><Badge variant="secondary" className="desktop-only small-number">{activeSystems.length}</Badge></div>
@@ -62,6 +94,6 @@ export default function Viewer({slug}:{slug:string}){
   {progress<100&&!error&&<div className="loading glass" role="status"><Activity size={18}/><div><strong>Preparing the structure</strong><span>{progress}% · Loading {atlas?.parts.length.toLocaleString()??'…'} pieces</span><div className="loading-track"><i style={{width:`${progress}%`}}/></div></div></div>}
   {error&&<div className="loading glass error" role="alert"><p>{error}</p><Button variant="ghost" onClick={()=>location.reload()}>Reload viewer</Button><a className="source-link" href="#/">Back to all buildings</a></div>}
   <Sheet open={details&&selectedParts.length>0} modal={false} disablePointerDismissal onOpenChange={setDetails}><SheetContent initialFocus={detailTitle} className={`detail-sheet glass ${state.isolate?'is-isolated':''}`} showCloseButton={true}><div className="detail-header"><div className="detail-accent" style={{background:system?.color}}/><div className="eyebrow">{system?.name??'STRUCTURE'}</div><SheetTitle ref={detailTitle} tabIndex={-1} className="structure-title">{chosen?.name}</SheetTitle></div><div className="detail-scroll" key={`${chosen?.id}-${state.isolate}`}><SheetDescription className="structure-description">{atlas&&chosen&&selected?explanationFor(atlas,chosen.name,selected.system):''}</SheetDescription>{atlas&&chosen&&!hasExplanation(atlas,chosen.name)&&<span className="context-note">{GENERIC_EXPLANATION_NOTE}</span>}<div className="structure-meta"><span>Atlas reference<strong>{chosen?.id}</strong></span><span>Selected pieces<strong>{state.selected.length.toLocaleString()}</strong></span></div>{selectedParts.length>1&&<div className="member-list"><h3>Included components</h3>{selectedParts.slice(0,50).map(p=><Button variant="ghost" key={p.id} onClick={()=>choosePart(p.id)}><span>{p.name}</span><ChevronRight size={14}/></Button>)}{selectedParts.length>50&&<p>And {selectedParts.length-50} more modeled pieces.</p>}</div>}{primarySource&&<a className="source-link" href={primarySource.url} target="_blank" rel="noreferrer">Read the reference article <ArrowUpRight size={14}/></a>}</div><div className="detail-actions"><Button className={`primary-action ${state.isolate?'active':''}`} onClick={()=>setState(s=>({...s,isolate:!s.isolate,explode:0}))}><Focus size={18}/>{state.isolate?'Show surrounding structure':'Isolate component'}<ChevronRight size={16}/></Button><Button variant="ghost" className="secondary-action" onClick={()=>{setState(s=>({...s,selected:[],isolate:false}));setDetails(false);}}>Clear selection</Button></div></SheetContent></Sheet>
-  <Sheet open={about} onOpenChange={setAbout}><SheetContent className="about-sheet glass"><div className="eyebrow">SOURCE & SCOPE</div><SheetTitle className="structure-title">A structure, taken apart.</SheetTitle>{atlas&&<><SheetDescription>Explore {atlas.title} as {atlas.parts.length.toLocaleString()} named components across {atlas.systems.length} systems.</SheetDescription><div className="about-copy"><p><strong>{atlas.title} · {atlas.location}</strong><br/>{atlas.blurb}</p><p>Documented dimensions are taken from the reference sources. Shapes between those fixed points are schematic, not engineering drawings.</p><p>Colors and system groupings are designed for exploration. The geometry is procedural and simplified for the web, and short explanations provide general context.</p><h3>Sources</h3>{atlas.sourceUrls.map(u=><a key={u.url} href={u.url} target="_blank" rel="noreferrer">{u.label} <ArrowUpRight size={14}/></a>)}<p>The viewer code is a fork of <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer" style={{display:'inline'}}>Human Atlas by ashemag</a>, MIT licensed.</p></div></>}</SheetContent></Sheet>
+  <Sheet open={about} onOpenChange={setAbout}><SheetContent className="about-sheet glass"><div className="eyebrow">SOURCE & SCOPE</div><SheetTitle className="structure-title">A structure, taken apart.</SheetTitle>{atlas&&<><SheetDescription>Explore {atlas.title} as {atlas.parts.length.toLocaleString()} named components across {atlas.systems.length} systems.</SheetDescription><div className="about-copy"><p><strong>{atlas.title} · {atlas.location}</strong><br/>{atlas.blurb}</p><p>Documented dimensions are taken from the reference sources. Shapes between those fixed points are schematic, not engineering drawings.</p><p>Colors and system groupings are designed for exploration. The geometry is procedural and simplified for the web, and short explanations provide general context.</p><h3>Sources</h3>{atlas.sourceUrls.map(u=><a key={u.url} href={u.url} target="_blank" rel="noreferrer">{u.label} <ArrowUpRight size={14}/></a>)}<p>The viewer code is a fork of <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer" style={{display:'inline'}}>Human Atlas by ashemag</a>, MIT licensed. Our fork is on <a href={REPO_URL} target="_blank" rel="noreferrer" style={{display:'inline'}}>GitHub</a>.</p></div></>}</SheetContent></Sheet>
  </main>;
 }
