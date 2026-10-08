@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>What should I build next? Vote - Architectural Atlas</title>
+<meta name="description" content="Vote for the next structure to become an exploded 3D model on Architectural Atlas. Live leaderboard of all 39 candidates."/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<style>
+body{font-family:'Helvetica Neue',Arial,sans-serif;color:#20242b;background:#f3f4f4;margin:0;line-height:1.65}
+main{max-width:860px;margin:0 auto;padding:56px 24px 72px}
+a{color:#263b48}
+h1{font-size:32px;letter-spacing:-1px;font-weight:600}
+.meta{color:#6c7883;font-size:13px;margin-bottom:24px}
+.back{display:inline-block;margin-bottom:28px;font-size:14px;text-decoration:none}
+.intro{max-width:680px}
+.intro p{margin:0 0 14px}
+.board{margin-top:30px;border:1px solid #18253614;border-radius:14px;overflow:hidden;background:#fff}
+.row{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px solid #1825360d}
+.row:last-child{border-bottom:none}
+.row.lead{background:#fdf8ec}
+.pos{font-size:20px;font-weight:700;color:#887454;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+.info{flex:1;min-width:0}
+.nm{font-weight:600;font-size:15px}
+.rrank{background:#20242b;color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:8px;vertical-align:2px}
+.lc{font-size:12px;color:#6c7883}
+.votes{font-size:14px;color:#3a424c;white-space:nowrap;font-variant-numeric:tabular-nums}
+.votes .n{font-size:17px}
+.vote{border:1px solid #18253630;background:#fff;border-radius:999px;padding:8px 22px;font-size:14px;font-weight:600;cursor:pointer;color:#20242b}
+.vote:hover:not(:disabled){background:#20242b;color:#fff;border-color:#20242b}
+.vote:disabled{opacity:.45;cursor:default}
+.vote.voted{background:#e2f2e5;border-color:#1f6b34;color:#1f6b34;opacity:1}
+.status{font-size:13px;color:#6c7883;margin:14px 0 0;min-height:20px}
+.note{background:#fff;border:1px solid #18253614;border-radius:12px;padding:18px 22px;font-size:13px;color:#3a424c;max-width:680px;margin-top:26px}
+.cta{background:#fff;border:1px solid #18253618;border-radius:12px;padding:20px 24px;margin-top:20px;max-width:680px}
+.cta p{margin:0 0 12px}
+.cta p:last-child{margin-bottom:0}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid #18253618;font-size:13px;color:#6c7883}
+footer a{color:#6c7883;margin-right:16px}
+#tslot{position:fixed;left:-9999px;top:0}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">Back to the atlas</a>
+<h1>What should I build next?</h1>
+<p class="meta">Live leaderboard &middot; one vote per structure per person</p>
+<div class="intro">
+<p>Thirty-nine structures made the shortlist. You decide what gets built first: vote for the ones you want to see taken apart, and the board re-ranks itself live. One vote per structure per person, and a bot check keeps the count honest.</p>
+</div>
+<div class="board" id="board">
+<div class="row" data-slug="st-peters-basilica" data-rank="1" data-order="0">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#1</span>St Peter&#x27;s Basilica</div><div class="lc">Vatican City, Vatican City &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="st-pauls-cathedral" data-rank="2" data-order="1">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#2</span>St Paul&#x27;s Cathedral</div><div class="lc">London, United Kingdom &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="chrysler-building" data-rank="3" data-order="2">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#3</span>Chrysler Building</div><div class="lc">New York City, United States &middot; North America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="sydney-harbour-bridge" data-rank="4" data-order="3">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#4</span>Sydney Harbour Bridge</div><div class="lc">Sydney, Australia &middot; Oceania</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="st-basils-cathedral" data-rank="5" data-order="4">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#5</span>St Basil&#x27;s Cathedral</div><div class="lc">Moscow, Russia &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="atomium" data-rank="6" data-order="5">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#6</span>Atomium</div><div class="lc">Brussels, Belgium &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="angkor-wat" data-rank="7" data-order="6">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#7</span>Angkor Wat</div><div class="lc">Siem Reap, Cambodia &middot; Southeast Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="petronas-towers" data-rank="8" data-order="7">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#8</span>Petronas Towers</div><div class="lc">Kuala Lumpur, Malaysia &middot; Southeast Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="hall-of-prayer-for-good-harvests" data-rank="9" data-order="8">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#9</span>Hall of Prayer for Good Harvests</div><div class="lc">Beijing, China &middot; East Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="christ-the-redeemer" data-rank="10" data-order="9">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#10</span>Christ the Redeemer</div><div class="lc">Rio de Janeiro, Brazil &middot; South America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="hagia-sophia" data-rank="11" data-order="10">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#11</span>Hagia Sophia</div><div class="lc">Istanbul, Turkiye &middot; Middle East</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="dome-of-the-rock" data-rank="12" data-order="11">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#12</span>Dome of the Rock</div><div class="lc">Jerusalem &middot; Middle East</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="shanghai-tower" data-rank="13" data-order="12">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#13</span>Shanghai Tower</div><div class="lc">Shanghai, China &middot; East Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="sheikh-zayed-grand-mosque" data-rank="14" data-order="13">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#14</span>Sheikh Zayed Grand Mosque</div><div class="lc">Abu Dhabi, United Arab Emirates &middot; Middle East</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="arc-de-triomphe" data-rank="15" data-order="14">
+<span class="pos">-</span>
+<div class="info"><div class="nm"><span class="rrank">#15</span>Arc de Triomphe</div><div class="lc">Paris, France &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="domtoren" data-rank="99" data-order="15">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Domtoren (Dom Tower)</div><div class="lc">Utrecht, Netherlands &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="rijksmuseum" data-rank="99" data-order="16">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Rijksmuseum</div><div class="lc">Amsterdam, Netherlands &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="kubuswoningen" data-rank="99" data-order="17">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Kubuswoningen (Cube Houses)</div><div class="lc">Rotterdam, Netherlands &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="stockholm-city-hall" data-rank="99" data-order="18">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Stockholm City Hall</div><div class="lc">Stockholm, Sweden &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="turning-torso" data-rank="99" data-order="19">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Turning Torso</div><div class="lc">Malmo, Sweden &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="winter-palace" data-rank="99" data-order="20">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Winter Palace</div><div class="lc">St Petersburg, Russia &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="charles-bridge" data-rank="99" data-order="21">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Charles Bridge</div><div class="lc">Prague, Czechia &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="oriental-pearl-tower" data-rank="99" data-order="22">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Oriental Pearl Tower</div><div class="lc">Shanghai, China &middot; East Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="potala-palace" data-rank="99" data-order="23">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Potala Palace</div><div class="lc">Lhasa, China &middot; East Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="marina-bay-sands" data-rank="99" data-order="24">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Marina Bay Sands</div><div class="lc">Singapore, Singapore &middot; Southeast Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="wat-arun" data-rank="99" data-order="25">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Wat Arun</div><div class="lc">Bangkok, Thailand &middot; Southeast Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="qutb-minar" data-rank="99" data-order="26">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Qutb Minar</div><div class="lc">Delhi, India &middot; South Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="mysore-palace" data-rank="99" data-order="27">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Mysore Palace</div><div class="lc">Mysuru, India &middot; South Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="gateway-of-india" data-rank="99" data-order="28">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Gateway of India</div><div class="lc">Mumbai, India &middot; South Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="lotus-temple" data-rank="99" data-order="29">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Lotus Temple</div><div class="lc">Delhi, India &middot; South Asia</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="abraj-al-bait" data-rank="99" data-order="30">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Abraj Al Bait</div><div class="lc">Mecca, Saudi Arabia &middot; Middle East</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="great-mosque-of-djenne" data-rank="99" data-order="31">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Great Mosque of Djenne</div><div class="lc">Djenne, Mali &middot; Africa</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="brasilia-cathedral" data-rank="99" data-order="32">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Brasilia Cathedral</div><div class="lc">Brasilia, Brazil &middot; South America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="sky-tower" data-rank="99" data-order="33">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Sky Tower</div><div class="lc">Auckland, New Zealand &middot; Oceania</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="louvre-pyramid" data-rank="99" data-order="34">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Louvre Pyramid</div><div class="lc">Paris, France &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="statue-of-liberty" data-rank="99" data-order="35">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Statue of Liberty</div><div class="lc">New York Harbor, United States &middot; North America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="space-needle" data-rank="99" data-order="36">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Space Needle</div><div class="lc">Seattle, United States &middot; North America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="cn-tower" data-rank="99" data-order="37">
+<span class="pos">-</span>
+<div class="info"><div class="nm">CN Tower</div><div class="lc">Toronto, Canada &middot; North America</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+<div class="row" data-slug="milan-cathedral" data-rank="99" data-order="38">
+<span class="pos">-</span>
+<div class="info"><div class="nm">Milan Cathedral</div><div class="lc">Milan, Italy &middot; Europe</div></div>
+<span class="votes"><strong class="n">0</strong> votes</span>
+<button class="vote" type="button">Vote</button>
+</div>
+</div>
+<p class="status" id="status"></p>
+<div class="note">Votes are stored anonymously: a cookie and a bot check stop repeat votes and ballot stuffing. No account needed.</div>
+<div class="cta">
+<p><strong>Missing a favorite?</strong></p>
+<p>If the structure you want is not on the board, tell me on X and I will add it to the shortlist: <a id="suggest" href="https://x.com/intent/tweet" target="_blank" rel="noreferrer">suggest a structure on X</a>.</p>
+</div>
+<footer>
+<a href="/candidates/">Candidates</a><a href="/leaderboard/">Leaderboard</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">X</a>
+</footer>
+</main>
+<div id="tslot"></div>
+<script>
+const SITEKEY = "%%SITEKEY%%";
+const STRUCTURES = [{"slug": "st-peters-basilica", "name": "St Peter's Basilica", "city": "Vatican City", "country": "Vatican City", "region": "Europe", "rank": 1, "order": 0}, {"slug": "st-pauls-cathedral", "name": "St Paul's Cathedral", "city": "London", "country": "United Kingdom", "region": "Europe", "rank": 2, "order": 1}, {"slug": "chrysler-building", "name": "Chrysler Building", "city": "New York City", "country": "United States", "region": "North America", "rank": 3, "order": 2}, {"slug": "sydney-harbour-bridge", "name": "Sydney Harbour Bridge", "city": "Sydney", "country": "Australia", "region": "Oceania", "rank": 4, "order": 3}, {"slug": "st-basils-cathedral", "name": "St Basil's Cathedral", "city": "Moscow", "country": "Russia", "region": "Europe", "rank": 5, "order": 4}, {"slug": "atomium", "name": "Atomium", "city": "Brussels", "country": "Belgium", "region": "Europe", "rank": 6, "order": 5}, {"slug": "angkor-wat", "name": "Angkor Wat", "city": "Siem Reap", "country": "Cambodia", "region": "Southeast Asia", "rank": 7, "order": 6}, {"slug": "petronas-towers", "name": "Petronas Towers", "city": "Kuala Lumpur", "country": "Malaysia", "region": "Southeast Asia", "rank": 8, "order": 7}, {"slug": "hall-of-prayer-for-good-harvests", "name": "Hall of Prayer for Good Harvests", "city": "Beijing", "country": "China", "region": "East Asia", "rank": 9, "order": 8}, {"slug": "christ-the-redeemer", "name": "Christ the Redeemer", "city": "Rio de Janeiro", "country": "Brazil", "region": "South America", "rank": 10, "order": 9}, {"slug": "hagia-sophia", "name": "Hagia Sophia", "city": "Istanbul", "country": "Turkiye", "region": "Middle East", "rank": 11, "order": 10}, {"slug": "dome-of-the-rock", "name": "Dome of the Rock", "city": "Jerusalem", "country": "", "region": "Middle East", "rank": 12, "order": 11}, {"slug": "shanghai-tower", "name": "Shanghai Tower", "city": "Shanghai", "country": "China", "region": "East Asia", "rank": 13, "order": 12}, {"slug": "sheikh-zayed-grand-mosque", "name": "Sheikh Zayed Grand Mosque", "city": "Abu Dhabi", "country": "United Arab Emirates", "region": "Middle East", "rank": 14, "order": 13}, {"slug": "arc-de-triomphe", "name": "Arc de Triomphe", "city": "Paris", "country": "France", "region": "Europe", "rank": 15, "order": 14}, {"slug": "domtoren", "name": "Domtoren (Dom Tower)", "city": "Utrecht", "country": "Netherlands", "region": "Europe", "rank": null, "order": 15}, {"slug": "rijksmuseum", "name": "Rijksmuseum", "city": "Amsterdam", "country": "Netherlands", "region": "Europe", "rank": null, "order": 16}, {"slug": "kubuswoningen", "name": "Kubuswoningen (Cube Houses)", "city": "Rotterdam", "country": "Netherlands", "region": "Europe", "rank": null, "order": 17}, {"slug": "stockholm-city-hall", "name": "Stockholm City Hall", "city": "Stockholm", "country": "Sweden", "region": "Europe", "rank": null, "order": 18}, {"slug": "turning-torso", "name": "Turning Torso", "city": "Malmo", "country": "Sweden", "region": "Europe", "rank": null, "order": 19}, {"slug": "winter-palace", "name": "Winter Palace", "city": "St Petersburg", "country": "Russia", "region": "Europe", "rank": null, "order": 20}, {"slug": "charles-bridge", "name": "Charles Bridge", "city": "Prague", "country": "Czechia", "region": "Europe", "rank": null, "order": 21}, {"slug": "oriental-pearl-tower", "name": "Oriental Pearl Tower", "city": "Shanghai", "country": "China", "region": "East Asia", "rank": null, "order": 22}, {"slug": "potala-palace", "name": "Potala Palace", "city": "Lhasa", "country": "China", "region": "East Asia", "rank": null, "order": 23}, {"slug": "marina-bay-sands", "name": "Marina Bay Sands", "city": "Singapore", "country": "Singapore", "region": "Southeast Asia", "rank": null, "order": 24}, {"slug": "wat-arun", "name": "Wat Arun", "city": "Bangkok", "country": "Thailand", "region": "Southeast Asia", "rank": null, "order": 25}, {"slug": "qutb-minar", "name": "Qutb Minar", "city": "Delhi", "country": "India", "region": "South Asia", "rank": null, "order": 26}, {"slug": "mysore-palace", "name": "Mysore Palace", "city": "Mysuru", "country": "India", "region": "South Asia", "rank": null, "order": 27}, {"slug": "gateway-of-india", "name": "Gateway of India", "city": "Mumbai", "country": "India", "region": "South Asia", "rank": null, "order": 28}, {"slug": "lotus-temple", "name": "Lotus Temple", "city": "Delhi", "country": "India", "region": "South Asia", "rank": null, "order": 29}, {"slug": "abraj-al-bait", "name": "Abraj Al Bait", "city": "Mecca", "country": "Saudi Arabia", "region": "Middle East", "rank": null, "order": 30}, {"slug": "great-mosque-of-djenne", "name": "Great Mosque of Djenne", "city": "Djenne", "country": "Mali", "region": "Africa", "rank": null, "order": 31}, {"slug": "brasilia-cathedral", "name": "Brasilia Cathedral", "city": "Brasilia", "country": "Brazil", "region": "South America", "rank": null, "order": 32}, {"slug": "sky-tower", "name": "Sky Tower", "city": "Auckland", "country": "New Zealand", "region": "Oceania", "rank": null, "order": 33}, {"slug": "louvre-pyramid", "name": "Louvre Pyramid", "city": "Paris", "country": "France", "region": "Europe", "rank": null, "order": 34}, {"slug": "statue-of-liberty", "name": "Statue of Liberty", "city": "New York Harbor", "country": "United States", "region": "North America", "rank": null, "order": 35}, {"slug": "space-needle", "name": "Space Needle", "city": "Seattle", "country": "United States", "region": "North America", "rank": null, "order": 36}, {"slug": "cn-tower", "name": "CN Tower", "city": "Toronto", "country": "Canada", "region": "North America", "rank": null, "order": 37}, {"slug": "milan-cathedral", "name": "Milan Cathedral", "city": "Milan", "country": "Italy", "region": "Europe", "rank": null, "order": 38}];
+const board = document.getElementById('board'), status = document.getElementById('status');
+const rows = [...board.querySelectorAll('.row')];
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem('atlas_votes_v1')||'[]'); } catch(e){ return []; } },
+  has(s){ return this.get().includes(s); },
+  add(s){ const v=this.get(); if(!v.includes(s)){ v.push(s); try{localStorage.setItem('atlas_votes_v1',JSON.stringify(v));}catch(e){} }
+    document.cookie='atlas_votes='+encodeURIComponent(v.join(','))+';path=/;max-age=31536000;SameSite=Lax'; }
+};
+function render(tallies){
+  rows.forEach(r=>{ r._v = tallies[r.dataset.slug]||0;
+    r.querySelector('.n').textContent = r._v; });
+  const sorted=[...rows].sort((a,b)=> (b._v-a._v) || (a.dataset.rank-b.dataset.rank) || (a.dataset.order-b.dataset.order));
+  sorted.forEach((r,i)=>{ board.appendChild(r);
+    r.querySelector('.pos').textContent = i+1;
+    r.classList.toggle('lead', i<3 && r._v>0); });
+}
+function markVoted(){
+  rows.forEach(r=>{ const b=r.querySelector('.vote');
+    if(store.has(r.dataset.slug)){ b.disabled=true; b.textContent='Voted'; b.classList.add('voted'); } });
+}
+async function refresh(silent){
+  try{ const t=await (await fetch('/api/votes',{cache:'no-store'})).json();
+    render(t.tallies||{}); markVoted();
+    if(!silent) status.textContent='Board updated.';
+  }catch(e){ if(!silent) status.textContent='Could not load the board. Try again in a moment.'; }
+}
+let pendingSlug=null;
+function onVote(slug){
+  if(store.has(slug)) return;
+  const btn=rows.find(r=>r.dataset.slug===slug).querySelector('.vote');
+  btn.disabled=true; btn.textContent='Checking...'; status.textContent='';
+  pendingSlug=slug;
+  if(typeof turnstile==='undefined'){ status.textContent='Bot check failed to load. Try again.'; btn.disabled=false; btn.textContent='Vote'; return; }
+  turnstile.execute();
+}
+function tsCallback(token){
+  const slug=pendingSlug; pendingSlug=null;
+  const btn=rows.find(r=>r.dataset.slug===slug).querySelector('.vote');
+  fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({slug:slug,token:token})})
+  .then(async r=>{ const d=await r.json().catch(()=>({}));
+    if(r.ok&&d.ok){ store.add(slug); render(d.tallies||{});
+      status.textContent='Vote counted. Thanks.';
+    } else if(r.status===409){ store.add(slug);
+      status.textContent='You already voted for this one.';
+    } else { btn.disabled=false; btn.textContent='Vote';
+      status.textContent=(d&&d.error)||'Vote failed. Try again.'; }
+    markVoted(); })
+  .catch(()=>{ btn.disabled=false; btn.textContent='Vote'; status.textContent='Vote failed. Try again.'; });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  rows.forEach(r=>r.querySelector('.vote').addEventListener('click',()=>onVote(r.dataset.slug)));
+  const s=document.getElementById('suggest');
+  s.href='https://x.com/intent/tweet?text='+encodeURIComponent('Hey @TheNextCorner, please model this next and add it to the leaderboard: https://architecturalatlas.com/leaderboard/');
+  refresh(true); markVoted(); setInterval(()=>refresh(true),30000);
+  if(typeof turnstile!=='undefined'||document.readyState==='complete') initTS();
+  else window.addEventListener('load',initTS);
+});
+function initTS(){
+  if(typeof turnstile==='undefined') return;
+  turnstile.render('#tslot',{sitekey:SITEKEY,size:'invisible',callback:tsCallback,
+    'error-callback':()=>{status.textContent='Bot check failed. Try again.';markVoted();refresh(true);}});
+}
+</script>
+</body>
+</html>
