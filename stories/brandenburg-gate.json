@@ -11,7 +11,7 @@
   "sections": [
     {
       "alt": "The Quadriga on top of the Brandenburg Gate",
-      "body": "Commissioned by Frederick William II of Prussia and designed by Carl Gotthard Langhans, the gate was built between 1788 and 1791, modeled on the Propylaea of ancient Athens. Twelve Doric columns form five passageways through a structure 26 meters high and over 60 meters wide. It was first called the Friedenstor, the Peace Gate. In 1793 Johann Gottfried Schadow crowned it with the Quadriga: four horses pulling a chariot driven by the goddess of peace, the first quadriga built since antiquity.",
+      "body": "Commissioned by Frederick William II of Prussia and designed by Carl Gotthard Langhans, the gate was built between 1788 and 1791, modeled on the Propylaea of ancient Athens. Twelve Doric columns form five passageways through a structure 26 meters high and over 60 meters wide. It was first called the Friedenstor, the Peace Gate. In 1793 Johann Gottfried Schadow crowned it with the Quadriga: four horses pulling a chariot driven by the winged Victoria, goddess of victory, the first quadriga built since antiquity. The whole program carried one message, the absolutist's definition of peace: peace as the fruit of victorious arms.",
       "caption": "The Quadriga, sculpted by Johann Gottfried Schadow and installed in 1793.",
       "credit": "Yair Haklai, CC BY-SA 4.0, via Wikimedia Commons",
       "dates": "1788-1791",
@@ -19,7 +19,7 @@
       "image": "quadriga.jpg"
     },
     {
-      "body": "After Prussia's defeat at Jena-Auerstedt in 1806, Napoleon marched through the gate and carried the Quadriga off to Paris as a war trophy. When Napoleon fell, Prussian troops brought it home in 1814. The architect Karl Friedrich Schinkel reworked it for the occasion: the goddess of peace became Victoria, goddess of victory, and she was given an Iron Cross crowned with the Prussian eagle.",
+      "body": "After Prussia's defeat at Jena-Auerstedt in 1806, Napoleon marched through the gate and carried the Quadriga off to Paris as a war trophy. When Napoleon fell, Prussian troops brought it home in 1814. For the occasion Karl Friedrich Schinkel reworked Victoria's standard: she received the Iron Cross crowned with the Prussian eagle, branding the victory as Prussia's.",
       "dates": "1806-1814",
       "heading": "Stolen, returned, rebranded"
     },
@@ -53,7 +53,7 @@
     }
   ],
   "slug": "brandenburg-gate",
-  "sources": "Historical facts adapted from Wikipedia (\"Brandenburg Gate\", CC BY-SA), visitBerlin.de, and Encyclopaedia Britannica.",
+  "sources": "Historical facts adapted from Wikipedia (\"Brandenburg Gate\", CC BY-SA, including the German article's symbolism research), visitBerlin.de, and Encyclopaedia Britannica.",
   "story_title": "The story of the Brandenburg Gate",
   "title": "Brandenburg Gate",
   "hotspots": [
@@ -63,14 +63,44 @@
       "text": "Johann Gottfried Schadow's copper Quadriga has crowned the gate since 1793. Napoleon carried it to Paris as a war trophy in 1806; it came home in 1814. The original was destroyed in the Second World War; today's Quadriga is the 1957 recreation."
     },
     {
+      "part": "Victoria wings",
+      "title": "Victoria's wings",
+      "text": "The wings are what make her Victoria. In classical iconography Nike alone among goddesses was winged, so the wings are victory's defining attribute. English accounts long said she began as Eirene, goddess of peace, but German research notes the 1789 building plans already called her Victoria."
+    },
+    {
       "part": "Victoria head",
       "title": "Victoria",
-      "text": "The chariot driver began as Eirene, goddess of peace. After Napoleon's defeat she was rebranded as Victoria, goddess of victory, and given an Iron Cross crowned with the Prussian eagle."
+      "text": "The winged charioteer is Victoria, goddess of victory. In 1814 Schinkel gave her a new standard: the Iron Cross crowned with the Prussian eagle, branding the victory over Napoleon as Prussia's."
+    },
+    {
+      "part": "Iron Cross standard",
+      "title": "The Iron Cross",
+      "text": "Instituted on 10 March 1813, the Iron Cross was Prussia's first decoration open to every rank, from private to general. Schinkel set it in an oak wreath of 169 leaves and 90 acorns on Victoria's standard, turning the Quadriga into a monument to the victory over Napoleon."
+    },
+    {
+      "part": "Prussian eagle",
+      "title": "The Prussian eagle",
+      "text": "The crowned black eagle is the coat of arms of Prussia, one of Europe's oldest state emblems. Perched atop Victoria's standard, it brands the victory as specifically Prussian and ties the monument to the crown."
+    },
+    {
+      "part": "Chariot body",
+      "title": "The triumphal chariot",
+      "text": "A quadriga is a Roman triumphal chariot, the car in which victorious generals rode through Rome. Schadow's copper horses stand about 3.15 meters tall, modeled in just two poses with four different head positions. The form itself is the symbol: triumph."
+    },
+    {
+      "part": "Mars statue",
+      "title": "Mars sheathing his sword",
+      "text": "Mars, god of war, sits sheathing his sword: war laying down its arms, exactly the image a Peace Gate needs. The Academy of Arts chose Mars and Minerva over Schadow's own proposal of Diligence and Vigilance. Karl Wichmann carved him in sandstone; he was installed in July 1794."
     },
     {
       "part": "Minerva statue",
-      "title": "Minerva",
-      "text": "Minerva, goddess of wisdom, stands in a niche of the gate's side wing, one of the statues set into the gate's flanks."
+      "title": "Minerva, guardian of the gate",
+      "text": "Minerva is the goddess of wisdom, and also the traditional protectress of city gates and doors: she literally guards this one. Schadow designed her; Johann David Meltzer carved her in sandstone in 1794. The original was destroyed in the war; today's figure is a 1951-52 replacement."
+    },
+    {
+      "part": "Triumph of Peace relief",
+      "title": "The Triumph of Peace relief",
+      "text": "The attic relief shows Hercules driving away Discord while the goddess of peace arrives with an olive branch: just arms protecting innocence, as Langhans's 1791 brief demanded. A matching relief for the outer face was never made. The spot is still empty today."
     }
   ],
   "timeline": [
