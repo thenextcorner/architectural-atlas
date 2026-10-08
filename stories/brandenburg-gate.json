@@ -122,5 +122,85 @@
     "lat": 52.5163,
     "lng": 13.3777,
     "label": "Brandenburg Gate, Pariser Platz, Berlin"
+  },
+  "entities": {
+    "wikidata": "Q82425",
+    "architect": {
+      "name": "Carl Gotthard Langhans",
+      "wikidata": "Q313181",
+      "role": "Designed the gate (1788-1791)"
+    },
+    "people": [
+      {
+        "name": "Frederick William II of Prussia",
+        "wikidata": "Q152229",
+        "role": "Commissioned the gate in 1788"
+      },
+      {
+        "name": "Johann Gottfried Schadow",
+        "wikidata": "Q51989",
+        "role": "Sculpted the Quadriga, installed 1793"
+      },
+      {
+        "name": "Napoleon",
+        "wikidata": "Q517",
+        "role": "Carried the Quadriga to Paris as a war trophy in 1806"
+      },
+      {
+        "name": "Karl Friedrich Schinkel",
+        "wikidata": "Q151759",
+        "role": "Redesigned the Quadriga as Victoria in 1814"
+      },
+      {
+        "name": "Ronald Reagan",
+        "wikidata": "Q9960",
+        "role": "Gave the 'tear down this wall' speech at the gate in 1987"
+      },
+      {
+        "name": "Helmut Kohl",
+        "wikidata": "Q2518",
+        "role": "Walked through the reopened gate on 22 December 1989"
+      },
+      {
+        "name": "Hans Modrow",
+        "wikidata": "Q57241",
+        "role": "Greeted Kohl at the reopened gate on 22 December 1989"
+      }
+    ],
+    "events": [
+      {
+        "name": "Construction of the Brandenburg Gate",
+        "start": "1788",
+        "end": "1791"
+      },
+      {
+        "name": "Quadriga installed on the gate",
+        "start": "1793"
+      },
+      {
+        "name": "Quadriga taken to Paris",
+        "start": "1806"
+      },
+      {
+        "name": "Quadriga returned to Berlin",
+        "start": "1814"
+      },
+      {
+        "name": "Berlin Wall seals the gate in the death strip",
+        "start": "1961-08-13"
+      },
+      {
+        "name": "Reagan speech at the Brandenburg Gate",
+        "start": "1987-06-12"
+      },
+      {
+        "name": "Border crossing at the gate reopens",
+        "start": "1989-12-22"
+      },
+      {
+        "name": "German reunification ceremony at the gate",
+        "start": "1990-10-03"
+      }
+    ]
   }
 }
