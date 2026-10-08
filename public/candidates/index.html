@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>39 structures worth modeling next - Architectural Atlas</title>
+<meta name="description" content="The shortlist of 39 famous structures researched as candidates for future Architectural Atlas exploded 3D models."/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<style>
+body{font-family:'Helvetica Neue',Arial,sans-serif;color:#20242b;background:#f3f4f4;margin:0;line-height:1.65}
+main{max-width:1060px;margin:0 auto;padding:56px 24px 72px}
+a{color:#263b48}
+h1{font-size:32px;letter-spacing:-1px;font-weight:600}
+.meta{color:#6c7883;font-size:13px;margin-bottom:24px}
+.back{display:inline-block;margin-bottom:28px;font-size:14px;text-decoration:none}
+.intro{max-width:720px}
+.intro p{margin:0 0 14px}
+.filters{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px;align-items:center}
+.filters input[type=search]{flex:1 1 220px;padding:10px 14px;border:1px solid #18253622;border-radius:999px;font-size:14px;background:#fff}
+.filters select{padding:10px 12px;border:1px solid #18253622;border-radius:999px;font-size:14px;background:#fff}
+.count{color:#6c7883;font-size:13px;margin:10px 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:#fff;border:1px solid #18253614;border-radius:14px;padding:20px 22px}
+.card h3{margin:10px 0 2px;font-size:19px;letter-spacing:-.3px}
+.card-top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rank{background:#20242b;color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px}
+.rank.rest{background:#e8dfce;color:#887454}
+.region{font-size:12px;color:#6c7883}
+.pill{font-size:12px;font-weight:600;border-radius:999px;padding:2px 10px;margin-left:auto}
+.pill.easy{background:#e2f2e5;color:#1f6b34}
+.pill.medium{background:#fdf0d7;color:#8a5a00}
+.pill.hard{background:#fbe3e3;color:#a02a2a}
+.pill.easy-medium{background:#e8f0fb;color:#2456a0}
+.loc{color:#6c7883;font-size:13px;margin:0 0 10px}
+.fame{font-size:14px;margin:0 0 10px}
+.dims,.diffnote{font-size:13px;margin:0 0 8px}
+.comps-label{font-size:13px;margin:12px 0 4px}
+.comps{font-size:13px;margin:0 0 10px;padding-left:20px;color:#3a424c}
+.srcs{font-size:12px;color:#6c7883;margin:10px 0 0}
+.srcs a{color:#6c7883;margin-right:10px}
+h2.sec{font-size:22px;margin:56px 0 12px;letter-spacing:-.5px}
+.excluded{max-width:720px;font-size:14px}
+.excluded li{margin-bottom:10px}
+.note{background:#fff;border:1px solid #18253614;border-radius:12px;padding:18px 22px;font-size:13px;color:#3a424c;max-width:720px;margin-top:26px}
+.cta{background:#fff;border:1px solid #18253618;border-radius:12px;padding:20px 24px;margin-top:34px;max-width:720px}
+.cta p{margin:0 0 12px}
+.cta p:last-child{margin-bottom:0}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid #18253618;font-size:13px;color:#6c7883}
+footer a{color:#6c7883;margin-right:16px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">Back to the atlas</a>
+<h1>39 structures worth modeling next</h1>
+<p class="meta">Research shortlist, October 2026</p>
+<div class="intro">
+<p>These are the structures I researched as candidates for future exploded 3D models on Architectural Atlas. Each one is famous enough to earn its place, breaks down into nameable components, has published dimensions, and can be modeled procedurally. The top 15 are ranked by iconicness and modeling fit; the rest of the shortlist follows.</p>
+<p>Want one of these built first? Tell me on X at <a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">@TheNextCorner</a>. A public vote on what gets built next is coming.</p>
+</div>
+<div class="filters">
+<input type="search" id="q" placeholder="Search structures or places" aria-label="Search structures"/>
+<select id="region" aria-label="Filter by region"><option value="">All regions</option></select>
+<select id="diff" aria-label="Filter by difficulty"><option value="">Any difficulty</option><option>Easy</option><option>Easy/Medium</option><option>Medium</option><option>Hard</option></select>
+</div>
+<p class="count" id="count"></p>
+<div class="grid" id="grid">
+<article class="card" data-region="Europe" data-diff="Hard" data-search="st peter&#x27;s basilica vatican city vatican city">
+<div class="card-top"><span class="rank">#1</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>St Peter&#x27;s Basilica</h3>
+<p class="loc">Vatican City, Vatican City</p>
+<p class="fame">The world&#x27;s largest church and seat of the Catholic Church; Michelangelo&#x27;s dome is the tallest in the world (1506 to 1626).</p>
+<p class="dims"><strong>Key dimensions:</strong> 220 m long, 150 m wide; dome 136.6 m high, 42 m outer diameter.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>double-shell dome (16 ribs + 16 segments)</li><li>drum with 16 windows</li><li>lantern and cross</li><li>4 massive dome piers</li><li>nave (46.2 m high)</li><li>Maderno facade</li><li>Bernini colonnade (284 columns)</li><li>St Peter&#x27;s Square obelisk</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Double-curvature dome with 16 ribs, layered Renaissance and Baroque detail, and the 284-column colonnade raise the procedural cost.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/St._Peter%27s_Basilica" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Hard" data-search="st paul&#x27;s cathedral london united kingdom">
+<div class="card-top"><span class="rank">#2</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>St Paul&#x27;s Cathedral</h3>
+<p class="loc">London, United Kingdom</p>
+<p class="fame">Wren&#x27;s masterpiece (1675 to 1710) and London&#x27;s skyline icon, famous for surviving the Blitz; the only cathedral with a true triple dome.</p>
+<p class="dims"><strong>Key dimensions:</strong> 111 m to the cross; triple dome: inner dome (68 m) + brick cone + outer dome (85 m); 158 m long.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>inner dome</li><li>structural brick cone</li><li>outer lead-covered dome</li><li>peristyle drum colonnade</li><li>lantern and cross</li><li>two 67 m west towers</li><li>nave and transepts</li><li>Portland-stone portico</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The triple-dome stack (three nested shells at different heights) is complex but very legible for an exploded view.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/St._Paul%27s_Cathedral" target="_blank" rel="noreferrer">en.wikipedia.org</a> <a href="https://www.raeng.org.uk" target="_blank" rel="noreferrer">www.raeng.org.uk</a></p>
+</article>
+<article class="card" data-region="North America" data-diff="Medium" data-search="chrysler building new york city united states">
+<div class="card-top"><span class="rank">#3</span><span class="region">North America</span><span class="pill medium">Medium</span></div>
+<h3>Chrysler Building</h3>
+<p class="loc">New York City, United States</p>
+<p class="fame">The definitive Art Deco skyscraper (1930); held the world height record for 11 months and has the most famous crown in architecture.</p>
+<p class="dims"><strong>Key dimensions:</strong> 319 m (1,046 ft), 77 floors; tallest brick building in the world.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>seven telescoping stainless-steel spire arches</li><li>eagle gargoyles (61st floor)</li><li>radiator-cap ornaments (31st floor)</li><li>setback ziggurat massing</li><li>brick-and-steel facade grid</li><li>Art Deco lobby</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The crown is fiddly geometry, but the tower is a simple extruded massing with repetition-friendly floor tiers.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Chrysler_Building" target="_blank" rel="noreferrer">en.wikipedia.org</a> <a href="https://www.dezeen.com/2025/03/04/chrysler-building-art-deco-centenary/" target="_blank" rel="noreferrer">www.dezeen.com</a></p>
+</article>
+<article class="card" data-region="Oceania" data-diff="Medium" data-search="sydney harbour bridge sydney australia">
+<div class="card-top"><span class="rank">#4</span><span class="region">Oceania</span><span class="pill medium">Medium</span></div>
+<h3>Sydney Harbour Bridge</h3>
+<p class="loc">Sydney, Australia</p>
+<p class="fame">The Coathanger: the world&#x27;s widest long-span bridge (1932) and Sydney&#x27;s defining structure alongside the Opera House.</p>
+<p class="dims"><strong>Key dimensions:</strong> Arch span 503 m; arch top 134 m above sea level; total length 1,149 m; deck 49 m wide.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>two 28-panel arch trusses</li><li>deck (8 lanes, 2 rail lines, footway, cycleway)</li><li>4 bearing pins</li><li>hanger cables</li><li>four 89 m granite pylons</li><li>skewback foundations</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The parabolic arch trusses and hanger pattern need careful parametric placement, but everything is geometric steel.</p>
+<p class="srcs">Sources: <a href="https://thisisaustralia.au/sydney-harbour-bridge/" target="_blank" rel="noreferrer">thisisaustralia.au</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Hard" data-search="st basil&#x27;s cathedral moscow russia">
+<div class="card-top"><span class="rank">#5</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>St Basil&#x27;s Cathedral</h3>
+<p class="loc">Moscow, Russia</p>
+<p class="fame">The nine-onion-domed icon of Russia (1555 to 1561), commissioned by Ivan the Terrible; the most recognizable Russian building on earth.</p>
+<p class="dims"><strong>Key dimensions:</strong> About 47.5 m tall; nine domes (eight chapels around a central tenth, added 1588).</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central tent-roof tower</li><li>8 radiating chapel domes</li><li>10th sanctuary dome</li><li>8 gabled roof chapels</li><li>brick base structure</li><li>drum arcades</li><li>finial crosses</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Each dome has a unique shape, colour and pattern; lots of bulbous geometry, though still parametric.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/St._Basil%27s_Cathedral" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="atomium brussels belgium">
+<div class="card-top"><span class="rank">#6</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Atomium</h3>
+<p class="loc">Brussels, Belgium</p>
+<p class="fame">The 102 m iron-crystal monument built for Expo 58; Belgium&#x27;s most iconic structure.</p>
+<p class="dims"><strong>Key dimensions:</strong> 102 m tall; nine 18 m-diameter steel spheres; iron unit cell magnified about 165 billion times.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>nine spheres (six visitable)</li><li>20 connecting tubes</li><li>top sphere and restaurant</li><li>escalator tubes</li><li>central vertical tube with elevators</li><li>three support columns</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Trivially parametric (spheres and cylinders), but the diagonal tube connections need exact angular placement.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Atomium" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Southeast Asia" data-diff="Hard" data-search="angkor wat siem reap cambodia">
+<div class="card-top"><span class="rank">#7</span><span class="region">Southeast Asia</span><span class="pill hard">Hard</span></div>
+<h3>Angkor Wat</h3>
+<p class="loc">Siem Reap, Cambodia</p>
+<p class="fame">The largest religious monument on earth (early 12th century); its five-tower silhouette is on the Cambodian flag.</p>
+<p class="dims"><strong>Key dimensions:</strong> Central spire about 65 m; moat 190 m wide enclosing 1.5 by 1.3 km; about 162.6 ha.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central quincunx (5 lotus-bud towers)</li><li>three concentric galleries</li><li>cruciform terraces</li><li>moat and causeways</li><li>four gopura entrances</li><li>library annexes</li><li>bas-relief gallery walls</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Enormous scope and intricate lotus-bud towers; the symmetrical layout helps, but relief detail is prohibitive at atlas fidelity.</p>
+<p class="srcs">Sources: <a href="https://www.nationalgeographic.com" target="_blank" rel="noreferrer">www.nationalgeographic.com</a> <a href="https://www.livescience.com" target="_blank" rel="noreferrer">www.livescience.com</a></p>
+</article>
+<article class="card" data-region="Southeast Asia" data-diff="Medium" data-search="petronas towers kuala lumpur malaysia">
+<div class="card-top"><span class="rank">#8</span><span class="region">Southeast Asia</span><span class="pill medium">Medium</span></div>
+<h3>Petronas Towers</h3>
+<p class="loc">Kuala Lumpur, Malaysia</p>
+<p class="fame">The world&#x27;s tallest twin towers (452 m, 1998) joined by a skybridge; the icon of modern Malaysia.</p>
+<p class="dims"><strong>Key dimensions:</strong> 452 m, 88 floors; skybridge at 170 m (floors 41 to 42), 750 tonnes; 74 m pinnacles.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>two identical towers (8-pointed-star plan)</li><li>double-decker skybridge</li><li>two 74 m pinnacles</li><li>entrance lobbies</li><li>stainless-steel and glass facades</li><li>base podium and mall</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Twinning halves the work; the star-plan massing and skybridge are clean geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Petronas_Towers" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="East Asia" data-diff="Medium" data-search="hall of prayer for good harvests beijing china">
+<div class="card-top"><span class="rank">#9</span><span class="region">East Asia</span><span class="pill medium">Medium</span></div>
+<h3>Hall of Prayer for Good Harvests</h3>
+<p class="loc">Beijing, China</p>
+<p class="fame">The triple-gabled circular wooden temple (1420, rebuilt 1889) where Ming and Qing emperors prayed for harvests; a masterpiece of Chinese joinery with no nails.</p>
+<p class="dims"><strong>Key dimensions:</strong> 38 m tall, about 32 to 36 m diameter; 28 pillars; three-tier marble base.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>three concentric blue-tile roofs</li><li>golden finial ball</li><li>28 pillars (4 central + 12 middle + 12 outer)</li><li>three-tier circular marble terrace</li><li>balustrades</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Circular symmetry and repetition-friendly pillars; the triple-eaved roof is the hardest part.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Temple_of_Heaven" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South America" data-diff="Medium" data-search="christ the redeemer rio de janeiro brazil">
+<div class="card-top"><span class="rank">#10</span><span class="region">South America</span><span class="pill medium">Medium</span></div>
+<h3>Christ the Redeemer</h3>
+<p class="loc">Rio de Janeiro, Brazil</p>
+<p class="fame">The 38 m Art Deco statue (1931) atop Corcovado, one of the New7Wonders; the most famous statue on the planet.</p>
+<p class="dims"><strong>Key dimensions:</strong> 30 m statue + 8 m pedestal = 38 m; 28 m arm span; 635 tonnes.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>head</li><li>two outstretched arms</li><li>draped torso and robe</li><li>8 m pedestal</li><li>internal concrete and steel frame</li><li>soapstone tile cladding</li><li>Corcovado summit platform</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The figure is semi-organic, but it cleanly decomposes into head, arms, torso and pedestal with exact published dimensions.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Middle East" data-diff="Hard" data-search="hagia sophia istanbul turkiye">
+<div class="card-top"><span class="rank">#11</span><span class="region">Middle East</span><span class="pill hard">Hard</span></div>
+<h3>Hagia Sophia</h3>
+<p class="loc">Istanbul, Turkiye</p>
+<p class="fame">Justinian&#x27;s 537 CE wonder: the largest cathedral in the world for a thousand years, with the first great pendentive dome.</p>
+<p class="dims"><strong>Key dimensions:</strong> Dome about 31 m diameter, 55.6 m high; 40 dome windows.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>main dome</li><li>4 pendentives</li><li>drum with 40 windows</li><li>4 great arches</li><li>2 semi-domes</li><li>4 Ottoman minarets</li><li>nave and galleries</li><li>apse</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The pendentive geometry and layered Byzantine and Ottoman additions complicate a clean exploded view.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Hagia_Sophia" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Middle East" data-diff="Medium" data-search="dome of the rock jerusalem ">
+<div class="card-top"><span class="rank">#12</span><span class="region">Middle East</span><span class="pill medium">Medium</span></div>
+<h3>Dome of the Rock</h3>
+<p class="loc">Jerusalem</p>
+<p class="fame">The oldest extant Islamic monument (completed 691 CE); its golden dome is the most recognizable building in the Middle East.</p>
+<p class="dims"><strong>Key dimensions:</strong> Dome about 20.4 m diameter; octagon about 20.6 m per side; about 35 m tall.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>outer golden dome</li><li>inner dome</li><li>wooden double-shell structure</li><li>drum with windows</li><li>octagonal arcade</li><li>octagonal ambulatory</li><li>tile-clad exterior walls</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Octagonal symmetry is very procedural-friendly; the double-shell dome and tile work add moderate difficulty.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Dome_of_the_Rock" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="East Asia" data-diff="Medium" data-search="shanghai tower shanghai china">
+<div class="card-top"><span class="rank">#13</span><span class="region">East Asia</span><span class="pill medium">Medium</span></div>
+<h3>Shanghai Tower</h3>
+<p class="loc">Shanghai, China</p>
+<p class="fame">A 632 m, 120-degree-twisting double-skin tower by Gensler; among the tallest buildings on earth.</p>
+<p class="dims"><strong>Key dimensions:</strong> 632 m, 128 storeys; nine stacked zones.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>nine stacked cylindrical zones</li><li>outer twisting glass skin (120 degrees)</li><li>inner tower shaft</li><li>atria between skins</li><li>tapered crown</li><li>base podium</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Nine repeating zones with a continuous twist are ideal parametric geometry; hard only at high facade detail.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Shanghai_Tower" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Middle East" data-diff="Hard" data-search="sheikh zayed grand mosque abu dhabi united arab emirates">
+<div class="card-top"><span class="rank">#14</span><span class="region">Middle East</span><span class="pill hard">Hard</span></div>
+<h3>Sheikh Zayed Grand Mosque</h3>
+<p class="loc">Abu Dhabi, United Arab Emirates</p>
+<p class="fame">One of the world&#x27;s largest mosques (2007); 82 white domes and the world&#x27;s largest hand-knotted carpet.</p>
+<p class="dims"><strong>Key dimensions:</strong> 82 domes (largest 85 m); four 107 m minarets; 1,096 columns; 17,400 sqm courtyard.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>82 onion domes</li><li>4 minarets</li><li>1,096 columns with mother-of-pearl inlay</li><li>main prayer hall</li><li>reflective pools</li><li>courtyard</li><li>seven chandeliers</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> 82 domes and 1,096 columns are repetition-friendly, but the sheer part count and ornamentation are heavy.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Sheikh_Zayed_Grand_Mosque" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Easy" data-search="arc de triomphe paris france">
+<div class="card-top"><span class="rank">#15</span><span class="region">Europe</span><span class="pill easy">Easy</span></div>
+<h3>Arc de Triomphe</h3>
+<p class="loc">Paris, France</p>
+<p class="fame">Napoleon&#x27;s 1806 triumphal arch: the largest in the world and the anchor of the Champs-Elysees axis.</p>
+<p class="dims"><strong>Key dimensions:</strong> 50 m high x 45 m wide x 22 m deep; large vault 29.19 m high.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>four massive pylons</li><li>main vault arch</li><li>two transverse vaults</li><li>sculptural reliefs</li><li>attic inscription band</li><li>rooftop terrace (284 steps)</li><li>Tomb of the Unknown Soldier</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Box-like neoclassical massing with two arches; the sculpture is the only hard part and can be stylized.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Arc_de_Triomphe" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="domtoren (dom tower) utrecht netherlands">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Domtoren (Dom Tower)</h3>
+<p class="loc">Utrecht, Netherlands</p>
+<p class="fame">The tallest church tower in the Netherlands (112.32 m, 1321 to 1382); freestanding since the nave collapsed in the 1674 storm.</p>
+<p class="dims"><strong>Key dimensions:</strong> 112.32 m; two square blocks + octagonal lantern.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>lower square block</li><li>upper square block</li><li>octagonal lantern</li><li>spire</li><li>bell chamber (13 bells)</li><li>clock faces</li><li>buttress pinnacles</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Gothic massing with square-to-octagon transitions; very geometric.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Dom_Tower_of_Utrecht" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Hard" data-search="rijksmuseum amsterdam netherlands">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>Rijksmuseum</h3>
+<p class="loc">Amsterdam, Netherlands</p>
+<p class="fame">The Dutch national museum (Cuypers, 1885): the grandest 19th-century building in the Netherlands, home to the Night Watch.</p>
+<p class="dims"><strong>Key dimensions:</strong> Twin square courtyards; about 30,000 sqm exhibition space; central public tunnel.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>two main blocks</li><li>central passageway and tunnel</li><li>two atria</li><li>twin corner towers</li><li>ornate brick-and-stone facade</li><li>gallery of honour spine</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Long ornate neo-Gothic and Renaissance facade with towers, sculpture and gables; decomposable but detail-heavy.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Rijksmuseum" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="kubuswoningen (cube houses) rotterdam netherlands">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Kubuswoningen (Cube Houses)</h3>
+<p class="loc">Rotterdam, Netherlands</p>
+<p class="fame">Piet Blom&#x27;s 1984 tilted-cube housing: the Netherlands&#x27; most photographed piece of experimental architecture.</p>
+<p class="dims"><strong>Key dimensions:</strong> 38 cubes + 2 super-cubes; each cube tilted 45 degrees on a hexagonal pylon; about 100 sqm over 3 floors.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>tilted cube modules</li><li>hexagonal pylons</li><li>pyramid roofs</li><li>window-band tiers</li><li>connecting walkway</li><li>super-cubes (museum)</li><li>base podium</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> One parametric tilted cube, instanced 38 times; the trick is the 45-degree orientation and pylon interface.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Cube_Houses" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="stockholm city hall stockholm sweden">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Stockholm City Hall</h3>
+<p class="loc">Stockholm, Sweden</p>
+<p class="fame">The Nobel Prize banquet venue (Ostberg, 1923) with the gilded Three Crowns tower; the symbol of Stockholm.</p>
+<p class="dims"><strong>Key dimensions:</strong> 106 m tower.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>tower with Three Crowns (gilded copper)</li><li>Blue Hall</li><li>Golden Hall (mosaics)</li><li>council chamber block</li><li>waterfront loggia</li><li>courtyard</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Varied brick massing but rectilinear; the Three Crowns are a small fiddly detail.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Stockholm_City_Hall" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="turning torso malmo sweden">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Turning Torso</h3>
+<p class="loc">Malmo, Sweden</p>
+<p class="fame">Calatrava&#x27;s 90-degree-twisting residential tower (2005): the first twisting skyscraper and Scandinavia&#x27;s tallest.</p>
+<p class="dims"><strong>Key dimensions:</strong> 190 m, 54 floors; nine 5-storey pentagonal segments twisting 90 degrees.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>nine pentagonal segments (5 floors each)</li><li>central concrete core</li><li>steel exoskeleton</li><li>glass facade panels</li><li>rooftop</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Nine instanced segments with progressive rotation; pure parametric geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Turning_Torso" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Hard" data-search="winter palace st petersburg russia">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>Winter Palace</h3>
+<p class="loc">St Petersburg, Russia</p>
+<p class="fame">Rastrelli&#x27;s baroque imperial palace (1754 to 1762), the Hermitage&#x27;s core; the largest palace in Russia.</p>
+<p class="dims"><strong>Key dimensions:</strong> Facade about 215 to 250 m long (sources disagree); about 22 to 30 m high; about 1,500 rooms.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>four wings around a courtyard</li><li>baroque facade rhythm (pilasters, pediments)</li><li>corner pavilions</li><li>main (Jordan) staircase</li><li>throne halls</li><li>roof balustrade with statues</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A very long, highly ornamented baroque facade; decomposable by wing but part-heavy.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Winter_Palace" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Medium" data-search="charles bridge prague czechia">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill medium">Medium</span></div>
+<h3>Charles Bridge</h3>
+<p class="loc">Prague, Czechia</p>
+<p class="fame">The 516 m Gothic bridge (begun 1357) with 30 baroque statues: Prague&#x27;s most beloved monument.</p>
+<p class="dims"><strong>Key dimensions:</strong> 516 m x about 10 m; 16 arches; 3 bridge towers.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>16 arch spans</li><li>15 piers</li><li>3 bridge towers</li><li>30 baroque statues</li><li>deck parapets</li><li>cobblestone roadway</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Arches and towers are repetitive parametric geometry; the 30 statues can be stylized silhouettes.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Charles_Bridge" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="East Asia" data-diff="Medium" data-search="oriental pearl tower shanghai china">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">East Asia</span><span class="pill medium">Medium</span></div>
+<h3>Oriental Pearl Tower</h3>
+<p class="loc">Shanghai, China</p>
+<p class="fame">The 468 m pearls-on-columns TV tower (1994): the defining silhouette of Pudong&#x27;s skyline.</p>
+<p class="dims"><strong>Key dimensions:</strong> 468 m; 11 spheres on three 9 m-diameter columns; main spheres 50, 45 and 16 m diameter.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>three 9 m columns</li><li>11 spheres (3 main + 8 small)</li><li>upper observation sphere (50 m)</li><li>revolving restaurant sphere</li><li>base podium</li><li>antenna mast</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Spheres and cylinders are trivially parametric; placement along the vertical axis is the only care needed.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Oriental_Pearl_Tower" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="East Asia" data-diff="Hard" data-search="potala palace lhasa china">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">East Asia</span><span class="pill hard">Hard</span></div>
+<h3>Potala Palace</h3>
+<p class="loc">Lhasa, China</p>
+<p class="fame">The Dalai Lama&#x27;s 13-storey winter palace-fortress; Tibet&#x27;s most sacred building and a UNESCO site.</p>
+<p class="dims"><strong>Key dimensions:</strong> 115 to 119 m tall (sources vary), 13 storeys, about 400x350 m footprint; over 1,000 rooms.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>White Palace (administrative)</li><li>Red Palace (religious)</li><li>golden chapel roofs</li><li>whitewashed battered walls</li><li>central staircases</li><li>chapels and shrines</li><li>courtyard</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Massive terraced hillside complex with battered walls; decomposable but the scale and asymmetry raise cost.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Potala_Palace" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Southeast Asia" data-diff="Medium" data-search="marina bay sands singapore singapore">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Southeast Asia</span><span class="pill medium">Medium</span></div>
+<h3>Marina Bay Sands</h3>
+<p class="loc">Singapore, Singapore</p>
+<p class="fame">Safdie&#x27;s 2010 three-tower resort crowned by the 340 m SkyPark with its cantilevered infinity pool.</p>
+<p class="dims"><strong>Key dimensions:</strong> Three 55-storey towers; SkyPark at about 191 to 200 m; 65 to 67 m cantilever; 146 m infinity pool.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>three curved towers</li><li>SkyPark deck (340 m)</li><li>cantilevered section</li><li>infinity pool</li><li>observation deck</li><li>podium (casino, mall, theatre)</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Three instanced leaning towers; the SkyPark boat shape is the signature piece, all smooth geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Marina_Bay_Sands" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Southeast Asia" data-diff="Medium" data-search="wat arun bangkok thailand">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Southeast Asia</span><span class="pill medium">Medium</span></div>
+<h3>Wat Arun</h3>
+<p class="loc">Bangkok, Thailand</p>
+<p class="fame">The porcelain-mosaic Temple of Dawn: Thailand&#x27;s most iconic wat, rising over the Chao Phraya.</p>
+<p class="dims"><strong>Key dimensions:</strong> Central prang 66.8 to 86 m (sources disagree); 4 satellite prangs.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central prang</li><li>4 satellite prangs</li><li>4 mondops</li><li>porcelain mosaic cladding</li><li>7-pronged trident finial</li><li>terraced base with niches</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Prangs are stacked, tapering Khmer towers (repetitive tiers); the mosaic cladding is texture, not geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Wat_Arun" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South Asia" data-diff="Easy/Medium" data-search="qutb minar delhi india">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">South Asia</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>Qutb Minar</h3>
+<p class="loc">Delhi, India</p>
+<p class="fame">The world&#x27;s tallest brick minaret (72.5 m, begun 1192); the tapering five-storey tower of the Delhi Sultanate.</p>
+<p class="dims"><strong>Key dimensions:</strong> 72.5 m; 5 storeys with balconies; 379 steps.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>five tapering storeys</li><li>five projecting balconies</li><li>internal spiral staircase (379 steps)</li><li>cupola base</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A tapered, fluted tower with repeating balcony rings; highly parametric.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Qutb_Minar" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South Asia" data-diff="Hard" data-search="mysore palace mysuru india">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">South Asia</span><span class="pill hard">Hard</span></div>
+<h3>Mysore Palace</h3>
+<p class="loc">Mysuru, India</p>
+<p class="fame">The Wodeyar dynasty&#x27;s Indo-Saracenic palace (Irwin, 1912): India&#x27;s most visited palace after the Taj.</p>
+<p class="dims"><strong>Key dimensions:</strong> 75x48 m, 3 storeys; central 5-storey tower with gold onion dome about 44 m; 4 pink corner domes.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central tower and gold dome</li><li>4 pink corner domes</li><li>3-storey arcade facades</li><li>Durbar Hall</li><li>Kalyana Mantapa (wedding hall)</li><li>armoury wing</li><li>courtyard</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Dense Indo-Saracenic ornament (cusped arches, jharokhas, stained glass); massing is simple, detail is not.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Mysore_Palace" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South Asia" data-diff="Easy/Medium" data-search="gateway of india mumbai india">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">South Asia</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>Gateway of India</h3>
+<p class="loc">Mumbai, India</p>
+<p class="fame">The 26 m basalt ceremonial arch (1924): Mumbai&#x27;s defining waterfront monument.</p>
+<p class="dims"><strong>Key dimensions:</strong> 26 m; basalt; Indo-Saracenic.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central arch (15 m opening)</li><li>4 corner turrets</li><li>jharokhas</li><li>perforated stone screens (jali)</li><li>stepped domelets</li><li>base platform</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> One arch with four turrets; ornament is moderate.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Gateway_of_India" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South Asia" data-diff="Medium" data-search="lotus temple delhi india">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">South Asia</span><span class="pill medium">Medium</span></div>
+<h3>Lotus Temple</h3>
+<p class="loc">Delhi, India</p>
+<p class="fame">Sahba&#x27;s 1986 Bahai temple of 27 marble petals: one of the most visited buildings on earth.</p>
+<p class="dims"><strong>Key dimensions:</strong> 27 petals in clusters of 3 = 9 sides; about 34 m central hall; 9 ponds.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>27 free-standing petals (3 tiers of 9)</li><li>inner petal shell</li><li>central hall dome</li><li>9 entrance doors</li><li>9 surrounding ponds</li><li>plinth</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> 27 instanced curved petals; the petal curvature is the only non-trivial surface.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Lotus_Temple" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Middle East" data-diff="Medium" data-search="abraj al bait mecca saudi arabia">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Middle East</span><span class="pill medium">Medium</span></div>
+<h3>Abraj Al Bait</h3>
+<p class="loc">Mecca, Saudi Arabia</p>
+<p class="fame">The 601 m clock-tower complex (2012) with the world&#x27;s largest clock faces, towering over the Masjid al-Haram.</p>
+<p class="dims"><strong>Key dimensions:</strong> 601 m; four 43 m clock faces; 23 m crescent.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>central clock tower</li><li>4 clock faces (43 m)</li><li>23 m gold crescent</li><li>spire</li><li>6 satellite towers</li><li>podium base</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A stepped tower massing; the clock faces and crescent are signature but simple geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Abraj_Al_Bait_Towers" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Africa" data-diff="Easy/Medium" data-search="great mosque of djenne djenne mali">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Africa</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>Great Mosque of Djenne</h3>
+<p class="loc">Djenne, Mali</p>
+<p class="fame">The world&#x27;s largest mud-brick building (1907): the icon of Sudano-Sahelian architecture and African Islam.</p>
+<p class="dims"><strong>Key dimensions:</strong> Platform about 75x75 m; central minaret about 16 m; about 90 interior pillars.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>3 box-like minaret towers with ostrich-egg finials</li><li>prayer hall</li><li>adobe walls with toron palm-beam scaffolding</li><li>courtyard</li><li>about 90 interior pillars</li><li>corner engaged pilasters</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Simple adobe boxes and engaged pilasters; the toron beams are small instanced details.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Great_Mosque_of_Djenn%C3%A9" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="South America" data-diff="Medium" data-search="brasilia cathedral brasilia brazil">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">South America</span><span class="pill medium">Medium</span></div>
+<h3>Brasilia Cathedral</h3>
+<p class="loc">Brasilia, Brazil</p>
+<p class="fame">Niemeyer&#x27;s 1970 hyperboloid cathedral: 16 concrete columns rising like a crown; the icon of modernist Brazil.</p>
+<p class="dims"><strong>Key dimensions:</strong> 16 hyperbolic columns (about 42 m, 90 t each); circular nave 70 m diameter below grade.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>16 hyperbolic concrete columns</li><li>stained-glass ceiling between columns</li><li>subterranean circular nave (70 m)</li><li>baptistery</li><li>bell tower (4 bells)</li><li>reflecting pools</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> 16 identical hyperbolic columns (one parametric profile, instanced); the glass ceiling is a simple surface.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Cathedral_of_Bras%C3%ADlia" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Oceania" data-diff="Easy/Medium" data-search="sky tower auckland new zealand">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Oceania</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>Sky Tower</h3>
+<p class="loc">Auckland, New Zealand</p>
+<p class="fame">The Southern Hemisphere&#x27;s tallest freestanding structure (328 m, 1997); Auckland&#x27;s defining landmark.</p>
+<p class="dims"><strong>Key dimensions:</strong> 328 m; observation levels at 186 m, 192 m and 220 m.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>tapered concrete shaft</li><li>pod (observation levels)</li><li>Sky Deck (220 m)</li><li>antenna mast</li><li>Orbit 360 revolving restaurant</li><li>glass floor panels</li><li>base podium</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A tapered shaft + pod + mast; classic parametric tower.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Sky_Tower_(Auckland)" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Easy" data-search="louvre pyramid paris france">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill easy">Easy</span></div>
+<h3>Louvre Pyramid</h3>
+<p class="loc">Paris, France</p>
+<p class="fame">I.M. Pei&#x27;s 1989 glass pyramid entrance to the world&#x27;s most-visited museum.</p>
+<p class="dims"><strong>Key dimensions:</strong> 21.6 m high; base 34 m per side; 673 glass segments (603 rhombus + 70 triangular).</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>main pyramid (673 segments)</li><li>3 smaller satellite pyramids</li><li>inverted pyramid (underground)</li><li>underground lobby</li><li>reflecting pools</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A glass pyramid is the simplest possible landmark geometry; segment count is texture-level detail.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Louvre_Pyramid" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="North America" data-diff="Medium" data-search="statue of liberty new york harbor united states">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">North America</span><span class="pill medium">Medium</span></div>
+<h3>Statue of Liberty</h3>
+<p class="loc">New York Harbor, United States</p>
+<p class="fame">Bartholdi and Eiffel&#x27;s 1886 gift from France: the global symbol of liberty and immigration.</p>
+<p class="dims"><strong>Key dimensions:</strong> Figure 46 m; ground-to-torch 93 m; 2.4 mm copper sheets over steel frame.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>robed figure</li><li>raised right arm and torch</li><li>left arm and tablet</li><li>7-ray crown</li><li>broken shackles at feet</li><li>pedestal</li><li>Fort Wood star base</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> The figure is semi-organic, but it decomposes into named parts with exact published dimensions.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Statue_of_Liberty" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="North America" data-diff="Easy/Medium" data-search="space needle seattle united states">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">North America</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>Space Needle</h3>
+<p class="loc">Seattle, United States</p>
+<p class="fame">The 1962 World&#x27;s Fair flying-saucer tower (184 m): the icon of Seattle and the Space Age.</p>
+<p class="dims"><strong>Key dimensions:</strong> 184 m high; observation deck at 160 m; 42 m wide.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>three legs and tripod base</li><li>tapered shaft</li><li>saucer pod (observation deck at 160 m)</li><li>revolving restaurant (150 m)</li><li>antenna and spire</li><li>glass floor Loupe</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> Tripod legs + lathed saucer pod; very clean mid-century geometry.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Space_Needle" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="North America" data-diff="Easy/Medium" data-search="cn tower toronto canada">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">North America</span><span class="pill easy-medium">Easy/Medium</span></div>
+<h3>CN Tower</h3>
+<p class="loc">Toronto, Canada</p>
+<p class="fame">The Western Hemisphere&#x27;s tallest freestanding structure (553.3 m, 1976); Toronto&#x27;s defining landmark.</p>
+<p class="dims"><strong>Key dimensions:</strong> 553.3 m; main deck 346 m; glass floor 342 m; SkyPod 447 m; antenna 102 m.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>hexagonal concrete shaft</li><li>three supporting legs</li><li>main pod (7 storeys)</li><li>SkyPod</li><li>102 m antenna</li><li>glass floor</li><li>360 revolving restaurant</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> A tall tapered shaft with clearly defined level bands; textbook parametric tower.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/CN_Tower" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+<article class="card" data-region="Europe" data-diff="Hard" data-search="milan cathedral milan italy">
+<div class="card-top"><span class="rank rest">shortlist</span><span class="region">Europe</span><span class="pill hard">Hard</span></div>
+<h3>Milan Cathedral</h3>
+<p class="loc">Milan, Italy</p>
+<p class="fame">The largest church in Italy (1386 to 1965), a 579-year Gothic project with 135 spires and the gilded Madonnina.</p>
+<p class="dims"><strong>Key dimensions:</strong> 158.6 m long x 92 m wide; tallest spire 108.5 m; 135 spires; 2,245 to 3,400 statues; 52 nave pillars.</p>
+<p class="comps-label"><strong>Exploded view would show:</strong></p>
+<ul class="comps"><li>135 spires (tallest with Madonnina)</li><li>five-aisle nave</li><li>52 pillars</li><li>crossing lantern</li><li>transept</li><li>apse</li><li>facade with 5 bronze gates</li><li>rooftop terraces</li></ul>
+<p class="diffnote"><strong>Modeling:</strong> 135 spires and thousands of statues are instanced, but the Gothic tracery and sheer part count make this a heavy build.</p>
+<p class="srcs">Sources: <a href="https://en.wikipedia.org/wiki/Milan_Cathedral" target="_blank" rel="noreferrer">en.wikipedia.org</a></p>
+</article>
+</div>
+<h2 class="sec">Famous, but not modelable (yet)</h2>
+<ul class="excluded">
+<li><strong>Great Wall of China</strong> Linear and effectively infinite: no natural start or end for an exploded view.</li><li><strong>Forbidden City, Beijing</strong> Sprawling complex: about 980 buildings over 72 ha. It is a campus, not a single decomposable structure.</li><li><strong>Mount Rushmore, USA</strong> Purely sculptural: four portrait heads carved in rock, with no architectural components to explode.</li><li><strong>Al-Khazneh (Treasury), Petra, Jordan</strong> Rock-carved facade: the building is a cliff face, not an assembly of parts.</li><li><strong>Sistine Chapel, Vatican City</strong> Interiors-only: its fame is the ceiling frescoes, which cannot be decomposed into 3D architectural components.</li><li><strong>Stonehenge, UK</strong> Megalithic: only a handful of nameable parts and no documented original full form.</li><li><strong>Palace of Versailles, France</strong> Sprawling complex: palace plus gardens plus Trianons. Too large and diffuse for a single exploded model.</li>
+</ul>
+<div class="note">
+<p style="margin-top:0"><strong>A note on the numbers.</strong> Dimensions here come from public web sources gathered during research in October 2026 and were not all verified against primary sources. A few are disputed between sources (the Winter Palace facade length, the Wat Arun prang height, the Potala Palace height). Every figure gets re-verified from authoritative sources before any model is built, and the research files record the disagreements honestly.</p>
+<p style="margin-bottom:0">Difficulty ratings estimate the procedural modeling effort: Easy means clean parametric geometry, Hard means heavy ornament or complex curved surfaces.</p>
+</div>
+<div class="cta">
+<p><strong>Missing a favorite?</strong></p>
+<p>If there is a structure you want to see taken apart and it is not on this list, tell me on X at <a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">@TheNextCorner</a>. Good suggestions get added to the shortlist.</p>
+</div>
+<footer>
+<a href="/candidates/">Candidates</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">X</a>
+</footer>
+</main>
+<script>
+const grid=document.getElementById('grid'),q=document.getElementById('q'),
+region=document.getElementById('region'),diff=document.getElementById('diff'),
+count=document.getElementById('count'),cards=[...grid.children];
+[...new Set(cards.map(c=>c.dataset.region))].sort().forEach(r=>{const o=document.createElement('option');o.textContent=r;region.appendChild(o);});
+function apply(){
+ const term=q.value.trim().toLowerCase(),rg=region.value,df=diff.value;let n=0;
+ cards.forEach(c=>{
+  const ok=(!term||c.dataset.search.includes(term))&&(!rg||c.dataset.region===rg)&&(!df||c.dataset.diff===df);
+  c.classList.toggle('hidden',!ok);if(ok)n++;});
+ count.textContent=n+' of '+cards.length+' structures shown';
+}
+[q,region,diff].forEach(el=>el.addEventListener('input',apply));apply();
+</script>
+</body>
+</html>
