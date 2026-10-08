@@ -34,20 +34,22 @@
     },
     {
       "alt": "Crowds at the reopened border crossing at the Brandenburg Gate in December 1989",
-      "body": "When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall! Two years after the Wall went up, John F. Kennedy came to Berlin. On 26 June 1963 he told 120,000 West Berliners at Rathaus Schöneberg: \"Ich bin ein Berliner.\" During the same visit he looked out at the Brandenburg Gate from the West, while the Soviets hung red banners to block his view east.",
+      "body": "When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. Two years after the Wall went up, John F. Kennedy came to Berlin. On 26 June 1963 he told 120,000 West Berliners at Rathaus Schöneberg: \"Ich bin ein Berliner.\" During the same visit he looked out at the Brandenburg Gate from the West, while the Soviets hung red banners to block his view east. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall!",
       "caption": "The border crossing at the gate the day after it reopened, 23 December 1989.",
       "credit": "Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons",
       "dates": "1961-1989",
       "heading": "Twenty-eight years behind the Wall",
       "image": "gate-1989.jpg",
-      "video": "reagan-clip.mp4",
-      "video_caption": "Ronald Reagan at the Brandenburg Gate, 12 June 1987.",
-      "video_credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0.",
       "videos": [
         {
           "file": "jfk-clip.mp4",
           "caption": "John F. Kennedy in West Berlin, 26 June 1963.",
           "credit": "Video: public domain via Wikimedia Commons."
+        },
+        {
+          "file": "reagan-clip.mp4",
+          "caption": "Ronald Reagan at the Brandenburg Gate, 12 June 1987.",
+          "credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0."
         }
       ]
     },

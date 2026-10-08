@@ -173,10 +173,6 @@ def story_dialog(story, slug):
         dates = f' <span>{esc(sec["dates"])}</span>' if sec.get("dates") else ""
         parts.append(f'<h3>{esc(sec["heading"])}{dates}</h3>')
         parts.append(f'<p>{esc(sec["body"])}</p>')
-        if sec.get("image"):
-            img = f"/viewer/{slug}/{esc(sec['image'])}"
-            parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'
-                         f'<figcaption>{esc(sec.get("caption", ""))} {esc(sec.get("credit", ""))}</figcaption></figure>')
         vids = []
         if sec.get("video"):
             vids.append((sec["video"], sec.get("video_caption", ""), sec.get("video_credit", "")))
@@ -186,6 +182,10 @@ def story_dialog(story, slug):
             vurl = f"/viewer/{slug}/{esc(vid)}"
             parts.append(f'<figure><video controls playsinline preload="none" src="{vurl}"></video>'
                          f'<figcaption>{esc(cap)} {esc(cred)}</figcaption></figure>')
+        if sec.get("image"):
+            img = f"/viewer/{slug}/{esc(sec['image'])}"
+            parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'
+                         f'<figcaption>{esc(sec.get("caption", ""))} {esc(sec.get("credit", ""))}</figcaption></figure>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
