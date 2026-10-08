@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>About - Architectural Atlas</title>
+<meta name="description" content="How Architectural Atlas started: a post on X, a fork of the Human Atlas viewer, and procedural 3D building models generated in code."/>
+<link rel="icon" href="/favicon.ico" sizes="32x32"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<style>
+body{font-family:'Helvetica Neue',Arial,sans-serif;color:#20242b;background:#f3f4f4;margin:0;line-height:1.65}
+main{max-width:720px;margin:0 auto;padding:56px 24px 72px}
+a{color:#263b48}
+h1{font-size:32px;letter-spacing:-1px;font-weight:600}
+.meta{color:#6c7883;font-size:13px;margin-bottom:32px}
+.back{display:inline-block;margin-bottom:28px;font-size:14px;text-decoration:none}
+h2{font-size:19px;margin-top:34px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid #18253618;font-size:13px;color:#6c7883}
+footer a{color:#6c7883;margin-right:16px}
+.cta{background:#fff;border:1px solid #18253618;border-radius:12px;padding:20px 24px;margin-top:34px}
+.cta p{margin:0 0 12px}
+.cta p:last-child{margin-bottom:0}
+.share-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.share-btn{display:inline-block;padding:9px 18px;border-radius:999px;background:#20242b;color:#fff!important;text-decoration:none;font-size:14px;font-weight:600}
+.share-btn:hover{background:#3a424c}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">Back to the atlas</a>
+<h1>About</h1>
+<p class="meta">Last updated: October 8, 2026</p>
+
+<h2>How this started</h2>
+<p>It started with a post on X. Someone shared the Human Atlas, an interactive 3D model of the human body that you can take apart piece by piece, and I could not stop playing with it. I kept thinking: this is exactly how I want to look at buildings.</p>
+<p>So I built it.</p>
+
+<h2>What it is</h2>
+<p>Architectural Atlas is a fork of the <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">Human Atlas</a> viewer by ashemag, released under the MIT license. The viewer keeps the original idea: orbit a model, pull it apart into an exploded inventory, click any piece to inspect it.</p>
+<p>What changed is everything inside. The anatomy dataset is gone. In its place are procedural 3D models of famous buildings, each generated in code from published dimensions. Every building is modeled from scratch as its own program. No two models share geometry.</p>
+<p>Each building comes in two versions. Simple gives you the readable silhouette in about 30 parts. Detailed goes further, past 100 named components grouped into systems, with notes on how the pieces fit together. The atlas currently holds 26 buildings and 4,779 named parts, and it keeps growing.</p>
+
+<h2>Open by default</h2>
+<p>All of the modeling code lives in the open, in the <a href="https://github.com/thenextcorner/architectural-atlas" target="_blank" rel="noreferrer">GitHub repository</a>: one generator script per building, plus the scripts that validate the models and capture the screenshots. If you read JavaScript, you can see exactly how the Burj Khalifa tapers or how the Golden Gate cables hang.</p>
+
+<h2>Why buildings</h2>
+<p>This is a hobby, and hobbies are allowed to be fun. I have a long list of structures I still want to add, from Gothic cathedrals to modern supertalls, and I build the ones I am most curious about first.</p>
+
+<div class="cta">
+<p><strong>Enjoying the atlas? Share it.</strong></p>
+<p>Post it on X, drop it in a Reddit thread, send it to the friend who reads Wikipedia articles about bridges at 1 a.m.</p>
+<div class="share-row">
+<a class="share-btn" href="https://x.com/intent/tweet?text=Architectural%20Atlas%3A%20famous%20buildings%20taken%20apart%20in%203D&url=https%3A%2F%2Farchitecturalatlas.com%2F" target="_blank" rel="noreferrer">Share on X</a>
+<a class="share-btn" href="https://www.reddit.com/submit?url=https%3A%2F%2Farchitecturalatlas.com%2F&title=Architectural%20Atlas%3A%20famous%20buildings%20taken%20apart%20in%203D" target="_blank" rel="noreferrer">Share on Reddit</a>
+</div>
+<p style="margin-top:16px">And if there is a building you want to see taken apart, tell me on X at <a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">@TheNextCorner</a>. The list grows faster when I know what you want.</p>
+</div>
+
+<footer>
+<a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">X</a>
+</footer>
+</main>
+</body>
+</html>

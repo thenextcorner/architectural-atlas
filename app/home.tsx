@@ -37,6 +37,7 @@ export default function IndexPage(){
    </div>
    <footer className="index-foot">
     <nav className="foot-links" aria-label="Footer">
+     <a href="/about/">About</a>
      <a href="/privacy/">Privacy</a>
      <a href="/cookies/">Cookies</a>
      <a href="/terms/">Terms</a>
