@@ -41,6 +41,9 @@ STORY_CSS = """
 .story-body figcaption{font-size:12.5px;color:#6c7883;margin-top:6px}
 .story-sources{font-size:12.5px;color:#6c7883;border-top:1px solid #e3e6e8;margin-top:30px;padding-top:14px}
 .story-close{display:block;margin:22px auto 4px;padding:10px 26px;border:0;border-radius:999px;background:#20242b;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
+details.transcript{margin-top:10px;font-size:13.5px}
+details.transcript summary{cursor:pointer;font-weight:600;color:#3a424c}
+details.transcript p{margin:8px 0 0;color:#3a424c;line-height:1.6}
 .timeline{list-style:none;margin:18px 0 0;padding:0}
 .timeline li{position:relative;padding:0 0 22px 22px;border-left:2px solid #dfe3e6;margin-left:6px}
 .timeline li:last-child{padding-bottom:4px}
@@ -143,6 +146,28 @@ def json_ld(story, slug, page_url, og_image):
              "item": page_url},
         ],
     })
+    # VideoObject nodes for embedded clips
+    for sec in story.get("sections", []):
+        vobjs = []
+        if sec.get("video"):
+            vobjs.append({"file": sec["video"], "caption": sec.get("video_caption", ""),
+                          "credit": sec.get("video_credit", "")})
+        vobjs.extend(sec.get("videos", []))
+        for v in vobjs:
+            vnode = {
+                "@type": "VideoObject",
+                "@id": f"{page_url}#video-{slugify(v['file'].rsplit('.', 1)[0])}",
+                "name": v.get("caption", story["title"]),
+                "description": f"{v.get('caption', '')} {v.get('credit', '')}".strip(),
+                "contentUrl": f"{BASE}/viewer/{slug}/{v['file']}",
+                "embedUrl": page_url,
+                "uploadDate": "2026-10-08",
+            }
+            if v.get("poster"):
+                vnode["thumbnailUrl"] = f"{BASE}/viewer/{slug}/{v['poster']}"
+            if v.get("duration"):
+                vnode["duration"] = v["duration"]
+            graph.append(vnode)
     return {"@context": "https://schema.org", "@graph": graph}
 
 
@@ -173,15 +198,18 @@ def story_dialog(story, slug):
         dates = f' <span>{esc(sec["dates"])}</span>' if sec.get("dates") else ""
         parts.append(f'<h3>{esc(sec["heading"])}{dates}</h3>')
         parts.append(f'<p>{esc(sec["body"])}</p>')
-        vids = []
+        vobjs = []
         if sec.get("video"):
-            vids.append((sec["video"], sec.get("video_caption", ""), sec.get("video_credit", "")))
-        for v in sec.get("videos", []):
-            vids.append((v["file"], v.get("caption", ""), v.get("credit", "")))
-        for vid, cap, cred in vids:
-            vurl = f"/viewer/{slug}/{esc(vid)}"
-            parts.append(f'<figure><video controls playsinline preload="none" src="{vurl}"></video>'
-                         f'<figcaption>{esc(cap)} {esc(cred)}</figcaption></figure>')
+            vobjs.append({"file": sec["video"], "caption": sec.get("video_caption", ""),
+                          "credit": sec.get("video_credit", "")})
+        vobjs.extend(sec.get("videos", []))
+        for vobj in vobjs:
+            vurl = f"/viewer/{slug}/{esc(vobj['file'])}"
+            poster = f' poster="/viewer/{slug}/{esc(vobj["poster"])}"' if vobj.get("poster") else ""
+            transcript = (f'<details class="transcript"><summary>Transcript</summary><p>{esc(vobj["transcript"])}</p></details>'
+                          if vobj.get("transcript") else "")
+            parts.append(f'<figure><video controls playsinline preload="none"{poster} src="{vurl}"></video>'
+                         f'<figcaption>{esc(vobj.get("caption", ""))} {esc(vobj.get("credit", ""))}</figcaption>{transcript}</figure>')
         if sec.get("image"):
             img = f"/viewer/{slug}/{esc(sec['image'])}"
             parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'

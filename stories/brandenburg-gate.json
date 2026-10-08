@@ -44,12 +44,18 @@
         {
           "file": "jfk-clip.mp4",
           "caption": "John F. Kennedy in West Berlin, 26 June 1963.",
-          "credit": "Video: public domain via Wikimedia Commons."
+          "credit": "Video: public domain via Wikimedia Commons.",
+          "poster": "jfk-poster.jpg",
+          "duration": "PT2M32S",
+          "transcript": "Excerpt from the closing of the speech: \"There are many people in the world who really don't understand, or say they don't, what is the great issue between the free world and the Communist world. Let them come to Berlin. There are some who say that communism is the wave of the future. Let them come to Berlin. And there are some who say in Europe and elsewhere we can work with the Communists. Let them come to Berlin. And there are even a few who say that it is true that communism is an evil system, but it permits us to make economic progress. Lass' sie nach Berlin kommen. Let them come to Berlin.\" Two thousand years ago, the proudest boast was \"civis Romanus sum.\" Today, in the world of freedom, the proudest boast is \"Ich bin ein Berliner!\" All free men, wherever they may live, are citizens of Berlin, and therefore, as a free man, I take pride in the words \"Ich bin ein Berliner!\""
         },
         {
           "file": "reagan-clip.mp4",
           "caption": "Ronald Reagan at the Brandenburg Gate, 12 June 1987.",
-          "credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0."
+          "credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0.",
+          "poster": "reagan-poster.jpg",
+          "duration": "PT48S",
+          "transcript": "\"There is one sign the Soviets can make that would be unmistakable, that would advance dramatically the cause of freedom and peace. General Secretary Gorbachev, if you seek peace, if you seek prosperity for the Soviet Union and Eastern Europe, if you seek liberalization: Come here to this gate! Mr. Gorbachev, open this gate! Mr. Gorbachev, tear down this wall!\""
         }
       ]
     },
