@@ -7,10 +7,10 @@ import {createExplosionLayout} from './explosion-layout';
 import {decodeModelResponse} from './model-download';
 import {PointerTap} from './pointer-tap';
 import {type Atlas,type SceneState} from './atlas';
-interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void}
-export default function BuildingScene({atlas,state,onSelect,onProgress,onError}:Props){
- const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect);
- latest.current=state;select.current=onSelect;
+interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[]}
+export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots}:Props){
+ const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
+ latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
   const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',layoutKey='',amount=0;
   let lastState:SceneState|null=null;
@@ -57,6 +57,33 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError}:
   markerMaterial.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (distance(gl_PointCoord, vec2(0.5)) > 0.5) discard;');};
   const markers=new T.Points(markerGeometry,markerMaterial);markers.frustumCulled=false;markers.renderOrder=10;markers.visible=false;scene.add(markers);
   const hover=document.createElement('div');hover.className='part-hover';hover.setAttribute('role','tooltip');hover.hidden=true;el.appendChild(hover);
+  // Story hotspots: pulsing dots anchored to named parts, opening a small card.
+  const hotspotDefs=hotspotRef.current??[];
+  const hotspotIdx=hotspotDefs.map(h=>atlas.parts.findIndex(p=>p.name.toLowerCase()===h.part.toLowerCase()||p.id===h.part));
+  const hotspotLayer=document.createElement('div');hotspotLayer.className='hotspot-layer';el.appendChild(hotspotLayer);
+  const popup=document.createElement('div');popup.className='hotspot-popup';popup.hidden=true;hotspotLayer.appendChild(popup);
+  let openHotspot=-1;
+  const closeHotspot=()=>{popup.hidden=true;openHotspot=-1;};
+  const positionPopup=(btn:HTMLButtonElement)=>{
+   const r=btn.getBoundingClientRect(),lr=hotspotLayer.getBoundingClientRect(),pw=Math.min(280,lr.width-16);
+   popup.style.width=pw+'px';
+   const left=Math.min(Math.max(8,(r.left-lr.left)-pw/2),Math.max(8,lr.width-pw-8));
+   let top=(r.top-lr.top)+20;if(top+220>lr.height)top=(r.top-lr.top)-230;
+   popup.style.left=left+'px';popup.style.top=Math.max(8,top)+'px';
+  };
+  const dots=hotspotDefs.map((h,k)=>{
+   const b=document.createElement('button');b.type='button';b.className='hotspot-dot';b.setAttribute('aria-label','About '+h.title);b.hidden=true;
+   const s=document.createElement('span');b.appendChild(s);
+   b.addEventListener('click',ev=>{ev.stopPropagation();
+    if(openHotspot===k){closeHotspot();return;}
+    openHotspot=k;popup.textContent='';
+    const t=document.createElement('div');t.className='hotspot-title';t.textContent=h.title;
+    const p=document.createElement('p');p.textContent=h.text;
+    const c=document.createElement('button');c.type='button';c.className='hotspot-close';c.setAttribute('aria-label','Close');c.textContent='×';
+    c.addEventListener('click',ev2=>{ev2.stopPropagation();closeHotspot();});
+    popup.appendChild(t);popup.appendChild(p);popup.appendChild(c);popup.hidden=false;positionPopup(b);});
+   hotspotLayer.appendChild(b);return b;
+  });
   type Target={index:number;x:number;y:number;left:number;right:number;top:number;bottom:number};let targets:Target[]=[];
   const projected=new T.Vector3();
   const findTarget=(x:number,y:number,radius:number)=>{
@@ -111,7 +138,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError}:
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
   const raycaster=new T.Raycaster(),pointer=new T.Vector2(),tap=new PointerTap(),worldBox=new T.Box3(),hitPoint=new T.Vector3();
-  const down=(e:PointerEvent)=>{hover.hidden=true;tap.down(e.pointerId,e.clientX,e.clientY,e.pointerType==='touch'?12:5);};
+  const down=(e:PointerEvent)=>{hover.hidden=true;closeHotspot();tap.down(e.pointerId,e.clientX,e.clientY,e.pointerType==='touch'?12:5);};
   const move=(e:PointerEvent)=>{tap.move(e.pointerId,e.clientX,e.clientY);if(e.buttons||amount<.5||e.pointerType==='touch'){hover.hidden=true;return;}const rect=el.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,index=findTarget(x,y,12);hover.hidden=index<0;renderer.domElement.style.cursor=index<0?'grab':'pointer';if(index>=0){hover.textContent=atlas.parts[index].name;hover.style.left=`${Math.max(8,Math.min(x+14,el.clientWidth-260))}px`;hover.style.top=`${Math.max(8,Math.min(y+18,el.clientHeight-55))}px`;}};
   const cancel=(e:PointerEvent)=>tap.cancel(e.pointerId);
   const up=(e:PointerEvent)=>{
@@ -153,11 +180,22 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError}:
     lastIsolate=isolateKey;
    }
    controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=amount<.5&&!s.isolate;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
-   if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}dirty=false;}
+   if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
+   // Story hotspots follow their part (assembled or exploded).
+   hotspotDefs.forEach((h,k)=>{
+    const i=hotspotIdx[k],dot=dots[k];
+    if(i<0||!ready||data[i*4+3]<.5){dot.hidden=true;if(openHotspot===k)closeHotspot();return;}
+    const b0=bounds[i].min,b1=bounds[i].max;
+    projected.set((b0.x+b1.x)/2+data[i*4],b1.y+data[i*4+1]+.03,(b0.z+b1.z)/2+data[i*4+2]).project(camera);
+    if(projected.z<-1||projected.z>1){dot.hidden=true;if(openHotspot===k)closeHotspot();return;}
+    dot.hidden=false;
+    dot.style.transform=`translate(${((projected.x+1)*el.clientWidth/2).toFixed(1)}px,${((1-projected.y)*el.clientHeight/2).toFixed(1)}px)`;
+   });
+   dirty=false;}
 
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();hover.remove();renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();hover.remove();hotspotLayer.remove();renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }

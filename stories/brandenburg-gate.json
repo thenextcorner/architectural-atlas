@@ -1,1 +1,126 @@
-{"description":"Take the Brandenburg Gate apart piece by piece in 3D, and read the story of the gate: from Prussian peace monument to Napoleon's trophy, from war ruin to the symbol of reunified Germany.","intro":"Berlin's most famous landmark is 26 meters of sandstone that has watched Prussian kings, Napoleon's army, Nazi rallies, and the fall of the Berlin Wall. This is how a city gate became the symbol of a reunited country.","page_title":"Brandenburg Gate: Exploded 3D Model and History | Architectural Atlas","photo_credits":["Gate at dusk: Thomas Wolf, www.foto-tw.de, CC BY-SA 3.0, via Wikimedia Commons","Quadriga close-up: Yair Haklai, CC BY-SA 4.0, via Wikimedia Commons","Gate in ruins, May 1945: Alexey Shapochkin, CC BY-SA 4.0, via Wikimedia Commons","Border crossing reopening, 23 December 1989: Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons"],"sections":[{"alt":"The Quadriga on top of the Brandenburg Gate","body":"Commissioned by Frederick William II of Prussia and designed by Carl Gotthard Langhans, the gate was built between 1788 and 1791, modeled on the Propylaea of ancient Athens. Twelve Doric columns form five passageways through a structure 26 meters high and over 60 meters wide. It was first called the Friedenstor, the Peace Gate. In 1793 Johann Gottfried Schadow crowned it with the Quadriga: four horses pulling a chariot driven by the goddess of peace, the first quadriga built since antiquity.","caption":"The Quadriga, sculpted by Johann Gottfried Schadow and installed in 1793.","credit":"Yair Haklai, CC BY-SA 4.0, via Wikimedia Commons","dates":"1788-1791","heading":"A gate for peace","image":"quadriga.jpg"},{"body":"After Prussia's defeat at Jena-Auerstedt in 1806, Napoleon marched through the gate and carried the Quadriga off to Paris as a war trophy. When Napoleon fell, Prussian troops brought it home in 1814. The architect Karl Friedrich Schinkel reworked it for the occasion: the goddess of peace became Victoria, goddess of victory, and she was given an Iron Cross crowned with the Prussian eagle.","dates":"1806-1814","heading":"Stolen, returned, rebranded"},{"alt":"The Brandenburg Gate in ruins in May 1945 with a Soviet victory banner","body":"The Nazis adopted the gate as a party symbol and placed it on the axis of their planned world capital Germania. The war left it bullet-scarred; the Quadriga was destroyed, and only a single horse's head survived, now kept in the Markisches Museum. When Soviet troops took Berlin in 1945, they raised the red banner of victory on the ruined Quadriga.","caption":"The gate in May 1945, with a Soviet victory banner on the ruined Quadriga.","credit":"Alexey Shapochkin, CC BY-SA 4.0, via Wikimedia Commons","dates":"1939-1945","heading":"Scarred by war","image":"gate-1945.jpg"},{"alt":"Crowds at the reopened border crossing at the Brandenburg Gate in December 1989","body":"When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall!","caption":"The border crossing at the gate the day after it reopened, 23 December 1989.","credit":"Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons","dates":"1961-1989","heading":"Twenty-eight years behind the Wall","image":"gate-1989.jpg"},{"body":"On 9 November 1989 the Wall fell and thousands celebrated at the gate. On 22 December 1989 the crossing reopened, with Helmut Kohl walking through to meet Hans Modrow before a crowd of 100,000. The Quadriga was restored, the Iron Cross returned, and the gate itself was refurbished from 2000 to 2002. Today it is the symbol of reunified Germany: the finish line of the Berlin Marathon, the stage for New Year's Eve, and the first thing the world pictures when it thinks of Berlin.","dates":"1989-today","heading":"The symbol of a reunited country"}],"slug":"brandenburg-gate","sources":"Historical facts adapted from Wikipedia (\"Brandenburg Gate\", CC BY-SA), visitBerlin.de, and Encyclopaedia Britannica.","story_title":"The story of the Brandenburg Gate","title":"Brandenburg Gate"}
+{
+  "description": "Take the Brandenburg Gate apart piece by piece in 3D, and read the story of the gate: from Prussian peace monument to Napoleon's trophy, from war ruin to the symbol of reunified Germany.",
+  "intro": "Berlin's most famous landmark is 26 meters of sandstone that has watched Prussian kings, Napoleon's army, Nazi rallies, and the fall of the Berlin Wall. This is how a city gate became the symbol of a reunited country.",
+  "page_title": "Brandenburg Gate: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Gate at dusk: Thomas Wolf, www.foto-tw.de, CC BY-SA 3.0, via Wikimedia Commons",
+    "Quadriga close-up: Yair Haklai, CC BY-SA 4.0, via Wikimedia Commons",
+    "Gate in ruins, May 1945: Alexey Shapochkin, CC BY-SA 4.0, via Wikimedia Commons",
+    "Border crossing reopening, 23 December 1989: Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The Quadriga on top of the Brandenburg Gate",
+      "body": "Commissioned by Frederick William II of Prussia and designed by Carl Gotthard Langhans, the gate was built between 1788 and 1791, modeled on the Propylaea of ancient Athens. Twelve Doric columns form five passageways through a structure 26 meters high and over 60 meters wide. It was first called the Friedenstor, the Peace Gate. In 1793 Johann Gottfried Schadow crowned it with the Quadriga: four horses pulling a chariot driven by the goddess of peace, the first quadriga built since antiquity.",
+      "caption": "The Quadriga, sculpted by Johann Gottfried Schadow and installed in 1793.",
+      "credit": "Yair Haklai, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1788-1791",
+      "heading": "A gate for peace",
+      "image": "quadriga.jpg"
+    },
+    {
+      "body": "After Prussia's defeat at Jena-Auerstedt in 1806, Napoleon marched through the gate and carried the Quadriga off to Paris as a war trophy. When Napoleon fell, Prussian troops brought it home in 1814. The architect Karl Friedrich Schinkel reworked it for the occasion: the goddess of peace became Victoria, goddess of victory, and she was given an Iron Cross crowned with the Prussian eagle.",
+      "dates": "1806-1814",
+      "heading": "Stolen, returned, rebranded"
+    },
+    {
+      "alt": "The Brandenburg Gate in ruins in May 1945 with a Soviet victory banner",
+      "body": "The Nazis adopted the gate as a party symbol and placed it on the axis of their planned world capital Germania. The war left it bullet-scarred; the Quadriga was destroyed, and only a single horse's head survived, now kept in the Markisches Museum. When Soviet troops took Berlin in 1945, they raised the red banner of victory on the ruined Quadriga.",
+      "caption": "The gate in May 1945, with a Soviet victory banner on the ruined Quadriga.",
+      "credit": "Alexey Shapochkin, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1939-1945",
+      "heading": "Scarred by war",
+      "image": "gate-1945.jpg"
+    },
+    {
+      "alt": "Crowds at the reopened border crossing at the Brandenburg Gate in December 1989",
+      "body": "When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall!",
+      "caption": "The border crossing at the gate the day after it reopened, 23 December 1989.",
+      "credit": "Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1961-1989",
+      "heading": "Twenty-eight years behind the Wall",
+      "image": "gate-1989.jpg"
+    },
+    {
+      "body": "On 9 November 1989 the Wall fell and thousands celebrated at the gate. On 22 December 1989 the crossing reopened, with Helmut Kohl walking through to meet Hans Modrow before a crowd of 100,000. The Quadriga was restored, the Iron Cross returned, and the gate itself was refurbished from 2000 to 2002. Today it is the symbol of reunified Germany: the finish line of the Berlin Marathon, the stage for New Year's Eve, and the first thing the world pictures when it thinks of Berlin.",
+      "dates": "1989-today",
+      "heading": "The symbol of a reunited country"
+    }
+  ],
+  "slug": "brandenburg-gate",
+  "sources": "Historical facts adapted from Wikipedia (\"Brandenburg Gate\", CC BY-SA), visitBerlin.de, and Encyclopaedia Britannica.",
+  "story_title": "The story of the Brandenburg Gate",
+  "title": "Brandenburg Gate",
+  "hotspots": [
+    {
+      "part": "Quadriga horse 2 (inner left)",
+      "title": "The Quadriga",
+      "text": "Johann Gottfried Schadow's copper Quadriga has crowned the gate since 1793. Napoleon carried it to Paris as a war trophy in 1806; it came home in 1814. The original was destroyed in the Second World War; today's Quadriga is the 1957 recreation."
+    },
+    {
+      "part": "Victoria head",
+      "title": "Victoria",
+      "text": "The chariot driver began as Eirene, goddess of peace. After Napoleon's defeat she was rebranded as Victoria, goddess of victory, and given an Iron Cross crowned with the Prussian eagle."
+    },
+    {
+      "part": "Minerva statue",
+      "title": "Minerva",
+      "text": "Minerva, goddess of wisdom, stands in a niche of the gate's side wing, one of the statues set into the gate's flanks."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "1788-1791",
+      "text": "Built to Carl Gotthard Langhans's design for Frederick William II of Prussia; first called the Peace Gate."
+    },
+    {
+      "date": "1793",
+      "text": "Johann Gottfried Schadow's Quadriga is installed on the attic."
+    },
+    {
+      "date": "1806",
+      "text": "After Jena-Auerstedt, Napoleon carries the Quadriga to Paris as a war trophy."
+    },
+    {
+      "date": "1814",
+      "text": "The Quadriga returns to Berlin; the goddess is rebranded as Victoria and given the Iron Cross."
+    },
+    {
+      "date": "1945",
+      "text": "The gate is bullet-scarred and the Quadriga destroyed; Soviet troops raise the red banner of victory."
+    },
+    {
+      "date": "1956-1957",
+      "text": "Rare East-West restoration; the Quadriga is recreated from a 1942 plaster cast."
+    },
+    {
+      "date": "13 Aug 1961",
+      "text": "The Berlin Wall rises; the gate stands sealed in the death strip for 28 years."
+    },
+    {
+      "date": "12 Jun 1987",
+      "text": "Ronald Reagan at the gate: Mr. Gorbachev, tear down this wall!"
+    },
+    {
+      "date": "9 Nov 1989",
+      "text": "The Wall falls; thousands celebrate at the gate."
+    },
+    {
+      "date": "22 Dec 1989",
+      "text": "The border crossing reopens; Helmut Kohl walks through to meet Hans Modrow."
+    },
+    {
+      "date": "3 Oct 1990",
+      "text": "Official reunification ceremony at the gate; the flag is raised at midnight."
+    },
+    {
+      "date": "2000-2002",
+      "text": "Full restoration; Pariser Platz becomes a pedestrian zone."
+    }
+  ],
+  "coordinates": {
+    "lat": 52.5163,
+    "lng": 13.3777,
+    "label": "Brandenburg Gate, Pariser Platz, Berlin"
+  }
+}

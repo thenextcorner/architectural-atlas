@@ -17,6 +17,8 @@ const readStoredVariant=(building:string):string|null=>{try{return localStorage.
 const writeStoredVariant=(building:string,id:string)=>{try{localStorage.setItem(variantStorageKey(building),id);}catch{}};
 export default function Viewer({slug}:{slug:string}){
  const detailTitle=useRef<HTMLHeadingElement>(null);
+ // Story hotspots injected by the prerendered page (window.__HOTSPOTS__), if any.
+ const hotspots=useMemo(()=>{try{const w=window as unknown as {__HOTSPOTS__?:{part:string;title:string;text:string}[]};return Array.isArray(w.__HOTSPOTS__)?w.__HOTSPOTS__:[];}catch{return[];}},[]);
  const [atlas,setAtlas]=useState<Atlas|null>(null),
  [variants,setVariants]=useState<BuildingVariant[]|null>(null),
  [variantId,setVariantId]=useState<string|null>(null),
@@ -76,7 +78,7 @@ export default function Viewer({slug}:{slug:string}){
  const title=atlas?.title??'Architectural Atlas',loc=atlas?.location??'',assembledCaption=atlas?`${title.toUpperCase()} · ${loc.toUpperCase()}`:'LOADING';
  const primarySource=atlas?.sourceUrls?.[0];
  return <main className="studio">
-  {atlas&&<BuildingScene atlas={atlas} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
+  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
   <nav className="top-actions" aria-label="Explorer panels"><a className="back-link" href="/"><ArrowLeft size={16}/><span>All buildings</span></a><a className="back-link coffee-link" href={COFFEE_URL} target="_blank" rel="noreferrer"><Coffee size={16}/><span>Buy me a coffee</span></a><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search components"><Search size={18}/><span>Find a component</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label="About this model" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
