@@ -347,6 +347,14 @@
     "parts": 165,
     "systems": 11,
     "blurb": "The Colosseum in Rome, the largest ancient amphitheatre ever built, inaugurated in AD 80 and seating about 50,000 spectators. Explore 165 named components across 11 systems, from the tier-by-tier arcade bays and the velarium rigging to the cavea wedges, the arena, the hypogeum machinery and the 1349 collapse ruins."
+   },
+   {
+    "id": "ruin",
+    "label": "Today",
+    "slug": "colosseum-ruin",
+    "parts": 104,
+    "systems": 10,
+    "blurb": "The Colosseum in Rome as it stands today. Explore 104 named components across 10 systems, from the surviving north arcade bays and the exposed hypogeum to the fallen blocks of the 1349 collapse and the 19th century brick shoring."
    }
   ]
  },

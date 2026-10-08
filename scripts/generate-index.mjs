@@ -92,6 +92,8 @@ const VARIANTS={
    blurb:'The Colosseum in Rome, the largest ancient amphitheatre ever built, in simplified schematic form. Explore {parts} named components across {systems} systems, from the travertine arcades and the velarium awning to the cavea seating, the arena and the hypogeum tunnels below.'},
   {id:'detailed',label:'Detailed',slug:'colosseum',
    blurb:'The Colosseum in Rome, the largest ancient amphitheatre ever built, inaugurated in AD 80 and seating about 50,000 spectators. Explore {parts} named components across {systems} systems, from the tier-by-tier arcade bays and the velarium rigging to the cavea wedges, the arena, the hypogeum machinery and the 1349 collapse ruins.'},
+  {id:'ruin',label:'Today',slug:'colosseum-ruin',
+   blurb:'The Colosseum in Rome as it stands today. Explore {parts} named components across {systems} systems, from the surviving north arcade bays and the exposed hypogeum to the fallen blocks of the 1349 collapse and the 19th century brick shoring.'},
  ],
  'white-house':[
   {id:'simple',label:'Simple',slug:'white-house-simple',
