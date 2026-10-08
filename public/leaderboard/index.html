@@ -15,7 +15,8 @@ a{color:#263b48}
 h1{font-size:32px;letter-spacing:-1px;font-weight:600}
 .meta{color:#6c7883;font-size:13px;margin-bottom:24px}
 .back{display:inline-block;margin-bottom:28px;font-size:14px;text-decoration:none}
-.hero{width:100%;border-radius:14px;display:block;margin:0 0 26px}
+.hero{width:100%;margin:0}
+.hero img{width:100%;height:clamp(220px,32vw,480px);object-fit:cover;object-position:center 72%;display:block}
 .intro{max-width:680px}
 .intro p{margin:0 0 14px}
 .board{margin-top:30px;border:1px solid #18253614;border-radius:14px;overflow:hidden;background:#fff}
@@ -44,8 +45,8 @@ footer a{color:#6c7883;margin-right:16px}
 </style>
 </head>
 <body>
+<div class="hero"><img src="/leaderboard/skyline-dusk.jpg" alt="World landmarks as silhouettes against a dusk sky: Eiffel Tower, Big Ben, St Basil's Cathedral, pyramids, Statue of Liberty, Sydney Harbour Bridge, Atomium and Chrysler Building"/></div>
 <main>
-<img class="hero" src="/leaderboard/skyline-header.jpg" alt="Silhouettes of famous structures: Eiffel Tower, Statue of Liberty, Big Ben, St Basil's Cathedral, Sydney Harbour Bridge, a pyramid, the Atomium and a minaret"/>
 <a class="back" href="/">Back to the atlas</a>
 <h1>What should I build next?</h1>
 <p class="meta">Live leaderboard &middot; one vote per structure per person</p>
