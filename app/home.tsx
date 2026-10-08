@@ -1,9 +1,12 @@
 import {useEffect,useState} from 'react';
 import {ArrowUpRight,Coffee} from 'lucide-react';
 import {Badge} from '@/components/ui/badge';
-import {COFFEE_URL,OWNER_URL,REPO_URL} from './config';
+import {COFFEE_URL,OWNER_URL,REPO_URL,X_URL} from './config';
 import {openCookieSettings} from './consent';
 import type {BuildingIndexEntry} from './atlas';
+function XLogo(){
+ return <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>;
+}
 export default function IndexPage(){
  const [entries,setEntries]=useState<BuildingIndexEntry[]|null>(null),[error,setError]=useState('');
  useEffect(()=>{const abort=new AbortController();
@@ -39,6 +42,7 @@ export default function IndexPage(){
      <a href="/terms/">Terms</a>
      <button type="button" className="foot-link-btn" onClick={openCookieSettings}>Cookie settings</button>
      <a href={OWNER_URL} target="_blank" rel="noreferrer">dennisgoedegebuure.com</a>
+     <a href={X_URL} target="_blank" rel="noreferrer" aria-label="Dennis Goedegebuure on X" title="@TheNextCorner on X"><XLogo/></a>
      <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub</a>
     </nav>
     <span>Viewer code is a fork of <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">Human Atlas by ashemag</a>, MIT licensed.</span>
