@@ -62,12 +62,16 @@ const VARIANTS={
    blurb:'The 15th-century Inca citadel on a 2,430 m mountain ridge in Peru, in simplified schematic form. Explore {parts} named components across {systems} systems, from the semicircular Temple of the Sun and the bedrock-carved Intihuatana to the Temple of the Three Windows, the Main Temple, the Temple of the Condor, the fountains, and the agricultural terraces. This model covers the key structures, not the whole mountain.'},
   {id:'detailed',label:'Detailed',slug:'machu-picchu',
    blurb:'The 15th-century Inca citadel on a 2,430 m mountain ridge in Peru, built around 1450 as an estate for the emperor Pachacuti. Explore {parts} named components across {systems} systems, from the curved ashlar wall of the Temple of the Sun, the Royal Tomb, the Intihuatana and the Temple of the Three Windows to the Stairway of Fountains, the terraces, and the residential sector in outline. This model covers the key structures, not the whole mountain.'},
+  {id:'ruin',label:'Today',slug:'machu-picchu-ruin',
+   blurb:'Machu Picchu as it stands today: the 15th-century Inca citadel open to the sky. Explore {parts} components across {systems} systems: the roofless Temple of the Sun, Temple of the Three Windows, Main Temple, Temple of the Condor and residential houses shown at schematic reduced heights, plus the Intihuatana, the Royal Tomb, the fountains, the agricultural terraces and the mountain setting. This model covers the key structures, not the whole mountain.'},
  ],
  'great-pyramid-of-giza':[
   {id:'simple',label:'Simple',slug:'great-pyramid-of-giza-simple',
    blurb:'The Great Pyramid of Giza, tomb of Pharaoh Khufu built around 2560 BC, in simplified schematic form. Explore {parts} named components across {systems} systems, from the 146.6 m pyramid and its vanished Tura limestone casing to the Grand Gallery, the granite King’s Chamber, and the funerary complex in outline. The Sphinx belongs to Khafre’s complex and is not modeled.'},
   {id:'detailed',label:'Detailed',slug:'great-pyramid-of-giza',
    blurb:'The Great Pyramid of Giza, tomb of Pharaoh Khufu built around 2560 BC. Explore {parts} named components across {systems} systems, from the stepped core of 2.3 million blocks and the vanished Tura limestone casing to the 47 m Grand Gallery, the King’s Chamber with its granite sarcophagus and five relieving chambers, and the mortuary temple, causeway and valley temple in outline. The Sphinx belongs to Khafre’s complex and is not modeled.'},
+  {id:'ruin',label:'Today',slug:'great-pyramid-of-giza-ruin',
+   blurb:'The Great Pyramid of Khufu as it stands today: the smooth white Tura casing was stripped away over centuries and the pyramidion is lost, leaving about 138.5 m of stepped core masonry from the original 146.6 m. Explore {parts} components across {systems} systems: the exposed core courses, the surviving in-situ casing stones, the 47 m Grand Gallery and the granite King\u2019s Chamber, and the ruined funerary complex in outline. The Sphinx belongs to Khafre\u2019s complex and is not modeled.'},
  ],
  'brandenburg-gate':[
   {id:'simple',label:'Simple',slug:'brandenburg-gate-simple',
@@ -80,6 +84,8 @@ const VARIANTS={
    blurb:'The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD, in simplified schematic form. Explore {parts} named components across {systems} systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city.'},
   {id:'detailed',label:'Detailed',slug:'pyramid-of-the-sun',
    blurb:'The Pyramid of the Sun at Teotihuacan, Mexico, the largest building of the ancient city, built about 200 AD. Explore {parts} named components across {systems} systems, from the five stepped talud-tablero tiers and the grand west staircase to the summit temple remnants, the later Adosada platform, the Avenue of the Dead frontage, and the sacred cave tunnel beneath the pyramid. This model covers the pyramid, its forecourt and the avenue frontage in outline, not the whole city.'},
+  {id:'ruin',label:'Today',slug:'pyramid-of-the-sun-ruin',
+   blurb:'The Pyramid of the Sun at Teotihuacan, Mexico, as it stands today. Explore {parts} components across {systems} systems, from the five reconstructed talud-tablero tiers (the fifth added in the 1905-1910 restoration) and the bare summit where the lost temple stood to the later Adosada platform and the sacred cave tunnel beneath the pyramid.'},
  ],
  'tower':[
   {id:'simple',label:'Simple',slug:'tower-simple',
@@ -124,6 +130,8 @@ const VARIANTS={
    blurb:'The 30 meter step pyramid of Kukulcan at Chichen Itza, with nine terraces and four stairways of 91 steps, in simplified schematic form. Explore {parts} named components across {systems} systems, including the buried inner pyramid, offering chambers, and the water filled cenote below.'},
   {id:'detailed',label:'Detailed',slug:'el-castillo',
    blurb:'The Temple of Kukulcan at Chichen Itza: a 30 meter Maya step pyramid with nine terraces and four stairways of 91 steps each. Explore {parts} named components across {systems} systems, from the battered terrace panels and tread by tread stairways to the summit temple, the buried inner pyramid with its offering chambers, and the astronomy of the equinox serpent.'},
+  {id:'ruin',label:'Today',slug:'el-castillo-ruin',
+   blurb:'The Temple of Kukulcan at Chichen Itza as it stands today. Explore {parts} components across {systems} systems: the nine terraces and four stairways restored in the 1920s and 1930s, the eroded south stair, the summit temple with its Chac Mool by the doorway and its roofcomb gone, the 1930s tunnel cut through the northeastern balustrade, the buried inner pyramid shown in exploded view, and the water filled cenote beneath the bedrock.'},
  ],
  'sydney-opera-house':[
   {id:'simple',label:'Simple',slug:'sydney-opera-house-simple',
