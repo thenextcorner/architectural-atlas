@@ -7,6 +7,9 @@
 <meta name="description" content="The shortlist of 39 famous structures researched as candidates for future Architectural Atlas exploded 3D models."/>
 <link rel="icon" href="/favicon.ico" sizes="32x32"/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet"/>
 <style>
 body{font-family:'Helvetica Neue',Arial,sans-serif;color:#20242b;background:#f3f4f4;margin:0;line-height:1.65}
 main{max-width:1060px;margin:0 auto;padding:56px 24px 72px}
@@ -49,9 +52,21 @@ h2.sec{font-size:22px;margin:56px 0 12px;letter-spacing:-.5px}
 footer{margin-top:56px;padding-top:20px;border-top:1px solid #18253618;font-size:13px;color:#6c7883}
 footer a{color:#6c7883;margin-right:16px}
 .hidden{display:none!important}
+.hero{position:relative;width:100%;margin:0;overflow:hidden}
+.hero .sky{width:100%;height:clamp(300px,42vw,560px);object-fit:cover;display:block}
+@media (max-width:640px){.hero .sky{height:auto;object-fit:contain}}
+.brand{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.brand span{font-family:'Marcellus',serif;color:#fff;font-size:clamp(40px,7.2vw,96px);letter-spacing:.16em;line-height:1.3;text-transform:uppercase;text-align:center;text-shadow:0 2px 34px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5);padding:0 24px;position:relative;left:.08em}
+.hero[data-bright="1"] .brand span{color:#1d2530;text-shadow:0 1px 24px rgba(255,255,255,.65),0 1px 2px rgba(255,255,255,.5)}
+.support{margin:40px 0 8px;text-align:center}
+.madeby{font-size:13px;color:#6c7883;margin:0 0 12px}
+.madeby a{color:#6c7883}
+.coffee-btn{display:inline-block;padding:12px 26px;border-radius:999px;background:#20242b;color:#fff!important;text-decoration:none;font-size:15px;font-weight:600}
+.coffee-btn:hover{background:#3a424c}
 </style>
 </head>
 <body>
+<div class="hero" id="hero" data-bright="0"><img class="sky" id="skyimg" src="/leaderboard/hero-dusk.jpg" alt="World landmarks silhouetted against the sky"/><a class="brand" href="/"><span>Architectural Atlas</span></a></div>
 <main>
 <a class="back" href="/">Back to the atlas</a>
 <h1>39 structures worth modeling next</h1>
@@ -510,7 +525,11 @@ footer a{color:#6c7883;margin-right:16px}
 <p>If there is a structure you want to see taken apart and it is not on this list, tell me on X at <a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">@TheNextCorner</a>. Good suggestions get added to the shortlist.</p>
 </div>
 <footer>
-<a href="/candidates/">Candidates</a><a href="/leaderboard/">Leaderboard</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">X</a>
+<div class="support">
+<p class="madeby">created by <a href="http://dennisgoedegebuure.com/" target="_blank" rel="noreferrer">DennisG</a></p>
+<a class="coffee-btn" href="https://black-coffee.com/" target="_blank" rel="noreferrer">Buy me a cup of coffee</a>
+</div>
+<a href="/candidates/">Candidates</a><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><a href="https://x.com/TheNextCorner" target="_blank" rel="noreferrer">X</a>
 </footer>
 </main>
 <script>
@@ -526,6 +545,26 @@ function apply(){
  count.textContent=n+' of '+cards.length+' structures shown';
 }
 [q,region,diff].forEach(el=>el.addEventListener('input',apply));apply();
+</script>
+<script>
+(function(){
+  var HEROES={
+    dawn:{img:'hero-dawn.jpg',bright:true},
+    sunrise:{img:'hero-sunrise.jpg',bright:true},
+    sunset:{img:'hero-sunset.jpg',bright:false},
+    dusk:{img:'hero-dusk.jpg',bright:false}
+  };
+  function pick(){
+    var d=new Date(),h=d.getHours()+d.getMinutes()/60;
+    if(h>=5&&h<8) return 'dawn';
+    if(h>=8&&h<17) return 'sunrise';
+    if(h>=17&&h<19.5) return 'sunset';
+    return 'dusk';
+  }
+  var v=pick(),c=HEROES[v],hero=document.getElementById('hero');
+  hero.setAttribute('data-bright',c.bright?'1':'0');
+  document.getElementById('skyimg').src='/leaderboard/'+c.img;
+})();
 </script>
 </body>
 </html>
