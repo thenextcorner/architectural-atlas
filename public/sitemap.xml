@@ -3,6 +3,32 @@
   <url><loc>https://architecturalatlas.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://architecturalatlas.com/candidates/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://architecturalatlas.com/leaderboard/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/brandenburg-gate/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/burj-al-arab/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/burj-khalifa/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/colosseum/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/el-castillo/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/empire-state/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/golden-gate/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/great-pyramid-of-giza/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/himeji-castle/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/london-eye/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/machu-picchu/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/neuschwanstein-castle/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/notre-dame-de-paris/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/one-world-trade-center/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/palace-of-westminster/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/pentagon/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/pyramid-of-the-sun/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/sagrada-familia/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/sydney-opera-house/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/taj-mahal/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/tower/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/tower-bridge/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/trevi-fountain/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/trump-tower-chicago/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/us-capitol/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://architecturalatlas.com/viewer/white-house/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://architecturalatlas.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://architecturalatlas.com/cookies/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://architecturalatlas.com/terms/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

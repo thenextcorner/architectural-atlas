@@ -1,0 +1,2 @@
+# SPA rewrite: per-building viewer URLs serve the app
+/viewer/* /index.html 200

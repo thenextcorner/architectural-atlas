@@ -27,7 +27,7 @@ export default function IndexPage(){
    {error&&<p className="index-error" role="alert">{error}</p>}
    {!entries&&!error&&<p className="index-loading" role="status">Loading the atlas…</p>}
    <div className="index-grid">{(entries??[]).map(e=>
-    <a key={e.slug} className="index-card" href={`#/viewer/${e.slug}`}>
+    <a key={e.slug} className="index-card" href={`/viewer/${e.slug}/`}>
      <div className="index-dots">{e.systems.map(s=><span key={s.id} className="index-dot" style={{background:s.color}} title={s.name}/>)}</div>
      <h2>{e.title}</h2>
      <p className="index-loc">{e.location}</p>

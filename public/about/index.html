@@ -40,6 +40,9 @@ footer a{color:#6c7883;margin-right:16px}
 .support-row{display:flex;align-items:center;justify-content:center;gap:12px}
 .x-btn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:#20242b;color:#fff!important;text-decoration:none}
 .x-btn:hover{background:#3a424c}
+.video-fig{margin:20px 0}
+.video-fig video{width:100%;border-radius:12px;display:block;background:#000}
+.video-fig figcaption{font-size:13px;color:#6c7883;margin-top:8px}
 .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px}
 .topbar .back{margin-bottom:0}
 .support-top{margin:0;text-align:right}
@@ -65,8 +68,17 @@ footer a{color:#6c7883;margin-right:16px}
 
 <h2>How this started</h2>
 <p>It started with this post on X:</p>
-<blockquote class="twitter-tweet" data-dnt="true"><a href="https://x.com/ashebytes/status/2096221988763173186">The Human Atlas announcement by Ashe Magalhaes on X</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Ashe Magalhaes had built the <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">Human Atlas</a>, an interactive 3D model of the human body that pulls apart into 2,234 pieces, and I could not stop playing with it.</p>
+<figure class="video-fig">
+<video controls playsinline preload="metadata" poster="/about/human-atlas-poster.jpg" src="/about/human-atlas-video.mp4"></video>
+<figcaption>The Human Atlas pulling apart into 2,234 pieces. Video by <a href="https://x.com/ashebytes" target="_blank" rel="noreferrer">Ashe Magalhaes (@ashebytes)</a>.</figcaption>
+</figure>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">since you guys loved the exploding tesla.. 
+
+I used GPT-6 Astra to create a 3D website that pulls apart the male anatomy into 2,234 modeled pieces!
+
+we are in a renaissance of learning https://t.co/9CGmHcdhnk</p>&mdash; ashe (@ashebytes) <a href="https://x.com/ashebytes/status/2096221988763173186?ref_src=twsrc%5Etfw">September 5, 2026</a></blockquote>
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 <script>
 (function(){
   var HEROES={
@@ -87,7 +99,7 @@ footer a{color:#6c7883;margin-right:16px}
   document.getElementById('skyimg').src='/leaderboard/'+c.img;
 })();
 </script>
-<p>Ashe Magalhaes had built the <a href="https://github.com/ashemag/human-atlas" target="_blank" rel="noreferrer">Human Atlas</a>, an interactive 3D model of the human body that pulls apart into 2,234 pieces, and I could not stop playing with it. I kept thinking: this is exactly how I want to look at buildings.</p>
+<p>I kept thinking: this is exactly how I want to look at buildings.</p>
 <p>So I built it.</p>
 
 <h2>What it is</h2>
@@ -100,6 +112,10 @@ footer a{color:#6c7883;margin-right:16px}
 
 <h2>Why buildings</h2>
 <p>This is a hobby, and hobbies are allowed to be fun. I have a long list of structures I still want to add, from Gothic cathedrals to modern supertalls, and I build the ones I am most curious about first.</p>
+
+<h2>How it is built</h2>
+<p>The 3D viewer is React and Three.js, forked from the Human Atlas viewer. Everything it shows is generated, not modeled by hand: each building is a Python program that builds the geometry from published dimensions, down to the named parts. A second set of Python scripts turns those models into the static pages you are reading now.</p>
+<p>The whole site is static pages deployed directly through Cloudflare. No database, no server-side code serving pages. The Human Atlas ran on Vercel; I chose this setup to keep cost control as the atlas grows. The only dynamic pieces are the leaderboard vote tallies, kept in Cloudflare KV behind a Turnstile bot check, and the analytics, which only load after you accept cookies.</p>
 
 <div class="cta">
 <p><strong>Enjoying the atlas? Share it.</strong></p>
