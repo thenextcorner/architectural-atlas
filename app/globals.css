@@ -146,10 +146,12 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .dark-stage .studio-footer button{color:#c3ccd4}
 .dark-stage .vignette{background:radial-gradient(ellipse at 51% 43%,transparent 52%,#00000040 100%)}
 .hotspot-layer{position:absolute;inset:0;pointer-events:none;z-index:40;overflow:hidden}
-.hotspot-dot{position:absolute;left:0;top:0;width:26px;height:26px;margin:-13px 0 0 -13px;border:0;border-radius:50%;background:#20242bcc;color:#fff;cursor:pointer;pointer-events:auto;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.hotspot-dot{position:absolute;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border:2px solid #fff;border-radius:50%;background:#b45309;color:#fff;cursor:pointer;pointer-events:auto;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 2px 12px rgba(0,0,0,.4)}
 .hotspot-dot[hidden]{display:none}
-.hotspot-dot span{width:9px;height:9px;border-radius:50%;background:#fff;display:block}
-.hotspot-dot:hover{background:#20242b}
+.hotspot-dot span{width:10px;height:10px;border-radius:50%;background:#fff;display:block}
+.hotspot-dot::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(180,83,9,.75);animation:hotspot-ping 2.2s ease-out infinite;pointer-events:none}
+@keyframes hotspot-ping{0%{transform:scale(.55);opacity:1}75%,100%{transform:scale(1.35);opacity:0}}
+.hotspot-dot:hover{background:#92400e}
 .hotspot-popup{position:absolute;width:280px;max-width:calc(100% - 16px);background:#fff;border-radius:12px;box-shadow:0 10px 34px rgba(0,0,0,.28);padding:16px 18px;pointer-events:auto;font-family:'Helvetica Neue',Arial,sans-serif}
 .hotspot-popup[hidden]{display:none}
 .hotspot-title{font-weight:700;font-size:15px;margin-bottom:6px;padding-right:24px;color:#20242b}
