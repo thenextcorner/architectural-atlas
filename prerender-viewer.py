@@ -37,6 +37,7 @@ STORY_CSS = """
 .story-intro{color:#3a424c;font-size:16px}
 .story-body figure{margin:18px 0}
 .story-body figure img{width:100%;border-radius:10px;display:block}
+.story-body figure video{width:100%;border-radius:10px;display:block;background:#000}
 .story-body figcaption{font-size:12.5px;color:#6c7883;margin-top:6px}
 .story-sources{font-size:12.5px;color:#6c7883;border-top:1px solid #e3e6e8;margin-top:30px;padding-top:14px}
 .story-close{display:block;margin:22px auto 4px;padding:10px 26px;border:0;border-radius:999px;background:#20242b;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
@@ -76,6 +77,7 @@ WIKI = {
     "Q9960": "https://en.wikipedia.org/wiki/Ronald_Reagan",
     "Q2518": "https://en.wikipedia.org/wiki/Helmut_Kohl",
     "Q57241": "https://en.wikipedia.org/wiki/Hans_Modrow",
+    "Q201927": "https://en.wikipedia.org/wiki/David_Hasselhoff",
 }
 
 
@@ -174,6 +176,10 @@ def story_dialog(story, slug):
             img = f"/viewer/{slug}/{esc(sec['image'])}"
             parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'
                          f'<figcaption>{esc(sec.get("caption", ""))} {esc(sec.get("credit", ""))}</figcaption></figure>')
+        if sec.get("video"):
+            vid = f"/viewer/{slug}/{esc(sec['video'])}"
+            parts.append(f'<figure><video controls playsinline preload="none" src="{vid}"></video>'
+                         f'<figcaption>{esc(sec.get("video_caption", ""))} {esc(sec.get("video_credit", ""))}</figcaption></figure>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
@@ -184,8 +190,10 @@ def story_dialog(story, slug):
     parts.append(f'<h2 id="timelineTitle">Timeline: {esc(story["title"])}</h2>')
     parts.append('<ol class="timeline">')
     for ev in story.get("timeline", []):
+        link = (f' <a href="{esc(ev["link"])}" target="_blank" rel="noreferrer">{esc(ev.get("link_label", "More"))}</a>'
+                if ev.get("link") else "")
         parts.append(f'<li><div class="tl-date">{esc(ev["date"])}</div>'
-                     f'<p class="tl-text">{esc(ev["text"])}</p></li>')
+                     f'<p class="tl-text">{esc(ev["text"])}{link}</p></li>')
     parts.append("</ol>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
     parts.append("</div></dialog>")

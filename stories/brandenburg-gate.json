@@ -39,10 +39,13 @@
       "credit": "Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons",
       "dates": "1961-1989",
       "heading": "Twenty-eight years behind the Wall",
-      "image": "gate-1989.jpg"
+      "image": "gate-1989.jpg",
+      "video": "reagan-clip.mp4",
+      "video_caption": "Ronald Reagan at the Brandenburg Gate, 12 June 1987.",
+      "video_credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0."
     },
     {
-      "body": "On 9 November 1989 the Wall fell and thousands celebrated at the gate. On 22 December 1989 the crossing reopened, with Helmut Kohl walking through to meet Hans Modrow before a crowd of 100,000. The Quadriga was restored, the Iron Cross returned, and the gate itself was refurbished from 2000 to 2002. Today it is the symbol of reunified Germany: the finish line of the Berlin Marathon, the stage for New Year's Eve, and the first thing the world pictures when it thinks of Berlin.",
+      "body": "On 9 November 1989 the Wall fell and thousands celebrated at the gate. On 22 December 1989 the crossing reopened, with Helmut Kohl walking through to meet Hans Modrow before a crowd of 100,000. The Quadriga was restored, the Iron Cross returned, and the gate itself was refurbished from 2000 to 2002. Today it is the symbol of reunified Germany: the finish line of the Berlin Marathon, the stage for New Year's Eve, and the first thing the world pictures when it thinks of Berlin. Weeks after the Wall fell, David Hasselhoff sang his summer number one 'Looking for Freedom' from a crane above the Wall on New Year's Eve, in a jacket sparkling with electric lights. The song had become a soundtrack for the Wall's fall.",
       "dates": "1989-today",
       "heading": "The symbol of a reunited country"
     },
@@ -134,7 +137,9 @@
     },
     {
       "date": "12 Jun 1987",
-      "text": "Ronald Reagan at the gate: Mr. Gorbachev, tear down this wall!"
+      "text": "Ronald Reagan at the gate: Mr. Gorbachev, tear down this wall!",
+      "link": "https://en.wikipedia.org/wiki/Tear_down_this_wall!",
+      "link_label": "Watch the speech"
     },
     {
       "date": "9 Nov 1989",
@@ -143,6 +148,10 @@
     {
       "date": "22 Dec 1989",
       "text": "The border crossing reopens; Helmut Kohl walks through to meet Hans Modrow."
+    },
+    {
+      "date": "31 Dec 1989",
+      "text": "David Hasselhoff headlines the New Year's Eve concert at the gate, singing 'Looking for Freedom' from a crane above the Wall in a jacket sparkling with electric lights."
     },
     {
       "date": "3 Oct 1990",
@@ -200,6 +209,11 @@
         "name": "Hans Modrow",
         "wikidata": "Q57241",
         "role": "Greeted Kohl at the reopened gate on 22 December 1989"
+      },
+      {
+        "name": "David Hasselhoff",
+        "wikidata": "Q201927",
+        "role": "Sang 'Looking for Freedom' from a crane above the Wall on New Year's Eve 1989"
       }
     ],
     "events": [
@@ -231,6 +245,10 @@
       {
         "name": "Border crossing at the gate reopens",
         "start": "1989-12-22"
+      },
+      {
+        "name": "New Year's Eve concert at the Brandenburg Gate",
+        "start": "1989-12-31"
       },
       {
         "name": "German reunification ceremony at the gate",
