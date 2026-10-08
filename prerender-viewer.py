@@ -78,6 +78,7 @@ WIKI = {
     "Q2518": "https://en.wikipedia.org/wiki/Helmut_Kohl",
     "Q57241": "https://en.wikipedia.org/wiki/Hans_Modrow",
     "Q201927": "https://en.wikipedia.org/wiki/David_Hasselhoff",
+    "Q9696": "https://en.wikipedia.org/wiki/John_F._Kennedy",
 }
 
 
@@ -176,10 +177,15 @@ def story_dialog(story, slug):
             img = f"/viewer/{slug}/{esc(sec['image'])}"
             parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'
                          f'<figcaption>{esc(sec.get("caption", ""))} {esc(sec.get("credit", ""))}</figcaption></figure>')
+        vids = []
         if sec.get("video"):
-            vid = f"/viewer/{slug}/{esc(sec['video'])}"
-            parts.append(f'<figure><video controls playsinline preload="none" src="{vid}"></video>'
-                         f'<figcaption>{esc(sec.get("video_caption", ""))} {esc(sec.get("video_credit", ""))}</figcaption></figure>')
+            vids.append((sec["video"], sec.get("video_caption", ""), sec.get("video_credit", "")))
+        for v in sec.get("videos", []):
+            vids.append((v["file"], v.get("caption", ""), v.get("credit", "")))
+        for vid, cap, cred in vids:
+            vurl = f"/viewer/{slug}/{esc(vid)}"
+            parts.append(f'<figure><video controls playsinline preload="none" src="{vurl}"></video>'
+                         f'<figcaption>{esc(cap)} {esc(cred)}</figcaption></figure>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')

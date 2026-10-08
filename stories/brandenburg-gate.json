@@ -34,7 +34,7 @@
     },
     {
       "alt": "Crowds at the reopened border crossing at the Brandenburg Gate in December 1989",
-      "body": "When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall!",
+      "body": "When the Berlin Wall went up on 13 August 1961, it ran directly past the gate's western side. The gate stood in the death strip, unreachable from East and West alike, for 28 years. It was there, with the gate behind him, that Ronald Reagan demanded on 12 June 1987: Mr. Gorbachev, tear down this wall! Two years after the Wall went up, John F. Kennedy came to Berlin. On 26 June 1963 he told 120,000 West Berliners at Rathaus Schöneberg: \"Ich bin ein Berliner.\" During the same visit he looked out at the Brandenburg Gate from the West, while the Soviets hung red banners to block his view east.",
       "caption": "The border crossing at the gate the day after it reopened, 23 December 1989.",
       "credit": "Bundesarchiv, Bild 183-1989-1223-300 / CC-BY-SA 3.0, via Wikimedia Commons",
       "dates": "1961-1989",
@@ -42,7 +42,14 @@
       "image": "gate-1989.jpg",
       "video": "reagan-clip.mp4",
       "video_caption": "Ronald Reagan at the Brandenburg Gate, 12 June 1987.",
-      "video_credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0."
+      "video_credit": "Video: Reagan Library via Wikimedia Commons, CC BY 3.0.",
+      "videos": [
+        {
+          "file": "jfk-clip.mp4",
+          "caption": "John F. Kennedy in West Berlin, 26 June 1963.",
+          "credit": "Video: public domain via Wikimedia Commons."
+        }
+      ]
     },
     {
       "body": "On 9 November 1989 the Wall fell and thousands celebrated at the gate. On 22 December 1989 the crossing reopened, with Helmut Kohl walking through to meet Hans Modrow before a crowd of 100,000. The Quadriga was restored, the Iron Cross returned, and the gate itself was refurbished from 2000 to 2002. Today it is the symbol of reunified Germany: the finish line of the Berlin Marathon, the stage for New Year's Eve, and the first thing the world pictures when it thinks of Berlin. Weeks after the Wall fell, David Hasselhoff sang his summer number one 'Looking for Freedom' from a crane above the Wall on New Year's Eve, in a jacket sparkling with electric lights. The song had become a soundtrack for the Wall's fall.",
@@ -136,6 +143,12 @@
       "text": "The Berlin Wall rises; the gate stands sealed in the death strip for 28 years."
     },
     {
+      "date": "26 Jun 1963",
+      "text": "John F. Kennedy tells 120,000 West Berliners at Rathaus Schöneberg: \"Ich bin ein Berliner.\"",
+      "link": "https://en.wikipedia.org/wiki/Ich_bin_ein_Berliner",
+      "link_label": "About the speech"
+    },
+    {
       "date": "12 Jun 1987",
       "text": "Ronald Reagan at the gate: Mr. Gorbachev, tear down this wall!",
       "link": "https://en.wikipedia.org/wiki/Tear_down_this_wall!",
@@ -214,6 +227,11 @@
         "name": "David Hasselhoff",
         "wikidata": "Q201927",
         "role": "Sang 'Looking for Freedom' from a crane above the Wall on New Year's Eve 1989"
+      },
+      {
+        "name": "John F. Kennedy",
+        "wikidata": "Q9696",
+        "role": "Declared 'Ich bin ein Berliner' in West Berlin on 26 June 1963; viewed the gate during the same visit"
       }
     ],
     "events": [
@@ -237,6 +255,10 @@
       {
         "name": "Berlin Wall seals the gate in the death strip",
         "start": "1961-08-13"
+      },
+      {
+        "name": "Kennedy's 'Ich bin ein Berliner' speech",
+        "start": "1963-06-26"
       },
       {
         "name": "Reagan speech at the Brandenburg Gate",
