@@ -6,4 +6,4 @@ export const COFFEE_URL = 'https://black-coffee.com/';
 export const OWNER_URL = 'https://dennisgoedegebuure.com/';
 export const X_URL = 'https://x.com/TheNextCorner';
 export const REPO_URL = 'https://github.com/thenextcorner/architectural-atlas';
-export const OWNER_EMAIL = 'dennis@thenextcorner.com';
+export const OWNER_EMAIL = 'tnc@mail.grokbot.com';
