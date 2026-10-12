@@ -1,9 +1,11 @@
 {
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "esb": {
-    "label": "signature white",
+    "label": "Red, White, Green",
     "colors": [
-      "#f2ede0"
+      "#e63946",
+      "#f5f1e6",
+      "#35b26f"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202610"
   },
