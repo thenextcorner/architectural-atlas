@@ -200,9 +200,15 @@ ICON_LIGHTS = _icon(['<path d="M9 18h6"/>', '<path d="M10 22h4"/>',
 
 
 def lights_dialog(slug):
+    if slug == 'empire-state':
+        return _esb_lights_dialog()
+    if slug == 'tower':
+        return _eiffel_lights_dialog()
+    return ''
+
+
+def _esb_lights_dialog():
     """Tower Lights overlay for the Empire State Building: agenda + gallery."""
-    if slug != 'empire-state':
-        return ''
     # Load the lighting schedule
     import os
     sched_path = os.path.join(os.path.dirname(__file__), 'public', 'leaderboard', 'lights-schedule.json')
@@ -253,13 +259,66 @@ def lights_dialog(slug):
     return '\n'.join(parts)
 
 
+def _eiffel_lights_dialog():
+    """Tower Lights overlay for the Eiffel Tower: tonight, sparkles, gallery."""
+    import os
+    lights_path = os.path.join(os.path.dirname(__file__), 'public', 'leaderboard', 'lights.json')
+    try:
+        et = json.load(open(lights_path)).get('et', {})
+    except Exception:
+        et = {}
+    label = esc(et.get('label', 'golden with white sparkles'))
+    colors = et.get('colors', [])
+    dots = ''.join(f'<span class="lights-dot" style="background:{esc(c)}"></span>' for c in colors)
+
+    parts = ['<dialog id="lightsDialog" class="story-dialog" aria-labelledby="lightsTitle">']
+    parts.append('<div class="story-body">')
+    parts.append('<h2 id="lightsTitle">Tower Lights</h2>')
+    parts.append('<p>Every evening the Eiffel Tower puts on its golden covering. It is lit from '
+                 'within the structure by 336 projectors with orange sodium lamps, a design by '
+                 'lighting engineer Pierre Bideau installed in 1985. Twilight sensors switch it '
+                 'on automatically as darkness falls.</p>')
+    parts.append('<ul class="lights-agenda">')
+    parts.append(f'<li><span class="lights-date">Tonight</span><span class="lights-dots">{dots}</span>'
+                 f'<span class="lights-label">{label}</span></li>')
+    parts.append('</ul>')
+    parts.append('<p style="font-size:13px;color:#6c7883">Tonight\'s lighting is checked daily '
+                 'against the official Eiffel Tower sources.</p>')
+    parts.append('<h3>The sparkles and the beacon</h3>')
+    parts.append('<p>On top of the gold, 20,000 flashing lights make the tower sparkle for five '
+                 'minutes at the start of every hour. The sparkles and the summit beacon were '
+                 'unveiled on December 31, 1999, as a temporary millennium show; they were so '
+                 'popular that a permanent installation followed in 2003. The beacon\'s crossed '
+                 'beams sweep a full circle over Paris. Everything switches off at 23:45, so the '
+                 'last sparkle of the night is at 23:00.</p>')
+    parts.append('<h3>Special colors</h3>')
+    parts.append('<p>For causes and events the gold gives way to color: blue for Europe Day, '
+                 'pink every October for breast cancer awareness, the colors of the French flag '
+                 'in mourning, and green for the 2007 Rugby World Cup, when the tower\'s base '
+                 'became the pitch under a giant ball.</p>')
+    parts.append('<h3>Gallery</h3>')
+    parts.append('<div class="lights-gallery">')
+    gallery = [
+        ('tower-sparkling.jpg', 'Erik Drost', 'CC BY 2.0', 'The hourly sparkle over the gold.'),
+        ('tower-pink.jpg', 'Voyages etc...', 'CC BY 2.0', 'Pink for October, breast cancer awareness month.'),
+        ('tower-blue.jpg', 'Adrian.lifa', 'CC BY-SA 3.0', 'Blue, as worn for Europe Day.'),
+    ]
+    for fname, author, lic, caption in gallery:
+        parts.append(f'<figure><img src="/viewer/tower/{fname}" alt="{esc(caption)}" loading="lazy"/>'
+                     f'<figcaption>{esc(caption)} Photo: {esc(author)}, {esc(lic)}.</figcaption></figure>')
+    parts.append('</div>')
+    parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
+    parts.append('</div></dialog>')
+    return '\n'.join(parts)
+
+
 def story_dialog(story, slug):
     buttons = [
         f'<button id="storyBtn" class="story-btn" aria-haspopup="dialog">{ICON_STORY}<span>Story</span></button>',
         f'<button id="timelineBtn" class="story-btn" aria-haspopup="dialog">{ICON_TIMELINE}<span>Timeline</span></button>',
         f'<button id="mapBtn" class="story-btn" aria-haspopup="dialog">{ICON_MAP}<span>Map</span></button>',
     ]
-    if slug == 'empire-state':
+    if slug in ('empire-state', 'tower'):
         buttons.append(f'<button id="lightsBtn" class="story-btn" aria-haspopup="dialog">{ICON_LIGHTS}<span>Lights</span></button>')
     parts = ['<div class="story-fab">' + ''.join(buttons) + '</div>']
     parts.append('<dialog id="storyDialog" class="story-dialog" aria-labelledby="storyTitle">')

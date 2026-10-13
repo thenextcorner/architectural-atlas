@@ -117,8 +117,26 @@ def main():
         print(f"[FAIL] Empire State fetch: {e}")
         failures += 1
 
-    # 5. Key images
+    # 5. Eiffel Tower: Lights overlay
+    try:
+        status, html = fetch("/viewer/tower/")
+        checks = [
+            ("Lights button", 'id="lightsBtn"' in html),
+            ("Lights dialog", 'id="lightsDialog"' in html),
+            ("Tonight row", "Tonight" in html and 'class="lights-dots"' in html),
+            ("Lights gallery", 'class="lights-gallery"' in html),
+            ("Sparkles copy", "20,000" in html),
+        ]
+        for name, ok in checks:
+            if not check(f"Eiffel Tower: {name}", ok):
+                failures += 1
+    except Exception as e:
+        print(f"[FAIL] Eiffel Tower fetch: {e}")
+        failures += 1
+
+    # 6. Key images
     for img in ["/viewer/empire-state/tower-blue-orange.jpg",
+                "/viewer/tower/tower-pink.jpg",
                 "/viewer/golden-gate/hero.jpg"]:
         try:
             status, _ = fetch(img)
