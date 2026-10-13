@@ -9,6 +9,7 @@ import {Switch} from '@/components/ui/switch';
 import {Sheet,SheetContent,SheetTitle,SheetDescription} from '@/components/ui/sheet';
 import {Combobox,ComboboxInput,ComboboxContent,ComboboxList,ComboboxItem,ComboboxEmpty} from '@/components/ui/combobox';
 import BuildingScene from './scene';
+import SiteNav from './sitenav';
 import {COFFEE_URL,REPO_URL} from './config';
 import {trackEvent} from './analytics';
 import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View} from './atlas';
@@ -80,7 +81,10 @@ export default function Viewer({slug}:{slug:string}){
  return <main className="studio">
   {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
+  <div className="identity-wrap">
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
+  <SiteNav/>
+  </div>
   <nav className="top-actions" aria-label="Explorer panels"><a className="back-link" href="/"><ArrowLeft size={16}/><span>All buildings</span></a><a className="back-link coffee-link" href={COFFEE_URL} target="_blank" rel="noreferrer"><Coffee size={16}/><span>Buy me a coffee</span></a><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search components"><Search size={18}/><span>Find a component</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label="About this model" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
   <section className={`layers-panel glass ${panel==='layers'?'mobile-open':''}`} aria-label="Structural layers">
    <div className="panel-heading"><span>Systems</span><Button variant="ghost" className="mobile-only icon-button" onClick={()=>setPanel(null)} aria-label="Close systems"><X size={18}/></Button><Badge variant="secondary" className="desktop-only small-number">{activeSystems.length}</Badge></div>

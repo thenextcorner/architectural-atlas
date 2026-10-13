@@ -4,6 +4,7 @@ import {Badge} from '@/components/ui/badge';
 import {COFFEE_URL,OWNER_URL,REPO_URL,X_URL} from './config';
 import {openCookieSettings} from './consent';
 import type {BuildingIndexEntry} from './atlas';
+import SiteNav from './sitenav';
 function XLogo(){
  return <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg>;
 }
@@ -18,6 +19,7 @@ export default function IndexPage(){
  const total=entries?.reduce((n,e)=>n+e.partCount,0)??0;
  return <main className="index">
   <div className="index-inner">
+   <div className="index-nav"><SiteNav dark/></div>
    <header className="index-head">
     <div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div>
     <a className="coffee-btn" href={COFFEE_URL} target="_blank" rel="noreferrer"><Coffee size={15}/><span>Buy me a coffee</span></a>

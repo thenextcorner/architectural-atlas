@@ -48,11 +48,18 @@ footer a{color:#6c7883;margin-right:16px}
 .support-top{margin:0;text-align:right}
 .support-top .support-row{justify-content:flex-end}
 @media (max-width:640px){.topbar{flex-direction:column}.support-top{text-align:left}.support-top .support-row{justify-content:flex-start}}
+.site-nav{display:flex;gap:2px;justify-content:flex-start;padding:4px 0 20px;font-size:14px}
+.site-nav a{padding:8px 16px;border-radius:999px;text-decoration:none;color:#515d69}
+.site-nav a:first-child{margin-left:-16px}
+.site-nav a:hover{background:#1825360d;color:#182536}
+.site-nav a[aria-current="page"]{background:#182536;color:#fff}
+.topbar .support{margin-left:auto}
 </style>
 </head>
 <body>
 <div class="hero" id="hero" data-bright="0"><img class="sky" id="skyimg" src="/leaderboard/hero-dusk.jpg" alt="World landmarks silhouetted against the sky"/><a class="brand" href="/"><span>Architectural Atlas</span></a></div>
 <main>
+<nav class="site-nav" aria-label="Site"><a href="/">Atlas</a><a href="/candidates/">Candidates</a><a href="/leaderboard/">Leaderboard</a><a href="/about/" aria-current="page">About</a></nav>
 <div class="topbar">
 <a class="back" href="/">Back to the atlas</a>
 <div class="support support-top">
