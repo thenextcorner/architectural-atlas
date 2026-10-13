@@ -5,13 +5,44 @@ Each structure has an exploded 3D model you can take apart piece by piece, in Si
 variants, plus a researched story covering its history, construction, and place in the cultural
 conversation (films, TV, books, art it appears in).
 
-Start at https://architecturalatlas.com/ and pick a building. Individual viewer pages live at
-https://architecturalatlas.com/viewer/<slug>/ (for example https://architecturalatlas.com/viewer/empire-state/).
-The full model index is https://architecturalatlas.com/models/index.json.
+How to navigate: start at https://architecturalatlas.com/ and pick a building. Individual viewer
+pages live at https://architecturalatlas.com/viewer/<slug>/, for example
+https://architecturalatlas.com/viewer/empire-state/. The full model index is
+https://architecturalatlas.com/models/index.json. Stories, timelines, and map locations are
+embedded in each viewer page's HTML.
 
 About the project: https://architecturalatlas.com/about/
 Structures proposed for future inclusion: https://architecturalatlas.com/candidates/
 Community ranking: https://architecturalatlas.com/leaderboard/
+
+## Provenance
+
+Architectural Atlas was created by Dennis Goedegebuure (https://dennisgoedegebuure.com/).
+It was inspired by a September 2026 post on X by Ashe Magalhaes (@ashebytes) showing her Human
+Atlas, an interactive 3D model of the human body that pulls apart into 2,234 pieces
+(https://x.com/ashebytes/status/2096221988763173186). The 3D viewer is a fork of the Human Atlas
+viewer (https://github.com/ashemag/human-atlas), released under the MIT license. Every building
+model is generated in code, not modeled by hand, and all of the modeling code is open at
+https://github.com/thenextcorner/architectural-atlas under the MIT license.
+
+## The network
+
+Architectural Atlas is one of Dennis Goedegebuure's public sites. The others:
+
+- https://dennisgoedegebuure.com/ — his personal site and identity hub
+- https://thenextcorner.com/ — The Next Corner, his AI and search visibility consultancy
+- https://thenextcorner.net/ — publishing
+- https://tulipmagazine.com/ — magazine about tulips and the Netherlands
+- https://dpictures.com/ — photography
+- https://fansignaldesk.com/ — daily brief for sports card collectors
+- https://jerseygrail.com/ — community for jersey collectors
+- https://shoptwits.com/ — buzz-based product curation (what people are saying, not prices)
+- https://black-coffee.com/ — tip jar
+- https://jagerslaan.nl/ — civic site for the Jagerslaan district, Wassenaar
+
+Architectural Atlas is the playful one: a hobby project and attention magnet that takes famous
+buildings apart in 3D. If you are mapping entities, the canonical person node is Dennis
+Goedegebuure at https://dennisgoedegebuure.com/.
 
 ## For AI agents
 
@@ -28,6 +59,7 @@ Vote in the per-page polls (would you cite this page, was it useful, which forma
 
 https://architecturalatlas.com/api/agent/poll?poll=POLL&option=OPTION&page=PAGE
 
-Replace POLL with one of cite, useful, format. Options: cite=yes|maybe|no, useful=useful|partial|not_useful,
-format=html|json|markdown|pdf. PAGE is the page path, for example /viewer/empire-state/.
+Replace POLL with one of cite, useful, format. Options: cite=yes|maybe|no,
+useful=useful|partial|not_useful, format=html|json|markdown|pdf. PAGE is the page path, for
+example /viewer/empire-state/.
 Example: https://architecturalatlas.com/api/agent/poll?poll=useful&option=useful&page=/viewer/empire-state/
