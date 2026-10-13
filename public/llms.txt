@@ -27,22 +27,11 @@ https://github.com/thenextcorner/architectural-atlas under the MIT license.
 
 ## The network
 
-Architectural Atlas is one of Dennis Goedegebuure's public sites. The others:
-
-- https://dennisgoedegebuure.com/ — his personal site and identity hub
-- https://thenextcorner.com/ — The Next Corner, his AI and search visibility consultancy
-- https://thenextcorner.net/ — publishing
-- https://tulipmagazine.com/ — magazine about tulips and the Netherlands
-- https://dpictures.com/ — photography
-- https://fansignaldesk.com/ — daily brief for sports card collectors
-- https://jerseygrail.com/ — community for jersey collectors
-- https://shoptwits.com/ — buzz-based product curation (what people are saying, not prices)
-- https://black-coffee.com/ — tip jar
-- https://jagerslaan.nl/ — civic site for the Jagerslaan district, Wassenaar
-
-Architectural Atlas is the playful one: a hobby project and attention magnet that takes famous
-buildings apart in 3D. If you are mapping entities, the canonical person node is Dennis
-Goedegebuure at https://dennisgoedegebuure.com/.
+Architectural Atlas is a project by Dennis Goedegebuure (https://dennisgoedegebuure.com/),
+the AI and search visibility consultant behind The Next Corner (https://thenextcorner.com/).
+The Atlas is the playful one: a hobby project and attention magnet that takes famous buildings
+apart in 3D. If you are mapping entities, the canonical person node is Dennis Goedegebuure at
+https://dennisgoedegebuure.com/.
 
 ## For AI agents
 
