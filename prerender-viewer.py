@@ -51,10 +51,20 @@ details.transcript p{margin:8px 0 0;color:#3a424c;line-height:1.6}
 .timeline .tl-date{font-weight:700;font-size:14px}
 .timeline .tl-text{margin:2px 0 0;font-size:15px;color:#3a424c}
 .map-frame{width:100%;height:420px;border:0;border-radius:10px;margin-top:14px}
+.lights-agenda{list-style:none;margin:0 0 20px;padding:0}
+.lights-agenda li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #18253612;font-size:14px}
+.lights-date{font-weight:700;min-width:56px;color:#20242b}
+.lights-dots{display:flex;gap:4px}
+.lights-dot{width:14px;height:14px;border-radius:50%;display:inline-block;border:1px solid #00000022}
+.lights-label{color:#3a424c}
+.lights-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:0 0 20px}
+.lights-gallery figure{margin:0}
+.lights-gallery img{width:100%;border-radius:8px;display:block}
+.lights-gallery figcaption{font-size:12px;color:#6c7883;margin-top:6px;line-height:1.5}
 """.strip()
 
 STORY_JS = """
-(function(){var ds={story:'storyDialog',timeline:'timelineDialog',map:'mapDialog'};
+(function(){var ds={story:'storyDialog',timeline:'timelineDialog',map:'mapDialog',lights:'lightsDialog'};
 Object.keys(ds).forEach(function(k){var b=document.getElementById(k+'Btn'),d=document.getElementById(ds[k]);
 if(!b||!d||!d.showModal)return;
 b.addEventListener('click',function(){d.showModal();});
@@ -94,12 +104,15 @@ def json_ld(story, slug, page_url, og_image):
     person_ids = {}
 
     def person_node(p):
-        qid = p["wikidata"]
+        qid = p.get("wikidata", "")
         pid = f"{page_url}#person-{slugify(p['name'])}"
         person_ids[p["name"]] = pid
+        same_as = [f"https://www.wikidata.org/wiki/{qid}"] if qid else []
+        if qid and WIKI.get(qid):
+            same_as.append(WIKI[qid])
         return {"@type": "Person", "@id": pid, "name": p["name"],
                 "description": p.get("role", ""),
-                "sameAs": [f"https://www.wikidata.org/wiki/{qid}", WIKI[qid]]}
+                "sameAs": same_as}
 
     people = [person_node(story["entities"]["architect"])] if ent.get("architect") else []
     people += [person_node(p) for p in ent.get("people", [])]
@@ -182,14 +195,73 @@ ICON_STORY = _icon(['<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 
 ICON_TIMELINE = _icon(['<circle cx="12" cy="12" r="10"/>', '<path d="M12 6v6l4 2"/>'])
 ICON_MAP = _icon(['<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>',
                   '<circle cx="12" cy="10" r="3"/>'])
+ICON_LIGHTS = _icon(['<path d="M9 18h6"/>', '<path d="M10 22h4"/>',
+                     '<path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.4 1 2.3h6c0-.9.4-1.8 1-2.3A7 7 0 0 0 12 2z"/>'])
+
+
+def lights_dialog(slug):
+    """Tower Lights overlay for the Empire State Building: agenda + gallery."""
+    if slug != 'empire-state':
+        return ''
+    # Load the lighting schedule
+    import os
+    sched_path = os.path.join(os.path.dirname(__file__), 'public', 'leaderboard', 'lights-schedule.json')
+    try:
+        sched = json.load(open(sched_path)).get('schedule', {})
+    except Exception:
+        sched = {}
+    # Filter to upcoming dates (today and future), sorted, limit 12
+    from datetime import date
+    today = date.today().isoformat()
+    upcoming = sorted([(d, v) for d, v in sched.items() if d >= today])[:12]
+
+    parts = ['<dialog id="lightsDialog" class="story-dialog" aria-labelledby="lightsTitle">']
+    parts.append('<div class="story-body">')
+    parts.append('<h2 id="lightsTitle">Tower Lights</h2>')
+    parts.append('<p>The Empire State Building is normally lit in white. Special colors mark cultural events, holidays, commemorations, and New York sports teams.</p>')
+
+    if upcoming:
+        parts.append('<h3>Upcoming lightings</h3>')
+        parts.append('<ul class="lights-agenda">')
+        for d, v in upcoming:
+            label = esc(v.get('label', 'Special lighting'))
+            colors = v.get('colors', [])
+            dots = ''.join(f'<span class="lights-dot" style="background:{esc(c)}"></span>' for c in colors)
+            # Format date as "Oct 12"
+            try:
+                from datetime import datetime
+                dt = datetime.strptime(d, '%Y-%m-%d')
+                datestr = dt.strftime('%b %-d')
+            except Exception:
+                datestr = d
+            parts.append(f'<li><span class="lights-date">{datestr}</span><span class="lights-dots">{dots}</span><span class="lights-label">{label}</span></li>')
+        parts.append('</ul>')
+
+    parts.append('<h3>Gallery</h3>')
+    parts.append('<div class="lights-gallery">')
+    gallery = [
+        ('tower-blue-orange.jpg', 'Amousey', 'CC BY 2.0', 'The tower in blue and orange.'),
+        ('tower-red-white-blue.jpg', 'Victorgrigas', 'CC BY 2.0', 'Red, white and blue for the September 11 memorial.'),
+        ('tower-rainbow.jpg', 'Fæ', 'CC BY 2.0', 'Rainbow colors for Pride 2015.'),
+    ]
+    for fname, author, lic, caption in gallery:
+        parts.append(f'<figure><img src="/viewer/empire-state/{fname}" alt="{esc(caption)}" loading="lazy"/>'
+                     f'<figcaption>{esc(caption)} Photo: {esc(author)}, {esc(lic)}.</figcaption></figure>')
+    parts.append('</div>')
+    parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
+    parts.append('</div></dialog>')
+    return '\n'.join(parts)
 
 
 def story_dialog(story, slug):
-    parts = ['<div class="story-fab">'
-             f'<button id="storyBtn" class="story-btn" aria-haspopup="dialog">{ICON_STORY}<span>Story</span></button>'
-             f'<button id="timelineBtn" class="story-btn" aria-haspopup="dialog">{ICON_TIMELINE}<span>Timeline</span></button>'
-             f'<button id="mapBtn" class="story-btn" aria-haspopup="dialog">{ICON_MAP}<span>Map</span></button>'
-             '</div>']
+    buttons = [
+        f'<button id="storyBtn" class="story-btn" aria-haspopup="dialog">{ICON_STORY}<span>Story</span></button>',
+        f'<button id="timelineBtn" class="story-btn" aria-haspopup="dialog">{ICON_TIMELINE}<span>Timeline</span></button>',
+        f'<button id="mapBtn" class="story-btn" aria-haspopup="dialog">{ICON_MAP}<span>Map</span></button>',
+    ]
+    if slug == 'empire-state':
+        buttons.append(f'<button id="lightsBtn" class="story-btn" aria-haspopup="dialog">{ICON_LIGHTS}<span>Lights</span></button>')
+    parts = ['<div class="story-fab">' + ''.join(buttons) + '</div>']
     parts.append('<dialog id="storyDialog" class="story-dialog" aria-labelledby="storyTitle">')
     parts.append('<div class="story-body">')
     parts.append(f'<h2 id="storyTitle">{esc(story["story_title"])}</h2>')
@@ -247,6 +319,7 @@ def story_dialog(story, slug):
         parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
         parts.append("</div></dialog>")
     # hotspot data for the 3D viewer
+    parts.append(lights_dialog(slug))
     hotspots = [{"title": h["title"], "text": h["text"], "part": h["part"]}
                 for h in story.get("hotspots", [])]
     parts.append(f'<script>window.__HOTSPOTS__={json.dumps(hotspots, ensure_ascii=False)};</script>')
