@@ -424,6 +424,36 @@ def prerender_one(path, story):
     print("prerendered", out, len(page), "bytes")
 
 
+def write_simple_shells(template):
+    """Write the plain app shell to every published Simple variant route.
+
+    The Simple variants (/viewer/<slug>-simple/) are app routes with no
+    story page of their own; until now they were served by the Pages SPA
+    fallback. Once dist/404.html exists, that fallback no longer applies
+    and unmatched paths return a real 404, so the Simple routes need a
+    physical page. The shell bytes are exactly what the fallback served,
+    so behaviour for these routes does not change. Only published
+    buildings (dist/models/index.json) get one; staged candidates stay
+    unbuilt and correctly land on the 404 page.
+    """
+    index_path = os.path.join(DIST, "models", "index.json")
+    entries = json.load(open(index_path))
+    shell = open(template).read()
+    count = 0
+    for entry in entries:
+        for variant in entry.get("variants", []):
+            if variant.get("id") != "simple":
+                continue
+            slug = variant["slug"]
+            out_dir = os.path.join(DIST, "viewer", slug)
+            os.makedirs(out_dir, exist_ok=True)
+            out = os.path.join(out_dir, "index.html")
+            open(out, "w").write(shell)
+            count += 1
+            print("simple shell", out, len(shell), "bytes")
+    print("wrote", count, "simple variant shells")
+
+
 def main():
     template = os.path.join(DIST, "index.html")
     assert os.path.exists(template), "run npm run build first"
@@ -432,6 +462,7 @@ def main():
     for name in names:
         story = json.load(open(os.path.join(STORIES, name)))
         prerender_one(template, story)
+    write_simple_shells(template)
 
 
 if __name__ == "__main__":
