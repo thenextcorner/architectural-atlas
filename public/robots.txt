@@ -1,3 +1,4 @@
+# llms.txt: https://architecturalatlas.com/llms.txt
 User-agent: *
 Allow: /
 Sitemap: https://architecturalatlas.com/sitemap.xml
