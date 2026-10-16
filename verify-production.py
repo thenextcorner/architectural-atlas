@@ -21,10 +21,10 @@ STORIES = [
     "trevi-fountain", "trump-tower-chicago", "us-capitol", "white-house",
 ]
 
-# Stories with the "In the cultural conversation" section (22 - Brandenburg Gate's
-# section was lost and needs to be re-added)
+# Stories with the "In the cultural conversation" section (23 - Brandenburg
+# Gate's section was lost in 2026-10 and restored on 2026-10-16)
 CULTURAL = [
-    "burj-al-arab", "burj-khalifa", "colosseum", "el-castillo",
+    "brandenburg-gate", "burj-al-arab", "burj-khalifa", "colosseum", "el-castillo",
     "great-pyramid-of-giza", "himeji-castle", "london-eye", "machu-picchu",
     "neuschwanstein-castle", "notre-dame-de-paris", "one-world-trade-center",
     "palace-of-westminster", "pentagon", "pyramid-of-the-sun", "sagrada-familia",

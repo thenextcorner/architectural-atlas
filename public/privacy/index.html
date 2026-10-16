@@ -64,6 +64,7 @@ footer a{color:#6c7883;margin-right:16px}
 <p>The site sets one first-party cookie, <code>atlas_consent</code>, which remembers your cookie choice for 12 months. Google Analytics sets its own cookies only after you accept. See the <a href="/cookies/">cookie policy</a> for details.</p>
 <h2>Bot protection</h2>
 <p>The voting leaderboard uses Cloudflare Turnstile to keep bots from stuffing the ballot. When you vote, Turnstile runs an invisible check in your browser; Cloudflare's handling of the data involved is described in the <a href="https://www.cloudflare.com/en-gb/turnstile-privacy-policy/" target="_blank" rel="noreferrer">Turnstile Privacy Addendum</a>.</p>
+<p>When a vote is cast, the site stores the vote itself plus a one-way hashed code derived from the voter's IP address. The code exists only so that a second vote for the same structure from the same connection can be refused; the IP address itself is never stored, and the code cannot be turned back into it. The marker expires after 12 months.</p>
 <h2>Your rights</h2>
 <p>Under the GDPR you have the right to access, correct, or delete personal data held about you, and to object to or restrict its processing. Since we hold no account data, most requests will simply confirm that. To exercise a right, email <img src="email.png" alt="Contact email address" style="height:1.15em;vertical-align:-0.2em">.</p>
 <h2>Changes</h2>

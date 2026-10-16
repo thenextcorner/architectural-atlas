@@ -7,6 +7,20 @@ function json(data, status) {
   });
 }
 
+// The already-voted marker is keyed by a one-way SHA-256 hash of the voter
+// IP, salted with a server secret, so no IP address is ever stored. The
+// salt prefers a dedicated VOTE_HASH_SECRET and falls back to the
+// TURNSTILE_SECRET that production already has, so this works with no
+// configuration change. Changing the salt later only resets who counts as
+// having voted; the tallies themselves are stored separately.
+async function voterKey(env, ip, slug) {
+  const salt = env.VOTE_HASH_SECRET || env.TURNSTILE_SECRET || "atlas-votes";
+  const data = new TextEncoder().encode(salt + ":" + ip);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return "voted:" + hex + ":" + slug;
+}
+
 export async function onRequestPost({ request, env }) {
   if (!env.VOTES) return json({ error: "Voting is not set up yet. Try again soon." }, 503);
   let body;
@@ -27,7 +41,7 @@ export async function onRequestPost({ request, env }) {
   } catch (e) { return json({ error: "Bot check unavailable. Try again." }, 503); }
 
   try {
-    const votedKey = "voted:" + ip + ":" + slug;
+    const votedKey = await voterKey(env, ip, slug);
     if (await env.VOTES.get(votedKey)) return json({ error: "already voted" }, 409);
     const raw = await env.VOTES.get("tallies");
     const tallies = raw ? JSON.parse(raw) : {};

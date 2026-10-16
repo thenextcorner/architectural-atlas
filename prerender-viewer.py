@@ -14,6 +14,7 @@ import html
 import json
 import os
 import re
+import shutil
 
 REPO = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(REPO, "dist")
@@ -454,6 +455,54 @@ def write_simple_shells(template):
     print("wrote", count, "simple variant shells")
 
 
+def prune_staged():
+    """Remove staged (not yet revealed) structures from dist.
+
+    The 39 candidate structures are fully prepared in the repo (stories,
+    models, media) so they can be revealed one by one, but until a
+    structure is published in dist/models/index.json it must not be
+    reachable on the live site. The site's _redirects 404 rules for these
+    routes never fired in any deployment, so the only reliable protection
+    is to not ship the assets: this removes each staged structure's
+    prerendered viewer page (and its copied media) and its model files
+    from dist. Their routes then return the site 404 page, like any
+    unknown address. Publishing a structure later only means adding it
+    to models/index.json; nothing else changes here.
+    """
+    index_path = os.path.join(DIST, "models", "index.json")
+    entries = json.load(open(index_path))
+    published = {entry["slug"] for entry in entries}
+    story_slugs = {
+        f[: -len(".json")] for f in os.listdir(STORIES) if f.endswith(".json")
+    }
+    staged = sorted(story_slugs - published)
+    removed_pages = 0
+    for slug in staged:
+        page_dir = os.path.join(DIST, "viewer", slug)
+        if os.path.isdir(page_dir):
+            shutil.rmtree(page_dir)
+            removed_pages += 1
+    removed_models = 0
+    models_dir = os.path.join(DIST, "models")
+    for slug in staged:
+        for name in (slug, slug + "-0.bin", slug + "-simple", slug + "-simple-0.bin"):
+            path = os.path.join(models_dir, name)
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+                removed_models += 1
+            elif os.path.exists(path):
+                os.remove(path)
+                removed_models += 1
+    print(
+        "pruned staged structures:",
+        len(staged),
+        "pages removed:",
+        removed_pages,
+        "model files removed:",
+        removed_models,
+    )
+
+
 def main():
     template = os.path.join(DIST, "index.html")
     assert os.path.exists(template), "run npm run build first"
@@ -463,6 +512,7 @@ def main():
         story = json.load(open(os.path.join(STORIES, name)))
         prerender_one(template, story)
     write_simple_shells(template)
+    prune_staged()
 
 
 if __name__ == "__main__":
