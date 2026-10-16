@@ -1,0 +1,262 @@
+{
+  "address_country": "US",
+  "address_locality": "New York",
+  "coordinates": {
+    "label": "One World Trade Center, 285 Fulton Street, New York",
+    "lat": 40.71305556,
+    "lng": -74.01333333
+  },
+  "date_built": "2014",
+  "description": "Take One World Trade Center apart piece by piece in 3D, and read its story: from the Twin Towers' fall through years of design battles to the 1,776-foot tower that opened in 2014.",
+  "entities": {
+    "architect": {
+      "name": "David Childs",
+      "role": "Architect of the tower (Skidmore, Owings and Merrill)",
+      "wikidata": "Q1173984"
+    },
+    "events": [
+      {
+        "name": "Construction of the original North Tower",
+        "start": "1966-08"
+      },
+      {
+        "name": "September 11 attacks destroy the original towers",
+        "start": "2001-09-11"
+      },
+      {
+        "name": "\"Memory Foundations\" master plan selected",
+        "start": "2003-02"
+      },
+      {
+        "name": "\"Freedom Tower\" design announced at 1,776 ft",
+        "start": "2003-12-19"
+      },
+      {
+        "name": "Construction of the new tower begins",
+        "start": "2006-04-27"
+      },
+      {
+        "name": "Renamed One World Trade Center",
+        "start": "2009-03"
+      },
+      {
+        "name": "Final spire piece installed",
+        "start": "2013-05-10"
+      },
+      {
+        "name": "Building opens",
+        "start": "2014-11-03"
+      },
+      {
+        "name": "One World Observatory opens",
+        "start": "2015-05-29"
+      }
+    ],
+    "people": [
+      {
+        "name": "Daniel Libeskind",
+        "role": "Master-plan architect (\"Memory Foundations\")",
+        "wikidata": "Q154538"
+      },
+      {
+        "name": "Larry Silverstein",
+        "role": "Developer and site leaseholder",
+        "wikidata": "Q463668"
+      },
+      {
+        "name": "Minoru Yamasaki",
+        "role": "Architect of the original Twin Towers",
+        "wikidata": "Q347215"
+      },
+      {
+        "name": "David Rockefeller",
+        "role": "Spearheaded the original World Trade Center project",
+        "wikidata": "Q11239"
+      },
+      {
+        "name": "Barack Obama",
+        "role": "Signed a construction beam during his 2012 site visit",
+        "wikidata": "Q76"
+      },
+      {
+        "name": "Kenneth Snelson",
+        "role": "Artist who co-designed the spire",
+        "wikidata": "Q931065"
+      }
+    ],
+    "wikidata": "Q11245"
+  },
+  "hotspots": [
+    {
+      "part": "Spire mast, upper section",
+      "text": "The spire co-designed by SOM with artist Kenneth Snelson. Its final piece went up on 10 May 2013, bringing the tower to its full 1,776 feet.",
+      "title": "The spire"
+    },
+    {
+      "part": "Beacon light",
+      "text": "The light at the spire's tip flashes Morse code for the letter N, for New York, \"as lightships once did in great harbours of the world.\"",
+      "title": "The beacon"
+    },
+    {
+      "part": "Glass parapet",
+      "text": "The parapet is a square rotated 45 degrees from the base. The roof below it sits at 1,368 feet, the same height as the original North Tower.",
+      "title": "The parapet"
+    },
+    {
+      "part": "Base concrete body",
+      "text": "The 187-foot windowless concrete base, added in 2005 after the NYPD's security review of the all-glass design.",
+      "title": "The concrete base"
+    },
+    {
+      "part": "Base stainless steel slats",
+      "text": "Stainless-steel panels replaced the planned prismatic glass in 2011, after tests showed the prisms shattered into dangerous shards. Angled glass fins light up with LEDs at night.",
+      "title": "The steel-slatted base"
+    },
+    {
+      "part": "Southeast chamfer, lower panel",
+      "text": "From the 20th floor up, the chamfered edges create eight tall isosceles triangles; near the middle the tower is a perfect octagon. No symbolism is documented: the form is a geometric decision.",
+      "title": "The chamfered triangles"
+    },
+    {
+      "part": "Sky lobby",
+      "text": "The sky lobby on floor 64 serves the tower's upper office zones.",
+      "title": "The sky lobby"
+    },
+    {
+      "part": "Observatory floor 100 slab",
+      "text": "One World Observatory, on floors 100 to 102, opened on 29 May 2015.",
+      "title": "One World Observatory"
+    },
+    {
+      "part": "Lobby interior",
+      "text": "The 65-foot lobby holds José Parlá's 90-foot mural ONE: Union of the Senses. Two paintings by Donald Martiny carry the names of the Lenape peoples of the region.",
+      "title": "The lobby mural"
+    },
+    {
+      "part": "Memorial pool south",
+      "text": "The September 11 Memorial's twin pools sit just south of the tower.",
+      "title": "The memorial pools"
+    }
+  ],
+  "intro": "The tallest building in the United States rose on the northwest corner of the 16-acre site, where 6 World Trade Center once stood. Explode its chamfered glass walls, concrete core, and spire to see how security, symbolism, and compromise shaped a skyscraper.",
+  "page_title": "One World Trade Center: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The tower under construction in 2012: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+    "Spire close-up: Opencooper, CC0, via Wikimedia Commons",
+    "One World Trade Center at sunset: ID 2649771, CC0, via Wikimedia Commons",
+    "World Trade Center complex overview: Praneeth Thalla, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "body": "The original World Trade Center was conceived as an urban renewal project spearheaded by banker David Rockefeller to revitalize Lower Manhattan, planned by the Port Authority of New York and New Jersey and designed by Minoru Yamasaki. Construction of the North Tower began in August 1966; the first tenants moved in October 1971, when it became the tallest building in the world at 1,368 ft. At 8:46 a.m. EDT on September 11, 2001, American Airlines Flight 11 struck the North Tower's northern facade; after burning for 102 minutes it collapsed at 10:28 a.m., and debris took down 7 World Trade Center later that day.",
+      "dates": "1966-2001",
+      "heading": "The towers that fell"
+    },
+    {
+      "body": "Proposals for reconstruction came almost immediately. The Lower Manhattan Development Corporation ran a design competition in 2002; after the public rejected the first round, a second competition in December 2002 selected Daniel Libeskind's \"Memory Foundations\" master plan in February 2003. The tower design was fought over: SOM replaced Libeskind as the tower's primary designer, and David Childs's symmetrical tapering tower beat out Libeskind's asymmetrical concept with its off-center spire after months of dispute with leaseholder Larry Silverstein, who limited office floors over fears of another attack. On December 19, 2003, Childs and Libeskind announced the joint \"Freedom Tower\" design: 1,776 ft tall. The symbolic cornerstone was laid on July 4, 2004, then removed in June 2006 during the money, security, and design disputes. On December 18, 2006, the public was invited to sign the first 30-ft steel beam before it was welded onto the base. In March 2009 the Port Authority dropped the \"Freedom Tower\" name, which had been mocked on programs like Saturday Night Live, in favor of the legal name One World Trade Center, partly because a traditional street address was easier to lease. First commercial tenant Vantone signed a 21-year lease; Condé Nast became anchor tenant in May 2011 with one million square feet.",
+      "dates": "2001-2009",
+      "heading": "From competition to cornerstone"
+    },
+    {
+      "alt": "One World Trade Center under construction in 2012",
+      "body": "NYPD concerns about the all-glass base and the site's proximity to the West Side Highway forced a redesign in April 2005: a 187-ft windowless concrete base was added. The planned prismatic-glass cladding for the base was scrapped in 2011 after tests showed the prisms shattered into large, dangerous shards; it was replaced by stainless-steel panels with angled blast-resistant glass fins, LED-lit at night. Developer Douglas Durst's 2011 partnership brought a plaza redesign, including removal of a planned skylight that would have lit the below-ground observation lobby. Construction of the new tower began on April 27, 2006. The steel topped out in August 2012 at a roof height of 1,368 ft. In June 2012 President Barack Obama visited and wrote on a beam to be hoisted to the top: \"We remember, we rebuild, we come back stronger!\" Spire sections shipped from Quebec were installed from December 2012; the final piece went up May 10, 2013, bringing the full height to 1,776 ft. On November 12, 2013, the Council on Tall Buildings and Urban Habitat controversially ruled the mast a spire rather than an antenna, making 1 WTC the tallest building in the United States and the Western Hemisphere.",
+      "caption": "The tower under construction in 2012, climbing toward its symbolic 1,776 feet.",
+      "credit": "Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2005-2013",
+      "heading": "A tower armored against attack",
+      "image": "construction-2012.jpg"
+    },
+    {
+      "alt": "Close-up of the spire of One World Trade Center",
+      "body": "The tower's measurements are deliberate memorials. The 1,776 ft height is the year the Declaration of Independence was signed, chosen by Libeskind for the master plan and retained by Childs. The roof at 1,368 ft is identical to the roof height of the original North Tower, a deliberate echo. The 200-ft square base is nearly the same footprint as the original Twin Towers. From the 20th floor up the chamfered edges create eight tall isosceles triangles; near the middle the tower is a perfect octagon; the parapet is a square rotated 45 degrees from the base. No verified symbolism is attached to the eight triangles or the octagon; they are documented as formal and geometric decisions. The spire works as a beacon: Libeskind described the night light at the top as \"a beacon of light and hope in a world that is often dark,\" and the beacon at the spire's tip flashes Morse code for the letter N, for New York, \"as lightships once did in great harbours of the world.\" Inside, the 65-ft lobby holds the 90-ft mural ONE: Union of the Senses by José Parlá; two paintings by Donald Martiny titled Lenape and Unami carry the names of the Lenape peoples of the region.",
+      "caption": "The spire, co-designed with artist Kenneth Snelson; its night beacon flashes Morse code for the letter N, for New York.",
+      "credit": "Opencooper, CC0, via Wikimedia Commons",
+      "heading": "The symbolism in the measurements",
+      "image": "spire.jpg"
+    },
+    {
+      "alt": "One World Trade Center against a New York sunset",
+      "body": "The building opened on November 3, 2014, at a cost of US$3.9 billion, making it the most expensive building in the world at the time. It has 94 physical stories, the top floor numbered 104, plus five below ground. It stands at 285 Fulton Street on the northwest corner of the 16-acre site, on the footprint of the original 6 World Trade Center. The One World Observatory opened on May 29, 2015, on floors 100 to 102. It reached 92% occupancy just before COVID, survived Condé Nast's 2021 rent standoff, and was 95% leased by March 2022.",
+      "caption": "One World Trade Center at sunset, the tallest building in the Western Hemisphere.",
+      "credit": "ID 2649771, CC0, via Wikimedia Commons",
+      "dates": "2014-today",
+      "heading": "The most expensive building on earth",
+      "image": "sunset.jpg"
+    },
+    {
+      "alt": "The rebuilt World Trade Center complex around the tower",
+      "body": "The tower did not rise without incident. In March 2014, 16-year-old Justin Casquejo sneaked past security, through a hole in the fence, a passed-on elevator ride, and a sleeping guard, and climbed to the antenna: a major security scandal during construction. The site around the tower has settled into the rebuilt complex the design competition promised, with the memorial pools just south of the tower and the observatory drawing visitors to the top floors.",
+      "caption": "The rebuilt World Trade Center complex around the tower.",
+      "credit": "Praneeth Thalla, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "The site around it",
+      "image": "complex.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2013",
+      "body": "The new tower's most prominent screen appearance is Joseph Kosinski's Oblivion (2013), which shows the fully completed building standing in a 2017 New York flashback, viewed from the Empire State Building, as a recurring image of the world before the war. The real tower's spire was only raised in May 2013, a month after the film's April release, so the film depicted the finished building before it existed. Beyond that the tower's screen life is thin, and it has no established presence in famous painted works."
+    }
+  ],
+  "slug": "one-world-trade-center",
+  "sources": "Historical facts adapted from Wikipedia (\"One World Trade Center\", CC BY-SA), Reuters, NPR, and the Council on Tall Buildings and Urban Habitat. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of One World Trade Center",
+  "timeline": [
+    {
+      "date": "Aug 1966",
+      "text": "Construction begins on the original North Tower."
+    },
+    {
+      "date": "Oct 1971",
+      "text": "The first tenants move into the original 1 WTC, then the world's tallest building at 1,368 ft."
+    },
+    {
+      "date": "11 Sep 2001",
+      "text": "Flight 11 strikes the North Tower at 8:46 a.m.; it collapses at 10:28 a.m."
+    },
+    {
+      "date": "Feb 2003",
+      "text": "Daniel Libeskind's \"Memory Foundations\" master plan is selected."
+    },
+    {
+      "date": "19 Dec 2003",
+      "text": "The \"Freedom Tower\" design is announced at 1,776 ft."
+    },
+    {
+      "date": "Apr 2005",
+      "text": "The NYPD security review adds the 187-ft windowless concrete base."
+    },
+    {
+      "date": "27 Apr 2006",
+      "text": "Construction of the new tower begins."
+    },
+    {
+      "date": "Mar 2009",
+      "text": "\"Freedom Tower\" is renamed One World Trade Center."
+    },
+    {
+      "date": "Jun 2012",
+      "text": "Obama writes \"We remember, we rebuild, we come back stronger!\" on a construction beam."
+    },
+    {
+      "date": "Aug 2012",
+      "text": "The steel structure tops out at the 1,368-ft roof."
+    },
+    {
+      "date": "10 May 2013",
+      "text": "The final spire piece is installed; the full height reaches 1,776 ft."
+    },
+    {
+      "date": "12 Nov 2013",
+      "text": "The CTBUH rules the mast a spire, making it the tallest building in the US and the Western Hemisphere."
+    },
+    {
+      "date": "3 Nov 2014",
+      "text": "The building opens."
+    },
+    {
+      "date": "29 May 2015",
+      "text": "One World Observatory opens on floors 100 to 102."
+    }
+  ],
+  "title": "One World Trade Center"
+}

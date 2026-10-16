@@ -1,0 +1,115 @@
+{
+  "coordinates": {
+    "label": "Kubuswoningen, Overblaak, Rotterdam",
+    "lat": 51.92,
+    "lng": 4.49
+  },
+  "description": "Take Rotterdam's cube houses apart piece by piece in 3D, and read the story of the buildings: Piet Blom's forest of tilted cubes, 38 houses balanced on concrete trunks above the Blaak.",
+  "entities": {
+    "architect": {
+      "name": "Piet Blom",
+      "role": "Designed the cube houses (late 1970s, built 1982-1984)"
+    },
+    "events": [
+      {
+        "name": "Stayokay hostel conversion",
+        "role": "Super-cubes converted to a hostel in 2009",
+        "start": "2009"
+      }
+    ],
+    "people": [],
+    "wikidata": "Q2668443"
+  },
+  "hotspots": [
+    {
+      "part": "Cube 1",
+      "text": "Each house is a cube tilted so one corner points down, walls sloping at 54.7 degrees. Inside: about 100 square meters over three floors.",
+      "title": "A house on its point"
+    },
+    {
+      "part": "Pylon 1",
+      "text": "Every cube balances on a hexagonal concrete pylon, the trunk of Blom's tree.",
+      "title": "The trunk"
+    },
+    {
+      "part": "Pyramid roof 1",
+      "text": "The top of each cube is a pyramid room, the treetop.",
+      "title": "The treetop"
+    },
+    {
+      "part": "Cube 1 windows",
+      "text": "The sloped walls make every window a custom angle and every room a puzzle.",
+      "title": "Slanted light"
+    },
+    {
+      "part": "Super-cube 1",
+      "text": "The two super-cubes are bigger than the houses. Since 2009 they have been a Stayokay hostel, so you can sleep in the forest.",
+      "title": "Sleep in a cube"
+    },
+    {
+      "part": "Pedestrian bridge deck",
+      "text": "The complex doubles as a pedestrian bridge across one of Rotterdam's busiest roads.",
+      "title": "A bridge of houses"
+    },
+    {
+      "part": "Ground shops (west)",
+      "text": "Shops at street level keep the ground floor public: Blom's idea of living as an urban roof.",
+      "title": "The street below"
+    }
+  ],
+  "intro": "Rotterdam's Kubuswoningen are 38 yellow cubes tilted on concrete trunks, a forest of houses above the Blaak. This is Piet Blom's answer to the question of how a city can live in the sky.",
+  "page_title": "Kubuswoningen Rotterdam: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "In the late 1970s, Rotterdam's planners asked architect Piet Blom for housing above the busy Blaak, near the metro station. Blom had already built 21 experimental cube houses in Helmond, and he brought the idea to Rotterdam at full scale. His concept was 'living as an urban roof': houses lifted into the air so the street below stays public. Each cube represents a tree, and the 38 houses together form an abstract forest, the Blaakse Bos. The 1977 plan showed 55 houses; 38 small cubes and 2 super-cubes were built, completed in 1984.",
+      "dates": "1977-1984",
+      "heading": "A forest above the street"
+    },
+    {
+      "body": "Blom tilted the cube of a conventional house and set it on a hexagon-shaped concrete pylon. The walls and windows sit at 54.7 degrees, which lets residents see the street below from inside. The structure is a reinforced concrete trunk holding a wooden skeleton, clad in fiber-cement panels with rock wool insulation. Each apartment is about 100 square meters over three floors: living room and kitchen on the first, bedrooms and bathroom on the second, and a pyramid top room. Every piece of furniture has to be custom made; standard right angles do not fit. The complex also works as infrastructure, forming a pedestrian bridge across the road.",
+      "dates": "1984",
+      "heading": "How a tilted cube works"
+    },
+    {
+      "body": "Living in a cube house is a commitment. Residents are stared at constantly, so one owner opened the Kijk-Kubus, a show cube furnished as a normal house, and now makes a living from tours. In 2009 the two super-cubes were converted into a Stayokay hostel, letting visitors sleep inside the architecture. In 2019 the Art cube opened as a gallery space. The Helmond cubes became municipal monuments; a 2011 fire destroyed the disguised theater there, but Rotterdam's forest stands intact, still occupied, still yellow.",
+      "dates": "1984-today",
+      "heading": "Life in the forest"
+    },
+    {
+      "body": "The Kubuswoningen have never needed a film to become famous. They are one of the most photographed buildings in the Netherlands, the visual shorthand for Rotterdam's postwar reinvention, appearing in travel media, architecture books and endless social feeds. Their fame is the fame of an image: the tilted yellow cubes are instantly recognizable even to people who have never been to Rotterdam.\n\nWhat the houses lack in screen credits they make up for in lived mythology. The Kijk-Kubus museum, the hostel in the super-cubes, the chess museum once housed beneath them: the complex has been continuously reinterpreted by its users since 1984. Blom wanted each house to be a tree; the public made the whole thing a landmark. It may be the rare building whose cultural footprint is measured in photographs taken rather than films shot.",
+      "dates": "1984-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "kubuswoningen",
+  "sources": "Historical facts adapted from Wikipedia (\"Cube house\", CC BY-SA) and visitor guides. No major film or television appearance verified; cultural section reflects the building's status as a photographic icon.",
+  "story_title": "The story of the Kubuswoningen",
+  "timeline": [
+    {
+      "date": "late 1970s",
+      "text": "Piet Blom designs cube houses for the Blaak area; 21 experimental houses already built in Helmond."
+    },
+    {
+      "date": "1982-1984",
+      "text": "38 cubes and 2 super-cubes built on Overblaak, above Blaak station."
+    },
+    {
+      "date": "2006",
+      "text": "A chess piece museum opens beneath the houses."
+    },
+    {
+      "date": "2009",
+      "text": "The super-cubes become a Stayokay hostel."
+    },
+    {
+      "date": "2011",
+      "text": "Fire destroys the disguised theater at the Helmond cube houses."
+    },
+    {
+      "date": "2019",
+      "text": "The Art cube opens as a gallery space."
+    }
+  ],
+  "title": "Kubuswoningen"
+}

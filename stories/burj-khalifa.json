@@ -1,0 +1,260 @@
+{
+  "coordinates": {
+    "label": "Burj Khalifa, Downtown Dubai, Dubai",
+    "lat": 25.1972,
+    "lng": 55.2742
+  },
+  "description": "Take the Burj Khalifa apart piece by piece in 3D, and read its story: the desert-flower plan that defeated the wind, the record-by-record climb to 829.8 m, the labor behind it, and the rename that honored a bailout.",
+  "entities": {
+    "architect": {
+      "name": "Adrian Smith",
+      "role": "Chief architect (Skidmore, Owings & Merrill, Chicago)",
+      "wikidata": "Q374276"
+    },
+    "events": [
+      {
+        "name": "Construction begins",
+        "start": "2004-01-06"
+      },
+      {
+        "name": "Topped out at 829.8 m",
+        "start": "2009-01-17"
+      },
+      {
+        "name": "Official opening; renamed from Burj Dubai to Burj Khalifa",
+        "start": "2010-01-04"
+      },
+      {
+        "name": "Record BASE jump from 672 m",
+        "start": "2010-01-08"
+      },
+      {
+        "name": "CTBUH certifies it the world's tallest building",
+        "start": "2010-03-10"
+      },
+      {
+        "name": "The Armani Hotel opens",
+        "start": "2010-04-27"
+      },
+      {
+        "name": "Alain Robert climbs the exterior to the spire",
+        "start": "2011-03-28"
+      },
+      {
+        "name": "BASE-jump record from the pinnacle at 828 m",
+        "start": "2014-04-21"
+      }
+    ],
+    "people": [
+      {
+        "name": "William F. Baker",
+        "role": "Chief structural engineer (SOM)",
+        "wikidata": "Q834854"
+      },
+      {
+        "name": "Fazlur Rahman Khan",
+        "role": "Bundled-tube pioneer behind the structural system",
+        "wikidata": "Q62918"
+      },
+      {
+        "name": "Khalifa bin Zayed Al Nahyan",
+        "role": "Namesake; UAE president 2004-2022",
+        "wikidata": "Q1059948"
+      },
+      {
+        "name": "Mohammed bin Rashid Al Maktoum",
+        "role": "Ruler of Dubai; ordered the rename",
+        "wikidata": "Q57655"
+      },
+      {
+        "name": "Alain Robert",
+        "role": "Climbed the tower's exterior to the spire, 28 March 2011",
+        "wikidata": "Q312489"
+      },
+      {
+        "name": "Tom Cruise",
+        "role": "Climbed the tower for Mission: Impossible - Ghost Protocol (2011)",
+        "wikidata": "Q37079"
+      }
+    ],
+    "wikidata": "Q12495"
+  },
+  "hotspots": [
+    {
+      "part": "Pinnacle pipe",
+      "text": "The spire is 242.5 m of structural steel housing communications equipment. Without it the tower would be 585 m; a CTBUH study noted the empty spire alone could stand as a skyscraper.",
+      "title": "The spire"
+    },
+    {
+      "part": "Wing A setback terraces",
+      "text": "Twenty-seven setbacks in a spiral pattern reduce the cross-section as the tower rises. The stepping is aligned to minimize wind-loading vibration from eddy currents and vortices; the tower sways 1.5 m at its tallest point.",
+      "title": "The 27 setbacks"
+    },
+    {
+      "part": "Curtain wall, wing A",
+      "text": "More than 26,000 reflective glass panels plus aluminum and textured stainless-steel spandrel panels with vertical tubular fins. The highest aluminum-and-glass facade installation in the world sits at 512 m.",
+      "title": "The cladding"
+    },
+    {
+      "part": "At.mosphere restaurant",
+      "text": "At.mosphere on the 122nd floor, 442 m up, is the world's highest restaurant.",
+      "title": "At.mosphere"
+    },
+    {
+      "part": "Observation deck, level 124",
+      "text": "At the Top, the indoor and outdoor observation deck at 452 m, opened 5 January 2010.",
+      "title": "At the Top"
+    },
+    {
+      "part": "At the Top SKY, level 148",
+      "text": "At the Top SKY at 555 m, opened 15 October 2014, was then the world's highest observation deck.",
+      "title": "At the Top SKY"
+    },
+    {
+      "part": "The Lounge observatory",
+      "text": "The Lounge observatory at 585 m, across floors 152 to 154, opened in February 2019, also the world's highest lounge.",
+      "title": "The Lounge"
+    },
+    {
+      "part": "Burj Khalifa Lake",
+      "text": "The 12-hectare artificial lake at the tower's base. The Dubai Fountain, designed by WET Design, shoots water to 152.4 m and was inaugurated on 8 May 2009.",
+      "title": "The lake and fountain"
+    },
+    {
+      "part": "Piled raft foundation",
+      "text": "A 3.7 m thick reinforced-concrete raft on 192 bored piles, 1.5 m in diameter, extending about 47 m below the raft, holding back sulphate-rich groundwater with cathodic protection.",
+      "title": "The foundation"
+    },
+    {
+      "part": "Double-deck observation elevators",
+      "text": "Fifty-seven elevators and 8 escalators serve the tower, including the world's fastest double-deck elevators at 10 m/s and the world's highest elevator installation. Longest single travel: 504 m.",
+      "title": "The elevators"
+    }
+  ],
+  "intro": "At 829.8 m the tallest building and tallest structure in the world: a Y-shaped tower of 27 spiraling setbacks, built with 22 million man-hours, renamed at its own opening for the ruler who bankrolled Dubai's debts.",
+  "page_title": "Burj Khalifa: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Burj Khalifa full view against the sky: Laika ac, CC BY-SA 2.0, via Wikimedia Commons",
+    "Burj Khalifa seen from Safa Park: Gfilip, CC BY-SA 4.0, via Wikimedia Commons",
+    "Burj Khalifa under construction in 2008: Aheilner, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Burj Khalifa seen from Safa Park",
+      "body": "The tower was conceived as the centerpiece of a large-scale mixed-use development: 30,000 homes, nine hotels, parkland, the Dubai Mall, and the 12-hectare Burj Khalifa Lake across 2 km2 of Downtown Dubai. The decision to build it was reportedly based on the government's decision to diversify from an oil-based economy to one based on services and tourism. \"He (Sheikh Mohammed bin Rashid Al Maktoum) wanted to put Dubai on the map with something really sensational,\" said Jacqui Josephson, a tourism and VIP delegations executive at Nakheel Properties.",
+      "caption": "The tower from Safa Park: three wings on a central core, stepping back as they rise.",
+      "credit": "Gfilip, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2003-2004",
+      "heading": "The diversification gamble",
+      "image": "from-safa-park.jpg"
+    },
+    {
+      "body": "Skidmore, Owings & Merrill of Chicago performed the architecture and engineering, with Adrian Smith as chief architect and Bill Baker as chief structural engineer. The tower uses the bundled-tube design of SOM's Willis Tower, invented by Fazlur Rahman Khan. When Smith was conceiving the project he looked out of his office window toward Lake Point Tower's curved three-wing layout and thought, \"There's the prototype.\" The result: a Y-shaped tripartite floor plan of three wings on a central buttressed core, with 27 setbacks in a spiral pattern that reduce the cross-section as the tower rises and minimize wind vibration. The central core houses all vertical transportation. The design is inspired by the Hymenocallis, a desert flower; the tiered, petal-like setbacks echo the flower's geometry, and the surrounding 11-hectare park is designed around it. The stepping, spiraling setbacks also recall the spiral minaret of the Great Mosque of Samarra, rooting the tower in the region's Islamic architecture.",
+      "dates": "2004",
+      "heading": "A desert flower in plan"
+    },
+    {
+      "alt": "Burj Khalifa under construction in 2008",
+      "body": "Construction started on 6 January 2004. The main contractor was Samsung C&T of South Korea with BESIX of Belgium and Arabtec of the UAE; Turner was project manager; Hyder Consulting was supervising engineer and engineer of record. Over 35,000 tonnes of structural steel came from the demolished Palace of the Republic in East Berlin, the former East German parliament building, shipped to Dubai after its 2008 demolition. Putzmeister's super high-pressure pump set the 606 m concrete-delivery world record in May 2008. In total: 330,000 m3 of concrete, 55,000 tonnes of steel rebar, 22 million man-hours. The building labor force was primarily migrant workers from South Asia and East Asia. Press reports in 2006 put skilled carpenters' pay at 4.34 pounds a day and laborers' at 2.84 pounds, with BBC and Human Rights Watch reporting abysmal housing and confiscated passports. In March 2006 about 2,500 workers rioted over delayed buses, causing almost 500,000 pounds of damage.",
+      "caption": "The tower under construction in 2008, already the tallest human-made structure ever built.",
+      "credit": "Aheilner, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2004-2009",
+      "heading": "The build and its human cost",
+      "image": "construction-2008.jpg"
+    },
+    {
+      "body": "During construction the tower surpassed, in order: the Sears Tower for most floors in February 2007, Taipei 101 on 21 July 2007 at 509.2 m, the Sears Tower antenna on 12 August 2007 at 527 m, the CN Tower as tallest freestanding structure on 12 September 2007 at 555.3 m, the KVLY-TV mast on 7 April 2008 at 629 m, and the Warsaw radio mast as tallest human-made structure ever built on 1 September 2008 at 688 m. It topped out at 829.8 m on 17 January 2009; the exterior was completed on 1 October 2009. On 10 March 2010 the Council on Tall Buildings and Urban Habitat certified it the world's tallest building.",
+      "dates": "2007-2009",
+      "heading": "Record by record"
+    },
+    {
+      "body": "The official launch on 4 January 2010 featured 10,000 fireworks, light beams, and 6,000 guests. In a surprise move at the ceremony, the tower was renamed from Burj Dubai to Burj Khalifa in honor of UAE President Khalifa bin Zayed Al Nahyan. Dubai, mired in debt from the Great Recession, had received tens of billions of dollars in federal support arranged by the Abu Dhabi ruler, having borrowed at least 80 billion dollars for construction projects. The building's very name became a monument to the 2008-2009 bailout. Rents in the tower fell 40 percent within ten months of opening; 825 of 900 apartments stood empty. By October 2012 about 80 percent of apartments were occupied. The 304-room Armani Hotel, on floors 1 to 8 and 38 to 39, opened on 27 April 2010.",
+      "dates": "2010",
+      "heading": "The opening and the rename"
+    },
+    {
+      "alt": "Burj Khalifa full view against the sky",
+      "body": "The spire's 242.5 m of structural steel houses communications equipment and is widely considered vanity height: without it the tower would be 585 m, and a CTBUH study noted the empty spire alone could stand as a skyscraper. Height has cultural side effects: on the higher floors the sun sets minutes later than at ground level, so residents above the 80th floor wait two extra minutes to break their Ramadan fast, and above the 150th floor three minutes. The program stacked into the height: At.mosphere, the world's highest restaurant, on the 122nd floor at 442 m; sky lobbies with swimming pools on the 43rd and 76th floors; At the Top on the 124th floor at 452 m, opened 5 January 2010; At the Top SKY on the 148th floor at 555 m, opened 15 October 2014; The Lounge observatory at 585 m across floors 152 to 154, opened 18 February 2019, also the world's highest lounge. The tower draws daredevils: Hervé Le Gallou and David McDonnell jumped unauthorised from below the 160th floor in May 2008; Nasr Al Niyadi and Omar Al Hegelan broke the world record for highest BASE jump from a building on 8 January 2010, leaping from 672 m; Vince Reffet and Fred Fugen broke the Guinness world record from the pinnacle at 828 m on 21 April 2014. On 28 March 2011 Alain \"Spiderman\" Robert scaled the outside of the tower to the top of the spire in 6 hours, with rope and harness per UAE safety laws. In January 2011 Tom Cruise performed the Burj Khalifa climb for Mission: Impossible - Ghost Protocol, rappelling on cables later digitally erased.",
+      "caption": "The full 829.8 m: 163 floors of Y-shaped plan beneath 242.5 m of spire.",
+      "credit": "Laika ac, CC BY-SA 2.0, via Wikimedia Commons",
+      "dates": "2010-today",
+      "heading": "Vanity height and daredevils",
+      "image": "full-view.jpg"
+    },
+    {
+      "body": "No structural restoration has been recorded. The building's maintenance system is itself a story: 24,348 windows totaling 120,000 m2 of glass; three 1,500 kg bucket machines on horizontal tracks; above level 109 traditional cradles; rope crews for the top; unmanned machines for the uppermost 27 tiers and the glass spire. The cleaning system was developed in Melbourne by CoxGomyl at a cost of A$8 million. Under normal conditions 36 workers take three to four months to clean the entire exterior.",
+      "dates": "2010-today",
+      "heading": "The cleaning machine"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2011-2017",
+      "body": "The tower's defining screen moment came in Mission: Impossible - Ghost Protocol (2011), when Ethan Hunt scales the outside of the building to reach a secure room, using prototype adhesive gloves that malfunction on the way down. Tom Cruise performed the climb for real, working at about 1,700 feet with a harness removed digitally, while director Brad Bird shot the sequence with IMAX cameras. The stunt fused the building into global pop culture within a year of its opening.\n\nHollywood has since treated the tower as its visual shorthand for Dubai, usually by destroying it. In Independence Day: Resurgence (2016) the alien mothership rips the tower out of the city and drops it on London, flattening the London Eye. In Geostorm (2017) a satellite-triggered tsunami taller than the tower slams into Dubai and the building buckles and collapses. The tower opened in 2010 and has no painting tradition; its fame lives on film and in the annual New Year's Eve broadcasts."
+    }
+  ],
+  "slug": "burj-khalifa",
+  "sources": "Historical facts adapted from Wikipedia (\"Burj Khalifa\", CC BY-SA), the SOM technical report in Structural Engineering International 4/2015, and the geotechnical case study cited in the research brief. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Burj Khalifa",
+  "timeline": [
+    {
+      "date": "6 Jan 2004",
+      "text": "Excavation commences; construction begins."
+    },
+    {
+      "date": "Mar 2006",
+      "text": "About 2,500 workers riot over delayed buses amid reports of low pay and confiscated passports."
+    },
+    {
+      "date": "21 Jul 2007",
+      "text": "Surpasses Taipei 101 to become the world's tallest building, at 509.2 m."
+    },
+    {
+      "date": "1 Sep 2008",
+      "text": "At 688 m, becomes the tallest human-made structure ever built, passing the Warsaw radio mast."
+    },
+    {
+      "date": "17 Jan 2009",
+      "text": "Topped out at 829.8 m."
+    },
+    {
+      "date": "1 Oct 2009",
+      "text": "Exterior completed."
+    },
+    {
+      "date": "4 Jan 2010",
+      "text": "Official opening with 10,000 fireworks; renamed from Burj Dubai to Burj Khalifa."
+    },
+    {
+      "date": "8 Jan 2010",
+      "text": "Record BASE jump from 672 m by Nasr Al Niyadi and Omar Al Hegelan."
+    },
+    {
+      "date": "8 Feb 2010",
+      "text": "Observation deck closes for two months after an elevator traps tourists for 45 minutes."
+    },
+    {
+      "date": "10 Mar 2010",
+      "text": "CTBUH certifies Burj Khalifa as the world's tallest building."
+    },
+    {
+      "date": "27 Apr 2010",
+      "text": "The Armani Hotel opens."
+    },
+    {
+      "date": "28 Mar 2011",
+      "text": "Alain Robert climbs the exterior to the spire in 6 hours."
+    },
+    {
+      "date": "21 Apr 2014",
+      "text": "Vince Reffet and Fred Fugen set the BASE-jump record from the pinnacle at 828 m."
+    },
+    {
+      "date": "15 Oct 2014",
+      "text": "At the Top SKY opens on the 148th floor at 555 m."
+    }
+  ],
+  "title": "Burj Khalifa",
+  "address_locality": "Dubai",
+  "address_country": "AE",
+  "date_built": "2010"
+}

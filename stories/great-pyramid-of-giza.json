@@ -1,0 +1,268 @@
+{
+  "address_country": "EG",
+  "address_locality": "Giza",
+  "coordinates": {
+    "label": "Great Pyramid of Giza, Giza",
+    "lat": 29.97916667,
+    "lng": 31.13416667
+  },
+  "description": "Take the Great Pyramid of Giza apart piece by piece in 3D, and read the story of the oldest Wonder of the World: Khufu's tomb, stripped of its white skin, from work-gang graffiti to the 2017 Big Void.",
+  "entities": {
+    "architect": {
+      "name": "Hemiunu",
+      "role": "Khufu's vizier; believed by some to have been the architect",
+      "wikidata": "Q59087"
+    },
+    "events": [
+      {
+        "name": "Construction of the Great Pyramid",
+        "start": "c. 2560 BC"
+      },
+      {
+        "name": "Caliph al-Ma'mun tunnels into the pyramid",
+        "start": "820"
+      },
+      {
+        "name": "Casing stones carted to Cairo",
+        "start": "1356"
+      },
+      {
+        "name": "Battle of the Pyramids",
+        "start": "1798-07-21"
+      },
+      {
+        "name": "Upper relieving chambers opened",
+        "start": "1837"
+      },
+      {
+        "name": "Khufu solar barque excavated",
+        "start": "1954"
+      },
+      {
+        "name": "UNESCO World Heritage inscription",
+        "start": "1979"
+      },
+      {
+        "name": "ScanPyramids discovers the Big Void",
+        "start": "2017"
+      }
+    ],
+    "people": [
+      {
+        "name": "Khufu",
+        "role": "Fourth-Dynasty pharaoh; the pyramid's owner",
+        "wikidata": "Q161904"
+      },
+      {
+        "name": "Djedefre",
+        "role": "Khufu's son and successor; oversaw the burial",
+        "wikidata": "Q209397"
+      },
+      {
+        "name": "Herodotus",
+        "role": "Wrote the first extended classical account, c. 450 BC",
+        "wikidata": "Q26825"
+      },
+      {
+        "name": "al-Ma'mun",
+        "role": "Abbasid caliph who tunneled into the pyramid, c. 820-832",
+        "wikidata": "Q61056"
+      },
+      {
+        "name": "Napoleon",
+        "role": "Fought the Battle of the Pyramids in 1798",
+        "wikidata": "Q517"
+      },
+      {
+        "name": "Howard Vyse",
+        "role": "Opened the upper relieving chambers, 1837",
+        "wikidata": "Q128554"
+      },
+      {
+        "name": "Flinders Petrie",
+        "role": "First precise survey, 1880-1882",
+        "wikidata": "Q220130"
+      },
+      {
+        "name": "Zahi Hawass",
+        "role": "Egyptologist; prominent in modern Giza research",
+        "wikidata": "Q140575"
+      }
+    ],
+    "wikidata": "Q37200"
+  },
+  "hotspots": [
+    {
+      "part": "Surviving casing, north base",
+      "text": "The lowest-course Tura limestone blocks still sit in place around the base, best preserved on the north face below the entrances. They are all that remains of the smooth white skin.",
+      "title": "The surviving casing"
+    },
+    {
+      "part": "Entrance portal, north face",
+      "text": "The original north-face entrance, reached from the chevron blocks above it, sits high above the modern tourist route through al-Ma'mun's forced tunnel.",
+      "title": "The original entrance"
+    },
+    {
+      "part": "Grand Gallery",
+      "text": "The 47-meter corbelled corridor above the ascending passage, its walls stepping inward in seven tiers. One of the finest pieces of stonemasonry in the ancient world.",
+      "title": "The Grand Gallery"
+    },
+    {
+      "part": "Khufu’s sarcophagus",
+      "text": "A single piece of red Aswan granite, found broken open and empty. It is too large to have been brought through the passages, so it was set in place before the chamber's roof went on.",
+      "title": "The empty sarcophagus"
+    },
+    {
+      "part": "King’s Chamber south air shaft",
+      "text": "The narrow shafts in the King's Chamber were long called ventilation, but that idea is now largely abandoned. The current reading is ritual: conduits for the king's spirit to ascend to the heavens.",
+      "title": "The air shafts"
+    },
+    {
+      "part": "Campbell’s relieving chamber",
+      "text": "Five stress-relief compartments sit above the King's Chamber. Their red-painted work-gang graffiti, names like 'Khufu-excites-love,' proved the pyramid's owner in 1837.",
+      "title": "The relieving chambers"
+    },
+    {
+      "part": "Queen’s Chamber east niche",
+      "text": "Arab explorers gave it the name, but it was never a queen's burial: its true purpose is unknown. Its gabled east niche and two sealed shafts are still unexplained.",
+      "title": "The misnamed Queen's Chamber"
+    },
+    {
+      "part": "Big Void (ScanPyramids, 2017)",
+      "text": "A cavity more than 30 meters long above the Grand Gallery, found in 2017 by muon radiography. It is sealed and inaccessible; its purpose is unknown.",
+      "title": "The Big Void"
+    },
+    {
+      "part": "Ascending passage",
+      "text": "The narrow corridor that was sealed with granite plug blocks after the burial, shutting the King's Chamber behind the king.",
+      "title": "The ascending passage"
+    },
+    {
+      "part": "Mortuary temple basalt pavement",
+      "text": "The basalt pavement of the eastern mortuary temple is nearly all that survives. A causeway once linked it to a valley temple, still buried and unexcavated.",
+      "title": "The mortuary temple"
+    }
+  ],
+  "intro": "The oldest of the Seven Wonders of the Ancient World is the only one still standing. It was built around 2560 BC as the tomb of Pharaoh Khufu, and four thousand years of visitors have each left their own meaning inside.",
+  "page_title": "Great Pyramid of Giza: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The Great Pyramid: kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+    "Panorama with the Sphinx: kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+    "Stepped core masonry from the side: kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+    "The pyramid from the southeast: MusikAnimal, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The Great Pyramid of Giza rising above the desert",
+      "body": "Its ancient name was Akhet Khufu, 'Khufu's Horizon.' The pyramid served as the tomb of Pharaoh Khufu ('Cheops'), who ruled during the Fourth Dynasty of the Old Kingdom, and it was built around 2600 BC over a period of about 26 years. The attribution rests on classical authors, then on hard evidence: in 1837 four sealed relieving chambers above the King's Chamber were found covered in red-painted work-gang graffiti naming Khufu ('The gang, Khufu-excites-love'), and in 2013 the Diary of Merer, a papyrus logbook found at Wadi al-Jarf, documented deliveries of Tura limestone to 'Akhet-Khufu' in the 27th year of Khufu's reign. His son Djedefre oversaw the burial; his cartouches seal the boat pits. One reading of this: the name frames the tomb as the place where the dead king joins the sun god on the horizon, a machine for resurrection rather than a grave.",
+      "caption": "The largest of the Egyptian pyramids, built around 2600 BC as the tomb of Pharaoh Khufu.",
+      "credit": "kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "c. 2600 BC",
+      "heading": "Khufu's horizon",
+      "image": "hero.jpg"
+    },
+    {
+      "alt": "The stepped core masonry of the pyramid from the side",
+      "body": "The logistics were staggering: about 5.5 million tonnes of limestone, mostly quarried at Giza itself; 8,000 tonnes of granite shipped more than 900 kilometers down the Nile from Aswan for the King's Chamber; and fine white limestone from Tura, ferried across the river, for the casing. Modern study of the workers' camps shows the pyramid was built by thousands of conscript laborers, not slaves: a 1999 construction-management study estimated an average workforce of about 13,200, with peaks around 40,000. The precision is extreme: the four base sides average only 58 millimeters off true length, and the perimeter bedrock was leveled to within 21 millimeters. What you see today is the stepped core: an estimated 2.3 million blocks inside what was once a smooth white face.",
+      "caption": "The exposed stepped core: the inner structure visible after the casing was stripped.",
+      "credit": "kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+      "heading": "A mountain built by hand",
+      "image": "side.jpg"
+    },
+    {
+      "body": "The original entrance sits high on the north face; today's visitors enter through the forced tunnel Caliph al-Ma'mun dug around 820. Inside, the descending passage continues down to an unfinished subterranean chamber cut into the bedrock, while the ascending passage climbs to the Grand Gallery: a 47-meter corbelled corridor, a spectacular piece of stonemasonry, with ramps and notches on both sides and the Great Step at its top. Past the granite portcullis chamber of the antechamber lies the King's Chamber, lined entirely with red Aswan granite. Its single sarcophagus was found broken open and empty, and it is too large to have been brought through the passages, so it was placed before the roof went on. The misnamed Queen's Chamber, which Arab explorers named and which was never a queen's burial, has a gabled niche in its east wall and two sealed shafts, opened in 1872, blocked by limestone doors with copper handles. The narrow air shafts were long called ventilation, but Egyptologists now read them as ritual: conduits for the king's spirit to ascend. Above the King's Chamber, five relieving chambers carry the weight of the masonry; the red-painted work-gang names on their walls were never meant to be seen.",
+      "heading": "The interior"
+    },
+    {
+      "alt": "The Great Pyramid from the southeast corner, showing the stripped faces",
+      "body": "The pyramid lost about 8 meters of its original 146.6 meters. The smooth white Tura limestone casing was torn off over the centuries, especially after Middle Ages earthquakes; a 1301 earthquake loosened many stones, and in 1356 the Bahri sultan An-Nasir Nasir-ad-Din al-Hasan carted the casing away to build mosques and fortresses in Cairo. Laser scanning shows the slight concavities of the faces are damage from the tearing-off. A few lowest-course casing stones remain in place, best preserved on the north face below the entrances, where Howard Vyse excavated them in 1837. The capstone, the pyramidion, is lost entirely. For more than 3,700 years the finished pyramid was the tallest human-made structure in the world, until about AD 1221.",
+      "caption": "The smooth white Tura limestone casing is gone; the core masonry now forms the surface.",
+      "credit": "MusikAnimal, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "Stripped of its skin",
+      "image": "southeast.jpg"
+    },
+    {
+      "body": "Herodotus came around 450 BC and wrote the first extended account: Khufu as tyrant, 100,000 men in three-month shifts for twenty years, and a face inscription recording the radishes, garlic, and onions eaten by the workforce, which his interpreters likely invented. Diodorus Siculus estimated 360,000 workers and ramps; Strabo described a removable stone hiding a passage; Pliny the Elder mused the pyramid was raised to keep the lower classes occupied. In late antiquity the pyramids were misidentified as 'Joseph's granaries,' a reading that held through the Middle Ages alongside legends of King Surid building them to carry Egypt's knowledge through the Flood. Arab scholars kept the pyramid in the world's intellectual life: al-Ma'mun's tunnel, al-Masudi's wonder tales, Abd al-Latif al-Baghdadi's measurements, al-Maqrizi's chronicles. In 1435 the humanist Cyriacus of Ancona sailed to Giza, compared the monument with Herodotus, and refuted the granary error, spreading the news that these were the only surviving Wonder of the World. In the 19th century Charles Piazzi Smyth layered his own mysticism on the measurements: the 'pyramid inch' as a divine metrological standard. The theories are fringe, but they are part of the building's story as a mirror for each era.",
+      "heading": "Four thousand years of visitors"
+    },
+    {
+      "alt": "Panorama of the Sphinx and the Great Pyramid of Giza",
+      "body": "Nathaniel Davison found the lowest relieving chamber in 1763. In 1798 Napoleon's army fought the Battle of the Pyramids in its shadow; Bonaparte's order of the day told his men that 'from the top of those pyramids, forty centuries look down upon you.' Howard Vyse blasted into the four upper relieving chambers with gunpowder in 1837. Waynman Dixon opened the Queen's Chamber shafts in 1872, finding a diorite ball, a bronze hook, and a cedar plank that sat lost in a museum collection until 2020, when it was radiocarbon dated to 3341 to 3094 BC. Flinders Petrie made the first precise survey in 1880 to 1882. In 1954 the intact Khufu solar barque came out of its boat pit. From 1993 to 2011 robots explored the sealed shafts: the Upuaut 2 robot's 'door,' the 2002 National Geographic drill, and the 2011 Djedi fiber-optic camera. And in 2017 the ScanPyramids project used muon radiography to reveal a cavity more than 30 meters long above the Grand Gallery: the Big Void, whose purpose nobody knows.",
+      "caption": "The Giza plateau: the Great Pyramid rises behind the Sphinx, which belongs to Khafre's separate complex.",
+      "credit": "kallerna, CC BY-SA 3.0, via Wikimedia Commons",
+      "heading": "The modern exploration",
+      "image": "sphinx-panorama.jpg"
+    },
+    {
+      "body": "The funerary complex around the pyramid once included two mortuary temples joined by a causeway, three small queens' pyramids, a satellite pyramid, and five buried solar barques, the vessels for the king's voyage with the sun god. Khufu's mortuary cult operated in the temples for hundreds of years. One reading of this: the pyramid's form evokes the benben, the primeval mound of creation in Egyptian cosmology, and its white casing would have made it blaze in the desert sun. The complex is part of the UNESCO World Heritage site 'Memphis and its Necropolis,' inscribed in 1979. The pyramid was probably looted as early as the First Intermediate Period and was known to have been opened and emptied by the Middle Kingdom. What looters and time could not take is the reason it is still here: the oldest Wonder, and the only one that never fell.",
+      "heading": "A tomb that became an emblem"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1955-1994",
+      "body": "Howard Hawks's Land of the Pharaohs (1955) is the only major film whose entire plot is the building of the Great Pyramid itself: Pharaoh Khufu's obsessive project, from the design of its tomb-sealing mechanism to the final shot of the completed pyramid rising from the desert. Hawks used as many as 10,000 extras for the construction scenes. The film flopped and was banned in Egypt, but it is now a cult classic defended by Martin Scorsese.\n\nRoland Emmerich's Stargate (1994) opens at a 1928 Giza dig where the ring device is unearthed beneath cover stones, anchoring its ancient-astronaut premise in the pyramid's origin story. In The Spy Who Loved Me (1977) Bond tracks the assassin Jaws through a son-et-lumiere show at the Giza Necropolis; lighting problems meant the pyramids were partly replaced with miniatures, with Roger Moore's close-ups pasted over location footage in post."
+    }
+  ],
+  "slug": "great-pyramid-of-giza",
+  "sources": "Historical facts adapted from Wikipedia ('Great Pyramid of Giza', CC BY-SA), Smarthistory, and the Madain Project. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Great Pyramid of Giza",
+  "timeline": [
+    {
+      "date": "c. 2600 BC",
+      "text": "Construction under Pharaoh Khufu ('Akhet-Khufu,' Khufu's Horizon); his son Djedefre completes the burial."
+    },
+    {
+      "date": "c. 450 BC",
+      "text": "Herodotus writes the first extended account, with 100,000 laborers and the onion inscription."
+    },
+    {
+      "date": "c. 25 BC",
+      "text": "Strabo visits shortly after Rome annexes Egypt and describes an enterable passage."
+    },
+    {
+      "date": "c. 820-832",
+      "text": "Caliph al-Ma'mun tunnels into the north face and finds the ascending passage."
+    },
+    {
+      "date": "1356",
+      "text": "Casing stones are carted to Cairo under Sultan An-Nasir Nasir-ad-Din al-Hasan."
+    },
+    {
+      "date": "1435",
+      "text": "Cyriacus of Ancona refutes the 'Joseph's granaries' error and confirms the surviving Wonder."
+    },
+    {
+      "date": "21 Jul 1798",
+      "text": "Napoleon's Battle of the Pyramids; 'forty centuries look down upon you.'"
+    },
+    {
+      "date": "1837",
+      "text": "Howard Vyse opens the four upper relieving chambers and finds Khufu's work-gang graffiti."
+    },
+    {
+      "date": "1880-1882",
+      "text": "Flinders Petrie's precise survey: base sides within 58 millimeters."
+    },
+    {
+      "date": "1954",
+      "text": "The Khufu solar barque is excavated intact from its boat pit."
+    },
+    {
+      "date": "1979",
+      "text": "Inscribed as UNESCO World Heritage ('Memphis and its Necropolis')."
+    },
+    {
+      "date": "1993-2011",
+      "text": "Robots explore the sealed shafts: Upuaut 2's door, the National Geographic drill, the Djedi camera."
+    },
+    {
+      "date": "2013",
+      "text": "The Diary of Merer is discovered, logging Tura stone deliveries."
+    },
+    {
+      "date": "2017",
+      "text": "ScanPyramids finds the 30-meter Big Void above the Grand Gallery."
+    }
+  ],
+  "title": "Great Pyramid of Giza"
+}

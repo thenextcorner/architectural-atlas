@@ -1,0 +1,239 @@
+{
+  "address_country": "US",
+  "address_locality": "San Francisco",
+  "coordinates": {
+    "label": "Golden Gate Bridge, San Francisco",
+    "lat": 37.81972222,
+    "lng": -122.47861111
+  },
+  "date_built": "1937",
+  "description": "Take the Golden Gate Bridge apart piece by piece in 3D, and read the story of the bridge: a Depression-era campaign, the fired engineer behind the design, and a color chosen by accident.",
+  "entities": {
+    "architect": {
+      "name": "Joseph Strauss",
+      "role": "Chief engineer (1933-1937)",
+      "wikidata": "Q261174"
+    },
+    "events": [
+      {
+        "end": "1937-05-27",
+        "name": "Construction of the Golden Gate Bridge",
+        "start": "1933-01-05"
+      },
+      {
+        "name": "Bridge opens to pedestrians",
+        "start": "1937-05-27"
+      },
+      {
+        "name": "Windstorm closes the bridge",
+        "start": "1951-12-01"
+      },
+      {
+        "name": "50th anniversary crossing",
+        "start": "1987-05-24"
+      },
+      {
+        "name": "Suicide prevention nets completed",
+        "start": "2024-01"
+      }
+    ],
+    "people": [
+      {
+        "name": "Irving Morrow",
+        "role": "Consulting architect; designed the towers, the lighting, and International Orange",
+        "wikidata": "Q3154614"
+      },
+      {
+        "name": "Leon Moisseiff",
+        "role": "Conceived the suspension design and championed his deflection theory",
+        "wikidata": "Q530136"
+      },
+      {
+        "name": "Charles Alton Ellis",
+        "role": "Principal engineer; produced the structural calculations; designed the Fort Point arch",
+        "wikidata": "Q919842"
+      },
+      {
+        "name": "John C. Frémont",
+        "role": "Named the strait 'Golden Gate' in 1846",
+        "wikidata": "Q169011"
+      }
+    ],
+    "wikidata": "Q44440"
+  },
+  "hotspots": [
+    {
+      "part": "South tower west leg, lower tier section",
+      "text": "Two Art Deco towers, 746 feet above the water, held by about 600,000 rivets each. They were the tallest bridge towers in the world when the bridge opened in 1937.",
+      "title": "The towers"
+    },
+    {
+      "part": "East main span cable",
+      "text": "Each main cable is 36 3/8 inches thick and runs 7,650 feet from anchorage to anchorage. The two cables hold 80,000 miles of galvanized steel wire: 27,572 wires per cable, enough to circle the earth more than three times.",
+      "title": "The main cables"
+    },
+    {
+      "part": "South tower chevron ornament, level 1",
+      "text": "Irving Morrow's stepped-back tower faces and chevron ornaments give the steel towers their Art Deco profile. Aesthetics was the explicit reason Strauss's first, plainer design was rejected.",
+      "title": "The Art Deco chevrons"
+    },
+    {
+      "part": "South tower fender, base ring",
+      "text": "A concrete ring filled with sand, 27 feet thick at its base, rings the south tower pier. It guards the tower against ship collision.",
+      "title": "The fender ring"
+    },
+    {
+      "part": "Fort Point arch, east rib",
+      "text": "Charles Ellis's 'bridge within a bridge': a steel arch spanning the Civil War masonry fort below, so the fort would not have to be demolished.",
+      "title": "The Fort Point arch"
+    },
+    {
+      "part": "South anchorage main block",
+      "text": "The main cables are fixed in concrete at each end. Before the concrete was poured, Strauss set a brick from the demolished McMicken Hall of the University of Cincinnati into the south anchorage.",
+      "title": "The south anchorage"
+    },
+    {
+      "part": "South tower foghorns",
+      "text": "Five foghorns guard the bridge; two stand at the base of the south tower, 40 feet above the water. The 1937 system is still switched on manually.",
+      "title": "The foghorns"
+    },
+    {
+      "part": "Lateral bracing retrofit, south half",
+      "text": "After the December 1951 windstorm exposed rolling instabilities in the deck, lateral and diagonal bracing was added to connect the lower chords of the side trusses. The lesson came from the Tacoma Narrows collapse.",
+      "title": "The 1953 to 1954 retrofit"
+    },
+    {
+      "part": "Main span median barrier",
+      "text": "Installed on 11 January 2015 at a cost of $30.3 million, the barrier is shifted several times daily to match traffic direction. It brought the longest closure in bridge history: 45.5 hours.",
+      "title": "The movable median barrier"
+    },
+    {
+      "part": "Art Deco light standards, suspended span",
+      "text": "Irving Morrow designed streamlined, angled light standards for the roadway, part of the same Art Deco program as the tower details.",
+      "title": "Morrow's light standards"
+    }
+  ],
+  "intro": "San Francisco's most famous crossing is 8,981 feet of International Orange steel. Behind the postcard sits a Depression-era fight over bonds, a fired engineer who did the real design work, and a color that began as primer.",
+  "page_title": "Golden Gate Bridge: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Classic wide view: Rich Niewiroski Jr., CC BY 2.5, via Wikimedia Commons",
+    "Aerial view from the south: Daniel L. Lu, CC BY-SA 4.0, via Wikimedia Commons",
+    "The bridge at night: Daniel Schwen, CC BY-SA 3.0, via Wikimedia Commons",
+    "Fort Point under the bridge's arch: Brocken Inaglory, CC BY-SA 3.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "body": "The bridge is named for the strait, and the strait was named before any bridge was imagined. On 1 July 1846, before gold was found in California, explorer John C. Frémont wrote in his memoirs that he had given the strait the name 'Chrysopylae, or Golden Gate,' for the same reasons the harbor of Byzantium was called the Golden Horn. He meant it as a claim: this narrow strait was a golden gate to trade with the Orient, and San Francisco a future imperial port. The bridge's name was first used in 1917 by San Francisco city engineer M.M. O'Shaughnessy and Joseph Strauss, and it became official with the Golden Gate Bridge and Highway District Act of 1923. One reading of this: Frémont's 'golden' predates the 1849 Gold Rush, so the name was prophetic rather than descriptive.",
+      "heading": "The strait that named the bridge"
+    },
+    {
+      "body": "The push came from a 1916 San Francisco Bulletin article by former engineering student James Wilkins, and Joseph Strauss answered it. Strauss had built some 400 drawbridges but nothing like this; he promised a $17 million crossing and spent more than a decade selling it. The opposition was heavyweight: the War Department, the U.S. Navy, unions, and the Southern Pacific Railroad, which fought the bridge as competition for its ferry fleet and sued, triggering a mass ferry boycott. Voters authorized $30 million in bonds in November 1930, but the crash killed the market. The issue sat unsold until 1932, when Bank of America founder Amadeo Giannini bought the entire bond issue to help the local economy.",
+      "dates": "1916-1933",
+      "heading": "A decade of selling a bridge"
+    },
+    {
+      "alt": "Fort Point with the bridge's steel arch overhead",
+      "body": "Strauss was chief engineer, but the design belonged to others. Leon Moisseiff, engineer of the Manhattan Bridge, conceived the suspension design and championed his 'deflection theory,' which let the roadway flex in the wind. His senior engineer Charles Alton Ellis did the structural work itself: ten volumes of hand calculations, produced in 70-hour weeks, unpaid after Strauss fired him in November 1931, ostensibly for spending too much on telegrams. Ellis also designed the graceful steel arch that spans Fort Point rather than demolishing the Civil War masonry fort. Residential architect Irving Morrow designed the tower shapes, the lighting, the Art Deco details, and the color. Strauss, with an eye on posterity, downplayed all of them. The Bridge District formally credited Ellis only in May 2007, seventy years after the opening.",
+      "caption": "The Fort Point arch, the 'bridge within a bridge' Charles Ellis designed to spare the Civil War fort below.",
+      "credit": "Brocken Inaglory, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1929-1937",
+      "heading": "Who really designed it",
+      "image": "fort-point.jpg"
+    },
+    {
+      "alt": "The Golden Gate Bridge from a distance, showing its orange vermilion color",
+      "body": "The bridge is painted an orange vermilion officially called international orange, and it was nearly a leftover. The color began as the steel's red-lead primer, which consulting architect Irving Morrow liked. He chose it because it complements the natural surroundings and stands out in the fog, and it beat the alternatives, including the U.S. Navy's proposal for black and yellow stripes. No deeper meaning was attached to it. One reading of this: the color's distinctiveness against the landscape made it iconic, not any intended symbolism. The paint has to be maintained constantly: a crew of 38 painters works the bridge full time.",
+      "caption": "International Orange: the color of the steel's primer, made permanent by Irving Morrow.",
+      "credit": "Rich Niewiroski Jr., CC BY 2.5, via Wikimedia Commons",
+      "heading": "A color chosen by accident",
+      "image": "hero.jpg"
+    },
+    {
+      "alt": "Aerial view of the Golden Gate Bridge from the south",
+      "body": "Construction began on 5 January 1933 and finished ahead of schedule and $1.3 million under budget, at a final cost above $35 million. Strauss innovated movable safety netting under the deck, and the 19 men it saved formed the 'Half Way to Hell Club.' But 11 men died in falls, ten of them on 17 February 1937, when a scaffold broke through the net. Before the concrete was poured, Strauss set a brick from the demolished McMicken Hall of his alma mater, the University of Cincinnati, into the south anchorage. At opening the bridge held two world records: the longest suspension span at 4,200 feet, and the tallest towers at 746 feet.",
+      "caption": "The 8,981-foot crossing from the air: a 4,200-foot main span between 746-foot towers.",
+      "credit": "Daniel L. Lu, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1933-1937",
+      "heading": "Built through the Depression",
+      "image": "aerial.jpg"
+    },
+    {
+      "alt": "The Golden Gate Bridge illuminated at night",
+      "body": "In December 1951 a windstorm revealed rolling instabilities in the deck and closed the bridge; the 1953 to 1954 retrofit added the lateral and diagonal bracing the model shows, a lesson taken from the Tacoma Narrows collapse of 1940. From 1982 to 1986 the original concrete deck was replaced with steel orthotropic panels 40 percent lighter, in 747 sections over 401 nights, the biggest engineering job on the bridge since its construction. A seismic retrofit followed the 1989 Loma Prieta earthquake. Toll takers were eliminated in 2013 with all-electronic tolling, and in 2015 the movable median barrier arrived, the longest closure in bridge history at 45.5 hours. Then came the hardest chapter. The bridge had become the most-used suicide site in the world, with an estimated 2,000 deaths; after years of debate, stainless-steel prevention nets went up from 2017 to January 2024, extending 20 feet out from the walkway. Through October 2024, annual deaths fell from an average of 33.5 to 8. The bridge was listed a California Historical Landmark in 1987 and a San Francisco Designated Landmark in 1999.",
+      "caption": "The bridge at night; Morrow's lighting scheme is still part of the design.",
+      "credit": "Daniel Schwen, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1937-today",
+      "heading": "The bridge that kept changing",
+      "image": "night.jpg"
+    },
+    {
+      "heading": "The bridge on screen",
+      "dates": "1985",
+      "body": "James Bond fought one of his most famous battles on top of the Golden Gate Bridge. In A View to a Kill (1985), Roger Moore's last outing as 007, villain Max Zorin (Christopher Walken) flees San Francisco in his airship with Stacey Sutton aboard. Bond grabs the airship's mooring rope, then moors the craft to the bridge's framework, stopping it cold. Zorin comes at Bond with an axe on the bridge itself; Bond wins, and Zorin falls to his death in the bay below. Bond then cuts the airship loose, and it explodes over the water. Directed by John Glen, the sequence turned the bridge from a backdrop into the arena for the film's climax, and the footage is still there to watch.",
+      "youtube_id": "WSTVXpzJYjA",
+      "youtube_caption": "Bond and Zorin fight to the death on the Golden Gate Bridge in A View to a Kill (1985)."
+    }
+  ],
+  "slug": "golden-gate",
+  "sources": "Historical facts adapted from Wikipedia ('Golden Gate Bridge', CC BY-SA), the Golden Gate Bridge, Highway and Transportation District facts and figures, and Structurae. Screen appearance verified against Wikipedia (\"A View to a Kill\") and IMDb plot synopsis.",
+  "story_title": "The story of the Golden Gate Bridge",
+  "timeline": [
+    {
+      "date": "1846-07-01",
+      "text": "Frémont names the strait 'Chrysopylae, or Golden Gate,' after Byzantium's Golden Horn."
+    },
+    {
+      "date": "1916",
+      "text": "James Wilkins's Bulletin article revives the bridge proposal; Joseph Strauss answers."
+    },
+    {
+      "date": "1923",
+      "text": "The Bridge and Highway District Act makes the name official."
+    },
+    {
+      "date": "1932",
+      "text": "Amadeo Giannini's Bank of America buys the entire $30M bond issue, unsold since 1930."
+    },
+    {
+      "date": "1933-01-05",
+      "text": "Construction begins."
+    },
+    {
+      "date": "1937-02-17",
+      "text": "A scaffold falls through the safety net; ten workers die."
+    },
+    {
+      "date": "1937-05-27",
+      "text": "Opening day; 200,000 people cross on foot or roller skates before vehicles are allowed."
+    },
+    {
+      "date": "1937-05-28",
+      "text": "President Franklin D. Roosevelt opens vehicle traffic by telegraph button from Washington."
+    },
+    {
+      "date": "1954",
+      "text": "Torsional bracing retrofit completed after the 1951 windstorm."
+    },
+    {
+      "date": "1986",
+      "text": "The new steel deck is completed, in 747 sections over 401 nights."
+    },
+    {
+      "date": "1987-05-24",
+      "text": "50th anniversary: up to a million pedestrians; 300,000 pack the span and flatten it under their weight, within design limits."
+    },
+    {
+      "date": "2007-05",
+      "text": "The Bridge District formally credits Charles Alton Ellis with the bridge's structural design."
+    },
+    {
+      "date": "2012-05-27",
+      "text": "75th anniversary; solar beacons installed atop the towers."
+    },
+    {
+      "date": "2024-01",
+      "text": "The suicide prevention nets are completed."
+    }
+  ],
+  "title": "Golden Gate Bridge"
+}

@@ -1,0 +1,142 @@
+{
+  "coordinates": {
+    "label": "Rijksmuseum, Museumplein, Amsterdam",
+    "lat": 52.36,
+    "lng": 4.8852
+  },
+  "description": "Take the Rijksmuseum apart piece by piece in 3D, and read the story of the building: Pierre Cuypers's controversial cathedral of Dutch art, the tunnel through its middle, and the Night Watch at the end of the Gallery of Honour.",
+  "entities": {
+    "architect": {
+      "name": "Pierre Cuypers",
+      "role": "Designed the museum (commission 1876, opened 1885)"
+    },
+    "events": [
+      {
+        "name": "Reopening after renovation",
+        "role": "13 April 2013, after the 2003-2013 Cruz y Ortiz renovation",
+        "start": "2013-04-13"
+      }
+    ],
+    "people": [
+      {
+        "name": "William III of the Netherlands",
+        "role": "Refused to open the museum, calling it a monastery"
+      },
+      {
+        "name": "Antonio Cruz and Antonio Ortiz",
+        "role": "Architects of the 2003-2013 renovation"
+      }
+    ],
+    "wikidata": "Q165488"
+  },
+  "hotspots": [
+    {
+      "part": "Passage vault",
+      "text": "The public passage runs straight through the building's central axis. Cyclists ride through the museum itself, one of Amsterdam's most photographed oddities.",
+      "title": "The tunnel"
+    },
+    {
+      "part": "Gallery of Honour",
+      "text": "The first-floor Gallery of Honour is the museum's ceremonial spine, ending at Rembrandt's Night Watch.",
+      "title": "The Gallery of Honour"
+    },
+    {
+      "part": "Central tower spire",
+      "text": "Cuypers crowned the central axis with an ornate tower, part of the Gothic half of his design.",
+      "title": "The central tower"
+    },
+    {
+      "part": "South bay 5",
+      "text": "Red brick facades mix Gothic church motifs with Renaissance civic architecture, a combination critics called too Catholic for a national museum.",
+      "title": "Brick and controversy"
+    },
+    {
+      "part": "Decorative gable 3",
+      "text": "Decorative gables march along the Museumplein front, each carrying sculpture.",
+      "title": "The gables"
+    },
+    {
+      "part": "Stained glass window 1",
+      "text": "Stained glass was part of Cuypers's total decorative programme of tile pictures, mosaics and wall paintings.",
+      "title": "Stained glass"
+    },
+    {
+      "part": "West atrium floor",
+      "text": "The building is two squares, each with an atrium court at its centre, flooded with light after the renovation.",
+      "title": "The atriums"
+    },
+    {
+      "part": "Library tower",
+      "text": "The museum contains its own art library, one of the building's original functions.",
+      "title": "The library"
+    },
+    {
+      "part": "Asian pavilion",
+      "text": "Cruz y Ortiz added the Asian pavilion in 2013, their mantra being 'Continue with Cuypers'.",
+      "title": "Old and new"
+    }
+  ],
+  "intro": "Amsterdam's Rijksmuseum is Pierre Cuypers's 1885 cathedral of Dutch art: red brick, towers, and a bicycle tunnel straight through the middle. This is how a controversial building became the nation's museum.",
+  "page_title": "Rijksmuseum Amsterdam: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "Pierre Cuypers won the commission for a new national museum in 1876 and spent nine years building it. His design refused to choose a style: Gothic church architecture (towers, large circular windows) fused with Renaissance civic architecture (rectangular windows, roofs, dormers), rooted in the Netherlandish transitional period he loved. The result in red brick with stone detailing was immediately controversial. Protestant critics found it too Gothic, too medieval, too Roman Catholic for a national museum. King William III reportedly refused to lay the first brick or perform the opening, declaring he would not set foot in that monastery. Cuypers built it anyway, and it opened in 1885.",
+      "dates": "1876-1885",
+      "heading": "A cathedral nobody asked for"
+    },
+    {
+      "body": "Cuypers organized the building as two squares, each with an atrium court at its centre. Through the central axis he cut a public tunnel with entrances at ground level, so the city could walk, and later cycle, straight through the museum. Above the tunnel on the first floor runs the Gallery of Honour, the ceremonial spine of the collection. The building also contained a library, and a separate fragment building, later branded the Philips wing, displayed the history of Dutch architecture in salvaged pieces.",
+      "dates": "1885",
+      "heading": "Two squares and a tunnel"
+    },
+    {
+      "body": "The museum's 80 galleries now tell 800 years of Dutch art in a single chronological sweep, ending at the Night Watch. Getting there took a decade: from 2003 to 2013, Seville architects Cruz y Ortiz renovated the building under the motto 'Continue with Cuypers', stripping away parasitic ceilings and whitewash to recover the original volumes. The museum reopened on 13 April 2013. They added the Asian pavilion in the garden, merging old and new in what the project architect called silent architecture.",
+      "dates": "2003-2013",
+      "heading": "Continue with Cuypers"
+    },
+    {
+      "body": "The Rijksmuseum's most famous fictional moment is a heist that never touches its walls. In Steven Soderbergh's Ocean's Twelve (2004), the crew's Amsterdam job targets Rembrandt's Night Watch, which hangs in the Rijksmuseum. The film establishes the painting's home as the prize, making the museum the off-screen anchor of the Amsterdam sequence. It is a backhanded compliment: the film needs the audience to know, instantly, that the Night Watch lives in the Rijksmuseum, because everyone does.\n\nThe building itself is a fixture of Amsterdam's visual identity, its twin-towered silhouette closing the Museumplein in countless films, series and photographs of the city. Cuypers's other great Amsterdam work, Centraal Station, shares its DNA, and the two buildings together define the 19th-century image of the capital. The museum that a king refused to open is now the building Amsterdam could not do without.",
+      "dates": "2004-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "rijksmuseum",
+  "sources": "Historical facts adapted from Wikipedia (\"Rijksmuseum\" and \"Pierre Cuypers\", CC BY-SA). Cultural appearances verified against production coverage.",
+  "story_title": "The story of the Rijksmuseum",
+  "timeline": [
+    {
+      "date": "1808",
+      "text": "Louis Bonaparte founds the museum as the Great Royal Museum."
+    },
+    {
+      "date": "1817-1885",
+      "text": "The collection is housed in the Trippenhuis."
+    },
+    {
+      "date": "1876",
+      "text": "Pierre Cuypers wins the commission; construction begins."
+    },
+    {
+      "date": "1885",
+      "text": "The museum opens on the Museumplein."
+    },
+    {
+      "date": "1970",
+      "text": "The building becomes a rijksmonument."
+    },
+    {
+      "date": "2003-2013",
+      "text": "Cruz y Ortiz renovation; the Asian pavilion opens in 2013."
+    },
+    {
+      "date": "13 Apr 2013",
+      "text": "The renovated museum reopens."
+    },
+    {
+      "date": "2004",
+      "text": "Ocean's Twelve makes the Night Watch the target of its Amsterdam heist."
+    }
+  ],
+  "title": "Rijksmuseum"
+}

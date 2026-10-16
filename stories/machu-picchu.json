@@ -1,0 +1,230 @@
+{
+  "address_country": "PE",
+  "address_locality": "Cusco Region",
+  "coordinates": {
+    "label": "Machu Picchu, Cusco Region, Peru",
+    "lat": -13.16333,
+    "lng": -72.54556
+  },
+  "description": "Take Machu Picchu apart piece by piece in 3D, and read the story of the Inca citadel: a royal estate never truly lost, from Pachacuti's terraces to Yale's returned artifacts.",
+  "entities": {
+    "events": [
+      {
+        "name": "Construction under Pachacuti",
+        "start": "c. 1450"
+      },
+      {
+        "name": "Hiram Bingham III arrives",
+        "start": "1911-07-24"
+      },
+      {
+        "name": "Historic Sanctuary of Machu Picchu declared",
+        "start": "1981"
+      },
+      {
+        "name": "UNESCO World Heritage inscription",
+        "start": "1983"
+      },
+      {
+        "name": "Crane accident damages the Intihuatana",
+        "start": "2000-09-08"
+      },
+      {
+        "name": "Named a New 7 Wonder of the World",
+        "start": "2007"
+      },
+      {
+        "end": "2012-11",
+        "name": "Yale returns the disputed artifacts",
+        "start": "2011"
+      }
+    ],
+    "people": [
+      {
+        "name": "Pachacuti",
+        "role": "Emperor (r. 1438-1471) who ordered construction",
+        "wikidata": "Q213758"
+      },
+      {
+        "name": "Tupac Inca Yupanqui",
+        "role": "Emperor (r. 1472-1493) under whom construction continued",
+        "wikidata": "Q311415"
+      },
+      {
+        "name": "Agustin Lizarraga",
+        "role": "Peruvian explorer; earliest documented modern visit, 1902",
+        "wikidata": "Q106864521"
+      },
+      {
+        "name": "Hiram Bingham III",
+        "role": "Yale lecturer who brought the site to world attention, 1911",
+        "wikidata": "Q237220"
+      },
+      {
+        "name": "Richard L. Burger",
+        "role": "Yale anthropologist; led the 2021 radiocarbon chronology study",
+        "wikidata": "Q28398049"
+      }
+    ],
+    "wikidata": "Q676203"
+  },
+  "hotspots": [
+    {
+      "part": "Intihuatana ritual stone",
+      "text": "'The place where the sun is tied.' The ritual stone carved from the mountain bedrock points at the sun during the winter solstice. The southwest upper corner was chipped by a fallen crane in 2000.",
+      "title": "The Intihuatana"
+    },
+    {
+      "part": "Curved wall, east arc",
+      "text": "The only Inca construction with a semicircular shape, about 10.5 meters across, built on a massive natural granite rock. Its windows are aligned to the June and December solstices.",
+      "title": "The Temple of the Sun"
+    },
+    {
+      "part": "Tomb floor",
+      "text": "A natural cave beneath the Temple of the Sun, enhanced with carved walls, niches, an altar, and a throne-like carving. The masonry suggests it was intended for the highest rank. No mummies were found.",
+      "title": "The Royal Tomb"
+    },
+    {
+      "part": "Middle trapezoidal window",
+      "text": "A single trapezoidal wall of large white granite blocks with three oversized windows, each window's lintels and jambs carved from single stones. One reading treats the three as the three Inca worlds [interpretation].",
+      "title": "The Temple of the Three Windows"
+    },
+    {
+      "part": "Main Temple north wall",
+      "text": "A three-walled structure, 11 meters long by 8 meters wide, with precise joints and trapezoidal niches. Holes for roof beams exist, but it may never have been roofed.",
+      "title": "The Main Temple"
+    },
+    {
+      "part": "Condor head stone",
+      "text": "A carved stone read as a condor in flight, with grottos and subterranean passageways around it. Camelid remains suggest ritual animal sacrifice.",
+      "title": "The Temple of the Condor"
+    },
+    {
+      "part": "Fountain one",
+      "text": "Sixteen stone fountains, the Stairway of Fountains, fed by gravity through a 749-meter canal. The first stood by the emperor's residence: privileged access to water.",
+      "title": "The fountains"
+    },
+    {
+      "part": "West terrace 1 retaining wall",
+      "text": "Wide parallel terraces, the andenes, that serve agriculture and erosion control at once. Landslide repairs are still visible.",
+      "title": "The terraces"
+    },
+    {
+      "part": "Sun Gate (Intipunku)",
+      "text": "Intipunku, the Sun Gate, marks the end of the Inca Trail approach to the citadel.",
+      "title": "The Sun Gate"
+    },
+    {
+      "part": "Central Plaza",
+      "text": "The east-west central square separates the upper Hanan sector, with its temples, from the lower Hurin sector. [Interpretation: the layout mirrors the Andean hanan/hurin dualism that ordered Inca cosmology.]",
+      "title": "The plaza"
+    }
+  ],
+  "intro": "A 15th-century Inca citadel on a mountain ridge at 2,430 meters, used for about 80 years and abandoned as the empire collapsed. It was never lost to the locals; Hiram Bingham simply told the world about it in 1911.",
+  "page_title": "Machu Picchu: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Panoramic view with Huayna Picchu: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+    "The Intihuatana ritual stone: Alesegura, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Panoramic view of Machu Picchu with Huayna Picchu behind",
+      "body": "Machu Picchu is the best-known surviving work of Inca urbanism: a royal estate of the emperor Pachacuti, built around 1450 to 1470 after his conquest of the middle and lower Urubamba, as part of a broader program of royal estates along the river. Radiocarbon dating of human remains places occupation around 1420 to 1530, slightly earlier than traditional documentary chronologies. It was used for about 80 years and abandoned in the mid-16th century as Inca rule collapsed. During its life it housed about 750 people, mostly yanaconas, support staff living there permanently, plus religious specialists. Skeletal and genome-wide studies show the retainer community was strikingly diverse: Andean, coastal, Ecuadorian, and Amazonian ancestries, people who had moved there from far regions and were buried together. The 4.9 hectares of terraces could not feed them all, so food was partly imported.",
+      "caption": "The citadel on its ridge at 2,430 meters, with Huayna Picchu behind.",
+      "credit": "Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "The emperor's retreat",
+      "image": "hero.jpg"
+    },
+    {
+      "body": "The original Inca name is not definitively known. A 2021 study in Nawpa Pacha argues it was likely called 'Huayna Picchu' after the smaller peak, or simply 'Picchu,' and that the name Machu Picchu stuck from Hiram Bingham's 1911 publications. What is certain is that the site was never 'lost' to the people who lived there. Two Quechua farming families, the Richarte and Alvarez families, were living on cleared terraces when Bingham arrived. Peruvian explorer Agustin Lizarraga had reached it in 1902 and left his name and the year in charcoal on the central window of the Temple of the Three Windows, nine years before Bingham's arrival on 24 July 1911, when local villager Melchor Arteaga led the Yale lecturer up the ridge. Bingham credited Lizarraga as the discoverer in his early writings but later downplayed him, claiming the discovery for himself.",
+      "heading": "The name nobody knew"
+    },
+    {
+      "alt": "The Intihuatana ritual stone on its terraced hill",
+      "body": "The Intihuatana, 'the place where the sun is tied,' is a ritual stone carved from a natural granite outcrop on a terraced hill in the upper Hanan sector. It points at the sun during the winter solstice; on November 11 and January 30 the midday sun stands nearly directly above it, and on June 21 it casts its longest southern shadow. Scholars reject the popular idea that it was a calendar gnomon; its placement within a sacred landscape may hold symbolic significance [interpretation, supported by the cited studies]. On 8 September 2000 a 450-kilogram camera crane fell onto it during a beer commercial shoot, chipping a corner of the stone. The Temple of the Sun, the Torreon, is the only Inca construction with a semicircular shape, about 10.5 meters across, with solar-aligned openings and a 'Serpent's Door' leading to a platform with a view of Huayna Picchu. The Temple of the Three Windows holds three oversized trapezoidal openings with lintels and jambs each carved from single stones, aligned to the solstices and the equinox; one reading treats the three windows as the three Inca worlds, Hanan-Pacha, Kay-Pacha, and Ukju-Pacha [interpretation]. Inti Mach'ay, a cave on the slope, lets sunlight in for only a few days around the December solstice, when noble boys were initiated into manhood there. The Temple of the Condor centers on a carved stone read as a condor in flight [interpretation], and camelid remains suggest ritual animal sacrifice. The Room of the Mortars, once proposed as water mirrors for astronomy, is now thought by 2022 studies to have had no calendrical function at all; its purpose remains uncertain.",
+      "caption": "The Intihuatana, the 'hitching post of the sun,' carved from the mountain bedrock.",
+      "credit": "Alesegura, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "A sacred landscape in stone",
+      "image": "intihuatana.jpg"
+    },
+    {
+      "body": "The construction is classical Inca dry-stone masonry: finely fitted stones with no mortar, trapezoidal doorways and windows, and inward-leaning walls that ride out earthquakes. The terraces, the andenes, serve agriculture and erosion control at once. Water came from a spring on the mountain slope through a stone-lined canal about 749 meters long, 10 to 12 centimeters wide, with about a 3 percent slope and a design capacity of about 300 liters per minute. Sixteen stone fountains, the Stairway of Fountains, descend through the citadel with a total drop of about 26 meters from fountain 1 to fountain 16; the first fountain stood adjacent to the emperor's residence, a mark of privileged access. About 130 outlet drains pierce the retaining walls. One geologist has argued the city was intentionally built on fault lines for natural drainage and fractured building stone One reading of this: this is one geologist's thesis, not consensus.",
+      "heading": "Water and walls"
+    },
+    {
+      "body": "The 1912, 1914, and 1915 expeditions cleared and excavated the site, and Bingham removed thousands of artifacts to Yale, legal under Peru's 1852 Civil Code, which gave finds to the discoverer. After accusations of smuggling, a century-long dispute ended only in 2011 and 2012, when Yale returned the artifacts in three batches. They are now exhibited at the Machu Picchu Museum, Casa Concha, in Cusco.",
+      "heading": "The Yale dispute"
+    },
+    {
+      "body": "The research continues. A 2021 study led by Yale anthropologist Richard Burger used 26 AMS radiocarbon dates on human remains to place occupation around 1420 to 1530. Systematic excavations, pollen studies, and architectural analyses from 2014 to 2017 clarified the construction phases. A 2017 to 2019 study of the Principal Plaza showed it evolved from a natural drainage basin to a quarry, then a smaller sunken plaza, before being raised and expanded in at least two phases. Detailed laser scans of the whole site were made in 2005 and 2009.",
+      "heading": "The science goes on"
+    },
+    {
+      "body": "Peru declared the Historic Sanctuary of Machu Picchu in 1981; UNESCO inscribed it in 1983; in 2007 it won a place among the New 7 Wonders of the World. It is Peru's most visited site: over 1.5 million visitors in 2025. Tourism has scarred it at times: in the 1980s a rock was moved to create a helicopter landing zone; the 2000 crane accident chipped the Intihuatana; nude tourism in 2014 brought increased surveillance. UNESCO considered a World Heritage in Danger listing in 2017 over overcrowding but decided against it. Stricter entrance rules capped visitors at 2,500 per day in 2011, and the daily limit was raised to 4,500 in 2024, up to 5,600 in peak season.",
+      "heading": "The world's most visited mountain"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1913-2024",
+      "body": "The single most consequential piece of writing in the site's cultural history is a magazine issue. The entire April 1913 number of National Geographic was devoted to Hiram Bingham's expeditions, with photographs including a triple-foldout panorama; it introduced Machu Picchu to a mass global audience, broke the magazine's circulation records, and made Bingham a celebrity.\n\nHollywood arrived in 1954, when Paramount's Secret of the Incas, starring Charlton Heston, became the first major studio film shot at the site. Werner Herzog opened Aguirre, the Wrath of God (1972) in the Machu Picchu area, and Walter Salles gave the citadel a prominent place in the 1952 journey of The Motorcycle Diaries (2004).\n\nThe modern blockbuster era has kept it in front of huge audiences: Transformers: Rise of the Beasts (2023) filmed sequences at the citadel over several months in 2021, and Paddington in Peru (2024) made it the story's central Inca-ruin location. In 2007 Machu Picchu was voted one of the New 7 Wonders of the World. No famous easel painting of the site in a known collection could be verified."
+    }
+  ],
+  "slug": "machu-picchu",
+  "sources": "Historical facts adapted from Wikipedia ('Machu Picchu', CC BY-SA) and Smarthistory. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Machu Picchu",
+  "timeline": [
+    {
+      "date": "c. 1450",
+      "text": "Construction begins under Pachacuti after the Urubamba conquest."
+    },
+    {
+      "date": "c. 1472-1493",
+      "text": "Construction continues under Tupac Inca Yupanqui."
+    },
+    {
+      "date": "1902",
+      "text": "Agustin Lizarraga visits and leaves his charcoal inscription on the Temple of the Three Windows."
+    },
+    {
+      "date": "1911-07-24",
+      "text": "Hiram Bingham III arrives; the 'lost city' reaches the world press."
+    },
+    {
+      "date": "1912",
+      "text": "Yale and National Geographic clear, map, and excavate; thousands of artifacts go to Yale."
+    },
+    {
+      "date": "1981",
+      "text": "Peru declares the Historic Sanctuary of Machu Picchu."
+    },
+    {
+      "date": "1983",
+      "text": "UNESCO World Heritage inscription."
+    },
+    {
+      "date": "2000-09-08",
+      "text": "A 450-kilogram camera crane falls on the Intihuatana during a beer commercial shoot."
+    },
+    {
+      "date": "2007",
+      "text": "Named one of the New 7 Wonders of the World."
+    },
+    {
+      "date": "2010",
+      "text": "El Nino flooding traps over 4,000 people; the site closes until April 1."
+    },
+    {
+      "date": "2011",
+      "text": "Stricter rules cap visitors at 2,500 per day."
+    },
+    {
+      "date": "2012-11",
+      "text": "Yale delivers the final batch of returned artifacts."
+    },
+    {
+      "date": "2024",
+      "text": "The daily visitor limit is raised to 4,500."
+    }
+  ],
+  "title": "Machu Picchu"
+}

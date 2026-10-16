@@ -1,0 +1,132 @@
+{
+  "coordinates": {
+    "label": "Statue of Liberty, Liberty Island, New York",
+    "lat": 40.6892,
+    "lng": -74.0445
+  },
+  "description": "Take the Statue of Liberty apart piece by piece in 3D, and read the story of the copper colossus: from French gift to the most filmed statue on earth.",
+  "entities": {
+    "architect": {
+      "name": "Richard Morris Hunt",
+      "role": "Designed the pedestal",
+      "wikidata": "Q215305"
+    },
+    "events": [
+      {
+        "name": "Dedication of the Statue of Liberty",
+        "role": "Dedicated 28 October 1886",
+        "start": "1886-10-28"
+      }
+    ],
+    "people": [
+      {
+        "name": "Frederic Auguste Bartholdi",
+        "role": "Sculptor of the statue"
+      },
+      {
+        "name": "Gustave Eiffel",
+        "role": "Designed the iron framework"
+      },
+      {
+        "name": "Edouard de Laboulaye",
+        "role": "Proposed the statue in 1865"
+      },
+      {
+        "name": "Emma Lazarus",
+        "role": "Wrote 'The New Colossus' (1883)"
+      }
+    ],
+    "wikidata": ""
+  },
+  "hotspots": [
+    {
+      "part": "Torch flame",
+      "text": "The gold-leafed flame of the torch of enlightenment. The tip stands 93 meters above the ground; the torch has been closed to the public since 1916.",
+      "title": "The torch"
+    },
+    {
+      "part": "Crown spike 1",
+      "text": "The crown's 7 rays stand for the seven seas and continents. The crown holds 25 windows and is reached by 354 steps.",
+      "title": "The crown"
+    },
+    {
+      "part": "Tablet of the law",
+      "text": "The tablet inscribed JULY IV MDCCLXXVI measures 7.19 by 4.14 meters and marks the date of American independence.",
+      "title": "The tablet"
+    },
+    {
+      "part": "The New Colossus plaque",
+      "text": "The bronze plaque carries Emma Lazarus's 1883 sonnet 'The New Colossus' with its invitation to the 'huddled masses.'",
+      "title": "The sonnet"
+    },
+    {
+      "part": "Broken chain link 1",
+      "text": "Broken chains lie at the figure's feet, symbolizing liberation from tyranny.",
+      "title": "The chains"
+    },
+    {
+      "part": "Iron frame pylon 1",
+      "text": "Gustave Eiffel's iron framework carries the 31 tons of copper skin, which is only 2.37 mm thick.",
+      "title": "The iron frame"
+    }
+  ],
+  "intro": "She was built in Paris, shipped across the Atlantic in 350 pieces, and raised over New York Harbor in 1886. Since then the Statue of Liberty has been buried on a beach, walked through Manhattan, and blown apart on screen more times than any other monument. This is the story of the most filmed statue on earth.",
+  "page_title": "Statue of Liberty: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "The idea came from the French historian Edouard de Laboulaye, who in 1865 proposed that France give the United States a monument for the centennial of American independence. The sculptor Frederic Auguste Bartholdi took up the cause, designing a colossal robed female figure of Liberty Enlightening the World, and Gustave Eiffel engineered the iron framework that would carry the copper skin. The statue was built in France, disassembled into 350 pieces, shipped across the Atlantic, and reassembled on a pedestal designed by Richard Morris Hunt inside the walls of Fort Wood on what is now Liberty Island. France paid for the statue; the Americans paid for the pedestal. She was dedicated on 28 October 1886.",
+      "dates": "1865-1886",
+      "heading": "A gift in 350 pieces"
+    },
+    {
+      "body": "The monument stands 93 meters from the ground to the tip of the torch. The copper figure itself is 46 meters from heel to torch, assembled from sheets of hammered copper just 2.37 mm thick: 31 tons of copper over 125 tons of Eiffel's steel. Every element is oversized to read at harbor scale. The head is 5.26 meters high. The tablet in the left arm measures 7.19 by 4.14 meters and is inscribed JULY IV MDCCLXXVI. The crown carries 7 rays for the seven seas and continents and 25 windows, and 354 steps climb to it. At the figure's feet lie broken chains, the symbol of liberation from tyranny that most visitors never notice.",
+      "dates": "1886",
+      "heading": "Anatomy of a colossus"
+    },
+    {
+      "body": "For the immigrants who arrived by ship in the early 20th century, the statue was the first sight of America, and Emma Lazarus's 1883 sonnet 'The New Colossus,' mounted on a bronze plaque on the pedestal, gave her a voice: the invitation to the 'huddled masses yearning to breathe free.' The statue became the emblem of American immigration, which is why filmmakers return to her whenever they want to say something about America itself. She was designated a UNESCO World Heritage Site in 1984. The torch has been closed to the public since 1916; its flame was replaced during the 1986 centennial restoration, and the crown reopened to visitors on 4 July 2009.",
+      "dates": "1886-today",
+      "heading": "The mother of exiles"
+    },
+    {
+      "body": "No statue has died on screen more often. In Planet of the Apes (1968) Charlton Heston finds her half-buried on a beach, the reveal that the 'alien' planet was Earth all along, one of the most famous final shots in cinema. Alfred Hitchcock staged the climax of Saboteur (1942) on the torch, with the saboteur dangling from her hand. In Ghostbusters II (1989) she walks through Manhattan animated by positively charged slime, torch held high past the skyline. Bryan Singer's X-Men (2000) ends with a fight on and around the torch. And in Cloverfield (2008) the monster tears her head off and hurls it down a Manhattan street, the head bouncing to rest in front of the camera. Each destruction is a shorthand: to show America under threat, you show Liberty falling.",
+      "dates": "1942-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "statue-of-liberty",
+  "sources": "Historical facts adapted from Wikipedia (\"Statue of Liberty\", CC BY-SA). Film appearances verified against production records and release histories.",
+  "story_title": "The story of the Statue of Liberty",
+  "timeline": [
+    {
+      "date": "1865",
+      "text": "Edouard de Laboulaye proposes a French monument for America's centennial."
+    },
+    {
+      "date": "1886-10-28",
+      "text": "The Statue of Liberty is dedicated in New York Harbor."
+    },
+    {
+      "date": "1903",
+      "text": "Emma Lazarus's 'The New Colossus' is mounted on the pedestal."
+    },
+    {
+      "date": "1916",
+      "text": "The torch is closed to the public."
+    },
+    {
+      "date": "1984",
+      "text": "Designated a UNESCO World Heritage Site."
+    },
+    {
+      "date": "1986",
+      "text": "Centennial restoration; the torch flame is replaced."
+    },
+    {
+      "date": "2009-07-04",
+      "text": "The crown reopens to visitors."
+    }
+  ],
+  "title": "Statue of Liberty"
+}

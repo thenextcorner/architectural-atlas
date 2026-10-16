@@ -1,0 +1,247 @@
+{
+  "address_country": "GB",
+  "address_locality": "London",
+  "coordinates": {
+    "label": "Palace of Westminster, London",
+    "lat": 51.4992,
+    "lng": -0.1247
+  },
+  "date_built": "1876",
+  "description": "Take the Palace of Westminster apart piece by piece in 3D, and read its story: the 1834 fire, Barry and Pugin's Gothic Revival rebuild, and eight centuries of Parliament on the Thames.",
+  "entities": {
+    "architect": {
+      "name": "Charles Barry",
+      "role": "Architect of the 1840 to 1876 palace",
+      "wikidata": "Q552584"
+    },
+    "events": [
+      {
+        "end": "1876",
+        "name": "Construction of the new palace",
+        "start": "1840"
+      },
+      {
+        "name": "Gunpowder Plot foiled",
+        "start": "1605-11-05"
+      },
+      {
+        "name": "Fire destroys the old palace",
+        "start": "1834-10-16"
+      },
+      {
+        "end": "1941-05-11",
+        "name": "Blitz destroys the Commons Chamber",
+        "start": "1941-05-10"
+      },
+      {
+        "name": "Rebuilt Commons Chamber opened",
+        "start": "1950-10-26"
+      },
+      {
+        "name": "UNESCO World Heritage inscription",
+        "start": "1987"
+      },
+      {
+        "name": "Clock Tower renamed the Elizabeth Tower",
+        "start": "2012"
+      }
+    ],
+    "people": [
+      {
+        "name": "Augustus Pugin",
+        "role": "Gothic Revival designer of the palace's details",
+        "wikidata": "Q313288"
+      },
+      {
+        "name": "Guy Fawkes",
+        "role": "Gunpowder Plot conspirator, 1605",
+        "wikidata": "Q13898"
+      },
+      {
+        "name": "Spencer Perceval",
+        "role": "Prime minister assassinated in the Commons lobby, 1812",
+        "wikidata": "Q233992"
+      },
+      {
+        "name": "Giles Gilbert Scott",
+        "role": "Architect of the rebuilt Commons Chamber, opened 1950",
+        "wikidata": "Q1524274"
+      }
+    ],
+    "wikidata": "Q62408"
+  },
+  "hotspots": [
+    {
+      "part": "Elizabeth Tower clock stage",
+      "text": "The clock stage of the Elizabeth Tower. The Ayrton Light in its lantern shows whether either House is sitting after dark.",
+      "title": "The Great Clock"
+    },
+    {
+      "part": "Great Bell (Big Ben)",
+      "text": "The Great Bell nicknamed Big Ben. The portcullis motif is cast into the bell's metal.",
+      "title": "Big Ben"
+    },
+    {
+      "part": "Elizabeth Tower Ayrton Light",
+      "text": "Installed in 1885 at Queen Victoria's request so she could see from Buckingham Palace whether the members were \"at work\"; it is lit when either House sits after dark.",
+      "title": "The Ayrton Light"
+    },
+    {
+      "part": "Westminster Hall hammerbeam roof",
+      "text": "The 1393 hammerbeam roof by Hugh Herland, the largest clearspan medieval roof in England, set with 83 depictions of Richard II's White Hart badge.",
+      "title": "The hammerbeam roof"
+    },
+    {
+      "part": "Central Lobby patron saint mosaics",
+      "text": "Mosaics of Saint George for England, Saint Andrew for Scotland, Saint David for Wales, and Saint Patrick for Ireland above the four doorways of the Central Lobby.",
+      "title": "The patron-saint mosaics"
+    },
+    {
+      "part": "Lords Woolsack",
+      "text": "An armless red cushion stuffed with wool, for the historical importance of the wool trade. The presiding officer sits on it; the House's mace, for royal authority, rests on its back.",
+      "title": "The Woolsack"
+    },
+    {
+      "part": "Commons red lines",
+      "text": "The two red lines on the Commons floor stand 2.5 metres apart, by apocryphal tradition just over two sword-lengths, though no record shows MPs were ever allowed swords in the chamber.",
+      "title": "The red lines"
+    },
+    {
+      "part": "Members Lobby Rubble Arch",
+      "text": "The Members' Lobby archway was deliberately left unrepaired after the 1941 bombing as a reminder of the war. Bronze statues of Churchill and Lloyd George flank it; MPs rub their feet for luck before maiden speeches.",
+      "title": "The Rubble Arch"
+    },
+    {
+      "part": "Robing Room",
+      "text": "The Arthurian decorative theme: five William Dyce frescoes on chivalric virtues, the largest the Admission of Sir Tristram to the Round Table for Hospitality, and the Chair of State.",
+      "title": "The Robing Room"
+    },
+    {
+      "part": "Victoria Tower archive stacks",
+      "text": "The Victoria Tower holds the master copies of all Acts of Parliament since 1497, the Bill of Rights, and Charles I's death warrant.",
+      "title": "The Parliamentary Archives"
+    }
+  ],
+  "intro": "The meeting place of the UK Parliament has been a royal palace, a burned ruin, a construction site, and a target for 800 years. Explode its towers, chambers, and lobbies to see how a building became the emblem of British democracy.",
+  "page_title": "Palace of Westminster: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Westminster Hall, the oldest surviving part of the palace: Kevin Gordon, CC BY-SA 2.0, via Wikimedia Commons",
+    "Contemporary print of the 16 October 1834 fire: Charles Jameson Grant, public domain, via Wikimedia Commons",
+    "Evening view of the palace and Westminster Bridge: Photomaniac, public domain, via Wikimedia Commons",
+    "The Elizabeth Tower and the palace along the Thames: Schlosser67, CC BY-SA 2.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Westminster Hall, the oldest surviving part of the Palace of Westminster",
+      "body": "The site may have been used by Cnut, and from around 1045 to 1050 Edward the Confessor built a palace and the first Westminster Abbey. The oldest surviving part of the palace is Westminster Hall, dating from the reign of William II: erected in 1097, it was then the largest hall in Europe. The palace was the principal residence of the English monarchs in the late medieval period, and Parliament, the predecessor Curia Regis, met in Westminster Hall when the king was in residence. The Model Parliament, considered the first Parliament of England, met at the palace in 1295. In 1512 a fire destroyed the royal apartments, and in 1534 Henry VIII moved to the Palace of Whitehall, seized from Cardinal Thomas Wolsey; from that point Westminster's main occupants were the two houses of Parliament and various courts of law. The Commons adapted St Stephen's Chapel for its use in the 16th century; the Lords used the Painted Chamber and, from 1801, the White Chamber. On 5 November 1605 conspirators including Guy Fawkes placed gunpowder beneath the House of Lords to detonate during the State Opening. The plot was discovered; the survivors were tortured in the Tower of London, tried for high treason in Westminster Hall, and executed by hanging, drawing and quartering. Since then the cellars have been searched by the Yeomen of the Guard before every State Opening. On 4 January 1642 Charles I entered the Commons Chamber to arrest five members; Speaker William Lenthall replied, \"May it please your Majesty, I have neither eyes to see nor tongue to speak in this place but as the House is pleased to direct me, whose servant I am here.\" The sovereign has not entered the Commons since; at each State Opening Black Rod has the chamber doors slammed in his face and must strike three times with the staff to be admitted. On 11 May 1812 Prime Minister Spencer Perceval was shot dead by John Bellingham in the Commons lobby; he remains the only British prime minister assassinated.",
+      "caption": "Westminster Hall, the oldest surviving part of the palace, erected in 1097 and then the largest hall in Europe.",
+      "credit": "Kevin Gordon, CC BY-SA 2.0, via Wikimedia Commons",
+      "dates": "1045-1834",
+      "heading": "The king's palace becomes Parliament's home",
+      "image": "westminster-hall.jpg"
+    },
+    {
+      "alt": "A contemporary print of the 1834 fire of the Houses of Parliament, seen from the river",
+      "body": "On 16 October 1834 a fire broke out after an overheated stove used to destroy the Exchequer's stockpile of tally sticks set fire to the House of Lords chamber. Both Houses were destroyed with most of the palace complex. Westminster Hall was saved thanks to firefighting efforts and a change in wind direction; the Jewel Tower and the undercroft, cloisters and chapter house of St Stephen's Chapel also survived. J. M. W. Turner watched the fire and painted several canvases of it, including The Burning of the Houses of Lords and Commons (1835).",
+      "caption": "A contemporary print of the fire of 16 October 1834, seen from the river at 8 o'clock in the evening.",
+      "credit": "Charles Jameson Grant (printmaker), public domain, via Wikimedia Commons",
+      "dates": "16 Oct 1834",
+      "heading": "The fire Turner painted",
+      "image": "fire-1834.jpg"
+    },
+    {
+      "alt": "The Palace of Westminster from across the Thames at evening",
+      "body": "The design competition for the new palace was won by Charles Barry, who chose a Gothic Revival style and relied heavily on Augustus Pugin for the details. Construction started in 1840 and ran for 30 years, with delays, cost overruns, and the deaths of both Barry and Pugin. The Lords Chamber was completed in 1847, the Commons Chamber in 1852; work was not finished until a decade after most of it had been carried out by 1860. The result is Perpendicular Gothic Revival, Grade I listed since 1970 and part of a UNESCO World Heritage Site since 1987, with Westminster Abbey and St Margaret's Church. Barry had adopted the portcullis as his identifying mark in the design competition, which was judged pseudonymously, and he and Pugin then saturated the new palace with the emblem: carved in stone and wood, stamped on leatherwork, on Commons Library books, on curtains and wallpaper, and cast in the metal of Big Ben. That saturation led to its adoption as the quasi-official symbol of the House of Commons and of Parliament. Portcullis House, the parliamentary office building completed in 2000, is named for it.",
+      "caption": "The palace from across the Thames at evening, with Westminster Bridge.",
+      "credit": "Photomaniac, public domain, via Wikimedia Commons",
+      "dates": "1840-1876",
+      "heading": "Barry, Pugin, and the Gothic Revival palace",
+      "image": "evening.jpg"
+    },
+    {
+      "alt": "The Elizabeth Tower and the river front of the Palace of Westminster",
+      "body": "The building is a coded statement about British nationhood. The Robing Room's decorative theme is the legend of King Arthur, considered by many Victorians the source of their nationhood: five frescoes by William Dyce (1848 to 1864) depict allegorical scenes from the legend, each representing a chivalric virtue, the largest the Admission of Sir Tristram to the Round Table, illustrating Hospitality. The Royal Gallery displays British military history: two large Daniel Maclise paintings, The Death of Nelson at Trafalgar (1805) and The Meeting of Wellington and Blücher after Waterloo (1815), and eight gilded Caen stone statues flanking the doorways, each a monarch from whose reign a major battle or war dates: Alfred the Great and William the Conqueror; Richard I and Edward III; Henry V and Elizabeth I; William III and Anne. The Prince's Chamber takes Tudor history: 28 oil portraits of the dynasty by Richard Burchett and his pupils, and 12 bronze bas-reliefs by William Theed including the Field of the Cloth of Gold; a statue of Queen Victoria seated on a throne is flanked by allegorical figures of Justice, with bare sword and inflexible expression, and Clemency, offering an olive branch, positioned so the monarch would see it walking to the throne. The Central Lobby's tympana carry mosaics of the patron saints of the United Kingdom's nations: Saint George for England, Saint Andrew for Scotland, Saint David for Wales, Saint Patrick for Ireland; the Minton encaustic tile floor includes a Latin passage from Psalm 127: \"Except the Lord build the House their labour is but lost that build it\". In the Peers' Lobby the floor centrepiece is a radiant Tudor rose in Derbyshire marbles, and above the arches are the arms of the six royal dynasties that ruled England up to Victoria's reign. In the Lords Chamber the Woolsack, an armless red cushion stuffed with wool, represents the historical importance of the wool trade; the presiding officer sits on it, and the House's mace, representing royal authority, rests on its back. In the Commons Chamber the two red lines on the floor are 2.5 metres apart; by apocryphal tradition this is just over two sword-lengths, though there is no record of MPs ever being allowed swords in the chamber. The Ayrton Light was installed in the lantern of the Elizabeth Tower in 1885 at Queen Victoria's request so she could see from Buckingham Palace whether the members were \"at work\"; it is lit when either House sits after dark. And in Westminster Hall the 83 depictions of Richard II's favourite heraldic badge, the resting chained White Hart, built into the 1393 remodelling, are a statement of the king's personal authority.",
+      "caption": "The Elizabeth Tower and the river front along the Thames.",
+      "credit": "Schlosser67, CC BY-SA 2.0, via Wikimedia Commons",
+      "heading": "A building coded with nationhood",
+      "image": "big-ben-thames.jpg"
+    },
+    {
+      "body": "On 24 January 1885 Fenian bombs exploded at the palace and the Tower of London; a black bag of dynamite discovered on the steps to St Mary Undercroft injured two constables and damaged the chapel. In February 1907, after the King's Speech ignored women's rights, about 400 suffragettes under Emmeline Pankhurst and Charlotte Despard stormed Parliament; 60 were arrested. On 28 October 1908 came the Grille Incident: members of the Women's Freedom League chained themselves to the grille of the Ladies' Gallery during a debate, and the whole grille had to be unscrewed. In April 1909 four women chained themselves to statues in St Stephen's Hall. During the Second World War the palace was hit by bombs on fourteen separate occasions. On 26 September 1940 a bomb lifted the statue of Richard the Lionheart from its pedestal and bent its sword; the image was used as a symbol of the strength of democracy, \"which would bend but not break under attack\". In the night of 10 to 11 May 1941 the palace took at least twelve hits and three people were killed, two policemen and Edward Elliott, Resident Superintendent of the House of Lords. The Commons Chamber and the roof of Westminster Hall were both set alight; the firefighters could not save both, so the hall was prioritised and saved while the chamber was destroyed. The Lords Chamber and the Clock Tower were damaged in the same raid. The Commons Chamber was rebuilt in a simplified style under Giles Gilbert Scott and completed in 1950; it was opened by George VI on 26 October 1950. The Members' Lobby archway leading into it was deliberately left unrepaired as a reminder of the war, now known as the Rubble Arch or Churchill Arch, flanked by bronze statues of Winston Churchill and David Lloyd George whose feet are rubbed shiny by MPs for luck before maiden speeches.",
+      "dates": "1885-1950",
+      "heading": "The Blitz and the simplified Commons"
+    },
+    {
+      "body": "Barry's palace was rebuilt in sand-coloured Anston magnesian limestone from South Yorkshire, chosen after an 1839 quarry tour. The stone soon began to decay from pollution and poor quality; nothing was done through the 19th century even though defects were clear by 1849. In 1928 it was decided to replace decayed Anston stone with honey-coloured Clipsham limestone from Rutland; the project began in the 1930s, was halted by the war, and finished in the 1950s. By the 1960s pollution was damaging the stonework again, and a conservation and restoration programme for the external elevations and towers ran from 1981 to 1994. The Royal Gallery's two Daniel Maclise frescoes deteriorated rapidly after completion from atmospheric pollution and are today almost monochrome; the remaining planned frescoes were cancelled. In January 2018 the House of Commons voted for both houses to vacate the palace to allow a complete refurbishment, expected to take at least six years and start no sooner than 2025. A Restoration and Renewal Client Board was formed in September 2022. As of February 2026 no plan had been agreed.",
+      "dates": "as of October 2026",
+      "heading": "A palace awaiting rescue"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1978-2005",
+      "body": "In V for Vendetta (2005) the Houses of Parliament are the symbolic target of V's whole campaign, and the finale shows an explosive-laden Tube train destroying the building while a masked crowd watches, a sequence filmed on location at Parliament Square. The image made Parliament a permanent shorthand for the idea of a people overthrowing a state.\n\nBig Ben keeps getting hit. In Doctor Who: Aliens of London (2005) a crashing alien craft smashes through the clock tower and plunges into the Thames, one of the most re-watched images of the 2005 revival. Don Sharp's The Thirty Nine Steps (1978) ends with a climactic chase on the clock face, and Shanghai Knights (2003) stages its sword fight inside the tower, with the combatants bursting through the clock face. Tim Burton's Martians knock Big Ben down in Mars Attacks! (1996).\n\nClaude Monet painted the building 19 times between 1900 and 1905, studying it through London fog from across the Thames; the series was the centerpiece of the Courtauld Gallery's 2024-25 Monet and London exhibition, with canvases in Washington and Paris. James McNeill Whistler's Nocturne: Grey and Gold, Westminster Bridge (1871-72), a night view with the towers at the right, is in the Burrell Collection in Glasgow."
+    }
+  ],
+  "slug": "palace-of-westminster",
+  "sources": "Historical facts adapted from Wikipedia (\"Palace of Westminster\", CC BY-SA), UK Parliament Factsheet G9, and Historic England. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Palace of Westminster",
+  "timeline": [
+    {
+      "date": "1097",
+      "text": "Westminster Hall is erected for William II, then the largest hall in Europe."
+    },
+    {
+      "date": "1295",
+      "text": "The Model Parliament, considered the first Parliament of England, meets at the palace."
+    },
+    {
+      "date": "5 Nov 1605",
+      "text": "The Gunpowder Plot is foiled; the cellars are searched by the Yeomen of the Guard before every State Opening since."
+    },
+    {
+      "date": "4 Jan 1642",
+      "text": "Charles I enters the Commons to arrest five members; the sovereign has not entered the chamber since."
+    },
+    {
+      "date": "11 May 1812",
+      "text": "Spencer Perceval is shot dead in the Commons lobby, the only British prime minister assassinated."
+    },
+    {
+      "date": "16 Oct 1834",
+      "text": "Fire destroys the old palace except Westminster Hall; Turner paints the blaze."
+    },
+    {
+      "date": "1840",
+      "text": "Construction of Barry and Pugin's new palace begins."
+    },
+    {
+      "date": "1847",
+      "text": "The Lords Chamber is completed."
+    },
+    {
+      "date": "1852",
+      "text": "The Commons Chamber is completed."
+    },
+    {
+      "date": "10 to 11 May 1941",
+      "text": "The Blitz destroys the Commons Chamber; Westminster Hall is saved."
+    },
+    {
+      "date": "26 Oct 1950",
+      "text": "The rebuilt Commons Chamber, simplified under Giles Gilbert Scott, is opened by George VI."
+    },
+    {
+      "date": "1987",
+      "text": "The palace is inscribed as a UNESCO World Heritage Site, with Westminster Abbey and St Margaret's Church."
+    },
+    {
+      "date": "2012",
+      "text": "The Clock Tower is renamed the Elizabeth Tower for Elizabeth II's Diamond Jubilee."
+    },
+    {
+      "date": "Feb 2026",
+      "text": "Both houses voted in 2018 to vacate for a complete restoration; as of February 2026 no plan had been agreed."
+    }
+  ],
+  "title": "Palace of Westminster"
+}

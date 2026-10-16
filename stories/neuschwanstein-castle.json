@@ -1,0 +1,242 @@
+{
+  "address_country": "DE",
+  "address_locality": "Schwangau",
+  "coordinates": {
+    "label": "Neuschwanstein Castle, Schwangau, Bavaria",
+    "lat": 47.5575,
+    "lng": 10.7494
+  },
+  "date_built": "1886",
+  "description": "Take Neuschwanstein apart piece by piece in 3D, and read the story of Ludwig II's Alpine fantasy: a king who lived in it only 172 days, and the Wagner operas carved into its stone.",
+  "entities": {
+    "architect": {
+      "name": "Eduard Riedel",
+      "role": "Architect who realised the designs; led the civil works to 1874",
+      "wikidata": "Q106679"
+    },
+    "events": [
+      {
+        "end": "1892",
+        "name": "Construction of Neuschwanstein Castle",
+        "start": "1869-09-05"
+      },
+      {
+        "name": "Ludwig II moves into the unfinished Palas",
+        "start": "1884"
+      },
+      {
+        "name": "Death of Ludwig II at Lake Starnberg",
+        "start": "1886-06-13"
+      },
+      {
+        "name": "Palace opens to paying visitors",
+        "start": "1886-07"
+      },
+      {
+        "end": "1945",
+        "name": "Nazi art-plunder depot (ERR)",
+        "start": "1944"
+      },
+      {
+        "name": "UNESCO World Heritage inscription",
+        "start": "2025-07-12"
+      }
+    ],
+    "people": [
+      {
+        "name": "Ludwig II of Bavaria",
+        "role": "King of Bavaria; commissioned the palace and approved every draft",
+        "wikidata": "Q44039"
+      },
+      {
+        "name": "Richard Wagner",
+        "role": "Composer; his operas supply the palace's iconography",
+        "wikidata": "Q1511"
+      },
+      {
+        "name": "Christian Jank",
+        "role": "Stage designer who drafted the designs",
+        "wikidata": "Q573740"
+      },
+      {
+        "name": "Maximilian II of Bavaria",
+        "role": "Ludwig's father; rebuilt the nearby Schwanstein ruins as Hohenschwangau Castle",
+        "wikidata": "Q44530"
+      },
+      {
+        "name": "Marie of Prussia",
+        "role": "Ludwig's mother; Marienbrücke is named for her",
+        "wikidata": "Q234237"
+      }
+    ],
+    "wikidata": "Q4152"
+  },
+  "hotspots": [
+    {
+      "part": "Gatehouse red brick east facade",
+      "text": "The first building finished: red-brick exterior walls, yellow-limestone court fronts, and the passage crowned with the royal Bavarian coat of arms. Ludwig took provisional lodgings on its upper floor in 1882.",
+      "title": "The gatehouse"
+    },
+    {
+      "part": "Royal Bavarian coat of arms",
+      "text": "The royal arms of Bavaria crown the gate passage. On 10 June 1886 Ludwig had the deposition commission arrested here before he was forced to leave the palace.",
+      "title": "The Bavarian coat of arms"
+    },
+    {
+      "part": "North stair tower",
+      "text": "The highest point of the complex. At 65 metres the tower makes Neuschwanstein the tallest castle in the world, according to Guinness World Records.",
+      "title": "The 65-metre stair tower"
+    },
+    {
+      "part": "Patrona Bavariae fresco",
+      "text": "The court face of the Palas carries Patrona Bavariae and Saint George painted in Lüftlmalerei, the fresco style of Allgäu farmhouses.",
+      "title": "The Lüftlmalerei frescoes"
+    },
+    {
+      "part": "Throne Hall",
+      "text": "Modelled on the Allerheiligen-Hofkirche in Munich: Jesus, the Twelve Apostles, and six canonised kings around the dais, a chandelier after a Byzantine crown, and a throne that was never finished.",
+      "title": "The Throne Hall"
+    },
+    {
+      "part": "Hall of the Singers",
+      "text": "The largest room, an amalgam of the Wartburg's Hall of the Singers and Ballroom, decorated with Lohengrin and Parsifal. The reclusive king meant it as a walkable monument, not a ballroom.",
+      "title": "The Hall of the Singers"
+    },
+    {
+      "part": "Artificial grotto",
+      "text": "Between the drawing room and the study: the Hörselberg grotto from Wagner's Tannhäuser, originally with an artificial waterfall and a rainbow machine, opening to a small conservatory.",
+      "title": "The artificial grotto"
+    },
+    {
+      "part": "Carved bed canopy",
+      "text": "The neo-Gothic bedroom's carved bed canopy took fourteen carvers more than four years. Ludwig was arrested in this bedroom on the night of 11 to 12 June 1886.",
+      "title": "The king's bed"
+    },
+    {
+      "part": "Unbuilt keep foundation outline",
+      "text": "The upper courtyard pavement marks the outline of the planned 90-metre keep on a three-nave chapel. At the king's death only the foundations existed.",
+      "title": "The keep that stayed a plan"
+    },
+    {
+      "part": "Marienbrücke deck",
+      "text": "The steel bridge over the Pöllat Gorge, rebuilt in 1886 to replace the wooden one and named by Ludwig for his mother, Marie of Prussia. The classic viewpoint of the castle.",
+      "title": "Marienbrücke"
+    }
+  ],
+  "intro": "A Bavarian king built his own Middle Ages on an Alpine cliff, paying for it from his private fortune until debts of 14 million marks ended his reign. Six weeks after his death the palace opened to paying visitors, and it has never closed since.",
+  "page_title": "Neuschwanstein Castle: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Aerial view of the castle from the northwest: Carsten Steger, CC BY-SA 4.0, via Wikimedia Commons",
+    "Neuschwanstein Castle at sunset: Giladtop, CC0, via Wikimedia Commons",
+    "Throne Hall interior, photochrom print circa 1900: Photochrom Print Collection, public domain, via Wikimedia Commons",
+    "Hall of the Singers interior: Josef Albert, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Aerial view of Neuschwanstein Castle from the northwest",
+      "body": "Ludwig II grew up in his father's neo-Gothic Hohenschwangau Castle, finished in 1837 after Maximilian II of Bavaria bought the Schwanstein ruins, surrounded by murals of Germanic sagas. He sketched the ruins of the twin medieval castles on the hill in his diary in 1859, and when he ascended the throne in 1864 a new palace on their site became his first project. Two journeys in 1867 shaped the design: one to the Wartburg, setting of Wagner's Tannhäuser, and one to Pierrefonds, which Eugène Viollet-le-Duc was rebuilding for Napoleon III. In May 1868 Ludwig wrote to Wagner: \"It is my intention to rebuild the old castle ruin of Hohenschwangau near the Pöllat Gorge in the authentic style of the old German knights' castles ... the location is one of the most beautiful to be found, holy and unapproachable, a worthy temple for the divine friend.\" The stage designer Christian Jank drafted the designs and the architect Eduard Riedel realised them, but Ludwig personally approved every draft, and the palace is regarded as his own creation rather than his architects'. He paid for everything from private means and borrowing, not from Bavarian public funds, and his debts reached 14 million marks. In the end he lived in the palace for only 172 days. In June 1886 the Bavarian government moved to depose him; on 10 June he had the deposition commission arrested in the gatehouse, but a second commission forced him to leave the night of 11 June. On 13 June Ludwig and his psychiatrist Bernhard von Gudden both died in the shallow shore water of Lake Starnberg, a mystery never resolved.",
+      "caption": "Neuschwanstein from the northwest: the Gatehouse, the Palas, and the Rectangular Tower on the cliff ridge above the Pöllat Gorge.",
+      "credit": "Carsten Steger, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1864-1886",
+      "heading": "The king who built his own fantasy",
+      "image": "aerial-northwest.jpg"
+    },
+    {
+      "alt": "Neuschwanstein Castle at sunset, seen from the valley",
+      "body": "The foundation stone was laid on 5 September 1869, and the civil works passed from Riedel to Georg von Dollmann in 1874 and to Julius Hofmann in 1884. The palace is conventional brick construction encased in rock: white limestone from a nearby quarry for the fronts, Schlaitdorf sandstone for portals and bay windows, Untersberg marble for windows, arch ribs, columns and capitals. The Throne Hall needed a steel framework. For 1879 to 1880 alone the statistics list 465 tonnes of Salzburg marble, 1,550 tonnes of sandstone, 400,000 bricks and 2,050 cubic metres of scaffolding wood. In 1880 about 200 craftsmen worked on the site, sometimes up to 300 per day, occasionally at night by oil lamp. A workers' insurance society was founded in 1870, and the heirs of 30 construction casualties received small pensions. For all its medieval dress the palace was modern: a battery bell system, telephone lines, hot and cold running water, flush toilets, and central heating. The north stair tower rises 65 metres, and Guinness World Records counts Neuschwanstein as the tallest castle in the world.",
+      "caption": "Neuschwanstein at sunset: the five-storey Palas rises on the cliff ridge, with the 65-metre north stair tower above it.",
+      "credit": "Giladtop, CC0, via Wikimedia Commons",
+      "dates": "1869-1886",
+      "heading": "A stage set in brick and limestone",
+      "image": "sunset.jpg"
+    },
+    {
+      "alt": "The Throne Hall of Neuschwanstein Castle in a photochrom print from around 1900",
+      "body": "Every room refers to the operas. The Hall of the Singers, 27 by 10 metres and the largest room, is an amalgam of the Wartburg's Hall of the Singers and its Ballroom, decorated with themes from Lohengrin and Parsifal; the reclusive king never meant it for court festivities, only as a walkable monument to knights and courtly love. The Throne Hall, modelled on the Allerheiligen-Hofkirche in the Munich Residenz, surrounds the dais with paintings of Jesus, the Twelve Apostles and six canonised kings: Saint Louis of France, Saint Stephen of Hungary, Saint Edward the Confessor of England, Saint Wenceslaus of Bohemia, Saint Olaf of Norway and Saint Henry. The chandelier is fashioned after a Byzantine crown, and the throne itself was never completed. The hall fuses the Grail Hall from Wagner's Parsifal with the divine right of kings, which Ludwig, as head of a constitutional monarchy, no longer held. The drawing room carries the Lohengrin legend, the study Tannhäuser, the dining room courtly love, and the general decoration the grail legend and Wolfram von Eschenbach as Wagner interpreted them. The artificial grotto between the drawing room and the study depicts the Hörselberg from Tannhäuser, originally with an artificial waterfall and a rainbow machine. The house chapel is consecrated to Saint Louis, after whom Ludwig was named. One reading of this: the swan motifs on the main gate reference the Swan Knight Lohengrin; the common claim that the swan stood for purity in Ludwig's mind comes from tourist literature, not the encyclopedia sources.",
+      "caption": "The Throne Hall in a photochrom print from around 1900: the Byzantine-crown chandelier, the arcades, and the apse where the throne was never finished.",
+      "credit": "Photochrom Print Collection, public domain, via Wikimedia Commons",
+      "heading": "The operas in stone",
+      "image": "throne-hall.jpg"
+    },
+    {
+      "alt": "The Hall of the Singers in a 19th-century photograph",
+      "body": "The palace was far from complete at the king's death. The Rectangular Tower was still scaffolded. The Bower was completed in simplified form by 1892, without the planned figures of the female saints, and the Knights' House was simplified too. Only the foundations existed for the planned 90-metre keep on a three-nave chapel; its outline is marked in the upper courtyard pavement today. The connection wing between the Gatehouse and the Bower, the Moorish Hall, the Knights' Bath, the Bride Chamber, and the terraced castle garden with a fountain west of the Palas were never built. The floor mosaic of the Throne Hall was completed after the king's death, and in 1886 the wooden Marienbrücke over the Pöllat Gorge was replaced by a steel construction; Ludwig had named the bridge for his mother, Marie of Prussia. The Hall of the Singers stayed silent until 1933, when it hosted its first performance, a concert for the 50th anniversary of Wagner's death. No more than six weeks after the king's death, Prince Regent Luitpold ordered the palace opened to paying visitors, and the estate administrators balanced the construction debts by 1899; until World War I the palace was probably the House of Wittelsbach's single largest revenue source. In 1923, after Bavaria became a republic, the palaces fell to the state and are now managed by the Bavarian Palace Department, a division of the Bavarian finance ministry. From 1944 to the end of the war the castle served as a depot for Nazi plunder taken from France by the Einsatzstab Reichsleiter Rosenberg; 39 photo albums documenting the seizures were found there after the war and are now in the United States National Archives. In April 1945 the SS considered blowing up the palace to keep it and its artworks from the enemy, but the plan was not carried out, and the palace was surrendered undamaged. Today it draws between 1.5 and 1.7 million visitors a year, with up to 6,000 per day in peak season, on 35-minute guided tours with no interior photography. On 12 July 2025 it was inscribed as a UNESCO World Heritage Site, Germany's 55th.",
+      "caption": "The Hall of the Singers in a 19th-century photograph; the king never used it for court festivities, and its first concert came in 1933.",
+      "credit": "Josef Albert, public domain, via Wikimedia Commons",
+      "dates": "1886-2025",
+      "heading": "The long finish",
+      "image": "singers-hall.jpg"
+    },
+    {
+      "body": "The fairy tale outlived its king. Critics once derided the palace as kitsch; it is now counted among the major works of European historicism and is the inspiration for Disney's Sleeping Beauty and Cinderella castles. It was a finalist in the 2007 New Seven Wonders of the World online selection, the motif of a 1977 West German definitive stamp, and of a 2012 German 2-euro commemorative coin. It has played itself and others on film: Helmut Käutner's Ludwig II (1955), Luchino Visconti's Ludwig (1972), Chitty Chitty Bang Bang (1968), Spaceballs, and The Great Escape (1963). On 6 April 2002 a meteorite fell near Hohenschwangau and was named Neuschwanstein; three fragments were recovered.",
+      "heading": "The fairy tale outlives its king"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1868-1972",
+      "body": "The world's most famous fairy-tale castle began life as a theater set designer's painting. Christian Jank, a Munich scenic painter who had created scenery for Wagner's Lohengrin, was commissioned by Ludwig II to produce the concept designs for his architectural projects, and his theatrical drafts from around 1868 to 1883 are what Neuschwanstein was built from. The origin story explains everything about how it looks.\n\nOn screen it is Baron Bomburst's castle in Chitty Chitty Bang Bang (1968), the fortress the flying car swoops over in the film's most memorable aerial sequence. In The Great Escape (1963) the escaping airmen fly their stolen training aircraft past it, believing they are nearly in Switzerland. Both Visconti's Ludwig (1972) and the earlier Ludwig II (1955) filmed on location inside the king's actual castles.\n\nDisney Imagineering executive designer Tony Baxter is on record saying Disneyland's Sleeping Beauty Castle, the 1955 Anaheim icon, was inspired by Neuschwanstein, the moment the castle became the world's default fairy-tale silhouette. Disney's own company account is more hedged, calling the Anaheim castle merely similar and modeled on several medieval castles. A common mix-up names Cinderella Castle instead, but the verified inspiration is the Sleeping Beauty Castle."
+    }
+  ],
+  "slug": "neuschwanstein-castle",
+  "sources": "Historical facts adapted from Wikipedia (\"Neuschwanstein Castle\", CC BY-SA), France 24, Deutsche Welle, National Geographic, and the Bavarian Palace Department. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Neuschwanstein Castle",
+  "timeline": [
+    {
+      "date": "1832",
+      "text": "Maximilian II of Bavaria buys the Schwanstein ruins and rebuilds them as Hohenschwangau Castle, where Ludwig spends his childhood among Germanic saga murals."
+    },
+    {
+      "date": "1864",
+      "text": "Ludwig II ascends the Bavarian throne; a new castle on the medieval twin-castle ruins becomes his first palace project."
+    },
+    {
+      "date": "1867",
+      "text": "Two study journeys shape the design: to the Wartburg, the setting of Wagner's Tannhäuser, and to Pierrefonds, rebuilt by Viollet-le-Duc for Napoleon III."
+    },
+    {
+      "date": "May 1868",
+      "text": "Ludwig writes to Wagner of his plan for a \"worthy temple for the divine friend\" on the Pöllat Gorge."
+    },
+    {
+      "date": "5 Sep 1869",
+      "text": "The foundation stone is laid."
+    },
+    {
+      "date": "1880",
+      "text": "Topping-out ceremony for the Palas; about 200 craftsmen work on the site, sometimes up to 300 per day."
+    },
+    {
+      "date": "1882",
+      "text": "Ludwig takes provisional lodgings in the gatehouse; the palace is furnished enough to live in."
+    },
+    {
+      "date": "1883",
+      "text": "Wagner dies in Venice without ever visiting the castle."
+    },
+    {
+      "date": "1884",
+      "text": "Ludwig moves into the unfinished Palas; in the end he lives in the palace for only 172 days."
+    },
+    {
+      "date": "9 to 13 Jun 1886",
+      "text": "The king is declared incapacitated, has the deposition commission arrested in the gatehouse, and is forced to leave; he and Bernhard von Gudden die in Lake Starnberg, the mystery never resolved."
+    },
+    {
+      "date": "Jul 1886",
+      "text": "Six weeks after the king's death the palace opens to paying visitors and becomes the Wittelsbachs' most lucrative property."
+    },
+    {
+      "date": "1944 to 1945",
+      "text": "The castle was a depot for Nazi-plundered art from France; 39 photo albums documenting the seizures are recovered after the war."
+    },
+    {
+      "date": "6 Apr 2002",
+      "text": "A meteorite falls near Hohenschwangau and is named Neuschwanstein; three fragments are recovered."
+    },
+    {
+      "date": "12 Jul 2025",
+      "text": "UNESCO inscribes the palace as a World Heritage Site, Germany's 55th."
+    }
+  ],
+  "title": "Neuschwanstein Castle"
+}

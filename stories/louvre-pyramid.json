@@ -1,0 +1,128 @@
+{
+  "coordinates": {
+    "label": "Louvre Pyramid, Cour Napoleon, Paris",
+    "lat": 48.8606,
+    "lng": 2.3376
+  },
+  "description": "Take the Louvre Pyramid apart piece by piece in 3D, and read the story of I. M. Pei's glass pyramid: from Parisian scandal to the most photographed entrance in the museum world.",
+  "entities": {
+    "architect": {
+      "name": "I. M. Pei",
+      "role": "Architect of the pyramid (1983-1989)",
+      "wikidata": "Q161443"
+    },
+    "events": [
+      {
+        "name": "JR au Louvre (2016)",
+        "role": "JR made the pyramid 'disappear' with a photographic collage",
+        "start": "2016"
+      }
+    ],
+    "people": [
+      {
+        "name": "Francois Mitterrand",
+        "role": "Commissioned the Grand Louvre project in 1981"
+      },
+      {
+        "name": "JR",
+        "role": "Created the 2016 disappearing-pyramid installation"
+      }
+    ],
+    "wikidata": "Q13397"
+  },
+  "hotspots": [
+    {
+      "part": "east glass band 5",
+      "text": "The pyramid is clad in 673 panes of extra-clear laminated Diamond Glass made by Saint-Gobain: 603 rhombus-shaped and 70 triangular.",
+      "title": "The glass"
+    },
+    {
+      "part": "northeast edge beam",
+      "text": "The four corner edge beams run from the base to the apex at 21.6 meters. The 51.52 degree face angle matches ancient Egyptian pyramids.",
+      "title": "The frame"
+    },
+    {
+      "part": "Richelieu pyramid east glass",
+      "text": "Three smaller pyramids serve the museum's three wings: Richelieu, Sully and Denon.",
+      "title": "The small pyramids"
+    },
+    {
+      "part": "East pool water",
+      "text": "Reflecting pools flank the pyramid in the Cour Napoleon.",
+      "title": "The pools"
+    },
+    {
+      "part": "Apex cap",
+      "text": "The pyramid was inaugurated on 4 March 1989 and opened to the public on 29 March 1989.",
+      "title": "The apex"
+    }
+  ],
+  "intro": "In 1989 a 21.6 meter glass pyramid landed in the courtyard of the Louvre, and Paris was furious. Then the fury faded, the queues formed, and I. M. Pei's pyramid became the symbol of the museum. This is the story of the most argued-over entrance in architecture.",
+  "page_title": "Louvre Pyramid: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "In 1981 President Francois Mitterrand announced the Grand Louvre project to modernize the museum, which was straining under growing visitor numbers. In 1983 he chose the Chinese-American architect I. M. Pei, who presented his pyramid design in early 1984: a glass pyramid as the new main entrance in the Cour Napoleon, with visitors descending through it into a spacious underground lobby. The structure was engineered by Nicolet Chartrand Knoll of Montreal with Rice Francis Ritchie of Paris.",
+      "dates": "1981-1989",
+      "heading": "A pyramid for the Louvre"
+    },
+    {
+      "body": "The pyramid rises 21.6 meters on a square base 34 meters per side, a base area of 1,000 square meters. Its faces are inclined at 51.52 degrees, the same angle as the ancient pyramids of Giza. The frame carries 95 tonnes of steel and 105 tonnes of aluminium, holding 1,800 square meters of glass: 603 rhombus-shaped panes and 70 triangular ones, 673 in total. Pei insisted the historic palace facades be visible through the glass without distortion, so Saint-Gobain developed a special extra-clear laminated product, 21.52 mm thick, called Diamond Glass, made in a purpose-built electric furnace that removed the iron oxides that tint ordinary glass.",
+      "dates": "1989",
+      "heading": "673 panes of Diamond Glass"
+    },
+    {
+      "body": "The design was attacked before it was built. Critics called the pyramid an intrusion on the historic palace courtyard, and the press covered the fight for years. Pei held his ground on the geometry and the transparency, arguing that a pyramid was the least obtrusive solid that could sit in the courtyard and that the glass would defer to the palace. The pyramid was inaugurated on 4 March 1989 and opened to the public on 29 March 1989. Within a decade the controversy had inverted: the pyramid became the emblem of the Louvre, the meeting point, the selfie backdrop, the thing visitors navigate by.",
+      "dates": "1984-1989",
+      "heading": "The scandal that became the symbol"
+    },
+    {
+      "body": "Three smaller pyramids stand around the main one, marking the entrances to the museum's three wings: Richelieu, Sully and Denon. The main pyramid works as a funnel: visitors enter at the courtyard level, descend into the underground lobby, and disperse into the palace. The reflecting pools around the pyramid double the geometry in water. What looks from above like a minimalist sculpture is really a piece of crowd infrastructure, moving millions of visitors a year through a single luminous point.",
+      "dates": "1989-today",
+      "heading": "A funnel made of light"
+    },
+    {
+      "body": "Dan Brown's The Da Vinci Code (2003) gave the pyramid its most persistent myth: that it is made of exactly 666 glass panes, the Number of the Beast. The 2006 film has Robert Langdon discussing the pyramid with a French captain in front of it. The true count is 673, confirmed repeatedly by Pei's team and verifiable from the construction drawings, but the story endures because it is more exciting than the truth. The myth-busting is now part of the pyramid's lore: every debunking repeats the legend it corrects.\n\nIn May 2016 the street artist JR made the pyramid disappear. Invited by the museum, he wrapped one face in a giant black-and-white photographic collage of the palace facade behind it, so that from a single vantage point the glass structure dissolved into the historic building. The installation, part of 'JR au Louvre,' stayed up until 27 June 2016. For the pyramid's 30th birthday in March 2019 JR returned with 'The Secret of the Great Pyramid,' a vast ground collage that made the pyramid look as if it were rising from an archaeological dig. Both works played the same game Pei played in 1989: setting the modern against the historic and letting the contrast do the talking.",
+      "dates": "2003-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "louvre-pyramid",
+  "sources": "Historical facts adapted from Wikipedia (\"Louvre Pyramid\", CC BY-SA). The JR installations verified against PetaPixel, Arch2O and museum coverage. The 666 myth verified against the Louvre's published pane count.",
+  "story_title": "The story of the Louvre Pyramid",
+  "timeline": [
+    {
+      "date": "1981",
+      "text": "Mitterrand announces the Grand Louvre project."
+    },
+    {
+      "date": "1983",
+      "text": "I. M. Pei is selected as architect."
+    },
+    {
+      "date": "1984",
+      "text": "Pei presents the pyramid design to the public."
+    },
+    {
+      "date": "1989-03-04",
+      "text": "The pyramid is inaugurated."
+    },
+    {
+      "date": "1989-03-29",
+      "text": "The pyramid opens to the public."
+    },
+    {
+      "date": "2003",
+      "text": "The Da Vinci Code popularizes the false 666 panes story."
+    },
+    {
+      "date": "2016",
+      "text": "JR makes the pyramid 'disappear' with a photographic collage."
+    },
+    {
+      "date": "2019",
+      "text": "JR returns for the pyramid's 30th birthday with 'The Secret of the Great Pyramid.'"
+    }
+  ],
+  "title": "Louvre Pyramid"
+}

@@ -1,0 +1,258 @@
+{
+  "address_country": "FR",
+  "address_locality": "Paris",
+  "coordinates": {
+    "label": "Notre-Dame de Paris, Île de la Cité, Paris",
+    "lat": 48.8531,
+    "lng": 2.35
+  },
+  "date_built": "1345",
+  "description": "Take Notre-Dame apart piece by piece in 3D, and read its story: eight centuries on the Île de la Cité, the 2019 fire that destroyed its flèche and oak roof, and the five-year rebuild that reopened it in December 2024.",
+  "entities": {
+    "events": [
+      {
+        "end": "1345",
+        "name": "Construction of Notre-Dame de Paris",
+        "start": "1163"
+      },
+      {
+        "name": "First Estates General under Philip the Fair",
+        "start": "1302"
+      },
+      {
+        "name": "Napoleon crowns himself Emperor",
+        "start": "1804-12-02"
+      },
+      {
+        "name": "Hugo publishes Notre-Dame de Paris",
+        "start": "1831"
+      },
+      {
+        "end": "1864",
+        "name": "Restoration by Lassus and Viollet-le-Duc",
+        "start": "1844"
+      },
+      {
+        "name": "Liberation of Paris celebrated with the Magnificat",
+        "start": "1944-08-26"
+      },
+      {
+        "end": "2019-04-16",
+        "name": "Fire destroys the flèche and the oak roof",
+        "start": "2019-04-15"
+      },
+      {
+        "end": "2024-12-08",
+        "name": "Reopening ceremonies",
+        "start": "2024-12-07"
+      }
+    ],
+    "people": [
+      {
+        "name": "Maurice de Sully",
+        "role": "Bishop of Paris; began the cathedral in 1163",
+        "wikidata": "Q727818"
+      },
+      {
+        "name": "Victor Hugo",
+        "role": "Novelist; his 1831 novel created the movement that saved the cathedral",
+        "wikidata": "Q535"
+      },
+      {
+        "name": "Jean-Baptiste Lassus",
+        "role": "Architect of the 1844 to 1864 restoration (died 1857)",
+        "wikidata": "Q3163757"
+      },
+      {
+        "name": "Eugène Viollet-le-Duc",
+        "role": "Completed the 19th-century restoration; designed the 1859 flèche",
+        "wikidata": "Q272912"
+      },
+      {
+        "name": "Napoleon",
+        "role": "Crowned himself Emperor at Notre-Dame, 2 December 1804",
+        "wikidata": "Q517"
+      },
+      {
+        "name": "Pope Pius VII",
+        "role": "Attended Napoleon's coronation; granted minor basilica status in 1805",
+        "wikidata": "Q124754"
+      },
+      {
+        "name": "Charles de Gaulle",
+        "role": "Celebrated the Liberation of Paris at the cathedral, 26 August 1944",
+        "wikidata": "Q2042"
+      }
+    ],
+    "wikidata": "Q2981"
+  },
+  "hotspots": [
+    {
+      "part": "Gallery of Kings",
+      "text": "Twenty-eight statues of the Kings of Judah. In 1793 revolutionaries mistook them for kings of France and beheaded them; the original heads were found in excavations in 1977 and are now in the Musée de Cluny.",
+      "title": "The beheaded kings"
+    },
+    {
+      "part": "Portal of the Last Judgment",
+      "text": "The central portal's tympanum shows the Last Judgment: sinners led to hell, the saved taken to heaven.",
+      "title": "The Last Judgment portal"
+    },
+    {
+      "part": "West rose window",
+      "text": "The west rose dates to 1220; the north and south roses came with the 13th-century transepts. All three survived the 2019 fire.",
+      "title": "The rose windows"
+    },
+    {
+      "part": "Chimera figures",
+      "text": "The pensive Stryge and its kin are 19th-century decorative additions by Viollet-le-Duc's workshop. The real gargoyles, added around 1240, are functional rain spouts.",
+      "title": "Chimeras, not gargoyles"
+    },
+    {
+      "part": "North flyer 1",
+      "text": "Notre-Dame is noted for its early use of the flying buttress, which carries the thrust of the nave vaults over the aisles.",
+      "title": "The flying buttresses"
+    },
+    {
+      "part": "Golden rooster",
+      "text": "The weathervane cockerel is a symbol of the French state, which has owned the cathedral since 1905. The new rooster holds the same three relics as the old one plus the names of two thousand people who rebuilt the cathedral.",
+      "title": "The gilded rooster"
+    },
+    {
+      "part": "Spire copper statues",
+      "text": "The twelve apostle statues around the flèche. Saint Thomas, patron saint of architects, faced the spire and bore Viollet-le-Duc's face. They were removed for restoration four days before the fire.",
+      "title": "The twelve apostles"
+    },
+    {
+      "part": "Organ pipes",
+      "text": "The great organ survived the 2019 fire but was damaged by water.",
+      "title": "The great organ"
+    },
+    {
+      "part": "Emmanuel bell",
+      "text": "The bourdon Emmanuel, the great bell of the south tower.",
+      "title": "Emmanuel"
+    },
+    {
+      "part": "The Forest",
+      "text": "The medieval oak roof timbers, destroyed in the 2019 fire and rebuilt with about a thousand mature oaks from French forests.",
+      "title": "The forest"
+    }
+  ],
+  "intro": "Paris's most visited monument drew about 12 million people a year before the fire of 15 April 2019. Explode its flying buttresses, rose windows, and the rebuilt flèche to see how a medieval cathedral survived the worst five years of its life.",
+  "page_title": "Notre-Dame de Paris: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Notre-Dame and the Île de la Cité at dusk: DXR, CC BY-SA 3.0, via Wikimedia Commons",
+    "Panorama of the Gallery of Kings on the west front: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+    "Vaults in the nave: Uoaei1, CC BY-SA 4.0, via Wikimedia Commons",
+    "The spire burning on 15 April 2019: LEVRIER Guillaume, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Notre-Dame de Paris and the Île de la Cité at dusk, seen from across the Seine",
+      "body": "A Gallo-Roman temple dedicated to Jupiter is believed to have stood on the site, and a 4th-century cathedral dedicated to Saint Stephen stood just west of the present building. Bishop Maurice de Sully began the new cathedral in 1163. The choir was complete by 1182 or 1185, the nave with its flying buttresses around 1200, the west rose window in 1220, the towers between about 1210 and 1250, the north transept and rose by Jean de Chelles in 1250 to 1260, and the south transept and rose by Pierre de Montreuil in 1270. A first timber flèche went up over the crossing around 1220 to 1230 and reached 78 metres from the church floor. The cathedral is dedicated to the Virgin Mary, and since 1905 it has been owned by the French state, with use granted to the Catholic Church. It is counted among the finest examples of French Gothic architecture, noted for its early use of the rib vault and the flying buttress, its large rose windows, and its sculptural decoration.",
+      "caption": "Notre-Dame and the Île de la Cité at dusk, seen from across the Seine.",
+      "credit": "DXR, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1163-1345",
+      "heading": "A bishop's gamble on the Île de la Cité",
+      "image": "dusk.jpg"
+    },
+    {
+      "body": "The cathedral hosted the events of French history. Philip the Fair opened the first Estates General there in 1302. In 1431 the ten-year-old Henry VI of England was crowned King of France in the cathedral. Mary, Queen of Scots married the Dauphin François there in 1558. On 18 August 1572 the Protestant Henry of Navarre, the future Henri IV, married the Catholic Marguerite de Valois on the parvis in front of the cathedral; the wedding had to be held outside because the groom was a Huguenot, and six days later the St. Bartholomew's Day massacre began in Paris.",
+      "dates": "1302-1572",
+      "heading": "The cathedral as stage"
+    },
+    {
+      "alt": "The Gallery of Kings sculptures on the west front of Notre-Dame",
+      "body": "The Gothic cathedral worked as a poor people's book: sculpture told biblical stories to illiterate parishioners, and the facade sculpture was originally painted and gilded. The right portal of the west facade shows the coronation of the Virgin; the left shows the life of Saint Anne, the Virgin's mother; the central portal's tympanum shows the Last Judgment. The Gallery of Kings above the portals holds 28 statues of the Kings of Judah from the Old Testament. Revolutionaries mistook them for kings of France and beheaded them in 1793; the original heads were found during excavations in 1977 and are now in the Musée de Cluny. The grotesques were visual warnings of the evil threatening those who did not follow the Church's teachings. The gargoyles, added around 1240, were functional rain spouts; the chimeras, including the famous pensive Stryge, are 19th-century decorative additions by Viollet-le-Duc's workshop that became icons of the building. Statues of Ecclesia and Synagoga on the west facade express supersessionism, the doctrine that Christianity replaced Judaism. One reading of this: an esoteric reading of the central portal's carvings is attributed to Claude Wenzler (Wenzler 2018): figures hold circular plaques with symbols of transformation, and the central pillar shows a woman on a throne with a sceptre, two books (one open for public knowledge, one closed for esoteric knowledge), and a seven-step ladder for the seven steps alchemists followed in trying to turn base metals into gold. This is not documented medieval intent. The cockerel weathervane carries religious and political meaning at once: the cockerel is a symbol of the French state, which has owned the cathedral since 1905. The old weathervane held three relics placed there in 1935 by Archbishop Jean Verdier to protect the congregation: a fragment of the Crown of Thorns and relics of Saint Denis and Saint Geneviève, patron saints of Paris. It was recovered from the rubble after the 2019 fire. The new gilded cockerel by architect Philippe Villeneuve holds the same relics plus the names of two thousand people who took part in the reconstruction. One of the twelve apostle statues around the old flèche deserves a note: the statue of Saint Thomas, patron saint of architects, faced the flèche instead of facing outward like the others, and it bore the features of Viollet-le-Duc himself.",
+      "caption": "The Gallery of Kings on the west front: 28 Old Testament kings, beheaded in 1793 and recreated in the 19th century.",
+      "credit": "Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "The book in stone",
+      "image": "gallery-of-kings.jpg"
+    },
+    {
+      "alt": "The nave's rib vaults and clerestory of Notre-Dame",
+      "body": "From the 17th century the building was repeatedly altered to suit new tastes. A vow of Louis XIII led to choir alterations; Hardouin-Mansart and Robert de Cotte began a Louis XIV-style redecoration in 1699. In 1726 Louis Antoine de Noailles renovated the roof framing and removed the gargoyles, replacing them with lead gutters. In 1756 the canons had the medieval stained glass, except the rose windows, replaced with plain white panes. Jacques-Germain Soufflot altered the portals, and the weakened medieval flèche was taken down in 1786. During the Revolution the Commune stripped the cathedral of bronze, lead, and precious metals for melting in 1790; in 1793 it became a Temple of Reason, the 28 statues of the Gallery of Kings were pulled down with ropes and decapitated by mobs, and most of the bells were melted for cannon. With the Concordat of 1801 Napoleon restored the cathedral's use to the Church, and on 2 December 1804 he crowned himself Emperor there in the presence of Pope Pius VII. Victor Hugo's 1831 novel Notre-Dame de Paris created the public pressure that saved the building, which had been considered for demolition. Architects Jean-Baptiste Lassus and Eugène Viollet-le-Duc led a restoration from 1844 to 1864; Viollet-le-Duc, who took over after Lassus died, rebuilt the cathedral in the Gothic style as he imagined it: a new 96-metre oak-and-lead flèche (1859) weighing 750 tonnes, the recreated Gallery of Kings, new chimeras, restored stained glass, and refurnished interiors. In the final days of the Paris Commune in 1871, the Communards prepared to burn the cathedral but gave up the plan because the fire would also have consumed the crowded hospital for the elderly next door.",
+      "caption": "The nave's rib vaults and clerestory; the stone vaults held during the 2019 fire, with several holes.",
+      "credit": "Uoaei1, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1699-1871",
+      "heading": "What the centuries took",
+      "image": "vaults.jpg"
+    },
+    {
+      "alt": "The flèche of Notre-Dame burning on 15 April 2019, seen from the Pont Saint-Louis",
+      "body": "On 15 April 2019 fire broke out in the attic at 18:18. A guard was sent to the wrong location first, and the fire brigade was only summoned at 18:51. The flèche collapsed at 19:50, bringing down 750 tonnes of stone and lead. About 500 firefighters fought the blaze and saved the facade, the towers, the walls, the buttresses, and the stained glass; the stone vaults held with several holes, and the great organ was saved but damaged by water. One firefighter was seriously injured and two police officers were hurt. Paris fire brigade chaplain Jean-Marc Fournier led a human chain of firefighters, city workers, and caretakers that carried out the Crown of Thorns, the tunic of St. Louis, and other relics and artworks. A 6 million euro renovation of the flèche had begun in late 2018; the copper statues around it were removed on 11 April 2019, four days before the fire. Reconstruction ran from 2021 to 2024, and the decision was to replicate Viollet-le-Duc's flèche exactly from his plans. About a thousand mature oaks, several hundred years old and 50 to 90 cm in diameter, were selected from French forests to rebuild the flèche and the forest of roof timbers; the new flèche used about 1,000 pieces of wood and 2,000 assembly points. Damaged vaults were rebuilt with some 1,000 cubic metres of new stone by stonemasons working with ancient techniques; surviving vaults were desalinated and cleaned. Cleaning the 14th-century chancel screen revealed hidden engravings of the Last Supper and restored bright medieval color, and the 29 chapels were cleaned of black fire dust. The cleaned interior's brightness drew both praise and criticism, and a plan for contemporary stained glass in some chapels became a public controversy. The new flèche was put in place on 16 December 2023 with a new gilded rooster by Philippe Villeneuve, and the spire was unveiled on 13 February 2024. The cathedral reopened on 7 and 8 December 2024 in ceremonies led by Archbishop Laurent Ulrich and attended by about 1,500 dignitaries including US President-elect Donald Trump, Jill Biden, Britain's Prince William, and Ukraine's president Volodymyr Zelensky. The Crown of Thorns relic was returned to the cathedral on 13 December 2024.",
+      "caption": "The flèche burns on 15 April 2019, seen from the Pont Saint-Louis.",
+      "credit": "LEVRIER Guillaume, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2019-2024",
+      "heading": "The fire and the five-year rebuild",
+      "image": "spire-fire.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1923-2022",
+      "body": "The cathedral belongs to Quasimodo on screen. Lon Chaney starred in the silent Hunchback of 1923, Charles Laughton in the 1939 RKO version widely regarded as the finest adaptation, Anthony Quinn in 1956, and Disney's 1996 animated feature made the bell tower the entire world of its film, shaping the cathedral's image for the generation now visiting it.\n\nJean-Jacques Annaud's Notre-Dame on Fire (2022) made the building the title role of a disaster film dramatizing the 15 April 2019 fire, using real firefighting footage and archival material. In Amelie (2001) the young Amelie visits the cathedral with her mother to pray for a little brother, and in Before Sunset (2004) Jesse and Celine gaze at it from a Seine boat while Jesse recounts the story of a German soldier ordered to blow it up in the war.\n\nHenri Matisse painted View of Notre-Dame (1914) from his Quai Saint-Michel studio, a radically simplified blue composition from his experimental period now in the Museum of Modern Art in New York."
+    }
+  ],
+  "slug": "notre-dame-de-paris",
+  "sources": "Historical facts adapted from Wikipedia (\"Notre-Dame de Paris\", CC BY-SA), contexttravel.com, and the Catholic News Service. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Notre-Dame de Paris",
+  "timeline": [
+    {
+      "date": "1163",
+      "text": "Bishop Maurice de Sully begins construction of the cathedral."
+    },
+    {
+      "date": "1302",
+      "text": "Philip the Fair convenes the first Estates General in the cathedral."
+    },
+    {
+      "date": "1431",
+      "text": "Henry VI of England is crowned King of France at Notre-Dame."
+    },
+    {
+      "date": "18 Aug 1572",
+      "text": "The wedding of Henri of Navarre and Marguerite de Valois on the parvis; the St. Bartholomew's Day massacre follows on 24 August."
+    },
+    {
+      "date": "1786",
+      "text": "The weakened medieval flèche is taken down."
+    },
+    {
+      "date": "1793",
+      "text": "The cathedral becomes a Temple of Reason; the Gallery of Kings is beheaded; the bells are melted for cannon."
+    },
+    {
+      "date": "2 Dec 1804",
+      "text": "Napoleon crowns himself Emperor, with Pope Pius VII present."
+    },
+    {
+      "date": "1831",
+      "text": "Victor Hugo publishes Notre-Dame de Paris, the novel that saves the building."
+    },
+    {
+      "date": "1844 to 1864",
+      "text": "Restoration by Lassus and Viollet-le-Duc; the 96-metre oak-and-lead flèche goes up in 1859."
+    },
+    {
+      "date": "26 Aug 1944",
+      "text": "The Liberation of Paris is celebrated with the Magnificat; Charles de Gaulle attends."
+    },
+    {
+      "date": "11 Apr 2019",
+      "text": "The copper apostle statues are removed from the flèche for restoration, four days before the fire."
+    },
+    {
+      "date": "15 Apr 2019",
+      "text": "Fire destroys the flèche and the oak roof; the facade, towers, vaults, and stained glass are saved."
+    },
+    {
+      "date": "2021 to 2024",
+      "text": "Reconstruction replicates Viollet-le-Duc's flèche exactly, using about a thousand mature French oaks."
+    },
+    {
+      "date": "7 to 8 Dec 2024",
+      "text": "Reopening ceremonies; the Crown of Thorns relic returns on 13 December."
+    }
+  ],
+  "title": "Notre-Dame de Paris"
+}

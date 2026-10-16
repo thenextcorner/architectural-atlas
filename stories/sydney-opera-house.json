@@ -1,0 +1,252 @@
+{
+  "address_country": "AU",
+  "address_locality": "Sydney",
+  "coordinates": {
+    "label": "Sydney Opera House, Sydney",
+    "lat": -33.85681,
+    "lng": 151.21514
+  },
+  "date_built": "1973",
+  "description": "Take the Sydney Opera House apart piece by piece in 3D, and read its story: Jorn Utzon's shells, the 1966 rupture that drove him from Australia, and the long road to reconciliation.",
+  "entities": {
+    "architect": {
+      "name": "Jorn Utzon",
+      "role": "Original architect, 1957-1966; Pritzker Prize 2003",
+      "wikidata": "Q180398"
+    },
+    "events": [
+      {
+        "name": "Utzon wins the international design competition",
+        "start": "1957-01-29"
+      },
+      {
+        "name": "Construction begins",
+        "start": "1959-03-02"
+      },
+      {
+        "name": "The sphere solution",
+        "start": "1961"
+      },
+      {
+        "name": "Utzon resigns and leaves Australia",
+        "start": "1966-02-28"
+      },
+      {
+        "name": "Opened by Queen Elizabeth II",
+        "start": "1973-10-20"
+      },
+      {
+        "name": "Utzon wins the Pritzker Architecture Prize",
+        "start": "2003"
+      },
+      {
+        "name": "UNESCO World Heritage listing",
+        "start": "2007"
+      },
+      {
+        "name": "Utzon dies",
+        "start": "2008-11-29"
+      },
+      {
+        "name": "Renewed Concert Hall reopens",
+        "start": "2022-07-20"
+      }
+    ],
+    "people": [
+      {
+        "name": "Ove Arup",
+        "role": "Structural engineer; Ove Arup & Partners",
+        "wikidata": "Q717683"
+      },
+      {
+        "name": "Eero Saarinen",
+        "role": "Competition juror who championed Utzon's design",
+        "wikidata": "Q167073"
+      },
+      {
+        "name": "Davis Hughes",
+        "role": "NSW Minister for Public Works; withheld Utzon's fees, accepted his resignation",
+        "wikidata": "Q5241908"
+      }
+    ],
+    "wikidata": "Q45178"
+  },
+  "hotspots": [
+    {
+      "part": "Concert Hall entry vault, outer surface",
+      "text": "All 14 shells are sections of a single 75.2-meter sphere: the mid-1961 breakthrough that let arches of varying length be cast in common moulds. Whose eureka it was, Utzon's or the engineers', is still disputed.",
+      "title": "The shells"
+    },
+    {
+      "part": "Concert Hall entry vault, tile lid, lower band",
+      "text": "About 4,250 prefabricated tile lids bolted to the concrete ribs carry the chevron tile skin: 1,056,006 glossy white and matte cream tiles by the Swedish company Höganäs AB, which normally made stoneware tiles for the paper-mill industry.",
+      "title": "The tile chevron"
+    },
+    {
+      "part": "Podium granite deck",
+      "text": "The monumental podium is clad in pink granite aggregate panels quarried at Tarana. Its columns were first built too weak for the roof and had to be rebuilt.",
+      "title": "The podium"
+    },
+    {
+      "part": "Concert Hall south foyer glazing",
+      "text": "The foyer spaces sit behind glass curtain walls of French-made glass: about 2,000 panes in 700 sizes, in two layers, one plain and one demi-topaz tinted. Utzon had planned prefabricated plywood mullions, but a different system was built.",
+      "title": "The glass walls"
+    },
+    {
+      "part": "Grand Organ case",
+      "text": "The Concert Hall holds the Grand Organ, with more than 10,000 pipes: the largest mechanical tracker-action organ in the world.",
+      "title": "The Grand Organ"
+    },
+    {
+      "part": "Concert Hall acoustic cloud, first",
+      "text": "The 2022 renewal replaced the perspex acoustic doughnuts with 18 magenta acoustic petals and lowered the stage 40 centimetres, at a cost of 190 million Australian dollars.",
+      "title": "The acoustic petals"
+    },
+    {
+      "part": "Joan Sutherland Theatre pit",
+      "text": "Opera moved to the minor hall after Utzon's resignation, and the Joan Sutherland Theatre, at 1,507 seats, remains too small for large-scale opera and ballet. Its orchestra pit is cramped and dangerous to musicians' hearing.",
+      "title": "The opera theatre pit"
+    },
+    {
+      "part": "Utzon Room volume",
+      "text": "Rebuilt to Utzon's own design and opened in 2004, the room named for him holds his tapestry Homage to Carl Philipp Emanuel Bach, 14 by 3.7 meters: his personal reconciliation object.",
+      "title": "The Utzon Room"
+    },
+    {
+      "part": "Monumental Steps, lower run",
+      "text": "The Monumental Steps double as audience seating for the forecourt, the open-air venue south of the shells that holds up to 6,000 people.",
+      "title": "The Monumental Steps"
+    },
+    {
+      "part": "Foundation pier field, northern half",
+      "text": "588 concrete piers sunk up to 25 meters below sea level carry the building, which weighs 161,000 tonnes.",
+      "title": "The foundations"
+    }
+  ],
+  "intro": "The performing arts center on Bennelong Point, Sydney Harbour. Follow the building from the 1957 design competition to the 2022 Concert Hall renewal: fourteen shells, each a section of a single 75.2-meter sphere, and the architect who never saw it finished.",
+  "page_title": "Sydney Opera House: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Sydney Opera House from the harbour, 2019: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+    "Wide view of the Opera House, December 2008: Diliff, CC BY-SA 3.0, via Wikimedia Commons",
+    "The Opera House illuminated at night: Thomas Adams, CC BY-SA 4.0, via Wikimedia Commons",
+    "Sydney Opera House exterior: Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The Sydney Opera House from the harbour, 2019",
+      "body": "Planning began in the late 1940s, when the conductor Eugene Goossens lobbied the New South Wales premier Joseph Cahill for a dedicated opera venue; Goossens insisted on Bennelong Point. Cahill launched an international competition on 13 September 1955, with a grand prize of 5,000 pounds, for a 3,000-seat major hall and a 1,200-seat minor hall. It drew 233 entries from 32 countries. The jury included Eero Saarinen, who pulled Jorn Utzon's scheme from the final 30 and championed it. The assessors wrote that the diagrammatic drawings present a concept of an Opera House which is capable of becoming one of the great buildings of the world. The winner was announced on 29 January 1957: the Danish architect Jorn Utzon.",
+      "caption": "The Opera House from the harbour in 2019, the shells reading white from a distance.",
+      "credit": "Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1955-1957",
+      "heading": "A competition, a champion",
+      "image": "harbour-2019.jpg"
+    },
+    {
+      "body": "The point is named for Bennelong, the Wangal and Eora man seized by Governor Arthur Phillip in 1789. To the Gadigal people of the Eora Nation it is Tubowgule, a gathering place for feasting, song, dance, and story for generations, flanked by Warrane (Sydney Cove) and Wahganmuggalee (Farm Cove). In 1788 it was briefly Cattle Point, then Limeburners' Point, where convict women burned its Aboriginal shell middens for lime. The Fort Macquarie Tram Depot was demolished in 1958 to clear the site. The site's Gadigal identity as a gathering place for story, song, and dance gives the building's purpose a deep continuity, made explicit by Badu Gili, water light in Gadigal, the First Nations light show projected on the sails each sunset since 2017.",
+      "heading": "Tubowgule"
+    },
+    {
+      "body": "Utzon's shells had undefined geometry, and from 1957 to 1963 the team ran at least 12 iterations: parabolas, circular ribs, ellipsoids. In mid-1961 came the breakthrough: every shell as a section of a single 75.2-meter sphere, so arches of varying length could be cast in common moulds and tiled in prefabricated sheets on the ground. Whose eureka it was is contested: Arup's letter credits Utzon, while Arup's biographer and design-team member Yuzo Mikami present the engineers' side. But all agree the architect-engineer collaboration was extraordinary, and the shell analysis was one of the earliest uses of computers in structural design. The roof is 2,194 precast concrete sections, up to 15 tonnes each, held together by 350 kilometers of tensioned steel cable; the roofs weigh 27,230 tonnes and the whole building 161,000 tonnes. Hornibrook engineer Joe Bertony developed an adjustable steel-trussed erection arch that supported the shells during construction.",
+      "dates": "1961",
+      "heading": "One sphere"
+    },
+    {
+      "alt": "Wide view of the Sydney Opera House, December 2008",
+      "body": "The Cahill government pushed construction to start on 2 March 1959 before designs were final; the podium columns were too weak for the roof and had to be rebuilt. After the 1965 election of Robert Askin's Liberal government, the Minister for Public Works Davis Hughes questioned every cost and schedule, withheld Utzon's fees, owed over 100,000 dollars by February 1966, and demanded procurement by tender rather than Utzon's chosen suppliers. On 28 February 1966 Utzon resigned, calling it Malice in Blunderland, and left Australia forever, after protests of up to 1,000 marched in Sydney demanding his reinstatement. Peter Hall, who had signed the petition for Utzon's reinstatement, took over the interiors and found nine years of work with no concise client brief and major unresolved questions of acoustics and capacity. The major hall became a concert-only hall with 2,679 seats; opera moved to the minor hall, now the Joan Sutherland Theatre, which remains too small for large-scale opera and ballet. Utzon's plywood interiors and acoustic designs were scrapped; his stage machinery was pulled out and largely thrown away, as documented in the 1968 BBC film Autopsy on a Dream.",
+      "caption": "A wide view of the Opera House from the harbour, December 2008.",
+      "credit": "Diliff, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1966",
+      "heading": "Malice in Blunderland",
+      "image": "wide-2008.jpg"
+    },
+    {
+      "alt": "The Sydney Opera House illuminated at night",
+      "body": "Formally completed in 1973 at 102 million Australian dollars, ten years late and 1,357 percent over budget in real terms, the building was opened by Queen Elizabeth II on 20 October 1973 with fireworks and Beethoven's Ninth. It is frequently claimed, erroneously, that Utzon was not invited and went unmentioned: he was invited but declined to avoid overshadowing the event, and Premier Askin credited him in his speech. Reconciliation came late: Utzon was appointed design consultant in 1999, won the Pritzker Prize in 2003, and the Utzon Room opened in 2004 with his 14 by 3.7-meter tapestry Homage to Carl Philipp Emanuel Bach. He died on 29 November 2008, never having returned to Australia or seen the finished building.",
+      "caption": "The Opera House illuminated at night, with the harbour city behind it.",
+      "credit": "Thomas Adams, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1973-2008",
+      "heading": "The long way back",
+      "image": "night.jpg"
+    },
+    {
+      "body": "The Decade of Renewal ran from 2013 to 2023 at about 300 million Australian dollars. Its largest project was the Concert Hall renewal by ARM Architecture and Arup: closed in February 2020, reopened on 20 July 2022 at 190 million dollars, with 18 magenta acoustic petals replacing the perspex doughnuts, the stage lowered 40 centimetres, new staging systems, and improved accessibility. The Sydney Symphony Orchestra reopened it with Mahler's Resurrection under Simone Young. Earlier, the Western Foyer was refurbished in 2009 by Utzon and his son Jan, the largest project since the 1999 re-engagement, and in 2016 the Le Corbusier tapestry Les Dés Sont Jetés, The Dice Are Cast, commissioned by Utzon in 1959 and kept by his family for more than 50 years, was finally hung in the Western Foyer.",
+      "dates": "2013-2023",
+      "heading": "A decade of renewal"
+    },
+    {
+      "alt": "The Sydney Opera House exterior",
+      "body": "The building became a UNESCO World Heritage Site in 2007 under criterion i. The sails became a projection screen: the 2013 International Fleet Review lightshow, the 40th anniversary, and the nightly Vivid projections turned the shells into the harbour's canvas. That canvas is contested: in October 2018 CEO Louise Herron refused the sails as a billboard for the Everest horse race, Premier Gladys Berejiklian overruled her, and a 298,000-signature petition and 81 percent public opposition followed. Its history of firsts runs deeper: in 1960 Paul Robeson was the first artist to perform at the site, singing Ol' Man River to construction workers at lunch. The 1,056,006 tiles, glossy white and matte cream in a chevron pattern, read as uniform white from a distance and reveal their texture up close: an industrial material, made by the Swedish company Höganäs AB, elevated to a monument.",
+      "caption": "The Opera House exterior, tile chevron visible on the shells.",
+      "credit": "Bernard Gagnon, CC BY-SA 3.0, via Wikimedia Commons",
+      "heading": "The harbour's canvas",
+      "image": "exterior.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2000-2014",
+      "body": "Pixar's Finding Nemo (2003) made the animated Opera House the signature landmark of its Sydney Harbour sequences: after Marlin and Dory are expelled from the whale, Nigel the pelican flies them over the building to the dentist's office where Nemo is held, introducing the sails to a generation of children worldwide. John Woo's Mission: Impossible 2 (2000) used the Opera House, Harbour Bridge and Sydney Tower as its Sydney geography, with the finale staged in the park directly behind the building. In Godzilla: Final Wars (2004) Godzilla hurls the monster Zilla into the Opera House and destroys them both with his atomic breath, a demolition the production pre-publicized before release.\n\nThe ABC sitcom Modern Family devoted its 2014 Australia episode to a Sydney sightseeing tour built around the Harbour Bridge and the Opera House; shot on location, it drew 9.59 million US viewers and was followed by a reported 25 percent lift in Qantas enquiries from Americans looking to visit Australia.\n\nBrett Whiteley, Australia's most celebrated modern painter, took a decade to complete his painting Opera House, which he exchanged with Qantas for a period of free air travel; it sold at Sotheby's Sydney in 2007 for A$2.88 million, then the highest auction price achieved for the artist. Ken Done has made the building a signature recurring motif across his pop-art Sydney Harbour paintings for decades."
+    }
+  ],
+  "slug": "sydney-opera-house",
+  "sources": "Historical facts adapted from Wikipedia (\"Sydney Opera House\", CC BY-SA), the Sydney Opera House Trust, Structurae, and Australian Geographic. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Sydney Opera House",
+  "timeline": [
+    {
+      "date": "1955-09-13",
+      "text": "Cahill launches the international design competition."
+    },
+    {
+      "date": "1957-01-29",
+      "text": "Utzon's design is announced the winner: 233 entries from 32 countries."
+    },
+    {
+      "date": "1959-03-02",
+      "text": "Construction begins, before the design is final."
+    },
+    {
+      "date": "1960",
+      "text": "Paul Robeson sings 'Ol' Man River' to construction workers at lunch."
+    },
+    {
+      "date": "1961",
+      "text": "The sphere solution: all shells as sections of one 75.2-meter sphere."
+    },
+    {
+      "date": "1966-02-28",
+      "text": "Utzon resigns after Hughes withholds his fees and leaves Australia forever."
+    },
+    {
+      "date": "1973-10-20",
+      "text": "Opened by Queen Elizabeth II: Beethoven's Ninth, fireworks, 102 million dollars."
+    },
+    {
+      "date": "2003",
+      "text": "Utzon wins the Pritzker Architecture Prize."
+    },
+    {
+      "date": "2004",
+      "text": "The Utzon Room opens, named in his honour."
+    },
+    {
+      "date": "2007",
+      "text": "UNESCO World Heritage listing, under criterion i."
+    },
+    {
+      "date": "2008-11-29",
+      "text": "Utzon dies, never having seen the finished building."
+    },
+    {
+      "date": "2018-10",
+      "text": "The Everest horse-race advertising controversy: a 298,000-signature petition against using the sails as a billboard."
+    },
+    {
+      "date": "2022-07-20",
+      "text": "The renewed Concert Hall reopens: 190 million dollars, acoustic petals, lowered stage."
+    },
+    {
+      "date": "2023-10-20",
+      "text": "The 50th anniversary."
+    }
+  ],
+  "title": "Sydney Opera House"
+}

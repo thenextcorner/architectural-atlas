@@ -1,0 +1,242 @@
+{
+  "address_country": "IN",
+  "address_locality": "Agra",
+  "coordinates": {
+    "label": "Taj Mahal, Agra",
+    "lat": 27.175,
+    "lng": 78.0419
+  },
+  "date_built": "1653",
+  "description": "Take the Taj Mahal apart piece by piece in 3D, and read its story: Shah Jahan's marble tomb for Mumtaz Mahal, a 17-hectare paradise of symmetry, and the cenotaph that breaks it.",
+  "entities": {
+    "architect": {
+      "name": "Ustad Ahmad Lahori",
+      "role": "Led the board of architects; the emperor's court architect",
+      "wikidata": "Q2551253"
+    },
+    "events": [
+      {
+        "name": "Shah Jahan commissions the mausoleum",
+        "start": "1631"
+      },
+      {
+        "name": "Construction begins",
+        "start": "1632"
+      },
+      {
+        "name": "The mausoleum is completed",
+        "start": "1648"
+      },
+      {
+        "name": "The full complex is completed",
+        "start": "1653"
+      },
+      {
+        "name": "Aurangzeb deposes Shah Jahan",
+        "start": "1658"
+      },
+      {
+        "name": "Shah Jahan dies and is buried beside Mumtaz",
+        "start": "1666"
+      },
+      {
+        "name": "Lord Curzon's restoration is completed",
+        "start": "1908"
+      },
+      {
+        "name": "UNESCO World Heritage Site",
+        "start": "1983"
+      }
+    ],
+    "people": [
+      {
+        "name": "Shah Jahan",
+        "role": "Commissioned the complex; fifth Mughal emperor (reigned 1628-1658)",
+        "wikidata": "Q83672"
+      },
+      {
+        "name": "Mumtaz Mahal",
+        "role": "Mughal empress; the mausoleum was built for her tomb",
+        "wikidata": "Q231693"
+      },
+      {
+        "name": "Amanat Khan Shirazi",
+        "role": "Chief calligrapher of the inscriptions",
+        "wikidata": "Q5938268"
+      }
+    ],
+    "wikidata": "Q9141"
+  },
+  "hotspots": [
+    {
+      "part": "Outer onion dome",
+      "text": "23 meters high on a 12-meter cylindrical drum with an 18.4-meter inner diameter. Inside sits a second, smaller dome: a double-shell construction, with the inner dome decorated with a sun motif.",
+      "title": "The onion dome"
+    },
+    {
+      "part": "Gilded finial",
+      "text": "9.6 meters high, topped by a crescent moon, mixing Persian and Hindu decorative elements. The original was gold; it was replaced with a gilded bronze copy in the early 19th century. One reading of this: one secondary source reads the finial and the moon's horns as combining into a trident shape that recalls Hindu symbols of Shiva.",
+      "title": "The finial"
+    },
+    {
+      "part": "Northeast minaret lower tier",
+      "text": "Each of the four minarets stands 43.02 meters tall. They lean slightly outward, widely reported as deliberate earthquake engineering so the towers would fall away from the tomb; some writers dispute that the lean was the original intent.",
+      "title": "The minarets"
+    },
+    {
+      "part": "Gate calligraphy panels",
+      "text": "The great gate carries the inscription 'O Soul, thou art at rest. Return to the Lord at peace with Him, and He at peace with you.' (Quran 89:27-30). Amanat Khan dated the gate 1648: 'Finished with His help, the Most High'.",
+      "title": "The gate inscription"
+    },
+    {
+      "part": "Central water tank",
+      "text": "The raised marble tank at the garden's center, with five fountains driven by pressure from a 9.47-meter drop. Art historian Wayne Begley argued it was intended as a replica of al-Kawthar, the celestial tank of abundance promised to Muhammad.",
+      "title": "The central tank"
+    },
+    {
+      "part": "North-south channel, north reach",
+      "text": "The garden's water channels run 120 meters long and 6 wide. Begley argued in 1979 that the four channels symbolize the four rivers of paradise named in the Quran and hadith literature.",
+      "title": "The paradise channels"
+    },
+    {
+      "part": "Shah Jahan cenotaph",
+      "text": "Shah Jahan died in 1666 and was buried beside Mumtaz. His cenotaph is the one element that breaks the complex's otherwise perfect symmetry.",
+      "title": "The symmetry breaker"
+    },
+    {
+      "part": "East jali screen panel",
+      "text": "Eight pierced marble panels enclose the cenotaphs, inlaid with semi-precious stones.",
+      "title": "The jali screen"
+    },
+    {
+      "part": "South pishtaq calligraphy band",
+      "text": "Four 33-meter pishtaq arches frame the facades. Panels placed higher on the building use slightly larger script, correcting the skewing effect when viewed from below.",
+      "title": "The pishtaq arches"
+    },
+    {
+      "part": "Mosque central dome",
+      "text": "The red sandstone mosque on the west side is mirrored by the jawab, the guest house, on the east, with inlaid floors but no mihrab. Only symmetry required it.",
+      "title": "The mosque and the jawab"
+    }
+  ],
+  "intro": "The ivory-white mausoleum on the Yamuna at Agra, commissioned in 1631. Follow the complex from the great gate through the charbagh garden to the tomb: mosque, guest house, and the calligraphy that climbs the walls.",
+  "page_title": "Taj Mahal: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Classic frontal view of the Taj Mahal with reflecting pool: Yann, edited by King of Hearts, CC BY-SA 4.0, via Wikimedia Commons",
+    "Frontal view of the Taj Mahal complex: Yann, edited by Jim Carter, CC BY-SA 4.0, via Wikimedia Commons",
+    "Reflection of the Taj Mahal in water: Antrix3, CC BY-SA 4.0, via Wikimedia Commons",
+    "Side view of the Taj Mahal: Driftwithwind, CC BY-SA 3.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Classic frontal view of the Taj Mahal with the reflecting pool",
+      "body": "Mumtaz Mahal died in 1631 in childbirth, her fourteenth child. Shah Jahan, the fifth Mughal emperor, commissioned the mausoleum that year, and construction began in 1632. More than 20,000 workers and artisans built it under a board of architects led by the court architect Ustad Ahmad Lahori. The recorded team includes the Ottoman dome designer Ismail Afandi, the chief calligrapher Amanat Khan Shirazi, the finial caster Qazim Khan, and the masonry supervisors Muhammad Hanif, Mir Abdul Karim, and Mukkarimat. The land came from Raja Jai Singh I in exchange for a palace in central Agra. White marble came from Makrana in Rajasthan, red sandstone from Fatehpur Sikri, and 28 types of precious and semi-precious stones arrived from across Asia: jade and crystal from China, turquoise from Tibet, lapis lazuli from Afghanistan, sapphire from Sri Lanka, carnelian from Arabia.",
+      "caption": "The classic frontal view, with the reflecting pool on the garden's north-south axis.",
+      "credit": "Yann, edited by King of Hearts, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1631-1632",
+      "heading": "A tomb for Mumtaz",
+      "image": "frontal.jpg"
+    },
+    {
+      "body": "The tomb is the centerpiece of a 17-hectare complex that includes a mosque and a guest house, set in formal gardens bounded on three sides by a crenellated wall, with the river side left open. The building blends Indo-Islamic and Mughal design traditions. The mausoleum sits on a 95.5-meter square plinth, 6 meters high; the main block rises 56.9 meters square, and the outer onion dome stands 23 meters high on a 12-meter drum, reaching 73 meters to the tip of the finial. The art historian Ebba Koch reads the compound as a symbol of earthly life and the afterlife: the plan splits in two, the white marble side of the mausoleum and gardens against the red sandstone side built for worldly markets, with the grand gate between them marking the transition. Only the mausoleum is white, for Mumtaz Mahal's enlightenment, spirituality, and faith. Bilateral symmetry runs through the whole complex; in Mughal court culture it was a symbol of a ruling force that brings balance and harmony.",
+      "heading": "Seventeen hectares of symmetry"
+    },
+    {
+      "body": "The charbagh garden is laid out as an earthly paradise: a 296.31-meter square divided into quadrants by two main walkways, with water channels 120 meters long and 6 meters wide. The art historian Wayne Begley argued in 1979 that the four water channels are meant to symbolize the four rivers of paradise named in the Quran and hadith literature, and that the raised marble tank at the garden's center, with its five fountains, was probably intended as a replica of al-Kawthar, the celestial tank of abundance promised to Muhammad. The plan is aligned to the cardinal directions, and the sun can be seen rising and setting on the plan's corners at the summer and winter solstices, which makes the Taj a symbolic horizon. The marble itself changes color with the light: pinkish in the morning, milky white in the day, golden in moonlight.",
+      "heading": "Paradise in four channels"
+    },
+    {
+      "body": "The calligraphy is florid Thuluth script in jasper or black marble inlaid in white marble panels, with passages from the Quran. Panels placed higher on the building use slightly larger script, which corrects the skewing effect when viewed from below. The inscription on the great gate translates roughly as 'O Soul, thou art at rest. Return to the Lord at peace with Him, and He at peace with you.' (Quran 89:27-30). The calligraphy was created by Abdul Haq, on whom Shah Jahan conferred the title Amanat Khan; he signed the south arch of the domed hall in 1638 or 1639 and dated the great gate in 1648 with the words 'Finished with His help, the Most High'. The mausoleum was substantially complete by 1648; the first ceremony had been held on 6 February 1643, an observance of the 12th anniversary of Mumtaz Mahal's death, and the whole complex was finished in 1653 at an estimated cost of about 32 million rupees at the time.",
+      "heading": "Words in stone"
+    },
+    {
+      "alt": "The Taj Mahal reflected in water",
+      "body": "In 1658 Shah Jahan's son Aurangzeb deposed him and held him prisoner in Agra Fort, where he spent his last years looking across the river at the tomb. He died in 1666 and was buried beside Mumtaz. His cenotaph is the one element that breaks the complex's otherwise perfect symmetry.",
+      "caption": "The tomb reflected in water; the dark reflection once fed the Black Taj myth.",
+      "credit": "Antrix3, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1658-1666",
+      "heading": "The symmetry breaker",
+      "image": "reflection.jpg"
+    },
+    {
+      "alt": "Side view of the Taj Mahal",
+      "body": "Under British rule, Lord Curzon ordered a restoration project that was completed in 1908, and he commissioned the large lamp in the interior chamber. In 1942 the government covered the building in scaffolding to hide it from Japanese air raids; the camouflage was repeated during the India-Pakistan wars of 1965 and 1971. Air pollution, especially acid rain linked to the Mathura oil refinery, has turned the marble yellow-brown. The Indian government set up the Taj Trapezium Zone, a 10,400 square kilometer area around the monument with strict emissions standards, and the Archaeological Survey of India periodically applies mud packs of multani mitti to draw pollutants out of the marble and restore the white color, continuing into the 2020s alongside replacement of broken marble. Structural worries surfaced around 2010, when cracks appeared and the minarets showed signs of tilting, possibly linked to falling groundwater in the Yamuna basin threatening the wooden foundations. Storms on 11 April 2018 and 31 May 2020 caused minor damage.",
+      "caption": "A side view of the mausoleum, minarets at the plinth corners.",
+      "credit": "Driftwithwind, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1908-today",
+      "heading": "Camouflage and conservation",
+      "image": "sideview.jpg"
+    },
+    {
+      "alt": "Frontal view of the Taj Mahal complex",
+      "body": "The Black Taj is a longstanding myth. It holds that Shah Jahan planned a black marble mausoleum for himself across the Yamuna. The idea comes from the writings of the traveler and gem merchant Jean-Baptiste Tavernier, who visited Agra in 1665. Excavations in the 1990s showed that the supposed blackened marble ruins in the Mahtab Bagh were discolored white stones. A more likely origin, demonstrated by archaeologists in 2006 when they partly reconstructed the Mahtab Bagh pool, is the dark reflection of the white mausoleum in the pool water.",
+      "caption": "Another frontal view of the complex, with the mosque and guest house flanking the tomb.",
+      "credit": "Yann, edited by Jim Carter, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "The Black Taj that never was",
+      "image": "frontal2.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1796-2010",
+      "body": "The 1928 silent epic Shiraz: A Romance of India imagined the Taj's origin story, with the potter Shiraz loving the woman who becomes Mumtaz Mahal; the BFI National Archive restored it in 2017 with a new score by Anoushka Shankar. Bollywood told the legend its own way in Taj Mahal (1963), a commercial hit remembered for its award-winning music. The most widely seen Taj sequence of the 21st century is in Slumdog Millionaire (2008), where the young Jamal and Salim work the monument as fake tour guides, and Ricky Gervais sent Karl Pilkington there in An Idiot Abroad (2010).\n\nEurope first saw the tomb in print. Thomas Daniell's hand-coloured aquatints, drawn from 1789 sketches and published in 1796 and 1801, introduced the Taj to European audiences. The American orientalist Edwin Lord Weeks painted The Taj Mahal (1883) in his French studio from sketches made on his 1882 India trip; it is now in the Walters Art Museum in Baltimore. Marianne North's 1878 oil shows the tomb as a distant backdrop behind trees and flowers, and hangs in her gallery at the Royal Botanic Gardens, Kew.\n\nA frequent mix-up: the Indian palace in the Bond film Octopussy (1983) is the Taj Lake Palace in Udaipur, a different building in a different city, not the Taj Mahal."
+    }
+  ],
+  "slug": "taj-mahal",
+  "sources": "Historical facts adapted from Wikipedia (\"Taj Mahal\", CC BY-SA), Citizendium (\"Origins and architecture of the Taj Mahal\"), and the Koch/Barraud 2006 measured survey. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Taj Mahal",
+  "timeline": [
+    {
+      "date": "1631",
+      "text": "Mumtaz Mahal dies in childbirth; Shah Jahan commissions the mausoleum."
+    },
+    {
+      "date": "1632",
+      "text": "Construction begins with more than 20,000 workers and artisans."
+    },
+    {
+      "date": "1638/39",
+      "text": "Amanat Khan signs the south arch of the domed hall as work nears completion."
+    },
+    {
+      "date": "1643-02-06",
+      "text": "First ceremony at the mausoleum, the 12th anniversary of Mumtaz Mahal's death."
+    },
+    {
+      "date": "1648",
+      "text": "The mausoleum is completed; Amanat Khan dates the great gate 'Finished with His help, the Most High'."
+    },
+    {
+      "date": "1653",
+      "text": "The full complex is completed."
+    },
+    {
+      "date": "1658",
+      "text": "Aurangzeb deposes Shah Jahan and imprisons him in Agra Fort."
+    },
+    {
+      "date": "1666",
+      "text": "Shah Jahan dies and is buried beside Mumtaz, breaking the complex's symmetry."
+    },
+    {
+      "date": "1908",
+      "text": "Lord Curzon's restoration is completed."
+    },
+    {
+      "date": "1942",
+      "text": "The monument is camouflaged with scaffolding against Japanese air raids."
+    },
+    {
+      "date": "1983",
+      "text": "Designated a UNESCO World Heritage Site."
+    },
+    {
+      "date": "2007",
+      "text": "Named a New 7 Wonder of the World."
+    },
+    {
+      "date": "2018/2020",
+      "text": "Storms cause minor damage to the complex."
+    }
+  ],
+  "title": "Taj Mahal"
+}

@@ -1,0 +1,257 @@
+{
+  "address_country": "FR",
+  "address_locality": "Paris",
+  "coordinates": {
+    "label": "Eiffel Tower, Paris",
+    "lat": 48.85822222,
+    "lng": 2.2945
+  },
+  "date_built": "1889",
+  "description": "Take the Eiffel Tower apart piece by piece in 3D, and read its story: the artists' revolt of 1887, the 72 names in gold, the radio that saved it from demolition, and the Iron Lady.",
+  "entities": {
+    "architect": {
+      "name": "Gustave Eiffel",
+      "role": "Engineer; bought the design rights, financed and built the tower",
+      "wikidata": "Q20882"
+    },
+    "events": [
+      {
+        "name": "Koechlin sketches the great pylon",
+        "start": "1884-05"
+      },
+      {
+        "name": "Eiffel signs the construction contract",
+        "start": "1887-01-08"
+      },
+      {
+        "name": "Foundation work begins",
+        "start": "1887-01-28"
+      },
+      {
+        "name": "The artists' protest is published in Le Temps",
+        "start": "1887-02-14"
+      },
+      {
+        "name": "Eiffel hoists the Tricolour on the finished tower",
+        "start": "1889-03-31"
+      },
+      {
+        "name": "The tower opens to the public",
+        "start": "1889-05-15"
+      },
+      {
+        "name": "Spared from planned demolition by radio telegraphy",
+        "start": "1909"
+      },
+      {
+        "name": "Tower transmitter jams German radio at the Marne",
+        "start": "1914"
+      },
+      {
+        "name": "Inscribed in the UNESCO Paris, Banks of the Seine site",
+        "start": "1991"
+      },
+      {
+        "name": "Millennium sparkle lighting installed",
+        "start": "1999-12-31"
+      }
+    ],
+    "people": [
+      {
+        "name": "Maurice Koechlin",
+        "role": "Senior engineer; co-originator of the 1884 design sketch",
+        "wikidata": "Q339645"
+      },
+      {
+        "name": "Emile Nouguier",
+        "role": "Senior engineer; co-originator of the 1884 design sketch",
+        "wikidata": "Q286254"
+      },
+      {
+        "name": "Stephen Sauvestre",
+        "role": "Architect; added the decorative arches and embellishments",
+        "wikidata": "Q778243"
+      },
+      {
+        "name": "Adolphe Alphand",
+        "role": "Exposition commissioner; received the artists' protest",
+        "wikidata": "Q390367"
+      }
+    ],
+    "wikidata": "Q243"
+  },
+  "hotspots": [
+    {
+      "part": "South frieze, 72 names",
+      "text": "72 French scientists, engineers, and mathematicians are engraved in gold letters about 60 centimetres tall on the frieze below the first balcony, under Eiffel's stated invocation of Science. The list contains no women; in 2026 a proposal was presented to add 72 women scientists' names in gold alongside.",
+      "title": "The 72 names"
+    },
+    {
+      "part": "South arch east half",
+      "text": "Stephen Sauvestre's four decorative grill-work arches at the base are the only non-structural elements, added to make the tower look more substantial and give the exposition a grander entrance.",
+      "title": "Sauvestre's arches"
+    },
+    {
+      "part": "First floor glass floor",
+      "text": "A glass floor was installed on the first level in 2014, part of a refurbishment of the level.",
+      "title": "The glass floor"
+    },
+    {
+      "part": "Eiffel apartment",
+      "text": "Eiffel's private apartment at the top, with period furniture, holds wax figures of Eiffel, his daughter Claire, and Thomas Edison, plus the phonograph Edison presented to Eiffel on his 1889 visit.",
+      "title": "Eiffel's apartment"
+    },
+    {
+      "part": "Sparkling light strings",
+      "text": "20,000 flash bulbs installed in 2000 sparkle for five minutes every hour. The 1989 lighting display by Pierre Bideau was ruled an original visual creation, so the sparkle stays under copyright until 2092.",
+      "title": "The sparkles"
+    },
+    {
+      "part": "Broadcasting aerial array",
+      "text": "The tower carries about 120 antennas for television and radio broadcasting. Radio telegraphy is what saved the tower from its planned 1909 demolition; the 1957 aerial raised it to 330 meters.",
+      "title": "The antennas"
+    },
+    {
+      "part": "Spire south lattice panel",
+      "text": "The basically exponential curve of the four outer edges is the wind-load diagram made visible: wind resistance dictated the curvature. One reading of this: the shape can be read as the honest expression of its structural logic.",
+      "title": "The wind curve"
+    },
+    {
+      "part": "Northeast leg shoe",
+      "text": "The critical joining of the legs at the first level was completed by the end of March 1888 with hydraulic jacks exerting 800 tonnes, attached to the leg shoes to align the legs.",
+      "title": "The leg shoes"
+    },
+    {
+      "part": "Northwest foundation caissons",
+      "text": "The north and west legs, on the Seine side, rest on 15-meter-long, 6-meter-diameter compressed-air caissons sunk to 22 meters under 6-meter slabs; the east and south legs sit on 2-meter slabs.",
+      "title": "The caisson foundations"
+    },
+    {
+      "part": "Floodlight projector ring",
+      "text": "336 projectors light the tower at night.",
+      "title": "The floodlights"
+    }
+  ],
+  "intro": "Gustave Eiffel's 330-meter lattice tower on the Champ de Mars, built for the 1889 Exposition Universelle. From the hydraulic jacks of 1888 to the sparkle lighting of 1999, this is how a temporary fairground tower became the symbol of France.",
+  "page_title": "Eiffel Tower: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Full view of the tower: Benh LIEU SONG, public domain, via Wikimedia Commons",
+    "The tower under construction, 1888: Louis-Emile Durandelle, public domain, via Wikimedia Commons",
+    "Full view toward the Trocadéro during the 1900 Exposition Universelle: unknown author, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "body": "In May 1884, the senior engineers Maurice Koechlin and Emile Nouguier of the Compagnie des Établissements Eiffel sketched at home 'a great pylon, consisting of four lattice girders standing apart at the base and coming together at the top.' Gustave Eiffel was initially unenthusiastic; the architect Stephen Sauvestre then added the decorative arches at the base, a glass pavilion on the first level, and other embellishments, which won Eiffel over. Eiffel bought the patent rights from the three men. On 1 May 1886 the trade minister Edouard Lockroy altered the exposition competition terms to require a 300-meter four-sided metal tower on the Champ de Mars, effectively making Eiffel's design a foregone conclusion. The contract of 8 January 1887 was signed by Eiffel in a personal capacity: he received only 1.5 million francs of the estimated 6.5 million cost but kept all commercial income for 20 years.",
+      "dates": "1884",
+      "heading": "A sketch at home"
+    },
+    {
+      "body": "In February 1887 the Committee of Three Hundred, one member per meter of tower, led by the architect Charles Garnier and including Bouguereau, Maupassant, Gounod, and Massenet, published 'Artists against the Eiffel Tower' in Le Temps: a 'useless and monstrous' tower, 'a gigantic black smokestack' whose 'hateful shadow' would crush Notre Dame, the Louvre, and the Arc de Triomphe. Eiffel answered by comparing his tower to the Egyptian pyramids: admirable in Egypt, why hideous in Paris? Lockroy dismissed the protest as irrelevant since construction was already underway. Guy de Maupassant supposedly lunched daily in the tower restaurant because it was the one place in Paris from which the tower was invisible.",
+      "dates": "1887",
+      "heading": "The artists' revolt"
+    },
+    {
+      "alt": "The Eiffel Tower under construction in 1888",
+      "body": "Foundations started on 28 January 1887. The drawing office produced 1,700 general and 3,629 detailed drawings for 18,038 parts joined by 2.5 million rivets; no drilling or shaping was done on site. The critical joining of the legs at the first level was completed by the end of March 1888 with hydraulic jacks exerting 800 tonnes. Of the 300 on-site workers, only one died, attributed to Eiffel's safety precautions. Main structural work finished at the end of March 1889; on 31 March Eiffel led officials up on foot, the lifts were not ready, and hoisted the Tricolour at 2:35 pm to a 25-gun salute. Opened to the public on 15 May 1889, the tower drew 1,896,987 visitors by the end of the exposition. Thomas Edison visited Eiffel's private apartment at the top and presented him with a phonograph.",
+      "caption": "The tower under construction in 1888, the legs joined at the first level.",
+      "credit": "Louis-Emile Durandelle, public domain, via Wikimedia Commons",
+      "dates": "1887-1889",
+      "heading": "18,038 parts, 2.5 million rivets",
+      "image": "construction-1888.jpg"
+    },
+    {
+      "alt": "The Eiffel Tower during the 1900 Exposition Universelle, seen from the Trocadéro",
+      "body": "The tower was conceived as temporary: the 1887 contract gave Eiffel commercial exploitation for 20 years, after which ownership would revert to the City of Paris and it was slated for dismantling in 1909. It survived because it proved indispensable to radio telegraphy. It became part of the International Time Service in 1910, and in 1910 Theodor Wulf's measurements from the tower incidentally discovered cosmic rays. In 1914 its radio transmitter jammed German communications, hindering the advance on Paris and contributing to the Allied victory at the First Battle of the Marne; its wireless station intercepted enemy traffic throughout the war, including the coded message that contributed to the arrest and execution of Mata Hari in 1917.",
+      "caption": "The tower during the 1900 Exposition Universelle, looking toward the Trocadéro.",
+      "credit": "Unknown author, public domain, via Wikimedia Commons",
+      "dates": "1909-1918",
+      "heading": "Saved by radio",
+      "image": "exposition-1900.jpg"
+    },
+    {
+      "body": "Eiffel engraved the names of 72 French scientists, engineers, and mathematicians in gold letters about 60 centimetres tall on the frieze below the first balcony. His stated reason: 'To express in a striking manner that the monument I am building will be placed under the invocation of Science, I have decided to inscribe in gold letters on the great frieze of the first floor... the names of the greatest scholars who have honored France from 1789 to the present day.' The engravings were painted over early in the 20th century and restored in 1986-87; a 2010-11 repainting restored the original gold. The list contains no women; the exclusion of Sophie Germain, whose elasticity theory underpinned the engineering, has been criticized, and in 2026 a proposal was presented to add 72 women scientists' names in gold alongside the existing ones. To the charge that he ignored engineering principle for art, Eiffel replied to Le Temps on 14 February 1887: the conditions that give strength 'conform to the hidden rules of harmony'; wind resistance dictated the curvature of the four outer edges, which would 'give a great impression of strength and beauty.' One reading of this: the tower's basically exponential curve can be read as the wind-load diagram made visible, a founding statement of modern engineering aesthetics.",
+      "heading": "Under the invocation of science"
+    },
+    {
+      "alt": "Full view of the Eiffel Tower",
+      "body": "In 1918 Guillaume Apollinaire wrote a nationalist calligram in the shape of the tower about the war against Germany, and it had become a symbol of Paris and France. In 1925 the con artist Victor Lustig 'sold' the tower for scrap metal, twice. From 1925 to 1934 Citroën illuminated signs made it the world's tallest advertising space. In June 1940 the French cut the lift cables; German soldiers had to climb to hoist a swastika-centered Reichskriegsflagge, which blew away within hours. Hitler visited Paris but stayed on the ground. In August 1944 Hitler ordered General Dietrich von Choltitz to demolish the tower with the rest of Paris; von Choltitz disobeyed. On 25 August, before the Germans were fully driven out, two men from the French Naval Museum replaced the German flag with the Tricolour, narrowly beating a team led by Lucien Sarniguet, who had lowered the Tricolour in June 1940.",
+      "caption": "The full tower, 330 meters of wrought-iron lattice.",
+      "credit": "Benh LIEU SONG, public domain, via Wikimedia Commons",
+      "dates": "1918-1944",
+      "heading": "War and the Iron Lady",
+      "image": "full-view.jpg"
+    },
+    {
+      "body": "About 60 tons of paint go on every 7 years against rust; the tower has been repainted at least 19 times. Originally reddish brown, it changed in 1968 to 'Eiffel Tower Brown,' a bronze, and was re-painted yellow-brown in 2010: three shades, lighter at the top and darker at the bottom, to complement the Parisian sky. Lead paint was used until 2001. A broadcasting aerial added in 1957 raised the tower to 330 meters; further work in 2000 and later kept it at today's 330 meters. The top can shift up to 18 centimetres away from the sun through thermal expansion, and it sways up to 9 centimetres in wind. On 31 December 1999 the millennium countdown lighting installed 20,000 flashing bulbs that sparkle for five minutes every hour, reinstalled in 2003. The tower itself has been public domain since 1993, but Pierre Bideau's 1989 centenary lighting display was ruled an original visual creation by French courts in 1990 and 1992, so commercial use of night photographs of the lit tower technically requires permission; Bideau died in 2021, so the display stays under copyright until 2092. In 2024 the mayor of Paris proposed keeping the Olympic rings on the tower permanently, replacing the 30-ton originals with lighter versions; the Eiffel family and residents opposed it.",
+      "dates": "1957-today",
+      "heading": "330 meters and counting"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1833-2014",
+      "body": "Universal's Tower of London (1939) made the fortress a horror icon, with Basil Rathbone as the scheming Richard III and Boris Karloff as his club-footed executioner Mord; Roger Corman remade it in 1962 with Vincent Price taking over Rathbone's role. The modern family-friendly flagship is Muppets Most Wanted (2014), whose plot is a Crown Jewels heist at the Tower, with exteriors shot on location and the theft driving the whole third act.\n\nPaul Delaroche's The Execution of Lady Jane Grey (1833), showing the blindfolded Jane groping for the block in a Tower chamber, is one of the National Gallery's most visited paintings. John Everett Millais painted The Princes in the Tower (1878), depicting Edward V and Richard of York inside the fortress; exhibited at the Royal Academy that year, it is now at Royal Holloway College.\n\nTwo caveats for the eagle-eyed: the London church scenes in The Da Vinci Code (2006) were filmed at Westminster Abbey and the Temple Church, not the Tower, and when Wolf Hall (2015) needed the Tower for Anne Boleyn's imprisonment and execution, Dover Castle stood in for the shoot."
+    }
+  ],
+  "slug": "tower",
+  "sources": "Historical facts adapted from Wikipedia (\"Eiffel Tower\" and \"List of names on the Eiffel Tower\", CC BY-SA) and Chimie ParisTech. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Eiffel Tower",
+  "timeline": [
+    {
+      "date": "1884-05",
+      "text": "Koechlin sketches the 'great pylon' at home; Sauvestre adds the decorative arches."
+    },
+    {
+      "date": "1887-01-08",
+      "text": "Eiffel signs the construction contract in a personal capacity."
+    },
+    {
+      "date": "1887-01-28",
+      "text": "Foundation work begins on the Champ de Mars."
+    },
+    {
+      "date": "1887-02-14",
+      "text": "'Artists against the Eiffel Tower' is published in Le Temps."
+    },
+    {
+      "date": "1889-03-31",
+      "text": "Eiffel climbs the finished tower on foot and hoists the Tricolour."
+    },
+    {
+      "date": "1889-05-15",
+      "text": "The tower opens to the public at the Exposition Universelle."
+    },
+    {
+      "date": "1909",
+      "text": "Spared from planned demolition thanks to its value for radio telegraphy."
+    },
+    {
+      "date": "1914",
+      "text": "The tower's transmitter jams German radio, aiding the Allied victory at the Marne."
+    },
+    {
+      "date": "1925",
+      "text": "Con artist Victor Lustig 'sells' the tower for scrap, twice."
+    },
+    {
+      "date": "1930",
+      "text": "The Chrysler Building ends the tower's 41-year reign as the world's tallest structure."
+    },
+    {
+      "date": "1944-08-25",
+      "text": "The Tricolour is raised again after von Choltitz disobeys Hitler's demolition order."
+    },
+    {
+      "date": "1957",
+      "text": "A broadcasting aerial is added, raising the tower to 330 meters."
+    },
+    {
+      "date": "1964",
+      "text": "Declared a monument historique."
+    },
+    {
+      "date": "1999-12-31",
+      "text": "The millennium sparkle lighting is installed; the hourly sparkle becomes permanent."
+    }
+  ],
+  "title": "Eiffel Tower"
+}

@@ -1,0 +1,111 @@
+{
+  "coordinates": {
+    "label": "Sky Tower, Victoria and Federal Streets, Auckland",
+    "lat": -36.8485,
+    "lng": 174.7623
+  },
+  "description": "Take the Sky Tower apart piece by piece in 3D, and read the story of Auckland's 328 meter needle: from casino-complex centerpiece to the Southern Hemisphere's tallest structure.",
+  "entities": {
+    "architect": {
+      "name": "Craig Craig Moller",
+      "role": "Architects of the tower (1994-1997)",
+      "wikidata": ""
+    },
+    "events": [],
+    "people": [
+      {
+        "name": "Harrah's Entertainment",
+        "role": "Original developer of the SKYCITY complex"
+      }
+    ],
+    "wikidata": ""
+  },
+  "hotspots": [
+    {
+      "part": "Pod glass curtain 1 lower",
+      "text": "The main pod holds four public levels: the Sky Bar, the main observation deck, the Orbit 360 revolving restaurant and the lookout.",
+      "title": "The pod"
+    },
+    {
+      "part": "Glass floor panels",
+      "text": "Sections of the 186 meter observation deck floor are 38 mm thick glass. You look straight down to the street.",
+      "title": "The glass floor"
+    },
+    {
+      "part": "Orbit restaurant revolving ring",
+      "text": "Orbit 360 Dining at 190 meters is New Zealand's only revolving restaurant, completing one turn every hour.",
+      "title": "The revolving restaurant"
+    },
+    {
+      "part": "SkyDeck observatory floor",
+      "text": "The SkyDeck sits at 220 meters, just below the main antenna, with views up to 82 kilometers on a clear day.",
+      "title": "The SkyDeck"
+    },
+    {
+      "part": "Spire tip",
+      "text": "The antenna mast tops out at 328 meters, making the tower the tallest man-made structure in New Zealand.",
+      "title": "The spire"
+    }
+  ],
+  "intro": "Auckland's skyline has one exclamation mark: a 328 meter concrete needle with a flying-saucer pod, built in under three years as the centerpiece of a casino complex. This is how the Southern Hemisphere got its tallest tower.",
+  "page_title": "Sky Tower Auckland: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "The Sky Tower was built between 1994 and 1997 as part of the SKYCITY Auckland casino complex, developed by Harrah's Entertainment on the corner of Victoria and Federal Streets. The architects were Craig Craig Moller, the structural engineers Beca Group and the main contractor Fletcher Construction. It took two years and nine months and cost NZ$85 million, opening in 1997. At 328 meters from ground to the top of the mast it became the tallest man-made structure in the Southern Hemisphere, a title it held until 2022.",
+      "dates": "1994-1997",
+      "heading": "A casino builds a needle"
+    },
+    {
+      "body": "The design is a study in vertical layering. A tapered reinforced-concrete shaft rises from the podium, engineered to withstand winds over 200 km/h and a magnitude 8.0 earthquake on the faults nearest the city. At 170 meters the shaft flares into the main pod, a wide disc holding four public levels: the Sky Bar on Level 50, the main observation deck on Level 51, Orbit 360 Dining on Level 52 and a lookout on Level 53. Above the pod the shaft narrows again to the SkyDeck, a smaller observatory pod at 220 meters, and then the telecommunications mast climbs to 328 meters.",
+      "dates": "1994-1997",
+      "heading": "Shaft, pod, SkyDeck, mast"
+    },
+    {
+      "body": "The main observation deck at 186 meters has sections of flooring made from 38 mm thick glass, so visitors stand over a straight drop to the street. One floor up, Orbit 360 Dining at 190 meters is New Zealand's only revolving restaurant, turning a full 360 degrees every hour. The SkyDeck at 220 meters sits just below the main antenna and on a clear day the view reaches 82 kilometers, from the Waitakere Ranges to the Coromandel Peninsula. Four glass-fronted lifts make the 186 meter ascent in about 40 seconds.",
+      "dates": "1997-today",
+      "heading": "Dinner at 190 meters"
+    },
+    {
+      "body": "The pod is also an adventure platform. The SkyJump drops jumpers 192 meters from the observation deck on a guide-cable system that keeps them clear of the tower in gusts, reaching up to 85 km/h. The SkyWalk takes visitors around the outside of the pod on an exterior walkway, clipped to an overhead safety line. Both have run since the early 2000s and turned the tower into one of the Southern Hemisphere's unlikely adventure tourism icons.",
+      "dates": "2000s-today",
+      "heading": "Jump off it"
+    },
+    {
+      "body": "Every New Year's Eve the tower hosts a televised fireworks display fired from three platforms, billed as the highest fireworks show in the Southern Hemisphere. The tower is also lit in colors for commemorations and causes, from Poppy Day remembrance to sports celebrations, making it Auckland's civic noticeboard in light. For the city's residents it works the way a church spire once did: the fixed point you navigate by, visible from almost everywhere.",
+      "dates": "1997-today",
+      "heading": "The city's noticeboard in light"
+    },
+    {
+      "body": "The Sky Tower has a thin verified screen footprint compared with older landmarks, which is itself part of the story: it is famous as a place rather than as a film location. Its cultural life is event-driven. The televised New Year's fireworks have made the tower the defining image of New Year in New Zealand, one of the first major cities in the world to see in the new year. Travel and tourism coverage has fixed it as the visual shorthand for Auckland the way the Opera House is shorthand for Sydney. The adventure operations gave it a second identity: the tower people jump off, which travel media covers as a rite of passage rather than a stunt.",
+      "dates": "1997-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "sky-tower",
+  "sources": "Historical facts adapted from Wikipedia (\"Sky Tower (Auckland)\", CC BY-SA). Cultural notes verified against tourism and event coverage.",
+  "story_title": "The story of the Sky Tower",
+  "timeline": [
+    {
+      "date": "1994",
+      "text": "Construction begins on the SKYCITY complex tower for Harrah's Entertainment."
+    },
+    {
+      "date": "1997",
+      "text": "The Sky Tower opens, 328 meters tall, the tallest structure in the Southern Hemisphere."
+    },
+    {
+      "date": "1997",
+      "text": "Orbit 360 Dining opens as New Zealand's only revolving restaurant."
+    },
+    {
+      "date": "2000s",
+      "text": "SkyJump and SkyWalk launch from the pod."
+    },
+    {
+      "date": "2022",
+      "text": "Thamrin Nine in Jakarta surpasses the tower as the Southern Hemisphere's tallest."
+    }
+  ],
+  "title": "Sky Tower"
+}

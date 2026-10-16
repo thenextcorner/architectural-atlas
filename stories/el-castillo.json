@@ -1,0 +1,241 @@
+{
+  "coordinates": {
+    "label": "El Castillo, Chichen Itza, Yucatan, Mexico",
+    "lat": 20.682889,
+    "lng": -88.568611
+  },
+  "description": "Take El Castillo apart piece by piece in 3D, and read its story: the nine-terraced pyramid to Kukulcan, the older temple sealed inside, the 365-step calendar, and the cenote beneath it.",
+  "entities": {
+    "events": [
+      {
+        "name": "Inner substructure probably built",
+        "start": "600"
+      },
+      {
+        "end": "1000",
+        "name": "Final (visible) construction of the Temple of Kukulcan",
+        "start": "900"
+      },
+      {
+        "name": "Diego de Landa describes the temple",
+        "start": "1566"
+      },
+      {
+        "name": "Stephens and Catherwood publish Incidents of Travel in Yucatan",
+        "start": "1843"
+      },
+      {
+        "name": "UNESCO inscribes the Pre-Hispanic City of Chichen-Itza",
+        "start": "1988"
+      },
+      {
+        "name": "Climbing and interior access closed",
+        "start": "2006"
+      },
+      {
+        "name": "Voted one of the New 7 Wonders of the World",
+        "start": "2007"
+      },
+      {
+        "name": "ERT reveals the large cenote beneath the pyramid",
+        "start": "2015"
+      }
+    ],
+    "people": [
+      {
+        "name": "Kukulcan",
+        "role": "Feathered serpent deity the temple honors",
+        "wikidata": "Q768072"
+      },
+      {
+        "name": "Diego de Landa",
+        "role": "First European describer of the temple, 1566",
+        "wikidata": "Q379672"
+      },
+      {
+        "name": "John Lloyd Stephens",
+        "role": "Published the first detailed 19th-century description, 1843",
+        "wikidata": "Q56635"
+      },
+      {
+        "name": "Frederick Catherwood",
+        "role": "His lithographs introduced the ruins to the world",
+        "wikidata": "Q33567"
+      }
+    ],
+    "wikidata": "Q1128327"
+  },
+  "hotspots": [
+    {
+      "part": "Serpent head, northwest base: cranium",
+      "text": "Stone serpent heads anchor the north balustrades. Around the equinoxes, triangular shadows cast by the late-afternoon sun crawl down the balustrade toward them. Whether the effect was designed is not known.",
+      "title": "The serpent heads"
+    },
+    {
+      "part": "Equinox shadow band",
+      "text": "Seven triangles mark where the shadows fall on the northwest balustrade around the spring and autumn equinoxes. Thousands gather to watch the serpent appear to descend.",
+      "title": "The equinox shadow"
+    },
+    {
+      "part": "Lower flight, north stair",
+      "text": "Each stairway has about 91 steps. Four sides of 91, plus the summit platform as the final step, make 365, the days of the Haab' year. The south side steps are eroded.",
+      "title": "The 91 steps"
+    },
+    {
+      "part": "Final step capstone (the 365th step)",
+      "text": "The summit platform counts as the 365th step in the count that matches the Haab' year. Researchers link the number to ritual practice.",
+      "title": "The 365th step"
+    },
+    {
+      "part": "North wall, west of doorway",
+      "text": "The summit temple crowns the pyramid at 30 m total height. Its doorway faces north, toward the Sacred Cenote.",
+      "title": "The summit temple"
+    },
+    {
+      "part": "Chacmool figure, torso and head",
+      "text": "The reclining offering-bearer, found in April 1935 in the Hall of Offerings of the inner temple, holds a bowl on its stomach. Nails, teeth, and eyes are inlaid with mother of pearl.",
+      "title": "The Chac Mool"
+    },
+    {
+      "part": "Red jaguar throne, body",
+      "text": "Found in August 1936 in the Chamber of Sacrifices. XRF analysis showed the jaguar painted red with cinnabar, a pigment not locally available and therefore a high-value trade good; the four fangs are gastropod mollusk shells and the green stones are jadeite. One reading of this: the high-value materials and the context suggest the throne was an offering for ritually closing the temple during renewal.",
+      "title": "The Red Jaguar Throne"
+    },
+    {
+      "part": "Bone rows, south chamber back wall",
+      "text": "Two parallel rows of human bone set into the back wall of the Chamber of Sacrifices, found in August 1936 alongside the Red Jaguar Throne.",
+      "title": "The bone rows"
+    },
+    {
+      "part": "Cenote water body",
+      "text": "A water cavity about 25 by 35 m and up to 20 m deep lies beneath the pyramid on a limestone slab about 4.9 m thick. The Maya appear to have built toward it deliberately, aligning the pyramid at the intersection of four surrounding cenotes.",
+      "title": "The cenote below"
+    },
+    {
+      "part": "Azimuth sightline",
+      "text": "The north face has an azimuth of 111.72 degrees, pointing to sunsets on May 20 and July 24, dates separated by 65 and 300 days, multiples of 13 and 20, the basic Maya calendrical periods. Researchers read this as an agricultural calendar.",
+      "title": "The 111.72 degree azimuth"
+    }
+  ],
+  "intro": "A 30 m pyramid of nine terraces at the center of Chichen Itza, dedicated to the feathered serpent Kukulcan. Inside sits an older temple with a red jaguar throne; below lies a cenote the Maya built toward deliberately.",
+  "page_title": "El Castillo: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "North-west stitched panorama of El Castillo, 2008: Fcb981, CC BY-SA 3.0, via Wikimedia Commons",
+    "El Castillo from the northwest, clean daylight view: Daniel Schwen, CC BY-SA 4.0, via Wikimedia Commons",
+    "El Castillo in 1973, before full restoration: family photo collection of Infrogmation of New Orleans, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "El Castillo from the northwest, a clean daylight view of the nine terraces",
+      "body": "Chichen Itza's last great construction phase fell in the Terminal Classic to Early Postclassic, roughly 900 to 1200 CE, when Toltec-influenced Itza Maya culture fused with older Maya traditions. El Castillo embodies that fusion: a Maya axis-mundi pyramid dedicated to a deity whose imagery, the feathered serpent, traveled the same networks that carried trade, tribute, and political influence across Mesoamerica. The visible pyramid is 24 m high plus a 6 m summit temple, 30 m total, on a 55.3 m square base of nine square terraces, with stairways up all four sides. Archaeological research identifies the final phase's construction concept as the axis mundi: the pyramid stands at the center of the world, bridging underworld, earth, and sky. The temple sits directly above a large cenote, about 25 by 35 m and up to 20 m deep, and is aligned at the intersection of four other cenotes: the Sacred Cenote to the north, Xtoloc to the south, Kanjuyum to the east, Holtun to the west. Cenotes were portals to the underworld in Maya cosmology, so the placement ties the mountain-pyramid to the watery underworld beneath it.",
+      "caption": "El Castillo from the northwest; nine terraces rise to the summit temple.",
+      "credit": "Daniel Schwen, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "900-1000 CE",
+      "heading": "The mountain at the center of the world",
+      "image": "northwest.jpg"
+    },
+    {
+      "body": "The visible pyramid is a renewal of an older temple. The Maya commonly rebuilt temples in successive phases over the same sacred spot, ritually closing the old structure and building the new one above it. The final construction probably dates between 900 and 1000 CE, while the substructure may date to 600 to 800 CE. A 2018 ERT geophysical survey revealed two earlier construction phases inside and suggested the earlier building was positioned nearer the southeastern cenote rather than centered under the present one, hinting the Maya knew about the water cavity below and built toward it deliberately. Excavations in the 1930s by the Carnegie Institution with Mexican archaeologists found inside the older temple: a cache box of coral, obsidian, and turquoise-encrusted objects with human remains, found June 7, 1932, now exhibited at the National Anthropology Museum in Mexico City; a Chac Mool statue with nails, teeth, and eyes inlaid with mother of pearl, found April 1935 in the Hall of Offerings; and, in August 1936, a second room, the Chamber of Sacrifices, containing two parallel rows of human bone set into the back wall plus the Red Jaguar Throne. XRF analysis found the jaguar painted red with cinnabar, mercury sulfide, a pigment not locally available and therefore a high-value trade good; the four fangs are gastropod mollusk shells, Lobatus costatus, and the green stones are jadeite. One reading of this: the high-value materials and the context suggest the throne was an offering for ritually closing the temple during renewal.",
+      "dates": "600-1000 CE",
+      "heading": "A temple over a temple"
+    },
+    {
+      "body": "Each side of the pyramid has approximately 91 steps; four times 91 plus the summit platform as the final step gives 365, equal to the days of the Haab' year. The arithmetic is presented as a \"may produce\" reading, and the number is likely significantly related to rituals, following Milbrath 1989. Note that the south side steps are eroded. The stairways, the terraces, and the summit temple together make the pyramid itself a count of the solar year.",
+      "dates": "900-1000 CE",
+      "heading": "The calendar in the steps"
+    },
+    {
+      "alt": "The north-west face of El Castillo, showing the plumed serpent balustrades",
+      "body": "Sculptures of plumed serpents run down the sides of the northern balustrade. Around the spring and autumn equinoxes, the late afternoon sun casts triangular shadows off the northwest corner that crawl down the balustrade toward the serpent head at the base, an illusion witnessed by thousands. It is explicitly not known whether the effect is a result of purposeful design: it is visible for several weeks around the equinoxes without major changes. Present the serpent as reported and interpreted, not as established intent. The Maya built the balustrades; the sun does the rest.",
+      "caption": "The north-west face; the plumed serpent balustrades descend to stone heads at the base.",
+      "credit": "Fcb981, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "equinoxes",
+      "heading": "The serpent descends",
+      "image": "north-west-2008.jpg"
+    },
+    {
+      "body": "The north, main face has an azimuth of 111.72 degrees, corresponding to sunsets on May 20 and July 24, dates separated by 65 and 300 days, multiples of 13 and 20, the basic Maya calendrical periods. Researchers argue this pattern records an observational agricultural calendar for scheduling planting and harvesting rituals, consistent with orientations across the Maya lowlands, following Sprajc and Sanchez Nava. Present the 13 and 20-day calendar reading as researchers' interpretation, not settled fact. An approximate match to zenith and nadir sunrises is likely coincidental.",
+      "dates": "900-1000 CE",
+      "heading": "An agricultural calendar in stone"
+    },
+    {
+      "body": "A handclap near the foot of the north staircase returns as a brief descending frequency sweep, compared by researchers to the call of the resplendent quetzal. Lubman modeled the staircase as an acoustic diffraction grating; later studies, Declercq et al. 2004, Bilsen 2006, Ruiz et al. 2010, confirmed the physics. One reading of this: Lubman speculated the Maya may have noticed and exploited the effect in ceremonies and that the staircase was intentionally designed to imitate the quetzal's call. That intent is speculation.",
+      "dates": "1998-2010",
+      "heading": "The quetzal echo"
+    },
+    {
+      "alt": "El Castillo in 1973, before full restoration, still partially rough and vegetation-fringed",
+      "body": "Europeans first recorded the temple in 1566, when Friar Diego de Landa described it in the \"Relacion de las cosas de Yucatan.\" In 1843 John Lloyd Stephens described it in detail in \"Incidents of Travel in Yucatan,\" illustrated by Frederick Catherwood's lithographs showing the temple swallowed by vegetation. Catherwood's engravings carried the Maya ruins into the European and American imagination for the first time. In 1924 the Carnegie Institution for Science received permission from the Mexican government to explore and restore Chichen Itza; work began in 1927, and interior excavation started in April 1931. An entryway was cut into the balustrade of the northeastern exterior staircase to give archaeologists, and later 20th-century tourists, access to the interior; it was not an original feature. The 1973 photographs show the pre-restoration state: the pyramid still partially rough and vegetation-fringed before full consolidation. In 1988 UNESCO inscribed the Pre-Hispanic City of Chichen-Itza. Around 2006, after a climber fell to her death, INAH closed the monuments: visitors may walk around but no longer climb or enter chambers. In 2007 El Castillo was voted one of the New 7 Wonders of the World in the New7Wonders Foundation poll, an outcome UNESCO distanced itself from. In 2015 the ERT research revealed the large cenote directly beneath the pyramid. In the 20th century the temple became Mexico's most visited archaeological monument and the national emblem of Maya civilization.",
+      "caption": "El Castillo in 1973, before full consolidation; the pyramid still stood partially rough and vegetation-fringed.",
+      "credit": "Family photo collection of Infrogmation of New Orleans, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1566-today",
+      "heading": "Rediscovered, restored, closed",
+      "image": "before-restoration-1973.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1843-2024",
+      "body": "The first accurate published image of El Castillo was a lithograph. Frederick Catherwood's Plate XXII, from Views of Ancient Monuments in Central America, Chiapas and Yucatan (1844), showed the pyramid half-buried in vegetation, and his drawings for John Lloyd Stephens's Incidents of Travel in Yucatan (1843) introduced the Maya world to Western readers through bestselling books.\n\nTwice a year the pyramid stages its own show: the setting sun casts a serpent-shaped shadow down the north staircase at the equinoxes, drawing tens of thousands of visitors while world media covers it every spring and autumn. In 2007 Chichen Itza was voted one of the New 7 Wonders of the World in a global popular poll, winners announced at a ceremony in Lisbon, the modern coronation that made the site a household name.\n\nNo fiction feature film has given El Castillo a central scene; its screen life is overwhelmingly documentary. The most recent high-profile treatment is Graham Hancock's Ancient Apocalypse: The Americas (Netflix, 2024), which devotes its sixth chapter to Palenque, Kukulcan, El Castillo and Chichen Itza."
+    }
+  ],
+  "slug": "el-castillo",
+  "sources": "Historical facts adapted from Wikipedia (\"El Castillo, Chichen Itza\", CC BY-SA) and the studies cited there: Tejero-Andrade et al. 2018, Juarez-Rodriguez et al. 2017, Lubman 1998/1999, Bilsen 2006, Sprajc and Sanchez Nava 2013/2018. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of El Castillo",
+  "timeline": [
+    {
+      "date": "c. 600-800 CE",
+      "text": "Probable date of the earlier substructure, the inner temple."
+    },
+    {
+      "date": "c. 900-1000 CE",
+      "text": "Final, visible construction of the Temple of Kukulcan."
+    },
+    {
+      "date": "1566",
+      "text": "Diego de Landa describes the temple in \"Relacion de las cosas de Yucatan.\""
+    },
+    {
+      "date": "1843",
+      "text": "Stephens and Catherwood publish \"Incidents of Travel in Yucatan\"; the ruins enter Western imagination."
+    },
+    {
+      "date": "1924",
+      "text": "The Carnegie Institution receives permission to explore and restore Chichen Itza."
+    },
+    {
+      "date": "1931",
+      "text": "Excavation inside the pyramid begins to test the older-temple hypothesis."
+    },
+    {
+      "date": "7 Jun 1932",
+      "text": "Cache of coral, obsidian, turquoise, and human remains found inside."
+    },
+    {
+      "date": "Apr 1935",
+      "text": "Chac Mool statue with mother-of-pearl inlay found in the Hall of Offerings."
+    },
+    {
+      "date": "Aug 1936",
+      "text": "Chamber of Sacrifices and the Red Jaguar Throne discovered."
+    },
+    {
+      "date": "1988",
+      "text": "UNESCO inscribes the Pre-Hispanic City of Chichen-Itza."
+    },
+    {
+      "date": "2006",
+      "text": "Climbing and interior access closed after a visitor's fatal fall."
+    },
+    {
+      "date": "2007",
+      "text": "Voted one of the New 7 Wonders of the World."
+    },
+    {
+      "date": "2015",
+      "text": "ERT reveals a large cenote directly beneath the pyramid."
+    }
+  ],
+  "title": "El Castillo",
+  "address_locality": "Chichen Itza",
+  "address_country": "MX"
+}

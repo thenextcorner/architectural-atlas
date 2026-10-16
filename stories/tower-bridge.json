@@ -1,0 +1,269 @@
+{
+  "address_country": "GB",
+  "address_locality": "London",
+  "coordinates": {
+    "label": "Tower Bridge, Tower Bridge Road, London",
+    "lat": 51.5056,
+    "lng": -0.0753
+  },
+  "date_built": "1894",
+  "description": "Take Tower Bridge apart in 3D and read its story: a Victorian Gothic steel machine over the Thames, opened in 1894, built so its bascules could open for ships while London's traffic rolled across.",
+  "entities": {
+    "architect": {
+      "name": "Horace Jones",
+      "role": "Architect; died in 1887, before the bridge was finished",
+      "wikidata": "Q3140459"
+    },
+    "events": [
+      {
+        "end": "1894",
+        "name": "Construction of Tower Bridge",
+        "start": "1886"
+      },
+      {
+        "name": "Official opening by the Prince and Princess of Wales",
+        "start": "1894-06-30"
+      },
+      {
+        "name": "High-level walkways closed to the public",
+        "start": "1910"
+      },
+      {
+        "name": "Francis McClean flies between the bascules and walkways",
+        "start": "1912-08-10"
+      },
+      {
+        "end": "1942",
+        "name": "Wartime bomb damage to the hydraulics and towers",
+        "start": "1940"
+      },
+      {
+        "name": "Number 78 bus jumps the rising south bascule",
+        "start": "1952-12-30"
+      },
+      {
+        "name": "Walkways converted from cantilever to suspension bridges",
+        "start": "1960"
+      },
+      {
+        "name": "Alan Pollock flies a Hawker Hunter under the walkway",
+        "start": "1968-04-05"
+      },
+      {
+        "name": "Steam hydraulics replaced by an electro-hydraulic system",
+        "start": "1974"
+      },
+      {
+        "name": "Tower Bridge Exhibition opens in the towers and walkways",
+        "start": "1982"
+      },
+      {
+        "end": "2012",
+        "name": "Four-million-pound refurbishment; blue and white paint scheme",
+        "start": "2008"
+      },
+      {
+        "name": "Glass floors installed in the high-level walkways",
+        "start": "2014"
+      }
+    ],
+    "people": [
+      {
+        "name": "John Wolfe-Barry",
+        "role": "Engineer of the bridge; took over as architect after Jones died",
+        "wikidata": "Q1658568"
+      },
+      {
+        "name": "Henry Marc Brunel",
+        "role": "Engineer assisting Barry",
+        "wikidata": "Q5725440"
+      },
+      {
+        "name": "Edward Cruttwell",
+        "role": "Resident engineer throughout construction",
+        "wikidata": "Q129983474"
+      },
+      {
+        "name": "William Arrol",
+        "role": "Contractor for the superstructure metalwork",
+        "wikidata": "Q337783"
+      },
+      {
+        "name": "Joseph Bazalgette",
+        "role": "Civil engineer whose design competed and was rejected",
+        "wikidata": "Q981915"
+      }
+    ],
+    "wikidata": "Q83125"
+  },
+  "hotspots": [
+    {
+      "part": "North bascule girders",
+      "text": "The two bascules weigh about 1,070 tons each including ballast and paving. They are counterbalanced, raise in five minutes, and rotate through 82 degrees.",
+      "title": "The bascules"
+    },
+    {
+      "part": "West high-level walkway",
+      "text": "The walkways were reached only by stairs and gained a reputation for prostitutes and pickpockets, so they closed in 1910. They reopened in 1982 as part of the Tower Bridge Exhibition.",
+      "title": "The walkways"
+    },
+    {
+      "part": "North tower steel columns",
+      "text": "Each tower has a steel skeleton of octagonal steel columns at the corners. The steel is clad in Cornish granite and Portland stone to protect it and to satisfy the Act's requirement to harmonise with the Tower of London.",
+      "title": "Steel under stone"
+    },
+    {
+      "part": "Victorian engine room",
+      "text": "The engine rooms still house the original steam engines and hydraulic accumulators. The original system stored pressurised water at 750 psi in six accumulators.",
+      "title": "The Victorian engine room"
+    },
+    {
+      "part": "North suspension chains",
+      "text": "The side spans are suspension bridges, and their rods are anchored through the high-level walkways. The walkways themselves were cantilever bridges until they were converted to suspension bridges in 1960.",
+      "title": "The suspension side spans"
+    },
+    {
+      "part": "North pier masonry cladding",
+      "text": "The two piers contain over 70,000 long tons of concrete sunk into the Thames riverbed, clad above the waterline in Cornish granite and Portland stone.",
+      "title": "The piers"
+    },
+    {
+      "part": "North accumulators",
+      "text": "Pressurised water was stored in six hydraulic accumulators, pumped by stationary steam engines. The system was designed and installed by Hamilton Owen Rendel for Armstrong, Mitchell and Company.",
+      "title": "The hydraulic accumulators"
+    },
+    {
+      "part": "Foundation stone",
+      "text": "The foundation stone was laid by the Prince of Wales on 21 June 1886, two months after construction began.",
+      "title": "The foundation stone"
+    },
+    {
+      "part": "Semaphore signals",
+      "text": "The original signalling system used red semaphore signals by day and red or green lights by night, with a gong in fog. Vessels displayed a black ball by day or two red lights by night.",
+      "title": "The signalling system"
+    },
+    {
+      "part": "Wartime reserve engine",
+      "text": "During the Second World War a direct hit severed the hydraulic mechanism and a parachute mine damaged the bascule, towers, and engine room. In 1942 a third 150-hp steam engine was installed as a reserve.",
+      "title": "The wartime reserve engine"
+    }
+  ],
+  "intro": "Two Gothic towers, a pair of 1,070-ton bascules, and high-level walkways that stood empty for decades. Toggle between Detailed, the bridge as built in 1894, and Today: blue and white paint, glass walkway floors, and the electro-hydraulic drive.",
+  "page_title": "Tower Bridge: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Tower Bridge from the south bank, 2016: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+    "The bascules opening, seen from the Thames Path: Robert Lamb, CC BY-SA 2.0, via Wikimedia Commons",
+    "The opening of Tower Bridge, 1895 painting: William Lionel Wyllie, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Tower Bridge from the south bank of the Thames",
+      "body": "By the late 19th century London's East End was growing and needed a river crossing downstream of London Bridge, but a fixed bridge at street level would have cut off sailing ships from the port facilities in the Pool of London between London Bridge and the Tower. The bridge was built to connect the 39 percent of London's population living east of London Bridge, described at the time as equivalent to having \"Manchester on the one side, and Liverpool on the other\". A Special Bridge or Subway Committee formed in December 1875 considered more than fifty designs, including one from Sir Joseph Bazalgette, rejected for lack of sufficient headroom. On 24 July 1884 the committee recommended the bascule design, known as Design C. The Tower Bridge Act of 1885 fixed the design by statute: a central opening span 200 feet wide and 135 feet high when open, and a requirement that the bridge be \"made to accord with the architecture of the Tower of London\".",
+      "caption": "The bridge from the south bank: two Gothic towers, the high-level walkways, and the blue and white paint scheme.",
+      "credit": "Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1875-1886",
+      "heading": "A bridge the river could live with",
+      "image": "bridge.jpg"
+    },
+    {
+      "alt": "William Lionel Wyllie's 1895 painting of the opening of Tower Bridge",
+      "body": "Construction, overseen by resident engineer Edward Cruttwell, started on 22 April 1886, and the foundation stone was laid by the Prince of Wales on 21 June. The work was divided into eight contracts with a total accepted tender of £830,005. Two piers containing over 70,000 long tons of concrete were sunk into the riverbed, and more than 11,000 long tons of steel went into the towers and walkways. Horace Jones died in 1887 and John Wolfe Barry took over as architect; Jones's partner George D. Stevenson replaced the original brick facade with the ornate Victorian Gothic cladding of Cornish granite and Portland stone that made the bridge a landmark. The total construction cost was £1,184,000. Tower Bridge was officially opened on 30 June 1894 by the Prince and Princess of Wales, and the City of London Corporation gave an entertainment costing £300 to 1,200 workmen and their wives, each workman receiving a commemorative pipe and packet of tobacco.",
+      "caption": "William Lionel Wyllie's 1895 painting of the opening ceremony.",
+      "credit": "William Lionel Wyllie, public domain, via Wikimedia Commons",
+      "dates": "1886-1894",
+      "heading": "Eight years, eight contracts",
+      "image": "opening-1895.jpg"
+    },
+    {
+      "alt": "The bascules of Tower Bridge opening, seen from the Thames Path",
+      "body": "The raising mechanism was powered by pressurised water stored in six hydraulic accumulators, pumped by stationary steam engines at 750 psi. In 1974 the mechanism was largely replaced by an electro-hydraulic drive system; the only remaining parts of the old system are the final pinions, driven by hydraulic motors and gearing, with oil in place of water as the hydraulic fluid. The bridge has a dramatic record of incidents. In 1940 a direct hit severed the hydraulic mechanism during the Second World War, and in April 1941 a parachute mine seriously damaged the bascule, towers, and engine room. On 30 December 1952 a number 78 double-decker bus crossed as the south bascule started to rise; driver Albert Edward Gunter accelerated and jumped the gap onto the north bascule, and received a £10 bonus from the City Corporation. An Act of Parliament required a tug boat on station to assist vessels in danger when crossing, a rule that stood until the 1960s.",
+      "caption": "The bascules opening for river traffic, seen from the Thames Path.",
+      "credit": "Robert Lamb, CC BY-SA 2.0, via Wikimedia Commons",
+      "dates": "1894-1974",
+      "heading": "The machine inside the masonry",
+      "image": "bascules-open.jpg"
+    },
+    {
+      "body": "The high-level walkways were the bridge's strange afterthought. Accessible only by stairs, they were seldom used by regular pedestrians and gained a reputation for prostitutes and pickpockets, so they closed in 1910. They reopened in 1982 as part of the Tower Bridge Exhibition. In 1960 the walkways were converted from cantilever to suspension bridges, with added suspension cables to reinforce them. On 8 July 2012 the west walkway became a 200-foot Live Music Sculpture by Samuel Bordoli for the London Olympics, with thirty classical musicians performing 42 metres above the Thames, and the bridge carried the Olympic rings. In 2014 the walkways received glass floors as part of the exhibition, letting visitors look straight down at the road and river.",
+      "dates": "1894-2014",
+      "heading": "From empty walkways to glass floors"
+    },
+    {
+      "body": "The bridge's one great symbolic decision was architectural: Parliament ordered that the design accord with the Tower of London, so a steel engineering structure wears a Victorian Gothic stone skin of Cornish granite and Portland stone One reading of this: the Gothic skin makes the bridge read as a medieval gatehouse rather than an industrial machine. Stevenson deliberately replaced Jones's plainer brick facade with the ornate Gothic treatment to harmonise with the nearby Tower. The bridge's Gothic dressing has no heraldic or religious program comparable to the Palace of Westminster. Documented quirks survive: there is a chimney on the bridge painted to look like a lamppost, which served a fireplace in a guardroom in one of the bridge piers, and the bridge is the emblem of the Greater London Scout Region of the Scout Association. The southern section was Grade I listed on 6 December 1949 and the remainder on 27 September 1973.",
+      "dates": "1887-2012",
+      "heading": "A steel bridge in medieval dress"
+    },
+    {
+      "body": "Tower Bridge still works. It is one of five London bridges owned and maintained by the City Bridge Foundation, a charitable trust founded in 1282. The bridge carries more than 40,000 crossings a day as part of the London Inner Ring Road, with a 20 mph speed limit and an 18-tonne weight limit enforced by cameras and sensor systems. The bascules are raised about a thousand times a year, down from 6,160 in the first twelve months; river traffic has priority and 24 hours' notice is required, with no charge for vessels. It was painted red, white, and blue for Queen Elizabeth II's Silver Jubilee in 1977, and from 2008 to 2012 a £4 million refurbishment stripped the paint to bare metal and repainted the bridge blue and white. In 1997 the motorcade of US President Bill Clinton was split by the bridge opening for the Thames sailing barge Gladys, and on 19 August 1999 Jef Smith, a Freeman of the City of London, drove two sheep across the bridge to exercise a Freeman's ancient right.",
+      "dates": "1949-today",
+      "heading": "Still working"
+    },
+    {
+      "heading": "The bridge on screen",
+      "dates": "1980-today",
+      "body": "Tower Bridge has played itself on screen for decades, and directors keep coming back because no set can fake it. Guy Ritchie's Sherlock Holmes (2009) stages its entire climax on the bridge while it is still under construction: Holmes fights Lord Blackwood across the unfinished structure, high above the Thames, in a sequence built around the bridge as it looked during its real 1886-1894 build. In Spider-Man: Far From Home (2019) the whole finale plays out on and around the bridge, ending with Peter Parker and MJ's first kiss on it. The night broomstick flight in Harry Potter and the Order of the Phoenix (2007) sweeps up the Thames past the bridge. In The Long Good Friday (1980), Bob Hoskins delivers his defining \"hands across the ocean\" speech on a yacht with Tower Bridge framing him. James Bond's Thames boat chase in The World Is Not Enough (1999) runs down to the bridge. On television, the revived Doctor Who announced itself in \"Aliens of London\" (2005) with an alien ship narrowly missing the bridge before clipping Big Ben. The bridge recurs across the Bridget Jones films, opens episodes of Call the Midwife in the credits, and stands fully explorable in the video game Watch Dogs: Legion (2020). Every one of these productions is a commercial release, so the footage is still there to watch.\n\nPainters have been recording the bridge since it opened. William Lionel Wyllie attended the opening ceremony on 30 June 1894 and painted it in a large oil on canvas. Around 1905 Frank Brangwyn showed the bridge presiding over barges and dockworkers on the Thames, with the structure as the working river's backdrop. In 1969 the Nigerian-born London artist Uzo Egonu gave it a bold modern treatment, merging abstraction with a bird's-eye view of the bridge. All three paintings hang in the Guildhall Art Gallery.\n\nAnd a bridge to un-confuse: the helicopter crash in Spectre (2015) happens on Westminster Bridge, not Tower Bridge."
+    }
+  ],
+  "slug": "tower-bridge",
+  "sources": "Historical facts adapted from Wikipedia (\"Tower Bridge\", CC BY-SA), RIBA Pix, the London Wiki, timenote.info, and War History Online. Screen appearances verified against BFI London locations, Wikipedia film articles, and production coverage (AWN, Eurogamer, TechRadar). Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Tower Bridge",
+  "timeline": [
+    {
+      "date": "Dec 1875",
+      "text": "The Special Bridge or Subway Committee is formed to find an East End crossing."
+    },
+    {
+      "date": "14 Aug 1885",
+      "text": "The Tower Bridge Act receives royal assent, fixing the design by statute."
+    },
+    {
+      "date": "22 Apr 1886",
+      "text": "Construction begins under resident engineer Edward Cruttwell."
+    },
+    {
+      "date": "1887",
+      "text": "Horace Jones dies; John Wolfe Barry takes over as architect."
+    },
+    {
+      "date": "30 Jun 1894",
+      "text": "The bridge opens, with a £300 entertainment for 1,200 workmen and their wives."
+    },
+    {
+      "date": "1910",
+      "text": "The high-level walkways close."
+    },
+    {
+      "date": "10 Aug 1912",
+      "text": "Francis McClean flies between the bascules and the walkways in a floatplane."
+    },
+    {
+      "date": "1940-1942",
+      "text": "Wartime bomb damage; a third steam engine is installed as a reserve."
+    },
+    {
+      "date": "30 Dec 1952",
+      "text": "Albert Gunter jumps his number 78 bus over the rising bascule."
+    },
+    {
+      "date": "5 Apr 1968",
+      "text": "Alan Pollock flies a Hawker Hunter under the walkway without authorisation."
+    },
+    {
+      "date": "1974",
+      "text": "The steam hydraulics are replaced by an electro-hydraulic system."
+    },
+    {
+      "date": "1982",
+      "text": "The Tower Bridge Exhibition opens in the towers, walkways, and engine rooms."
+    },
+    {
+      "date": "2008-2012",
+      "text": "A £4 million refurbishment returns the bridge to blue and white."
+    },
+    {
+      "date": "2014",
+      "text": "Glass floors are installed in the walkways."
+    }
+  ],
+  "title": "Tower Bridge"
+}

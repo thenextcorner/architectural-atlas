@@ -1,0 +1,226 @@
+{
+  "address_country": "MX",
+  "address_locality": "Teotihuacan",
+  "coordinates": {
+    "label": "Pyramid of the Sun, Teotihuacan",
+    "lat": 19.693,
+    "lng": -98.844
+  },
+  "description": "Take the Pyramid of the Sun apart piece by piece in 3D, and read its story: a 65-meter mountain of stone built around 200 AD by a civilization whose name for it is lost, raised over a sacred cave.",
+  "entities": {
+    "events": [
+      {
+        "name": "Construction of the Pyramid of the Sun",
+        "start": "c. 200 AD"
+      },
+      {
+        "name": "Teotihuacan at its peak",
+        "start": "c. 450 AD"
+      },
+      {
+        "name": "Teotihuacan burned and abandoned",
+        "start": "c. 750 AD"
+      },
+      {
+        "name": "Aztec pilgrims name the pyramid and the city",
+        "start": "14th century"
+      },
+      {
+        "end": "1910",
+        "name": "Leopoldo Batres restores the pyramid for the independence centennial",
+        "start": "1905"
+      },
+      {
+        "name": "Ernesto Taboada finds the cave beneath the pyramid",
+        "start": "1971"
+      },
+      {
+        "name": "Teotihuacan inscribed as a UNESCO World Heritage Site",
+        "start": "1987"
+      }
+    ],
+    "people": [
+      {
+        "name": "Leopoldo Batres",
+        "role": "Led the 1905 to 1910 excavation and restoration of the pyramid",
+        "wikidata": "Q3229813"
+      },
+      {
+        "name": "Porfirio Diaz",
+        "role": "President of Mexico during the 1910 centennial restoration",
+        "wikidata": "Q150688"
+      },
+      {
+        "name": "Doris Heyden",
+        "role": "Argued the sub-pyramid cave was the site's original sacred focal point",
+        "wikidata": "Q5297942"
+      }
+    ],
+    "wikidata": "Q29238"
+  },
+  "hotspots": [
+    {
+      "part": "Grand staircase flight one",
+      "text": "A broad central staircase climbs the west face, facing the Avenue of the Dead. It begins at the foot of the pyramid near the avenue and rises to the summit platform.",
+      "title": "The grand staircase"
+    },
+    {
+      "part": "Tier five north talud",
+      "text": "The five visible tiers include one added by Leopoldo Batres in the 1905 to 1910 restoration, rushed for the centennial of Mexican independence. The original pyramid had four; the fifth is a visible restoration scar.",
+      "title": "The fifth tier"
+    },
+    {
+      "part": "Summit platform",
+      "text": "The summit altar and temple were destroyed by deliberate and natural forces before archaeology began. Nothing of the temple survives, so the pyramid cannot be tied to any particular deity, though human sacrifice is thought to have taken place on this platform.",
+      "title": "The vanished crown"
+    },
+    {
+      "part": "Summit temple wall north",
+      "text": "Only low wall stubs remain of the summit temple, shown here schematically. Their placement and size are modern reconstruction, not excavated fact.",
+      "title": "Temple wall remnants"
+    },
+    {
+      "part": "Cave entrance pit",
+      "text": "The seven-meter-deep pit at the foot of the main staircase where the archaeologist Ernesto Taboada found the tunnel entrance in 1971, during work on a sound-and-light show.",
+      "title": "The cave entrance pit"
+    },
+    {
+      "part": "Cave cloverleaf chamber",
+      "text": "The grotto six meters below the pyramid's center, reached by a man-made tunnel. Once thought a natural lava tube, it is now believed man-made and may have been a royal tomb or shrine. Some identify it with Chicomoztoc, the mythical place of human origin in Nahua legend.",
+      "title": "The cloverleaf chamber"
+    },
+    {
+      "part": "Serpentine mask offering",
+      "text": "A green serpentine mask is among the offerings found in the tunnel system, alongside pottery, hearths, and artefacts from other cultures. René Millon's team concluded the pyramid's builders were motivated workers, not slaves.",
+      "title": "The serpentine mask"
+    },
+    {
+      "part": "Pottery offering cache",
+      "text": "Most of the main tunnels were sealed, whether purposefully or not is unknown. Millon's 1959 investigation found caches of obsidian arrowheads and human figurines that may have represented sacrificial victims.",
+      "title": "The offering caches"
+    },
+    {
+      "part": "Adosada feline head north",
+      "text": "A few centuries after completion, a four-level adosada platform was built over the original west facade, decorated with sculpted feline heads set into its vertical faces and circular chalchihuite fertility motifs on its mouldings, all stuccoed and painted in multiple colors.",
+      "title": "The adosada feline head"
+    },
+    {
+      "part": "Avenue of the Dead roadway",
+      "text": "The great axis runs north to south for more than 3 kilometers, 45 meters wide, with the pyramid on its east side. The entire central grid of Teotihuacan reproduces the Sun Pyramid's orientation, offset 15.5 degrees east of true north.",
+      "title": "The Avenue of the Dead"
+    }
+  ],
+  "intro": "The largest building of Teotihuacan, the great Mesoamerican city northeast of Mexico City. Toggle between the pyramid as built around 200 AD and as restored in 1905 to 1910, when the fifth tier you can climb today was added.",
+  "page_title": "Pyramid of the Sun: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Frontal view of the Pyramid of the Sun: Peachseltzer, CC BY-SA 4.0, via Wikimedia Commons",
+    "Vintage view of the Pyramid of the Sun: unknown author, public domain, via Wikimedia Commons",
+    "View along a terrace of the pyramid: Daniel Case, CC BY-SA 3.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Frontal view of the Pyramid of the Sun at Teotihuacan",
+      "body": "The Pyramid of the Sun is the largest building in Teotihuacan, the great Mesoamerican city about 40 kilometers northeast of modern Mexico City, and one of the largest pyramids in the New World. It stands about 65.5 meters high on a base of roughly 225 by 230 meters, with a volume near 1.18 million cubic meters: the third-largest ancient pyramid in the New World, after the Great Pyramid of Cholula and La Danta at El Mirador. Nobody knows who built it or what they called it. The Teotihuacanos left no readable record of their language, their rulers, or their place-names. The name Pyramid of the Sun comes from the Aztecs, who visited the city centuries after its abandonment; they called the city Teotihuacan, often understood as the place where the gods were made. At its peak around 450 AD the city held perhaps 100,000 to 200,000 people, among the largest cities on earth. Around 750 AD it was burned and abandoned, possibly in an internal uprising of the poor against the elite.",
+      "caption": "The Pyramid of the Sun from the west, with the grand staircase facing the Avenue of the Dead.",
+      "credit": "Peachseltzer, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "c. 200 AD",
+      "heading": "A city built by strangers",
+      "image": "frontal.jpg"
+    },
+    {
+      "body": "Construction ran in two phases around 200 AD. The first brought the pyramid to nearly its present size; the second finished it at 225 meters across and 75 meters high and added an altar on the summit, which has not survived. The Teotihuacanos coated the pyramid in lime plaster imported from surrounding areas and painted it with brilliantly colored murals. The plaster and paint are gone, but jaguar heads and paws, stars, and snake rattles are among the few images associated with the building. The summit temple was destroyed by deliberate and natural forces before archaeology began, so no one can say which deity the pyramid venerated. Excavations found child burials at the pyramid's corners, believed to be sacrificial dedications made when the building was raised, and caches of obsidian arrowheads and human figurines inside that may have represented sacrificial victims. It was built by hand: workers carried baskets of crushed bedrock and soil, and the craftsmanship argues against slave labour.",
+      "dates": "c. 200 AD",
+      "heading": "Two phases, one vanished crown"
+    },
+    {
+      "alt": "View along one of the pyramid's terraces",
+      "body": "The pyramid's deepest secret is under it. A cave and tunnel system runs beneath the structure, investigated since 1959. In 1971 the archaeologist Ernesto Taboada found a seven-meter-deep pit at the foot of the main staircase leading to a grotto six meters below the pyramid's center, ending in a cloverleaf chamber that had been looted in antiquity. Long thought to be a natural lava tube, the space is now believed to be man-made and may have served as a royal tomb or shrine. The archaeologist Doris Heyden argued the cave was the reason for the pyramid's location: the grotto was a sacred focal point first, and the pyramid was built over it, not the other way around. In Mesoamerica, caves were the wombs of the Earth from which peoples emerged, and offerings were placed in them for deities such as the earth god Tepeyollotl, the fire god Xiuhtecuhtli, and the rain god Tlaloc. Some identify this grotto with Chicomoztoc, the mythical place of human origin in Nahua legend. One reading of this: if Heyden is right, the pyramid monumentalizes an origin place, the earth's surface erupted into architecture above the underworld's mouth.",
+      "caption": "Along a terrace of the pyramid; the visible five tiers include a 20th-century addition.",
+      "credit": "Daniel Case, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1959-1971",
+      "heading": "The cave beneath the mountain",
+      "image": "terrace.jpg"
+    },
+    {
+      "body": "The pyramid was built on a carefully selected spot, aligned both to Cerro Gordo on the northern horizon and, perpendicular to that, to sunrises and sunsets on specific dates, including sunsets on 12 August and 29 April. The entire central urban grid of Teotihuacan, including the Avenue of the Dead, reproduces the Sun Pyramid's orientation, offset 15.5 degrees east of true north, and the peak was positioned to serve as a natural horizon marker of the sun's position on the quarter days of the year. One reading of this: the pyramid was a monumental calendar and observatory, syncing the city's ritual life to the solar cycle. The Avenue of the Dead runs north to south for more than 3 kilometers at 45 meters wide, with the pyramid on its east side between the Pyramid of the Moon to the north and the Ciudadela to the south. A few centuries after completion, a four-level adosada platform was built over the original west facade, decorated with sculpted feline heads and circular chalchihuite fertility motifs, all stuccoed and painted in multiple colors.",
+      "heading": "A calendar in stone"
+    },
+    {
+      "alt": "Vintage photograph of the Pyramid of the Sun",
+      "body": "What visitors climb today partly reflects a 20th-century showpiece. In 1905 the archaeologist Leopoldo Batres, under Porfirio Diaz's regime, launched a major excavation and restoration, rushing the Pyramid of the Sun into presentable shape for the 1910 centennial of Mexican independence. The site had been expropriated for the national patrimony under the 1897 Law of Monuments, some 250 farming plots were cleared, and a feeder railway was built in 1908 to haul material and later tourists. In 1910 the International Congress of Americanists, with figures such as Eduard Seler and Franz Boas, was taken to the newly finished excavations. Critics note the work was hasty: Batres arbitrarily added a fifth terrace level and removed many original facing stones. The original pyramid had four tiers, so any numerological reading of five levels reads the restoration, not the Teotihuacano design.",
+      "caption": "A vintage view of the pyramid, before and during the era of its 20th-century restoration.",
+      "credit": "Unknown author, public domain, via Wikimedia Commons",
+      "dates": "1905-1910",
+      "heading": "The fifth tier is a restoration",
+      "image": "vintage.jpg"
+    },
+    {
+      "body": "Later science has been kinder. René Millon's team investigated the sub-pyramid tunnels in 1959, the INAH site-wide project of 1960 to 1965 under Jorge Acosta cleared the Avenue of the Dead and consolidated its facades, and in 2013 modern muon detectors scanned the interior for hidden chambers. Teotihuacan was inscribed as a UNESCO World Heritage Site in 1987. A unique early find, the Teotihuacan Ocelot recovered near the pyramid's foot in the 19th century, now sits in the British Museum. Each March thousands gather at the pyramid, many dressed in white, climbing to raise their arms to the sun in a recharging energy ceremony. It is a modern tradition with no verified ancient equinox ritual at the pyramid; its meaning is contemporary: community, renewal, and a felt connection to deep time.",
+      "dates": "1959-today",
+      "heading": "The ruin today"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2006-2016",
+      "body": "The Pyramid of the Sun has no fiction-film career; its screen life is documentary. The History Channel's Digging for the Truth: City of the Gods (2006) devoted an hour to Teotihuacan, presented as home of the third-largest pyramid in the world, exploring the great city above and the shafts below in search of the civilization's origins. PBS's Secrets of the Dead: Teotihuacan's Lost Kings (2016) followed the team investigating newly found chambers and a sealed tunnel beneath the city's pyramids. No famous painting of the structure in a known collection could be verified.\n\nThe one fiction film with a matching title does not count: the 1965 German adventure The Pyramid of the Sun God used a studio-built pyramid at Spandau Studios in Berlin, not Teotihuacan."
+    }
+  ],
+  "slug": "pyramid-of-the-sun",
+  "sources": "Historical facts adapted from Wikipedia (\"Pyramid of the Sun\" and \"Teotihuacan\", CC BY-SA) and Encyclopaedia Britannica (\"Teotihuacan\"). Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Pyramid of the Sun",
+  "timeline": [
+    {
+      "date": "c. 200 AD",
+      "text": "The first construction phase brings the pyramid to nearly its present size."
+    },
+    {
+      "date": "c. 200-250 AD",
+      "text": "The second phase completes the pyramid and its summit altar."
+    },
+    {
+      "date": "c. 450 AD",
+      "text": "Teotihuacan peaks as one of the world's largest cities, with perhaps 100,000 to 200,000 inhabitants."
+    },
+    {
+      "date": "c. 750 AD",
+      "text": "The city is burned and abandoned, possibly in an internal uprising."
+    },
+    {
+      "date": "1300s-1500s",
+      "text": "Aztec pilgrims visit the ruins; they name the Pyramid of the Sun and link the city to the Tollan sun-creation myth."
+    },
+    {
+      "date": "Late 1600s",
+      "text": "Carlos de Siguenza y Gongora excavates around the pyramid."
+    },
+    {
+      "date": "1905-1910",
+      "text": "Leopoldo Batres restores the pyramid for the 1910 independence centennial, arbitrarily adding a fifth terrace."
+    },
+    {
+      "date": "1910",
+      "text": "The International Congress of Americanists tours the newly finished excavations."
+    },
+    {
+      "date": "1959",
+      "text": "René Millon's team investigates the tunnels beneath the pyramid."
+    },
+    {
+      "date": "1960-1965",
+      "text": "The INAH site-wide project under Jorge Acosta clears the Avenue of the Dead."
+    },
+    {
+      "date": "1971",
+      "text": "Ernesto Taboada finds the cave entrance at the foot of the main staircase."
+    },
+    {
+      "date": "1987",
+      "text": "Teotihuacan is inscribed as a UNESCO World Heritage Site."
+    },
+    {
+      "date": "2013",
+      "text": "Muon-detector scans probe the pyramid's interior for hidden chambers."
+    }
+  ],
+  "title": "Pyramid of the Sun"
+}

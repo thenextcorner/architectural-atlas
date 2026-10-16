@@ -1,0 +1,228 @@
+{
+  "coordinates": {
+    "label": "Empire State Building, 350 Fifth Avenue, New York City",
+    "lat": 40.7483,
+    "lng": -73.9856
+  },
+  "description": "Take the Empire State Building apart piece by piece in 3D, and read its story: the Depression-era race for the sky, the mooring mast that never docked a dirigible, the 1945 plane crash, and the tower lights.",
+  "entities": {
+    "architect": {
+      "name": "William F. Lamb",
+      "role": "Designed the building; principal designer of Shreve, Lamb & Harmon",
+      "wikidata": "Q2578751"
+    },
+    "events": [
+      {
+        "end": "1931-04-11",
+        "name": "Construction of the Empire State Building",
+        "start": "1930-03-17"
+      },
+      {
+        "name": "Opening of the Empire State Building",
+        "start": "1931-05-01"
+      },
+      {
+        "name": "Failed dirigible docking attempt",
+        "start": "1931-09-15"
+      },
+      {
+        "name": "Broadcasting begins from the mast",
+        "start": "1931-12-22"
+      },
+      {
+        "name": "B-25 bomber crash",
+        "start": "1945-07-28"
+      },
+      {
+        "name": "Colored tower lightings begin",
+        "start": "1977-10-12"
+      },
+      {
+        "name": "LEED Gold certification",
+        "start": "2011-09"
+      },
+      {
+        "name": "LED tower relighting",
+        "start": "2012"
+      }
+    ],
+    "people": [
+      {
+        "name": "Al Smith",
+        "role": "Head of Empire State Inc.; drove the final rivet",
+        "wikidata": "Q430714"
+      },
+      {
+        "name": "John J. Raskob",
+        "role": "Developer and financier; insisted the building be the world's tallest",
+        "wikidata": "Q3181821"
+      },
+      {
+        "name": "Homer G. Balcom",
+        "role": "Structural engineer",
+        "wikidata": "Q16856049"
+      },
+      {
+        "name": "Lewis Hine",
+        "role": "Photographed the construction from the steel",
+        "wikidata": "Q347194"
+      }
+    ],
+    "wikidata": "Q9188"
+  },
+  "hotspots": [
+    {
+      "part": "Mooring mast tier one",
+      "text": "The 200 ft metal crown plus the 222 ft mast were added to the plans in December 1929 to beat the Chrysler Building. Airships would have moored at the equivalent of the 106th floor; the 15 September 1931 docking attempt ended the plan for good.",
+      "title": "The mooring mast"
+    },
+    {
+      "part": "103rd floor exterior balcony",
+      "text": "The 103rd floor was originally the planned docking station. It now holds electrical equipment with an exterior balcony, off limits to the public.",
+      "title": "The 103rd-floor balcony"
+    },
+    {
+      "part": "86th floor open deck railing",
+      "text": "1,050 ft up, the classic open-air deck drew 1 million visitors at $1 each in 1931. It is also where Evelyn McHale jumped in 1947; a 7 ft mesh fence went up that December.",
+      "title": "The 86th-floor observatory"
+    },
+    {
+      "part": "Bronze narrative motifs",
+      "text": "The Fifth Avenue lobby is the only place in the building with narrative motifs: bronze door motifs depict the three crafts of its construction, Electricity, Masonry, and Heating.",
+      "title": "The lobby bronze motifs"
+    },
+    {
+      "part": "Aluminum building relief",
+      "text": "At the west end of the lobby, an aluminum relief shows the skyscraper as built, without the antenna, with rays radiating from the spire over a map of New York State, the building's location marked by a medallion.",
+      "title": "The aluminum relief"
+    },
+    {
+      "part": "Concrete entry eagles",
+      "text": "Sculpted concrete eagles top the molded entry piers of the Fifth Avenue entrance, beneath the triple-height transom window and the golden Empire State lettering.",
+      "title": "The Fifth Avenue eagles"
+    },
+    {
+      "part": "Tier 1 setback terrace",
+      "text": "The 1916 Zoning Resolution mandated setbacks so sunlight could reach the streets; the building's stepped Art Deco profile turns that legal constraint into its defining shape, with setbacks at the 21st, 25th, 30th, 72nd, 81st, and 85th stories.",
+      "title": "The setback silhouette"
+    },
+    {
+      "part": "LED fixture ring",
+      "text": "The spire has been lit in colors since 12 October 1977. The 2012 LED relighting brought 1,200 fixtures and 16 million colors. The owners refuse to use the lights for advertising.",
+      "title": "The LED tower lights"
+    },
+    {
+      "part": "Express elevator bank",
+      "text": "The original order was 64 Otis cars, the largest elevator order ever placed at the time. The building has 73 elevators today.",
+      "title": "The elevators"
+    }
+  ],
+  "intro": "For 39 years the tallest building in the world, it rose from a demolished hotel in just over a year during the Great Depression. The story of the race to build it, the fame that followed, and the lights that still signal the city.",
+  "page_title": "Empire State Building: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Panoramic view of the tower and Midtown Manhattan: Daniel Schwen, CC BY-SA 4.0, via Wikimedia Commons",
+    "The Empire State Building in 2012: Dietmar Rabich, CC BY-SA 4.0, via Wikimedia Commons",
+    "Aerial view of the building: Sam Valadi, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Aerial view of the Empire State Building rising over Midtown Manhattan",
+      "body": "While the Empire State was being planned, the race for the world's tallest building was already dirty. 40 Wall Street was revised upward to 925 ft, and the Chrysler Building secretly added a 185 ft steel spire in October 1929, reaching 1,046 ft. Chrysler's architect William Van Alen had swapped a stubby Romanesque dome for the spire on Walter Chrysler's orders. John J. Raskob, determined the Empire State would be tallest, added five floors and a spire of his own. Fearing Chrysler might pull one more trick, the plans were revised a final time in December 1929 to add a 16-story, 200 ft metal crown plus a 222 ft mooring mast for dirigibles. Roof height: 1,250 ft, the world's tallest by far. The blueprints went through up to fifteen versions.",
+      "caption": "The completed tower rising over Midtown Manhattan.",
+      "credit": "Sam Valadi, public domain, via Wikimedia Commons",
+      "dates": "1929-1931",
+      "heading": "The race into the sky",
+      "image": "aerial.jpg"
+    },
+    {
+      "body": "Demolition of the Waldorf-Astoria Hotel began on 1 October 1929, weeks before Black Tuesday. Raskob refused to cancel. In December 1929 Empire State Inc. took a $27.5 million loan from Metropolitan Life, and construction started on 17 March 1930. It ran at up to four and a half stories a week, with 3,500 workers at peak: many Irish and Italian immigrants, plus Mohawk ironworkers from Kahnawake. The 57,480-ton steel order was the largest single steel order ever placed. Lewis Hine photographed the construction, climbing out onto the steel with the ironworkers. Official accounts list five worker deaths; contemporary press reports suggested more. Total cost: $40,948,900, under the $60 million budget. Al Smith drove the final, solid-gold rivet on 11 April 1931, twelve days ahead of schedule.",
+      "dates": "1930-1931",
+      "heading": "Building through the crash"
+    },
+    {
+      "body": "On 1 May 1931 President Herbert Hoover pressed a button in Washington, D.C. to light the building. Guests included Governor Franklin D. Roosevelt and Mayor Jimmy Walker. The building opened into the Depression: in its first year only 23 percent of space was rented, earning the nicknames \"Empty State Building\" and \"Smith's Folly.\" Lights were left on in empty floors to fake occupancy. It did not turn a profit until the early 1950s. The observation deck carried the building: 1 million visitors at $1 each in 1931 made about $2 million, as much as rents in year one.",
+      "dates": "1931",
+      "heading": "The empty state"
+    },
+    {
+      "body": "The spire was meant as a dirigible terminal, with ticketing on the 86th floor and airships tying up at the equivalent of the 106th floor. On 15 September 1931 a U.S. Navy airship circled 25 times in 45 mph winds, tried to dock, spilled ballast, and was rocked by eddies. The near-disaster killed the plan. One blimp later managed a single newspaper delivery. The mast instead became a broadcasting antenna, a use that defines it to this day: NBC and RCA began experimental television from the mast in December 1931, and Edwin Howard Armstrong tested the world's first FM transmitter there in 1934. One reading of this: the mooring mast reads as 1920s techno-optimism meeting physics, and its afterlife as a broadcast antenna as a failed future repurposed into mass media.",
+      "dates": "1931",
+      "heading": "The mooring mast that never moored"
+    },
+    {
+      "body": "The film's climax, with Kong atop the still-new building, made it a cinematic icon. It has since appeared in more than 250 films and TV series: An Affair to Remember, Sleepless in Seattle, Independence Day, Andy Warhol's 1964 film Empire. The American Society of Civil Engineers named it one of the Seven Wonders of the Modern World, and in 2007 the American Institute of Architects ranked it first in its list of America's Favorite Architecture. Around 4 million people a year visit its observatories. It even has its own ZIP code: 10118.",
+      "dates": "1933",
+      "heading": "King Kong and the camera"
+    },
+    {
+      "body": "A $550 million renovation from 2009 included $120 million for energy efficiency, with a 38 percent emissions-reduction target: all windows were refurbished in place as film-coated \"superwindows,\" earning LEED Gold for Existing Buildings in September 2011. A $160 to 165 million observatory redesign in 2018 and 2019 added the 80th-floor observatory, floor-to-ceiling glass on the 102nd, and a 10,000 sq ft exhibit. The mast was restored in 2019 and 2020, with antennas removed or relocated and aluminum panels cleaned and recoated, all done at night to avoid disrupting the decks. Ownership changed hands repeatedly: sold in 1951 for $51 million, bought in 1961 by Lawrence Wien and Harry Helmsley for $65 million through 3,000 small investors at $10,000 a share, and taken public as Empire State Realty Trust in 2013, with the Qatar Investment Authority taking a 9.9 percent stake in 2016.",
+      "dates": "2009-2020",
+      "heading": "A green old giant"
+    }
+  ],
+  "slug": "empire-state",
+  "sources": "Historical facts adapted from Wikipedia (\"Empire State Building\", CC BY-SA), Structurae, and the ESB tower-lights schedule aggregated on the Atlas leaderboard.",
+  "story_title": "The story of the Empire State Building",
+  "timeline": [
+    {
+      "date": "Oct 1929",
+      "text": "Demolition of the Waldorf-Astoria Hotel begins; weeks later the Wall Street Crash hits."
+    },
+    {
+      "date": "Dec 1929",
+      "text": "Final design revision: the crown and dirigible mooring mast; roof height 1,250 ft."
+    },
+    {
+      "date": "17 Mar 1930",
+      "text": "Construction begins; the steel rises at up to four and a half stories a week."
+    },
+    {
+      "date": "19 Sep 1930",
+      "text": "Steelwork topped out, 23 weeks after construction started."
+    },
+    {
+      "date": "11 Apr 1931",
+      "text": "Structurally complete; Al Smith drives the solid-gold final rivet."
+    },
+    {
+      "date": "1 May 1931",
+      "text": "Opening; President Hoover lights the building remotely from Washington, D.C."
+    },
+    {
+      "date": "15 Sep 1931",
+      "text": "A Navy airship's failed docking attempt kills the dirigible-terminal plan."
+    },
+    {
+      "date": "22 Dec 1931",
+      "text": "Broadcasting begins from the mast."
+    },
+    {
+      "date": "2 Mar 1933",
+      "text": "King Kong released; the building becomes a cinematic icon."
+    },
+    {
+      "date": "28 Jul 1945",
+      "text": "A B-25 bomber crashes into the 79th and 80th floors; 14 killed; the building reopens in two days."
+    },
+    {
+      "date": "Oct 1970",
+      "text": "The World Trade Center North Tower ends its 39-year reign as the world's tallest building."
+    },
+    {
+      "date": "12 Oct 1977",
+      "text": "Regular colored tower lightings begin."
+    },
+    {
+      "date": "Sep 2011",
+      "text": "LEED Gold certification after the $550 million green retrofit."
+    },
+    {
+      "date": "2012",
+      "text": "LED relighting: 1,200 fixtures, 16 million colors; CNN uses the tower as an election-night scoreboard."
+    }
+  ],
+  "title": "Empire State Building",
+  "address_locality": "New York",
+  "address_country": "US",
+  "date_built": "1931"
+}

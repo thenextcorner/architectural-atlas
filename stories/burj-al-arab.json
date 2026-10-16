@@ -1,0 +1,247 @@
+{
+  "coordinates": {
+    "label": "Burj Al Arab, Jumeirah Beach, Dubai",
+    "lat": 25.14139,
+    "lng": 55.18528
+  },
+  "description": "Take the Burj Al Arab apart piece by piece in 3D, and read its story: the sail-shaped hotel Dubai built to become its icon, the artificial island, the helipad stunts, and the seven-star myth its owners never used.",
+  "entities": {
+    "architect": {
+      "name": "Tom Wright",
+      "role": "Design lead; the signature sail-shaped design (Atkins/WKA)",
+      "wikidata": "Q1335131"
+    },
+    "events": [
+      {
+        "name": "Island reclamation begins",
+        "start": "1994-07-10"
+      },
+      {
+        "end": "1999",
+        "name": "The building rises in under three years",
+        "start": "1997"
+      },
+      {
+        "name": "Burj Al Arab opens as the world's tallest hotel",
+        "start": "1999-12-01"
+      },
+      {
+        "name": "Federer vs Agassi exhibition tennis on the helipad",
+        "start": "2005"
+      },
+      {
+        "name": "Coulthard's F1 donuts on the helipad",
+        "start": "2013"
+      },
+      {
+        "name": "Helipad receives the UAE's first helipad license",
+        "start": "2014"
+      },
+      {
+        "name": "North Deck island extension opens",
+        "start": "2016"
+      },
+      {
+        "name": "Drone debris damages the facade",
+        "start": "2026-02"
+      },
+      {
+        "name": "Jumeirah announces the first major restoration",
+        "start": "2026-04"
+      }
+    ],
+    "people": [
+      {
+        "name": "Roger Federer",
+        "role": "Played the 2005 helipad exhibition tennis match",
+        "wikidata": "Q1426"
+      },
+      {
+        "name": "Andre Agassi",
+        "role": "Played the 2005 helipad exhibition tennis match",
+        "wikidata": "Q7407"
+      },
+      {
+        "name": "Rory McIlroy",
+        "role": "Teed off from the helipad, December 2011",
+        "wikidata": "Q380613"
+      },
+      {
+        "name": "David Coulthard",
+        "role": "Performed the 2013 F1 donuts on the helipad",
+        "wikidata": "Q172832"
+      }
+    ],
+    "wikidata": "Q62939"
+  },
+  "hotspots": [
+    {
+      "part": "Sail fabric panel 01",
+      "text": "The dhow-sail front is a double-skinned Teflon-coated woven glass-fiber fabric: two layers with a 50 cm air gap, divided into twelve individually tensioned vertical panels. It shields the interior from the desert sun by day and works as a projection screen at night.",
+      "title": "The dhow sail"
+    },
+    {
+      "part": "Mast crown",
+      "text": "The V of the wings continues upward as a 60 m steel mast. Accommodation tops out about 190 m above the island; the mast reaches the full 321 m.",
+      "title": "The steel mast"
+    },
+    {
+      "part": "Atrium floor",
+      "text": "The space between the V wings is enclosed as a 180 m tall atrium, with inclined white-marble-clad columns. Its volume is about 285,000 cu m.",
+      "title": "The atrium"
+    },
+    {
+      "part": "Helipad deck",
+      "text": "The cantilevered helipad sits 210 m up near the roof, on a massive steel truss, rated for a 7.5-tonne helicopter. It has hosted exhibition tennis, golf tee-offs, F1 donuts, and a record 210 m kiteboard jump.",
+      "title": "The helipad"
+    },
+    {
+      "part": "Al Muntaha restaurant",
+      "text": "Al Muntaha, \"The Ultimate,\" is the restaurant 200 m above the sea, cantilevered 27 m out from the structure on a 1.7 m deep truss, with the Skyview Bar alongside.",
+      "title": "Al Muntaha"
+    },
+    {
+      "part": "Al Mahara aquarium",
+      "text": "Al Mahara, \"Oyster,\" is the seafood restaurant built around a 990,000-litre seawater aquarium behind 18 cm acrylic glass, reached through a simulated submarine voyage.",
+      "title": "Al Mahara"
+    },
+    {
+      "part": "Island pile field",
+      "text": "The artificial island stands on 230 concrete piles driven about 40 m into sand and silt. With no bedrock to reach, the piles hold by skin friction alone, wrapped in a honeycomb wave-protection pattern.",
+      "title": "The island foundations"
+    },
+    {
+      "part": "Private bridge deck",
+      "text": "A private curving bridge connects the island, 280 m offshore of Jumeirah Beach, to the mainland. The site was once called Chicago Beach, after the company that welded floating oil-storage tanks there.",
+      "title": "The private bridge"
+    },
+    {
+      "part": "Royal Suite",
+      "text": "The 780 m2 Royal Suite was billed at US$24,000 per night in 2012. All 202 suites are duplexes; the smallest is 170 m2.",
+      "title": "The Royal Suite"
+    },
+    {
+      "part": "Biggest truss",
+      "text": "The biggest truss of the steel exoskeleton is 85 m long and weighs 165 tonnes. Five-tonne hanging weights act as tuned dampers; maximum sway at the top of the accommodation is 300 mm.",
+      "title": "The biggest truss"
+    }
+  ],
+  "intro": "A 321 m sail of Teflon-coated fiberglass off Jumeirah Beach. Opened in 1999 as the world's tallest hotel, the Burj Al Arab became the symbol of Dubai's luxury pivot. Officially 5-star deluxe. Never seven-star.",
+  "page_title": "Burj Al Arab: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Burj Al Arab sail profile from the beach: Heba Hashem, CC BY-SA 4.0, via Wikimedia Commons",
+    "Burj Al Arab with sea and sky: Marco Becerra, CC BY 2.0, via Wikimedia Commons",
+    "Burj Al Arab at sunset: Farrah Zakir, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Burj Al Arab sail profile seen from the beach",
+      "body": "The hotel was commissioned to become Dubai's symbolic icon. British multidisciplinary consultancy Atkins designed it, led by architect Tom Wright, who created the signature translucent fiberglass facade: a shield against the desert sun by day and an illumination screen by night. Design and construction were managed by Canadian engineer Rick Gregory, construction was managed by David Kirby, the interior is by British-Chinese designer Khuan Chew, and the helipad was designed by Irish architect Rebecca Gernon. Main contractors were Murray & Roberts/Concor of South Africa and Al Habtoor Engineering. The project cost about US$1 billion. One reading of this: the \"symbolic icon\" intent is documented; reading the building as the symbol of Dubai's late-1990s pivot from oil to luxury tourism is the researcher's framing, not a sourced claim.",
+      "caption": "The sail profile from the beach: the dhow-sail shape is the building's documented design intent.",
+      "credit": "Heba Hashem, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1994-1999",
+      "heading": "An icon, commissioned",
+      "image": "sail-profile.jpg"
+    },
+    {
+      "alt": "Burj Al Arab seen from the sea",
+      "body": "The beachfront site was previously called Chicago Beach, named for the Chicago Bridge & Iron Company, which once welded giant floating oil-storage tanks, locally called Kazzans, there. The former Chicago Beach Hotel was demolished during construction. The artificial island rises about 7.5 m above the waves in about 7.5 m of water, 280 m offshore of Jumeirah Beach, connected to the mainland by a private curving bridge. Its foundations: 230 concrete piles driven about 40 m into sand and silt, gaining stability from skin friction rather than bedrock, plus a surface layer of boulders wrapped in a concrete honeycomb wave-protection pattern. Island reclamation took about three years from 1994; the building itself took under three years. Up to 2,000 construction workers were on site at peak.",
+      "caption": "The hotel on its artificial island, 280 m offshore, joined to the mainland by a private curving bridge.",
+      "credit": "Marco Becerra, CC BY 2.0, via Wikimedia Commons",
+      "dates": "1994-1997",
+      "heading": "The island",
+      "image": "from-sea.jpg"
+    },
+    {
+      "body": "Two wings spread in a V to form a vast mast, with the space between enclosed as a 180 m tall atrium. A steel exoskeleton wraps a reinforced-concrete inner tower; the biggest truss is 85 m long and weighs 165 tonnes. Five-tonne hanging weights act as tuned dampers; maximum sway at the top of the accommodation is 300 mm. The front of the building is closed by a double-skinned Teflon-coated woven glass-fiber sail: two layers, a 50 cm air gap, twelve individually tensioned vertical panels, translucent by day and a projection screen at night. The V of the wings continues upward as a 60 m steel mast; accommodation tops out about 190 m above the island, the mast reaching 321 m. Materials: 70,000 m3 of concrete and 9,000 tonnes of steel, with 1,790 sq ft of 24-carat gold leaf in the interior. Thirty-nine percent of the building's height is non-occupiable space.",
+      "dates": "1997-1999",
+      "heading": "The sail and the mast"
+    },
+    {
+      "body": "The hotel is officially rated 5-star deluxe, the highest rating of both Forbes Travel Guide and Dubai DET. The \"seven-star\" label came from a British journalist who visited on a pre-opening tour and described it as beyond anything she had seen. A Jumeirah Group spokesperson said: \"There's not a lot we can do to stop it. We've never used it in our advertising.\" The persistent, officially disavowed label became part of the building's mythology: a symbol of excess that critics called \"a monument to the triumph of money over practicality,\" in Salma Samar Damluji's phrase from The Architecture of the U.A.E.",
+      "dates": "1999",
+      "heading": "The seven-star myth"
+    },
+    {
+      "alt": "Burj Al Arab at sunset",
+      "body": "The cantilevered helipad near the roof at 210 m, on the 28th floor, was designed by Irish architect Rebecca Gernon and rated for a 7.5-tonne helicopter. It received the UAE's first helipad license from the General Civil Aviation Authority in 2014. Its stunt history: a 2005 exhibition tennis match between Roger Federer and Andre Agassi, staged for the Dubai Duty Free Men's Open; Tiger Woods teeing off from it; Rory McIlroy, as Jumeirah's global ambassador, hitting golf balls off it in December 2011; David Coulthard doing donuts in a Red Bull F1 car in 2013 after the team's fourth consecutive championship; skydiver Nasser Al Neyadi landing on it; and, in 2017, Nick Jacobsen's record kiteboard jump from the helipad, 210 m above the water, the highest kiteboarding jump on record, smashing his own 90 m record.",
+      "caption": "The sail at sunset; the helipad cantilevers from the mast near the roof at 210 m.",
+      "credit": "Farrah Zakir, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2005-2017",
+      "heading": "The helipad stage",
+      "image": "sunset.jpg"
+    },
+    {
+      "body": "The named spaces carry the building's meaning. Al Muntaha, \"The Ultimate,\" is the restaurant 200 m above the sea, cantilevered 27 m out from the structure on a 1.7 m deep truss, with the Skyview Bar alongside. Al Mahara, \"Oyster,\" is the seafood restaurant built around a 990,000-litre seawater aquarium behind 18 cm acrylic glass, reached through a simulated submarine voyage. The atrium's Sahn Eddar lounge, the Talise Spa, and four pools complete the venue set. All 202 suites are duplexes: the smallest is 170 m2, and the 780 m2 Royal Suite was billed at US$24,000 per night in 2012.",
+      "dates": "1999",
+      "heading": "Named spaces"
+    },
+    {
+      "body": "In February 2026 the hotel was damaged and set on fire by debris from an intercepted drone during the 2026 Israeli-United States strikes on Iran; the fire was confined to the facade and put out shortly after. In April 2026 Jumeirah announced the hotel's first major restoration, expected to last about 18 months, with the interior to be made more modern while keeping its original look. Wikipedia lists the building's status as \"Under Renovation.\" The only earlier physical expansion was the 2016 North Deck: the island was extended about 328 ft into the Gulf, adding an outdoor terrace, pools, and restaurant.",
+      "dates": "2026",
+      "heading": "Damage and restoration"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2005",
+      "body": "The hotel's screen life is thin; its defining cultural image is a sporting stunt. On 22 February 2005 Roger Federer and Andre Agassi played a 20-minute exhibition on the hotel's helipad, 210 meters above the Gulf, ahead of the Dubai Duty Free tournament. The ATP lists the match among 50 game-changing moments of the past 50 years, and it remains the single most reproduced image of the building. The hotel has no painting tradition; its visual culture lives in photography, advertising, and television."
+    }
+  ],
+  "slug": "burj-al-arab",
+  "sources": "Historical facts adapted from Wikipedia (\"Burj Al Arab\", CC BY-SA), MEED, Building magazine, SkyriseCities, and the construction summaries cited in the research brief. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Burj Al Arab",
+  "timeline": [
+    {
+      "date": "10 Jul 1994",
+      "text": "Island reclamation begins offshore of Jumeirah Beach."
+    },
+    {
+      "date": "1997-1999",
+      "text": "The building rises in under three years; up to 2,000 workers on site at peak."
+    },
+    {
+      "date": "1 Dec 1999",
+      "text": "Burj Al Arab opens as the world's tallest hotel at 321 m."
+    },
+    {
+      "date": "2000",
+      "text": "New Year's Eve fireworks celebrations begin at the hotel."
+    },
+    {
+      "date": "2005",
+      "text": "Roger Federer and Andre Agassi play exhibition tennis on the 210 m helipad."
+    },
+    {
+      "date": "Dec 2011",
+      "text": "Rory McIlroy tees golf balls off the helipad as Jumeirah's ambassador."
+    },
+    {
+      "date": "2013",
+      "text": "David Coulthard performs F1 donuts on the helipad for Red Bull's championship."
+    },
+    {
+      "date": "2014",
+      "text": "The helipad receives the UAE's first helipad license from the GCAA."
+    },
+    {
+      "date": "2016",
+      "text": "The North Deck island extension opens, adding terrace, pools, and restaurant."
+    },
+    {
+      "date": "2017",
+      "text": "Nick Jacobsen completes the record 210 m kiteboard jump from the helipad."
+    },
+    {
+      "date": "Feb 2026",
+      "text": "The facade is damaged and set on fire by intercepted-drone debris."
+    },
+    {
+      "date": "Apr 2026",
+      "text": "Jumeirah announces the hotel's first major restoration, expected to last 18 months."
+    }
+  ],
+  "title": "Burj Al Arab",
+  "address_locality": "Dubai",
+  "address_country": "AE",
+  "date_built": "1999"
+}

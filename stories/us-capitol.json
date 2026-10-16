@@ -1,0 +1,307 @@
+{
+  "address_country": "US",
+  "address_locality": "Washington",
+  "coordinates": {
+    "label": "United States Capitol, First Street SE, Washington",
+    "lat": 38.88972222,
+    "lng": -77.00888889
+  },
+  "date_built": "1866",
+  "description": "Take the United States Capitol apart in 3D and read its story: from L'Enfant's \"pedestal awaiting a monument\" to the cast-iron dome finished in 1866, burned by the British in 1814 and crowned during the Civil War.",
+  "entities": {
+    "architect": {
+      "name": "Thomas Ustick Walter",
+      "role": "Designer of the 1850s expansion and the cast-iron dome",
+      "wikidata": "Q2272304"
+    },
+    "events": [
+      {
+        "end": "1800",
+        "name": "Construction of the original Capitol",
+        "start": "1793"
+      },
+      {
+        "name": "Residence Act fixes the permanent capital on the Potomac",
+        "start": "1790-07"
+      },
+      {
+        "name": "Washington lays the cornerstone with Masonic ritual",
+        "start": "1793-09-18"
+      },
+      {
+        "name": "Congress first sits in the Capitol",
+        "start": "1800-11-17"
+      },
+      {
+        "name": "British forces burn the Capitol during the War of 1812",
+        "start": "1814-08-24"
+      },
+      {
+        "name": "Rotunda and Bulfinch's first low copper dome completed",
+        "start": "1826"
+      },
+      {
+        "name": "Decision to replace the dome with a cast-iron dome",
+        "start": "1855"
+      },
+      {
+        "name": "Lincoln inaugurated under the unfinished dome",
+        "start": "1861"
+      },
+      {
+        "name": "Statue of Freedom raised atop the dome",
+        "start": "1863-12-02"
+      },
+      {
+        "name": "Cast-iron dome completed, just after the Civil War",
+        "start": "1866"
+      },
+      {
+        "end": "1892",
+        "name": "Olmsted landscapes the Capitol Grounds",
+        "start": "1874"
+      },
+      {
+        "end": "1962",
+        "name": "East Portico extended 33.5 ft in marble",
+        "start": "1958"
+      },
+      {
+        "name": "Capitol Visitor Center opens",
+        "start": "2008-12-02"
+      },
+      {
+        "end": "2016",
+        "name": "Major dome restoration; about 1,300 iron cracks repaired",
+        "start": "2014"
+      },
+      {
+        "name": "Mob storms the Capitol; first violent seizure since 1814",
+        "start": "2021-01-06"
+      }
+    ],
+    "people": [
+      {
+        "name": "William Thornton",
+        "role": "Won the 1792 design competition with his late entry",
+        "wikidata": "Q1347934"
+      },
+      {
+        "name": "Benjamin Henry Latrobe",
+        "role": "Surveyor of Public Buildings; rebuilt the Capitol after the 1814 fire",
+        "wikidata": "Q726082"
+      },
+      {
+        "name": "Thomas Crawford",
+        "role": "Sculptor of the Statue of Freedom",
+        "wikidata": "Q1863438"
+      },
+      {
+        "name": "Constantino Brumidi",
+        "role": "Painter of the Apotheosis of Washington and the frieze",
+        "wikidata": "Q983643"
+      },
+      {
+        "name": "Frederick Law Olmsted",
+        "role": "Landscape architect of the Capitol Grounds",
+        "wikidata": "Q364187"
+      },
+      {
+        "name": "Philip Reid",
+        "role": "Enslaved worker who supervised the Statue of Freedom casting",
+        "wikidata": "Q7184274"
+      },
+      {
+        "name": "Jefferson Davis",
+        "role": "Secretary of War who objected to the liberty cap",
+        "wikidata": "Q162269"
+      },
+      {
+        "name": "George Washington",
+        "role": "Laid the cornerstone in 1793",
+        "wikidata": "Q23"
+      },
+      {
+        "name": "John Adams",
+        "role": "Urged the 1800 move of Congress to Washington",
+        "wikidata": "Q11806"
+      },
+      {
+        "name": "Abraham Lincoln",
+        "role": "Inaugurated under the unfinished dome in 1861",
+        "wikidata": "Q91"
+      }
+    ],
+    "wikidata": "Q54109"
+  },
+  "hotspots": [
+    {
+      "part": "Statue of Freedom",
+      "text": "The 19-foot-6-inch bronze figure by Thomas Crawford, formally titled \"Freedom Triumphant in War and Peace\", crowns the dome. She holds a sheathed sword, a laurel wreath of victory, and the US shield with thirteen stripes, wears a helmet ringed with stars topped with an eagle's head and feathers, and stands on a cast-iron globe encircled with \"E pluribus unum\". The helmet replaced Crawford's original liberty cap after Jefferson Davis, then Secretary of War, objected to it; the cap had signified freed Roman slaves and was politically explosive in the 1850s. She is the tallest statue in the District of Columbia.",
+      "title": "The Statue of Freedom"
+    },
+    {
+      "part": "Apotheosis of Washington",
+      "text": "Constantino Brumidi's 1865 fresco under the dome interior shows Washington enthroned among thirteen maidens with Greek and Roman gods below; Wikipedia calls it \"the first attempt by the United States to deify a founding father\".",
+      "title": "The Apotheosis of Washington"
+    },
+    {
+      "part": "Rotunda frieze",
+      "text": "The chronological Frieze of American History around the dome's base runs from Columbus's landing to the Wright brothers' 1903 flight. Started in 1878, it was finished only in 1953 by four artists, Brumidi, Filippo Costaggini, Charles Ayer Whipple, and Allyn Cox; the final scenes had not yet happened when Brumidi began.",
+      "title": "The frieze"
+    },
+    {
+      "part": "Rotunda history paintings",
+      "text": "The Rotunda's eight history paintings divide east and west: the east side shows the discovery of America, Columbus, the Pilgrims, Pocahontas, the Mississippi, and the west side shows the founding, including Trumbull's Declaration of Independence, the surrenders of Burgoyne and Cornwallis, and Washington resigning his commission.",
+      "title": "The Rotunda paintings"
+    },
+    {
+      "part": "Compass stone",
+      "text": "A star inlaid in the Crypt floor marks the point from which Washington, DC is divided into its NE, NW, SE, and SW quadrants; it is the basis of the city's address system. The Capitol forms the origin point for the District's street-numbering system.",
+      "title": "The compass star"
+    },
+    {
+      "part": "Washington’s Tomb",
+      "text": "The Crypt was meant to hold George Washington's tomb, but his will kept him at Mount Vernon. Thirteen presidents have lain in state in the Rotunda above, most recently Jimmy Carter.",
+      "title": "The empty tomb"
+    },
+    {
+      "part": "House chamber",
+      "text": "Twenty-three relief portraits of lawmakers through history ring the House Chamber; only Moses faces full front, placed opposite the Speaker's dais. \"In God We Trust\" is written above the flag over the tribune.",
+      "title": "The lawgivers"
+    },
+    {
+      "part": "West Portico",
+      "text": "Both east and west elevations are formally \"fronts\": the east received visitors and dignitaries, while the west front has hosted presidential inaugurations since Ronald Reagan's in 1981.",
+      "title": "The West Front"
+    },
+    {
+      "part": "Inaugural platform",
+      "text": "Presidential inaugurations have been held on the West Front since 1981. Abraham Lincoln was inaugurated under the unfinished dome in 1861.",
+      "title": "The inaugural platform"
+    },
+    {
+      "part": "Capitol Visitor Center",
+      "text": "The 580,000-square-foot underground Visitor Center broke ground in 2000 and opened on 2 December 2008 beneath the East Front, at a final cost of $621 million.",
+      "title": "The Visitor Center"
+    }
+  ],
+  "intro": "A Roman name, a cast-iron dome finished in 1866, and the Statue of Freedom cast with help from an enslaved worker. Toggle between Detailed, the Capitol as completed in 1866, and Today.",
+  "page_title": "United States Capitol: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "West front with the restored dome, October 2016: Ron Cogswell, CC BY 2.0, via Wikimedia Commons",
+    "The dome with a full moon: USCapitol, public domain, via Wikimedia Commons",
+    "The Apotheosis of Washington in the Rotunda: USCapitol, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The west front of the United States Capitol with the restored dome",
+      "body": "After the Pennsylvania Mutiny of 1783 chased Congress out of Philadelphia, the Residence Act of 1790 fixed the permanent capital on the Potomac, following Alexander Hamilton's compromise: the federal government assumed states' war debt in exchange for northern support for a Potomac capital, with Philadelphia as temporary capital for ten years. Pierre L'Enfant's city plan placed the \"Congress House\" on Jenkins Hill, which he called \"a pedestal awaiting a monument\". The name \"Capitol\", from Rome's Capitoline Hill, was applied by Thomas Jefferson over L'Enfant's \"Congress House\", deliberately tying the American legislature to Roman republican ideals. Jefferson proposed a design competition in 1792 with a $500 prize. The trained French architect Stephen Hallet was favored but judged too French and too costly. A late entry by amateur architect William Thornton, inspired by the east front of the Louvre and the Paris Pantheon, was praised by Washington for its \"Grandeur, Simplicity, and Beauty\" and approved on 5 April 1793. President Washington, with eight other Freemasons in regalia, laid the cornerstone on 18 September 1793.",
+      "caption": "The west front with the restored cast-iron dome, photographed in October 2016.",
+      "credit": "Ron Cogswell, CC BY 2.0, via Wikimedia Commons",
+      "dates": "1783-1793",
+      "heading": "A pedestal awaiting a monument",
+      "image": "west-front.jpg"
+    },
+    {
+      "alt": "The Apotheosis of Washington fresco in the Rotunda",
+      "body": "Enslaved labor was used extensively in the original construction: enslaved people from Maryland and Virginia were hired out by their owners to the federal government, which paid the enslavers. The north (Senate) wing was completed in 1800; the south (House) wing in 1811. Congress sat with both chambers on 17 November 1800, after President John Adams hurried the move to Washington hoping to win southern votes. In 1803 Benjamin Henry Latrobe became Surveyor of Public Buildings and rebuilt the wings' interiors. On 24 August 1814, during the War of 1812, British forces burned the Capitol. Reconstruction ran from 1815 to 1819 for the chambers and through 1826 for the center section, rotunda, and the first low copper-covered dome designed by Charles Bulfinch.",
+      "caption": "Constantino Brumidi's 1865 Apotheosis of Washington, the fresco inside the dome.",
+      "credit": "USCapitol, public domain, via Wikimedia Commons",
+      "dates": "1800-1826",
+      "heading": "Built, burned, rebuilt",
+      "image": "apotheosis.jpg"
+    },
+    {
+      "body": "By 1850 the Capitol could not hold the legislators from newly admitted states. President Millard Fillmore appointed Thomas U. Walter to add the House and Senate wings; again enslaved labor cut logs, laid stones, and baked bricks. The 1850s expansion dwarfed Bulfinch's low dome, so in 1855 it was decided to replace it with the cast-iron \"wedding-cake\" dome Walter designed: three times the original's height, 100 feet in diameter, weighing 8,909,200 pounds, modeled in part on the double dome of Les Invalides in Paris. The Statue of Freedom was raised to its top on 2 December 1863, hoisted in sections by formerly enslaved laborers freed by the 1862 Compensated Emancipation Act, the final section bolted on to a 35-gun salute answered by the 12 forts around Washington. Abraham Lincoln was inaugurated under the unfinished dome in 1861, and the dome was completed around 1866, just after the Civil War.",
+      "dates": "1850-1866",
+      "heading": "The wedding-cake dome"
+    },
+    {
+      "alt": "The US Capitol dome silhouetted against a full moon",
+      "body": "The 19-foot-6-inch bronze Statue of Freedom by Thomas Crawford, formally titled \"Freedom Triumphant in War and Peace\", crowns the dome. She holds a sheathed sword, a laurel wreath of victory, and the US shield with thirteen stripes; wears a helmet ringed with stars and topped with an eagle's head and feathers; a brooch inscribed \"US\" secures her robes; she stands on a cast-iron globe encircled with \"E pluribus unum\"; the base carries fasces and wreaths. The helmet replaced Crawford's original liberty cap after Jefferson Davis, then Secretary of War, objected to it; the cap had signified freed Roman slaves and was politically explosive in the 1850s. When the foundry foreman went on strike during the casting, Clark Mills turned the work over to Philip Reid, an enslaved worker at the foundry, who supervised the rest of the casting and assembly. She is the tallest statue in the District of Columbia.",
+      "caption": "The dome against a full moon.",
+      "credit": "USCapitol, public domain, via Wikimedia Commons",
+      "dates": "1855-1863",
+      "heading": "Freedom on top",
+      "image": "full-moon.jpg"
+    },
+    {
+      "body": "Constantino Brumidi's 1865 Apotheosis of Washington under the dome interior shows Washington enthroned among thirteen maidens with Greek and Roman gods below; Wikipedia calls it \"the first attempt by the United States to deify a founding father\". The Frieze of American History around the dome's base runs chronologically from Columbus's landing to the Wright brothers' 1903 flight; started in 1878, it was finished only in 1953 by four artists, and the final scenes had not yet happened when Brumidi began. The Rotunda's eight paintings divide east and west: the east side shows the discovery of America and the west side shows the founding. Twenty-three relief portraits of lawmakers ring the House Chamber; only Moses faces full front, placed opposite the Speaker's dais. Latrobe's columns with American corncob and tobacco-leaf capitals, carved by Giuseppe Franzoni from Aquia Creek sandstone, substitute American crops for classical ornament One reading of this: commonly read as a deliberate Americanization of the classical orders, a statement that the republic had its own visual language. Borglum's 1908 Lincoln bust in the Crypt is said to be unfinished, missing the left ear, to symbolize Lincoln's unfinished life; Wikipedia reports this as legend.",
+      "dates": "1865-1953",
+      "heading": "The building as civics lesson"
+    },
+    {
+      "body": "The Capitol has been attacked repeatedly. On 30 January 1835 Richard Lawrence's two pistols misfired at Andrew Jackson outside the East Portico, the first attempted assassination of a sitting president. Eric Muenter exploded a bomb in the Senate reception room on 2 July 1915; Puerto Rican nationalists fired on Congress from the visitors' gallery on 1 March 1954, injuring five representatives; the Weather Underground bombed the ground floor in 1971; and the Armed Resistance Unit bombed the Senate in 1983. On 24 July 1998 Russell Eugene Weston Jr. killed two Capitol Police officers; a bullet mark remains visible on the Calhoun statue in the Old Supreme Court Chamber. United Airlines Flight 93, which crashed in Pennsylvania after a passenger revolt on 11 September 2001, is believed to have been headed for the Capitol. On 24 September 2015 Pope Francis gave the first-ever papal address to a joint session of Congress, and on 6 January 2021 a pro-Trump mob stormed the Capitol during the Electoral College count, the first violent seizure of the building since 1814. The building changed too: Frederick Law Olmsted landscaped the 274-acre grounds from 1874 to 1892, the East Front was rebuilt in 1904, the East Portico was extended 33.5 feet in 1958 to 1962 with the original columns eventually re-erected as the National Capitol Columns at the National Arboretum in 1984, and the first extensive dome restoration since 1959 to 1960 ran from 2014 to 2016, addressing some 1,300 cracks in the brittle iron.",
+      "dates": "1835-2021",
+      "heading": "Attacked, extended, restored"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1833-2016",
+      "body": "Frank Capra's Mr. Smith Goes to Washington (1939) made the Capitol the emotional center of its story, from Jefferson Smith's awestruck tour of the dome to the Senate-chamber filibuster, staging the building as the embodiment of democratic ideals. Netflix's House of Cards (2013-2018) took the opposite view, unfolding substantially under the dome as Frank Underwood rises through the House, with production designers obsessively recreating the halls after photographing the real building.\n\nHollywood also loves destroying it. Roland Emmerich vaporized the Capitol in Independence Day (1996) and obliterated it again in White House Down (2013); Tim Burton's Martians massacred Congress inside it in Mars Attacks! (1996). The ABC series Designated Survivor (2016) opens with an explosion destroying the Capitol during the State of the Union, killing the president, Congress and the Supreme Court, and the entire series premise rests on that single image. Ice Cube's xXx: State of the Union (2005) climaxes with an assault on the building during the same ceremony.\n\nGeorge Cooke's 1833 oil The City of Washington from Beyond the Navy Yard shows the Capitol atop its hill in a view of the young capital; in the White House collection since 1972, it has hung in the Oval Office under multiple administrations.\n\nOne for the franchise fans: despite the confusion, X-Men: Apocalypse has no Capitol scene; the X-Men entry with the Capitol is Days of Future Past (2014)."
+    }
+  ],
+  "slug": "us-capitol",
+  "sources": "Historical facts adapted from Wikipedia (\"United States Capitol\" and \"Statue of Freedom\", CC BY-SA), en-academic.com, picturinghistory.gc.cuny.edu, and thehillishome.com. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the United States Capitol",
+  "timeline": [
+    {
+      "date": "Jul 1790",
+      "text": "The Residence Act fixes the permanent capital on the Potomac."
+    },
+    {
+      "date": "1792",
+      "text": "Design competition; Thornton's late entry wins."
+    },
+    {
+      "date": "18 Sep 1793",
+      "text": "Washington lays the cornerstone with Masonic ritual."
+    },
+    {
+      "date": "17 Nov 1800",
+      "text": "Congress first sits in the Capitol."
+    },
+    {
+      "date": "24 Aug 1814",
+      "text": "British forces burn the Capitol during the War of 1812."
+    },
+    {
+      "date": "1826",
+      "text": "Redesigned chambers, rotunda, and Bulfinch's first dome completed."
+    },
+    {
+      "date": "1855",
+      "text": "Decision to replace Bulfinch's dome with a cast-iron dome."
+    },
+    {
+      "date": "1861",
+      "text": "Lincoln inaugurated under the unfinished dome."
+    },
+    {
+      "date": "2 Dec 1863",
+      "text": "The Statue of Freedom is raised atop the dome."
+    },
+    {
+      "date": "1866",
+      "text": "The dome is completed just after the Civil War."
+    },
+    {
+      "date": "1958-1962",
+      "text": "The East Portico is extended 33.5 ft in marble."
+    },
+    {
+      "date": "2 Dec 2008",
+      "text": "The Capitol Visitor Center opens."
+    },
+    {
+      "date": "2014-2016",
+      "text": "Major dome restoration; about 1,300 iron cracks repaired."
+    },
+    {
+      "date": "6 Jan 2021",
+      "text": "A mob storms the Capitol; the first violent seizure since 1814."
+    }
+  ],
+  "title": "United States Capitol"
+}

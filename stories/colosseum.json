@@ -1,0 +1,271 @@
+{
+  "coordinates": {
+    "label": "Colosseum, Piazza del Colosseo, Rome",
+    "lat": 41.8903,
+    "lng": 12.4922
+  },
+  "description": "Take the Colosseum apart piece by piece in 3D, and read its story: from Nero's drained lake to the inaugural games, the 1349 earthquake that felled the south wall, and the ruin Rome refused to demolish.",
+  "entities": {
+    "events": [
+      {
+        "end": "AD 80",
+        "name": "Construction of the Colosseum",
+        "start": "AD 70"
+      },
+      {
+        "name": "Inaugural games under Titus",
+        "start": "AD 80"
+      },
+      {
+        "end": "AD 96",
+        "name": "Domitian's additions: hypogeum and top gallery",
+        "start": "AD 81"
+      },
+      {
+        "name": "Lightning fire destroys the wooden upper levels",
+        "start": "AD 217"
+      },
+      {
+        "name": "Gladiatorial fights banned by Honorius",
+        "start": "399"
+      },
+      {
+        "name": "Last recorded animal hunts",
+        "start": "523"
+      },
+      {
+        "name": "Great earthquake collapses the outer south side",
+        "start": "1349"
+      },
+      {
+        "name": "Pope Benedict XIV consecrates the building",
+        "start": "1749"
+      },
+      {
+        "name": "Restored Commodus Passage opens to the public",
+        "start": "2025-10-27"
+      }
+    ],
+    "people": [
+      {
+        "name": "Vespasian",
+        "role": "Emperor who began construction (reigned AD 69-79)",
+        "wikidata": "Q1419"
+      },
+      {
+        "name": "Titus",
+        "role": "Emperor who completed and inaugurated it (reigned AD 79-81)",
+        "wikidata": "Q1421"
+      },
+      {
+        "name": "Domitian",
+        "role": "Added the hypogeum and the top gallery (reigned AD 81-96)",
+        "wikidata": "Q1423"
+      },
+      {
+        "name": "Nero",
+        "role": "His Domus Aurea lake was drained for the site",
+        "wikidata": "Q1413"
+      },
+      {
+        "name": "Hadrian",
+        "role": "Moved the Colossus of Nero beside the amphitheatre",
+        "wikidata": "Q1427"
+      },
+      {
+        "name": "Pope Benedict XIV",
+        "role": "Consecrated the building to the Passion of Christ, 1749",
+        "wikidata": "Q126711"
+      },
+      {
+        "name": "Benito Mussolini",
+        "role": "His regime fully excavated the hypogeum in the 1930s",
+        "wikidata": "Q23559"
+      }
+    ],
+    "wikidata": "Q10285"
+  },
+  "hotspots": [
+    {
+      "part": "NE velarium mast corbels (60)",
+      "text": "240 stone mast corbels ring the attic. They held a retractable canvas awning that covered two-thirds of the arena and sloped down to catch the wind, cooling the crowd. Sailors enlisted from the naval headquarters at Misenum worked the rigging.",
+      "title": "The velarium"
+    },
+    {
+      "part": "Hypogeum central corridor",
+      "text": "Domitian's two-level subterranean network of tunnels, dens, and cages. Eighty vertical shafts with elevators and trapdoors fed gladiators and animals up through the arena floor.",
+      "title": "The hypogeum"
+    },
+    {
+      "part": "NE arena sand surface",
+      "text": "The wooden arena floor was covered in sand: harena, the root of the word arena. With the floor gone, the hypogeum stands exposed to the sky.",
+      "title": "The arena floor"
+    },
+    {
+      "part": "Imperial box (pulvinar)",
+      "text": "The north and south axial entrances were reserved for the imperial family, with wider, more ornamented arches. A wide passage led from the north entrance directly to the imperial box on the podium.",
+      "title": "The emperor's box"
+    },
+    {
+      "part": "Podium ring",
+      "text": "The broad marble platform for senators, fronted by a bronze balustrade. Fifth-century senators' names are still carved into the stonework.",
+      "title": "The senators' podium"
+    },
+    {
+      "part": "NE lower maenianum primum wedges",
+      "text": "The seating tiers mapped Roman social classes: the maenianum primum for knights, the secundum split between wealthy and poor citizens, and Domitian's top wooden gallery for the poor, slaves, and women. Gravediggers, actors, and former gladiators were banned entirely.",
+      "title": "The seating tiers"
+    },
+    {
+      "part": "NE numbered entrances (19)",
+      "text": "Seventy-six numbered ground-level arches fed the crowd in; arches XXIII to LIIII survive on the north side. Numbered pottery shards directed each spectator to an exact seat by tier, wedge, and row.",
+      "title": "The numbered arches"
+    },
+    {
+      "part": "Collapsed south wall, fallen blocks",
+      "text": "The great earthquake of 1349 collapsed the outer south side, which stood on less stable alluvial ground. The fallen stone was carted off to build palaces, churches, and hospitals across Rome.",
+      "title": "The fallen south wall"
+    },
+    {
+      "part": "1807 brick shoring wedge",
+      "text": "Triangular brick wedges were built in 1807 and 1827 to shore up the broken ends of the surviving northern outer wall. They are modern additions, still visible today.",
+      "title": "The brick wedges"
+    },
+    {
+      "part": "Iron clamp sample",
+      "text": "The travertine blocks of the outer wall were set without mortar and held by 300 tons of iron clamps. Medieval stone-robbers pried the clamps out, leaving the pockmarks still visible on the stone.",
+      "title": "The iron clamp scars"
+    }
+  ],
+  "intro": "The largest amphitheatre ever built held up to 80,000 Romans. Toggle between Detailed, the complete building of AD 80, and Today, the ruin: the 1349 earthquake took the south wall down, and Rome has lived with the result.",
+  "page_title": "Colosseum: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Classic exterior view of the Colosseum, April 2007: Diliff, CC BY-SA 2.5, via Wikimedia Commons",
+    "The exposed hypogeum beneath the arena floor: Jouri de vylder, CC BY-SA 3.0, via Wikimedia Commons",
+    "18th-century engraving of the Colosseum: Giovanni Battista Piranesi, public domain, via Wikimedia Commons",
+    "Exterior view from the south: Livioandronico2013, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Classic exterior view of the Colosseum in Rome",
+      "body": "The site itself tells a political story. The Colosseum was built on the drained bed of an artificial lake that belonged to Nero's Domus Aurea, the sprawling private palace Nero created after the Great Fire of Rome in AD 64 seized much of the valley between the Caelian, Esquiline, and Palatine hills. Vespasian tore down most of the Domus Aurea, filled in the lake, and put the amphitheatre on the reclaimed land. It was a populist gesture: returning to the people an area of the city Nero had appropriated for his own use. Unlike most amphitheatres, which sat on city outskirts, the Colosseum rose in the city center, at the heart of Rome both symbolically and geographically. Construction was funded by the spoils of the First Jewish-Roman War: a reconstructed inscription records that Vespasian ordered the amphitheatre erected from his general's share of the booty taken after the Siege of Jerusalem in AD 70. Professional builders did the specialized work; slaves and prisoners of war are assumed to have supplied the unskilled labor. One reading of this: building on Nero's drained lake with Jerusalem's spoils reads as the Flavian dynasty advertising itself as the restorer of the republic, Nero's private pleasure ground returned to the people and foreign conquest converted into public entertainment.",
+      "caption": "The classic exterior view: three arcaded storeys of Doric, Ionic, and Corinthian orders beneath the attic.",
+      "credit": "Diliff, CC BY-SA 2.5, via Wikimedia Commons",
+      "dates": "AD 64-80",
+      "heading": "Nero's lake, the people's arena",
+      "image": "exterior.jpg"
+    },
+    {
+      "alt": "The exposed hypogeum, the underground tunnel and cage complex beneath the arena",
+      "body": "The inaugural games in AD 80 or 81 were on a staggering scale: Dio Cassius records that over 9,000 wild animals were killed. The program ran through gladiatorial contests, animal hunts, executions, staged battles, and mock sea battles. Domitian later added the engine room of the spectacle: the hypogeum, a two-level underground network of tunnels, cages, and dens, with eighty vertical shafts carrying elevators and trapdoors that lifted gladiators and animals through the arena floor. He also added a wooden top gallery that raised seating capacity. Trajan's Dacian victory games in AD 107 stretched it further: 11,000 animals and 10,000 gladiators over 123 days.",
+      "caption": "The hypogeum, Domitian's underground tunnel and cage complex, fully excavated in the 1930s.",
+      "credit": "Jouri de vylder, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "AD 80-107",
+      "heading": "One hundred days of blood",
+      "image": "hypogeum.jpg"
+    },
+    {
+      "body": "The building was a machine for moving crowds and staging illusion. Two hundred and forty mast corbels around the attic held the velarium, a retractable canvas awning covering two-thirds of the arena, worked by sailors enlisted from the naval headquarters at Misenum. The seating tiers mirrored Rome's rigid hierarchy: boxes at the north and south ends for the Emperor and the Vestal Virgins with the best views, a broad podium for senators, the maenianum primum for knights, the secundum split between wealthy and poor citizens, and Domitian's top wooden gallery for the poor, slaves, and women. Tickets were numbered pottery shards directing each spectator to an exact seat by tier, wedge, and row. Seventy-six numbered ground-level arches, plus the vomitoria passageways, could fill or empty the building in minutes. The east arena gate, the Porta Triumphalis, admitted gladiators and wild animals; the west gate, the Porta Libitinensis, carried out the mortally wounded and the dead.",
+      "dates": "AD 80-523",
+      "heading": "The machinery of spectacle"
+    },
+    {
+      "alt": "Exterior view of the Colosseum from the south, showing the collapsed outer wall",
+      "body": "In 1349 a great earthquake collapsed the outer south side, which lay on less stable alluvial ground. It was never rebuilt. Much of the fallen stone was carted off to build palaces, churches, and hospitals across Rome, and the marble facade was burned for quicklime. The iron clamps that had held the travertine blocks together were pried out, leaving the pockmarks still visible today. This is the moment the building became a ruin, and the reason the viewer has two variants. Switch between Detailed, the complete building as dedicated in AD 80, with the full ring of outer arcades, and Today, the current ruin: the south outer wall gone, the hypogeum open to the sky. The two brick wedges at the broken ends of the surviving northern wall were added in 1807 and 1827 to keep the rest standing.",
+      "caption": "The south side, where the 1349 earthquake brought the outer arcades down; they were never rebuilt.",
+      "credit": "Livioandronico2013, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1349",
+      "heading": "When the south wall fell",
+      "image": "from-south.jpg"
+    },
+    {
+      "body": "For centuries the ruin was useful before it was revered. By the late 6th century there was a small chapel inside; the arena served as a cemetery; the vaulted arcades became housing and workshops, still rented out in the 12th century. Around 1200 the Frangipani family fortified the building as a castle. Later plans grew stranger: Pope Sixtus V wanted a wool factory for Rome's prostitutes inside it, an idea abandoned on his death, and in 1671 bullfights were briefly authorized, then cancelled after public outcry.",
+      "dates": "6th-17th century",
+      "heading": "A quarry, a fortress, a chapel"
+    },
+    {
+      "alt": "18th-century engraving of the Colosseum by Giovanni Battista Piranesi",
+      "body": "In 1749 Pope Benedict XIV, persuaded that Christians had been martyred there, consecrated the building to the Passion of Christ and installed the Stations of the Cross. There is no historical evidence for the martyrdom claim: no ancient source places martyrdoms there before the 16th century, the medieval pilgrim guides list other venues, and scholars note that most early martyrs died at the Circus Maximus. The Catholic Encyclopedia concludes there are no historical grounds for the supposition, only the plausible conjecture that some martyrs may well have died there. Excavation came in waves: 1810 to 1814 and 1874 partly exposed the arena substructure, fully opened in the 1930s under Mussolini. A major restoration program ran from 1993 to 2000 at a cost of 40 billion lire, followed by a 2011 to 2016 restoration funded by the Tod's shoe company. In 2025 the restored Commodus Passage, the emperor's discreet entrance rediscovered in the 1810s, opened to the public.",
+      "caption": "The Colosseum as Giovanni Battista Piranesi engraved it in the 18th century, already a romantic ruin.",
+      "credit": "Giovanni Battista Piranesi, public domain, via Wikimedia Commons",
+      "dates": "1749-today",
+      "heading": "Consecrated, excavated, restored",
+      "image": "piranesi.jpg"
+    },
+    {
+      "body": "The building outgrew its function and became an emblem. The name Colosseum does not come from its size but from the Colossus of Nero, a giant bronze statue of Nero as a solar deity that Hadrian moved to stand beside the amphitheatre. In the 8th century an epigram attributed to the Venerable Bede gave the statue prophetic weight: as long as the Colossus stands, so shall Rome. It is often mistranslated as referring to the amphitheatre, for instance in Byron's Childe Harold's Pilgrimage. Today the Colosseum is the emblem of Imperial Rome on the Italian 5 euro cent coin. Since 2000 it has been lit gold whenever a death sentence anywhere in the world is commuted or abolished, making the building a symbol of the international campaign against capital punishment. Every Good Friday the Pope leads the torchlit Via Crucis procession there. And the ruin has its own botanical record: 684 plant species catalogued since Domenico Panaroli's 1643 survey, seeds that arrived unwittingly on the fur and in the droppings of beasts imported from across the empire, a living trace of the arena's supply lines.",
+      "dates": "2000-today",
+      "heading": "Rome's emblem"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1953-2024",
+      "body": "Ridley Scott's Gladiator (2000) fixed the arena's cinematic identity for a generation: its second-half arena scenes are all set in Rome's Colosseum, realized through a one-third-scale replica built at Fort Ricasoli in Malta, 52 feet tall, with the rest added digitally. Twenty-four years later Gladiator II (2024) brought the arena back as the franchise's centerpiece, complete with a flooded-arena mock naval battle.\n\nOther directors have used the real thing. In The Way of the Dragon (1972) Bruce Lee and Chuck Norris fought their wordless final duel inside the actual Colosseum, staged as the modern equivalent of a gladiator bout. Roman Holiday (1953) gave it the classic Hollywood treatment in Audrey Hepburn and Gregory Peck's day-long sightseeing sequence, and Jumper (2008) negotiated three days of shooting inside the real monument under strict no-ground-equipment rules.\n\nPainters got there first by centuries. Maarten van Heemskerck painted himself in front of the ruin in his Self-Portrait with the Colosseum (1553), now in the Fitzwilliam Museum in Cambridge. Around 1700 Gaspar van Wittel, called Vanvitelli, painted The Colosseum Seen from the Southeast, a veduta of daily life around the monument now held by the Harvard Art Museums.\n\nOne famous chariot race does not belong here: the climactic race in Ben-Hur (1959) was shot on a purpose-built arena at Cinecitta, constructed by more than a thousand workers, not at the Colosseum."
+    }
+  ],
+  "slug": "colosseum",
+  "sources": "Historical facts adapted from Wikipedia (\"Colosseum\", CC BY-SA), Ancient Rome Live (Platner's Topographical Dictionary), thecolosseum.org, and ancient-history-sites.com. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Colosseum",
+  "timeline": [
+    {
+      "date": "AD 64",
+      "text": "The Great Fire of Rome devastates the valley; Nero builds his Domus Aurea and artificial lake on the site."
+    },
+    {
+      "date": "c. AD 70-72",
+      "text": "Construction begins under Vespasian on the drained lake bed, funded by the spoils of the Siege of Jerusalem."
+    },
+    {
+      "date": "AD 80",
+      "text": "Titus completes the top level and holds the inaugural games: 9,000+ wild animals killed."
+    },
+    {
+      "date": "AD 81-96",
+      "text": "Domitian adds the hypogeum and the top wooden gallery."
+    },
+    {
+      "date": "AD 107",
+      "text": "Trajan's games: 11,000 animals, 10,000 gladiators, 123 days."
+    },
+    {
+      "date": "AD 217",
+      "text": "Lightning fire destroys the wooden upper levels; repairs take until about 240."
+    },
+    {
+      "date": "399 / 404",
+      "text": "Honorius bans gladiatorial fights; the last are recorded around 435."
+    },
+    {
+      "date": "523",
+      "text": "Last known animal hunts, staged by consul Anicius Maximus."
+    },
+    {
+      "date": "c. 1200",
+      "text": "The Frangipani family turns the building into a fortified castle."
+    },
+    {
+      "date": "1349",
+      "text": "The great earthquake collapses the outer south side; the stone is quarried across Rome."
+    },
+    {
+      "date": "1749",
+      "text": "Pope Benedict XIV consecrates the building to the Passion of Christ; the Stations of the Cross are installed."
+    },
+    {
+      "date": "2000",
+      "text": "Since 2000 the Colosseum is lit gold whenever a death sentence anywhere in the world is commuted or abolished."
+    },
+    {
+      "date": "2007",
+      "text": "Named one of the New7Wonders of the World."
+    },
+    {
+      "date": "27 Oct 2025",
+      "text": "The restored Commodus Passage opens to the public."
+    }
+  ],
+  "title": "Colosseum",
+  "address_locality": "Rome",
+  "address_country": "IT",
+  "date_built": "80"
+}

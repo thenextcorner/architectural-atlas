@@ -1,0 +1,144 @@
+{
+  "coordinates": {
+    "label": "Domtoren, Domplein, Utrecht",
+    "lat": 52.0907,
+    "lng": 5.1214
+  },
+  "description": "Take the Dom Tower of Utrecht apart piece by piece in 3D, and read the story of the tower: 61 years of medieval ambition, a storm that set it free, and 112 meters of civic pride.",
+  "entities": {
+    "architect": {
+      "name": "John of Hainaut",
+      "role": "Attributed designer of the tower (1321-1382)"
+    },
+    "events": [
+      {
+        "name": "Storm of 1674",
+        "role": "Collapsed the unfinished nave, leaving the tower freestanding",
+        "start": "1674"
+      }
+    ],
+    "people": [
+      {
+        "name": "Geert Groote",
+        "role": "Preacher who protested the vanity of the tower project"
+      },
+      {
+        "name": "St Martin of Tours",
+        "role": "Patron saint of the cathedral the tower was built to serve"
+      }
+    ],
+    "wikidata": "Q1247421"
+  },
+  "hotspots": [
+    {
+      "part": "Entrance portal arch",
+      "text": "The tall entrance portal in the south face, once the ceremonial entry to the cathedral complex.",
+      "title": "The great gate"
+    },
+    {
+      "part": "Chapel window left",
+      "text": "The bishop of Utrecht kept a private chapel on the tower's first floor, a sign of how the tower served power as well as prayer.",
+      "title": "The bishop's chapel"
+    },
+    {
+      "part": "Guard window 1",
+      "text": "The tower guard was housed on the second floor of the lower block, watching over medieval Utrecht.",
+      "title": "The watchtower"
+    },
+    {
+      "part": "Corner lesene 1",
+      "text": "The Domtoren's most striking structural feature is the absence of visible buttresses, unusual for a Gothic tower of this height.",
+      "title": "No buttresses"
+    },
+    {
+      "part": "Main cornice",
+      "text": "The restoration of 1910 raised the tower from 109 to 112.5 meters, giving Utrecht the height it quotes today.",
+      "title": "The 1910 crown"
+    },
+    {
+      "part": "Bell opening 1 (south)",
+      "text": "Tall arched openings let the sound of the 50-bell carillon carry across the city.",
+      "title": "The belfry"
+    },
+    {
+      "part": "Carillon bell 1",
+      "text": "The carillon of 50 bells has marked Utrecht's hours for centuries and still plays regularly.",
+      "title": "Fifty bells"
+    },
+    {
+      "part": "Lantern pier 1",
+      "text": "Two heavy square blocks give way to a much lighter open lantern, the tower's elegant crown.",
+      "title": "The lighter lantern"
+    },
+    {
+      "part": "Weathercock",
+      "text": "The weathercock at the very top, the highest point of any church tower in the Netherlands.",
+      "title": "112.3 meters"
+    }
+  ],
+  "intro": "Utrecht's Domtoren is 112 meters of medieval ambition that took 61 years to build, survived the collapse of its own cathedral, and still defines the city's skyline. This is how a bishop's power project became the symbol of a city.",
+  "page_title": "Domtoren Utrecht: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [],
+  "sections": [
+    {
+      "body": "In 1321, the chapter of St. Martin's Cathedral began building a tower meant to show the power of the church of Utrecht. It was one of the largest towers attempted in 14th-century Europe, and not everyone approved: the preacher Geert Groote protested the vanity of the project, calling it too tall, too expensive, and anything but aesthetic. The design is attributed to John of Hainaut. Construction stretched across six decades, and when the tower was finished in 1382 it stood 109 meters tall, already the most important tower in the Low Countries. Its particular shape would be copied across the Netherlands, including by the Martinitoren in Groningen.",
+      "dates": "1321-1382",
+      "heading": "A tower to show the power of the church"
+    },
+    {
+      "body": "The Domtoren's silhouette is famously simple: two massive square blocks topped by a much lighter open lantern. The most striking feature is what is missing. There are no visible buttresses, the flying supports that hold up almost every other great Gothic tower. The lower block is a nearly blank shaft of brick and stone, articulated only by flat corner lesenes. Inside, the tower was multifunctional from the start: the bishop of Utrecht kept a private chapel on the first floor, and the tower guard lived on the second floor of the lower block, watching over the city. Above them, the belfry held the bells that marked Utrecht's hours.",
+      "dates": "14th century",
+      "heading": "Two blocks and a lantern"
+    },
+    {
+      "body": "The cathedral the tower was built to serve was never finished. Money ran out, and the nave stood incomplete and poorly supported for centuries. On 1 August 1674, a violent storm, possibly a tornado, tore through Utrecht and the unfinished nave collapsed. The tower survived intact. Since that day the Domtoren has stood alone, separated from the remaining choir and transept of the Dom Church by the open Domplein. Colored stones in the square still trace the outline of the lost nave, so visitors walk the footprint of the cathedral that never was.",
+      "dates": "1674",
+      "heading": "The storm that set it free"
+    },
+    {
+      "body": "The tower's voice is its carillon of 50 bells, which rings out over Utrecht at regular intervals. Climbing the tower means 465 steps past the great bells, the chapel, and the guard's quarters, with the city spreading out below at the top. The bells have marked Utrecht's time for centuries, from medieval feast days to the present, and the carillon remains one of the finest in the Netherlands.",
+      "dates": "17th century-today",
+      "heading": "Bells over the city"
+    },
+    {
+      "body": "The Domtoren you see today is slightly taller than the medieval one. During the restoration of 1910, the tower's height was increased from 109 meters to 112.5 meters, the figure most sources quote today (precise modern surveys give 112.32 meters). It remains the tallest church tower in the Netherlands, protected as rijksmonument 36075. An unwritten rule long held that no building in Utrecht should rise higher than the Domtoren, a rule only recently debated as the city grows upward around its medieval anchor.",
+      "dates": "1910",
+      "heading": "Raised by restoration"
+    },
+    {
+      "body": "The Domtoren's screen career began early. In 1918, filmmaker Willy Mullens made \"Utrecht\" for the Eye Filmmuseum collection, and the film's opening shot is an aerial view of the city filmed from the hundred-meter-high Domtoren, with considerable attention paid to the tower itself. It is one of the earliest examples of a building filming the city from its own height.\n\nSince then the tower has rarely starred, but it is everywhere as Utrecht's visual shorthand. It anchors establishing shots of the city in Dutch television and film, the instant signal that the story is in Utrecht. The tower's silhouette marks the city the way a logo marks a brand: on municipal signage, in tourist campaigns, and in the opening frames of anything filmed in the Domstad. Its fame is civic rather than cinematic, which may be the more durable kind.",
+      "dates": "1918-today",
+      "heading": "In the cultural conversation"
+    }
+  ],
+  "slug": "domtoren",
+  "sources": "Historical facts adapted from Wikipedia (\"Dom Tower of Utrecht\", CC BY-SA) and archimon.nl. Cultural appearances verified against the Eye Filmmuseum collection database.",
+  "story_title": "The story of the Domtoren",
+  "timeline": [
+    {
+      "date": "1321",
+      "text": "Construction of the Dom Tower begins to John of Hainaut's design."
+    },
+    {
+      "date": "1382",
+      "text": "The tower is completed at 109 meters, among the largest towers of 14th-century Europe."
+    },
+    {
+      "date": "1572",
+      "text": "Calvinist iconoclasm damages the cathedral's ornaments; the church passes to the Protestants."
+    },
+    {
+      "date": "1 Aug 1674",
+      "text": "A violent storm collapses the unfinished nave; the tower stands alone from this day on."
+    },
+    {
+      "date": "1910",
+      "text": "Restoration raises the tower to 112.5 meters."
+    },
+    {
+      "date": "1918",
+      "text": "Willy Mullens films \"Utrecht\" for the Eye Filmmuseum, opening with an aerial shot from the Domtoren."
+    }
+  ],
+  "title": "Domtoren"
+}

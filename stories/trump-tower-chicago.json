@@ -1,0 +1,263 @@
+{
+  "address_country": "US",
+  "address_locality": "Chicago",
+  "coordinates": {
+    "label": "Trump International Hotel and Tower, 401 North Wabash Avenue, Chicago",
+    "lat": 41.8889,
+    "lng": -87.6264
+  },
+  "date_built": "2009",
+  "description": "Take Trump International Hotel and Tower apart in 3D and read its story: the 2005 to 2009 Chicago skyscraper by Adrian Smith, 1,388 feet of setbacks saluting the skyline, and the sign that turned it into a lightning rod.",
+  "entities": {
+    "architect": {
+      "name": "Adrian Smith",
+      "role": "Designed the tower for Skidmore, Owings and Merrill",
+      "wikidata": "Q374276"
+    },
+    "events": [
+      {
+        "end": "2009",
+        "name": "Construction of the tower",
+        "start": "2005"
+      },
+      {
+        "name": "Trump announces a 1,500 ft world's-tallest tower for the Sun-Times site",
+        "start": "2001-07"
+      },
+      {
+        "name": "SOM selected; Adrian Smith heads the design team",
+        "start": "2001-08"
+      },
+      {
+        "name": "After 9/11 the plan is cut to 78 stories and 1,073 ft",
+        "start": "2001-09"
+      },
+      {
+        "name": "The 'Big Pour': 5,000 cubic yards of concrete in 24 hours",
+        "start": "2005-10"
+      },
+      {
+        "name": "The Dark Knight films its finale atop the unfinished tower",
+        "start": "2007"
+      },
+      {
+        "name": "Topping out; the spire is completed",
+        "start": "2009-01-03"
+      },
+      {
+        "name": "The building and hotel open",
+        "start": "2009-01-30"
+      },
+      {
+        "name": "The 20-ft TRUMP sign is installed",
+        "start": "2014-06"
+      },
+      {
+        "name": "Sixteen restaurant holds two Michelin stars",
+        "start": "2016"
+      },
+      {
+        "name": "A man hangs from the 16th floor for 13 hours",
+        "start": "2020-10-18"
+      },
+      {
+        "name": "Court rules the cooling-water intake violates Illinois environmental law",
+        "start": "2024-09-09"
+      }
+    ],
+    "people": [
+      {
+        "name": "William F. Baker",
+        "role": "Structural engineer of the tower, Skidmore, Owings and Merrill",
+        "wikidata": "Q834854"
+      },
+      {
+        "name": "Donald Trump",
+        "role": "Developer of the tower and its namesake",
+        "wikidata": "Q22686"
+      },
+      {
+        "name": "Rahm Emanuel",
+        "role": "Chicago mayor who opposed the TRUMP sign",
+        "wikidata": "Q298443"
+      },
+      {
+        "name": "Blair Kamin",
+        "role": "Chicago Tribune architecture critic who criticized the sign",
+        "wikidata": "Q4924121"
+      },
+      {
+        "name": "Bill Rancic",
+        "role": "The Apprentice winner; ran the construction project",
+        "wikidata": "Q339702"
+      }
+    ],
+    "wikidata": "Q546221"
+  },
+  "hotspots": [
+    {
+      "part": "Spire tip section",
+      "text": "The 226-foot spire of structural steel clad in fiberglass tapers from 3 metres to 1.2 metres in diameter. Spire sections were delivered by helicopter, and the spire was completed on 3 January 2009, bringing the tower to 1,388 feet.",
+      "title": "The spire"
+    },
+    {
+      "part": "Tier 1 setback terrace",
+      "text": "The three setbacks \"provide visual continuity with the surrounding skyline, each reflecting the height of a nearby building\". The first setback on the east side aligns with the cornice line of the Wrigley Building. Rounded edges combat vortex formation.",
+      "title": "The first setback"
+    },
+    {
+      "part": "Tier 2 setback terrace",
+      "text": "The second setback on the west side aligns with River Plaza and the Marina City Towers, measuring the new tower against Chicago's 1920s icons.",
+      "title": "The second setback"
+    },
+    {
+      "part": "Tier 3 setback terrace",
+      "text": "The third setback on the east side relates to 330 North Wabash, formerly IBM Plaza. Setback floor numbering is inconsistently reported across sources, so the story uses heights, not floor numbers.",
+      "title": "The third setback"
+    },
+    {
+      "part": "Outrigger level 1",
+      "text": "At each setback, 5.3-metre-deep concrete outrigger monoliths tie the perimeter columns to the core, stiffening the tower so no tuned dampers were needed.",
+      "title": "The outriggers"
+    },
+    {
+      "part": "Mat foundation",
+      "text": "In October 2005, 30 concrete trucks made 600 trips in 24 hours to pour 5,000 cubic yards of concrete for the 200-by-66-by-10-foot mat foundation, a day crews called the \"Big Pour\".",
+      "title": "The Big Pour"
+    },
+    {
+      "part": "River sign",
+      "text": "In October 2013 Trump won approval for 20-foot-tall back-lit stainless steel letters on the 16th floor, spanning about 141 feet and installed in May and June 2014. Mayor Rahm Emanuel objected; his spokeswoman said: \"Mayor Emanuel believes this is an architecturally tasteful building scarred by an architecturally tasteless sign.\" After the January 6 Capitol attack, an alderman proposed blocking sign-permit renewals for persons convicted of \"treason, sedition or subversive activities,\" targeting the sign.",
+      "title": "The TRUMP sign"
+    },
+    {
+      "part": "Sixteen restaurant",
+      "text": "The Sixteen restaurant held two Michelin stars in 2016, in a space with a 30-foot West African wood dome, Swarovski chandeliers, and views of the Wrigley clock tower. It was replaced by Terrace 16 Restaurant and Bar in 2018.",
+      "title": "Sixteen"
+    },
+    {
+      "part": "Lobby wave wall",
+      "text": "The lobby's 10.6-metre structural glass wall hangs from the second floor like a cascading wave, with no steel supports.",
+      "title": "The lobby wave wall"
+    },
+    {
+      "part": "Riverwalk promenade",
+      "text": "The 1.2-acre riverfront park along 500 feet of riverfront won recognition at Mayor Daley's 2010 Landscape Awards as \"a poetic interpretation of native Illinois\". It was removed in 2011 and replaced with evergreens, stone, and perennials requiring less water, plus nighttime tree lighting opposed by the dark-skies movement.",
+      "title": "The riverwalk"
+    }
+  ],
+  "intro": "Three setbacks measured against Chicago's icons, a 1,388-foot spire, and the giant TRUMP letters that made it one of America's most argued-about buildings. Toggle between Detailed, the tower as opened in 2009, and Today.",
+  "page_title": "Trump International Hotel and Tower (Chicago): Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "Trump International Hotel and Tower from the river side, 2012: Diego Delso, CC BY-SA 3.0, via Wikimedia Commons",
+    "The tower under construction: DanielSchwen, CC BY-SA 3.0, via Wikimedia Commons",
+    "The tower with the Chicago River in the foreground: Spock1801, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Trump International Hotel and Tower seen from across the Chicago River",
+      "body": "In July 2001 Donald Trump announced plans for the former Chicago Sun-Times site: a 1,500-foot tower that would be the world's tallest, with 2.4 to 3.1 million square feet of floor space. Three firms were considered; Trump selected Skidmore, Owings and Merrill in August 2001, with Adrian Smith, who had designed the Jin Mao Tower, heading the team, giving Chicago its third SOM skyscraper after the Willis Tower and Hancock Center. After the September 11 attacks, Trump cut the plan to 78 stories and 1,073 feet \"to reduce the risk of similar attacks\"; Time reported that a meeting between Smith and Trump about the tallest building in Chicago was taking place at the actual time of the attacks. Successive revisions followed, 86 floors in 2002 and 90 stories in 2003, ending with an ornamental spire replacing broadcast dishes, since dishes would not count toward height and the spire does. The final design height referenced the 1,362-foot height of the former 2 World Trade Center; the completed tower stands 1,388 feet tall.",
+      "caption": "The full facade from the river side: 98 floors and 2.6 million square feet.",
+      "credit": "Diego Delso, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "2001",
+      "heading": "The tallest tower that was not",
+      "image": "tower.jpg"
+    },
+    {
+      "alt": "Trump Tower under construction in Chicago",
+      "body": "On 16 October 2004 Trump and Hollinger International completed the $73 million sale of the former Sun-Times building; demolition began on 28 October. Financing came from a $650 million loan from Deutsche Bank plus hedge funds, one backed by George Soros. Two earlier Sun-Times business decisions saved time and money: the 1950s sea wall was built to bomb-shelter thickness and survived, and a 1970s switch to soy-based ink reduced ground pollution and cleanup costs. In October 2005, 30 concrete trucks made 600 trips in 24 hours to pour 5,000 cubic yards of concrete for the 200-by-66-by-10-foot mat foundation, a day crews called the \"Big Pour\". The tower is cantilevered into 420-million-year-old limestone bedrock 110 feet underground on 241 caissons. Self-compacting concrete up to 16,000 psi was pumped to record heights; at completion it was the tallest formwork structure in the world. Spire sections were delivered by helicopter; the spire was completed on 3 January 2009, and the building and hotel opened on 30 January 2009.",
+      "caption": "The tower under construction, before the 2009 completion.",
+      "credit": "DanielSchwen, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "2004-2009",
+      "heading": "The Big Pour",
+      "image": "construction.jpg"
+    },
+    {
+      "alt": "Trump Tower with the Chicago River in the foreground",
+      "body": "The tower's defining move is its three setbacks, which \"provide visual continuity with the surrounding skyline, each reflecting the height of a nearby building\": the first setback on the east side aligns with the cornice line of the Wrigley Building, the second on the west side aligns with River Plaza and the Marina City Towers, and the third on the east side relates to 330 North Wabash, formerly IBM Plaza. Rounded edges combat vortex formation. This is documented design intent: a modern tower literally measured against Chicago's 1920s icons. At 98 floors and 2.6 million square feet, the tower was the second-tallest building in the United States when topped out in 2009 and briefly held the world's highest residence, surpassing the John Hancock Center's record from 1969, until the Burj Khalifa.",
+      "caption": "The tower with the Chicago River in the foreground.",
+      "credit": "Spock1801, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "2005-2009",
+      "heading": "Measured against the skyline",
+      "image": "river.jpg"
+    },
+    {
+      "body": "In October 2013 Trump won approval for 20-foot-tall back-lit stainless steel letters on the 16th floor, spanning about 141 feet and roughly 2,800 square feet, installed in May and June 2014. Trump said: \"As time passes, it'll be like the Hollywood Sign.\" Architect Adrian Smith distanced himself: \"Just for the record, I had nothing to do with this sign!\" Tribune critic Blair Kamin and Mayor Rahm Emanuel objected; Emanuel's spokeswoman said: \"Mayor Emanuel believes this is an architecturally tasteful building scarred by an architecturally tasteless sign.\" Emanuel initiated a study of signage rules. One reading of this: the tower's story is inseparable from the brand, and the building functions as a billboard for its namesake.",
+      "dates": "2013-2014",
+      "heading": "The sign"
+    },
+    {
+      "body": "In September 2008, as unit sales slowed in the subprime crisis, Trump sought to extend the Deutsche Bank and Fortress mezzanine loans. Deutsche Bank demanded payment including his $40 million personal guarantee; Trump sued in New York State Supreme Court citing a force-majeure clause and sought $3 billion in damages for alleged predatory lending. Deutsche Bank countersued. Both sides suspended litigation in March 2009; an amended loan agreement in September 2010 extended about $600 million for five years. Separately, Trump rescinded discounted \"friends and family\" condo purchases after values rose past $1,300 per square foot, prompting a lawsuit by former Sun-Times publisher F. David Radler. In 2024 the New York Times and ProPublica reported that the IRS was investigating whether Trump twice wrote off losses on the tower, with a potential new tax bill over $100 million; this is ongoing reporting, not a resolved case. Trump's 2016 presidential campaign slowed condo sales; real estate observers noted buyers hesitated to be associated with the Trump name. In June 2018 the Sierra Club, Friends of the Chicago River, and the Illinois Attorney General sued over the cooling-water intake that siphons river water, and on 9 September 2024 a judge ruled the intake a public nuisance in violation of Illinois environmental law.",
+      "dates": "2008-2024",
+      "heading": "Money fights and the name"
+    },
+    {
+      "body": "The tower's construction fed pop culture. In 2004 the top construction-management job at the tower was the prize for the winner of the first season of The Apprentice; Bill Rancic chose the tower project and served as President of the Trump International Hotel and Tower. In summer 2007 the final Batman-Joker confrontation in The Dark Knight was filmed at the top of the partially completed tower, and the tower was a key location for Transformers: Dark of the Moon in 2011. The Sixteen restaurant held two Michelin stars in 2016 before becoming Terrace 16 Restaurant and Bar in 2018. Not all stories are glamorous: in February 2014 three intoxicated men set off fire alarms and opened a fifth-floor standpipe as a prank, flooding elevator shafts and causing about $700,000 in damage. On 18 October 2020 a man in his 20s suspended himself from the 16th floor and hung down the river-facing side for more than thirteen hours, livestreaming and demanding to speak to then-President Donald Trump; police resolved it peacefully.",
+      "dates": "2004-2020",
+      "heading": "Concrete, film, and river"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2011",
+      "body": "The building's screen life is thin, and its one true starring role is in Transformers: Dark of the Moon (2011): the villain Dylan Gould's penthouse inside the tower is where Carly is held captive, and the rescue sequence plays out in and around the building as the Decepticons turn Chicago into a fortress. Beyond that it appears in Chicago skyline shots, and it has no presence in famous painted works."
+    }
+  ],
+  "slug": "trump-tower-chicago",
+  "sources": "Historical facts adapted from Wikipedia (\"Trump International Hotel and Tower (Chicago)\", CC BY-SA), New Civil Engineer (\"Windy City Wonder\"), the New York Times and ProPublica (IRS investigation reporting), and NPR Illinois. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Trump International Hotel and Tower",
+  "timeline": [
+    {
+      "date": "Jul 2001",
+      "text": "Trump announces a 1,500 ft world's-tallest tower for the Sun-Times site."
+    },
+    {
+      "date": "Aug 2001",
+      "text": "SOM selected; Adrian Smith heads the design team."
+    },
+    {
+      "date": "Sep 2001",
+      "text": "After 9/11 the plan is cut to 78 stories and 1,073 ft."
+    },
+    {
+      "date": "Oct 2004",
+      "text": "The Sun-Times building is sold for $73 million; demolition begins."
+    },
+    {
+      "date": "Oct 2005",
+      "text": "The \"Big Pour\": 5,000 cubic yards of concrete for the mat foundation in 24 hours."
+    },
+    {
+      "date": "Summer 2007",
+      "text": "The Dark Knight films its finale atop the unfinished tower."
+    },
+    {
+      "date": "3 Jan 2009",
+      "text": "The spire is installed, completing the 1,388 ft tower."
+    },
+    {
+      "date": "30 Jan 2009",
+      "text": "The building and hotel open."
+    },
+    {
+      "date": "2010",
+      "text": "The 1.2-acre riverfront park and riverwalk open."
+    },
+    {
+      "date": "Jun 2014",
+      "text": "The 20-ft TRUMP sign is installed, sparking national controversy."
+    },
+    {
+      "date": "2016",
+      "text": "Sixteen restaurant holds two Michelin stars."
+    },
+    {
+      "date": "18 Oct 2020",
+      "text": "A man hangs from the 16th floor for 13 hours, demanding to speak to Trump."
+    },
+    {
+      "date": "9 Sep 2024",
+      "text": "Court rules the cooling-water intake violates Illinois environmental law."
+    }
+  ],
+  "title": "Trump International Hotel and Tower"
+}

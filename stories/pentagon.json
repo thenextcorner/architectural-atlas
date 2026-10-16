@@ -1,0 +1,249 @@
+{
+  "address_country": "US",
+  "address_locality": "Arlington",
+  "coordinates": {
+    "label": "The Pentagon, Arlington, Virginia",
+    "lat": 38.87083333,
+    "lng": -77.055
+  },
+  "date_built": "1943",
+  "description": "Take the Pentagon apart piece by piece in 3D, and read its story: the 16-month wartime build on 680,000 tons of Potomac sand, the building in Virginia that defied segregation, and the Phoenix Project rebuild after 9/11.",
+  "entities": {
+    "architect": {
+      "name": "George Bergstrom",
+      "role": "Original chief architect (succeeded by David J. Witmer in April 1942)",
+      "wikidata": "Q5148177"
+    },
+    "events": [
+      {
+        "name": "Congress authorizes funding",
+        "start": "1941-07-28"
+      },
+      {
+        "name": "Ground broken",
+        "start": "1941-09-11"
+      },
+      {
+        "name": "Cafeterias desegregated",
+        "start": "1942-05"
+      },
+      {
+        "name": "Pentagon dedicated",
+        "start": "1943-01-15"
+      },
+      {
+        "name": "March on the Pentagon",
+        "start": "1967-10-21"
+      },
+      {
+        "name": "Designated a National Historic Landmark",
+        "start": "1992-10-05"
+      },
+      {
+        "name": "Flight 77 strikes the western side",
+        "start": "2001-09-11"
+      },
+      {
+        "name": "Pentagon Memorial opens",
+        "start": "2008-09-11"
+      }
+    ],
+    "people": [
+      {
+        "name": "Brehon B. Somervell",
+        "role": "General; the driving force behind the project",
+        "wikidata": "Q4960406"
+      },
+      {
+        "name": "Leslie Groves",
+        "role": "Colonel; Army Corps of Engineers oversight, later the Manhattan Project",
+        "wikidata": "Q314675"
+      },
+      {
+        "name": "Henry L. Stimson",
+        "role": "Secretary of War who demanded new space",
+        "wikidata": "Q314826"
+      },
+      {
+        "name": "Franklin D. Roosevelt",
+        "role": "Chose the site, kept the pentagonal plan, ended enforced segregation",
+        "wikidata": "Q8007"
+      },
+      {
+        "name": "John McShain",
+        "role": "General contractor (John McShain, Inc.)",
+        "wikidata": "Q6248290"
+      }
+    ],
+    "wikidata": "Q11208"
+  },
+  "hotspots": [
+    {
+      "part": "Ring E outer wall",
+      "text": "Five concentric rings, A to E, hold the offices; the E Ring rooms with outside views are the senior leadership's.",
+      "title": "The five rings"
+    },
+    {
+      "part": "Central courtyard lawn",
+      "text": "The five-acre courtyard was nicknamed \"ground zero\" in the Cold War, and its hot dog stand \"Cafe Ground Zero\", the \"deadliest hot dog stand in the world.\" The stand was torn down in 2006.",
+      "title": "The courtyard"
+    },
+    {
+      "part": "Mall Terrace entrance portico",
+      "text": "The porticoed Mall Entrance with its 600-foot ceremonial terrace, one of the building's two ceremonial faces.",
+      "title": "The Mall Entrance"
+    },
+    {
+      "part": "River Terrace entrance portico",
+      "text": "The porticoed River Entrance with its stepped terrace and lagoon dock.",
+      "title": "The River Entrance"
+    },
+    {
+      "part": "Heliport facade limestone cladding",
+      "text": "Flight 77 struck the western (Heliport) side on 11 September 2001. The Phoenix Project rebuilt the damaged section; a memorial and chapel sit at the point of impact.",
+      "title": "The 9/11 impact point"
+    },
+    {
+      "part": "Pentagon memorial benches",
+      "text": "The outdoor memorial's 184 benches, one per victim, arranged by the victims' ages from 3 to 71 along the line of Flight 77's approach.",
+      "title": "The Pentagon Memorial"
+    },
+    {
+      "part": "Concrete access ramps",
+      "text": "Wartime steel was reserved for the war effort, so the Pentagon got concrete ramps instead of elevators.",
+      "title": "The concrete ramps"
+    },
+    {
+      "part": "Radial corridor 1",
+      "text": "Ten radial corridors cross the five rings; the room numbers (ring, floor, bay, room, as in 2B315) are pure navigation, not symbolism.",
+      "title": "The corridor system"
+    },
+    {
+      "part": "Mall Terrace facade limestone cladding",
+      "text": "Indiana limestone over reinforced concrete; 680,000 tons of the concrete's sand were dredged from the Potomac.",
+      "title": "The limestone facade"
+    }
+  ],
+  "intro": "Built in 16 months of World War II on 680,000 tons of sand dredged from the Potomac, the Pentagon is the headquarters of the US Department of Defense, and \"the Pentagon\" is its metonym. Explode its five rings, ten radial corridors, and central courtyard to see how wartime constraints shaped it.",
+  "page_title": "The Pentagon: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "An early aerial view of the Pentagon and its parking fields: John Neubauer, public domain, via Wikimedia Commons",
+    "The Pentagon, January 2008: David B. Gleason, CC BY-SA 2.0, via Wikimedia Commons",
+    "The Pentagon after the 11 September 2001 attack: Air Force Tech. Sgt. Cedric H. Rudisill, public domain, via Wikimedia Commons",
+    "U.S. Navy aerial view of the Pentagon, 2003: U.S. Navy, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "An early aerial view of the Pentagon and its parking fields",
+      "body": "Before the Pentagon, the War Department was headquartered in the temporary Munitions Building on the National Mall, a World War I temporary structure, plus dozens of scattered buildings in Washington, D.C., Maryland and Virginia. A new War Department building at 21st and C Streets in Foggy Bottom did not solve the space problem; it became the Department of State. When World War II broke out in Europe in 1939, the department expanded rapidly, and Secretary of War Henry L. Stimson told President Franklin D. Roosevelt in May 1941 that the situation was unacceptable. After a congressional hearing organized by Rep. Clifton Woodrum in July 1941, the War Department's construction chief, General Brehon Somervell, was tasked with an overall solution. Congress authorized funding on 28 July 1941 and Roosevelt approved the Hoover Airport site on 2 September. The official designation is Federal Office Building No 1, in a style described as Classical Revival, Modern, and Stripped Classicism.",
+      "caption": "An early aerial view of the Pentagon and its parking fields, from the National Archives.",
+      "credit": "John Neubauer, public domain, via Wikimedia Commons",
+      "dates": "1939-1941",
+      "heading": "A space problem goes to war",
+      "image": "nara-parking.jpg"
+    },
+    {
+      "body": "The requirements were wartime ones: no more than four stories tall, minimal steel, reserved for war needs. The result was sprawling, low, reinforced-concrete construction instead of a steel tower: 680,000 tons of sand dredged from the Potomac River, concrete ramps instead of elevators, and an Indiana limestone facade. Design work proceeded simultaneously with construction, and sometimes construction got ahead of the design. Contracts totaling $31.1M were finalized on 11 September 1941 and ground was broken the same day. After Pearl Harbor, Somervell demanded 1 million sq ft ready by 1 April 1943. Chief architect George Bergstrom resigned in April 1942 after unrelated misconduct charges; David J. Witmer replaced him on 11 April. Construction completed on 15 January 1943 at $83M, equivalent to $1.36B in 2024: about 16 months. Colonel Leslie Groves oversaw the project for the Army Corps of Engineers before moving on to the Manhattan Project. Construction required 287 extra acres acquired for $2.2M; the Hell's Bottom neighborhood of pawnshops, factories, and about 150 homes was cleared to make way for it. The Pentagon was the largest office building in the world when completed. Its five-sided form was inherited from the asymmetric, roughly pentagonal Arlington Farms site first chosen for it; when the site moved to Hoover Field, President Roosevelt kept the pentagonal plan because he liked it, and a redesign would have been costly. The regular pentagon \"resembled star forts constructed during the gunpowder age.\" One reading of this: later writers read a military-fortress echo in the shape, but no original symbolic intent is documented.",
+      "dates": "1941-1943",
+      "heading": "Built in 16 months"
+    },
+    {
+      "alt": "The Pentagon's five limestone facades",
+      "body": "The Pentagon was designed under Virginia's racial segregation laws, with separate eating and lavatory accommodations. But in May 1942, Black ordnance worker Jimmy Harold refused the Blacks-only cafeteria and was beaten by a white security guard; after William Hastie, the civilian aide to Stimson, secured an investigation, General Somervell ordered the discontinuance of enforced segregation in the cafeterias. When Roosevelt visited before the dedication, he ordered the removal of \"Whites Only\" signs; Virginia's governor protested, but the Pentagon was under federal jurisdiction, so it became the only building in Virginia where segregation laws were not enforced. They were not overturned until 1965. The side-by-side lavatory sets still exist, integrated in practice.",
+      "caption": "The Pentagon's five facades of Indiana limestone; the pentagonal form came from the original Arlington Farms site, not from symbolism.",
+      "credit": "David B. Gleason, CC BY-SA 2.0, via Wikimedia Commons",
+      "dates": "1942",
+      "heading": "The building that defied Virginia's segregation laws",
+      "image": "january-2008.jpg"
+    },
+    {
+      "alt": "The Pentagon's west side after the 11 September 2001 attack",
+      "body": "On 11 September 2001, exactly 60 years after construction began, American Airlines Flight 77 crashed into the western (Heliport) side at 9:37 am EDT. There were 184 victims besides the hijackers: 59 on the plane, 125 in the building. The renovation-area blast-resistant construction of steel web, blast windows, and sprinklers held the section for 30 minutes, enabling escapes. It was the first significant foreign attack on federal facilities in the capital area since the British burned Washington in 1814. The Phoenix Project rebuilt the damaged section, with the contractors already on site, and the outermost offices were reoccupied by 11 September 2002. An indoor memorial and chapel were added at the point of impact, and an American flag is hung each year on the damaged side, illuminated blue at night.",
+      "caption": "The Pentagon's west side after the 11 September 2001 attack; 184 people were killed besides the hijackers.",
+      "credit": "Air Force Tech. Sgt. Cedric H. Rudisill, public domain, via Wikimedia Commons",
+      "dates": "2001-2002",
+      "heading": "The west side falls",
+      "image": "9-11.jpg"
+    },
+    {
+      "alt": "Aerial view of the Pentagon in 2003",
+      "body": "The five-acre central courtyard was nicknamed \"ground zero\" during the Cold War, on the presumption the Soviet Union would target it with nuclear missiles. The center-courtyard hot dog stand earned the nickname \"Cafe Ground Zero,\" the \"deadliest hot dog stand in the world,\" in the words of Pentagon tour guides; it was torn down in 2006. The building's five entrances, Mall Terrace, River Terrace, Concourse (Metro), South Parking, and Heliport, include the porticoed Mall and River Entrances with their terraces, the ceremonial faces of the building, with no verified individual symbolism. The Hall of Heroes on the main concourse, opened in 1968, displays the three versions of the Medal of Honor and the names of more than 3,460 recipients: the building's central memorial space, also used for promotions and retirements. The outdoor Pentagon Memorial, on 2 acres southwest of the building, opened on 11 September 2008: 184 benches, one per victim, arranged by the victims' ages from 3 to 71 along the line of Flight 77's approach.",
+      "caption": "Aerial view of the Pentagon in 2003: five rings around the five-acre central courtyard.",
+      "credit": "U.S. Navy, public domain, via Wikimedia Commons",
+      "heading": "Ground zero and the Hall of Heroes",
+      "image": "us-navy-aerial.jpg"
+    },
+    {
+      "body": "From WWII through the Cold War, Vietnam, the Gulf War, and the post-9/11 wars, the Pentagon has been both headquarters and symbol, and a focal point of protest. On 15 February 1967, 2,500 women of Women Strike for Peace demonstrated outside Secretary of Defense Robert S. McNamara's office. On 21 October 1967 the March on the Pentagon brought about 35,000 anti-Vietnam-War protesters, confronted by about 2,500 soldiers; George Harris placed carnations in gun barrels, and the march ended with an attempt to exorcise the building. On 19 May 1972 the Weather Underground Organization bombed a fourth-floor women's restroom in retaliation for Nixon's bombing of Hanoi; there were no injuries. On 2 July 1959 a fire in the Air Force Statistical Center office had forced the evacuation of 30,000 employees and destroyed $30M in computers. The Pentagon was added to the National Register of Historic Places on 27 July 1988 and designated a National Historic Landmark on 5 October 1992. From 1998 to 2011 it was completely gutted and reconstructed in phases: asbestos removed, all office windows sealed, open bays restored after decades of subdivisions, and a new Universal Space Plan of standardized furniture. Congress had authorized the renovation in 1994 at about $1B. On 17 March 2007 between 4,000 and 15,000 people marched from the Lincoln Memorial to the Pentagon protesting the Iraq War. In May 2023 an AI-generated fake image of a Pentagon explosion went viral, causing a brief stock-market dip; it was debunked within hours.",
+      "dates": "1959-2023",
+      "heading": "The building that keeps being rebuilt"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1964-2014",
+      "body": "Stanley Kubrick's Dr. Strangelove (1964) is anchored in the Pentagon's War Room, where the president and the Joint Chiefs debate recalling the bombers beneath Ken Adam's vast bomb-shelter set, one of the most famous production designs in cinema history. Roger Donaldson's No Way Out (1987) sets its Cold War thriller largely inside the building, with a murder cover-up playing out through its corridors and security apparatus.\n\nIn Transformers (2007) the Pentagon is the hub of the human response to the alien invasion, and the production was granted access to shoot there, the first filming at the building since the September 11 attacks. In X-Men: Days of Future Past (2014) Magneto is imprisoned in a plastic-and-glass cell in the most secure prison on earth, buried beneath the Pentagon, and the breakout sequence is widely considered the film's standout action set piece. The building has no established presence in famous painted works."
+    }
+  ],
+  "slug": "pentagon",
+  "sources": "Historical facts adapted from Wikipedia (\"The Pentagon\", CC BY-SA), HISTORY.com, and the U.S. Department of Defense. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Pentagon",
+  "timeline": [
+    {
+      "date": "28 Jul 1941",
+      "text": "Congress authorizes funding for a new War Department building in Arlington."
+    },
+    {
+      "date": "11 Sep 1941",
+      "text": "Contracts are finalized and ground is broken for the Pentagon."
+    },
+    {
+      "date": "May 1942",
+      "text": "Somervell orders the Pentagon cafeterias desegregated after the Jimmy Harold incident."
+    },
+    {
+      "date": "15 Jan 1943",
+      "text": "The Pentagon is dedicated; construction took about 16 months at a cost of $83M."
+    },
+    {
+      "date": "2 Jul 1959",
+      "text": "Fire in the Air Force Statistical Center office forces the evacuation of 30,000 employees and destroys $30M in computers."
+    },
+    {
+      "date": "21 Oct 1967",
+      "text": "The March on the Pentagon: about 35,000 anti-war protesters face 2,500 soldiers."
+    },
+    {
+      "date": "1968",
+      "text": "The Hall of Heroes opens on the main concourse."
+    },
+    {
+      "date": "19 May 1972",
+      "text": "The Weather Underground bombs a fourth-floor restroom; there are no injuries."
+    },
+    {
+      "date": "27 Jul 1988",
+      "text": "The Pentagon is added to the National Register of Historic Places."
+    },
+    {
+      "date": "5 Oct 1992",
+      "text": "The Pentagon is designated a National Historic Landmark."
+    },
+    {
+      "date": "1998 to 2011",
+      "text": "The building is completely gutted and reconstructed in phases."
+    },
+    {
+      "date": "11 Sep 2001",
+      "text": "Flight 77 strikes the western side at 9:37 am; 184 victims besides the hijackers; the Phoenix Project rebuilds the section."
+    },
+    {
+      "date": "11 Sep 2002",
+      "text": "The rebuilt section is reoccupied one year after the attack."
+    },
+    {
+      "date": "11 Sep 2008",
+      "text": "The Pentagon Memorial, with 184 benches, opens to the public."
+    }
+  ],
+  "title": "The Pentagon"
+}

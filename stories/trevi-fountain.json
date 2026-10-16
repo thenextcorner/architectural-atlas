@@ -1,0 +1,278 @@
+{
+  "address_country": "IT",
+  "address_locality": "Rome",
+  "coordinates": {
+    "label": "Trevi Fountain, Piazza di Trevi, Rome",
+    "lat": 41.9008,
+    "lng": 12.4831
+  },
+  "date_built": "1762",
+  "description": "Take the Trevi Fountain apart in 3D and read its story: Nicola Salvi's 1732 to 1762 Baroque terminal of the Acqua Vergine, the largest Baroque fountain in the world, from Agrippa's aqueduct to the coin ritual.",
+  "entities": {
+    "architect": {
+      "name": "Nicola Salvi",
+      "role": "Designed the fountain (1697-1751)",
+      "wikidata": "Q1986231"
+    },
+    "events": [
+      {
+        "end": "1762",
+        "name": "Construction of the fountain",
+        "start": "1732"
+      },
+      {
+        "name": "Design competition held by Pope Clement XII",
+        "start": "1730"
+      },
+      {
+        "name": "Inauguration by Pope Clement XIII",
+        "start": "1762-05-22"
+      },
+      {
+        "name": "Respighi's Fountains of Rome depicts the fountain at noon",
+        "start": "1916"
+      },
+      {
+        "name": "Three Coins in the Fountain popularizes the coin legend",
+        "start": "1954"
+      },
+      {
+        "name": "La Dolce Vita: Anita Ekberg wades into the fountain",
+        "start": "1960"
+      },
+      {
+        "name": "Graziano Cecchini dyes the water red in protest",
+        "start": "2007-10-19"
+      },
+      {
+        "end": "2015-11",
+        "name": "Fendi-sponsored 2.2-million-euro restoration",
+        "start": "2014-06"
+      },
+      {
+        "name": "Cecchini dyes the water red a second time",
+        "start": "2017-10-26"
+      },
+      {
+        "name": "Ultima Generazione dyes the water with charcoal",
+        "start": "2023-05-21"
+      },
+      {
+        "name": "Reopening with a 400-visitor queuing system",
+        "start": "2024-12"
+      },
+      {
+        "name": "Two-euro ticket introduced for non-residents",
+        "start": "2026-02-02"
+      }
+    ],
+    "people": [
+      {
+        "name": "Giuseppe Pannini",
+        "role": "Architect who completed the fountain in 1762",
+        "wikidata": "Q19985023"
+      },
+      {
+        "name": "Pope Clement XII",
+        "role": "Held the 1730 competition and commissioned the fountain",
+        "wikidata": "Q133108"
+      },
+      {
+        "name": "Pope Clement XIII",
+        "role": "Inaugurated the fountain on 22 May 1762",
+        "wikidata": "Q133121"
+      },
+      {
+        "name": "Marcus Vipsanius Agrippa",
+        "role": "Built the Aqua Virgo aqueduct in 19 BC; shown in a bas relief",
+        "wikidata": "Q48174"
+      },
+      {
+        "name": "Pope Urban VIII",
+        "role": "Commissioned Bernini's unbuilt 1629 sketches for a grander fountain",
+        "wikidata": "Q131579"
+      },
+      {
+        "name": "Anita Ekberg",
+        "role": "Her 1960 wading scene in La Dolce Vita fixed the fountain in global culture",
+        "wikidata": "Q230662"
+      },
+      {
+        "name": "Federico Fellini",
+        "role": "Director of La Dolce Vita (1960)",
+        "wikidata": "Q7371"
+      }
+    ],
+    "wikidata": "Q185382"
+  },
+  "hotspots": [
+    {
+      "part": "Oceanus",
+      "text": "The god Oceanus rides a shell chariot in the central niche, sculpted by Pietro Bracci. He is the center of the composition's stated theme: the taming of the waters.",
+      "title": "Oceanus"
+    },
+    {
+      "part": "Wild hippocamp",
+      "text": "One of the two sea horses rears in alarm, guided by its triton. The pair are arranged for maximum contrast in mood and pose.",
+      "title": "The wild horse"
+    },
+    {
+      "part": "Calm hippocamp",
+      "text": "The second horse goes calm while the other rears One reading of this: the two moods of the sea, balanced symmetrically around Oceanus.",
+      "title": "The calm horse"
+    },
+    {
+      "part": "West triton",
+      "text": "The tritons guide the hippocamps drawing Oceanus's chariot, mixing water and rockwork in a tumble of travertine.",
+      "title": "The tritons"
+    },
+    {
+      "part": "Abundance",
+      "text": "Abundance stands in the left niche, spilling water from her urn into the basin.",
+      "title": "Abundance"
+    },
+    {
+      "part": "Salubrity",
+      "text": "Salubrity stands in the right niche, holding a cup from which a snake drinks.",
+      "title": "Salubrity"
+    },
+    {
+      "part": "Agrippa relief",
+      "text": "The bas relief above Abundance shows Agrippa approving the aqueduct plans, illustrating the Roman origin of the water supply.",
+      "title": "The Agrippa relief"
+    },
+    {
+      "part": "Clement XII inscription panel",
+      "text": "The attic frieze records the papal patronage: CLEMENS XII PONT MAX ... ANNO DOMINO MDCCXXXV PONTIF VI, for 1735, the sixth year of his pontificate. A second inscription records that Benedict XIV completed the work.",
+      "title": "The papal inscriptions"
+    },
+    {
+      "part": "Asso di coppe vase",
+      "text": "Salvi took care that a barber's unsightly sign would not spoil the ensemble, hiding it behind a sculpted vase that Romans call the asso di coppe, the Ace of Cups, for its resemblance to a tarot card.",
+      "title": "The Ace of Cups"
+    },
+    {
+      "part": "Coins in the basin",
+      "text": "About 3,000 euros land in the basin each day; in 2016 the total reached an estimated 1.4 million euros. The money goes to the Caritas association for charity work, including a subsidized supermarket for Rome's poor. Throw a coin with the back turned to the fountain, using the right hand over the left shoulder, and legend says the gesture favors a return to Rome.",
+      "title": "The coins"
+    }
+  ],
+  "intro": "Oceanus rides his shell chariot out of a Roman palace wall, and three thousand euros a day land in the basin. Toggle between Detailed, the fountain as finished in 1762, and Today: the queuing system, the two-euro ticket, and a hundred LED lights.",
+  "page_title": "Trevi Fountain: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The Trevi Fountain in full, September 2022: Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+    "Detail of Oceanus in the central niche: Wilfredor, CC0, via Wikimedia Commons",
+    "The Trevi Fountain at night: RoyFokker, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Full view of the Trevi Fountain in Rome",
+      "body": "The Trevi Fountain marks the terminal point (mostra) of the Acqua Vergine, the revived Aqua Virgo aqueduct that has supplied Rome since 19 BC. Legend says a virgin showed Roman technicians a pure spring about 13 km from the city, and Marcus Vipsanius Agrippa built the aqueduct to supply his baths near the Pantheon; the scene is shown on the present fountain's facade. The aqueduct was damaged during the Ostrogoth siege under Vitiges in 537, but the Acqua Vergine stayed in use through the Middle Ages, with restorations attested in the 8th century and again by the municipality in the 12th century, when new sources near a place called Trebium were connected. In 1629 Pope Urban VIII, finding the earlier fountain insufficiently dramatic, asked Gian Lorenzo Bernini to sketch renovations, but the project died with the pope. Early designs also came from Pietro da Cortona, Nicola Michetti, Ferdinando Fuga, and Edme Bouchardon.",
+      "caption": "The full facade: 26.3 metres high and 49.15 metres wide, the largest Baroque fountain in the world.",
+      "credit": "Diego Delso, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "19 BC-1730",
+      "heading": "Two thousand years of water",
+      "image": "fountain.jpg"
+    },
+    {
+      "alt": "Detail of the Oceanus statue in the central niche of the Trevi Fountain",
+      "body": "In 1730 Pope Clement XII held a competition for the fountain. Nicola Salvi initially lost to the Florentine Alessandro Galilei, but the outcry in Rome over a Florentine winning led the pope to give Salvi the commission anyway. Work began in 1732. Salvi died in 1751 with the work half finished. Four sculptors completed the decoration: Pietro Bracci, whose Oceanus stands in the central niche, Filippo della Valle, Giovanni Grossi, and Andrea Bergondi. Giuseppe Pannini, son of Giovanni Paolo Panini, took over as architect and substituted the present allegories for the planned sculptures of Agrippa and Trivia, the Roman virgin. The fountain was finished in 1762 and officially opened and inaugurated on 22 May by Pope Clement XIII.",
+      "caption": "Oceanus in the central niche, sculpted by Pietro Bracci.",
+      "credit": "Wilfredor, CC0, via Wikimedia Commons",
+      "dates": "1730-1762",
+      "heading": "The competition and the outcry",
+      "image": "oceanus.jpg"
+    },
+    {
+      "body": "The stated theme of the composition is the taming of the waters: a rocky reef tumbles forward, mixing water and rockwork, with the god Oceanus riding a shell chariot drawn by hippocamps guided by tritons. The tritons and horses are arranged for symmetrical balance with maximum contrast in mood and pose; one horse rears while the other goes calm One reading of this: the two moods of the sea. In the niches flanking Oceanus stand Abundance, spilling water from her urn, and Salubrity, holding a cup from which a snake drinks. Above them, bas reliefs illustrate the Roman origin of the aqueducts: one shows Agrippa approving the aqueduct plans, the other the virgin showing the spring to the soldiers. A triumphal arch is superimposed on the facade of Palazzo Poli, which Salvi gave a new front with a giant order of Corinthian pilasters One reading of this: the palace wall reads as the cliff from which the water breaks. Its name derives from the Latin trivium, the junction of three roads where it stands.",
+      "dates": "1732-1762",
+      "heading": "The taming of the waters"
+    },
+    {
+      "alt": "The Trevi Fountain illuminated at night",
+      "body": "The fountain's later life is a record of fame. It appears in Ottorino Respighi's 1916 symphonic poem Fountains of Rome, in the third movement, \"The Trevi Fountain at Noon\", in Roman Holiday (1953), in Three Coins in the Fountain (1954), and most famously in Federico Fellini's La Dolce Vita (1960), where Anita Ekberg wades into the water with Marcello Mastroianni. In 1973 the Italian postal service dedicated a stamp to it, and a Lego set of the fountain was released on 1 March 2025. The 1954 film fixed the coin legend in popular culture: popular versions add that a second coin brings romance with an Italian and a third brings marriage (or divorce), though these are film-era folklore, treated as legend rather than fact.",
+      "caption": "The fountain by night, lit by the LED system installed in the 2014 to 2015 restoration.",
+      "credit": "RoyFokker, public domain, via Wikimedia Commons",
+      "dates": "1916-1960",
+      "heading": "A film career",
+      "image": "night.jpg"
+    },
+    {
+      "body": "The fountain has also been a target. On 19 October 2007 the artist Graziano Cecchini poured red dye into the fountain as a protest against the cost of the Rome Film Festival, the red standing for the red carpet; he repeated the act on 26 October 2017. On 21 May 2023 the climate group Ultima Generazione dyed the water with charcoal. Stealing coins from the fountain is illegal, though attempts are regular.",
+      "dates": "2007-2023",
+      "heading": "Red dye and black charcoal"
+    },
+    {
+      "body": "The fountain was refurbished in 1988 to remove smog discoloration, and again in 1998, when the stonework was scrubbed, cracks repaired, and recirculating pumps installed. In January 2013 the fashion house Fendi announced it would sponsor a 20-month, 2.2-million-euro restoration, the most thorough in the fountain's history. Work began in June 2014 and finished in November 2015; the fountain reopened with an official ceremony on the evening of 3 November 2015, with more than 100 LED lights installed for the nighttime illumination. After a three-month restoration the fountain reopened in December 2024 with a queuing system around the lower basin and a maximum of 400 visitors at a time. On 2 February 2026 the City Council of Rome introduced a ticketing system: non-residents pay 2 euros to approach the fountain and throw coins, with access free after 10 p.m.",
+      "dates": "1988-2026",
+      "heading": "Restored, queued, ticketed"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1751-2003",
+      "body": "The single most iconic fountain scene in cinema is Anita Ekberg wading into the Trevi in an evening gown in Fellini's La Dolce Vita (1960), calling Marcello Mastroianni's character to join her in the water. Three Coins in the Fountain (1954) made the coin-toss ritual a global practice, with Frank Sinatra's Oscar-winning title song fixing it in popular culture. The fountain also appears in Roman Holiday (1953) and, for a younger generation, in The Lizzie McGuire Movie (2003), where Lizzie tosses a coin, meets a pop star, and returns the next day.\n\nGiovanni Battista Piranesi etched the fountain in 1751, in his Vedute di Roma series, while it was still being completed; impressions are held at the Metropolitan Museum of Art. No famous oil painting of the fountain in a major collection could be verified; the etchings are the notable visual-art record.\n\nOne fountain scene to strike from the list: the drowning sequence in Angels & Demons (2009) takes place at the Fontana dei Quattro Fiumi in Piazza Navona, not the Trevi."
+    }
+  ],
+  "slug": "trevi-fountain",
+  "sources": "Historical facts adapted from Wikipedia (\"Trevi Fountain\", CC BY-SA), Fountains of Papal Rome (1915), culturalheritageonline.com, the ANI report on Graziano Cecchini, and alchetron.com. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Trevi Fountain",
+  "timeline": [
+    {
+      "date": "19 BC",
+      "text": "Agrippa builds the Aqua Virgo aqueduct, guided to the spring by a virgin, says legend."
+    },
+    {
+      "date": "537",
+      "text": "The aqueduct is damaged in the Ostrogoth siege of Vitiges but stays in use."
+    },
+    {
+      "date": "1629",
+      "text": "Pope Urban VIII asks Bernini for sketches of a grander fountain; the project dies with the pope."
+    },
+    {
+      "date": "1730",
+      "text": "Clement XII holds the design competition; Salvi takes the commission after the outcry over Galilei."
+    },
+    {
+      "date": "1732",
+      "text": "Construction begins."
+    },
+    {
+      "date": "1751",
+      "text": "Salvi dies with the work half finished."
+    },
+    {
+      "date": "22 May 1762",
+      "text": "The fountain is finished by Pannini and inaugurated by Clement XIII."
+    },
+    {
+      "date": "1916",
+      "text": "Respighi's Fountains of Rome includes \"The Trevi Fountain at Noon\"."
+    },
+    {
+      "date": "1960",
+      "text": "La Dolce Vita: Anita Ekberg wades into the fountain."
+    },
+    {
+      "date": "19 Oct 2007",
+      "text": "Cecchini dyes the water red in protest at the Rome Film Festival."
+    },
+    {
+      "date": "Jun 2014-Nov 2015",
+      "text": "Fendi's 2.2-million-euro restoration; reopening on 3 Nov 2015."
+    },
+    {
+      "date": "21 May 2023",
+      "text": "Ultima Generazione dyes the water with charcoal."
+    },
+    {
+      "date": "Dec 2024",
+      "text": "Reopening after a three-month restoration; 400-visitor queuing system."
+    },
+    {
+      "date": "2 Feb 2026",
+      "text": "Two-euro ticket introduced for non-residents."
+    }
+  ],
+  "title": "Trevi Fountain"
+}

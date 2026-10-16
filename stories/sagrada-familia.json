@@ -1,0 +1,248 @@
+{
+  "address_country": "ES",
+  "address_locality": "Barcelona",
+  "coordinates": {
+    "label": "Sagrada Familia, Barcelona",
+    "lat": 41.40369,
+    "lng": 2.17433
+  },
+  "description": "Take the Sagrada Familia apart piece by piece in 3D, and read its story: Gaudi's expiatory temple, under construction since 1882, burned in the civil war, and the world's tallest church since 2025.",
+  "entities": {
+    "architect": {
+      "name": "Antoni Gaudi",
+      "role": "Chief architect 1883-1926; designer of the temple",
+      "wikidata": "Q25328"
+    },
+    "events": [
+      {
+        "name": "Construction begins on the apse crypt",
+        "start": "1882-03-19"
+      },
+      {
+        "name": "Gaudi takes over and radically redesigns the project",
+        "start": "1883-03-18"
+      },
+      {
+        "end": "1926-06-10",
+        "name": "Gaudi dies with the basilica 15 to 25 percent complete",
+        "start": "1926"
+      },
+      {
+        "name": "Anarchists burn the crypt and workshop",
+        "start": "1936-07"
+      },
+      {
+        "name": "Pope Benedict XVI consecrates the church as a basilica",
+        "start": "2010-11-07"
+      },
+      {
+        "name": "First municipal building permit issued",
+        "start": "2019-06-07"
+      },
+      {
+        "name": "Tower of Jesus Christ becomes the world's tallest church",
+        "start": "2025-10-30"
+      },
+      {
+        "end": "2026-06-10",
+        "name": "Tower of Jesus Christ structurally complete and blessed",
+        "start": "2026-02-20"
+      }
+    ],
+    "people": [
+      {
+        "name": "Francisco de Paula del Villar y Lozano",
+        "role": "First architect, 1882-1883; resigned",
+        "wikidata": "Q2242694"
+      },
+      {
+        "name": "Jose Maria Bocabella",
+        "role": "Instigator; founder of the devotional association behind the temple",
+        "wikidata": "Q1775995"
+      },
+      {
+        "name": "Domènec Sugrañes i Gras",
+        "role": "Gaudi's chief disciple; continued the work after 1926",
+        "wikidata": "Q958447"
+      },
+      {
+        "name": "Josep Maria Subirachs",
+        "role": "Sculptor of the Passion facade and the Glory facade doors",
+        "wikidata": "Q182136"
+      }
+    ],
+    "wikidata": "Q48435"
+  },
+  "hotspots": [
+    {
+      "part": "Nativity Tree of Life",
+      "text": "A cypress tree rises above the door of Jesus in the portico of Charity, symbolizing the tree of life. The central portal ascends from a serpent-wrapped tree of knowledge at the bottom to the crowning cypress.",
+      "title": "The Tree of Life"
+    },
+    {
+      "part": "Nativity Charity portal",
+      "text": "The central portal of the Nativity facade, flanked by the portals of Hope and Faith. Each facade's three entrances symbolize the theological virtues: Faith, Hope, and Charity.",
+      "title": "The Charity portal"
+    },
+    {
+      "part": "Passion magic square panel",
+      "text": "A 4 by 4 number square based on Dürer's Melencolia I of 1514, rotated so each row and column sums to 33 instead of 34. One reading of this: 33 is widely read as the age of Christ at his death, though no primary source confirms it.",
+      "title": "The magic square"
+    },
+    {
+      "part": "Luke symbol (ox)",
+      "text": "The four Evangelist spires carry their traditional tetramorph symbols: the winged bull of Luke, the winged man of Matthew, the eagle of John, and the winged lion of Mark.",
+      "title": "The Evangelist symbols"
+    },
+    {
+      "part": "Jesus spire four-armed cross",
+      "text": "The Jesus Christ spire is crowned by a giant cross and reached 172.5 meters on 20 February 2026, making the Sagrada Familia the world's tallest church. Gaudi kept it one meter below the 173.5-meter height of Montjuic hill.",
+      "title": "The cross at 172.5 meters"
+    },
+    {
+      "part": "Virgin Mary twelve-pointed crown",
+      "text": "A 7-meter twelve-pointed illuminated crystal star was installed on the Virgin Mary tower on 29 November 2021. No official symbolism statement exists; One reading of this: a twelve-pointed star is commonly read as Marian imagery.",
+      "title": "Mary's star"
+    },
+    {
+      "part": "Glory bronze door 1",
+      "text": "The Glory facade's central doors, installed in 2008 and sculpted by Subirachs, bear the entire Lord's Prayer in Catalan, surrounded by 'Give us this day our daily bread' in fifty languages. The handles are the letters A and G for Antoni Gaudi, set inside the Catalan phrase 'lead us not into temptation'.",
+      "title": "The Lord's Prayer doors"
+    },
+    {
+      "part": "Nave west column 1 branch crown",
+      "text": "The 36 branching columns evoke trees, morphing from a square base to an octagon to 16 sides to a circle through intersecting helicoidal forms. Skylights above give the effect of light filtering through leaves.",
+      "title": "The branching columns"
+    },
+    {
+      "part": "North clerestory glass",
+      "text": "The stained glass is color-coded by orientation: east windows in blues and greens for birth and the newborn sun, west windows in reds and yellows for death and the last sunrays.",
+      "title": "The color-coded glass"
+    },
+    {
+      "part": "Crossing great hyperboloid",
+      "text": "The crossing rests on four monumental porphyry columns beneath a great hyperboloid, ringed by two rings of twelve hyperboloids. The Tower of Jesus Christ rises from this crossing.",
+      "title": "The crossing"
+    }
+  ],
+  "intro": "Antoni Gaudi's Barcelona basilica, funded entirely by donations and still unfinished after more than 140 years. Follow the spires from the Nativity facade Gaudi built to the 172.5-meter cross of Jesus Christ, completed in 2026.",
+  "page_title": "Sagrada Familia: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "General exterior view of the basilica: Matti Blume, CC BY-SA 4.0, via Wikimedia Commons",
+    "'Massacre of the Innocents' sculpture detail, Nativity facade: José Luiz, CC BY-SA 3.0, via Wikimedia Commons",
+    "The four Nativity facade spires: Ank Kumar, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "General exterior view of the Sagrada Familia basilica",
+      "body": "The project began with a bookseller. Jose Maria Bocabella, founder of the Spiritual Association of Devotees of St. Joseph, returned from the Vatican in 1872 wanting a church modeled on the basilica at Loreto: an expiatory temple, funded solely by donations from people seeking to counter a growing rejection of the Catholic Church and its values. Work began on the apse crypt on 19 March 1882, the festival of St. Joseph, under Francisco de Paula del Villar, whose plan was a conventional Gothic revival church. When Villar resigned in 1883, the 31-year-old Antoni Gaudi assumed responsibility and radically redesigned the project, fusing Gothic structure with curvilinear Art Nouveau and nature-derived geometry. Appointed Architect Director on 28 March 1884, he gave the rest of his life to the temple, living on site in his final years, and is buried in the crypt. When he died on 10 June 1926, the basilica was only 15 to 25 percent complete.",
+      "caption": "The basilica from the southeast, with the Nativity facade at left and the Passion facade at right.",
+      "credit": "Matti Blume, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1882-1883",
+      "heading": "An expiatory temple",
+      "image": "exterior.jpg"
+    },
+    {
+      "alt": "'Massacre of the Innocents' sculpture detail on the Nativity facade",
+      "body": "The three facades tell the life of Christ in orientation and stone. The Nativity facade faces east, the rising sun, and birth; the Passion facade faces west, the setting sun, and suffering and death; the Glory facade faces south, the midday sun, and ascension and final glory. The Nativity is lush and organic: giant columns flanking the central portal rest on a tortoise on the land side and a turtle on the sea side, marking which side faces the sea and symbolizing time as something set in stone and unchangeable, while two chameleons at the facade's edges symbolize change. Above the door of Jesus in the portico of Charity rises a cypress, the Tree of Life; the central portal ascends from a serpent-wrapped tree of knowledge at the bottom to the crowning cypress. Each facade's three entrances symbolize the theological virtues: Faith, Hope, and Charity.",
+      "caption": "The 'Massacre of the Innocents', a sculpture group on the Nativity facade.",
+      "credit": "José Luiz, CC BY-SA 3.0, via Wikimedia Commons",
+      "heading": "Three facades, one life",
+      "image": "massacre.jpg"
+    },
+    {
+      "alt": "The four spires of the Nativity facade",
+      "body": "Eighteen spires are planned, in ascending height: the Twelve Apostles, the Four Evangelists, the Virgin Mary, and Jesus Christ tallest. As of 2026, fourteen of the eighteen stand. The apostle spires are topped with communion hosts bearing wheat sheaves and chalices with grape bunches, symbolizing the Eucharist. The four Evangelist spires carry their traditional tetramorph symbols: the winged bull of Luke, the winged man of Matthew, the eagle of John, and the winged lion of Mark. Gaudi planned tubular bells inside the spires, driven by the wind, and did acoustic studies for them; as of 2004 only one bell was in place. On the Passion facade sits a 4 by 4 magic square based on Dürer's Melencolia I of 1514, rotated so each row and column sums to 33 instead of 34. One reading of this: 33 is widely read as the age of Christ at his death, though no primary source confirms that reading. On 29 November 2021 a 7-meter twelve-pointed illuminated crystal star was installed on the Virgin Mary tower; no official symbolism statement exists. The Jesus Christ spire is crowned by a giant cross, and the steeples carry the liturgical words Hosanna, Excelsis, and Sanctus.",
+      "caption": "The four Nativity spires, dedicated to the apostles Matthias, Barnabas, Jude, and Simon.",
+      "credit": "Ank Kumar, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "Eighteen spires",
+      "image": "nativity-towers.jpg"
+    },
+    {
+      "body": "In July 1936, anarchists of the Iberian Anarchist Federation set fire to the crypt, broke into the workshop, and partially destroyed Gaudi's original plans, models, and workshop. Some Nativity facade statues were destroyed and later reconstructed by the Japanese sculptor Etsuro Sotoo. From 1939 Francesc de Paula Quintana took over site management, rebuilding from saved material, published plans, and photographs. The present design is therefore a reconstruction of burned originals plus modern adaptations, a fact that still fuels debate: in 2008 prominent Catalan architects argued construction should stop to respect Gaudi's originals. Work continued intermittently under Domènec Sugrañes i Gras and later architects, and the computer-aided design and CNC milling introduced in the 1980s accelerated progress; construction passed the midpoint in 2010.",
+      "dates": "1936",
+      "heading": "Burned in the civil war"
+    },
+    {
+      "body": "Inside, 36 branching columns evoke trees, with skylights above giving the effect of light filtering through leaves. Geometrically the columns morph from a square base to an octagon to 16 sides to a circle through intersecting helicoidal forms, with no flying buttresses; heavy columns are porphyry and basalt, lighter ones granite and Montjuic sandstone. Everything sits on a 7.5-meter module: the 90-meter length is 7.5 times 12, the 60-meter width 7.5 times 8, and the heights follow the same arithmetic, with the central nave vault at 45 meters, side aisles at 30, the transept at 60, the apse hyperboloid at 75, and the choir at 15. The stained glass is color-coded by orientation: east windows in blues and greens for birth and the newborn sun, west windows in reds and yellows for death and the last sunrays. The central nave was vaulted in 2000, and the main organ, built by Blancafort Orgueners de Montserrat with 26 stops and 1,492 pipes, was installed in mid-2010 so liturgies could be held.",
+      "heading": "A forest in stone"
+    },
+    {
+      "body": "For 136 years the building had no municipal permit. In October 2018 the trustees agreed to pay Barcelona 36 million euros, and the permit was issued on 7 June 2019. The stone itself changed source: the original Montjuic stone became too fragile at deeper quarry levels, and since 2018 the needed stone has come from Withnell Quarry in Brinscall, near Chorley, England, CNC-milled off-site since 2006 and pre-assembled as post-tensioned stone panels. The modern era brought other shocks: on 19 April 2011 an arsonist started a small fire in the sacristy, contained in 45 minutes; on 8 January 2013 the AVE high-speed rail tunnel opened beneath the church, against the opposition of the church's Board and engineers who feared for its stability; and the August 2017 Barcelona attacks investigation revealed the Sagrada Familia was one of the original targets, a van-bomb plot abandoned after the accidental Alcanar explosion. On 11 March 2020 construction halted for COVID-19, the first stoppage since the Civil War, and reopened on 4 July 2020.",
+      "dates": "2018-2019",
+      "heading": "A permit after 136 years"
+    },
+    {
+      "body": "On 30 October 2025 the central tower passed Ulm Minster at 162.91 meters, and on 20 February 2026 the Tower of Jesus Christ reached structural completion at 172.5 meters, making it the world's tallest church. The cross is 17 meters tall and 13.5 wide, built in Germany in 2025 and clad in glass and white enameled ceramic, carrying the inscription Tu solus Sanctus, tu solus Dominus, tu solus Altissimus on a 29-meter element begun in May 2025. On 10 June 2026, the centenary of Gaudi's death, Pope Leo XIV blessed the tower. Gaudi deliberately made the Jesus Christ tower one meter shorter than Montjuic hill at 173.5 meters, believing his man-made creation should not surpass God's natural work. As of 2025, completing the main southern Glory facade may require demolishing two city blocks across Carrer de Mallorca, about 3,000 homes; the 1976 urban plan defines that area as part of the temple, and architects say plans will proceed despite protests, with talks ongoing between the Construction Board, the city council, and residents. Interior work continues, with a 2017 estimate putting the Glory facade and decorative elements at 2030 to 2032.",
+      "dates": "2025-2026",
+      "heading": "The tallest church in the world"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2002-2026",
+      "body": "In L'Auberge espagnole (2002) Xavier and his lover climb the towers of the Sagrada Familia after consummating their relationship, a deliberate story beat that a peer-reviewed study reads as drawing an analogy between the apex of their affair and the apex of the basilica's still-unfinished construction. The one screen work in which the building is the undisputed protagonist is Stefan Haupt's feature documentary Sagrada: The Mystery of Creation (2012), on Gaudi's vision and the generations of artisans continuing the work.\n\nThe completion era has brought the basilica back into the spotlight: CBS Sunday Morning aired a full segment in June 2026 on the architects working from Gaudi's surviving clues, and the announced target of finishing the Tower of Jesus Christ in 2026, the centenary of Gaudi's death, would make it the world's tallest church 144 years after construction began. No painting of the basilica by a major artist in a known public collection could be verified."
+    }
+  ],
+  "slug": "sagrada-familia",
+  "sources": "Historical facts adapted from Wikipedia (\"Sagrada Família\", CC BY-SA), the Sagrada Família Construction Board's official press releases, and OSV News/AP reporting on the 2025-2026 milestones. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the Sagrada Familia",
+  "timeline": [
+    {
+      "date": "1882-03-19",
+      "text": "Construction begins on the apse crypt under Francisco de Paula del Villar."
+    },
+    {
+      "date": "1883-03-18",
+      "text": "Villar resigns; 31-year-old Antoni Gaudi takes over and radically redesigns the project."
+    },
+    {
+      "date": "1926-06-10",
+      "text": "Gaudi dies with the basilica 15 to 25 percent complete; he is buried in the crypt."
+    },
+    {
+      "date": "1936-07",
+      "text": "Anarchists burn the crypt and workshop, destroying Gaudi's original plans and models."
+    },
+    {
+      "date": "1954-1976",
+      "text": "The Passion facade is built to Gaudi's 1917 design; its steeples are finished in 1976."
+    },
+    {
+      "date": "1987",
+      "text": "Josep Maria Subirachs begins the Passion facade's angular sculptures."
+    },
+    {
+      "date": "2005",
+      "text": "The crypt and Nativity facade are inscribed as UNESCO World Heritage."
+    },
+    {
+      "date": "2010-11-07",
+      "text": "Pope Benedict XVI consecrates the church as a basilica before 6,500 inside and 50,000 outside."
+    },
+    {
+      "date": "2019-06-07",
+      "text": "The first municipal building permit is issued after 136 years of unlicensed construction."
+    },
+    {
+      "date": "2020-03-11",
+      "text": "Construction halts for COVID-19, the first stoppage since the Civil War."
+    },
+    {
+      "date": "2021-11-29",
+      "text": "The twelve-pointed illuminated crystal star is installed on the Virgin Mary tower."
+    },
+    {
+      "date": "2025-10-30",
+      "text": "The Sagrada Familia becomes the world's tallest church, passing Ulm Minster at 162.91 meters."
+    },
+    {
+      "date": "2026-02-20",
+      "text": "The Tower of Jesus Christ is structurally complete at 172.5 meters."
+    },
+    {
+      "date": "2026-06-10",
+      "text": "Pope Leo XIV blesses the tower on the centenary of Gaudi's death."
+    }
+  ],
+  "title": "Sagrada Familia"
+}

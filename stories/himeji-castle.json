@@ -1,0 +1,234 @@
+{
+  "address_country": "JP",
+  "address_locality": "Himeji",
+  "coordinates": {
+    "label": "Himeji Castle, Himeji",
+    "lat": 34.83944,
+    "lng": 134.69389
+  },
+  "date_built": "1609",
+  "description": "Take Himeji Castle apart piece by piece in 3D, and read the story of Japan's white egret: four centuries on the hill, a maze that never fought, and the ghosts the castle kept.",
+  "entities": {
+    "events": [
+      {
+        "name": "First fort on Himeyama hill",
+        "start": "1333"
+      },
+      {
+        "name": "Toyotomi Hideyoshi's keep",
+        "start": "1581"
+      },
+      {
+        "end": "1609",
+        "name": "Ikeda Terumasa's rebuild",
+        "start": "1601"
+      },
+      {
+        "name": "Castle spared from demolition",
+        "start": "1871"
+      },
+      {
+        "name": "Castle survives the bombing of Himeji",
+        "start": "1945"
+      },
+      {
+        "name": "UNESCO World Heritage inscription",
+        "start": "1993-12-11"
+      },
+      {
+        "name": "Great Hanshin earthquake",
+        "start": "1995-01"
+      },
+      {
+        "end": "2015",
+        "name": "Roofs and walls restored",
+        "start": "2010"
+      }
+    ],
+    "people": [
+      {
+        "name": "Akamatsu Norimura",
+        "role": "Built the first fort on Himeyama hill, 1333",
+        "wikidata": "Q2828933"
+      },
+      {
+        "name": "Toyotomi Hideyoshi",
+        "role": "Expanded the castle in 1581 with a three-story keep",
+        "wikidata": "Q187550"
+      },
+      {
+        "name": "Ikeda Terumasa",
+        "role": "Rebuilt and expanded the castle 1601-1609 into its present form",
+        "wikidata": "Q1385927"
+      },
+      {
+        "name": "Honda Tadamasa",
+        "role": "Inherited the castle in 1617; added buildings including the Dressing Tower",
+        "wikidata": "Q3275929"
+      },
+      {
+        "name": "Senhime",
+        "role": "Princess Sen; the kesho yagura was built as her quarters",
+        "wikidata": "Q1147080"
+      },
+      {
+        "name": "Osakabehime",
+        "role": "Yokai said to inhabit the castle tower (folklore)",
+        "wikidata": "Q17209288"
+      }
+    ],
+    "wikidata": "Q188754"
+  },
+  "hotspots": [
+    {
+      "part": "Main keep great roof",
+      "text": "The keep's layered roof system of karahafu and chidori hafu gables, part of the white silhouette that gave the castle its White Egret name.",
+      "title": "The great roof"
+    },
+    {
+      "part": "Main keep shachihoko ornaments",
+      "text": "Mythical tiger-headed fish top the castle towers as a talisman for fire prevention.",
+      "title": "The shachihoko"
+    },
+    {
+      "part": "Main keep east pillar",
+      "text": "Two great pillars carry the keep. The east pillar, 97 centimeters across at its base, was originally a single fir tree; both were largely replaced in the Showa restoration.",
+      "title": "The great pillars"
+    },
+    {
+      "part": "Thousand-mat room weapon racks",
+      "text": "The first floor of the main keep, 554 square meters with more than 330 tatami mats. Its weapon racks once held 280 guns and 90 spears.",
+      "title": "The thousand-mat room"
+    },
+    {
+      "part": "Hishi Gate gatehouse",
+      "text": "The main entrance to the castle proper, keeping its Azuchi-Momoyama appearance. The monument to Colonel Nakamura, who saved the castle from demolition, stands inside it.",
+      "title": "The Hishi Gate"
+    },
+    {
+      "part": "Wall loopholes (sama)",
+      "text": "Roughly 997 reported firing holes in circle, triangle, square, and rectangle shapes, for guns and arrows.",
+      "title": "The loopholes"
+    },
+    {
+      "part": "Stone-drop windows (ishi-otoshi)",
+      "text": "Angled chutes in the walls for dropping rocks and boiling water or oil on attackers below.",
+      "title": "The stone-drop windows"
+    },
+    {
+      "part": "Ubagaishi millstone",
+      "text": "The Old Widow's Stone, set into a wall: legend says an old woman donated her hand millstone when Hideyoshi ran short of stones in 1581, inspiring others to give.",
+      "title": "The Ubagaishi"
+    },
+    {
+      "part": "Okiku well",
+      "text": "The stone-lined well tied to the Banshu Sarayashiki ghost story of the maid Okiku and the ten plates: legend, not history.",
+      "title": "Okiku's Well"
+    },
+    {
+      "part": "Kesho Yagura",
+      "text": "The kesho yagura, the Dressing Tower, added in 1617-1618 as quarters for Princess Sen, Tokugawa Hidetada's daughter.",
+      "title": "The Dressing Tower"
+    }
+  ],
+  "intro": "Himeji Castle is Japan's finest surviving feudal castle: a 46-meter white keep on Himeyama hill that survived 700 years, a war, and an earthquake without ever facing a battle. This is the story it kept.",
+  "page_title": "Himeji Castle: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The keep after the 2010-2015 restoration: Nikos Kitsakis, CC BY-SA 4.0, via Wikimedia Commons",
+    "Keep tower close view after restoration: Terumasa, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "Himeji Castle's keep tower after the 2010-2015 restoration",
+      "body": "Himeyama hill was first fortified in 1333 by Akamatsu Norimura during the Genko War; his son Sadanori demolished the fort and built Himeyama Castle in 1346. Two centuries later the site became Himeji Castle under Kuroda Shigetaka, and in 1580 Kuroda Yoshitaka presented it to Toyotomi Hideyoshi, who expanded it with a three-story keep in 1581. After the Battle of Sekigahara in 1600, Tokugawa Ieyasu granted the castle to his son-in-law Ikeda Terumasa, who demolished Hideyoshi's keep and completely rebuilt and expanded the castle from 1601 to 1609, adding three moats and creating the complex seen today, at an estimated 2.5 million man-days of labor. In 1617 and 1618 Honda Tadamasa added several buildings, including the kesho yagura, the Dressing Tower, a special tower for his daughter-in-law Princess Sen.",
+      "caption": "The main keep after the 2010-2015 restoration returned its grey walls to brilliant white.",
+      "credit": "Nikos Kitsakis, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1333-1609",
+      "heading": "Four centuries on the hill",
+      "image": "hero.jpg"
+    },
+    {
+      "alt": "Close view of the keep tower after restoration",
+      "body": "The brilliant white plaster exterior gave the castle its nicknames Hakuro-jo and Shirasagi-jo, the White Egret or White Heron Castle, for its supposed resemblance to a bird taking flight. The comparison is popular lore, not documented design intent. The plaster itself was chosen for a harder reason: thick sand-and-clay walls bound with rice glue are fire-resistant, and contemporary accounts say they were impenetrable to matchlock balls. The white egret, then, is beauty as a side effect of survival engineering. Decades of grime had dulled the walls to grey; the 2010 to 2015 restoration cleaned the roofs and plaster and returned them to white. The castle reopened on 27 March 2015 and drew 2.86 million visitors that year.",
+      "caption": "The keep tower close up: shachihoko roof ornaments, gables, and the brilliant white plaster.",
+      "credit": "Terumasa, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "The white egret",
+      "image": "keep-closeup.jpg"
+    },
+    {
+      "body": "The castle's defenses were never battle-tested. The maze-like spiral approaches were designed to confuse and expose intruders: the straight-line distance from the Hishi Gate to the main keep is about 130 meters, but the walk is about 325 meters of steep, narrow, deliberately misaligned passages and dead ends. Attackers would meet roughly 997 firing holes in circle, triangle, square, and rectangle shapes (a reported figure, from a single source), stone-drop windows angled to rain rocks and boiling water or oil, and warrior hiding places built into the corners of each keep floor. One reading of this: the maze also enacts the feudal order itself, with power receding behind layer after layer of controlled access. The complex holds 83 buildings; the outer moat is now buried, and 21 of the original 84 gates remain intact.",
+      "heading": "A maze that never fought"
+    },
+    {
+      "body": "The main keep stands 46.4 meters high, and 92 meters above sea level. It looks like five floors from outside; it actually has six plus a basement. The first floor covers 554 square meters, the 'thousand-mat room' with more than 330 tatami mats; its weapon racks once held 280 guns and 90 spears. Two great pillars carry the structure: the east pillar has a base diameter of 97 centimeters and was originally a single fir tree; the west pillar base is 85 by 95 centimeters of Japanese cypress. In the 1956 to 1964 Showa restoration the west pillar was replaced with a 26.4-meter cypress from the Kiso Mountains; the tree broke in handling, so a second tree from Mount Kasagata was joined to it on the third floor. The top floor houses a small shrine and gives panoramic views over the city.",
+      "heading": "Inside the keep"
+    },
+    {
+      "body": "In the Meiji period castles were obsolete, and the government slated Himeji for demolition. Army colonel Nakamura Shigeto's efforts spared it; a stone monument honoring him stands inside the first gate, the Hishi Gate. The castle was abandoned in 1871, briefly served as the 10th Infantry Regiment headquarters in 1874, and preservation efforts began in 1877, with government funding from 1910. In 1945 Himeji was heavily bombed; the castle survived intact, and one firebomb dropped on the top floor failed to explode. The Showa restoration of 1956 to 1964 took 250,000 man-days and 550 million yen. In January 1995 the Great Hanshin earthquake devastated Himeji city but the castle survived virtually undamaged, a demonstration of remarkable earthquake resistance; even a sake bottle on the altar of the keep's top floor stayed in place. On 11 December 1993 it was inscribed as one of Japan's first UNESCO World Heritage Sites.",
+      "heading": "Saved from demolition"
+    },
+    {
+      "body": "The building carries four legends, and each is folklore, not history. Okiku's Well: the Banshu Sarayashiki ghost story of the maid Okiku and the ten plates claims the castle as its true location, and the old stone-lined well remains in the castle. The Ubagaishi, the Old Widow's Stone: when Hideyoshi ran short of stones for his 1581 keep, an old woman gave her hand millstone, inspiring others to donate stones; the supposed stone is visible under a wire net in one wall. Sakurai Genbei, Ikeda's master carpenter, supposedly felt the keep leaned to the southeast and threw himself from the top with a chisel in his mouth. And the castle is said to be inhabited by the yokai Osakabehime, who lives in the tower, avoids humans, reads minds, and commands lesser animal-like yokai. A 2023 Lego Architecture model of 2,125 pieces is the latest tribute, in plastic rather than plaster.",
+      "heading": "The castle's ghosts"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1926-1985",
+      "body": "Western audiences know the castle best as Tiger Tanaka's ninja training school in You Only Live Twice (1967), where Sean Connery's Bond trains. Akira Kurosawa shot two of his late epics there: in Ran (1985) Himeji served as the warlord Hidetora's first and second castles, with blood effects composited optically afterward because none could be shed on the floors of a national treasure, and in Kagemusha (1980) it appears as the castle of the warlord Oda Nobunaga.\n\nThe definitive printed image is Hiroshi Yoshida's 1926 shin-hanga pair, Himeji Castle, Morning and Himeji Castle, Evening, made for international audiences of Japanese art. Okumura Togyu, one of the 20th century's major nihonga masters, painted Himeji Castle around 1955 after spending a week sketching during the keep's landmark dismantling and restoration; the work is in the Yamatane Museum of Art in Tokyo.\n\nOne credit the castle does not deserve: The Last Samurai (2003) filmed its Himeji scenes at Engyoji Temple on Mount Shosha, in Himeji city, not at the castle itself."
+    }
+  ],
+  "slug": "himeji-castle",
+  "sources": "Historical facts adapted from Wikipedia ('Himeji Castle', CC BY-SA), UNESCO, and the Himeji Castle Guide (Himeji Rojyo Lions Club). Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of Himeji Castle",
+  "timeline": [
+    {
+      "date": "1333",
+      "text": "Akamatsu Norimura fortifies Himeyama hill during the Genko War."
+    },
+    {
+      "date": "1346",
+      "text": "His son Sadanori replaces the fort with Himeyama Castle."
+    },
+    {
+      "date": "1581",
+      "text": "Toyotomi Hideyoshi adds a three-story keep; the Ubagaishi legend dates to this build."
+    },
+    {
+      "date": "1600",
+      "text": "After Sekigahara, Tokugawa Ieyasu grants Himeji Castle to Ikeda Terumasa."
+    },
+    {
+      "date": "1601-1609",
+      "text": "Ikeda rebuilds the castle completely; three moats added."
+    },
+    {
+      "date": "1617-1618",
+      "text": "Honda Tadamasa adds buildings, including the kesho yagura for Princess Sen."
+    },
+    {
+      "date": "1871",
+      "text": "The Meiji government slates the castle for demolition; army colonel Nakamura Shigeto saves it."
+    },
+    {
+      "date": "1945",
+      "text": "Himeji is bombed; the castle survives, a firebomb on the top floor failing to explode."
+    },
+    {
+      "date": "1956-1964",
+      "text": "The Showa restoration: 250,000 man-days, 550 million yen."
+    },
+    {
+      "date": "1993-12-11",
+      "text": "Inscribed as one of Japan's first UNESCO World Heritage Sites."
+    },
+    {
+      "date": "1995-01",
+      "text": "The Great Hanshin earthquake devastates the city; the castle survives virtually undamaged."
+    },
+    {
+      "date": "2010-2015",
+      "text": "Restoration returns grey roofs to brilliant white; reopened 27 March 2015."
+    }
+  ],
+  "title": "Himeji Castle"
+}

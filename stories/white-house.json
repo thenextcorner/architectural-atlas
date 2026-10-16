@@ -1,0 +1,318 @@
+{
+  "address_country": "US",
+  "address_locality": "Washington",
+  "coordinates": {
+    "label": "The White House, 1600 Pennsylvania Avenue NW, Washington",
+    "lat": 38.89777778,
+    "lng": -77.03638889
+  },
+  "date_built": "1800",
+  "description": "Take the White House apart in 3D and read its story: James Hoban's 1792 to 1800 Palladian mansion of Aquia Creek sandstone, burned in 1814, gutted and rebuilt in steel under Truman, and treated as a museum since Kennedy.",
+  "entities": {
+    "architect": {
+      "name": "James Hoban",
+      "role": "Won the 1792 design competition; oversaw the 1815-1817 reconstruction",
+      "wikidata": "Q470765"
+    },
+    "events": [
+      {
+        "end": "1800",
+        "name": "Construction of the Executive Residence",
+        "start": "1792"
+      },
+      {
+        "name": "Washington selects James Hoban's design",
+        "start": "1792-07-16"
+      },
+      {
+        "name": "Cornerstone laid at noon",
+        "start": "1792-10-13"
+      },
+      {
+        "name": "John Adams becomes the first president in residence",
+        "start": "1800-11-01"
+      },
+      {
+        "name": "British forces burn the mansion; only walls remain",
+        "start": "1814-08-24"
+      },
+      {
+        "name": "James Monroe moves into the rebuilt Executive Residence",
+        "start": "1817-10"
+      },
+      {
+        "name": "South Portico completed",
+        "start": "1824"
+      },
+      {
+        "name": "North Portico completed; Jackson inauguration mob",
+        "start": "1829"
+      },
+      {
+        "name": "'The White House' becomes the formal name",
+        "start": "1901"
+      },
+      {
+        "name": "West Wing built under McKim, Mead and White",
+        "start": "1902"
+      },
+      {
+        "name": "First Oval Office (Taft and Wyeth)",
+        "start": "1909"
+      },
+      {
+        "name": "West Wing damaged by fire",
+        "start": "1929-12-24"
+      },
+      {
+        "name": "PEOC bunker built under the East Wing",
+        "start": "1942"
+      },
+      {
+        "end": "1952",
+        "name": "Truman steel-frame reconstruction; Trumans at Blair House",
+        "start": "1948"
+      },
+      {
+        "name": "Congress declares the White House a museum",
+        "start": "1961"
+      },
+      {
+        "name": "Jacqueline Kennedy's televised tour",
+        "start": "1962-02-14"
+      },
+      {
+        "name": "Pennsylvania Avenue closed to vehicles",
+        "start": "1995-05-20"
+      },
+      {
+        "end": "2028",
+        "name": "East Wing demolished and rebuilt with a state ballroom",
+        "start": "2025-10"
+      }
+    ],
+    "people": [
+      {
+        "name": "Benjamin Henry Latrobe",
+        "role": "Designed the colonnades; co-led the 1815-1817 reconstruction",
+        "wikidata": "Q726082"
+      },
+      {
+        "name": "John Adams",
+        "role": "First president to live in the house, 1800",
+        "wikidata": "Q11806"
+      },
+      {
+        "name": "Thomas Jefferson",
+        "role": "Added the colonnades; began public tours",
+        "wikidata": "Q11812"
+      },
+      {
+        "name": "James Monroe",
+        "role": "Moved into the rebuilt house in 1817",
+        "wikidata": "Q11815"
+      },
+      {
+        "name": "Theodore Roosevelt",
+        "role": "1902 renovation; formalized the name in 1901",
+        "wikidata": "Q33866"
+      },
+      {
+        "name": "William Howard Taft",
+        "role": "Added the first Oval Office in 1909",
+        "wikidata": "Q35648"
+      },
+      {
+        "name": "Nathan C. Wyeth",
+        "role": "Architect of the first Oval Office",
+        "wikidata": "Q11790092"
+      },
+      {
+        "name": "Harry S. Truman",
+        "role": "Ordered the 1948-1952 steel-frame reconstruction",
+        "wikidata": "Q11613"
+      },
+      {
+        "name": "Jacqueline Kennedy Onassis",
+        "role": "Led the 1961-1963 historic restoration",
+        "wikidata": "Q165421"
+      }
+    ],
+    "wikidata": "Q35525"
+  },
+  "hotspots": [
+    {
+      "part": "north portico rose swags",
+      "text": "The North Portico's Ionic order carries a distinctive variation: a swag of roses carved between the volutes, deliberately linking the new portico to the carved roses above the original north entrance.",
+      "title": "The rose swags"
+    },
+    {
+      "part": "truman balcony",
+      "text": "The Truman Balcony, added in 1946 to 1948, was controversial in its day and is documented without any recorded symbolic intent.",
+      "title": "The Truman Balcony"
+    },
+    {
+      "part": "state dining room mantel",
+      "text": "John Adams's 1800 prayer for the house, \"I pray Heaven to bestow the best of blessings on this House, and all that shall hereafter inhabit it. May none but honest and wise men ever rule under this roof\", was carved into the State Dining Room mantel by Franklin D. Roosevelt. It functions as the building's founding benediction.",
+      "title": "The mantel blessing"
+    },
+    {
+      "part": "oval office",
+      "text": "William Howard Taft added the first Oval Office in 1909 with architect Nathan C. Wyeth; Franklin D. Roosevelt later moved it to its present spot beside the Rose Garden. No verified symbolism is documented for the oval geometry itself, so no meaning is asserted here.",
+      "title": "The Oval Office"
+    },
+    {
+      "part": "james s. brady press briefing room",
+      "text": "Nixon built the press briefing room over Franklin D. Roosevelt's old swimming pool, and added a basement bowling alley.",
+      "title": "The briefing room"
+    },
+    {
+      "part": "jackson magnolia",
+      "text": "Magnolias planted by Andrew Jackson stood on the grounds for over 200 years before removal in 2017, including one reportedly grown from a sprout of his late wife's favorite tree.",
+      "title": "The Jackson magnolias"
+    },
+    {
+      "part": "truman steel frame columns",
+      "text": "Under Harry S. Truman the interior was completely dismantled and a new load-bearing steel frame was built inside the original walls; the rooms were then rebuilt, the grand staircase repositioned, central air conditioning added, and two sub-basements, including a bomb shelter, dug. The $5.7 million job finished in 1952.",
+      "title": "Truman's steel frame"
+    },
+    {
+      "part": "east colonnade north column run",
+      "text": "Jefferson called the house too big but added, with Benjamin Henry Latrobe, the East and West Colonnades that hid stables and service buildings; the colonnades that still link the wings today.",
+      "title": "The colonnades"
+    },
+    {
+      "part": "presidential emergency operations center",
+      "text": "In 1942 the East Wing was renovated to conceal the construction of the underground Presidential Emergency Operations Center bunker. In October 2025 the East Wing was demolished to make way for a new East Wing with a state ballroom over a rebuilt PEOC complex, slated to open in 2028.",
+      "title": "The bunker"
+    },
+    {
+      "part": "cross hall",
+      "text": "Cross Hall and the Grand Staircase link the state rooms of the State Floor; the Tiffany screen that once divided the main corridor was stripped out in the 1902 renovation.",
+      "title": "Cross Hall"
+    }
+  ],
+  "intro": "Every president since John Adams has lived here. Toggle between Detailed, the house as Hoban and Latrobe rebuilt it, and Today: the Truman steel frame, the Kennedy museum rooms, and the 2025 East Wing rebuild.",
+  "page_title": "White House: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The south facade from the Washington Monument: Ad Meskens, CC BY-SA 3.0, via Wikimedia Commons",
+    "The north front with a Secret Service officer, 2018: Beethoven, CC BY-SA 4.0, via Wikimedia Commons",
+    "Aerial view of the White House complex: Carol M. Highsmith, public domain, via Wikimedia Commons",
+    "Benjamin Henry Latrobe's White House drawing: Benjamin Henry Latrobe, public domain, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The south facade of the White House seen from the Washington Monument",
+      "body": "The President's House was a centerpiece of L'Enfant's 1791 plan, though his vision was for a grand palace five times larger than what was built. After L'Enfant's dismissal, Washington and Jefferson agreed on a design competition; nine proposals were submitted and Irish-American architect James Hoban, whose Charleston County Courthouse Washington had admired on a 1791 tour, won. On 16 July 1792 Washington reviewed the entries and \"quickly selected Hoban's submission.\" Construction began at noon on 13 October 1792 with the laying of the cornerstone. Material and labor shortages shrank the design from three main floors to two, with brick lining the stone facades. Enslaved African-Americans quarried the stone while Scottish masons raised the sandstone walls; the total cost was $232,371.83. The porous Aquia Creek sandstone was whitewashed with lime, rice glue, casein, and lead when construction finished, giving the house its color and name. The public was calling it the \"White House\" by 1811, and \"Executive Mansion\" was the official name until Theodore Roosevelt's 1901 executive order. The persistent myth that it was painted white to hide 1814 burn damage is just that, a myth: the name predates the fire. One speculation ties the name to Martha Washington's girlhood home, White House Plantation in Virginia.",
+      "caption": "The south facade, built of Aquia Creek sandstone whitewashed when construction finished.",
+      "credit": "Ad Meskens, CC BY-SA 3.0, via Wikimedia Commons",
+      "dates": "1791-1800",
+      "heading": "A competition for a president's house",
+      "image": "south-facade.jpg"
+    },
+    {
+      "body": "On 1 November 1800 John Adams became the first president to occupy the house. The next day he wrote to his wife Abigail: \"I pray Heaven to bestow the best of blessings on this House, and all that shall hereafter inhabit it. May none but honest and wise men ever rule under this roof.\" Franklin D. Roosevelt later had the blessing carved into the mantel of the State Dining Room. Jefferson called the house too big but added, with Benjamin Henry Latrobe, the East and West Colonnades that hid stables and service buildings, the colonnades that still link the wings today. Jefferson also began the public traditions: house tours and a Fourth of July reception. It is a metonym for the presidency itself.",
+      "dates": "1800-1814",
+      "heading": "First residents"
+    },
+    {
+      "alt": "Benjamin Henry Latrobe's drawing of the White House",
+      "body": "On 24 August 1814, during the War of 1812, British forces set the mansion ablaze in the burning of Washington, retaliating for American destruction in the Canadas. Only the exterior walls remained, and most had to be torn down and rebuilt. White House employees and enslaved workers rescued the Lansdowne portrait of Washington; only three of the many looted objects have ever been recovered: a jewelry box returned in 1939 by a Canadian man and a medicine chest that had belonged to Madison, returned the same year by a Royal Navy officer's descendants. President Madison sheltered at the Octagon House while Hoban and Latrobe oversaw reconstruction from 1815 to 1817; James Monroe moved into the partially rebuilt residence in October 1817. The South Portico followed in 1824 and the North Portico in 1829, both built to Hoban's designs and carved by Italian artisans brought over for the Capitol. The North Portico's Ionic order carries a swag of roses carved between the volutes, linking it to the roses above the original entrance. The bow-fronted south facade may echo the Chateau de Rastignac in France's Dordogne, though the link is debated.",
+      "caption": "Benjamin Henry Latrobe's drawing of the house, from the reconstruction era.",
+      "credit": "Benjamin Henry Latrobe, public domain, via Wikimedia Commons",
+      "dates": "1814-1829",
+      "heading": "The burning",
+      "image": "latrobe-drawing.jpg"
+    },
+    {
+      "body": "Inspired by Washington's open houses, the White House was open to the public from the start. The tradition peaked at Andrew Jackson's 1829 inauguration, when roughly 20,000 celebrants poured inside; aides lured the crowd out with washtubs of orange juice and whiskey. Open-house receptions continued until Grover Cleveland replaced them with a military review in 1885. Chester A. Arthur's 1882 redecoration brought in Louis Comfort Tiffany, whose 50-foot jeweled glass screen later divided the main corridor, and sold off over twenty wagonloads of old furniture at auction. The Harrisons originated the annual White House Christmas tree in 1891.",
+      "dates": "1829-1901",
+      "heading": "The people's house"
+    },
+    {
+      "alt": "Aerial view of the White House and downtown Washington, DC",
+      "body": "Theodore Roosevelt hired McKim, Mead and White in 1902 to strip out the Tiffany screen and Victorian additions, move offices into a new West Wing, and restore the neoclassical character. William Howard Taft added the first Oval Office in 1909 with architect Nathan C. Wyeth; Franklin D. Roosevelt later moved it to its present spot beside the Rose Garden. The West Wing burned on Christmas Eve 1929. In 1942 the East Wing was renovated to conceal the construction of the underground Presidential Emergency Operations Center bunker. By 1948 the timber-framed house, loaded with a fourth-floor attic and a new south balcony, was declared in imminent danger of collapse. Under Harry S. Truman the interior was completely dismantled and a new load-bearing steel frame built inside the original walls; the rooms were then rebuilt, the grand staircase repositioned, central air conditioning added, and two sub-basements, including a bomb shelter, dug. The $5.7 million job by contractor John McShain finished in 1952; the Trumans moved back on 27 March 1952. Truman had the original timbers sawn into paneling now found in the Vermeil, Library, China, and Map rooms.",
+      "caption": "The White House complex from the air: Executive Residence, wings, and grounds.",
+      "credit": "Carol M. Highsmith, public domain, via Wikimedia Commons",
+      "dates": "1902-1952",
+      "heading": "The working presidency",
+      "image": "aerial.jpg"
+    },
+    {
+      "alt": "The White House north front with a Secret Service officer",
+      "body": "Jacqueline Kennedy's 1961 to 1963 redecoration treated the house as a historic museum: Henry Francis du Pont helped recover original pieces, Paris designer Stephane Boudin of the House of Jansen gave each room a period theme, and the 1834 Zuber \"Vue de l'Amerique Nord\" wallpaper was salvaged from a demolished mansion for the Diplomatic Reception Room. Her televised tour aired on Valentine's Day 1962. In September 1961 Congress declared the White House a museum, barring the sale of its furnishings and ending 150 years of presidents auctioning off the contents. Every first family since has redecorated the private quarters under the eye of the Committee for the Preservation of the White House; substantive architectural changes to the Executive Residence have essentially stopped since Truman. Nixon built the press briefing room over Franklin D. Roosevelt's old swimming pool and added a basement bowling alley; Carter put solar water-heating panels on the roof and Reagan removed them; Obama reinstalled solar panels in 2013. On 20 May 1995 Pennsylvania Avenue was closed to vehicles after the Oklahoma City bombing, a closure made permanent after 11 September 2001, when the White House itself was briefly evacuated. In October 2025 the East Wing was demolished to make way for a new East Wing with a state ballroom over a rebuilt PEOC complex, slated to open in 2028.",
+      "caption": "The north front, photographed in March 2018.",
+      "credit": "Beethoven, CC BY-SA 4.0, via Wikimedia Commons",
+      "dates": "1961-2028",
+      "heading": "The house as museum",
+      "image": "north-front.jpg"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "1833-2013",
+      "body": "The single most famous image of the White House in all of film is its vaporization in Independence Day (1996), when an alien beam reduces it to fire and rubble; it made the building fair game for fiction. Roland Emmerich returned to demolish it room by room in White House Down (2013), while Olympus Has Fallen (2013) staged a parallel terrorist storming of the lawn and mansion. Tim Burton's Martians breached and burned it in Mars Attacks! (1996), a tsunami-carried aircraft carrier crushed it in 2012 (2009), and in X-Men: Days of Future Past (2014) Magneto drops a whole stadium around it as a barrier.\n\nTelevision has given it two long-running counter-images. Aaron Sorkin's The West Wing (1999-2006) set 154 episodes primarily in the West Wing, the most sustained idealized portrait of the building ever made. In 24's seventh season (2009) terrorists take the White House through underwater tunnels, hold the president and over fifty hostages, and the building is retaken in a two-episode siege.\n\nGeorge Cooke's 1833 panorama The City of Washington from Beyond the Navy Yard depicts the White House at the left, rendered larger than life to balance the Capitol; in the White House collection since 1972, it has hung in the Oval Office under multiple administrations."
+    }
+  ],
+  "slug": "white-house",
+  "sources": "Historical facts adapted from Wikipedia (\"White House\", CC BY-SA). Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the White House",
+  "timeline": [
+    {
+      "date": "16 Jul 1792",
+      "text": "Washington selects James Hoban's design."
+    },
+    {
+      "date": "13 Oct 1792",
+      "text": "The cornerstone is laid at noon."
+    },
+    {
+      "date": "1 Nov 1800",
+      "text": "John Adams becomes the first president in residence."
+    },
+    {
+      "date": "1801",
+      "text": "Jefferson and Latrobe add the East and West Colonnades."
+    },
+    {
+      "date": "24 Aug 1814",
+      "text": "British forces burn the mansion; only the walls remain."
+    },
+    {
+      "date": "Oct 1817",
+      "text": "Monroe moves into the rebuilt Executive Residence."
+    },
+    {
+      "date": "1824",
+      "text": "The South Portico is completed."
+    },
+    {
+      "date": "1829",
+      "text": "The North Portico is completed; the Jackson inauguration mob."
+    },
+    {
+      "date": "1902",
+      "text": "The West Wing is built under McKim, Mead and White."
+    },
+    {
+      "date": "1909",
+      "text": "The first Oval Office is added (Taft and Wyeth)."
+    },
+    {
+      "date": "1948-1952",
+      "text": "Truman steel-frame reconstruction; the Trumans live at Blair House."
+    },
+    {
+      "date": "1961",
+      "text": "Congress declares the White House a museum."
+    },
+    {
+      "date": "14 Feb 1962",
+      "text": "Jacqueline Kennedy's televised restoration tour."
+    },
+    {
+      "date": "Oct 2025",
+      "text": "The East Wing is demolished for the ballroom and PEOC rebuild."
+    }
+  ],
+  "title": "White House"
+}

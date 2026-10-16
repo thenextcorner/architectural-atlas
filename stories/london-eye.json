@@ -1,0 +1,234 @@
+{
+  "address_country": "GB",
+  "address_locality": "London",
+  "coordinates": {
+    "label": "London Eye, South Bank, London",
+    "lat": 51.5033,
+    "lng": -0.1194
+  },
+  "date_built": "2000",
+  "description": "Take the London Eye apart piece by piece in 3D, and read the story of the millennium wheel: two young architects, a remortgaged house, a failed lift over the Thames, and five years that became permanent.",
+  "entities": {
+    "architect": {
+      "name": "David Marks",
+      "role": "Co-designer of the Eye with Julia Barfield",
+      "wikidata": "Q42289502"
+    },
+    "events": [
+      {
+        "name": "Millennium landmark competition",
+        "start": "1993"
+      },
+      {
+        "name": "British Airways seed funding",
+        "start": "1994-12"
+      },
+      {
+        "name": "First wheel lift fails",
+        "start": "1999-09-10"
+      },
+      {
+        "name": "Second lift raises the wheel",
+        "start": "1999-10"
+      },
+      {
+        "name": "Ceremonial opening",
+        "start": "1999-12-31"
+      },
+      {
+        "name": "Public opening",
+        "start": "2000-03-09"
+      },
+      {
+        "name": "Permanent status granted",
+        "start": "2002-07"
+      },
+      {
+        "name": "25-year lease agreed",
+        "start": "2006-02"
+      }
+    ],
+    "people": [
+      {
+        "name": "Julia Barfield",
+        "role": "Co-designer of the Eye with David Marks",
+        "wikidata": "Q21154096"
+      },
+      {
+        "name": "Jane Wernick",
+        "role": "Structural engineer on the project, with Arup",
+        "wikidata": "Q21115130"
+      },
+      {
+        "name": "Robert Ayling",
+        "role": "British Airways chief executive; secured the 600,000 pound seed funding in 1994",
+        "wikidata": "Q7341669"
+      },
+      {
+        "name": "Merlin Entertainments",
+        "role": "Current owner and operator of the Eye",
+        "wikidata": "Q573278"
+      }
+    ],
+    "wikidata": "Q160659"
+  },
+  "hotspots": [
+    {
+      "part": "A-frame leg, east",
+      "text": "Two tapered legs, each over 58 meters long and 20 meters apart at the base, lean toward the river at 65 degrees. The frame is the wheel's sole support.",
+      "title": "The A-frame"
+    },
+    {
+      "part": "Fixed spindle (22 m)",
+      "text": "A fixed 22-meter spindle cantilevers out over the Thames on one side only, founded on the shore and anchored back to a tension foundation. The wheel and hub turn on bearings around it.",
+      "title": "The cantilevered spindle"
+    },
+    {
+      "part": "Tension cables group 1",
+      "text": "Sixty-four tensioned steel cables connect hub and rim, each prestressed to 75 tonnes. The wheel's full dead load hangs on them.",
+      "title": "The spoke cables"
+    },
+    {
+      "part": "Capsule No. 1",
+      "text": "Thirty-two sealed, air-conditioned ovoidal capsules hang on the outside of the rim, one for each London borough. They are numbered 1 to 33, skipping 13.",
+      "title": "The capsules"
+    },
+    {
+      "part": "Rim arc segment 1",
+      "text": "A 120-meter steel rim of hollow tubes on a triangular frame: strong, light, and low in wind resistance, like a giant bicycle wheel.",
+      "title": "The rim"
+    },
+    {
+      "part": "Rim drive unit, east",
+      "text": "Computer-controlled hydraulic motors turn tires that run against the rim. The wheel turns at 26 centimeters per second, one revolution in about 30 minutes.",
+      "title": "The friction drive"
+    },
+    {
+      "part": "Boarding deck",
+      "text": "The wheel does not usually stop for boarding: passengers walk onto the moving capsules at ground level. It is stopped only for disabled or elderly passengers.",
+      "title": "Boarding on the move"
+    },
+    {
+      "part": "LED lighting arc, northeast quadrant",
+      "text": "LED lighting from Color Kinetics was installed in December 2006, replacing manually changed gels and giving digital control of the colors.",
+      "title": "The LED lighting"
+    },
+    {
+      "part": "Hub barrel",
+      "text": "The wheel and hub turn on bearings around the fixed spindle, held in tension by the spoke cables.",
+      "title": "The hub"
+    },
+    {
+      "part": "A-frame backstay cables, east",
+      "text": "Cable backstays run from the top of the A-frame to a concrete foundation 33 meters deep, anchoring the frame permanently at 65 degrees.",
+      "title": "The backstay cables"
+    }
+  ],
+  "intro": "A 135-meter observation wheel on the South Bank, built to mark the year 2000. It was supposed to last five years; it became the most popular paid tourist attraction in Britain, and it never came down.",
+  "page_title": "London Eye: Exploded 3D Model and History | Architectural Atlas",
+  "photo_credits": [
+    "The London Eye at twilight: Diliff, CC BY 2.5, via Wikimedia Commons",
+    "Close view of the wheel and capsules: Rhododendrites, CC BY-SA 4.0, via Wikimedia Commons"
+  ],
+  "sections": [
+    {
+      "alt": "The London Eye at twilight, full wheel and A-frame",
+      "body": "The idea belonged to two architects with a tiny practice. David Marks and Julia Barfield, a husband-and-wife team who met in 1972 at the Architectural Association, founded Marks Barfield Architects in 1989. In the early 1990s recession the firm survived on kitchen extensions and brochure design. In 1993 they entered a Sunday Times and Architecture Foundation competition for a landmark to commemorate the third millennium. Marks, inspired by views of the BT Tower on his daily commute, imagined a wheel that would get people up high easily, efficiently, and effortlessly; Barfield suggested the South Bank, the site of the Festival of Britain fifty years earlier. The judges, including Norman Foster, gave the competition no winner: no proposal was deemed sufficiently imaginative. The original name was the Millennium Wheel, and the millennium was the point: Barfield later framed it as being about welcoming the 21st century into London.",
+      "caption": "The 135-meter wheel at twilight, supported by its A-frame from one side only.",
+      "credit": "Diliff, CC BY 2.5, via Wikimedia Commons",
+      "heading": "A wheel for the year 2000",
+      "image": "hero.jpg"
+    },
+    {
+      "body": "Undeterred, Marks and Barfield remortgaged their home and applied for planning permission. In the summer of 1994 the Evening Standard's editor Stewart Steven and correspondent Mira Bar-Hillel launched a 'Back The Wheel' public campaign. That December, Bob Ayling, chief executive of British Airways and a neighbor of the architects, persuaded the airline to invest 600,000 pounds in seed funding, and Marks Barfield commissioned detailed engineering from Arup. British banks declined to finance the project; the money came instead from the German bank Westdeutsche Landesbank and the Japanese conglomerate Sumitomo Corporation. Planning permission was granted in 1996.",
+      "heading": "Buying a dream"
+    },
+    {
+      "alt": "Close view of the London Eye wheel structure and its passenger capsules",
+      "body": "The build was pan-European. Hollandia in the Netherlands fabricated the steel, the cables came from Italy, the bearings from Germany, the spindle and hub were cast in the Czech Republic, Poma in France built the capsules, and the capsule glass came from Italy. The rim sections were floated up the Thames on barges and assembled lying flat on piled platforms in the river. The complete wheel was then raised by strand jacks. The first attempt, on 10 September 1999, failed during a 110 percent load test when sockets holding the temporary cables slipped; two cables came loose at about 90 percent loading and splashed into the Thames in front of television crews. Project director Tim Renwick later said the team went out and got drunk that night, and got back to work the next day. The redesigned anchor plates passed testing, and the second lift, in October 1999, raised the wheel to 65 degrees and then to vertical, in what engineers called the biggest structure ever lifted in that manner.",
+      "caption": "The 120-meter steel rim with its spoke cables and ovoidal capsules.",
+      "credit": "Rhododendrites, CC BY-SA 4.0, via Wikimedia Commons",
+      "heading": "Raised over the Thames",
+      "image": "capsules.jpg"
+    },
+    {
+      "body": "The Eye was formally opened on 31 December 1999 by Prime Minister Tony Blair, who fired a laser across the Thames, with a Concorde flypast. A capsule clutch problem delayed paying passengers until 9 March 2000. It had been built with only a five-year lease and designed to be unbolt-able and movable, but it proved so popular that Lambeth Council granted permanent status in July 2002; 3.5 million visitors had come in the first ten months. In 2005 and 2006 the Southbank Centre demanded the rent rise from 65,000 pounds to 2.5 million pounds a year; Mayor Ken Livingstone threatened a compulsory purchase order, and a 25-year lease was agreed in February 2006. Tussauds bought British Airways' share in 2005 and Marks Barfield's in 2006, gaining sole ownership; Tussauds later merged into Merlin Entertainments, the current owner.",
+      "heading": "Five years that became permanent"
+    },
+    {
+      "body": "The Eye is 135 meters tall with a steel rim 120 meters across, the world's tallest cantilevered observation wheel: it is supported on one side only, like one fork of a bicycle. A fixed spindle 22 meters long cantilevers out over the Thames, founded on the shore and anchored back to a tension foundation. The A-frame has two tapered legs, each over 58 meters long and 20 meters apart at the base, leaning toward the river at 65 degrees, with cable backstays buried in a concrete foundation 33 meters deep. Sixty-four tensioned steel cables, the spokes, connect hub and rim, each prestressed to 75 tonnes; the wheel's full dead load hangs on them. Computer-controlled hydraulic motors drive tires against the rim. The 32 sealed, air-conditioned ovoidal capsules hang on the outside of the rim, each weighing 10 tonnes and holding up to 25 people; each represents one of the London boroughs, and they are numbered 1 to 33, skipping 13 for superstitious reasons. The wheel turns at 26 centimeters per second, one revolution in about 30 minutes, and it does not usually stop: the speed lets passengers walk on and off the moving capsules at ground level.",
+      "heading": "The wheel's parts"
+    },
+    {
+      "body": "It is the most popular paid tourist attraction in the United Kingdom, with more than three million visitors a year, and it had carried more than 85 million passengers as of 2025. Each New Year's Eve the Eye is the focal point of London's celebrations, with more than 2,000 fireworks launched from the wheel itself. It lit blue for the Clap for our Carers campaign in 2020, and it illuminates for the crescent-moon sighting of Shawwal marking Eid al-Fitr. At least 6,000 wedding proposals had taken place on the attraction as of 2025. The naming rights have changed hands without touching the structure: British Airways, Merlin, EDF Energy, Coca-Cola, and lastminute.com. The lighting was redone with LEDs from Color Kinetics in December 2006 for digital control of the colors, and a 12.5 million pound capsule upgrade began in 2009, with each capsule floated down the Thames to Tilbury Docks. On 2 June 2013 a capsule was named the Coronation Capsule for the 60th anniversary of Queen Elizabeth II's coronation.",
+      "heading": "The Eye at work"
+    },
+    {
+      "heading": "In the cultural conversation",
+      "dates": "2005-2007",
+      "body": "The Eye's defining screen role came in Doctor Who: Rose (2005), the episode that relaunched the series. Rose identifies the wheel as the transmitter of the Nestene Consciousness, and the climax plays out at and beneath the structure, ending the first episode of the revived era with the Eye as the villain's machine.\n\nIn Fantastic Four: Rise of the Silver Surfer (2007) the Silver Surfer opens a crater by Westminster Bridge that dislodges the Eye, and the team scrambles to stop the attraction collapsing into the Thames, the closest the wheel gets to a full action set-piece. Opened in 2000, the Eye has not entered the canon of famous easel paintings; its visual identity is photographic and screen-based."
+    }
+  ],
+  "slug": "london-eye",
+  "sources": "Historical facts adapted from Wikipedia ('London Eye', CC BY-SA) and New Civil Engineer. Cultural appearances verified against Wikipedia, BFI, museum collection pages, and production coverage.",
+  "story_title": "The story of the London Eye",
+  "timeline": [
+    {
+      "date": "1993",
+      "text": "Marks and Barfield enter the Sunday Times millennium-landmark competition; the judges award no winner."
+    },
+    {
+      "date": "1994 summer",
+      "text": "The Evening Standard launches its 'Back The Wheel' public campaign."
+    },
+    {
+      "date": "1994-12",
+      "text": "Bob Ayling persuades British Airways to invest 600,000 pounds in seed funding."
+    },
+    {
+      "date": "1996",
+      "text": "Planning permission granted for the Millennium Wheel."
+    },
+    {
+      "date": "1999-09-10",
+      "text": "The first lift attempt fails when temporary cable sockets slip during the load test."
+    },
+    {
+      "date": "1999-10",
+      "text": "The second lift succeeds; the wheel is raised to vertical by strand jacks."
+    },
+    {
+      "date": "1999-12-31",
+      "text": "Tony Blair formally opens the Eye with a laser across the Thames; a Concorde flies past."
+    },
+    {
+      "date": "2000-03-09",
+      "text": "The Eye opens to paying passengers after a capsule clutch delay."
+    },
+    {
+      "date": "2002-07",
+      "text": "Lambeth Council grants permanent status after the five-year temporary lease."
+    },
+    {
+      "date": "2006-02",
+      "text": "The Southbank Centre rent dispute ends with a new 25-year lease."
+    },
+    {
+      "date": "2006-12",
+      "text": "LED relighting installed."
+    },
+    {
+      "date": "2009",
+      "text": "A 12.5 million pound capsule upgrade begins; the 4D cinema opens in County Hall."
+    },
+    {
+      "date": "2013-06-02",
+      "text": "The Coronation Capsule is named for the 60th anniversary of Elizabeth II's coronation."
+    },
+    {
+      "date": "2020",
+      "text": "The 20th birthday; lastminute.com becomes sponsor; the Eye lit blue for NHS carers."
+    }
+  ],
+  "title": "London Eye"
+}
