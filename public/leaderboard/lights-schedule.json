@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-15",
+  "updated": "2026-10-16",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-10-01": {
@@ -41,6 +41,26 @@
         "#e63946",
         "#f5f1e6",
         "#35b26f"
+      ]
+    },
+    "2026-10-15": {
+      "label": "Magenta",
+      "colors": [
+        "#e040fb"
+      ]
+    },
+    "2026-10-20": {
+      "label": "Blue and Orange",
+      "colors": [
+        "#2b6cff",
+        "#ff7f11"
+      ]
+    },
+    "2026-10-22": {
+      "label": "Light Blue, Magenta, and Navy",
+      "colors": [
+        "#2b6cff",
+        "#e040fb"
       ]
     },
     "2026-10-31": {
