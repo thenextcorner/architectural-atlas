@@ -39,6 +39,8 @@ STORY_CSS = """
 .story-body figure{margin:18px 0}
 .story-body figure img{width:100%;border-radius:10px;display:block}
 .story-body figure video{width:100%;border-radius:10px;display:block;background:#000}
+.yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000}
+.yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .story-body figcaption{font-size:12.5px;color:#6c7883;margin-top:6px}
 .story-sources{font-size:12.5px;color:#6c7883;border-top:1px solid #e3e6e8;margin-top:30px;padding-top:14px}
 .story-close{display:block;margin:22px auto 4px;padding:10px 26px;border:0;border-radius:999px;background:#20242b;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
@@ -346,6 +348,16 @@ def story_dialog(story, slug):
             img = f"/viewer/{slug}/{esc(sec['image'])}"
             parts.append(f'<figure><img loading="lazy" src="{img}" alt="{esc(sec.get("alt", sec["heading"]))}"/>'
                          f'<figcaption>{esc(sec.get("caption", ""))} {esc(sec.get("credit", ""))}</figcaption></figure>')
+        if sec.get("youtube_id"):
+            yid = esc(sec["youtube_id"])
+            ycap = esc(sec.get("youtube_caption", ""))
+            parts.append(f'<figure><div class="yt-wrap"><iframe src="https://www.youtube.com/embed/{yid}" '
+                         f'title="{ycap or "Video"}" loading="lazy" '
+                         f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '
+                         f'allowfullscreen></iframe></div>'
+                         f'<figcaption>{ycap} '
+                         f'<a href="https://www.youtube.com/watch?v={yid}" target="_blank" rel="noreferrer">Watch on YouTube</a>'
+                         f'</figcaption></figure>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
