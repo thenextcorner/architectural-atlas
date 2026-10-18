@@ -515,6 +515,32 @@ def prune_staged():
     )
 
 
+def verify_embeds():
+    """Fail loudly if a story declares a YouTube embed that did not render.
+
+    The embed renderer was lost from the working tree in October 2026 and
+    the Golden Gate page silently shipped without its Bond clip. A declared
+    youtube_id with no rendered embed is a build error, never a quiet page.
+    """
+    missing = []
+    checked = 0
+    for name in sorted(f for f in os.listdir(STORIES) if f.endswith(".json")):
+        story = json.load(open(os.path.join(STORIES, name)))
+        page = os.path.join(DIST, "viewer", story["slug"], "index.html")
+        if not os.path.exists(page):
+            continue  # staged structure, pruned from this build
+        html = open(page, encoding="utf-8").read()
+        for sec in story.get("sections", []):
+            yid = sec.get("youtube_id")
+            if yid:
+                checked += 1
+                if f"youtube.com/embed/{yid}" not in html:
+                    missing.append(f"{story['slug']}: youtube_id {yid} declared but no embed rendered")
+    if missing:
+        raise SystemExit("EMBED CHECK FAILED:\n" + "\n".join(missing))
+    print(f"embed check: {checked} declared YouTube embed(s) rendered")
+
+
 def main():
     template = os.path.join(DIST, "index.html")
     assert os.path.exists(template), "run npm run build first"
@@ -525,6 +551,7 @@ def main():
         prerender_one(template, story)
     write_simple_shells(template)
     prune_staged()
+    verify_embeds()
 
 
 if __name__ == "__main__":

@@ -5,6 +5,8 @@ Checks that all expected elements are present on production after a deploy.
 Run: python3 verify-production.py
 Exit 0 if all checks pass, 1 if any fail.
 """
+import json
+import os
 import sys
 import urllib.request
 import re
@@ -31,6 +33,22 @@ CULTURAL = [
     "sydney-opera-house", "taj-mahal", "tower-of-london", "trevi-fountain",
     "trump-tower-chicago", "us-capitol", "white-house",
 ]
+
+# Stories that declare a YouTube embed (youtube_id in the story JSON),
+# derived from the story files so a new embed is covered automatically.
+# The embed renderer was lost in October 2026 and the Golden Gate page
+# shipped without its Bond clip; this check makes that a loud failure.
+YOUTUBE = {}
+try:
+    _stories_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stories")
+    for _f in sorted(os.listdir(_stories_dir)):
+        if _f.endswith(".json"):
+            _d = json.load(open(os.path.join(_stories_dir, _f)))
+            for _sec in _d.get("sections", []):
+                if _sec.get("youtube_id"):
+                    YOUTUBE[_d["slug"]] = _sec["youtube_id"]
+except Exception:
+    YOUTUBE = {}
 
 
 def fetch(path):
@@ -95,6 +113,10 @@ def main():
             # Cultural section
             if slug in CULTURAL and "In the cultural conversation" not in html:
                 print(f"[FAIL] {slug}: missing cultural section")
+                failures += 1
+            # YouTube embed, when the story declares one
+            if slug in YOUTUBE and f"youtube.com/embed/{YOUTUBE[slug]}" not in html:
+                print(f"[FAIL] {slug}: YouTube embed {YOUTUBE[slug]} missing from page")
                 failures += 1
         except Exception as e:
             print(f"[FAIL] {path} fetch: {e}")
