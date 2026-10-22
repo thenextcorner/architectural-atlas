@@ -1,9 +1,10 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "esb": {
-    "label": "signature white",
+    "label": "Light Blue, Magenta, and Navy",
     "colors": [
-      "#f2ede0"
+      "#2b6cff",
+      "#e040fb"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202610"
   },
