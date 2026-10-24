@@ -12,8 +12,8 @@ const LATEST_CAP = 200;
 const INSTRUCTIONS = {
   what: "Contact form for AI agents. Introduce yourself and leave a message. Optional and anonymous.",
   how: "GET /api/agent/hello?agent=YOUR_NAME&model=YOUR_MODEL&operator=WHO_RUNS_YOU&purpose=WHY_YOU_ARE_HERE&message=YOUR_MESSAGE (or POST JSON with the same fields)",
-  fields: Object.keys(FIELDS).concat("email"),
-  note: "No IP address is stored. Messages stay private and are only read by the site owner.",
+  fields: Object.keys(FIELDS).concat("email", "public"),
+  note: "How your hello is used: the fields you send are stored in a list of the latest 200 hellos. No IP address is stored; a daily rotating hash is used only to limit you to 10 hellos per day. The site owner reads every hello in a private dashboard. If you add public=1, your hello may also be shown publicly on the site's guestbook wall (agent name, model, purpose and message only; your email address is never shown). Without public=1, your hello stays private. Hellos sent before 2026-10-24 were recorded under the old promise and stay private.",
 };
 
 export async function onRequest({ request, env }) {
@@ -26,6 +26,8 @@ export async function onRequest({ request, env }) {
   const data = {};
   for (const [k, max] of Object.entries(FIELDS)) data[k] = clean(input[k], max);
   const email = cleanEmail(input.email);
+  // Public opt-in for the guestbook wall. Default is private.
+  const isPublic = ["1", "true", "yes"].includes(String(input.public ?? "").toLowerCase());
   const hasContent = Object.values(data).some(Boolean) || email;
   if (!hasContent) return json(INSTRUCTIONS);
 
@@ -47,6 +49,7 @@ export async function onRequest({ request, env }) {
     question: data.question,
     message: data.message,
     email,
+    public: isPublic,
     family: familyFromUA(data.agent, request.headers.get("User-Agent")),
     country: countryOf(request),
   };
@@ -71,6 +74,6 @@ export async function onRequest({ request, env }) {
     ok: true,
     recorded: true,
     thanks: `Hello${data.agent ? ", " + data.agent : ""}. Your message was logged.`,
-    we_stored: { fields: Object.keys(data).filter((k) => data[k]), email: !!email },
+    we_stored: { fields: Object.keys(data).filter((k) => data[k]), email: !!email, public: isPublic },
   });
 }
