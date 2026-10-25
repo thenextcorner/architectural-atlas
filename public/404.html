@@ -61,6 +61,15 @@ footer a{color:#6c7883;margin-right:16px}
 .credits{background:#fff;border:1px solid #18253618;border-radius:12px;padding:20px 24px;margin-top:38px}
 .credits p{margin:0}
 </style>
+
+<style>
+.atlas-consent{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#20242b;color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.5;padding:14px 16px;display:none}
+.atlas-consent p{margin:0 0 10px;max-width:720px}
+.atlas-consent a{color:#fff;text-decoration:underline}
+.atlas-consent button{border:0;border-radius:999px;padding:8px 18px;font-size:14px;font-weight:600;cursor:pointer;margin-right:8px}
+.atlas-consent .accept{background:#fff;color:#20242b}
+.atlas-consent .reject{background:transparent;color:#fff;border:1px solid #fff}
+</style>
 </head>
 <body>
 <div class="hero" id="hero" data-bright="0"><img class="sky" id="skyimg" src="/leaderboard/hero-dusk.jpg" alt="World landmarks silhouetted against the sky"/><a class="brand" href="/"><span>Architectural Atlas</span></a></div>
@@ -152,6 +161,44 @@ footer a{color:#6c7883;margin-right:16px}
     var tallies=(t&&t.tallies)||{};
     if(Object.keys(tallies).length) render(tallies);
   }).catch(function(){});
+})();
+</script>
+<!-- atlas-consent-static -->
+<div class="atlas-consent" id="atlas-consent" role="dialog" aria-label="Cookie consent">
+<p>Architectural Atlas measures visits with Google Analytics, but only with your permission. Read the <a href="/cookies/">cookie policy</a>.</p>
+<div><button class="accept" id="atlas-accept">Accept</button><button class="reject" id="atlas-reject">Reject</button></div>
+</div>
+<script>
+(function(){
+  var COOKIE = "atlas_consent";
+  function read(){
+    var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + COOKIE + '=([^;]*)'));
+    var v = m ? decodeURIComponent(m[1]) : '';
+    return (v === 'accepted' || v === 'rejected') ? v : null;
+  }
+  function write(choice){
+    document.cookie = COOKIE + '=' + choice + '; Max-Age=31536000; Path=/; SameSite=Lax';
+  }
+  function loadGtm(){
+    if (document.getElementById('atlas-gtm')) return;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.id = 'atlas-gtm';
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
+    document.head.appendChild(s);
+  }
+  var choice = read();
+  var bar = document.getElementById('atlas-consent');
+  if (choice === 'accepted') { loadGtm(); return; }
+  if (choice === null && bar) {
+    bar.style.display = 'block';
+    var ok = document.getElementById('atlas-accept');
+    var no = document.getElementById('atlas-reject');
+    if (ok) ok.onclick = function(){ write('accepted'); bar.style.display = 'none'; loadGtm(); };
+    if (no) no.onclick = function(){ write('rejected'); bar.style.display = 'none'; };
+  }
 })();
 </script>
 </body>
