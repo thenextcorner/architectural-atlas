@@ -153,41 +153,16 @@ we are in a renaissance of learning https://t.co/9CGmHcdhnk</p>&mdash; ashe (@as
 </footer>
 </main>
 <!-- atlas-consent-static -->
-<div class="atlas-consent" id="atlas-consent" role="dialog" aria-label="Cookie consent">
-<p>Architectural Atlas measures visits with Google Analytics, but only with your permission. Read the <a href="/cookies/">cookie policy</a>.</p>
-<div><button class="accept" id="atlas-accept">Accept</button><button class="reject" id="atlas-reject">Reject</button></div>
-</div>
 <script>
 (function(){
-  var COOKIE = "atlas_consent";
-  function read(){
-    var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + COOKIE + '=([^;]*)'));
-    var v = m ? decodeURIComponent(m[1]) : '';
-    return (v === 'accepted' || v === 'rejected') ? v : null;
-  }
-  function write(choice){
-    document.cookie = COOKIE + '=' + choice + '; Max-Age=31536000; Path=/; SameSite=Lax';
-  }
-  function loadGtm(){
-    if (document.getElementById('atlas-gtm')) return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-    var s = document.createElement('script');
-    s.id = 'atlas-gtm';
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
-    document.head.appendChild(s);
-  }
-  var choice = read();
-  var bar = document.getElementById('atlas-consent');
-  if (choice === 'accepted') { loadGtm(); return; }
-  if (choice === null && bar) {
-    bar.style.display = 'block';
-    var ok = document.getElementById('atlas-accept');
-    var no = document.getElementById('atlas-reject');
-    if (ok) ok.onclick = function(){ write('accepted'); bar.style.display = 'none'; loadGtm(); };
-    if (no) no.onclick = function(){ write('rejected'); bar.style.display = 'none'; };
-  }
+  if (document.getElementById('atlas-gtm')) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var s = document.createElement('script');
+  s.id = 'atlas-gtm';
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
+  document.head.appendChild(s);
 })();
 </script>
 </body>

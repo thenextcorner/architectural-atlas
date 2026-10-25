@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react';
 import {ArrowUpRight,Coffee} from 'lucide-react';
 import {Badge} from '@/components/ui/badge';
 import {COFFEE_URL,OWNER_URL,REPO_URL,X_URL} from './config';
-import {openCookieSettings} from './consent';
+
 import type {BuildingIndexEntry} from './atlas';
 import SiteNav from './sitenav';
 function XLogo(){
@@ -45,7 +45,6 @@ export default function IndexPage(){
      <a href="/privacy/">Privacy</a>
      <a href="/cookies/">Cookies</a>
      <a href="/terms/">Terms</a>
-     <button type="button" className="foot-link-btn" onClick={openCookieSettings}>Cookie settings</button>
      <a href={OWNER_URL} target="_blank" rel="noreferrer">dennisgoedegebuure.com</a>
      <a href={X_URL} target="_blank" rel="noreferrer" aria-label="Dennis Goedegebuure on X" title="@TheNextCorner on X"><XLogo/></a>
      <a href={REPO_URL} target="_blank" rel="noreferrer">GitHub</a>

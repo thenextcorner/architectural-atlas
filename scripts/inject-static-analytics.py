@@ -1,19 +1,17 @@
-"""Inject the consent-gated GTM loader into the static Atlas pages.
+"""Inject the GTM loader into the static Atlas pages.
 
-The React app shell (homepage, viewer pages) already carries the consent
-banner and GTM injection from app/consent.tsx. The static pages
-(about, launch, leaderboard, candidates, guestbook, privacy, cookies,
-terms, 404) do not load the app bundle, so they get this standalone
-snippet instead. It uses the same rules on purpose:
+The React app shell (homepage, viewer pages) carries GTM injection from
+app/consent.tsx. The static pages (about, launch, leaderboard,
+candidates, guestbook, privacy, cookies, terms, 404) do not load the app
+bundle, so they get this standalone snippet instead.
 
-- Same GTM container: GTM-P4X33Q7D.
-- Same consent cookie: atlas_consent, Path=/, 12 months, SameSite=Lax,
-  so a choice made on any page carries across the whole site.
-- GTM loads only after the visitor accepts statistics cookies.
-- No cookie choice yet shows the banner; reject sets the cookie and
-  loads nothing.
+Launch-day exception (Dennis, 2026-10-25): the consent banner is
+switched off and GTM loads for every visitor, consent or not. The
+snippet below is the unconditional version. Re-running this script
+replaces any older consent-gated block (found by its marker comment)
+with the unconditional one.
 
-Idempotent: pages already carrying the marker comment are skipped.
+Idempotent: pages already carrying the unconditional block are skipped.
 Run from the repo root: python3 scripts/inject-static-analytics.py
 """
 
@@ -40,41 +38,16 @@ CSS = """
 SNIPPET = (
     MARKER
     + """
-<div class="atlas-consent" id="atlas-consent" role="dialog" aria-label="Cookie consent">
-<p>Architectural Atlas measures visits with Google Analytics, but only with your permission. Read the <a href="/cookies/">cookie policy</a>.</p>
-<div><button class="accept" id="atlas-accept">Accept</button><button class="reject" id="atlas-reject">Reject</button></div>
-</div>
 <script>
 (function(){
-  var COOKIE = "atlas_consent";
-  function read(){
-    var m = document.cookie.match(new RegExp('(?:^|;\\\\s*)' + COOKIE + '=([^;]*)'));
-    var v = m ? decodeURIComponent(m[1]) : '';
-    return (v === 'accepted' || v === 'rejected') ? v : null;
-  }
-  function write(choice){
-    document.cookie = COOKIE + '=' + choice + '; Max-Age=31536000; Path=/; SameSite=Lax';
-  }
-  function loadGtm(){
-    if (document.getElementById('atlas-gtm')) return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-    var s = document.createElement('script');
-    s.id = 'atlas-gtm';
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
-    document.head.appendChild(s);
-  }
-  var choice = read();
-  var bar = document.getElementById('atlas-consent');
-  if (choice === 'accepted') { loadGtm(); return; }
-  if (choice === null && bar) {
-    bar.style.display = 'block';
-    var ok = document.getElementById('atlas-accept');
-    var no = document.getElementById('atlas-reject');
-    if (ok) ok.onclick = function(){ write('accepted'); bar.style.display = 'none'; loadGtm(); };
-    if (no) no.onclick = function(){ write('rejected'); bar.style.display = 'none'; };
-  }
+  if (document.getElementById('atlas-gtm')) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var s = document.createElement('script');
+  s.id = 'atlas-gtm';
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
+  document.head.appendChild(s);
 })();
 </script>
 """
@@ -101,7 +74,18 @@ def main():
         with open(path) as f:
             text = f.read()
         if MARKER in text:
-            skipped.append(rel)
+            # Patch: replace the old block (marker through its </script>)
+            # with the current snippet. If the block already matches,
+            # the replacement is a no-op and the page is skipped.
+            start = text.index(MARKER)
+            end = text.index("</script>", start) + len("</script>")
+            new_text = text[:start] + SNIPPET.rstrip("\n") + text[end:]
+            if new_text == text:
+                skipped.append(rel)
+            else:
+                with open(path, "w") as f:
+                    f.write(new_text)
+                changed.append(rel)
             continue
         if "</head>" not in text or "</body>" not in text:
             failed.append(rel)

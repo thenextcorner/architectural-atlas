@@ -1,4 +1,4 @@
-import {useCallback,useEffect,useState} from 'react';
+import {useEffect} from 'react';
 import {CONSENT_COOKIE,CONSENT_MAX_AGE,GTM_ID} from './config';
 
 export type ConsentChoice = 'accepted' | 'rejected';
@@ -40,27 +40,10 @@ export function openCookieSettings() {
   window.dispatchEvent(new CustomEvent('atlas:open-cookie-settings'));
 }
 
+/** Launch-day exception (Dennis, 2026-10-25): the banner is switched off
+ * and GTM loads for every visitor, consent or not. The consent helpers
+ * below stay exported for a later return to consent gating. */
 export default function ConsentBanner() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    if (readConsent() === 'accepted') loadGtm();
-    else if (readConsent() === null) setVisible(true);
-    const reopen = () => setVisible(true);
-    window.addEventListener('atlas:open-cookie-settings', reopen);
-    return () => window.removeEventListener('atlas:open-cookie-settings', reopen);
-  }, []);
-  const choose = useCallback((fn: () => void) => () => { fn(); setVisible(false); }, []);
-  if (!visible) return null;
-  return (
-    <div className="consent-banner glass" role="dialog" aria-label="Cookie consent" aria-live="polite">
-      <p>
-        Architectural Atlas measures visits with Google Analytics, but only with your permission.
-        Read the <a href="/cookies/">cookie policy</a>.
-      </p>
-      <div className="consent-actions">
-        <button type="button" className="consent-accept" onClick={choose(acceptConsent)}>Accept all</button>
-        <button type="button" className="consent-reject" onClick={choose(rejectConsent)}>Reject</button>
-      </div>
-    </div>
-  );
+  useEffect(() => { loadGtm(); }, []);
+  return null;
 }

@@ -67,13 +67,13 @@ footer a{color:#6c7883;margin-right:16px}
 </div>
 <h1>Cookie Policy</h1>
 <p class="meta">Last updated: October 8, 2026</p>
-<p>Cookies are small text files stored by your browser. Architectural Atlas uses as few as possible, and statistics cookies only load after you accept them in the cookie banner.</p>
+<p>Cookies are small text files stored by your browser. Architectural Atlas uses as few as possible, and statistics cookies load for all visitors.</p>
 <h2>Cookies this site sets</h2>
 <table>
 <tr><th>Cookie</th><th>Purpose</th><th>Duration</th></tr>
-<tr><td><code>atlas_consent</code></td><td>Remembers your cookie choice so the banner does not ask again. Set whether you accept or reject.</td><td>12 months</td></tr>
+<tr><td><code>atlas_consent</code></td><td>No longer used: the cookie banner is switched off and analytics loads for all visitors.</td><td>12 months</td></tr>
 <tr><td><code>atlas_votes</code></td><td>Remembers which structures you voted for on the leaderboard so you cannot vote twice. Set only when you vote.</td><td>12 months</td></tr>
-<tr><td><code>_ga</code>, <code>_ga_&lt;id&gt;</code></td><td>Google Analytics 4, loaded through Google Tag Manager. Measures visits in aggregate. Set only after you click Accept all.</td><td>Up to 2 years</td></tr>
+<tr><td><code>_ga</code>, <code>_ga_&lt;id&gt;</code></td><td>Google Analytics 4, loaded through Google Tag Manager. Measures visits in aggregate. Loaded for all visitors.</td><td>Up to 2 years</td></tr>
 </table>
 <h2>Changing your choice</h2>
 <p>Use the <a href="/">Cookie settings</a> link in the footer of the home page to reopen the banner and change your choice at any time. You can also block or delete cookies in your browser settings; the site works fully without them.</p>
@@ -104,41 +104,16 @@ footer a{color:#6c7883;margin-right:16px}
 })();
 </script>
 <!-- atlas-consent-static -->
-<div class="atlas-consent" id="atlas-consent" role="dialog" aria-label="Cookie consent">
-<p>Architectural Atlas measures visits with Google Analytics, but only with your permission. Read the <a href="/cookies/">cookie policy</a>.</p>
-<div><button class="accept" id="atlas-accept">Accept</button><button class="reject" id="atlas-reject">Reject</button></div>
-</div>
 <script>
 (function(){
-  var COOKIE = "atlas_consent";
-  function read(){
-    var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + COOKIE + '=([^;]*)'));
-    var v = m ? decodeURIComponent(m[1]) : '';
-    return (v === 'accepted' || v === 'rejected') ? v : null;
-  }
-  function write(choice){
-    document.cookie = COOKIE + '=' + choice + '; Max-Age=31536000; Path=/; SameSite=Lax';
-  }
-  function loadGtm(){
-    if (document.getElementById('atlas-gtm')) return;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-    var s = document.createElement('script');
-    s.id = 'atlas-gtm';
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
-    document.head.appendChild(s);
-  }
-  var choice = read();
-  var bar = document.getElementById('atlas-consent');
-  if (choice === 'accepted') { loadGtm(); return; }
-  if (choice === null && bar) {
-    bar.style.display = 'block';
-    var ok = document.getElementById('atlas-accept');
-    var no = document.getElementById('atlas-reject');
-    if (ok) ok.onclick = function(){ write('accepted'); bar.style.display = 'none'; loadGtm(); };
-    if (no) no.onclick = function(){ write('rejected'); bar.style.display = 'none'; };
-  }
+  if (document.getElementById('atlas-gtm')) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+  var s = document.createElement('script');
+  s.id = 'atlas-gtm';
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent('GTM-P4X33Q7D');
+  document.head.appendChild(s);
 })();
 </script>
 </body>
