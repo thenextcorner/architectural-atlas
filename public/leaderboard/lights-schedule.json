@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-10-01": {
@@ -64,10 +64,10 @@
       ]
     },
     "2026-10-29": {
-      "label": "Gold/Green",
+      "label": "Green and Gold",
       "colors": [
-        "#d4a017",
-        "#35b26f"
+        "#35b26f",
+        "#d4a017"
       ]
     },
     "2026-10-31": {
@@ -77,6 +77,13 @@
         "#35b26f"
       ]
     },
+    "2026-11-04": {
+      "label": "Red and White with a Christmas Tree in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
     "2026-11-06": {
       "label": "Gold",
       "colors": [
@@ -84,11 +91,25 @@
       ]
     },
     "2026-11-11": {
-      "label": "Red, White and Blue",
+      "label": "Red, White, and Blue",
       "colors": [
         "#e63946",
         "#f5f1e6",
         "#2b6cff"
+      ]
+    },
+    "2026-11-12": {
+      "label": "Pink",
+      "colors": [
+        "#ff6fae"
+      ]
+    },
+    "2026-11-19": {
+      "label": "Pink, Teal, Brown, and Gold",
+      "colors": [
+        "#ff6fae",
+        "#2ec4b6",
+        "#d4a017"
       ]
     },
     "2026-11-26": {
@@ -153,6 +174,12 @@
       "colors": [
         "#2b6cff",
         "#f5f1e6"
+      ]
+    },
+    "2026-12-18": {
+      "label": "Maroon",
+      "colors": [
+        "#f2ede0"
       ]
     }
   }
