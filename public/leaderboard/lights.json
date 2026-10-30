@@ -1,16 +1,16 @@
 {
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "esb": {
-    "label": "Green and Gold",
+    "label": "signature white",
     "colors": [
-      "#35b26f",
-      "#d4a017"
+      "#f2ede0"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202610"
   },
   "et": {
     "label": "special illumination (October)",
     "colors": [
+      "#2b6cff",
       "#ff6fae"
     ],
     "source": "https://www.toureiffel.paris/en/the-monument/lights"
