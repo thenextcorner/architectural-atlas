@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-11-04": {
@@ -13,6 +13,12 @@
       "label": "Gold",
       "colors": [
         "#d4a017"
+      ]
+    },
+    "2026-11-08": {
+      "label": "Orange",
+      "colors": [
+        "#ff7f11"
       ]
     },
     "2026-11-11": {
@@ -103,6 +109,61 @@
     },
     "2026-12-18": {
       "label": "Maroon",
+      "colors": [
+        "#f2ede0"
+      ]
+    },
+    "2026-12-24": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-25": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-26": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-27": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-28": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-29": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-30": {
+      "label": "Red and White Stripes with a Christmas Tree Swirling in the Mast",
+      "colors": [
+        "#e63946",
+        "#f5f1e6"
+      ]
+    },
+    "2026-12-31": {
+      "label": "Multi-Colored Sparkle",
       "colors": [
         "#f2ede0"
       ]
