@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-11-04": {
@@ -21,6 +21,12 @@
         "#ff7f11"
       ]
     },
+    "2026-11-10": {
+      "label": "Hot Pink",
+      "colors": [
+        "#ff6fae"
+      ]
+    },
     "2026-11-11": {
       "label": "Red, White, and Blue",
       "colors": [
@@ -36,9 +42,8 @@
       ]
     },
     "2026-11-19": {
-      "label": "Pink, Teal, Brown, and Gold",
+      "label": "Teal, Brown, and Gold",
       "colors": [
-        "#ff6fae",
         "#2ec4b6",
         "#d4a017"
       ]
