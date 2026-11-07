@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-07",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-11-04": {
@@ -10,8 +10,9 @@
       ]
     },
     "2026-11-06": {
-      "label": "Gold",
+      "label": "Blue and Gold",
       "colors": [
+        "#2b6cff",
         "#d4a017"
       ]
     },
