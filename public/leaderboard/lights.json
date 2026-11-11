@@ -1,9 +1,11 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "esb": {
-    "label": "Hot Pink",
+    "label": "Red, White, and Blue",
     "colors": [
-      "#ff6fae"
+      "#e63946",
+      "#f5f1e6",
+      "#2b6cff"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202611"
   },
