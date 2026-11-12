@@ -202,6 +202,20 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .floor-label[hidden]{display:none}
 .pilot .scene-caption{bottom:232px}
 body:has(.detail-sheet) .floors-panel{display:none}
+.leader-layer{position:absolute;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.leader-layer svg{display:block;width:100%;height:100%}
+.leader-layer line{stroke:#66788a;stroke-width:1;opacity:.75}
+.leader-layer circle{fill:#66788a;opacity:.9}
+.poster-stage .leader-layer line{stroke:#c8d4de}
+.poster-stage .leader-layer circle{fill:#c8d4de}
+.poster-stage .vignette{background:radial-gradient(ellipse at 51% 43%,transparent 35%,#0d1420b3 100%)}
+.poster-stage .identity h1{color:#eef3f6}
+.poster-stage .identity-meta{color:#aebcc8}
+.poster-stage .identity .eyebrow{color:#93a5b4}
+.poster-stage .scene-caption{color:#aebcc8}
+.poster-stage .scene-caption .caption-line{background:#ffffff2e}
+.dock-poster{border-left:1px solid #18253618;padding:10px 0 10px 20px;display:flex;flex-direction:column;gap:7px;align-items:center;color:#263b48;font-size:11px;font-weight:600}
+.poster-status{font-size:11px;color:#687786;text-align:center;padding:2px 0 0}
 @media(max-width:767px){
 .bottom-dock.pilot-dock{width:calc(100% - 24px);padding:13px;gap:10px}
 .dock-row{gap:14px}

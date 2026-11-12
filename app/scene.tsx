@@ -5,15 +5,16 @@ import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.j
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {createExplosionLayout} from './explosion-layout';
 import {COLOSSEUM_LAYERS,colosseumLayer,FLOOR_GAP} from './colosseum-pilot';
+import type {PosterCapture} from './colosseum-poster';
 import {decodeModelResponse} from './model-download';
 import {PointerTap} from './pointer-tap';
 import {type Atlas,type SceneState} from './atlas';
-interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[]}
-export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots}:Props){
+interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[];captureRef?:{current:(() => PosterCapture | null) | null}}
+export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots,captureRef}:Props){
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
  latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
-  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0;
+  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false;
   let lastState:SceneState|null=null;
   const abort=new AbortController();
   let renderer:T.WebGLRenderer;
@@ -35,17 +36,25 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     const a=2*(sx*sy+sy*sz+sx*sz);tot+=a;wsum+=(sysLum.get(p.system)??0.5)*a;}
    return tot>0&&wsum/tot>0.55;})();
   if(darkStage)el.closest('.studio')?.classList.add('dark-stage');
-  renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.5:2));renderer.setClearColor(darkStage?'#33393f':'#f2f3f3');renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;el.appendChild(renderer.domElement);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.5:2));renderer.setClearColor(darkStage?'#33393f':'#f2f3f3');renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+  // Poster stage: soft shadows are ready before any light casts them, so
+  // toggling the poster stage never needs a renderer rebuild.
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
+  el.appendChild(renderer.domElement);
   renderer.domElement.setAttribute('aria-label','Interactive architectural model. Drag to orbit, pinch or scroll to zoom, and tap a component to inspect it.');
   const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.005,100),controls=new OrbitControls(camera,renderer.domElement);
   camera.position.set(1.5,1.2,4);controls.target.set(0,1,0);controls.enableDamping=true;controls.dampingFactor=.085;controls.minDistance=.07;controls.maxDistance=40;controls.maxPolarAngle=Math.PI*.96;controls.addEventListener('change',()=>{dirty=true;});
   const pmrem=new T.PMREMGenerator(renderer),room=new RoomEnvironment(),env=pmrem.fromScene(room,.04);scene.environment=env.texture;room.dispose();pmrem.dispose();
   scene.add(new T.HemisphereLight(0xffffff,0xa7acb2,1.05));
-  const key=new T.DirectionalLight(0xfffaf4,2.3);key.position.set(-2,4,3);scene.add(key);
+  const key=new T.DirectionalLight(0xfffaf4,2.3);key.position.set(-2,4,3);
+  key.castShadow=false;key.shadow.mapSize.set(2048,2048);
+  key.shadow.camera.left=-2.4;key.shadow.camera.right=2.4;key.shadow.camera.top=2.4;key.shadow.camera.bottom=-2.4;
+  key.shadow.camera.near=.5;key.shadow.camera.far=15;key.shadow.bias=-.0004;key.shadow.normalBias=.02;
+  scene.add(key);
   const rim=new T.DirectionalLight(0xe9f0ff,1.8);rim.position.set(2,2,-3);scene.add(rim);
-  const ground=new T.Mesh(new T.CircleGeometry(30,96),new T.MeshStandardMaterial({color:darkStage?0x454e55:0xd5d9dc,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.019;scene.add(ground);
+  const ground=new T.Mesh(new T.CircleGeometry(30,96),new T.MeshStandardMaterial({color:darkStage?0x454e55:0xd5d9dc,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.019;ground.receiveShadow=true;scene.add(ground);
   const platformRadius=Math.max(.68,Math.max(modelSize.x,modelSize.z)*.62);
-  const platform=new T.Mesh(new T.CylinderGeometry(platformRadius,platformRadius*1.03,.028,100),new T.MeshStandardMaterial({color:0xeeeeec,metalness:.12,roughness:.67}));platform.position.y=-.016;scene.add(platform);
+  const platform=new T.Mesh(new T.CylinderGeometry(platformRadius,platformRadius*1.03,.028,100),new T.MeshStandardMaterial({color:0xeeeeec,metalness:.12,roughness:.67}));platform.position.y=-.016;platform.receiveShadow=true;scene.add(platform);
   const ring=new T.Mesh(new T.RingGeometry(platformRadius*.926,platformRadius*.929,128),new T.MeshBasicMaterial({color:0x8c969f,transparent:true,opacity:.4,side:T.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.001;scene.add(ring);
   const innerRing=new T.Mesh(new T.RingGeometry(platformRadius*.809,platformRadius*.81,128),new T.MeshBasicMaterial({color:0xa4aeb8,transparent:true,opacity:.16,side:T.DoubleSide}));innerRing.rotation.x=-Math.PI/2;innerRing.position.y=.001;scene.add(innerRing);
   const width=T.MathUtils.ceilPowerOfTwo(atlas.parts.length),data=new Float32Array(width*4),partTexture=new T.DataTexture(data,width,1,T.RGBAFormat,T.FloatType);partTexture.needsUpdate=true;
@@ -89,6 +98,26 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // of each layer at its lifted height.
   const floorLabelLayer=document.createElement('div');floorLabelLayer.className='floor-label-layer';el.appendChild(floorLabelLayer);
   const floorLabels=COLOSSEUM_LAYERS.map(l=>{const d=document.createElement('div');d.className='floor-label';d.textContent=l.label;d.hidden=true;floorLabelLayer.appendChild(d);return d;});
+  // Poster pilot: leader lines in Floors mode, from each layer in the 3D
+  // scene to its row in the Floors panel. Desktop only.
+  const leaderLayer=document.createElement('div');leaderLayer.className='leader-layer';el.appendChild(leaderLayer);
+  const leaderSvg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  leaderSvg.setAttribute('width','100%');leaderSvg.setAttribute('height','100%');
+  leaderLayer.appendChild(leaderSvg);
+  const leaderLines=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');leaderSvg.appendChild(l);return l;});
+  const leaderDots=COLOSSEUM_LAYERS.map(()=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','3.5');leaderSvg.appendChild(c);return c;});
+  // Poster pilot: schematic scale figures on the arena floor, off by
+  // default. Model height 0.88 stands for 48 m, so a 1.8 m figure is about
+  // 0.033 tall. Dark silhouettes only, no invented detail.
+  const figureMaterial=new T.MeshBasicMaterial({color:0x232a33});
+  const figures=new T.Group();
+  [[0.1,0.08],[-0.12,0.05],[0.02,-0.14]].forEach(([fx,fz])=>{
+   const g=new T.Group();
+   const body=new T.Mesh(new T.CapsuleGeometry(0.006,0.02,3,8),figureMaterial);body.position.y=0.017;g.add(body);
+   const head=new T.Mesh(new T.SphereGeometry(0.005,12,8),figureMaterial);head.position.y=0.031;g.add(head);
+   g.position.set(fx,0.007,fz);figures.add(g);
+  });
+  figures.visible=false;scene.add(figures);
   const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
   type Target={index:number;x:number;y:number;left:number;right:number;top:number;bottom:number};let targets:Target[]=[];
   const projected=new T.Vector3();
@@ -98,17 +127,32 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    return best;
   };
   const materialCache=new Map<string,T.Material>();
+  // Poster stage: a subtle procedural stone variation, driven by world
+  // position so no UVs are needed. Off (0) everywhere except the poster
+  // stage, so other buildings render exactly as before.
+  const stoneNoise={value:0};
   const materialFor=(color:string)=>{
    const cached=materialCache.get(color);if(cached)return cached;
    const m=new T.MeshStandardMaterial({color,metalness:.08,roughness:.53,side:T.DoubleSide,transparent:false,opacity:1,depthWrite:true});
    m.onBeforeCompile=shader=>{
-    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.stateWidth={value:width};
-    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform float stateWidth; varying float partVisible; varying float partSelected;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r;');
-    shader.fragmentShader='varying float partVisible; varying float partSelected;\n'+shader.fragmentShader;
+    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.stateWidth={value:width};shader.uniforms.stoneNoise=stoneNoise;
+    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform float stateWidth; varying float partVisible; varying float partSelected; varying vec3 stonePos;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r; stonePos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    shader.fragmentShader='uniform float stoneNoise; varying float partVisible; varying float partSelected; varying vec3 stonePos;\nfloat stoneHash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat stoneNoise3(vec3 p){ vec3 i = floor(p); vec3 f = fract(p); f = f * f * (3.0 - 2.0 * f); float n000 = stoneHash(i); float n100 = stoneHash(i + vec3(1.0,0.0,0.0)); float n010 = stoneHash(i + vec3(0.0,1.0,0.0)); float n110 = stoneHash(i + vec3(1.0,1.0,0.0)); float n001 = stoneHash(i + vec3(0.0,0.0,1.0)); float n101 = stoneHash(i + vec3(1.0,0.0,1.0)); float n011 = stoneHash(i + vec3(0.0,1.0,1.0)); float n111 = stoneHash(i + vec3(1.0,1.0,1.0)); return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y),mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y),f.z); }\n'+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);');
+    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);\ndiffuseColor.rgb *= 1.0 + stoneNoise * ((stoneNoise3(stonePos * 26.0) - 0.5) * 0.10 + (stoneNoise3(stonePos * 90.0) - 0.5) * 0.05);');
    };materials.push(m);materialCache.set(color,m);return m;
+  };
+  // Poster stage: shadows must follow the exploded offsets, which live in
+  // the vertex shader. The depth material repeats the same displacement and
+  // the same visibility discard, so shadows fall where the parts are.
+  const depthMaterial=new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking});
+  depthMaterial.onBeforeCompile=shader=>{
+   shader.uniforms.partState={value:partTexture};shader.uniforms.stateWidth={value:width};
+   shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform float stateWidth; varying float partVisible;\n'+shader.vertexShader;
+   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w;');
+   shader.fragmentShader='varying float partVisible;\n'+shader.fragmentShader;
+   shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
   };
   let loaded=0;
   const loadChunk=async(ci:number)=>{
@@ -126,7 +170,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    });
    const colorGroups=new Map<string,T.BufferGeometry[]>();
    groups.forEach((gs)=>{for(const g of gs){const key=g.userData.color as string;const l=colorGroups.get(key)??[];l.push(g);colorGroups.set(key,l);}});
-   colorGroups.forEach((gs,color)=>{const geometry=mergeGeometries(gs,false);if(!geometry)throw new Error('Could not assemble model geometry.');geometries.push(geometry);const mesh=new T.Mesh(geometry,materialFor(color));mesh.frustumCulled=false;scene.add(mesh);});
+   colorGroups.forEach((gs,color)=>{const geometry=mergeGeometries(gs,false);if(!geometry)throw new Error('Could not assemble model geometry.');geometries.push(geometry);const mesh=new T.Mesh(geometry,materialFor(color));mesh.frustumCulled=false;mesh.castShadow=true;mesh.receiveShadow=true;mesh.customDepthMaterial=depthMaterial;scene.add(mesh);});
    lastState=null;loaded++;onProgress(Math.round(loaded/atlas.chunks.length*100));dirty=true;
   };
   (async()=>{try{let cursor=0;await Promise.all(Array.from({length:3},async()=>{while(cursor<atlas.chunks.length){const i=cursor++;await loadChunk(i);}}));if(!disposed){ready=true;dirty=true;}}catch(e){if(!disposed)onError(e instanceof Error?e.message:'Could not load the model.');}})();
@@ -157,6 +201,18 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
    if(disposed)return;frame=requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05),s=latest.current;
+   // Poster pilot: dark slate stage, warm key light, soft shadows, stone
+   // variation. Applies on change only; other buildings never set poster.
+   const posterOn=s.poster??false;
+   if(posterOn!==lastPoster){
+    lastPoster=posterOn;
+    renderer.setClearColor(posterOn?'#1e2936':darkStage?'#33393f':'#f2f3f3');
+    key.color.set(posterOn?0xffe3b8:0xfffaf4);key.intensity=posterOn?2.6:2.3;key.castShadow=posterOn;
+    (ground.material as T.MeshStandardMaterial).color.set(posterOn?0x2a3644:darkStage?0x454e55:0xd5d9dc);
+    (platform.material as T.MeshStandardMaterial).color.set(posterOn?0x33404f:0xeeeeec);
+    stoneNoise.value=posterOn?1:0;
+    dirty=true;
+   }
    const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate;
    const moving=Math.abs(amount-s.explode)>.0001;
    if(moving){amount=T.MathUtils.damp(amount,s.explode,8,dt);dirty=true;}
@@ -217,6 +273,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     lastFocus=focusKey;
    }
    controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=amount<.5&&!s.isolate;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
+   // Poster pilot: scale figures ride the arena layer in Floors mode and
+   // stand on the assembled floor otherwise. Hidden during tours and
+   // isolation, where they would sit in the way of the framing.
+   const showFigures=!!s.scaleFigures&&ready&&!s.isolate&&(s.mode??'explode')!=='tour'&&((s.mode??'explode')==='floors'||amount<.05);
+   figures.visible=showFigures;
+   if(showFigures)figures.position.y=(s.mode??'explode')==='floors'?FLOOR_GAP*amount:0;
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
    // Story hotspots follow their part (assembled or exploded).
    hotspotDefs.forEach((h,k)=>{
@@ -240,12 +302,60 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      lab.style.left=`${((projected.x+1)*el.clientWidth/2).toFixed(1)}px`;
      lab.style.top=`${((1-projected.y)*el.clientHeight/2).toFixed(1)}px`;
     });
-   }else{floorLabels.forEach(lab=>{lab.hidden=true;});}
+    // Poster pilot: leader lines from each layer to its Floors panel row.
+    const desktop=el.clientWidth>=768;
+    COLOSSEUM_LAYERS.forEach((_,li)=>{
+     const lineEl=leaderLines[li],dotEl=leaderDots[li];
+     const row=document.querySelectorAll('.floor-row')[li] as HTMLElement|null;
+     if(!desktop||!row||row.offsetParent===null){lineEl.style.display='none';dotEl.style.display='none';return;}
+     const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
+     projected.set(modelSize.x/2+.15,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
+     if(!anyVisible||projected.z<-1||projected.z>1){lineEl.style.display='none';dotEl.style.display='none';return;}
+     const ax=(projected.x+1)*el.clientWidth/2,ay=(1-projected.y)*el.clientHeight/2;
+     const hr=row.getBoundingClientRect(),er=el.getBoundingClientRect();
+     const bx=hr.left-er.left-8,by=hr.top-er.top+hr.height/2;
+     lineEl.setAttribute('x1',ax.toFixed(1));lineEl.setAttribute('y1',ay.toFixed(1));
+     lineEl.setAttribute('x2',bx.toFixed(1));lineEl.setAttribute('y2',by.toFixed(1));
+     lineEl.style.display='';dotEl.setAttribute('cx',ax.toFixed(1));dotEl.setAttribute('cy',ay.toFixed(1));dotEl.style.display='';
+    });
+   }else{floorLabels.forEach(lab=>{lab.hidden=true;});leaderLines.forEach(l=>{l.style.display='none';});leaderDots.forEach(d=>{d.style.display='none';});}
    dirty=false;}
 
+  // Poster pilot: render the current view plus the three poster insets from
+  // the real model, all synchronously in one task so the canvas capture is
+  // never blank. The animate loop restores the live view afterwards.
+  if(captureRef){
+   captureRef.current=()=>{
+    if(!ready)return null;
+    const renderNow=()=>renderer.render(scene,camera);
+    camera.clearViewOffset();
+    renderNow();
+    const main=renderer.domElement.toDataURL('image/png');
+    const anchors=COLOSSEUM_LAYERS.map((_,li)=>{
+     projected.set(modelSize.x/2+.15,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
+     return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
+    });
+    const savedPos=camera.position.clone(),savedTarget=controls.target.clone();
+    // Plan: near top-down view of the model.
+    camera.position.set(0.25,modelCenter.y+4.5,0.25);controls.target.set(0,modelCenter.y,0);controls.update();renderNow();
+    const plan=renderer.domElement.toDataURL('image/png');
+    // Section: clip the front half away and render the three-quarter view.
+    renderer.clippingPlanes=[new T.Plane(new T.Vector3(0,0,-1),0)];
+    camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();renderNow();
+    const section=renderer.domElement.toDataURL('image/png');
+    renderer.clippingPlanes=[];
+    // Facade detail: close on the front arches.
+    const r=Math.max(modelSize.x,modelSize.z)/2;
+    camera.position.set(0.35*r,modelCenter.y+0.12,1.9*r);controls.target.set(0,modelCenter.y+0.05,0);controls.update();renderNow();
+    const facade=renderer.domElement.toDataURL('image/png');
+    camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();
+    fit(latest.current.view,amount);renderNow();dirty=true;
+    return {main,plan,section,facade,anchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
+   };
+  }
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();leaderLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }
