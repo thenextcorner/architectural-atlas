@@ -111,8 +111,11 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 /** Draw an image inside a rect, clipped to it. Cover fit, so the rect is
  * filled; when cover would discard more than 30 percent of either
  * dimension (a portrait viewport into a landscape rect, or the reverse),
- * contain fit instead so the whole render stays visible. Returns the
- * placed image rect, so layer anchors can be mapped into poster space. */
+ * contain fit instead so the whole render stays visible. Pass cover to
+ * force cover fit: for the section inset, the discarded top and bottom
+ * are empty backdrop, so cropping them is what makes the cutaway fill
+ * its box. Returns the placed image rect, so layer anchors can be mapped
+ * into poster space. */
 function drawFit(
   ctx: CanvasRenderingContext2D,
   img: HTMLImageElement,
@@ -120,11 +123,12 @@ function drawFit(
   y: number,
   w: number,
   h: number,
+  cover = false,
 ): {dx: number; dy: number; scale: number} {
   let scale = Math.max(w / img.width, h / img.height);
   let dw = img.width * scale;
   let dh = img.height * scale;
-  if (1 - w / dw > 0.3 || 1 - h / dh > 0.3) {
+  if (!cover && (1 - w / dw > 0.3 || 1 - h / dh > 0.3)) {
     scale = Math.min(w / img.width, h / img.height);
     dw = img.width * scale;
     dh = img.height * scale;
@@ -218,13 +222,20 @@ export async function composePoster(
     ctx.fillText(f.value, cx, bandY + 40);
   });
 
-  // Right column: layer callouts with leader lines to the render.
+  // Right column: layer callouts with leader lines to the render. Listed
+  // top layer first, the same order as the layers appear in the render,
+  // so the lines never cross. Each line is an elbow: out from its layer
+  // anchor, then along a staggered vertical bus just right of the render,
+  // then into its callout row. A dark under-stroke keeps the line
+  // readable where it crosses pale stone.
   const rx = 1184;
   ctx.font = '700 15px "Helvetica Neue", Arial, sans-serif';
   ctx.fillStyle = ink;
   ctx.fillText('LAYERS', rx, 64);
   let cy = 96;
-  layers.forEach((layer, i) => {
+  const displayOrder = layers.map((_, i) => i).reverse();
+  displayOrder.forEach((li, j) => {
+    const layer = layers[li];
     const text = shortCallout(layer.text);
     ctx.fillStyle = ink;
     ctx.font = '700 17px "Helvetica Neue", Arial, sans-serif';
@@ -234,15 +245,28 @@ export async function composePoster(
     const textLines = wrapText(ctx, text, 368);
     textLines.forEach((l, k) => ctx.fillText(l, rx, cy + 22 + k * 19));
     // Leader line from the callout to its layer anchor in the render.
-    const a = capture.anchors[i];
+    const a = capture.anchors[li];
     if (a) {
       const ax = fit.dx + (a.x / capture.viewWidth) * mainImg.width * fit.scale;
       const ay = fit.dy + (a.y / capture.viewHeight) * mainImg.height * fit.scale;
-      ctx.strokeStyle = 'rgba(200, 212, 222, 0.85)';
-      ctx.lineWidth = 1;
+      const rowY = cy - 4;
+      const busX = 1156 + j * 6;
+      const ex = rx - 10;
+      ctx.strokeStyle = 'rgba(16, 24, 32, 0.85)';
+      ctx.lineWidth = 5;
       ctx.beginPath();
-      ctx.moveTo(rx - 10, cy - 4);
-      ctx.lineTo(ax, ay);
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(busX, ay);
+      ctx.lineTo(busX, rowY);
+      ctx.lineTo(ex, rowY);
+      ctx.stroke();
+      ctx.strokeStyle = 'rgba(200, 212, 222, 0.9)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(busX, ay);
+      ctx.lineTo(busX, rowY);
+      ctx.lineTo(ex, rowY);
       ctx.stroke();
       ctx.fillStyle = '#c8d4de';
       ctx.beginPath();
@@ -255,11 +279,11 @@ export async function composePoster(
   // Insets in the right column: plan, facade detail, section cutaway.
   const insetW = 368;
   const insetH = 160;
-  const drawInset = (img: HTMLImageElement, label: string, top: number): number => {
+  const drawInset = (img: HTMLImageElement, label: string, top: number, cover = false): number => {
     ctx.fillStyle = ink;
     ctx.font = '700 14px "Helvetica Neue", Arial, sans-serif';
     ctx.fillText(label, rx, top);
-    drawFit(ctx, img, rx, top + 14, insetW, insetH);
+    drawFit(ctx, img, rx, top + 14, insetW, insetH, cover);
     ctx.strokeStyle = line;
     ctx.strokeRect(rx + 0.5, top + 14.5, insetW, insetH);
     return top + 14 + insetH + 30;
@@ -267,7 +291,7 @@ export async function composePoster(
   let iy = cy + 30;
   iy = drawInset(planImg, 'PLAN, TOP VIEW', iy);
   iy = drawInset(facadeImg, 'FACADE DETAIL', iy);
-  iy = drawInset(sectionImg, 'SECTION CUTAWAY', iy);
+  iy = drawInset(sectionImg, 'SECTION CUTAWAY', iy, true);
 
   // Timeline strip along the bottom. Labels are centered on their marker
   // and clamped inside the canvas, so the first and last labels are never

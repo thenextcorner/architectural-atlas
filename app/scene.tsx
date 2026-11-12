@@ -14,7 +14,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
  latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
-  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false;
+  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false,lastDiscs=false;
   let lastState:SceneState|null=null;
   const abort=new AbortController();
   let renderer:T.WebGLRenderer;
@@ -56,8 +56,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   key.shadow.camera.near=.5;key.shadow.camera.far=20;key.shadow.bias=-.0004;key.shadow.normalBias=.02;key.shadow.camera.updateProjectionMatrix();
   scene.add(key);
   const rim=new T.DirectionalLight(0xe9f0ff,1.8);rim.position.set(2,2,-3);scene.add(rim);
-  const ground=new T.Mesh(new T.CircleGeometry(30,96),new T.MeshStandardMaterial({color:darkStage?0x454e55:0xd5d9dc,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.019;ground.receiveShadow=true;scene.add(ground);
   const platformRadius=Math.max(.68,Math.max(modelSize.x,modelSize.z)*.62);
+  // The ground disc used to be a radius-30 slab that read as a pancake
+  // under the model. It is now a modest plinth just wider than the
+  // platform, so the model, not the disc, fills the view.
+  const ground=new T.Mesh(new T.CircleGeometry(platformRadius*1.15,96),new T.MeshStandardMaterial({color:darkStage?0x454e55:0xd5d9dc,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.019;ground.receiveShadow=true;scene.add(ground);
   const platform=new T.Mesh(new T.CylinderGeometry(platformRadius,platformRadius*1.03,.028,100),new T.MeshStandardMaterial({color:0xeeeeec,metalness:.12,roughness:.67}));platform.position.y=-.016;platform.receiveShadow=true;scene.add(platform);
   const ring=new T.Mesh(new T.RingGeometry(platformRadius*.926,platformRadius*.929,128),new T.MeshBasicMaterial({color:0x8c969f,transparent:true,opacity:.4,side:T.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.001;scene.add(ring);
   const innerRing=new T.Mesh(new T.RingGeometry(platformRadius*.809,platformRadius*.81,128),new T.MeshBasicMaterial({color:0xa4aeb8,transparent:true,opacity:.16,side:T.DoubleSide}));innerRing.rotation.x=-Math.PI/2;innerRing.position.y=.001;scene.add(innerRing);
@@ -103,12 +106,17 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const floorLabelLayer=document.createElement('div');floorLabelLayer.className='floor-label-layer';el.appendChild(floorLabelLayer);
   const floorLabels=COLOSSEUM_LAYERS.map(l=>{const d=document.createElement('div');d.className='floor-label';d.textContent=l.label;d.hidden=true;floorLabelLayer.appendChild(d);return d;});
   // Poster pilot: leader lines in Floors mode, from each layer in the 3D
-  // scene to its row in the Floors panel. Desktop only.
+  // scene to its row in the Floors panel. Desktop only. The panel sits on
+  // the right and its rows are listed top layer first, the same order as
+  // the layers in the render, so the lines run from each layer's right
+  // edge straight to its own row and never cross. A halo under-stroke
+  // keeps each line readable where it crosses pale stone.
   const leaderLayer=document.createElement('div');leaderLayer.className='leader-layer';el.appendChild(leaderLayer);
   const leaderSvg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   leaderSvg.setAttribute('width','100%');leaderSvg.setAttribute('height','100%');
   leaderLayer.appendChild(leaderSvg);
-  const leaderLines=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');leaderSvg.appendChild(l);return l;});
+  const leaderHalos=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','path');l.setAttribute('class','leader-halo');leaderSvg.appendChild(l);return l;});
+  const leaderLines=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','path');leaderSvg.appendChild(l);return l;});
   const leaderDots=COLOSSEUM_LAYERS.map(()=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','3.5');leaderSvg.appendChild(c);return c;});
   // Poster pilot: schematic scale figures on the arena floor, off by
   // default. The arena sand surface sits at sandTop; the figures stand on
@@ -125,6 +133,19 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    g.position.set(fx,0,fz);figures.add(g);
   });
   figures.visible=false;scene.add(figures);
+  // Poster pilot: one soft shadow disc glued just under each lifted
+  // layer, so every floating layer casts its own shadow instead of the
+  // whole stack reading as a single soft ellipse on the platform. The
+  // discs ride their layer's lift, show in the poster stage only, and are
+  // hidden for the inset captures.
+  const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgba(255,255,255,0.95)');grad.addColorStop(0.65,'rgba(255,255,255,0.5)');grad.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
+  const layerBottoms=COLOSSEUM_LAYERS.map((_,li)=>{let bot=Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)bot=Math.min(bot,p.bounds[0][1]);});return bot===Infinity?modelCenter.y:bot;});
+  const layerFoot=COLOSSEUM_LAYERS.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
+  const layerDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
+   if(li===0)return null;
+   const d=new T.Mesh(new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:0.22,alphaMap:shadowTex,depthWrite:false}));
+   d.rotation.x=-Math.PI/2;d.scale.set(layerFoot[li].x,layerFoot[li].z,1);d.renderOrder=3;d.visible=false;scene.add(d);return d;
+  });
   const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
   type Target={index:number;x:number;y:number;left:number;right:number;top:number;bottom:number};let targets:Target[]=[];
   const projected=new T.Vector3();
@@ -184,18 +205,26 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const fit=(view:string,extent=0)=>{
    const aspect=camera.aspect,mobile=el.clientWidth<768,halfFov=T.MathUtils.degToRad(camera.fov/2);
    // Assembled view: fit the whole model bounding box in the available viewport.
-   const reservedW=mobile?40:340,reservedH=mobile?350:270;
+   // In Floors mode the separated stack is tall and its lowest layer, the
+   // hypogeum slab, reaches down into the caption zone (the pilot caption
+   // sits 232px from the bottom, just above the tall pilot dock). Reserve
+   // more bottom space here so the stack clears the caption.
+   const floorsMode=latest.current.mode==='floors';
+   const reservedW=mobile?40:340,reservedH=mobile?350:(floorsMode?380:270);
    const availW=Math.max(160,el.clientWidth-reservedW),availH=Math.max(160,el.clientHeight-reservedH);
    const fitDistance=Math.max(modelSize.y,modelSize.x/(availW/availH),modelSize.z)/(2*Math.tan(halfFov));
    const normalDistance=Math.max(mobile?4.5:2.5,fitDistance*1.3);
-   const reservedHeight=mobile?350:270;const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
+   const reservedHeight=mobile?350:(floorsMode?380:270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
    const direction=view==='front'?new T.Vector3(0,.02,1):view==='back'?new T.Vector3(0,.02,-1):view==='side'?new T.Vector3(1,.02,0):new T.Vector3(.35,.06,1).normalize();
    // In Floors mode the stack rises as it separates; aim at the lifted
    // stack's centre, not the assembled model's, or the top layer (the
-   // velarium netting) is cropped by the top edge of the viewport.
+   // velarium netting) is cropped by the top edge of the viewport. Aim a
+   // little below the centre, so the stack sits higher in the frame and
+   // its lowest layer clears the caption above the dock.
    const liftCenter=(latest.current.mode==='floors')?FLOOR_GAP*(COLOSSEUM_LAYERS.length-1)*amount/2:0;
-   controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,modelCenter.y+liftCenter,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
+   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.08:0);
+   controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,targetY,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
   const raycaster=new T.Raycaster(),pointer=new T.Vector2(),tap=new PointerTap(),worldBox=new T.Box3(),hitPoint=new T.Vector3();
@@ -219,7 +248,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     lastPoster=posterOn;
     renderer.setClearColor(posterOn?'#1e2936':darkStage?'#33393f':'#f2f3f3');
     key.color.set(posterOn?0xffe3b8:0xfffaf4);key.intensity=posterOn?2.6:2.3;key.castShadow=posterOn;
-    (ground.material as T.MeshStandardMaterial).color.set(posterOn?0x2a3644:darkStage?0x454e55:0xd5d9dc);
+    (ground.material as T.MeshStandardMaterial).color.set(posterOn?0x202a36:darkStage?0x454e55:0xd5d9dc);
     (platform.material as T.MeshStandardMaterial).color.set(posterOn?0x33404f:0xeeeeec);
     stoneNoise.value=posterOn?1:0;
     dirty=true;
@@ -290,7 +319,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     }
     lastFocus=focusKey;
    }
-   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=(amount<.5||!!s.poster)&&!s.isolate;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
+   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=(amount<.5||!!s.poster)&&!s.isolate;markers.visible=amount>.75&&!s.poster;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
    // Poster pilot: scale figures ride the arena layer in Floors mode and
    // stand on the assembled floor otherwise. Hidden during tours and
    // isolation, where they would sit in the way of the framing. The
@@ -300,6 +329,10 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    figures.visible=showFigures;
    if(showFigures)figures.position.y=sandTop+((s.mode??'explode')==='floors'?FLOOR_GAP*amount:0);
    if(showFigures!==lastScaleFigures){lastScaleFigures=showFigures;dirty=true;}
+   // Per-layer shadow discs ride their layer's lift in the poster stage.
+   const showDiscs=!!s.poster&&ready&&!s.isolate&&(s.mode??'explode')==='floors'&&amount>.05;
+   layerDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=layerBottoms[li]+li*FLOOR_GAP*amount-0.012;});
+   if(showDiscs!==lastDiscs){lastDiscs=showDiscs;dirty=true;}
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
    // Story hotspots follow their part (assembled or exploded).
    hotspotDefs.forEach((h,k)=>{
@@ -324,27 +357,50 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      lab.style.top=`${((1-projected.y)*el.clientHeight/2).toFixed(1)}px`;
     });
     // Poster pilot: leader lines from each layer to its Floors panel row.
-    // Anchored at the layer's left edge, mid-height, so the line runs
-    // straight to the panel on the left instead of crossing the whole
-    // model and the panel to reach it.
+    // Each line is an elbow: out from its layer's right edge, then along
+    // a staggered vertical bus just left of the panel, then into its row.
+    // The panel rows are listed top layer first, the same order as the
+    // layers in the render. A row is kept below the anchor of the layer
+    // above it: a margin on the row, sized from the live anchor, pushes
+    // it down when it would otherwise sit above that anchor, because
+    // then the two elbows must cross. With every row clear of the anchor
+    // above it, the elbows never cross. A halo under each line keeps it
+    // readable where it crosses pale stone.
     const desktop=el.clientWidth>=768;
-    COLOSSEUM_LAYERS.forEach((_,li)=>{
-     const lineEl=leaderLines[li],dotEl=leaderDots[li];
-     const row=document.querySelectorAll('.floor-row')[li] as HTMLElement|null;
-     if(!desktop||!row||row.offsetParent===null){lineEl.style.display='none';dotEl.style.display='none';return;}
-     const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
+    const anchors=COLOSSEUM_LAYERS.map((_,li)=>{
      const layerBottom=li>0?layerTops[li-1]:modelBox.min.y;
-     const anchorY=(layerTops[li]+layerBottom)/2+li*FLOOR_GAP*amount;
-     projected.set(-(modelSize.x/2)-.15,anchorY,0).project(camera);
-     if(!anyVisible||projected.z<-1||projected.z>1){lineEl.style.display='none';dotEl.style.display='none';return;}
-     const ax=(projected.x+1)*el.clientWidth/2,ay=(1-projected.y)*el.clientHeight/2;
-     const hr=row.getBoundingClientRect(),er=el.getBoundingClientRect();
-     const bx=hr.left-er.left-8,by=hr.top-er.top+hr.height/2;
-     lineEl.setAttribute('x1',ax.toFixed(1));lineEl.setAttribute('y1',ay.toFixed(1));
-     lineEl.setAttribute('x2',bx.toFixed(1));lineEl.setAttribute('y2',by.toFixed(1));
-     lineEl.style.display='';dotEl.setAttribute('cx',ax.toFixed(1));dotEl.setAttribute('cy',ay.toFixed(1));dotEl.style.display='';
+     const aY=(layerTops[li]+layerBottom)/2+li*FLOOR_GAP*amount;
+     projected.set((modelSize.x/2)+.15,aY,0).project(camera);
+     if(projected.z<-1||projected.z>1)return null;
+     return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
     });
-   }else{floorLabels.forEach(lab=>{lab.hidden=true;});leaderLines.forEach(l=>{l.style.display='none';});leaderDots.forEach(d=>{d.style.display='none';});}
+    // Rows are processed top layer first, so a margin on an upper row is
+    // already in the rects of the rows below it.
+    [...COLOSSEUM_LAYERS.keys()].reverse().forEach(li=>{
+     const lineEl=leaderLines[li],dotEl=leaderDots[li],haloEl=leaderHalos[li];
+     const row=document.querySelector(`.floor-row[data-layer="${li}"]`) as HTMLElement|null;
+     const a=anchors[li];
+     if(!desktop||!row||row.offsetParent===null||!a){lineEl.style.display='none';dotEl.style.display='none';haloEl.style.display='none';return;}
+     const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
+     if(!anyVisible){lineEl.style.display='none';dotEl.style.display='none';haloEl.style.display='none';return;}
+     const hr=row.getBoundingClientRect(),er=el.getBoundingClientRect();
+     // The row's centre without the margin this code put on it, so the
+     // needed push is stable from frame to frame.
+     const ownMargin=parseFloat(row.style.marginTop)||0;
+     const naturalCenter=hr.top-er.top+hr.height/2-ownMargin;
+     const above=li<3?anchors[li+1]:null;
+     const clearance=14;
+     let margin=0;
+     if(above&&naturalCenter<above.y+clearance)margin=above.y+clearance-naturalCenter;
+     row.style.marginTop=margin>0?`${margin.toFixed(1)}px`:'';
+     const ax=a.x,ay=a.y;
+     const bx=hr.left-er.left-8,by=naturalCenter+margin;
+     const busX=er.width-404+(3-li)*6;
+     const path=`M ${ax.toFixed(1)} ${ay.toFixed(1)} H ${busX.toFixed(1)} V ${by.toFixed(1)} H ${bx.toFixed(1)}`;
+     lineEl.setAttribute('d',path);haloEl.setAttribute('d',path);
+     lineEl.style.display='';haloEl.style.display='';dotEl.setAttribute('cx',ax.toFixed(1));dotEl.setAttribute('cy',ay.toFixed(1));dotEl.style.display='';
+    });
+   }else{floorLabels.forEach(lab=>{lab.hidden=true;});leaderLines.forEach(l=>{l.style.display='none';});leaderDots.forEach(d=>{d.style.display='none';});leaderHalos.forEach(l=>{l.style.display='none';});}
    dirty=false;}
 
   // Poster pilot: render the current view plus the three poster insets from
@@ -359,6 +415,8 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // they read as dust in a still poster, so hide them for all captures.
     const savedMarkersVisible=markers.visible,savedFiguresVisible=figures.visible;
     markers.visible=false;figures.visible=false;
+    const savedDiscsVisible=layerDiscs.map(d=>d?d.visible:false);
+    layerDiscs.forEach(d=>{if(d)d.visible=false;});
     renderNow();
     const main=renderer.domElement.toDataURL('image/png');
     const anchors=COLOSSEUM_LAYERS.map((_,li)=>{
@@ -384,11 +442,20 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     const plan=renderer.domElement.toDataURL('image/png');
     camera.up.set(0,1,0);
     // Section: assembled, front half clipped away, three-quarter view, so
-    // the whole structure reads as one cutaway.
+    // the whole structure reads as one cutaway. The live camera is framed
+    // for the separated stack, far too wide for the assembled model, so
+    // the section is framed from the assembled bounds here; otherwise it
+    // renders as a thin slice at the bottom of an empty frame. The
+    // clipped model is the back half (z below 0), so the target sits
+    // slightly behind the centre.
     atlas.parts.forEach((p,i)=>{data[i*4+3]=savedData[i*4+3];});
     partTexture.needsUpdate=true;
     renderer.clippingPlanes=[new T.Plane(new T.Vector3(0,0,-1),0)];
-    camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();renderNow();
+    const secHalfFov=T.MathUtils.degToRad(camera.fov/2);
+    const secDist=Math.max(modelSize.y/(2*Math.tan(secHalfFov)),modelSize.x/(2*Math.tan(secHalfFov)*camera.aspect))*1.1;
+    const secTarget=new T.Vector3(0,modelCenter.y,-modelSize.z*0.15);
+    camera.position.copy(secTarget).addScaledVector(new T.Vector3(0.35,0.06,1).normalize(),secDist);
+    controls.target.copy(secTarget);controls.update();renderNow();
     const section=renderer.domElement.toDataURL('image/png');
     renderer.clippingPlanes=[];
     restoreData();
@@ -403,14 +470,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     camera.position.copy(fcenter).addScaledVector(fdir,0.9);controls.target.copy(fcenter);controls.update();renderNow();
     const facade=renderer.domElement.toDataURL('image/png');
     camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();
-    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;
+    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;layerDiscs.forEach((d,i)=>{if(d)d.visible=savedDiscsVisible[i];});
     fit(latest.current.view,amount);renderNow();dirty=true;
     return {main,plan,section,facade,anchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
    };
   }
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();leaderLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();leaderLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }
