@@ -16,7 +16,8 @@ export interface BuildingIndexEntry {
  variants:BuildingVariant[];
 }
 export type View = 'three-quarter'|'front'|'back'|'side';
-export interface SceneState {inspectorOpen?:boolean;explode:number;visible:string[];selected:string[];isolate:boolean;view:View;rotate:boolean;reset:number}
+export type ViewerMode = 'explode'|'floors'|'tour';
+export interface SceneState {inspectorOpen?:boolean;explode:number;visible:string[];selected:string[];isolate:boolean;view:View;rotate:boolean;reset:number;mode?:ViewerMode;focus?:{ids:string[];key:number}|null}
 export function explanationFor(atlas:Atlas,name:string,systemId:string):string{
  return atlas.explanations?.[name.toLowerCase()] ?? atlas.systems.find(s=>s.id===systemId)?.description ?? '';
 }

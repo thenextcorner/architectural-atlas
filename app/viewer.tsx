@@ -1,7 +1,7 @@
 import {flushSync} from 'react-dom';
 import {registerAtlasTools} from './agent-tools';
 import {useEffect,useMemo,useRef,useState} from 'react';
-import {Activity,ArrowLeft,ArrowUpRight,ChevronRight,Coffee,Focus,Info,Layers3,Pause,RotateCcw,RotateCw,Search,X} from 'lucide-react';
+import {Activity,ArrowLeft,ArrowUpRight,ChevronLeft,ChevronRight,Coffee,Focus,Info,Layers3,Pause,RotateCcw,RotateCw,Search,X} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Badge} from '@/components/ui/badge';
 import {Slider} from '@/components/ui/slider';
@@ -12,7 +12,8 @@ import BuildingScene from './scene';
 import SiteNav from './sitenav';
 import {COFFEE_URL,REPO_URL} from './config';
 import {trackEvent} from './analytics';
-import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View} from './atlas';
+import {COLOSSEUM_LAYERS,COLOSSEUM_TOUR,colosseumLayer} from './colosseum-pilot';
+import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View,type ViewerMode} from './atlas';
 const variantStorageKey=(building:string)=>`atlas_detail_variant:${building}`;
 const readStoredVariant=(building:string):string|null=>{try{return localStorage.getItem(variantStorageKey(building));}catch{return null;}};
 const writeStoredVariant=(building:string,id:string)=>{try{localStorage.setItem(variantStorageKey(building),id);}catch{}};
@@ -20,6 +21,12 @@ export default function Viewer({slug}:{slug:string}){
  const detailTitle=useRef<HTMLHeadingElement>(null);
  // Story hotspots injected by the prerendered page (window.__HOTSPOTS__), if any.
  const hotspots=useMemo(()=>{try{const w=window as unknown as {__HOTSPOTS__?:{part:string;title:string;text:string}[]};return Array.isArray(w.__HOTSPOTS__)?w.__HOTSPOTS__:[];}catch{return[];}},[]);
+ // Colosseum pilot: Floors and Tour modes. Other buildings keep Explode only.
+ const isPilot=slug==='colosseum';
+ const [mode,setMode]=useState<ViewerMode>('explode');
+ const [tour,setTour]=useState<{step:number;fromVariant:string|null}|null>(null);
+ const [focus,setFocus]=useState<{ids:string[];key:number}|null>(null);
+ const [floorLayer,setFloorLayer]=useState<number|null>(null);
  const [atlas,setAtlas]=useState<Atlas|null>(null),
  [variants,setVariants]=useState<BuildingVariant[]|null>(null),
  [variantId,setVariantId]=useState<string|null>(null),
@@ -48,9 +55,9 @@ export default function Viewer({slug}:{slug:string}){
   return()=>abort.abort();},[slug]);
  const activeVariant=variants?.find(v=>v.id===variantId)??null;
  const modelSlug=activeVariant?.slug??null;
- const switchVariant=(id:string)=>{
+ const switchVariant=(id:string,persist=true)=>{
   if(id===variantId||!variants?.some(v=>v.id===id))return;
-  writeStoredVariant(slug,id);
+  if(persist)writeStoredVariant(slug,id);
   trackEvent('detail_toggle',{building:slug,variant:id});
   setVariantId(id);
  };
@@ -62,6 +69,19 @@ export default function Viewer({slug}:{slug:string}){
    .then(data=>{const a=data as Atlas;setAtlas(a);setState(s=>({...s,visible:a.systems.map(sys=>sys.id)}));})
    .catch(e=>{if(e.name!=='AbortError')setError(e.message);});
   return()=>abort.abort();},[slug,modelSlug]);
+ // Colosseum pilot: each tour step focuses its hotspot part. The tour runs
+ // on the Detailed model, where all ten hotspot parts exist; the Simple and
+ // Today variants lack some of them. The switch does not overwrite the
+ // stored variant choice, and exiting the tour restores it.
+ useEffect(()=>{
+  if(!tour)return;
+  if(variants&&variantId&&variantId!=='detailed'){switchVariant('detailed',false);return;}
+  if(!atlas)return;
+  const partName=COLOSSEUM_TOUR[tour.step];
+  const part=atlas.parts.find(p=>p.name.toLowerCase()===partName.toLowerCase());
+  if(part){setFocus({ids:[part.id],key:Date.now()});setState(s=>({...s,selected:[part.id],isolate:false,rotate:false}));}
+  else{setFocus(null);setState(s=>({...s,selected:[],isolate:false}));}
+ },[tour,atlas,variants,variantId]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
  const systems:BuildingSystem[]=useMemo(()=>atlas?.systems??[],[atlas]);
  const parts=useMemo(()=>new Map(atlas?.parts.map(p=>[p.id,p])),[atlas]);
@@ -74,15 +94,50 @@ export default function Viewer({slug}:{slug:string}){
  useEffect(()=>{if(!atlas)return;return registerAtlasTools(atlas,c=>flushSync(()=>choose(c)));},[atlas]);
  const choosePart=(id:string)=>{const p=parts.get(id);if(!p)return;setChosen({id:p.conceptId,name:p.name,elements:[id]});setState(s=>({...s,selected:[id],isolate:false,rotate:false}));setDetails(true);setPanel(null);};
  const toggle=(id:string)=>{setDetails(false);setState(s=>({...s,selected:[],isolate:false,visible:s.visible.includes(id)?s.visible.filter(x=>x!==id):[...s.visible,id]}));};
- const reset=()=>{setState(s=>({explode:0,visible:systems.map(x=>x.id),selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
+ const startTour=()=>{
+  if(!isPilot||tour||!variants)return;
+  const from=variantId;
+  setTour({step:0,fromVariant:from});
+  setMode('tour');setFloorLayer(null);
+  setState(s=>({...s,explode:0,selected:[],isolate:false,rotate:false}));
+  setDetails(false);setPanel(null);
+  if(from!=='detailed')switchVariant('detailed',false);
+ };
+ const exitTour=()=>{
+  if(!tour)return;
+  const from=tour.fromVariant;
+  setTour(null);setFocus(null);
+  setMode('explode');
+  setState(s=>({...s,explode:0,selected:[],isolate:false,rotate:false}));
+  if(from&&from!==variantId)switchVariant(from,false);
+ };
+ const enterMode=(next:'explode'|'floors')=>{
+  if(!isPilot)return;
+  if(tour)exitTour();
+  if(next===mode)return;
+  setMode(next);setFloorLayer(null);setFocus(null);
+  setState(s=>({...s,explode:0,selected:[],isolate:false,rotate:false,reset:s.reset+1}));
+  setDetails(false);setPanel(null);
+ };
+ const reset=()=>{if(tour)exitTour();setState(s=>({explode:0,visible:systems.map(x=>x.id),selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
+ const goStep=(d:number)=>{if(!tour)return;const next=Math.min(COLOSSEUM_TOUR.length-1,Math.max(0,tour.step+d));if(next!==tour.step)setTour({...tour,step:next});};
+ const chooseFloorLayer=(li:number)=>{
+  if(!atlas)return;
+  if(floorLayer===li){setFloorLayer(null);setState(s=>({...s,selected:[]}));return;}
+  setFloorLayer(li);
+  const ids=atlas.parts.filter(p=>colosseumLayer(p)===li).map(p=>p.id);
+  setState(s=>({...s,explode:Math.max(s.explode,0.6),selected:ids,isolate:false,rotate:false}));
+  setDetails(false);
+ };
  const openPanel=(next:'layers'|'search')=>{setDetails(false);setPanel(p=>p===next?null:next);};
  const title=atlas?.title??'Architectural Atlas',loc=atlas?.location??'',assembledCaption=atlas?`${title.toUpperCase()} · ${loc.toUpperCase()}`:'LOADING';
+ const tourStop=tour?hotspots.find(h=>h.part.toLowerCase()===COLOSSEUM_TOUR[tour.step].toLowerCase()):undefined;
  const primarySource=atlas?.sourceUrls?.[0];
- return <main className="studio">
-  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,inspectorOpen:details&&selectedParts.length>0}} onSelect={choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
+ return <main className={isPilot?'studio pilot':'studio'}>
+  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,focus:tour?focus:null,inspectorOpen:details&&selectedParts.length>0}} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <div className="identity-wrap">
-  <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
+  <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} disabled={!!tour} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
   <SiteNav/>
   </div>
   <nav className="top-actions" aria-label="Explorer panels"><a className="back-link" href="/"><ArrowLeft size={16}/><span>All buildings</span></a><a className="back-link coffee-link" href={COFFEE_URL} target="_blank" rel="noreferrer"><Coffee size={16}/><span>Buy me a coffee</span></a><Button variant="ghost" className={panel==='search'?'active':''} onClick={()=>openPanel('search')} aria-label="Search components"><Search size={18}/><span>Find a component</span><kbd>/</kbd></Button><Button variant="ghost" className="icon-button" aria-label="About this model" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}><Info size={18}/></Button></nav>
@@ -93,9 +148,11 @@ export default function Viewer({slug}:{slug:string}){
    <div className="panel-foot"><span>{visibleCount.toLocaleString()} pieces visible</span><Button variant="ghost" onClick={()=>setState(s=>({...s,visible:[],selected:[],isolate:false}))}>Hide all</Button></div>
   </section>
   {panel==='search'&&<section className="search-panel glass" aria-label="Find a component"><div className="panel-heading"><span>Find a component</span><Button variant="ghost" className="icon-button" onClick={()=>setPanel(null)} aria-label="Close search"><X size={18}/></Button></div><Combobox<Concept> items={results} value={null} onValueChange={value=>{if(value)choose(value);}} inputValue={query} onInputValueChange={setQuery} itemToStringLabel={c=>c.name} filter={null} open onOpenChange={open=>{if(!open)setPanel(null);}}><ComboboxInput autoFocus placeholder="Search components…" aria-label="Search named components" showTrigger={false}/><ComboboxContent className="tower-search-results"><ComboboxEmpty>No components match your search.</ComboboxEmpty><ComboboxList>{(c:Concept)=><ComboboxItem key={c.id} value={c}><span className="search-result-name">{c.name}</span><span className="small-number">{c.elements.length} {c.elements.length===1?'piece':'pieces'}</span></ComboboxItem>}</ComboboxList></ComboboxContent></Combobox><p className="search-note">{query?'Showing up to 80 matches. Refine your search to find smaller components.':'Start with a major assembly, or search every named component.'}</p></section>}
+  {tour&&tourStop&&<section className="tour-card glass" aria-label="Guided tour"><div className="tour-card-head"><span>Stop {tour.step+1} of {COLOSSEUM_TOUR.length}</span><span>{tourStop.title}</span></div><p>{tourStop.text}</p></section>}
+  {isPilot&&mode==='floors'&&<section className="floors-panel glass" aria-label="Floors"><div className="panel-heading"><span>Floors</span><Button variant="ghost" className="mobile-only icon-button" onClick={()=>enterMode('explode')} aria-label="Close floors"><X size={18}/></Button><Badge variant="secondary" className="desktop-only small-number">{COLOSSEUM_LAYERS.length}</Badge></div><div className="floor-list">{COLOSSEUM_LAYERS.map((l,li)=>{const hs=hotspots.find(h=>h.part===l.hotspotPart);return <button key={l.name} type="button" className={`floor-row ${floorLayer===li?'active':''}`} aria-pressed={floorLayer===li} onClick={()=>chooseFloorLayer(li)}><span className="floor-name">{l.name}</span>{hs&&<span className="floor-text">{hs.text}</span>}</button>;})}</div></section>}
   <nav className="view-controls glass" aria-label="Camera controls">{(['three-quarter','front','side','back'] as View[]).map((v,i)=><Button variant="ghost" key={v} className={state.view===v?'active':''} aria-pressed={state.view===v} disabled={state.explode>.8&&v!=='front'} onClick={()=>setState(s=>({...s,view:v,reset:s.reset+1,rotate:false}))} title={`${v} view`} aria-label={`${v} view`}><span>{['¾','F','S','B'][i]}</span></Button>)}<i/><Button variant="ghost" disabled={state.explode>=.4} aria-label={state.rotate?'Pause rotation':'Rotate structure'} title="Auto rotate" className={state.rotate?'active':''} onClick={()=>setState(s=>({...s,rotate:!s.rotate}))}>{state.rotate?<Pause size={17}/>:<RotateCw size={18}/>}</Button><Button variant="ghost" aria-label="Reset view and layers" title="Reset" onClick={reset}><RotateCcw size={17}/></Button></nav>
-  <div className="scene-caption"><span className="caption-line"/><span>{state.isolate?(chosen?.name??'SELECTED COMPONENT'):state.explode>.95?'STRUCTURAL INVENTORY':state.explode>.05?'SEPARATED COMPONENTS':assembledCaption}</span><span className="caption-line"/></div>
-  <div className="bottom-dock glass"><Button variant="ghost" className="mobile-only dock-layers" onClick={()=>openPanel('layers')} aria-label="Open system layers"><Layers3 size={20}/><span>Systems</span></Button><div className="explode-control"><div className="explode-label"><label id="explode-label">Explode structure</label><output>{Math.round(state.explode*100)}<span>%</span></output></div><Slider aria-labelledby="explode-label" min={0} max={100} step={1} value={[state.explode*100]} onValueChange={v=>setState(s=>({...s,explode:(Array.isArray(v)?v[0]:v)/100,view:(Array.isArray(v)?v[0]:v)>80?'front':s.view,rotate:false}))}/><div className="slider-endpoints"><span>Assembled</span><span>Every piece</span></div></div><Button variant="ghost" className="dock-reset" onClick={reset} aria-label="Assemble and reset"><RotateCcw size={18}/><span>Reset</span></Button></div>
+  {!tour&&<div className="scene-caption"><span className="caption-line"/><span>{state.isolate?(chosen?.name??'SELECTED COMPONENT'):mode==='floors'?(state.explode>.05?'SEPARATED FLOORS':assembledCaption):state.explode>.95?'STRUCTURAL INVENTORY':state.explode>.05?'SEPARATED COMPONENTS':assembledCaption}</span><span className="caption-line"/></div>}
+  <div className={`bottom-dock glass ${isPilot?'pilot-dock':''}`}>{isPilot&&<div className="mode-switch" role="group" aria-label="Viewer mode"><button type="button" className={mode==='explode'?'active':''} aria-pressed={mode==='explode'} onClick={()=>enterMode('explode')}>Explode</button><button type="button" className={mode==='floors'?'active':''} aria-pressed={mode==='floors'} onClick={()=>enterMode('floors')}>Floors</button><button type="button" className={mode==='tour'?'active':''} aria-pressed={mode==='tour'} onClick={startTour}>Tour</button></div>}{tour?<div className="tour-nav"><Button variant="ghost" onClick={()=>goStep(-1)} disabled={tour.step===0} aria-label="Previous stop"><ChevronLeft size={18}/><span>Back</span></Button><span className="tour-count">Stop {tour.step+1} of {COLOSSEUM_TOUR.length}</span><Button variant="ghost" onClick={()=>goStep(1)} disabled={tour.step===COLOSSEUM_TOUR.length-1} aria-label="Next stop"><span>Next</span><ChevronRight size={18}/></Button><Button variant="ghost" onClick={exitTour}><span>Exit tour</span></Button></div>:<div className="dock-row"><Button variant="ghost" className="mobile-only dock-layers" onClick={()=>openPanel('layers')} aria-label="Open system layers"><Layers3 size={20}/><span>Systems</span></Button><div className="explode-control"><div className="explode-label"><label id="explode-label">{mode==='floors'?'Separate floors':'Explode structure'}</label><output>{Math.round(state.explode*100)}<span>%</span></output></div><Slider aria-labelledby="explode-label" min={0} max={100} step={1} value={[state.explode*100]} onValueChange={v=>setState(s=>({...s,explode:(Array.isArray(v)?v[0]:v)/100,view:(Array.isArray(v)?v[0]:v)>80?'front':s.view,rotate:false}))}/><div className="slider-endpoints"><span>{mode==='floors'?'Stacked':'Assembled'}</span><span>{mode==='floors'?'Separated':'Every piece'}</span></div></div><Button variant="ghost" className="dock-reset" onClick={reset} aria-label="Assemble and reset"><RotateCcw size={18}/><span>Reset</span></Button></div>}</div>
   <footer className="studio-footer"><span>{state.explode>.8?'Drag to pan':'Drag to orbit'} <b>·</b> Pinch to zoom <b>·</b> Tap to inspect</span><Button variant="ghost" onClick={()=>{setDetails(false);setPanel(null);setAbout(true);}}>Source & credits <ArrowUpRight size={12}/></Button></footer>
   {progress<100&&!error&&<div className="loading glass" role="status"><Activity size={18}/><div><strong>Preparing the structure</strong><span>{progress}% · Loading {atlas?.parts.length.toLocaleString()??'…'} pieces</span><div className="loading-track"><i style={{width:`${progress}%`}}/></div></div></div>}
   {error&&<div className="loading glass error" role="alert"><p>{error}</p><Button variant="ghost" onClick={()=>location.reload()}>Reload viewer</Button><a className="source-link" href="/">Back to all buildings</a></div>}
