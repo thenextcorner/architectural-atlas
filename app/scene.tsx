@@ -14,7 +14,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
  latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
-  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false;
+  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false;
   let lastState:SceneState|null=null;
   const abort=new AbortController();
   let renderer:T.WebGLRenderer;
@@ -38,8 +38,9 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   if(darkStage)el.closest('.studio')?.classList.add('dark-stage');
   renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.5:2));renderer.setClearColor(darkStage?'#33393f':'#f2f3f3');renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
   // Poster stage: soft shadows are ready before any light casts them, so
-  // toggling the poster stage never needs a renderer rebuild.
-  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
+  // toggling the poster stage never needs a renderer rebuild. Local
+  // clipping is on so the section cutaway's clip plane always applies.
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.localClippingEnabled=true;
   el.appendChild(renderer.domElement);
   renderer.domElement.setAttribute('aria-label','Interactive architectural model. Drag to orbit, pinch or scroll to zoom, and tap a component to inspect it.');
   const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.005,100),controls=new OrbitControls(camera,renderer.domElement);
@@ -48,8 +49,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   scene.add(new T.HemisphereLight(0xffffff,0xa7acb2,1.05));
   const key=new T.DirectionalLight(0xfffaf4,2.3);key.position.set(-2,4,3);
   key.castShadow=false;key.shadow.mapSize.set(2048,2048);
-  key.shadow.camera.left=-2.4;key.shadow.camera.right=2.4;key.shadow.camera.top=2.4;key.shadow.camera.bottom=-2.4;
-  key.shadow.camera.near=.5;key.shadow.camera.far=15;key.shadow.bias=-.0004;key.shadow.normalBias=.02;
+  // Shadow frustum covers the whole model plus its cast shadows; the
+  // projection matrix must be updated after changing the bounds, or the
+  // defaults (plus/minus 5) stay in effect.
+  key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=3;key.shadow.camera.bottom=-3;
+  key.shadow.camera.near=.5;key.shadow.camera.far=20;key.shadow.bias=-.0004;key.shadow.normalBias=.02;key.shadow.camera.updateProjectionMatrix();
   scene.add(key);
   const rim=new T.DirectionalLight(0xe9f0ff,1.8);rim.position.set(2,2,-3);scene.add(rim);
   const ground=new T.Mesh(new T.CircleGeometry(30,96),new T.MeshStandardMaterial({color:darkStage?0x454e55:0xd5d9dc,roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.019;ground.receiveShadow=true;scene.add(ground);
@@ -107,15 +111,18 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const leaderLines=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');leaderSvg.appendChild(l);return l;});
   const leaderDots=COLOSSEUM_LAYERS.map(()=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','3.5');leaderSvg.appendChild(c);return c;});
   // Poster pilot: schematic scale figures on the arena floor, off by
-  // default. Model height 0.88 stands for 48 m, so a 1.8 m figure is about
-  // 0.033 tall. Dark silhouettes only, no invented detail.
-  const figureMaterial=new T.MeshBasicMaterial({color:0x232a33});
+  // default. The arena sand surface sits at sandTop; the figures stand on
+  // it, not on the model's origin, so they are never buried inside the
+  // arena disc. Dark silhouettes only, no invented detail, drawn a little
+  // larger than true scale so they read as people at poster distance.
+  const sandTop=Math.max(0,...atlas.parts.filter(p=>/sand surface/i.test(p.name)).map(p=>p.bounds[1][1]));
+  const figureMaterial=new T.MeshBasicMaterial({color:0x1a2027});
   const figures=new T.Group();
-  [[0.1,0.08],[-0.12,0.05],[0.02,-0.14]].forEach(([fx,fz])=>{
+  [[0.32,0.1],[-0.28,0.08],[0.05,-0.22]].forEach(([fx,fz])=>{
    const g=new T.Group();
-   const body=new T.Mesh(new T.CapsuleGeometry(0.006,0.02,3,8),figureMaterial);body.position.y=0.017;g.add(body);
-   const head=new T.Mesh(new T.SphereGeometry(0.005,12,8),figureMaterial);head.position.y=0.031;g.add(head);
-   g.position.set(fx,0.007,fz);figures.add(g);
+   const body=new T.Mesh(new T.CapsuleGeometry(0.009,0.028,3,8),figureMaterial);body.position.y=0.023;g.add(body);
+   const head=new T.Mesh(new T.SphereGeometry(0.0075,12,8),figureMaterial);head.position.y=0.052;g.add(head);
+   g.position.set(fx,0,fz);figures.add(g);
   });
   figures.visible=false;scene.add(figures);
   const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
@@ -184,7 +191,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    const reservedHeight=mobile?350:270;const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
    const direction=view==='front'?new T.Vector3(0,.02,1):view==='back'?new T.Vector3(0,.02,-1):view==='side'?new T.Vector3(1,.02,0):new T.Vector3(.35,.06,1).normalize();
-   controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,modelCenter.y,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
+   // In Floors mode the stack rises as it separates; aim at the lifted
+   // stack's centre, not the assembled model's, or the top layer (the
+   // velarium netting) is cropped by the top edge of the viewport.
+   const liftCenter=(latest.current.mode==='floors')?FLOOR_GAP*(COLOSSEUM_LAYERS.length-1)*amount/2:0;
+   controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,modelCenter.y+liftCenter,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
   const raycaster=new T.Raycaster(),pointer=new T.Vector2(),tap=new PointerTap(),worldBox=new T.Box3(),hitPoint=new T.Vector3();
@@ -234,7 +245,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
       if(amount<=.45){const t=amount/.45;dx=Math.sin(angle)*t*.48;dy=(c.y-1)*t*.28;dz=Math.cos(angle)*t*.48;}
       else {const t=(amount-.45)/.55;dx=T.MathUtils.lerp(Math.sin(angle)*.48,destination.x-c.x,t);dy=T.MathUtils.lerp((c.y-.85)*.28,destination.y-c.y,t);dz=T.MathUtils.lerp(Math.cos(angle)*.48,-c.z,t);}
      }
-     const selected=selection.has(p.id);data.set([dx,dy,dz,(s.isolate?selected:visible.has(p.system)||selected)?1:0],i*4);selectedData[i*4]=selected?255:0;
+     // In Floors mode the shoring wedges, the fallen south wall and the
+     // material samples are not a floor: they sit detached beside the
+     // arena layer and read as floating debris, so they stay hidden here.
+     // They remain visible in Explode mode and in the Tour, where the
+     // fallen wall is a stop of its own.
+     const floorsHidden=(s.mode??'explode')==='floors'&&(p.system==='ruin'||p.system==='materials');
+     const shown=!floorsHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
+     const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
     });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
    }
@@ -272,13 +290,16 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     }
     lastFocus=focusKey;
    }
-   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=amount<.5&&!s.isolate;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
+   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=(amount<.5||!!s.poster)&&!s.isolate;markers.visible=amount>.75;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
    // Poster pilot: scale figures ride the arena layer in Floors mode and
    // stand on the assembled floor otherwise. Hidden during tours and
-   // isolation, where they would sit in the way of the framing.
+   // isolation, where they would sit in the way of the framing. The
+   // toggle flips visibility, so a change must dirty the frame or the
+   // toggle appears to do nothing.
    const showFigures=!!s.scaleFigures&&ready&&!s.isolate&&(s.mode??'explode')!=='tour'&&((s.mode??'explode')==='floors'||amount<.05);
    figures.visible=showFigures;
-   if(showFigures)figures.position.y=(s.mode??'explode')==='floors'?FLOOR_GAP*amount:0;
+   if(showFigures)figures.position.y=sandTop+((s.mode??'explode')==='floors'?FLOOR_GAP*amount:0);
+   if(showFigures!==lastScaleFigures){lastScaleFigures=showFigures;dirty=true;}
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
    // Story hotspots follow their part (assembled or exploded).
    hotspotDefs.forEach((h,k)=>{
@@ -303,13 +324,18 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      lab.style.top=`${((1-projected.y)*el.clientHeight/2).toFixed(1)}px`;
     });
     // Poster pilot: leader lines from each layer to its Floors panel row.
+    // Anchored at the layer's left edge, mid-height, so the line runs
+    // straight to the panel on the left instead of crossing the whole
+    // model and the panel to reach it.
     const desktop=el.clientWidth>=768;
     COLOSSEUM_LAYERS.forEach((_,li)=>{
      const lineEl=leaderLines[li],dotEl=leaderDots[li];
      const row=document.querySelectorAll('.floor-row')[li] as HTMLElement|null;
      if(!desktop||!row||row.offsetParent===null){lineEl.style.display='none';dotEl.style.display='none';return;}
      const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
-     projected.set(modelSize.x/2+.15,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
+     const layerBottom=li>0?layerTops[li-1]:modelBox.min.y;
+     const anchorY=(layerTops[li]+layerBottom)/2+li*FLOOR_GAP*amount;
+     projected.set(-(modelSize.x/2)-.15,anchorY,0).project(camera);
      if(!anyVisible||projected.z<-1||projected.z>1){lineEl.style.display='none';dotEl.style.display='none';return;}
      const ax=(projected.x+1)*el.clientWidth/2,ay=(1-projected.y)*el.clientHeight/2;
      const hr=row.getBoundingClientRect(),er=el.getBoundingClientRect();
@@ -329,6 +355,10 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     if(!ready)return null;
     const renderNow=()=>renderer.render(scene,camera);
     camera.clearViewOffset();
+    // The exploded-part markers and scale figures are live-view helpers;
+    // they read as dust in a still poster, so hide them for all captures.
+    const savedMarkersVisible=markers.visible,savedFiguresVisible=figures.visible;
+    markers.visible=false;figures.visible=false;
     renderNow();
     const main=renderer.domElement.toDataURL('image/png');
     const anchors=COLOSSEUM_LAYERS.map((_,li)=>{
@@ -336,19 +366,44 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
     });
     const savedPos=camera.position.clone(),savedTarget=controls.target.clone();
-    // Plan: near top-down view of the model.
-    camera.position.set(0.25,modelCenter.y+4.5,0.25);controls.target.set(0,modelCenter.y,0);controls.update();renderNow();
+    const savedData=data.slice();
+    const zeroOffsets=()=>{atlas.parts.forEach((p,i)=>{data[i*4]=0;data[i*4+1]=0;data[i*4+2]=0;});partTexture.needsUpdate=true;};
+    const restoreData=()=>{data.set(savedData);partTexture.needsUpdate=true;};
+    // Plan: assembled top-down view. The arena floor and the awning are
+    // hidden so the facade ring, seating bowl and hypogeum read as a plan
+    // instead of a stack of overlapping discs. Framed to fit the wide plan
+    // inset after the poster's cover crop of the viewport render.
+    zeroOffsets();
+    atlas.parts.forEach((p,i)=>{const li=colosseumLayer(p);if(li===1||li===3)data[i*4+3]=0;});
+    partTexture.needsUpdate=true;
+    const insetAspect=368/150;
+    const planVh=Math.max(modelSize.x*1.12,modelSize.z*1.12*insetAspect)/camera.aspect;
+    const planDist=planVh/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)));
+    camera.up.set(0,0,-1);
+    camera.position.set(0,modelCenter.y+planDist,0);controls.target.set(0,modelCenter.y,0);controls.update();renderNow();
     const plan=renderer.domElement.toDataURL('image/png');
-    // Section: clip the front half away and render the three-quarter view.
+    camera.up.set(0,1,0);
+    // Section: assembled, front half clipped away, three-quarter view, so
+    // the whole structure reads as one cutaway.
+    atlas.parts.forEach((p,i)=>{data[i*4+3]=savedData[i*4+3];});
+    partTexture.needsUpdate=true;
     renderer.clippingPlanes=[new T.Plane(new T.Vector3(0,0,-1),0)];
     camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();renderNow();
     const section=renderer.domElement.toDataURL('image/png');
     renderer.clippingPlanes=[];
-    // Facade detail: close on the front arches.
-    const r=Math.max(modelSize.x,modelSize.z)/2;
-    camera.position.set(0.35*r,modelCenter.y+0.12,1.9*r);controls.target.set(0,modelCenter.y+0.05,0);controls.update();renderNow();
+    restoreData();
+    // Facade detail: close on the front arches (Doric, Ionic, Corinthian
+    // tiers), in their lifted Floors position. The target is the front
+    // band of the facade ring, not the ring's empty centre.
+    let fcx=0,fcy=0,fcz=0,fcn=0;
+    atlas.parts.forEach((p,i)=>{if(p.system!=='facade'||p.bounds[1][2]<0.95)return;const c=centers[i];fcx+=c.x+data[i*4];fcy+=c.y+data[i*4+1];fcz+=c.z+data[i*4+2];fcn++;});
+    if(fcn===0){atlas.parts.forEach((p,i)=>{if(p.system!=='facade')return;const c=centers[i];fcx+=c.x+data[i*4];fcy+=c.y+data[i*4+1];fcz+=c.z+data[i*4+2];fcn++;});}
+    const fcenter=new T.Vector3(fcx/Math.max(1,fcn),fcy/Math.max(1,fcn),fcz/Math.max(1,fcn));
+    const fdir=new T.Vector3(0.12,0.10,1).normalize();
+    camera.position.copy(fcenter).addScaledVector(fdir,0.9);controls.target.copy(fcenter);controls.update();renderNow();
     const facade=renderer.domElement.toDataURL('image/png');
     camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();
+    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;
     fit(latest.current.view,amount);renderNow();dirty=true;
     return {main,plan,section,facade,anchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
    };

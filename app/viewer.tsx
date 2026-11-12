@@ -171,7 +171,9 @@ export default function Viewer({slug}:{slug:string}){
   if(!atlas)return;
   if(floorLayer===li){setFloorLayer(null);setState(s=>({...s,selected:[]}));return;}
   setFloorLayer(li);
-  const ids=atlas.parts.filter(p=>colosseumLayer(p)===li).map(p=>p.id);
+  // The shoring wedges, fallen wall and material samples are not a floor;
+  // they stay hidden in Floors mode, so selecting a layer must not select them.
+  const ids=atlas.parts.filter(p=>colosseumLayer(p)===li&&p.system!=='ruin'&&p.system!=='materials').map(p=>p.id);
   setState(s=>({...s,explode:Math.max(s.explode,0.6),selected:ids,isolate:false,rotate:false}));
   setDetails(false);
  };

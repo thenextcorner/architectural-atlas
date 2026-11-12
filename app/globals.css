@@ -204,10 +204,10 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 body:has(.detail-sheet) .floors-panel{display:none}
 .leader-layer{position:absolute;inset:0;pointer-events:none;z-index:30;overflow:hidden}
 .leader-layer svg{display:block;width:100%;height:100%}
-.leader-layer line{stroke:#66788a;stroke-width:1;opacity:.75}
-.leader-layer circle{fill:#66788a;opacity:.9}
-.poster-stage .leader-layer line{stroke:#c8d4de}
-.poster-stage .leader-layer circle{fill:#c8d4de}
+.leader-layer line{stroke:#4d5f70;stroke-width:1.5;opacity:.9}
+.leader-layer circle{fill:#4d5f70;opacity:.95}
+.poster-stage .leader-layer line{stroke:#e8f0f5;stroke-width:1.5;opacity:1}
+.poster-stage .leader-layer circle{fill:#e8f0f5;opacity:1}
 .poster-stage .vignette{background:radial-gradient(ellipse at 51% 43%,transparent 35%,#0d1420b3 100%)}
 .poster-stage .identity h1{color:#eef3f6}
 .poster-stage .identity-meta{color:#aebcc8}
