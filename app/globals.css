@@ -200,7 +200,7 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .floor-label-layer{position:absolute;inset:0;pointer-events:none;z-index:35;overflow:hidden}
 .floor-label{position:absolute;left:0;top:0;transform:translate(-50%,-50%);pointer-events:none;font-size:11px;letter-spacing:.14em;color:#26313c;background:#ffffffe0;border:1px solid #1825361f;border-radius:999px;padding:5px 10px;white-space:nowrap}
 .floor-label[hidden]{display:none}
-.pilot .scene-caption{bottom:232px}
+.pilot .scene-caption{bottom:252px}
 body:has(.detail-sheet) .floors-panel{display:none}
 .leader-layer{position:absolute;inset:0;pointer-events:none;z-index:10;overflow:hidden}
 .leader-layer svg{display:block;width:100%;height:100%}
@@ -217,12 +217,17 @@ body:has(.detail-sheet) .floors-panel{display:none}
 .poster-stage .scene-caption{color:#aebcc8}
 .poster-stage .scene-caption .caption-line{background:#ffffff2e}
 .dock-poster{border-left:1px solid #18253618;padding:10px 0 10px 20px;display:flex;flex-direction:column;gap:7px;align-items:center;color:#263b48;font-size:11px;font-weight:600}
-.poster-status{font-size:11px;color:#687786;text-align:center;padding:2px 0 0}
+.poster-status{font-size:11px;color:#687786;text-align:center;padding:2px 0 0;min-height:15px}
+/* Pilot caption: a solid dark chip so it stays legible over the terrace,
+ * raised clear of the dock, and painted above it. The status slot above
+ * keeps its height when empty, so the dock never grows over the caption. */
+.pilot .scene-caption{background:rgba(13,20,28,.88);color:#e8f0f5;padding:7px 16px;border-radius:999px;box-shadow:0 2px 14px rgba(0,0,0,.3);z-index:5}
+.pilot .scene-caption .caption-line{background:#ffffff40}
 @media(max-width:767px){
 .bottom-dock.pilot-dock{width:calc(100% - 24px);padding:13px;gap:10px}
 .dock-row{gap:14px}
 .tour-card{bottom:calc(215px + env(safe-area-inset-bottom));padding:14px 16px}
 .tour-card p{font-size:13px}
 .floors-panel{top:112px;left:12px;right:12px;width:auto;z-index:40;max-height:calc(100dvh - 320px)}
-.pilot .scene-caption{bottom:calc(222px + env(safe-area-inset-bottom))}
+.pilot .scene-caption{bottom:calc(242px + env(safe-area-inset-bottom))}
 }

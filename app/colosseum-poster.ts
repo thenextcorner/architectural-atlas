@@ -9,7 +9,7 @@ export interface PosterCapture {
   plan: string;
   section: string;
   facade: string;
-  anchors: {x: number; y: number}[];
+  anchors: ({x: number; y: number} | null)[];
   viewWidth: number;
   viewHeight: number;
 }
