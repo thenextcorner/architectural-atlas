@@ -2,19 +2,25 @@
 //
 // The "simple" variant: same footprint, massing and proportions as the
 // detailed model (see scripts/generate-rijksmuseum.mjs, whose header lists
-// every sourced dimension reused here), but coarser: 30 named parts across
-// 7 systems instead of 102 across 9. Facade bays, towers, gables and
+// every sourced dimension reused here), but coarser: 29 named parts across
+// 9 systems instead of 113 across 10. Facade bays, towers, gables and
 // decoration are merged into group parts.
 //
 // Sourced dimensions reused from the detailed model (never re-stated here,
 // see generate-rijksmuseum.mjs for the full attribution):
 //   Pierre Cuypers, commission 1876, opened 1885, Gothic-Renaissance mix,
 //   two squares with central atriums, central passage tunnel, Gallery of
-//   Honour, library, Philips wing, Asian pavilion (2013), red brick,
+//   Honour on the second floor, twin towers flanking the passage, library,
+//   Philips wing, Asian pavilion (2013), red brick,
 //   80 galleries after the 2003-2013 Cruz y Ortiz renovation.
 // Schematic (not sourced, never stated as fact in the UI): exact footprint
 // (150 m), tower heights, bay/window/gable counts and forms, passage and
-// atrium layouts.
+// atrium layouts, floor slab positions.
+//
+// Floors (for the generic Floors and Tour viewer modes): every part
+// carries a floor id, assigned by the height where the part starts
+// (base y), with an explicit override where a part spans bands. See
+// generate-rijksmuseum.mjs for the floor list and the museum route.
 //
 // Writes:
 //   public/models/rijksmuseum-simple/atlas.json
@@ -60,7 +66,23 @@ function gable(x0, x1, y0, yApex, z0, z1) {
 
 // ---------------------------------------------------------------- parts
 const parts = [];
-const addPart = (id, name, system, geoms) => parts.push({ id, name, system, geoms });
+const FLOORS = [
+  { id: 'basement', name: 'Basement', yMin: -2, yMax: 0, description: 'Foundations below ground level; the public route starts on the ground floor.' },
+  { id: 'ground', name: 'Ground floor (Floor 0)', yMin: 0, yMax: 5, description: 'Entrance, atrium, passage and the 1100 to 1600 galleries.' },
+  { id: 'first', name: 'First floor (Floor 1)', yMin: 5, yMax: 10, description: 'The 1700 to 1900 galleries and the Cuypers Library viewing gallery.' },
+  { id: 'second', name: 'Second floor (Floor 2)', yMin: 10, yMax: 15, description: 'The 17th century, the Gallery of Honour, the Great Hall and the Night Watch Room.' },
+  { id: 'third', name: 'Third floor (Floor 3)', yMin: 15, yMax: 20, description: 'The 1900 to 2000 galleries.' },
+  { id: 'roof', name: 'Roof and towers', yMin: 20, yMax: 60, description: 'Roofs, skylights, gables and towers above the eaves.' },
+];
+function floorForBaseY(y) {
+  if (y < 0) return 'basement';
+  if (y < 5) return 'ground';
+  if (y < 10) return 'first';
+  if (y < 15) return 'second';
+  if (y < 20) return 'third';
+  return 'roof';
+}
+const addPart = (id, name, system, geoms, floor) => parts.push({ id, name, system, geoms, floor });
 
 const L = 75, D = 12, EAVE = 22;
 
@@ -108,11 +130,19 @@ addPart('passage', 'Passage', 'passage', [
 ]);
 addPart('passage-floor', 'Passage floor', 'passage', [box(-6, 6, 0, 0.4, -D, D)]);
 
-// --- Towers: 5 parts.
-addPart('central-tower', 'Central tower', 'towers', [
-  box(-6, 6, EAVE, 38, -6, 6),
-  box(-5, 5, 38, 44, -5, 5),
-  cyl(0.2, 5.5, 10, 0, 49, 0, 8),
+// --- Towers: 3 parts.
+{
+  const tw = [];
+  for (const tx of [-14, 14]) {
+    tw.push(box(tx - 4, tx + 4, 0, 30, -4, 4));
+    tw.push(box(tx - 3.5, tx + 3.5, 30, 35, -3.5, 3.5));
+    tw.push(cyl(0.15, 4, 7, tx, 38.5, 0, 8));
+  }
+  addPart('twin-towers', 'Twin towers', 'towers', tw);
+}
+addPart('central-spire', 'Central roof spire', 'towers', [
+  cyl(0.15, 2.2, 12, 0, 34, 0, 8),
+  cyl(0.05, 0.8, 6, 0, 43, 0, 8),
 ]);
 {
   const ct = [];
@@ -123,9 +153,6 @@ addPart('central-tower', 'Central tower', 'towers', [
   }
   addPart('corner-towers', 'Corner towers', 'towers', ct);
 }
-addPart('tower-clocks', 'Tower clocks', 'towers', [
-  (() => { const d = new THREE.CylinderGeometry(1.8, 1.8, 0.4, 12); d.rotateX(Math.PI / 2); d.translate(0, 41, 5.2); return d; })(),
-]);
 
 // --- Roofs: 5 parts.
 addPart('roof', 'Roof', 'roofs', [
@@ -165,9 +192,30 @@ addPart('atrium-colonnades', 'Atrium colonnades', 'atriums', (() => {
   return c;
 })());
 addPart('gallery-of-honour', 'Gallery of Honour', 'interiors', [box(-L + 5, L - 5, 10, 11, -2, 2)]);
+addPart('night-watch-hall', 'Night Watch hall', 'interiors', [box(58, 70, 10, 15, -5, 5)]);
+addPart('great-hall', 'Great Hall', 'interiors', [box(-70, -58, 10, 15, -5, 5)]);
 addPart('library', 'Library', 'interiors', [
   box(-L - 2, -L + 18, 0, 16, -D - 14, -D - 1),
   box(-L + 6, -L + 12, 16, 28, -D - 10, -D - 4),
+]);
+
+// --- Floor plates + skylights: 4 parts.
+addPart('first-floor-slab', 'First floor slab', 'floors', [
+  box(-L, -6, 5, 5.5, -D, D),
+  box(6, L, 5, 5.5, -D, D),
+]);
+addPart('second-floor-slab', 'Second floor slab', 'floors', [
+  box(-L, -6, 9.5, 10, -D, D),
+  box(6, L, 9.5, 10, -D, D),
+], 'second');
+addPart('third-floor-slab', 'Third floor slab', 'floors', [
+  box(-L, -52.5, 15, 15.5, -D, D),
+  box(52.5, L, 15, 15.5, -D, D),
+]);
+addPart('skylights', 'Skylights', 'roofs', [
+  box(-L + 5, L - 5, 22.8, 23.2, -2, 2),
+  box(-52.5, -22.5, 22.8, 23.2, -8, 8),
+  box(22.5, 52.5, 22.8, 23.2, -8, 8),
 ]);
 
 // --- Decoration + wings: 4 parts.
@@ -193,13 +241,15 @@ addPart('asian-pavilion-and-garden', 'Asian pavilion and garden', 'wings', [
 
 // ---------------------------------------------------------------- colors
 function colorFor(id) {
+  if (id === 'skylights') return '#9ab8c8';
+  if (id.includes('slab')) return '#b8a888';
   if (id === 'stained-glass') return '#3a6a8a';
   if (id.includes('tower')) return '#a8442a';
   if (id === 'roof' || id === 'chimneys') return '#5a4a3a';
   if (id === 'gables' || id === 'dormers') return '#8a3a24';
   if (id === 'passage' || id === 'passage-floor') return '#6a5a4a';
   if (id.includes('atrium')) return '#b8a888';
-  if (id.includes('gallery') || id === 'library') return '#9a8a72';
+  if (id.includes('gallery') || id === 'library' || id.includes('hall')) return '#9a8a72';
   if (id === 'asian-pavilion-and-garden') return '#6a7a5a';
   if (id === 'stone-bands') return '#c9bfa5';
   return '#a8442a';
@@ -209,10 +259,11 @@ function colorFor(id) {
 const systems = [
   { id: 'facades', name: 'Facades', color: '#a8442a', description: 'Red brick facades with stone bands and windows.' },
   { id: 'passage', name: 'Central passage', color: '#6a5a4a', description: 'The public tunnel through the building.' },
-  { id: 'towers', name: 'Towers', color: '#a8442a', description: 'Central tower, corner towers and clocks.' },
-  { id: 'roofs', name: 'Roofs', color: '#5a4a3a', description: 'Roof, gables, dormers and chimneys.' },
+  { id: 'towers', name: 'Towers', color: '#a8442a', description: 'Twin towers flanking the passage, corner towers and central roof spire.' },
+  { id: 'roofs', name: 'Roofs', color: '#5a4a3a', description: 'Roof, skylights, gables, dormers and chimneys.' },
   { id: 'atriums', name: 'Atriums', color: '#b8a888', description: 'The two interior courtyards.' },
-  { id: 'interiors', name: 'Interiors', color: '#9a8a72', description: 'Gallery of Honour and library.' },
+  { id: 'interiors', name: 'Interiors', color: '#9a8a72', description: 'Gallery of Honour, Night Watch hall, Great Hall and library.' },
+  { id: 'floors', name: 'Floor plates', color: '#b8a888', description: 'Floor plates marking the museum levels.' },
   { id: 'decoration', name: 'Decoration', color: '#8f8578', description: 'Sculptures, tile pictures and stained glass.' },
   { id: 'wings', name: 'Wings', color: '#7a8a7a', description: 'Philips wing, Asian pavilion and garden.' },
 ];
@@ -227,17 +278,23 @@ const explanations = {
   'stone bands': 'Stone bands around the building. Exact positions are schematic.',
   'passage': 'The vaulted public passage through the central axis. Exact dimensions are schematic.',
   'passage floor': 'The passage floor, used by cyclists and pedestrians. Exact finish is schematic.',
-  'central tower': 'The ornate central tower with belfry and spire. Exact height is schematic.',
+  'twin towers': 'The twin square towers flanking the central passage. Exact heights are schematic.',
+  'central roof spire': 'A slender spire rising above the central roof, seen behind the twin towers. Exact form and position are schematic.',
   'corner towers': 'The four corner towers. Exact heights are schematic.',
-  'tower clocks': 'Clock dials on the towers. Exact design is schematic.',
   'roof': 'The main roof. Exact form is schematic.',
   'decorative gables': 'Decorative gables on the south front. Exact forms are schematic.',
   'dormers': 'Dormers in the roof. Exact forms are schematic.',
   'chimneys': 'Chimneys. Exact forms are schematic.',
   'atrium courts': 'The two interior courtyards. Exact layouts are schematic.',
   'atrium colonnades': 'Colonnades around the atriums. Exact forms are schematic.',
-  'gallery of honour': 'The Gallery of Honour on the first floor, the museum\u2019s ceremonial spine. Exact layout is schematic.',
+  'gallery of honour': 'The Gallery of Honour on the second floor, the museum\u2019s ceremonial spine. Exact layout is schematic.',
+  'night watch hall': 'The hall built for Rembrandt\u2019s Night Watch at the end of the Gallery of Honour, rebuilt in 1906. Its position is schematic.',
+  'great hall': 'The Great Hall (Voorhal), the ceremonial entrance to the Gallery of Honour on the second floor. Its position is schematic.',
   'library': 'The library wing with its tower. Exact form is schematic.',
+  'first floor slab': 'A floor plate marking the first floor level (1700-1900 galleries). Exact position is schematic.',
+  'second floor slab': 'A floor plate marking the second floor level (1600-1700 galleries). Exact position is schematic.',
+  'third floor slab': 'A floor plate marking the third floor level (1900-2000 galleries). Exact position is schematic.',
+  'skylights': 'Skylights over the Gallery of Honour and the atriums. Exact positions are schematic.',
   'facade decoration': 'Sculptures and tile pictures in Cuypers\u2019 decorative programme. Exact figures are schematic.',
   'stained glass': 'Stained glass windows. Exact designs are schematic.',
   'philips wing': 'The Philips wing, the fragment building. Exact form is schematic.',
@@ -258,6 +315,9 @@ for (const p of parts) {
   );
   if (!merged) throw new Error(`Could not merge ${p.id}`);
   merged.computeVertexNormals();
+  // Floor id from the part base height in metres, before scaling.
+  merged.computeBoundingBox();
+  const floor = p.floor || floorForBaseY(merged.boundingBox.min.y);
   merged.scale(S, S, S);
   merged.computeBoundingBox();
   const pos = merged.attributes.position.array;
@@ -278,6 +338,7 @@ for (const p of parts) {
   const bb = merged.boundingBox;
   records.push({
     part: p,
+    floor,
     pos: Buffer.from(pos.buffer, pos.byteOffset, pos.byteLength),
     nor: Buffer.from(n16.buffer, n16.byteOffset, n16.byteLength),
     idx: Buffer.from(u32.buffer, u32.byteOffset, u32.byteLength),
@@ -317,17 +378,20 @@ const atlas = {
   scope: 'Rijksmuseum, Amsterdam (simplified schematic)',
   title: 'Rijksmuseum',
   location: 'Amsterdam, Netherlands',
-  blurb: 'Pierre Cuypers\u2019s 1885 national museum in simplified schematic form: red brick facades, central passage, towers and the Gallery of Honour.',
+  blurb: 'Pierre Cuypers\u2019s 1885 national museum in simplified schematic form: red brick facades, central passage, twin towers and the Gallery of Honour on the second floor.',
   sourceUrls: [
     { label: 'Wikipedia: Rijksmuseum', url: 'https://en.wikipedia.org/wiki/Rijksmuseum' },
+    { label: 'Rijksmuseum', url: 'https://www.rijksmuseum.nl/en' },
   ],
   systems,
+  floors: FLOORS,
   explanations,
   parts: records.map((r) => ({
     id: r.part.id,
     name: r.part.name,
     conceptId: r.part.id,
     system: r.part.system,
+    floor: r.floor,
     chunk: 0,
     color: colorFor(r.part.id),
     positions: r.posOff,
