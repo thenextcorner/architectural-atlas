@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-11-04": {
@@ -37,9 +37,12 @@
       ]
     },
     "2026-11-12": {
-      "label": "Pink",
+      "label": "Rotation of Red, Yellow, Green and Blue",
       "colors": [
-        "#ff6fae"
+        "#e63946",
+        "#ffd23f",
+        "#35b26f",
+        "#2b6cff"
       ]
     },
     "2026-11-19": {

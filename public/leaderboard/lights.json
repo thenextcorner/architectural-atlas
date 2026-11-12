@@ -1,10 +1,11 @@
 {
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "esb": {
-    "label": "Red, White, and Blue",
+    "label": "Rotation of Red, Yellow, Green and Blue",
     "colors": [
       "#e63946",
-      "#f5f1e6",
+      "#ffd23f",
+      "#35b26f",
       "#2b6cff"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202611"
