@@ -189,7 +189,7 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .tour-card-head{display:flex;gap:10px;align-items:baseline;font-size:12px;color:#687786;margin-bottom:6px}
 .tour-card-head span:last-child{font-size:15px;font-weight:600;color:#26313c}
 .tour-card p{font-size:14px;line-height:1.6;color:#3a424c;margin:0}
-.floors-panel{position:absolute;right:30px;top:94px;width:350px;max-height:calc(100dvh - 300px);border-radius:6px;padding:12px 18px 16px;z-index:20;display:flex;flex-direction:column}
+.floors-panel{position:absolute;right:30px;top:94px;width:350px;max-height:calc(100dvh - 260px);border-radius:6px;padding:12px 18px 16px;z-index:20;display:flex;flex-direction:column}
 .floor-list{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b9c1c8 transparent}
 .floor-row{display:block;width:100%;text-align:left;padding:12px 4px;border-bottom:1px solid #18253612}
 .floor-row:last-child{border-bottom:0}
@@ -202,14 +202,6 @@ h1 .edition{font-family:inherit;font-weight:500;font-size:10px;letter-spacing:.0
 .floor-label[hidden]{display:none}
 .pilot .scene-caption{bottom:252px}
 body:has(.detail-sheet) .floors-panel{display:none}
-.leader-layer{position:absolute;inset:0;pointer-events:none;z-index:10;overflow:hidden}
-.leader-layer svg{display:block;width:100%;height:100%}
-.leader-layer path{fill:none;stroke:#4d5f70;stroke-width:1.5;opacity:.9}
-.leader-layer .leader-halo{fill:none;stroke:#ffffff;stroke-width:4.5;opacity:.75}
-.leader-layer circle{fill:#4d5f70;opacity:.95}
-.poster-stage .leader-layer path{stroke:#e8f0f5;stroke-width:1.5;opacity:1}
-.poster-stage .leader-layer .leader-halo{stroke:#101820;stroke-width:5;opacity:.85}
-.poster-stage .leader-layer circle{fill:#e8f0f5;opacity:1}
 .poster-stage .vignette{background:radial-gradient(ellipse at 51% 43%,transparent 35%,#0d1420b3 100%)}
 .poster-stage .identity h1{color:#eef3f6}
 .poster-stage .identity-meta{color:#aebcc8}

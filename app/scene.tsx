@@ -14,7 +14,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
  latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
-  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false,lastDiscs=false;
+  const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false,lastDiscs=false,lastPlinth=false,lastShadow=false;
   let lastState:SceneState|null=null;
   const abort=new AbortController();
   let renderer:T.WebGLRenderer;
@@ -105,19 +105,9 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // of each layer at its lifted height.
   const floorLabelLayer=document.createElement('div');floorLabelLayer.className='floor-label-layer';el.appendChild(floorLabelLayer);
   const floorLabels=COLOSSEUM_LAYERS.map(l=>{const d=document.createElement('div');d.className='floor-label';d.textContent=l.label;d.hidden=true;floorLabelLayer.appendChild(d);return d;});
-  // Poster pilot: leader lines in Floors mode, from each layer in the 3D
-  // scene to its row in the Floors panel. Desktop only. The panel sits on
-  // the right and its rows are listed top layer first, the same order as
-  // the layers in the render, so the lines run from each layer's right
-  // edge straight to its own row and never cross. A halo under-stroke
-  // keeps each line readable where it crosses pale stone.
-  const leaderLayer=document.createElement('div');leaderLayer.className='leader-layer';el.appendChild(leaderLayer);
-  const leaderSvg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-  leaderSvg.setAttribute('width','100%');leaderSvg.setAttribute('height','100%');
-  leaderLayer.appendChild(leaderSvg);
-  const leaderHalos=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','path');l.setAttribute('class','leader-halo');leaderSvg.appendChild(l);return l;});
-  const leaderLines=COLOSSEUM_LAYERS.map(()=>{const l=document.createElementNS('http://www.w3.org/2000/svg','path');leaderSvg.appendChild(l);return l;});
-  const leaderDots=COLOSSEUM_LAYERS.map(()=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('r','3.5');leaderSvg.appendChild(c);return c;});
+  // Round 4: the leader lines are gone. The floor labels on the model
+  // (above) are the layer names now; the lines' dots floated in mid-air
+  // in every re-test, and the lines ran off the bottom of the panel.
   // Poster pilot: schematic scale figures on the arena floor, off by
   // default. The arena sand surface sits at sandTop; the figures stand on
   // it, not on the model's origin, so they are never buried inside the
@@ -133,25 +123,29 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    g.position.set(fx,0,fz);figures.add(g);
   });
   figures.visible=false;scene.add(figures);
-  // Poster pilot: one soft shadow disc glued just under each lifted
-  // layer, so every floating layer casts its own shadow instead of the
-  // whole stack reading as a single soft ellipse on the platform. The
-  // discs ride their layer's lift, show in the poster stage only, and are
-  // hidden for the inset captures.
+  // Round 4: one soft contact shadow on the top of the layer below each
+  // lifted layer, so every floating layer casts a shadow you can see from
+  // the default camera. The old discs hung just under their own layer,
+  // edge-on to the camera and mostly hidden behind the layer below, so
+  // they never read. A shadow on the surface below reads from above: the
+  // disc is the caster's footprint, clamped to the receiver's top, and
+  // rides the receiver's lift. The discs show in Floors mode, live and
+  // in the poster stage, and are hidden for the inset captures.
   const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgba(255,255,255,0.95)');grad.addColorStop(0.7,'rgba(255,255,255,0.85)');grad.addColorStop(0.9,'rgba(255,255,255,0.45)');grad.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
-  const layerBottoms=COLOSSEUM_LAYERS.map((_,li)=>{let bot=Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)bot=Math.min(bot,p.bounds[0][1]);});return bot===Infinity?modelCenter.y:bot;});
   const layerFoot=COLOSSEUM_LAYERS.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
-  const layerDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
+  const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
+  const contactDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
    const d=new T.Mesh(new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:0.5,alphaMap:shadowTex,depthWrite:false}));
    d.rotation.x=-Math.PI/2;
-   // The disc is a little wider than its layer, so the shadow spills past
-   // the edge instead of ending exactly at it. The bottom layer is not
-   // lifted: its disc is a contact halo on the platform, just wider than
-   // the terrace, at the terrace base.
-   const spread=li===0?1.06:1.1;
-   d.scale.set(layerFoot[li].x*spread,layerFoot[li].z*spread,1);d.renderOrder=3;d.visible=false;scene.add(d);return d;
+   // The bottom layer is not lifted: its disc is a contact halo on the
+   // platform, just wider than the terrace, at the terrace base. A lifted
+   // layer's disc is its own footprint, clamped to the top it lands on,
+   // so it never overhangs the receiver's edge and floats in the air.
+   const rx=li===0?layerFoot[0].x:Math.min(layerFoot[li].x,layerFoot[li-1].x);
+   const rz=li===0?layerFoot[0].z:Math.min(layerFoot[li].z,layerFoot[li-1].z);
+   const spread=li===0?1.06:1.03;
+   d.scale.set(rx*spread,rz*spread,1);d.renderOrder=3;d.visible=false;scene.add(d);return d;
   });
-  const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
   type Target={index:number;x:number;y:number;left:number;right:number;top:number;bottom:number};let targets:Target[]=[];
   const projected=new T.Vector3();
   const findTarget=(x:number,y:number,radius:number)=>{
@@ -224,11 +218,13 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    const direction=view==='front'?new T.Vector3(0,.02,1):view==='back'?new T.Vector3(0,.02,-1):view==='side'?new T.Vector3(1,.02,0):new T.Vector3(.35,.06,1).normalize();
    // In Floors mode the stack rises as it separates; aim at the lifted
    // stack's centre, not the assembled model's, or the top layer (the
-   // velarium netting) is cropped by the top edge of the viewport. Aim a
-   // little below the centre, so the stack sits higher in the frame and
-   // its lowest layer clears the caption above the dock.
+   // velarium netting) is cropped by the top edge of the viewport. Aim
+   // well below the centre, so the stack sits higher in the frame and
+   // its lowest layer, the hypogeum slab, plus the plinth's front edge
+   // clear the caption above the dock. The old offset (0.08) left the
+   // caption sitting on the hypogeum grid.
    const liftCenter=(latest.current.mode==='floors')?FLOOR_GAP*(COLOSSEUM_LAYERS.length-1)*amount/2:0;
-   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.08:0);
+   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.28:0);
    controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,targetY,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
@@ -243,32 +239,20 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    if(found<0&&amount>.45)found=findTarget(e.clientX-rect.left,e.clientY-rect.top,e.pointerType==='touch'?24:16);if(found>=0){hover.hidden=true;select.current(atlas.parts[found].id);}
   };
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',cancel);
-  // Leader-line anchors: for each layer, the screen position of the
-  // layer's rightmost visible point, so the dot sits ON its layer. Uses
-  // the actual part corners (with their current lift offsets), not the
-  // model's bounding box: each layer is narrower than the whole model,
-  // and the model is not centred on the camera axis, so a box edge puts
-  // the dot in empty space beside the model. The dot is pulled a few
-  // pixels inside the silhouette so it lands on stone, not on the edge.
-  // Used by the live leader lines and by the poster capture, so both agree.
-  const layerAnchors=():({x:number;y:number}|null)[]=>{
-   const out:({x:number;y:number}|null)[]=[];
-   for(let li=0;li<COLOSSEUM_LAYERS.length;li++){
-    let bestX=-Infinity,bestY=0;
-    for(let i=0;i<atlas.parts.length;i++){
-     const p=atlas.parts[i];
-     if(colosseumLayer(p)!==li||data[i*4+3]<.5)continue;
-     const b=bounds[i];
-     for(let c=0;c<8;c++){
-      projected.set((c&1?b.max.x:b.min.x)+data[i*4],(c&2?b.max.y:b.min.y)+data[i*4+1],(c&4?b.max.z:b.min.z)+data[i*4+2]).project(camera);
-      if(projected.z<-1||projected.z>1)continue;
-      const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;
-      if(x>bestX){bestX=x;bestY=y;}
-     }
-    }
-    out.push(bestX===-Infinity?null:{x:bestX-12,y:bestY+4});
-   }
-   return out;
+  // Round 4: the floor-label anchor, shared by the live labels and the
+  // poster capture so both agree. One anchor per layer: the layer's own
+  // left edge at its lifted height, the same projection the hotspot dots
+  // use. The label is centred on the anchor, so half of it sits on the
+  // stone. The anchor is the LAYER's edge, not the model's: the arena
+  // disc is narrower than the facade, so a model-edge anchor left its
+  // label floating in empty space. This replaces layerAnchors, whose
+  // right-edge points the leader dots were drawn on, floating in mid-air.
+  const layerLabelPoints=():({x:number;y:number}|null)[]=>{
+   return COLOSSEUM_LAYERS.map((_,li)=>{
+    projected.set(-layerFoot[li].x-0.08,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
+    if(projected.z<-1||projected.z>1)return null;
+    return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
+   });
   };
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
@@ -279,17 +263,32 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    if(posterOn!==lastPoster){
     lastPoster=posterOn;
     renderer.setClearColor(posterOn?'#1e2936':darkStage?'#33393f':'#f2f3f3');
-    key.color.set(posterOn?0xffe3b8:0xfffaf4);key.intensity=posterOn?2.6:2.3;key.castShadow=posterOn;
+    key.color.set(posterOn?0xffe3b8:0xfffaf4);key.intensity=posterOn?2.6:2.3;
     (ground.material as T.MeshStandardMaterial).color.set(posterOn?0x202a36:darkStage?0x454e55:0xd5d9dc);
     (platform.material as T.MeshStandardMaterial).color.set(posterOn?0x33404f:0xeeeeec);
-    // Poster stage: the plinth shrinks to a platform just wider than the
-    // model, instead of a stage floor spanning the view. The ground disc
-    // keeps only a hair of rim past the platform edge.
-    ground.scale.set(posterOn?0.78:1,posterOn?0.78:1,1);
-    platform.scale.set(posterOn?0.88:1,1,posterOn?0.88:1);
-    ring.scale.set(posterOn?0.88:1,posterOn?0.88:1,1);
-    innerRing.scale.set(posterOn?0.88:1,posterOn?0.88:1,1);
     stoneNoise.value=posterOn?1:0;
+    dirty=true;
+   }
+   // Round 4: the plinth is a platform just wider than the model in
+   // Floors mode as well as in the poster stage. In the live view it was
+   // a stage floor spanning the view, about 30 percent wider than the
+   // facade, with its front edge under the dock.
+   const smallPlinth=posterOn||(s.mode??'explode')==='floors';
+   if(smallPlinth!==lastPlinth){
+    lastPlinth=smallPlinth;
+    ground.scale.set(smallPlinth?0.78:1,smallPlinth?0.78:1,1);
+    platform.scale.set(smallPlinth?0.88:1,1,smallPlinth?0.88:1);
+    ring.scale.set(smallPlinth?0.88:1,smallPlinth?0.88:1,1);
+    innerRing.scale.set(smallPlinth?0.88:1,smallPlinth?0.88:1,1);
+    dirty=true;
+   }
+   // Round 4: the key light casts shadows in Floors mode too, so each
+   // lifted layer shades the one below it. The poster stage already had
+   // this; the live view did not, so the stack read as flat.
+   const wantShadow=posterOn||((s.mode??'explode')==='floors'&&amount>.05);
+   if(wantShadow!==lastShadow){
+    lastShadow=wantShadow;
+    key.castShadow=wantShadow;
     dirty=true;
    }
    const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate;
@@ -368,9 +367,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    figures.visible=showFigures;
    if(showFigures)figures.position.y=sandTop+((s.mode??'explode')==='floors'?FLOOR_GAP*amount:0);
    if(showFigures!==lastScaleFigures){lastScaleFigures=showFigures;dirty=true;}
-   // Per-layer shadow discs ride their layer's lift in the poster stage.
-   const showDiscs=!!s.poster&&ready&&!s.isolate&&(s.mode??'explode')==='floors'&&amount>.05;
-   layerDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:layerBottoms[li]+li*FLOOR_GAP*amount-0.012;});
+   // Round 4: contact shadows ride the receiver layer's lift, in Floors
+   // mode live and in the poster stage. The bottom layer's disc is a
+   // contact halo on the platform.
+   const showDiscs=ready&&!s.isolate&&(s.mode??'explode')==='floors'&&amount>.05;
+   contactDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:layerTops[li-1]+(li-1)*FLOOR_GAP*amount+0.004;});
    if(showDiscs!==lastDiscs){lastDiscs=showDiscs;dirty=true;}
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
    // Story hotspots follow their part (assembled or exploded).
@@ -384,56 +385,22 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     dot.style.transform=`translate(${((projected.x+1)*el.clientWidth/2).toFixed(1)}px,${((1-projected.y)*el.clientHeight/2).toFixed(1)}px)`;
    });
    // Colosseum pilot: floor labels ride their layer as it separates.
+   // Round 4: the labels ARE the layer names now. The leader lines to
+   // the Floors panel rows are gone: their dots floated in mid-air in
+   // every re-test, the lines ran off the bottom of the panel, and the
+   // row margins the lines needed pushed the Hypogeum row below the fold.
    if((s.mode??'explode')==='floors'&&ready&&amount>.05){
+    const points=layerLabelPoints();
     COLOSSEUM_LAYERS.forEach((_,li)=>{
      const lab=floorLabels[li];
      const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
-     if(!anyVisible){lab.hidden=true;return;}
-     projected.set(-(modelSize.x/2)-.25,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
-     if(projected.z<-1||projected.z>1){lab.hidden=true;return;}
+     const pt=points[li];
+     if(!anyVisible||!pt){lab.hidden=true;return;}
      lab.hidden=false;
-     lab.style.left=`${((projected.x+1)*el.clientWidth/2).toFixed(1)}px`;
-     lab.style.top=`${((1-projected.y)*el.clientHeight/2).toFixed(1)}px`;
+     lab.style.left=`${pt.x.toFixed(1)}px`;
+     lab.style.top=`${pt.y.toFixed(1)}px`;
     });
-    // Poster pilot: leader lines from each layer to its Floors panel row.
-    // Each line is an elbow: out from its layer's right edge, then along
-    // a staggered vertical bus just left of the panel, then into its row.
-    // The panel rows are listed top layer first, the same order as the
-    // layers in the render. A row is kept below the anchor of the layer
-    // above it: a margin on the row, sized from the live anchor, pushes
-    // it down when it would otherwise sit above that anchor, because
-    // then the two elbows must cross. With every row clear of the anchor
-    // above it, the elbows never cross. A halo under each line keeps it
-    // readable where it crosses pale stone.
-    const desktop=el.clientWidth>=768;
-    const anchors=layerAnchors();
-    // Rows are processed top layer first, so a margin on an upper row is
-    // already in the rects of the rows below it.
-    [...COLOSSEUM_LAYERS.keys()].reverse().forEach(li=>{
-     const lineEl=leaderLines[li],dotEl=leaderDots[li],haloEl=leaderHalos[li];
-     const row=document.querySelector(`.floor-row[data-layer="${li}"]`) as HTMLElement|null;
-     const a=anchors[li];
-     if(!desktop||!row||row.offsetParent===null||!a){lineEl.style.display='none';dotEl.style.display='none';haloEl.style.display='none';return;}
-     const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
-     if(!anyVisible){lineEl.style.display='none';dotEl.style.display='none';haloEl.style.display='none';return;}
-     const hr=row.getBoundingClientRect(),er=el.getBoundingClientRect();
-     // The row's centre without the margin this code put on it, so the
-     // needed push is stable from frame to frame.
-     const ownMargin=parseFloat(row.style.marginTop)||0;
-     const naturalCenter=hr.top-er.top+hr.height/2-ownMargin;
-     const above=li<3?anchors[li+1]:null;
-     const clearance=14;
-     let margin=0;
-     if(above&&naturalCenter<above.y+clearance)margin=above.y+clearance-naturalCenter;
-     row.style.marginTop=margin>0?`${margin.toFixed(1)}px`:'';
-     const ax=a.x,ay=a.y;
-     const bx=hr.left-er.left-8,by=naturalCenter+margin;
-     const busX=er.width-404+(3-li)*6;
-     const path=`M ${ax.toFixed(1)} ${ay.toFixed(1)} H ${busX.toFixed(1)} V ${by.toFixed(1)} H ${bx.toFixed(1)}`;
-     lineEl.setAttribute('d',path);haloEl.setAttribute('d',path);
-     lineEl.style.display='';haloEl.style.display='';dotEl.setAttribute('cx',ax.toFixed(1));dotEl.setAttribute('cy',ay.toFixed(1));dotEl.style.display='';
-    });
-   }else{floorLabels.forEach(lab=>{lab.hidden=true;});leaderLines.forEach(l=>{l.style.display='none';});leaderDots.forEach(d=>{d.style.display='none';});leaderHalos.forEach(l=>{l.style.display='none';});}
+   }else{floorLabels.forEach(lab=>{lab.hidden=true;});}
    dirty=false;}
 
   // Poster pilot: render the current view plus the three poster insets from
@@ -448,14 +415,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // they read as dust in a still poster, so hide them for all captures.
     const savedMarkersVisible=markers.visible,savedFiguresVisible=figures.visible;
     markers.visible=false;figures.visible=false;
-    // The layer shadow discs stay visible for the main capture: they are
-    // part of the poster, not live-view helpers. They are hidden below,
+    // The layer contact shadows stay visible for the main capture: they
+    // are part of the poster, not live-view helpers. They are hidden below,
     // before the inset renders, so the plan, section and facade stay clean.
     renderNow();
     const main=renderer.domElement.toDataURL('image/png');
-    const anchors=layerAnchors();
-    const savedDiscsVisible=layerDiscs.map(d=>d?d.visible:false);
-    layerDiscs.forEach(d=>{if(d)d.visible=false;});
+    const labelAnchors=layerLabelPoints();
+    const savedDiscsVisible=contactDiscs.map(d=>d?d.visible:false);
+    contactDiscs.forEach(d=>{if(d)d.visible=false;});
     const savedPos=camera.position.clone(),savedTarget=controls.target.clone();
     const savedData=data.slice();
     const zeroOffsets=()=>{atlas.parts.forEach((p,i)=>{data[i*4]=0;data[i*4+1]=0;data[i*4+2]=0;});partTexture.needsUpdate=true;};
@@ -503,14 +470,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     camera.position.copy(fcenter).addScaledVector(fdir,0.9);controls.target.copy(fcenter);controls.update();renderNow();
     const facade=renderer.domElement.toDataURL('image/png');
     camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();
-    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;layerDiscs.forEach((d,i)=>{if(d)d.visible=savedDiscsVisible[i];});
+    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;contactDiscs.forEach((d,i)=>{if(d)d.visible=savedDiscsVisible[i];});
     fit(latest.current.view,amount);renderNow();dirty=true;
-    return {main,plan,section,facade,anchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
+    return {main,plan,section,facade,labelAnchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
    };
   }
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();leaderLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }

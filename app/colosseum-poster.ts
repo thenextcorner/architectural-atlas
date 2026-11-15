@@ -9,7 +9,9 @@ export interface PosterCapture {
   plan: string;
   section: string;
   facade: string;
-  anchors: ({x: number; y: number} | null)[];
+  /** One anchor per layer: the left edge of the layer at its lifted
+   * height, the same point the live floor labels sit on. */
+  labelAnchors: ({x: number; y: number} | null)[];
   viewWidth: number;
   viewHeight: number;
 }
@@ -114,7 +116,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
  * contain fit instead so the whole render stays visible. Pass cover to
  * force cover fit: for the section inset, the discarded top and bottom
  * are empty backdrop, so cropping them is what makes the cutaway fill
- * its box. Returns the placed image rect, so layer anchors can be mapped
+ * its box. Returns the placed image rect, so label anchors can be mapped
  * into poster space. */
 function drawFit(
   ctx: CanvasRenderingContext2D,
@@ -188,6 +190,33 @@ export async function composePoster(
   const mainRect = {x: 48, y: 280, w: 1104, h: 600};
   const fit = drawFit(ctx, mainImg, mainRect.x, mainRect.y, mainRect.w, mainRect.h);
 
+  // Round 4: layer names on the model. The leader lines are gone: their
+  // dots floated in mid-air in every re-test. Each name is a dark chip
+  // centred on its layer's left edge at its lifted height, the same
+  // anchor the live floor labels use, mapped into poster space. The
+  // right-column callouts stay as text blocks and need no lines now.
+  ctx.font = '700 15px "Helvetica Neue", Arial, sans-serif';
+  try { (ctx as CanvasRenderingContext2D & {letterSpacing: string}).letterSpacing = '2px'; } catch { /* older canvas: plain text */ }
+  layers.forEach((layer, li) => {
+    const a = capture.labelAnchors[li];
+    if (!a) return;
+    const ax = fit.dx + (a.x / capture.viewWidth) * mainImg.width * fit.scale;
+    const ay = fit.dy + (a.y / capture.viewHeight) * mainImg.height * fit.scale;
+    const text = layer.name.toUpperCase();
+    const tw = ctx.measureText(text).width;
+    const pw = tw + 26;
+    const ph = 32;
+    const px = ax - pw / 2;
+    const py = ay - ph / 2;
+    ctx.fillStyle = 'rgba(13, 20, 28, 0.88)';
+    ctx.beginPath();
+    ctx.roundRect(px, py, pw, ph, 16);
+    ctx.fill();
+    ctx.fillStyle = '#e8f0f5';
+    ctx.fillText(text, ax - tw / 2, ay + 5);
+  });
+  try { (ctx as CanvasRenderingContext2D & {letterSpacing: string}).letterSpacing = '0px'; } catch { /* older canvas */ }
+
   // Header: title, subtitle, intro.
   const lx = 48;
   ctx.fillStyle = ink;
@@ -222,19 +251,15 @@ export async function composePoster(
     ctx.fillText(f.value, cx, bandY + 40);
   });
 
-  // Right column: layer callouts with leader lines to the render. Listed
-  // top layer first, the same order as the layers appear in the render,
-  // so the lines never cross. Each line is an elbow: out from its layer
-  // anchor, then along a staggered vertical bus just right of the render,
-  // then into its callout row. A dark under-stroke keeps the line
-  // readable where it crosses pale stone.
+  // Right column: layer callouts. The layer names sit on the model
+  // itself now (the chips above), so the callouts need no leader lines.
   const rx = 1184;
   ctx.font = '700 15px "Helvetica Neue", Arial, sans-serif';
   ctx.fillStyle = ink;
   ctx.fillText('LAYERS', rx, 64);
   let cy = 96;
   const displayOrder = layers.map((_, i) => i).reverse();
-  displayOrder.forEach((li, j) => {
+  displayOrder.forEach((li) => {
     const layer = layers[li];
     const text = shortCallout(layer.text);
     ctx.fillStyle = ink;
@@ -244,35 +269,6 @@ export async function composePoster(
     ctx.fillStyle = muted;
     const textLines = wrapText(ctx, text, 368);
     textLines.forEach((l, k) => ctx.fillText(l, rx, cy + 22 + k * 19));
-    // Leader line from the callout to its layer anchor in the render.
-    const a = capture.anchors[li];
-    if (a) {
-      const ax = fit.dx + (a.x / capture.viewWidth) * mainImg.width * fit.scale;
-      const ay = fit.dy + (a.y / capture.viewHeight) * mainImg.height * fit.scale;
-      const rowY = cy - 4;
-      const busX = 1156 + j * 6;
-      const ex = rx - 10;
-      ctx.strokeStyle = 'rgba(16, 24, 32, 0.85)';
-      ctx.lineWidth = 5;
-      ctx.beginPath();
-      ctx.moveTo(ax, ay);
-      ctx.lineTo(busX, ay);
-      ctx.lineTo(busX, rowY);
-      ctx.lineTo(ex, rowY);
-      ctx.stroke();
-      ctx.strokeStyle = 'rgba(200, 212, 222, 0.9)';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(ax, ay);
-      ctx.lineTo(busX, ay);
-      ctx.lineTo(busX, rowY);
-      ctx.lineTo(ex, rowY);
-      ctx.stroke();
-      ctx.fillStyle = '#c8d4de';
-      ctx.beginPath();
-      ctx.arc(ax, ay, 3.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
     cy += 22 + textLines.length * 19 + 14;
   });
 
