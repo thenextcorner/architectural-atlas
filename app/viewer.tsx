@@ -136,8 +136,14 @@ export default function Viewer({slug}:{slug:string}){
   setPosterStage(next);
   setPosterStatus('');
   if(next&&!tour){
+   // Round 6: keep the user's separation. Turning the stage on reset
+   // the slider to 85 percent even when the stack was at 100. The
+   // mode switch below resets the separation to 0 first, so the
+   // current value is read here, before it is lost. No separation
+   // chosen yet (0) still jumps to the poster's 85.
+   const keep=state.explode>0?state.explode:0.85;
    if(mode!=='floors')enterMode('floors');
-   setState(s=>({...s,explode:0.85,selected:[],isolate:false,rotate:false}));
+   setState(s=>({...s,explode:keep,selected:[],isolate:false,rotate:false}));
   }
  };
  // Colosseum Poster pilot: compose the live Floors view into a poster PNG

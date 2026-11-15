@@ -138,7 +138,21 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // disc is the caster's footprint, clamped to the receiver's top, and
   // rides the receiver's lift. The discs show in Floors mode, live and
   // in the poster stage, and are hidden for the inset captures.
-  const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgba(255,255,255,0.95)');grad.addColorStop(0.7,'rgba(255,255,255,0.85)');grad.addColorStop(0.9,'rgba(255,255,255,0.45)');grad.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
+  // Round 6: the gradient must vary LUMINANCE, not alpha. The old stops
+  // were white with a fading alpha, but an alphaMap reads the texture's
+  // green channel, which was 255 everywhere, so every disc rendered as
+  // a hard-edged uniform disc instead of a soft shadow. White centre to
+  // black edge gives the alphaMap the falloff it was meant to have.
+  const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgb(242,242,242)');grad.addColorStop(0.7,'rgb(217,217,217)');grad.addColorStop(0.9,'rgb(115,115,115)');grad.addColorStop(1,'rgb(0,0,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
+  // Round 6: the seating shadow is a ring, not a disc. A full disc
+  // darkens the whole arena floor evenly, so the floor just reads as a
+  // darker olive-tan with no band to see. The seating tier is a ring,
+  // so its shadow is a ring: the annulus under the seating is dark
+  // while the sand in the middle stays lit, and the light/dark edge
+  // is what the eye reads as a shadow band. The ring's alphaMap is
+  // dark across the ring's span and fades at both edges, so the band
+  // has soft edges instead of a hard outline.
+  const shadowRingTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgb(0,0,0)');grad.addColorStop(0.45,'rgb(0,0,0)');grad.addColorStop(0.58,'rgb(235,235,235)');grad.addColorStop(0.88,'rgb(235,235,235)');grad.addColorStop(1,'rgb(0,0,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
   const layerFoot=COLOSSEUM_LAYERS.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
   const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
   // Round 5: a contact shadow must sit ON the surface below its layer.
@@ -148,9 +162,22 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // floated above the sand (the arena top is the box canopy). The
   // receiver surfaces are the pavement and the sand; the seating top is
   // already the bowl's rim, so it stays.
-  const receiverTop=[pavementTop,sandTop,layerTops[2]];
+  // Round 6: the seating shadow's receiver is NOT the sand. The probe
+  // showed the sand is buried: the arena floor you see is the white
+  // podium ring's top (seating #EDEDED), a solid disc over the gold
+  // sand, and a shadow at sand level hides under it, showing only as a
+  // thin sliver at the disc's front edge. The receiver is the top of
+  // the arena floor itself: the highest top among the arena layer's
+  // wide flat parts (podium ring, marble passage, arena wall, and in
+  // Detailed the bronze balustrade). The fence, gates and boxes are
+  // vertical elements that rise through the shadow, which is correct.
+  const arenaFloorTop=Math.max(0,...atlas.parts.filter(p=>{if(colosseumLayer(p)!==1)return false;const b=p.bounds;return Math.max(Math.abs(b[0][0]),Math.abs(b[1][0]))>0.5&&Math.max(Math.abs(b[0][2]),Math.abs(b[1][2]))>0.3;}).map(p=>p.bounds[1][1]));
+  const receiverTop=[pavementTop,arenaFloorTop,layerTops[2]];
   const contactDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
-   const d=new T.Mesh(new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:0.5,alphaMap:shadowTex,depthWrite:false}));
+   // The seating shadow (li 2) is a ring: see shadowRingTex above.
+   // The other layers keep their full discs.
+   const isSeatingShadow=li===2;
+   const d=new T.Mesh(isSeatingShadow?new T.RingGeometry(0.52,1,64):new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:isSeatingShadow?0.6:0.5,alphaMap:isSeatingShadow?shadowRingTex:shadowTex,depthWrite:false}));
    d.rotation.x=-Math.PI/2;
    // The bottom layer is not lifted: its disc is a contact halo on the
    // platform, just wider than the terrace, at the terrace base. A lifted
@@ -224,11 +251,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // sits 232px from the bottom, just above the tall pilot dock). Reserve
    // more bottom space here so the stack clears the caption.
    const floorsMode=latest.current.mode==='floors';
-   const reservedW=mobile?40:340,reservedH=mobile?350:(floorsMode?380:270);
+   const reservedW=mobile?40:340,reservedH=mobile?350:(floorsMode?430:270);
    const availW=Math.max(160,el.clientWidth-reservedW),availH=Math.max(160,el.clientHeight-reservedH);
    const fitDistance=Math.max(modelSize.y,modelSize.x/(availW/availH),modelSize.z)/(2*Math.tan(halfFov));
    const normalDistance=Math.max(mobile?4.5:2.5,fitDistance*1.3);
-   const reservedHeight=mobile?350:(floorsMode?380:270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
+   const reservedHeight=mobile?350:(floorsMode?430:270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
    // Round 5: in Floors mode the camera looks down at the stack from
    // above, so each layer's top surface reads, including the arena sand
@@ -244,8 +271,17 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // its lowest layer, the hypogeum slab, plus the plinth's front edge
    // clear the caption above the dock. The old offset (0.08) left the
    // caption sitting on the hypogeum grid.
+   // Round 6: the aim offset grows with the separation, because the
+   // stack grows with it. A fixed offset left the slab's bottom edge
+   // under the SEPARATED FLOORS pill at 85 and 100 percent: the pill
+   // sits on the slab's dark centre and brown ring instead of on empty
+   // backdrop. At full separation the stack sits about 60px higher
+   // than before the round, which clears the pill with room to spare
+   // while the attic stays below the top buttons. Calibrated from the
+   // renders: 0.18 of offset moves the stack about 27px at this
+   // distance, and the extra bottom reserve shrinks it a little more.
    const liftCenter=(latest.current.mode==='floors')?FLOOR_GAP*(COLOSSEUM_LAYERS.length-1)*amount/2:0;
-   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.28:0);
+   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.28+0.38*amount:0);
    controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,targetY,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
@@ -341,6 +377,18 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // awning (it was retractable) so the floor reads from above. The
     // sails return on the next stop.
     const focusIsSand=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/sand surface/i.test(q.name));
+    // Round 6: the hypogeum sits below the arena floor, so no camera
+    // angle can show it while the floor is in place: the floor is the
+    // only thing between the camera and the tunnels. The hypogeum stop
+    // lifts the floor (sand and planks) so the corridor, chambers,
+    // dens and shafts read from above, the way the arena floor stop
+    // retracts the awning. The floor returns on the next stop. The
+    // story text already says it: with the floor gone, the hypogeum
+    // stands exposed to the sky. The arena's edge structures (podium
+    // ring, arena wall, fence, balustrade) lift with it: they sit
+    // above the hypogeum and hide its outer grid behind a white ring,
+    // so the floor alone leaves only the corridor's middle visible.
+    const focusIsHypogeum=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/hypogeum central corridor/i.test(q.name));
     atlas.parts.forEach((p,i)=>{
      const c=centers[i],destination=offsets[i];let dx=0,dy=0,dz=0;
      if((s.mode??'explode')==='floors'){dy=colosseumLayer(p)*FLOOR_GAP*amount;}
@@ -356,7 +404,8 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      // fallen wall is a stop of its own.
      const floorsHidden=(s.mode??'explode')==='floors'&&(p.system==='ruin'||p.system==='materials');
      const sailsHidden=focusIsSand&&p.system==='velarium'&&/sail/i.test(p.name);
-     const shown=!floorsHidden&&!sailsHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
+     const floorHidden=focusIsHypogeum&&/sand surface|floor planks|podium ring|arena wall|arena fence|balustrade/i.test(p.name);
+     const shown=!floorsHidden&&!sailsHidden&&!floorHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
      const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
     });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
@@ -385,14 +434,35 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      // hides behind the tour card.
      const focusPart=atlas.parts.find(p=>f.ids.includes(p.id));
      const isSand=!!focusPart&&/sand surface/i.test(focusPart.name);
+     // Round 6: the elevated-framing trigger is the camera landing
+     // inside the model, and it must be judged on the single focus
+     // part, before the box is widened to the whole sand disc or the
+     // whole hypogeum below. Widening the box first inflates the
+     // standard distance, pushes the standard camera outside the
+     // model, and the trigger flips off: the hypogeum stop then framed
+     // from the low outside angle and showed the facade instead of
+     // the tunnels.
+     const singleCenter=box.getCenter(new T.Vector3()),singleSize=box.getSize(new T.Vector3());
+     const w=el.clientWidth,h=el.clientHeight,mobile=w<768;
+     const left=20,right=w-20,top=mobile?175:110,bottom=h-190;
+     const availableWidth=Math.max(150,right-left),availableHeight=Math.max(40,bottom-top);
+     const singleDistance=Math.max(.07,Math.max(singleSize.y*h/availableHeight,singleSize.x*w/availableWidth/camera.aspect,singleSize.z)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*1.35);
+     const singleStdPos=singleCenter.clone().addScaledVector(new T.Vector3(.2,.1,1).normalize(),singleDistance);
+     const insideModel=Math.hypot(singleStdPos.x,singleStdPos.z)<Math.max(modelSize.x,modelSize.z)/2;
      if(isSand){
       atlas.parts.forEach((p,i)=>{if(/sand surface/i.test(p.name))box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
      }
+     // Round 6: the hypogeum stop focuses one corridor, but the subject
+     // is the whole subterranean network: corridor, chambers, dens,
+     // shafts and ramps. Frame the full hypogeum, or the corridor alone
+     // is a thin line and the grid around it never reads. The floor is
+     // already lifted for this stop, so the network is exposed.
+     const isHypogeum=!!focusPart&&/hypogeum central corridor/i.test(focusPart.name);
+     if(isHypogeum){
+      atlas.parts.forEach((p,i)=>{if(p.system==='hypogeum')box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
+     }
      if(!box.isEmpty()){
       const center=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());
-      const w=el.clientWidth,h=el.clientHeight,mobile=w<768;
-      const left=20,right=w-20,top=mobile?175:110,bottom=h-190;
-      const availableWidth=Math.max(150,right-left),availableHeight=Math.max(40,bottom-top);
       const halfFov=T.MathUtils.degToRad(camera.fov/2);
       let distance=Math.max(.07,Math.max(size.y*h/availableHeight,size.x*w/availableWidth/camera.aspect,size.z)/(2*Math.tan(halfFov))*1.35);
       let dir=new T.Vector3(.2,.1,1).normalize();
@@ -407,13 +477,48 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
       // clears the 0.6 tall facade at radius 1.0. The sand disc keeps the
       // standard distance, which already fits it; other flat parts keep
       // the wider fit.
-      const flat=size.y<.05*Math.max(size.x,size.z);
-      const stdPos=center.clone().addScaledVector(dir,distance);
-      const insideModel=Math.hypot(stdPos.x,stdPos.z)<Math.max(modelSize.x,modelSize.z)/2;
-      if(flat&&(insideModel||isSand)){
-       dir=new T.Vector3(.35,.85,1).normalize();
-       if(!isSand){
-        const fit=Math.max(size.x*1.7*w/availableWidth/camera.aspect,size.z*1.7*h/availableHeight,size.y);
+      // insideModel is judged on the single focus part above, before
+      // the box was widened, so the trigger survives the widening.
+      // Round 6: a stop whose subject sits inside the building (the
+      // hypogeum below the floor, the imperial box in the bowl, the
+      // seating wedges behind the facade) frames from the standard low
+      // angle with the camera inside the structure, against a wall:
+      // the hypogeum was a flat tan wall, the box was white columns
+      // and a gold floor, the wedges were a beige blank. Frame those
+      // from higher up and wider, the same elevated framing that fixed
+      // the arena floor stop, so each subject reads with its
+      // surroundings. The old flat test was too strict: the corridor
+      // and the wedges are wide and low but not flat enough to trip
+      // it, and the box is small in every direction. The trigger is
+      // the camera landing inside the model. Stops 1, 6 and 7 frame
+      // from outside the model and keep the standard angle; the arena
+      // floor stop keeps its own fit and its steep angle.
+      // The interior stops use a lower elevation than the arena floor
+      // (about 33 degrees instead of 39): straight down into the bowl
+      // the seating fills the frame and a low subject like the
+      // hypogeum grid or the box reads as a flat field with no relief.
+      // A lower angle shows the subject's height against its
+      // surroundings. It must stay above about 28 degrees, or the
+      // facade wall hides the arena entirely: at 27 degrees the
+      // hypogeum stop showed the outside of the facade instead of the
+      // tunnels. The fit is closer too: the 1.2 minimum put the
+      // camera so far back that the box was a speck and the grid a
+      // blank, and the seating bowl filled the frame instead of
+      // framing the subject. The fit is clamped to the arena's own
+      // scale (0.9 to 1.2), so a tiny subject like the box is framed
+      // with its podium and arena around it instead of filling the
+      // frame alone, and a wide subject like the hypogeum network is
+      // not pushed so far back that its grid shrinks to a blank.
+      // Without the clamp the fit follows the subject's own size:
+      // the hypogeum's depth pushed the camera to 4.3 units and the
+      // box's smallness pulled it to 1.1, inside the seating.
+      if(insideModel||isSand){
+       if(isSand){
+        dir=new T.Vector3(.35,.85,1).normalize();
+       }else{
+        dir=new T.Vector3(.35,.7,1).normalize();
+        const rawFit=Math.max(size.x*1.3*w/availableWidth/camera.aspect,size.z*1.3*h/availableHeight,size.y);
+        const fit=Math.min(1.2,Math.max(0.9,rawFit));
         distance=Math.max(.07,fit/(2*Math.tan(halfFov))*1.35);
        }
       }
@@ -551,7 +656,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   }
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();shadowRingTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }
