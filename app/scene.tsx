@@ -114,6 +114,13 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // arena disc. Dark silhouettes only, no invented detail, drawn a little
   // larger than true scale so they read as people at poster distance.
   const sandTop=Math.max(0,...atlas.parts.filter(p=>/sand surface/i.test(p.name)).map(p=>p.bounds[1][1]));
+  // Round 5: the arena label and the two lower contact shadows anchor to
+  // the actual surfaces, not to the layer's tallest part. The sand
+  // surface's left edge is the arena disc's edge; the travertine
+  // pavement is the hypogeum slab's top. Both are computed from the
+  // model, so they hold on every variant that has them.
+  const sandHalf=Math.max(0,...atlas.parts.filter(p=>/sand surface/i.test(p.name)).map(p=>Math.max(Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]))));
+  const pavementTop=Math.max(0,...atlas.parts.filter(p=>/travertine pavement/i.test(p.name)).map(p=>p.bounds[1][1]));
   const figureMaterial=new T.MeshBasicMaterial({color:0x1a2027});
   const figures=new T.Group();
   [[0.32,0.1],[-0.28,0.08],[0.05,-0.22]].forEach(([fx,fz])=>{
@@ -134,6 +141,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgba(255,255,255,0.95)');grad.addColorStop(0.7,'rgba(255,255,255,0.85)');grad.addColorStop(0.9,'rgba(255,255,255,0.45)');grad.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
   const layerFoot=COLOSSEUM_LAYERS.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
   const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
+  // Round 5: a contact shadow must sit ON the surface below its layer.
+  // layerTops is the tallest part in the layer, not the surface below:
+  // the arena shadow floated above the pavement (the hypogeum top is
+  // the fallen wall, hidden in Floors mode) and the seating shadow
+  // floated above the sand (the arena top is the box canopy). The
+  // receiver surfaces are the pavement and the sand; the seating top is
+  // already the bowl's rim, so it stays.
+  const receiverTop=[pavementTop,sandTop,layerTops[2]];
   const contactDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
    const d=new T.Mesh(new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:0.5,alphaMap:shadowTex,depthWrite:false}));
    d.rotation.x=-Math.PI/2;
@@ -215,7 +230,13 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    const normalDistance=Math.max(mobile?4.5:2.5,fitDistance*1.3);
    const reservedHeight=mobile?350:(floorsMode?380:270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
-   const direction=view==='front'?new T.Vector3(0,.02,1):view==='back'?new T.Vector3(0,.02,-1):view==='side'?new T.Vector3(1,.02,0):new T.Vector3(.35,.06,1).normalize();
+   // Round 5: in Floors mode the camera looks down at the stack from
+   // above, so each layer's top surface reads, including the arena sand
+   // and the contact shadow on it. The standard near-level directions
+   // hide every layer top behind its own rim, so the seating shadow on
+   // the sand was invisible from the default view even though it sits
+   // on the surface. Explode mode keeps the standard directions.
+   const direction=(()=>{const liftY=floorsMode?0.3:0.02;return view==='front'?new T.Vector3(0,liftY,1):view==='back'?new T.Vector3(0,liftY,-1):view==='side'?new T.Vector3(1,liftY,0):new T.Vector3(.35,floorsMode?0.3:0.06,1).normalize();})();
    // In Floors mode the stack rises as it separates; aim at the lifted
    // stack's centre, not the assembled model's, or the top layer (the
    // velarium netting) is cropped by the top edge of the viewport. Aim
@@ -249,7 +270,17 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // right-edge points the leader dots were drawn on, floating in mid-air.
   const layerLabelPoints=():({x:number;y:number}|null)[]=>{
    return COLOSSEUM_LAYERS.map((_,li)=>{
-    projected.set(-layerFoot[li].x-0.08,layerTops[li]+li*FLOOR_GAP*amount,0).project(camera);
+    // Round 5: the arena label anchors to the arena disc itself, the
+    // sand surface's left edge at sand level. The layer-top anchor put
+    // it left of the disc and above the sand: the layer's top is the
+    // imperial box canopy, not the floor, and its widest part reaches
+    // past the disc. The chip is centred on the anchor, so it sits a
+    // little inside the edge and overlaps the stone. The other layers
+    // keep the layer-edge anchor, which the live test confirmed.
+    const arenaDisc=li===1&&sandHalf>0;
+    const ax=arenaDisc?-(sandHalf-0.03):-layerFoot[li].x-0.08;
+    const ay=arenaDisc?sandTop+li*FLOOR_GAP*amount:layerTops[li]+li*FLOOR_GAP*amount;
+    projected.set(ax,ay,0).project(camera);
     if(projected.z<-1||projected.z>1)return null;
     return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
    });
@@ -304,6 +335,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      layoutKey=nextLayoutKey;if(amount>.05&&!s.isolate)fit(s.view,Math.max(0,(amount-.3)/.7));}
 
     const systems=atlas.systems,systemCount=Math.max(1,systems.length);
+    // Round 5: the velarium sail panels form a flat canopy over the
+    // whole bowl at y 0.48 to 0.60, so any camera above them sees the
+    // canopy, not the arena floor. The arena floor stop retracts the
+    // awning (it was retractable) so the floor reads from above. The
+    // sails return on the next stop.
+    const focusIsSand=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/sand surface/i.test(q.name));
     atlas.parts.forEach((p,i)=>{
      const c=centers[i],destination=offsets[i];let dx=0,dy=0,dz=0;
      if((s.mode??'explode')==='floors'){dy=colosseumLayer(p)*FLOOR_GAP*amount;}
@@ -318,7 +355,8 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      // They remain visible in Explode mode and in the Tour, where the
      // fallen wall is a stop of its own.
      const floorsHidden=(s.mode??'explode')==='floors'&&(p.system==='ruin'||p.system==='materials');
-     const shown=!floorsHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
+     const sailsHidden=focusIsSand&&p.system==='velarium'&&/sail/i.test(p.name);
+     const shown=!floorsHidden&&!sailsHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
      const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
     });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
@@ -341,15 +379,47 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     if(f){
      const box=new T.Box3();
      atlas.parts.forEach((p,i)=>{if(f.ids.includes(p.id))box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
+     // Round 5: the arena floor stop focuses one sand quadrant, but the
+     // subject is the whole arena floor. Frame the full sand disc, or
+     // the quadrant sits at the frame edge and the rest of the floor
+     // hides behind the tour card.
+     const focusPart=atlas.parts.find(p=>f.ids.includes(p.id));
+     const isSand=!!focusPart&&/sand surface/i.test(focusPart.name);
+     if(isSand){
+      atlas.parts.forEach((p,i)=>{if(/sand surface/i.test(p.name))box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
+     }
      if(!box.isEmpty()){
       const center=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());
       const w=el.clientWidth,h=el.clientHeight,mobile=w<768;
       const left=20,right=w-20,top=mobile?175:110,bottom=h-190;
       const availableWidth=Math.max(150,right-left),availableHeight=Math.max(40,bottom-top);
-      const distance=Math.max(.07,Math.max(size.y*h/availableHeight,size.x*w/availableWidth/camera.aspect,size.z)/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*1.35);
+      const halfFov=T.MathUtils.degToRad(camera.fov/2);
+      let distance=Math.max(.07,Math.max(size.y*h/availableHeight,size.x*w/availableWidth/camera.aspect,size.z)/(2*Math.tan(halfFov))*1.35);
+      let dir=new T.Vector3(.2,.1,1).normalize();
+      // Round 5: a flat part framed from the standard low angle with the
+      // camera inside the building reads as a flat field. The arena floor
+      // filled the frame edge-on and the rest of the model was out of
+      // shot. Frame flat parts the camera would land inside over from
+      // higher up, so the floor reads in context with the seating bowl
+      // around it. The arena floor is framed from above even though the
+      // standard camera lands outside: the low sightline is blocked by
+      // the facade wall. The direction is steep enough that the sightline
+      // clears the 0.6 tall facade at radius 1.0. The sand disc keeps the
+      // standard distance, which already fits it; other flat parts keep
+      // the wider fit.
+      const flat=size.y<.05*Math.max(size.x,size.z);
+      const stdPos=center.clone().addScaledVector(dir,distance);
+      const insideModel=Math.hypot(stdPos.x,stdPos.z)<Math.max(modelSize.x,modelSize.z)/2;
+      if(flat&&(insideModel||isSand)){
+       dir=new T.Vector3(.35,.85,1).normalize();
+       if(!isSand){
+        const fit=Math.max(size.x*1.7*w/availableWidth/camera.aspect,size.z*1.7*h/availableHeight,size.y);
+        distance=Math.max(.07,fit/(2*Math.tan(halfFov))*1.35);
+       }
+      }
       controls.maxDistance=Math.max(40,distance*2);
       controls.target.copy(center);
-      camera.position.copy(center).add(new T.Vector3(.2,.1,1).normalize().multiplyScalar(distance));
+      camera.position.copy(center).addScaledVector(dir,distance);
       controls.update();dirty=true;
      }
     }else if(lastFocus){
@@ -357,7 +427,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     }
     lastFocus=focusKey;
    }
-   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=(amount<.5||!!s.poster)&&!s.isolate;markers.visible=amount>.75&&!s.poster;controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
+   controls.enableRotate=amount<.8;controls.mouseButtons.LEFT=amount<.8?T.MOUSE.ROTATE:T.MOUSE.PAN;controls.touches.ONE=amount<.8?T.TOUCH.ROTATE:T.TOUCH.PAN;ground.visible=platform.visible=ring.visible=innerRing.visible=(amount<.5||!!s.poster)&&!s.isolate;markers.visible=amount>.75&&!s.poster&&(s.mode??'explode')!=='floors';controls.autoRotate=s.rotate&&!s.isolate&&amount<.4;controls.autoRotateSpeed=.65;controls.update();if(controls.autoRotate)dirty=true;
    // Poster pilot: scale figures ride the arena layer in Floors mode and
    // stand on the assembled floor otherwise. Hidden during tours and
    // isolation, where they would sit in the way of the framing. The
@@ -371,12 +441,16 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // mode live and in the poster stage. The bottom layer's disc is a
    // contact halo on the platform.
    const showDiscs=ready&&!s.isolate&&(s.mode??'explode')==='floors'&&amount>.05;
-   contactDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:layerTops[li-1]+(li-1)*FLOOR_GAP*amount+0.004;});
+   contactDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:receiverTop[li-1]+(li-1)*FLOOR_GAP*amount+0.004;});
    if(showDiscs!==lastDiscs){lastDiscs=showDiscs;dirty=true;}
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
-   // Story hotspots follow their part (assembled or exploded).
+   // Story hotspots follow their part (assembled or exploded). Round 5:
+   // in Floors mode the layers move apart and the dots stay behind in
+   // the gaps, floating between layers, so they are hidden there. They
+   // stay in Explode mode and in the Tour, where they anchor the stops.
    hotspotDefs.forEach((h,k)=>{
     const i=hotspotIdx[k],dot=dots[k];
+    if((s.mode??'explode')==='floors'){dot.hidden=true;if(openHotspot===k)closeHotspot();return;}
     if(i<0||!ready||data[i*4+3]<.5){dot.hidden=true;if(openHotspot===k)closeHotspot();return;}
     const b0=bounds[i].min,b1=bounds[i].max;
     projected.set((b0.x+b1.x)/2+data[i*4],b1.y+data[i*4+1]+.03,(b0.z+b1.z)/2+data[i*4+2]).project(camera);
