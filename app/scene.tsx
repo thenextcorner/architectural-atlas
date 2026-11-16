@@ -87,6 +87,16 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // orange has low enough luminance to keep its saturation through
   // the light on white and on the dark hypogeum alike.
   const highlightColor=new T.Vector3(0.60,0.10,0.0);
+  // Round 8: the diffuse amber still washes to pale peach on a white
+  // horizontal roof under the key light, because the lit diffuse runs
+  // into the tone-mapping shoulder and desaturates. The fix is a
+  // post-tonemapping blend: after the colour is in sRGB, the
+  // highlighted fragments are mixed toward a fixed deep orange, so
+  // the colour no longer depends on the base colour or the light.
+  // The sector vector confines the highlight to one radial wedge:
+  // (centre angle, half width, enabled, unused), in model space.
+  const highlightSRGB=new T.Vector3(0.80,0.20,0.0);
+  const highlightSectorVec=new T.Vector4(0,0,0,0);
   const materials:T.Material[]=[],geometries:T.BufferGeometry[]=[],pickers:(T.Mesh|undefined)[]=[],centers=atlas.parts.map(p=>new T.Vector3().fromArray(p.bounds[0]).add(new T.Vector3().fromArray(p.bounds[1])).multiplyScalar(.5));
   const offsets:T.Vector3[]=[],bounds=atlas.parts.map(p=>new T.Box3(new T.Vector3().fromArray(p.bounds[0]),new T.Vector3().fromArray(p.bounds[1])));
   let packingWidth=1,packingHeight=1;
@@ -225,12 +235,19 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    const cached=materialCache.get(color);if(cached)return cached;
    const m=new T.MeshStandardMaterial({color,metalness:.08,roughness:.53,side:T.DoubleSide,transparent:false,opacity:1,depthWrite:true});
    m.onBeforeCompile=shader=>{
-    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.highlightState={value:highlightTexture};shader.uniforms.highlightColor={value:highlightColor};shader.uniforms.stateWidth={value:width};shader.uniforms.stoneNoise=stoneNoise;
-    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform sampler2D highlightState; uniform float stateWidth; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r; partHighlight = texture2D(highlightState, stateUv).r; stonePos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
-    shader.fragmentShader='uniform float stoneNoise; uniform vec3 highlightColor; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos;\nfloat stoneHash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat stoneNoise3(vec3 p){ vec3 i = floor(p); vec3 f = fract(p); f = f * f * (3.0 - 2.0 * f); float n000 = stoneHash(i); float n100 = stoneHash(i + vec3(1.0,0.0,0.0)); float n010 = stoneHash(i + vec3(0.0,1.0,0.0)); float n110 = stoneHash(i + vec3(1.0,1.0,0.0)); float n001 = stoneHash(i + vec3(0.0,0.0,1.0)); float n101 = stoneHash(i + vec3(1.0,0.0,1.0)); float n011 = stoneHash(i + vec3(0.0,1.0,1.0)); float n111 = stoneHash(i + vec3(1.0,1.0,1.0)); return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y),mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y),f.z); }\n'+shader.fragmentShader;
+    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.highlightState={value:highlightTexture};shader.uniforms.highlightColor={value:highlightColor};shader.uniforms.highlightSRGB={value:highlightSRGB};shader.uniforms.highlightSector={value:highlightSectorVec};shader.uniforms.stateWidth={value:width};shader.uniforms.stoneNoise=stoneNoise;
+    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform sampler2D highlightState; uniform float stateWidth; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos; varying vec3 vLocalPos;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r; partHighlight = texture2D(highlightState, stateUv).r; stonePos = (modelMatrix * vec4(transformed, 1.0)).xyz; vLocalPos = position;');
+    shader.fragmentShader='uniform float stoneNoise; uniform vec3 highlightColor; uniform vec3 highlightSRGB; uniform vec4 highlightSector; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos; varying vec3 vLocalPos;\nfloat stoneHash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat stoneNoise3(vec3 p){ vec3 i = floor(p); vec3 f = fract(p); f = f * f * (3.0 - 2.0 * f); float n000 = stoneHash(i); float n100 = stoneHash(i + vec3(1.0,0.0,0.0)); float n010 = stoneHash(i + vec3(0.0,1.0,0.0)); float n110 = stoneHash(i + vec3(1.0,1.0,0.0)); float n001 = stoneHash(i + vec3(0.0,0.0,1.0)); float n101 = stoneHash(i + vec3(1.0,0.0,1.0)); float n011 = stoneHash(i + vec3(0.0,1.0,1.0)); float n111 = stoneHash(i + vec3(1.0,1.0,1.0)); return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y),mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y),f.z); }\n'+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);\ndiffuseColor.rgb = mix(diffuseColor.rgb, highlightColor, partHighlight * 0.9);\ndiffuseColor.rgb *= 1.0 + stoneNoise * ((stoneNoise3(stonePos * 26.0) - 0.5) * 0.10 + (stoneNoise3(stonePos * 90.0) - 0.5) * 0.05);');
+    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);\nfloat hlMask = partHighlight;\nif (highlightSector.z > 0.5) { float hlAng = atan(vLocalPos.z, vLocalPos.x); float hlD = abs(mod(hlAng - highlightSector.x + 3.14159265, 6.28318531) - 3.14159265); hlMask *= 1.0 - smoothstep(highlightSector.y - 0.03, highlightSector.y + 0.03, hlD); }\ndiffuseColor.rgb = mix(diffuseColor.rgb, highlightColor, hlMask * 0.9);\ndiffuseColor.rgb *= 1.0 + stoneNoise * ((stoneNoise3(stonePos * 26.0) - 0.5) * 0.10 + (stoneNoise3(stonePos * 90.0) - 0.5) * 0.05);');
+    // Round 8: the highlight's final colour is set here, after tone
+    // mapping and the sRGB conversion, so a white roof under the key
+    // light reads the same deep orange as a dark hypogeum wall. The
+    // diffuse mix above still runs, but the lit diffuse is what
+    // washed out; this blend replaces it in sRGB space. The poster
+    // capture zeroes the highlight texture, so this is zero there.
+    shader.fragmentShader=shader.fragmentShader.replace('#include <colorspace_fragment>','#include <colorspace_fragment>\ngl_FragColor.rgb = mix(gl_FragColor.rgb, highlightSRGB, hlMask * 0.88);');
    };materials.push(m);materialCache.set(color,m);return m;
   };
   // Poster stage: shadows must follow the exploded offsets, which live in
@@ -379,10 +396,15 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     key.castShadow=wantShadow;
     dirty=true;
    }
-   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate||lastState?.highlight!==s.highlight;
+   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate||lastState?.highlight!==s.highlight||lastState?.highlightSector!==s.highlightSector;
    const moving=Math.abs(amount-s.explode)>.0001;
    if(moving){amount=T.MathUtils.damp(amount,s.explode,8,dt);dirty=true;}
    if(changed||moving||lastExtent<0){
+    // Round 8: the wedge sector for the tour highlight. The uniform
+    // holds the same Vector4 object the shader reads, so updating it
+    // here reaches every material without a recompile.
+    const sec=s.highlightSector;
+    if(sec){highlightSectorVec.set(sec.angle,sec.half,1,0);}else{highlightSectorVec.set(0,0,0,0);}
     const visible=new Set(s.visible),selection=new Set(s.selected),highlight=new Set(s.highlight??[]);
     const visibleParts=atlas.parts.filter(p=>s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
     const nextLayoutKey=(s.mode??'explode')+':'+visibleParts.map(p=>p.id).join(',')+':'+camera.aspect.toFixed(3);

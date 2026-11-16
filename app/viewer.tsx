@@ -37,6 +37,11 @@ export default function Viewer({slug}:{slug:string}){
  // plus its canopy, or the one wedge); the scene tints them amber while
  // the stop is active and the tint clears when the tour moves on or exits.
  const [tourHighlight,setTourHighlight]=useState<string[]|null>(null);
+ // Round 8: the wedges stop's highlight is confined to one wedge.
+ // The hotspot part is a whole 90-degree quadrant, so a radial sector
+ // (centre angle, half width) rides with the highlight and the shader
+ // only tints fragments inside it. Null for every other stop.
+ const [tourHighlightSector,setTourHighlightSector]=useState<{angle:number;half:number}|null>(null);
  const [posterStatus,setPosterStatus]=useState('');
  const [posterBusy,setPosterBusy]=useState(false);
  const captureRef=useRef<(() => PosterCapture | null) | null>(null);
@@ -102,12 +107,22 @@ export default function Viewer({slug}:{slug:string}){
    // the wedges stop highlights the one wedge (the rest stay white for
    // context). Other stops need no emphasis and keep none.
    const lower=partName.toLowerCase();
-   if(lower==='hypogeum central corridor')setTourHighlight(atlas.parts.filter(p=>p.system==='hypogeum').map(p=>p.id));
-   else if(lower==='imperial box (pulvinar)')setTourHighlight(atlas.parts.filter(p=>/imperial box/i.test(p.name)).map(p=>p.id));
-   else if(lower==='ne lower maenianum primum wedges')setTourHighlight([part.id]);
-   else setTourHighlight(null);
+   if(lower==='hypogeum central corridor'){setTourHighlight(atlas.parts.filter(p=>p.system==='hypogeum').map(p=>p.id));setTourHighlightSector(null);}
+   else if(lower==='imperial box (pulvinar)'){setTourHighlight(atlas.parts.filter(p=>/imperial box/i.test(p.name)).map(p=>p.id));setTourHighlightSector(null);}
+   else if(lower==='ne lower maenianum primum wedges'){
+    setTourHighlight([part.id]);
+    // Round 8: the part is a whole quadrant, not one wedge. Its four
+    // radial stair flights divide it into five wedges, and the middle
+    // wedge is the one the stop frames, centred on the part's own
+    // centre angle. Half of that wedge is 10.7 degrees (0.187 rad),
+    // so the sector sits inside the middle wedge with room to spare
+    // and the stair flights stay white on either side.
+    const cx=(part.bounds[0][0]+part.bounds[1][0])/2,cz=(part.bounds[0][2]+part.bounds[1][2])/2;
+    setTourHighlightSector({angle:Math.atan2(cz,cx),half:0.187});
+   }
+   else {setTourHighlight(null);setTourHighlightSector(null);}
   }
-  else{setFocus(null);setTourHighlight(null);setState(s=>({...s,selected:[],isolate:false}));}
+  else{setFocus(null);setTourHighlight(null);setTourHighlightSector(null);setState(s=>({...s,selected:[],isolate:false}));}
  },[tour,atlas,variants,variantId]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
  const systems:BuildingSystem[]=useMemo(()=>atlas?.systems??[],[atlas]);
@@ -133,7 +148,7 @@ export default function Viewer({slug}:{slug:string}){
  const exitTour=()=>{
   if(!tour)return;
   const from=tour.fromVariant;
-  setTour(null);setFocus(null);setTourHighlight(null);
+  setTour(null);setFocus(null);setTourHighlight(null);setTourHighlightSector(null);
   setMode('explode');
   setState(s=>({...s,explode:0,selected:[],isolate:false,rotate:false}));
   if(from&&from!==variantId)switchVariant(from,false);
@@ -214,7 +229,7 @@ export default function Viewer({slug}:{slug:string}){
  const tourStop=tour?hotspots.find(h=>h.part.toLowerCase()===COLOSSEUM_TOUR[tour.step].toLowerCase()):undefined;
  const primarySource=atlas?.sourceUrls?.[0];
  return <main className={isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio'}>
-  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,highlight:tour?tourHighlight:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
+  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,highlight:tour?tourHighlight:null,highlightSector:tour?tourHighlightSector:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <div className="identity-wrap">
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} disabled={!!tour} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
