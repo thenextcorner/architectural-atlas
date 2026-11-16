@@ -66,6 +66,27 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const innerRing=new T.Mesh(new T.RingGeometry(platformRadius*.809,platformRadius*.81,128),new T.MeshBasicMaterial({color:0xa4aeb8,transparent:true,opacity:.16,side:T.DoubleSide}));innerRing.rotation.x=-Math.PI/2;innerRing.position.y=.001;scene.add(innerRing);
   const width=T.MathUtils.ceilPowerOfTwo(atlas.parts.length),data=new Float32Array(width*4),partTexture=new T.DataTexture(data,width,1,T.RGBAFormat,T.FloatType);partTexture.needsUpdate=true;
   const selectedData=new Uint8Array(width*4),selectionTexture=new T.DataTexture(selectedData,width,1);selectionTexture.needsUpdate=true;
+  // Round 7: stop-scoped tour emphasis. A second per-part texture, like
+  // the selection texture, but with its own saturated amber and a near
+  // full mix, so the highlighted subject reads under the bright studio
+  // lights. The selection tint (pale teal, 0.75 mix) washes to almost
+  // white: the arena floor stop's focus quadrant renders pale grey, not
+  // teal, and a tiny white box on a white podium stays invisible. The
+  // viewer sets the ids per tour stop; the texture is cleared whenever
+  // the tour moves on or exits, and the poster capture zeroes it.
+  const highlightData=new Uint8Array(width*4),highlightTexture=new T.DataTexture(highlightData,width,1);highlightTexture.needsUpdate=true;
+  // Round 7: the amber must stay saturated on a brightly lit white
+  // surface. The first amber (0.85, 0.30, 0.05) washed to pale tan on
+  // the box canopy, a horizontal white roof under the key light, while
+  // the same amber read as gold on the darker hypogeum and the angled
+  // wedge steps. A blue probe proved the mechanism works: the box and
+  // canopy turned vivid blue, so the texture, shader and part index
+  // are all correct and only the colour washes out. Two deeper ambers
+  // still washed to pale peach: the bright key light and the tone
+  // mapping desaturate any bright warm colour on this roof. This deep
+  // orange has low enough luminance to keep its saturation through
+  // the light on white and on the dark hypogeum alike.
+  const highlightColor=new T.Vector3(0.60,0.10,0.0);
   const materials:T.Material[]=[],geometries:T.BufferGeometry[]=[],pickers:(T.Mesh|undefined)[]=[],centers=atlas.parts.map(p=>new T.Vector3().fromArray(p.bounds[0]).add(new T.Vector3().fromArray(p.bounds[1])).multiplyScalar(.5));
   const offsets:T.Vector3[]=[],bounds=atlas.parts.map(p=>new T.Box3(new T.Vector3().fromArray(p.bounds[0]),new T.Vector3().fromArray(p.bounds[1])));
   let packingWidth=1,packingHeight=1;
@@ -204,12 +225,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    const cached=materialCache.get(color);if(cached)return cached;
    const m=new T.MeshStandardMaterial({color,metalness:.08,roughness:.53,side:T.DoubleSide,transparent:false,opacity:1,depthWrite:true});
    m.onBeforeCompile=shader=>{
-    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.stateWidth={value:width};shader.uniforms.stoneNoise=stoneNoise;
-    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform float stateWidth; varying float partVisible; varying float partSelected; varying vec3 stonePos;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r; stonePos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
-    shader.fragmentShader='uniform float stoneNoise; varying float partVisible; varying float partSelected; varying vec3 stonePos;\nfloat stoneHash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat stoneNoise3(vec3 p){ vec3 i = floor(p); vec3 f = fract(p); f = f * f * (3.0 - 2.0 * f); float n000 = stoneHash(i); float n100 = stoneHash(i + vec3(1.0,0.0,0.0)); float n010 = stoneHash(i + vec3(0.0,1.0,0.0)); float n110 = stoneHash(i + vec3(1.0,1.0,0.0)); float n001 = stoneHash(i + vec3(0.0,0.0,1.0)); float n101 = stoneHash(i + vec3(1.0,0.0,1.0)); float n011 = stoneHash(i + vec3(0.0,1.0,1.0)); float n111 = stoneHash(i + vec3(1.0,1.0,1.0)); return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y),mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y),f.z); }\n'+shader.fragmentShader;
+    shader.uniforms.partState={value:partTexture};shader.uniforms.selectionState={value:selectionTexture};shader.uniforms.highlightState={value:highlightTexture};shader.uniforms.highlightColor={value:highlightColor};shader.uniforms.stateWidth={value:width};shader.uniforms.stoneNoise=stoneNoise;
+    shader.vertexShader='attribute float partIndex; uniform sampler2D partState; uniform sampler2D selectionState; uniform sampler2D highlightState; uniform float stateWidth; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos;\n'+shader.vertexShader;
+    shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvec2 stateUv = vec2((partIndex + 0.5) / stateWidth, 0.5); vec4 state = texture2D(partState, stateUv); transformed += state.xyz; partVisible = state.w; partSelected = texture2D(selectionState, stateUv).r; partHighlight = texture2D(highlightState, stateUv).r; stonePos = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+    shader.fragmentShader='uniform float stoneNoise; uniform vec3 highlightColor; varying float partVisible; varying float partSelected; varying float partHighlight; varying vec3 stonePos;\nfloat stoneHash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat stoneNoise3(vec3 p){ vec3 i = floor(p); vec3 f = fract(p); f = f * f * (3.0 - 2.0 * f); float n000 = stoneHash(i); float n100 = stoneHash(i + vec3(1.0,0.0,0.0)); float n010 = stoneHash(i + vec3(0.0,1.0,0.0)); float n110 = stoneHash(i + vec3(1.0,1.0,0.0)); float n001 = stoneHash(i + vec3(0.0,0.0,1.0)); float n101 = stoneHash(i + vec3(1.0,0.0,1.0)); float n011 = stoneHash(i + vec3(0.0,1.0,1.0)); float n111 = stoneHash(i + vec3(1.0,1.0,1.0)); return mix(mix(mix(n000,n100,f.x),mix(n010,n110,f.x),f.y),mix(mix(n001,n101,f.x),mix(n011,n111,f.x),f.y),f.z); }\n'+shader.fragmentShader;
     shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif (partVisible < 0.5) discard;');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);\ndiffuseColor.rgb *= 1.0 + stoneNoise * ((stoneNoise3(stonePos * 26.0) - 0.5) * 0.10 + (stoneNoise3(stonePos * 90.0) - 0.5) * 0.05);');
+    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.42, 0.85, 0.78), partSelected * 0.75);\ndiffuseColor.rgb = mix(diffuseColor.rgb, highlightColor, partHighlight * 0.9);\ndiffuseColor.rgb *= 1.0 + stoneNoise * ((stoneNoise3(stonePos * 26.0) - 0.5) * 0.10 + (stoneNoise3(stonePos * 90.0) - 0.5) * 0.05);');
    };materials.push(m);materialCache.set(color,m);return m;
   };
   // Poster stage: shadows must follow the exploded offsets, which live in
@@ -358,11 +379,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     key.castShadow=wantShadow;
     dirty=true;
    }
-   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate;
+   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate||lastState?.highlight!==s.highlight;
    const moving=Math.abs(amount-s.explode)>.0001;
    if(moving){amount=T.MathUtils.damp(amount,s.explode,8,dt);dirty=true;}
    if(changed||moving||lastExtent<0){
-    const visible=new Set(s.visible),selection=new Set(s.selected);
+    const visible=new Set(s.visible),selection=new Set(s.selected),highlight=new Set(s.highlight??[]);
     const visibleParts=atlas.parts.filter(p=>s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
     const nextLayoutKey=(s.mode??'explode')+':'+visibleParts.map(p=>p.id).join(',')+':'+camera.aspect.toFixed(3);
     if(nextLayoutKey!==layoutKey){
@@ -389,6 +410,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // above the hypogeum and hide its outer grid behind a white ring,
     // so the floor alone leaves only the corridor's middle visible.
     const focusIsHypogeum=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/hypogeum central corridor/i.test(q.name));
+    // Round 7: the box stop looks down at the podium through the same
+    // canopy, so the sails hide there too. The sails are four flat
+    // panels meeting at the centre, a complete canopy over the bowl:
+    // any top-down sightline to the arena, the box or the grid below
+    // passes through them. The masts and ropes stay.
+    const focusIsBox=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/imperial box \(pulvinar\)/i.test(q.name));
     atlas.parts.forEach((p,i)=>{
      const c=centers[i],destination=offsets[i];let dx=0,dy=0,dz=0;
      if((s.mode??'explode')==='floors'){dy=colosseumLayer(p)*FLOOR_GAP*amount;}
@@ -403,12 +430,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      // They remain visible in Explode mode and in the Tour, where the
      // fallen wall is a stop of its own.
      const floorsHidden=(s.mode??'explode')==='floors'&&(p.system==='ruin'||p.system==='materials');
-     const sailsHidden=focusIsSand&&p.system==='velarium'&&/sail/i.test(p.name);
+     const sailsHidden=(focusIsSand||focusIsHypogeum||focusIsBox)&&p.system==='velarium'&&/sail/i.test(p.name);
      const floorHidden=focusIsHypogeum&&/sand surface|floor planks|podium ring|arena wall|arena fence|balustrade/i.test(p.name);
      const shown=!floorsHidden&&!sailsHidden&&!floorHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
-     const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;
+     const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;highlightData[i*4]=highlight.has(p.id)?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
-    });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
+    });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;highlightTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
    }
    if(s.view!==lastView||s.reset!==lastReset){fit(s.view,amount);lastView=s.view;lastReset=s.reset;}
    if(moving&&!s.isolate)fit(amount>.5?'front':s.view,Math.max(0,(amount-.3)/.7));
@@ -522,6 +549,28 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
         distance=Math.max(.07,fit/(2*Math.tan(halfFov))*1.35);
        }
       }
+      // Round 7: per-stop framing for the three stops camera-only work
+      // never landed. The hypogeum needs a steep top-down view through
+      // the arena opening: at 33 degrees the sightline hits the attic
+      // wall (0.76 tall at radius 1.0) and the camera sees the cavea
+      // underside instead of the grid. The box needs a closer fit with
+      // the arena floor behind it: at arena scale the 0.114 box is a
+      // speck. The wedges need a low oblique view from over the arena:
+      // from above, the steps read as a smooth sheet, and the risers
+      // only read from low over the arena floor. The wedge camera sits
+      // below the sail canopy (y 0.48) so the sails never block it.
+      const isBox=!!focusPart&&/imperial box \(pulvinar\)/i.test(focusPart.name);
+      const isWedges=!!focusPart&&/maenianum primum wedges/i.test(focusPart.name);
+      if(isHypogeum){
+       dir=new T.Vector3(0.30,1.0,0.55).normalize();
+       distance=Math.max(.07,1.7/(2*Math.tan(halfFov))*1.35);
+      }else if(isBox){
+       dir=new T.Vector3(0.25,0.9,0.6).normalize();
+       distance=Math.max(.07,0.55/(2*Math.tan(halfFov))*1.35);
+      }else if(isWedges){
+       const off=new T.Vector3(-0.50,0.29,0.59);
+       distance=off.length();dir=off.normalize();
+      }
       controls.maxDistance=Math.max(40,distance*2);
       controls.target.copy(center);
       camera.position.copy(center).addScaledVector(dir,distance);
@@ -594,6 +643,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // they read as dust in a still poster, so hide them for all captures.
     const savedMarkersVisible=markers.visible,savedFiguresVisible=figures.visible;
     markers.visible=false;figures.visible=false;
+    // Round 7: the tour highlight is a live-view emphasis, not part of
+    // the poster. Zero it for all captures. The tour has already exited
+    // by the time a poster is made, so this is belt and braces.
+    const savedHighlightData=highlightData.slice();
+    highlightData.fill(0);highlightTexture.needsUpdate=true;
     // The layer contact shadows stay visible for the main capture: they
     // are part of the poster, not live-view helpers. They are hidden below,
     // before the inset renders, so the plan, section and facade stay clean.
@@ -649,14 +703,14 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     camera.position.copy(fcenter).addScaledVector(fdir,0.9);controls.target.copy(fcenter);controls.update();renderNow();
     const facade=renderer.domElement.toDataURL('image/png');
     camera.position.copy(savedPos);controls.target.copy(savedTarget);controls.update();
-    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;contactDiscs.forEach((d,i)=>{if(d)d.visible=savedDiscsVisible[i];});
+    markers.visible=savedMarkersVisible;figures.visible=savedFiguresVisible;highlightData.set(savedHighlightData);highlightTexture.needsUpdate=true;contactDiscs.forEach((d,i)=>{if(d)d.visible=savedDiscsVisible[i];});
     fit(latest.current.view,amount);renderNow();dirty=true;
     return {main,plan,section,facade,labelAnchors,viewWidth:el.clientWidth,viewHeight:el.clientHeight};
    };
   }
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
-  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();shadowRingTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
+  return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();highlightTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();shadowRingTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
  },[atlas]);
  return <div className="scene" ref={host}/>;
 }

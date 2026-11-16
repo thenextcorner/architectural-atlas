@@ -32,6 +32,11 @@ export default function Viewer({slug}:{slug:string}){
  // Colosseum Poster pilot: dark stage, scale figures, poster export.
  const [posterStage,setPosterStage]=useState(false);
  const [scaleFigures,setScaleFigures]=useState(false);
+ // Round 7: stop-scoped tour emphasis. The tour effect sets the part ids
+ // to highlight for the active stop (the whole hypogeum network, the box
+ // plus its canopy, or the one wedge); the scene tints them amber while
+ // the stop is active and the tint clears when the tour moves on or exits.
+ const [tourHighlight,setTourHighlight]=useState<string[]|null>(null);
  const [posterStatus,setPosterStatus]=useState('');
  const [posterBusy,setPosterBusy]=useState(false);
  const captureRef=useRef<(() => PosterCapture | null) | null>(null);
@@ -87,8 +92,22 @@ export default function Viewer({slug}:{slug:string}){
   if(!atlas)return;
   const partName=COLOSSEUM_TOUR[tour.step];
   const part=atlas.parts.find(p=>p.name.toLowerCase()===partName.toLowerCase());
-  if(part){setFocus({ids:[part.id],key:Date.now()});setState(s=>({...s,selected:[part.id],isolate:false,rotate:false}));}
-  else{setFocus(null);setState(s=>({...s,selected:[],isolate:false}));}
+  if(part){
+   setFocus({ids:[part.id],key:Date.now()});
+   setState(s=>({...s,selected:[part.id],isolate:false,rotate:false}));
+   // Round 7: the emphasis is the whole subject, not just the one focus
+   // part. The hypogeum stop highlights the full network (its grid is
+   // low brown-grey relief, unreadable as one corridor); the box stop
+   // highlights the box plus its canopy (white on white at any distance);
+   // the wedges stop highlights the one wedge (the rest stay white for
+   // context). Other stops need no emphasis and keep none.
+   const lower=partName.toLowerCase();
+   if(lower==='hypogeum central corridor')setTourHighlight(atlas.parts.filter(p=>p.system==='hypogeum').map(p=>p.id));
+   else if(lower==='imperial box (pulvinar)')setTourHighlight(atlas.parts.filter(p=>/imperial box/i.test(p.name)).map(p=>p.id));
+   else if(lower==='ne lower maenianum primum wedges')setTourHighlight([part.id]);
+   else setTourHighlight(null);
+  }
+  else{setFocus(null);setTourHighlight(null);setState(s=>({...s,selected:[],isolate:false}));}
  },[tour,atlas,variants,variantId]);
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(e.key==='/'&&!(e.target instanceof HTMLInputElement)&&!(e.target instanceof HTMLTextAreaElement)){e.preventDefault();setPanel('search');setDetails(false);}};window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);},[]);
  const systems:BuildingSystem[]=useMemo(()=>atlas?.systems??[],[atlas]);
@@ -114,7 +133,7 @@ export default function Viewer({slug}:{slug:string}){
  const exitTour=()=>{
   if(!tour)return;
   const from=tour.fromVariant;
-  setTour(null);setFocus(null);
+  setTour(null);setFocus(null);setTourHighlight(null);
   setMode('explode');
   setState(s=>({...s,explode:0,selected:[],isolate:false,rotate:false}));
   if(from&&from!==variantId)switchVariant(from,false);
@@ -152,23 +171,30 @@ export default function Viewer({slug}:{slug:string}){
  const exportPoster=async()=>{
   if(!isPilot||posterBusy)return;
   setPosterBusy(true);setPosterStatus('Preparing poster…');
+  // Round 7: the download must not move the slider. The capture below
+  // forces the stack to 85 percent for the poster composition; the
+  // user's separation is restored afterwards, whatever it was.
+  const keep=state.explode;
   try{
    if(mode!=='floors')enterMode('floors');
    setState(s=>({...s,explode:0.85,selected:[],isolate:false,rotate:false}));
    await new Promise(r=>setTimeout(r,1400));
    const capture=captureRef.current?.()??null;
-   if(!capture){setPosterStatus('The 3D view is not ready yet. Try again in a moment.');setPosterBusy(false);return;}
-   const layers=COLOSSEUM_LAYERS.map(l=>{
-    const hs=hotspots.find(h=>h.part===l.hotspotPart);
-    return {name:l.name,text:hs?hs.text:''};
-   });
-   const canvas=document.createElement('canvas');
-   await composePoster(canvas,capture,layers,POSTER_TIMELINE_FALLBACK);
-   downloadPoster(canvas);
-   setPosterStatus('Poster downloaded.');
+   if(!capture){setPosterStatus('The 3D view is not ready yet. Try again in a moment.');}
+   else{
+    const layers=COLOSSEUM_LAYERS.map(l=>{
+     const hs=hotspots.find(h=>h.part===l.hotspotPart);
+     return {name:l.name,text:hs?hs.text:''};
+    });
+    const canvas=document.createElement('canvas');
+    await composePoster(canvas,capture,layers,POSTER_TIMELINE_FALLBACK);
+    downloadPoster(canvas);
+    setPosterStatus('Poster downloaded.');
+   }
   }catch{
    setPosterStatus('The poster could not be made. Try again.');
   }
+  setState(s=>({...s,explode:keep}));
   setPosterBusy(false);
  };
  const reset=()=>{if(tour)exitTour();setState(s=>({explode:0,visible:systems.map(x=>x.id),selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
@@ -188,7 +214,7 @@ export default function Viewer({slug}:{slug:string}){
  const tourStop=tour?hotspots.find(h=>h.part.toLowerCase()===COLOSSEUM_TOUR[tour.step].toLowerCase()):undefined;
  const primarySource=atlas?.sourceUrls?.[0];
  return <main className={isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio'}>
-  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
+  {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,highlight:tour?tourHighlight:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <div className="identity-wrap">
   <header className="identity"><div className="eyebrow"><span className="status-dot"/> INTERACTIVE ARCHITECTURE</div><h1>{title}<Badge variant="outline" className="edition">3D</Badge></h1><div className="identity-meta">{atlas?atlas.parts.length.toLocaleString():'…'} modeled pieces <span>·</span> {atlas?`${title}, ${loc}`:'Loading'}</div>{variants&&variants.length>1&&<div className="variant-toggle" role="group" aria-label="Model detail level">{variants.map(v=><button key={v.id} type="button" className={v.id===variantId?'active':''} aria-pressed={v.id===variantId} disabled={!!tour} onClick={()=>switchVariant(v.id)}>{v.label}</button>)}</div>}</header>
