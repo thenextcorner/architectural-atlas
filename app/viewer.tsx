@@ -15,7 +15,7 @@ import {trackEvent} from './analytics';
 import {COLOSSEUM_LAYERS,COLOSSEUM_TOUR,colosseumLayer} from './colosseum-pilot';
 import {composePoster,downloadPoster,POSTER_TIMELINE_FALLBACK} from './colosseum-poster';
 import type {PosterCapture} from './colosseum-poster';
-import {explanationFor,hasExplanation,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View,type ViewerMode} from './atlas';
+import {explanationFor,hasExplanation,isDarkStage,GENERIC_EXPLANATION_NOTE,type Atlas,type BuildingIndexEntry,type BuildingSystem,type BuildingVariant,type Concept,type SceneState,type View,type ViewerMode} from './atlas';
 const variantStorageKey=(building:string)=>`atlas_detail_variant:${building}`;
 const readStoredVariant=(building:string):string|null=>{try{return localStorage.getItem(variantStorageKey(building));}catch{return null;}};
 const writeStoredVariant=(building:string,id:string)=>{try{localStorage.setItem(variantStorageKey(building),id);}catch{}};
@@ -162,23 +162,16 @@ export default function Viewer({slug}:{slug:string}){
   setDetails(false);setPanel(null);
  };
  // Colosseum Poster pilot: the poster stage is a dark slate backdrop with
- // warm light and soft shadows. Turning it on jumps to the separated
- // Floors stack, the composition the poster is built from.
+ // warm light and soft shadows. The toggle only flips the stage: it never
+ // changes the mode or the separation. Turning it on used to jump to the
+ // separated Floors stack, so toggling it on in Explode mode restored a
+ // Floors view the user never asked for, and toggling it off left the
+ // user stranded in Floors mode. The poster download still forces the
+ // Floors stack for its capture and restores the separation after.
  const togglePosterStage=()=>{
   if(!isPilot)return;
-  const next=!posterStage;
-  setPosterStage(next);
+  setPosterStage(!posterStage);
   setPosterStatus('');
-  if(next&&!tour){
-   // Round 6: keep the user's separation. Turning the stage on reset
-   // the slider to 85 percent even when the stack was at 100. The
-   // mode switch below resets the separation to 0 first, so the
-   // current value is read here, before it is lost. No separation
-   // chosen yet (0) still jumps to the poster's 85.
-   const keep=state.explode>0?state.explode:0.85;
-   if(mode!=='floors')enterMode('floors');
-   setState(s=>({...s,explode:keep,selected:[],isolate:false,rotate:false}));
-  }
  };
  // Colosseum Poster pilot: compose the live Floors view into a poster PNG
  // and download it. Waits for the stack to settle, then captures the main
@@ -212,7 +205,7 @@ export default function Viewer({slug}:{slug:string}){
   setState(s=>({...s,explode:keep}));
   setPosterBusy(false);
  };
- const reset=()=>{if(tour)exitTour();setState(s=>({explode:0,visible:systems.map(x=>x.id),selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
+ const reset=()=>{if(tour)exitTour();setMode('explode');setPosterStage(false);setPosterStatus('');setFloorLayer(null);setState(s=>({explode:0,visible:systems.map(x=>x.id),selected:[],isolate:false,view:'three-quarter',rotate:false,reset:s.reset+1}));setChosen(null);setDetails(false);setPanel(null);};
  const goStep=(d:number)=>{if(!tour)return;const next=Math.min(COLOSSEUM_TOUR.length-1,Math.max(0,tour.step+d));if(next!==tour.step)setTour({...tour,step:next});};
  const chooseFloorLayer=(li:number)=>{
   if(!atlas)return;
@@ -228,7 +221,13 @@ export default function Viewer({slug}:{slug:string}){
  const title=atlas?.title??'Architectural Atlas',loc=atlas?.location??'',assembledCaption=atlas?`${title.toUpperCase()} · ${loc.toUpperCase()}`:'LOADING';
  const tourStop=tour?hotspots.find(h=>h.part.toLowerCase()===COLOSSEUM_TOUR[tour.step].toLowerCase()):undefined;
  const primarySource=atlas?.sourceUrls?.[0];
- return <main className={isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio'}>
+ // The dark-stage class is React-owned now, from the loaded model, so it
+ // tracks variant switches: the tour runs on Detailed (dark chrome) and
+ // exiting it restores Simple (light chrome). It used to be added by the
+ // scene and never removed, so the dark chrome leaked past the tour.
+ const darkStage=atlas?isDarkStage(atlas):false;
+ const mainClass=(isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio')+(darkStage?' dark-stage':'');
+ return <main className={mainClass}>
   {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,highlight:tour?tourHighlight:null,highlightSector:tour?tourHighlightSector:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>
   <div className="identity-wrap">

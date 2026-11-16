@@ -8,7 +8,7 @@ import {COLOSSEUM_LAYERS,colosseumLayer,FLOOR_GAP} from './colosseum-pilot';
 import type {PosterCapture} from './colosseum-poster';
 import {decodeModelResponse} from './model-download';
 import {PointerTap} from './pointer-tap';
-import {type Atlas,type SceneState} from './atlas';
+import {isDarkStage,type Atlas,type SceneState} from './atlas';
 interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[];captureRef?:{current:(() => PosterCapture | null) | null}}
 export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots,captureRef}:Props){
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
@@ -21,21 +21,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});}catch{onError('This browser could not start the 3D viewer. Please try a browser with WebGL enabled.');return;}
   const modelBox=new T.Box3();atlas.parts.forEach(p=>modelBox.union(new T.Box3(new T.Vector3().fromArray(p.bounds[0]),new T.Vector3().fromArray(p.bounds[1]))));
   const modelSize=modelBox.getSize(new T.Vector3()),modelCenter=modelBox.getCenter(new T.Vector3());
-  // Contrast check: measure the area-weighted luminance of the model's upper
-  // mass (what reads against the sky). Light models get a dark studio
-  // backdrop so the structure stands out instead of dissolving into it.
-  const darkStage=(()=>{
-   const lum=(hex:string)=>{const n=parseInt(hex.slice(1),16),r=(n>>16&255)/255,g=(n>>8&255)/255,b=(n&255)/255;
-    const f=(c:number)=>c>0.03928?Math.pow((c+0.055)/1.055,2.4):c/12.92;
-    return 0.2126*f(r)+0.7152*f(g)+0.0722*f(b);};
-   const sysLum=new Map(atlas.systems.map(s=>[s.id,lum(s.color??'#aebbb8')] as const));
-   let tot=0,wsum=0;
-   for(const p of atlas.parts){
-    if((p.bounds[0][1]+p.bounds[1][1])/2<=modelCenter.y)continue;
-    const sx=p.bounds[1][0]-p.bounds[0][0],sy=p.bounds[1][1]-p.bounds[0][1],sz=p.bounds[1][2]-p.bounds[0][2];
-    const a=2*(sx*sy+sy*sz+sx*sz);tot+=a;wsum+=(sysLum.get(p.system)??0.5)*a;}
-   return tot>0&&wsum/tot>0.55;})();
-  if(darkStage)el.closest('.studio')?.classList.add('dark-stage');
+  // Dark-stage check lives in atlas.ts now, shared with the viewer, so
+  // the page chrome and the canvas always agree on the loaded model.
+  // The scene used to add the dark-stage class to the page itself and
+  // never remove it, so the dark chrome leaked past a tour that had
+  // switched to a light-mass variant. React owns the class now.
+  const darkStage=isDarkStage(atlas);
   renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<768?1.5:2));renderer.setClearColor(darkStage?'#33393f':'#f2f3f3');renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
   // Poster stage: soft shadows are ready before any light casts them, so
   // toggling the poster stage never needs a renderer rebuild. Local
