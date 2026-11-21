@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "source": "https://www.esbnyc.com/about/tower-lights/calendar",
   "schedule": {
     "2026-11-04": {
@@ -75,6 +75,12 @@
       "colors": [
         "#2ec4b6",
         "#d4a017"
+      ]
+    },
+    "2026-11-20": {
+      "label": "The Glow from Olympus",
+      "colors": [
+        "#f2ede0"
       ]
     },
     "2026-11-26": {
