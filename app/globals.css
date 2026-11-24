@@ -228,3 +228,32 @@ body:has(.detail-sheet) .floors-panel{display:none}
 .floors-panel{top:112px;left:12px;right:12px;width:auto;z-index:40;max-height:calc(100dvh - 320px)}
 .pilot .scene-caption{bottom:calc(294px + env(safe-area-inset-bottom))}
 }
+
+/* Mobile top stack (portrait phones only): title, action buttons, camera
+ * controls and site nav read as clean stacked bands instead of overlapping.
+ * Desktop is untouched: .top-stack is display:contents there, so its three
+ * children keep their exact absolute positions. Landscape keeps its own
+ * rules above. */
+.top-stack{display:contents}
+@media(max-width:767px) and (orientation:portrait){
+ .top-stack{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;flex-direction:column;gap:8px;padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left));pointer-events:none}
+ .top-stack .identity-wrap{display:contents}
+ .top-stack .identity{order:1}
+ .top-stack .top-actions{position:static;order:2;width:100%}
+ .top-stack .top-actions .back-link{margin-right:auto}
+ .top-stack .top-actions button{justify-content:center}
+ .top-stack .view-controls{position:static;transform:none;order:3;align-self:center;margin:0}
+ .top-stack .site-nav{order:4;justify-content:center;padding:6px 0 0}
+ .top-stack .top-actions,.top-stack .view-controls,.top-stack .site-nav,.top-stack .variant-toggle{pointer-events:auto}
+ /* On dark stages the site links need the light treatment, phones only. */
+ .poster-stage .top-stack .site-nav a,.dark-stage .top-stack .site-nav a{color:#c3ccd4}
+ .poster-stage .top-stack .site-nav a[aria-current="page"],.dark-stage .top-stack .site-nav a[aria-current="page"]{background:#ffffff1c;color:#fff}
+ /* Poster stage on: the Download poster button gets its own full-width row
+ * in the dock, so the Explode label and its endpoints keep their width. */
+ .bottom-dock .dock-row{flex-wrap:wrap}
+ .bottom-dock .dock-poster{flex:1 1 100%;border-left:0;border-top:1px solid #18253618;padding:12px 0 4px;flex-direction:row;justify-content:center;gap:8px}
+ /* Poster stage on: the taller dock (extra poster row) reaches up to 378px
+ * from the bottom, so the caption pill lifts clear of it instead of
+ * covering the mode switch. */
+ .pilot.poster-stage .scene-caption{bottom:calc(388px + env(safe-area-inset-bottom))}
+}
