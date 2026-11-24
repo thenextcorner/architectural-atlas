@@ -21,6 +21,24 @@ DIST = os.path.join(REPO, "dist")
 STORIES = os.path.join(REPO, "stories")
 BASE = "https://architecturalatlas.com"
 
+# Bonus AI concept posters: one per building, shown only on that building's
+# page at the end of the Story dialog, after the sections and before Sources.
+# The note is approved copy; keep each building's wording word for word.
+BONUS_POSTERS = {
+    "colosseum": {
+        "image": "bonus-poster.png",
+        "alt": "AI-generated exploded-view poster of the Colosseum",
+        "note": "An AI-generated poster of the exploded Colosseum (ChatGPT). An artistic impression, not the verified Atlas poster: the crowd is imagined, the velarium is shown as a full canopy, and the dates are approximate. The verified story is above.",
+        "download": "colosseum-concept-poster.png",
+    },
+    "brandenburg-gate": {
+        "image": "bonus-poster.png",
+        "alt": "AI-generated exploded-view poster of the Brandenburg Gate",
+        "note": "An AI-generated poster of the exploded Brandenburg Gate (ChatGPT). An artistic impression, not the verified Atlas poster: the roof frame, pavilions and footings are shown separated for illustration, and the column height reads 15.8 m here against 15 m in the Atlas story. The verified story is above.",
+        "download": "brandenburg-gate-concept-poster.png",
+    },
+}
+
 STORY_CSS = """
 .story-fab{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;gap:10px}
 .story-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border:0;border-radius:999px;background:#20242b;color:#fff;font-size:15px;font-weight:700;letter-spacing:.2px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.4);animation:fab-in .55s cubic-bezier(.2,.9,.3,1.2) backwards}
@@ -362,11 +380,12 @@ def story_dialog(story, slug):
                          f'<figcaption>{ycap} '
                          f'<a href="https://www.youtube.com/watch?v={yid}" target="_blank" rel="noreferrer">Watch on YouTube</a>'
                          f'</figcaption></figure>')
-    if slug == "colosseum":
+    bonus = BONUS_POSTERS.get(slug)
+    if bonus:
         parts.append('<h3>Bonus download: AI concept poster</h3>')
-        parts.append('<figure><img loading="lazy" src="/viewer/colosseum/bonus-poster.png" alt="AI-generated exploded-view poster of the Colosseum"/>'
-                     '<figcaption>An AI-generated poster of the exploded Colosseum (ChatGPT). An artistic impression, not the verified Atlas poster: the crowd is imagined, the velarium is shown as a full canopy, and the dates are approximate. The verified story is above.</figcaption></figure>')
-        parts.append('<p><a class="bonus-download" href="/viewer/colosseum/bonus-poster.png" download="colosseum-concept-poster.png">Download the poster (PNG, 1536 x 1024)</a></p>')
+        parts.append(f'<figure><img loading="lazy" src="/viewer/{slug}/{bonus["image"]}" alt="{bonus["alt"]}"/>'
+                     f'<figcaption>{bonus["note"]}</figcaption></figure>')
+        parts.append(f'<p><a class="bonus-download" href="/viewer/{slug}/{bonus["image"]}" download="{bonus["download"]}">Download the poster (PNG, 1536 x 1024)</a></p>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
