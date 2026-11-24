@@ -42,6 +42,8 @@ STORY_CSS = """
 .yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;background:#000}
 .yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 .story-body figcaption{font-size:12.5px;color:#6c7883;margin-top:6px}
+.bonus-download{display:inline-block;margin-top:4px;padding:10px 20px;border-radius:999px;background:#20242b;color:#fff;font-size:14px;font-weight:700;text-decoration:none}
+.bonus-download:hover{background:#3a424c}
 .story-sources{font-size:12.5px;color:#6c7883;border-top:1px solid #e3e6e8;margin-top:30px;padding-top:14px}
 .story-close{display:block;margin:22px auto 4px;padding:10px 26px;border:0;border-radius:999px;background:#20242b;color:#fff;font-size:14px;font-weight:600;cursor:pointer}
 details.transcript{margin-top:10px;font-size:13.5px}
@@ -358,6 +360,11 @@ def story_dialog(story, slug):
                          f'<figcaption>{ycap} '
                          f'<a href="https://www.youtube.com/watch?v={yid}" target="_blank" rel="noreferrer">Watch on YouTube</a>'
                          f'</figcaption></figure>')
+    if slug == "colosseum":
+        parts.append('<h3>Bonus download: AI concept poster</h3>')
+        parts.append('<figure><img loading="lazy" src="/viewer/colosseum/bonus-poster.png" alt="AI-generated exploded-view poster of the Colosseum"/>'
+                     '<figcaption>An AI-generated poster of the exploded Colosseum (ChatGPT). An artistic impression, not the verified Atlas poster: the crowd is imagined, the velarium is shown as a full canopy, and the dates are approximate. The verified story is above.</figcaption></figure>')
+        parts.append('<p><a class="bonus-download" href="/viewer/colosseum/bonus-poster.png" download="colosseum-concept-poster.png">Download the poster (PNG, 1536 x 1024)</a></p>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
