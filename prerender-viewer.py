@@ -66,6 +66,8 @@ details.transcript p{margin:8px 0 0;color:#3a424c;line-height:1.6}
 .lights-gallery figure{margin:0}
 .lights-gallery img{width:100%;border-radius:8px;display:block}
 .lights-gallery figcaption{font-size:12px;color:#6c7883;margin-top:6px;line-height:1.5}
+@media(max-width:767px){.story-fab{display:none}}
+@media(max-height:600px) and (orientation:landscape){.story-fab{display:none}}
 """.strip()
 
 STORY_JS = """
