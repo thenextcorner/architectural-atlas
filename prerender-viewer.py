@@ -30,12 +30,49 @@ BONUS_POSTERS = {
         "alt": "AI-generated exploded-view poster of the Colosseum",
         "note": "An AI-generated poster of the exploded Colosseum (ChatGPT). An artistic impression, not the verified Atlas poster: the crowd is imagined, the velarium is shown as a full canopy, and the dates are approximate. The verified story is above.",
         "download": "colosseum-concept-poster.png",
+        "label": "Download the poster (PNG, 1536 x 1024)",
     },
     "brandenburg-gate": {
         "image": "bonus-poster.png",
         "alt": "AI-generated exploded-view poster of the Brandenburg Gate",
         "note": "An AI-generated poster of the exploded Brandenburg Gate (ChatGPT). An artistic impression, not the verified Atlas poster: the roof frame, pavilions and footings are shown separated for illustration, and the column height reads 15.8 m here against 15 m in the Atlas story. The verified story is above.",
         "download": "brandenburg-gate-concept-poster.png",
+        "label": "Download the poster (PNG, 1536 x 1024)",
+    },
+    "golden-gate": {
+        "image": "bonus-poster.jpg",
+        "alt": "AI-generated exploded-view poster of the Golden Gate Bridge",
+        "note": "An AI-generated poster of the exploded Golden Gate Bridge (ChatGPT). An artistic impression, not the verified Atlas poster: the structure is shown pulled apart for illustration, and some figures are approximate. The verified story is above.",
+        "download": "golden-gate-concept-poster.jpg",
+        "label": "Download the poster (JPG, 1672 x 941)",
+    },
+    "empire-state": {
+        "image": "bonus-poster.jpg",
+        "alt": "AI-generated exploded-view poster of the Empire State Building",
+        "note": "An AI-generated poster of the exploded Empire State Building (ChatGPT). An artistic impression, not the verified Atlas poster: the elevator count reads 22 here; the building has 73 elevators. The verified story is above.",
+        "download": "empire-state-concept-poster.jpg",
+        "label": "Download the poster (JPG, 1536 x 1024)",
+    },
+    "el-castillo": {
+        "image": "bonus-poster.jpg",
+        "alt": "AI-generated exploded-view poster of El Castillo",
+        "note": "An AI-generated poster of the exploded El Castillo (ChatGPT). An artistic impression, not the verified Atlas poster: the height reads 24 m here against 30 m in the Atlas story (24 m of pyramid plus 6 m of summit temple), the date range starts in the 8th century while the visible pyramid dates to about 900 to 1000 CE, and the 365-step count is presented as fact where the story calls it a possible reading. The verified story is above.",
+        "download": "el-castillo-concept-poster.jpg",
+        "label": "Download the poster (JPG, 1448 x 1086)",
+    },
+    "burj-khalifa": {
+        "image": "bonus-poster.jpg",
+        "alt": "AI-generated exploded-view poster of the Burj Khalifa",
+        "note": "An AI-generated poster of the exploded Burj Khalifa (ChatGPT). An artistic impression, not the verified Atlas poster: the height reads 828 m here against 829.8 m in the Atlas story, and the spire reads about 200 m against 242.5 m in the story. The verified story is above.",
+        "download": "burj-khalifa-concept-poster.jpg",
+        "label": "Download the poster (JPG, 1448 x 1086)",
+    },
+    "burj-al-arab": {
+        "image": "bonus-poster.jpg",
+        "alt": "AI-generated exploded-view poster of the Burj Al Arab",
+        "note": "An AI-generated poster of the exploded Burj Al Arab (ChatGPT). An artistic impression, not the verified Atlas poster: it calls the hotel '7-star', where the Atlas story says it is officially 5-star deluxe and the seven-star label was never used by the hotel. The verified story is above.",
+        "download": "burj-al-arab-concept-poster.jpg",
+        "label": "Download the poster (JPG, 1536 x 1024)",
     },
 }
 
@@ -385,7 +422,7 @@ def story_dialog(story, slug):
         parts.append('<h3>Bonus download: AI concept poster</h3>')
         parts.append(f'<figure><img loading="lazy" src="/viewer/{slug}/{bonus["image"]}" alt="{bonus["alt"]}"/>'
                      f'<figcaption>{bonus["note"]}</figcaption></figure>')
-        parts.append(f'<p><a class="bonus-download" href="/viewer/{slug}/{bonus["image"]}" download="{bonus["download"]}">Download the poster (PNG, 1536 x 1024)</a></p>')
+        parts.append(f'<p><a class="bonus-download" href="/viewer/{slug}/{bonus["image"]}" download="{bonus["download"]}">{bonus["label"]}</a></p>')
     parts.append(f'<p class="story-sources">Sources: {esc(story["sources"])}<br/>'
                  + "<br/>".join(esc(c) for c in story.get("photo_credits", [])) + "</p>")
     parts.append('<form method="dialog"><button class="story-close">Close</button></form>')
