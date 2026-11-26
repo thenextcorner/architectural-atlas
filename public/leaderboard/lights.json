@@ -1,9 +1,11 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "esb": {
-    "label": "signature white",
+    "label": "Festive Fall Shades",
     "colors": [
-      "#f2ede0"
+      "#e8810c",
+      "#c25e1e",
+      "#8a4a12"
     ],
     "source": "https://www.esbnyc.com/about/tower-lights/calendar/202611"
   },
