@@ -647,17 +647,45 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
       // subjects); the ceiling caps the camera elevation there, so the
       // room reads by pulling back (motifs 0.38, relief 0.45), not by
       // rising. The elevator stop is unchanged (2.9).
+      // Fix round (probe, 1919x998 and 1280x800, full DOM screenshots):
+      // the live click test failed two stops the polish probe had passed.
+      // Stop 2, motifs: the outside camera showed the shaft facade across
+      // the top, the green Tier 1 terrace slab across the middle, a white
+      // void, then the floor slab, so the room never read. The fix is an
+      // interior camera: the room is a flat pancake (0.26 wide, 0.061
+      // tall, 0.126 deep), so no outside framing shows floor, ceiling
+      // and back wall together, and the tower envelope above the lobby
+      // is now hidden for the lobby stops. The camera sits inside the
+      // room at its north east corner, past the north wall, looking
+      // south west at the motifs on the south wall, so the upper marble
+      // walls stay visible as the back wall and the coffered ceiling
+      // caps the top of the frame. A straight on shot cannot fit the
+      // 0.12 wide motifs at 1280x800 from inside the room (the room is
+      // only 0.126 deep), so the corner angle is what fits both widths.
+      // The aim sits 0.034 east of the motifs centre: screen right
+      // points west and north from this corner, so an east aim moves
+      // the motifs right in the frame, and the eastmost motif panel
+      // clears the Systems panel at the left edge at both widths.
+      // (An aim west of the centre moved them left instead.)
+      // Stop 7, mast: the tip was visible but the crown's lower gold
+      // striped section ran behind the tour card. Pulling back alone
+      // shrinks the assembly toward the viewport centre and barely
+      // moves its lower end, so the aim drops from the crown centre
+      // (y 1.9) to below the crown base (y 1.6): the whole assembly
+      // shifts up, the deck and the gold striped shaft top sit clear
+      // of the card top at both widths, and the fit grows to 2.3 for
+      // top margin.
       let aim=center;
       if(pilot?.slug==='empire-state'&&focusPart){
        const fl=focusPart.name.toLowerCase();
        const esbFit=(f:number)=>Math.max(.07,f/(2*Math.tan(halfFov))*1.35);
        if(fl==='concrete entry eagles'){dir=new T.Vector3(1,0.18,0.3).normalize();distance=esbFit(5.0);}
-       else if(fl==='bronze narrative motifs'){dir=new T.Vector3(0.15,0.08,-1).normalize();distance=esbFit(0.38);}
+       else if(fl==='bronze narrative motifs'){dir=new T.Vector3(0.68,0.06,-0.73).normalize();distance=esbFit(0.058);aim=new T.Vector3(0.218,0.035,0.0585);}
        else if(fl==='aluminum building relief'){dir=new T.Vector3(1,0.08,0.15).normalize();distance=esbFit(0.45);}
        else if(fl==='express elevator bank'){dir=new T.Vector3(0.4,0.05,1).normalize();distance=esbFit(2.9);}
        else if(fl==='tier 1 setback terrace'){dir=new T.Vector3(0.4,0.18,1).normalize();distance=esbFit(5.0);}
        else if(fl==='86th floor open deck railing'){dir=new T.Vector3(0.35,0.3,1).normalize();distance=esbFit(1.75);}
-       else if(fl==='mooring mast tier one'){dir=new T.Vector3(0.3,0.45,1).normalize();distance=esbFit(2.1);aim=new T.Vector3(0,1.9,0);}
+       else if(fl==='mooring mast tier one'){dir=new T.Vector3(0.3,0.45,1).normalize();distance=esbFit(2.3);aim=new T.Vector3(0,1.6,0);}
       }
       controls.maxDistance=Math.max(40,distance*2);
       controls.target.copy(aim);

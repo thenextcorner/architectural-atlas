@@ -90,27 +90,35 @@ export function empireStateLayer(p: Part): number {
  * lobby stops hide the base (facades, entry, portico), which encloses
  * the lobby shell, AND the steel frame: the low-rise column grid stands
  * in front of the motifs and the relief and hides them behind its
- * columns. The elevator stop hides the whole tower envelope (shaft,
- * terraces, crown, mast, observatories, lighting), leaving the steel
- * frame and elevator banks standing on the base, so the express bank
- * reads as the subject instead of hiding inside the shaft. */
+ * columns. They also hide the whole tower envelope above the lobby
+ * (shaft, terraces, crown, mast, observatories, lighting): from the
+ * lobby cameras the shaft facade filled the top of the frame and the
+ * green Tier 1 terrace slab crossed the middle, so the room never read.
+ * The elevator banks are hidden for the lobby stops too: their tall
+ * gold core rose out of the room into the sky behind the relief stop.
+ * The elevator stop hides the whole tower envelope (shaft, terraces,
+ * crown, mast, observatories, lighting), leaving the steel frame and
+ * elevator banks standing on the base, so the express bank reads as
+ * the subject instead of hiding inside the shaft. */
 export function empireStateConcealedSystems(stopPart: string): string[] {
   const lower = stopPart.toLowerCase();
-  if (lower === 'bronze narrative motifs' || lower === 'aluminum building relief') return ['base', 'steel-frame'];
+  if (lower === 'bronze narrative motifs' || lower === 'aluminum building relief') return ['base', 'steel-frame', 'shaft', 'terraces', 'crown', 'mast', 'observatories', 'lighting', 'elevators'];
   if (lower === 'express elevator bank') return ['shaft', 'terraces', 'crown', 'mast', 'observatories', 'lighting'];
   return [];
 }
 
 /** Named parts hidden for a tour stop. The lobby shell (floor, ceiling
  * and walls as one part) hides the finishes from any outside angle, so
- * the lobby stops hide it. The motifs stop also hides the upper marble
- * walls: the south wall of that part stands between a camera south of
- * the lobby and the motifs on the north wall. The relief stop keeps the
- * walls (its camera comes through the open east end) but hides the west
- * end escalators, which stand in front of the relief's lower half. */
+ * the lobby stops hide it. The motifs camera sits inside the room now,
+ * past the north wall, so the motifs stop keeps the light marble upper
+ * walls: they are the back wall the motifs hang on, and hiding them
+ * left the motifs floating with a bare gap between the wainscot and the
+ * ceiling. The relief stop keeps the walls (its camera comes through
+ * the open east end) but hides the west end escalators, which stand in
+ * front of the relief's lower half. */
 export function empireStateConcealedParts(stopPart: string): string[] {
   const lower = stopPart.toLowerCase();
-  if (lower === 'bronze narrative motifs') return ['Lobby interior volume', 'Light marble upper walls'];
+  if (lower === 'bronze narrative motifs') return ['Lobby interior volume'];
   if (lower === 'aluminum building relief') return ['Lobby interior volume', 'West end escalators'];
   return [];
 }
