@@ -246,7 +246,7 @@ export default function Viewer({slug}:{slug:string}){
  // exiting it restores Simple (light chrome). It used to be added by the
  // scene and never removed, so the dark chrome leaked past the tour.
  const darkStage=atlas?isDarkStage(atlas):false;
- const mainClass=(isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio')+(darkStage?' dark-stage':'');
+ const mainClass=(isPilot?(posterStage?'studio pilot poster-stage':'studio pilot'):'studio')+(darkStage?' dark-stage':'')+(tour?' tour-active':'');
  return <main className={mainClass}>
   {atlas&&<BuildingScene atlas={atlas} hotspots={hotspots} pilot={pilot} state={{...state,mode:isPilot?mode:undefined,poster:isPilot&&posterStage,scaleFigures:isPilot&&scaleFigures,focus:tour?focus:null,highlight:tour?tourHighlight:null,highlightSector:tour?tourHighlightSector:null,inspectorOpen:details&&selectedParts.length>0}} captureRef={captureRef} onSelect={tour?()=>{}:choosePart} onProgress={n=>{setProgress(n);if(n===100)setError('');}} onError={setError}/>}
   <div className="vignette"/>

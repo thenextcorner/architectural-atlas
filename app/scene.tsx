@@ -625,39 +625,43 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
        distance=off.length();dir=off.normalize();
       }
       // Empire State pilot: per-stop framing, calibrated from the renders.
-      // Round 1: the lobby stops framed from above, so the sightline
-      // passed through the shaft facade and the motifs and relief hid
-      // behind it. They frame low now, near lobby height, through the
-      // hidden base and the hidden steel frame (its low-rise column grid
-      // stood in front of both subjects). The elevator and mast stops
-      // frame their whole system (the box was widened above). The
-      // elevator fit (2.9) covers the full core height (2.063) with the
-      // camera near the core's mid-height: a higher angle put the camera
-      // above the core and cropped its top behind the tour card. The
-      // mast fit (0.65) shows the spire's base above the tour card. The
-      // setback stop keeps the single terrace as its focus and a fit of
-      // 2.72, which puts the 85th-floor setback in frame above the
-      // terrace while the terrace itself sits at the viewport centre,
-      // clear of the tour card. The railing fit (1.0) frames the deck
-      // and the crown above it: the railing alone is a thin ring and
-      // reads as a line without its deck for context. The relief fit
-      // (0.3) is tighter now that the escalators in front of it are
-      // hidden. The eagles keep the round-1 framing, which read on the
-      // first render.
+      // Polish round (probe-esb-tour-polish, 1280x800): the clear band
+      // runs from the header bottom (y 162) to the tour card top (y 458),
+      // so a stop's subject sits near the viewport centre (y 400). The
+      // building top must stay on screen: at the tower's screen column
+      // (x 640) the header is empty above y 90, between the title and
+      // the top buttons, so the tip may sit in that gap. The distance
+      // is esbFit(f), so the visible height at the target is 1.35*f.
+      // The eagles and the terrace stops pull back to a full-tower fit
+      // (5.0): the tip, 2.33 above the eagles and 2.30 above the
+      // terrace, lands at y 125, in the clear gap between the header
+      // buttons and the title, the subject stays at the centre, and
+      // the base clears the card. A fit of 6.0 put the tip at y 170
+      // but shrank the tower to a sliver and the eagles to an
+      // unreadable speck. The railing fit (1.75) puts the mast tip at
+      // y 170 with the deck at the centre. The mast stop aims at the crown
+      // (y 1.9) instead of the spire centre, so the whole crown and
+      // spire clear the card, and fits 2.1. The lobby stops frame low,
+      // near lobby height, through the hidden base and the hidden steel
+      // frame (its low-rise column grid stood in front of both
+      // subjects); the ceiling caps the camera elevation there, so the
+      // room reads by pulling back (motifs 0.38, relief 0.45), not by
+      // rising. The elevator stop is unchanged (2.9).
+      let aim=center;
       if(pilot?.slug==='empire-state'&&focusPart){
        const fl=focusPart.name.toLowerCase();
        const esbFit=(f:number)=>Math.max(.07,f/(2*Math.tan(halfFov))*1.35);
-       if(fl==='concrete entry eagles'){dir=new T.Vector3(1,0.18,0.3).normalize();distance=esbFit(0.5);}
-       else if(fl==='bronze narrative motifs'){dir=new T.Vector3(0.15,0.08,-1).normalize();distance=esbFit(0.25);}
-       else if(fl==='aluminum building relief'){dir=new T.Vector3(1,0.08,0.15).normalize();distance=esbFit(0.3);}
+       if(fl==='concrete entry eagles'){dir=new T.Vector3(1,0.18,0.3).normalize();distance=esbFit(5.0);}
+       else if(fl==='bronze narrative motifs'){dir=new T.Vector3(0.15,0.08,-1).normalize();distance=esbFit(0.38);}
+       else if(fl==='aluminum building relief'){dir=new T.Vector3(1,0.08,0.15).normalize();distance=esbFit(0.45);}
        else if(fl==='express elevator bank'){dir=new T.Vector3(0.4,0.05,1).normalize();distance=esbFit(2.9);}
-       else if(fl==='tier 1 setback terrace'){dir=new T.Vector3(0.4,0.18,1).normalize();distance=esbFit(2.72);}
-       else if(fl==='86th floor open deck railing'){dir=new T.Vector3(0.35,0.3,1).normalize();distance=esbFit(1.0);}
-       else if(fl==='mooring mast tier one'){dir=new T.Vector3(0.3,0.45,1).normalize();distance=esbFit(0.65);}
+       else if(fl==='tier 1 setback terrace'){dir=new T.Vector3(0.4,0.18,1).normalize();distance=esbFit(5.0);}
+       else if(fl==='86th floor open deck railing'){dir=new T.Vector3(0.35,0.3,1).normalize();distance=esbFit(1.75);}
+       else if(fl==='mooring mast tier one'){dir=new T.Vector3(0.3,0.45,1).normalize();distance=esbFit(2.1);aim=new T.Vector3(0,1.9,0);}
       }
       controls.maxDistance=Math.max(40,distance*2);
-      controls.target.copy(center);
-      camera.position.copy(center).addScaledVector(dir,distance);
+      controls.target.copy(aim);
+      camera.position.copy(aim).addScaledVector(dir,distance);
       controls.update();dirty=true;
      }
     }else if(lastFocus){
