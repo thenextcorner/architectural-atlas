@@ -4,17 +4,25 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {createExplosionLayout} from './explosion-layout';
-import {COLOSSEUM_LAYERS,colosseumLayer,FLOOR_GAP} from './colosseum-pilot';
+import {type Pilot} from './pilot';
 import type {PosterCapture} from './colosseum-poster';
 import {decodeModelResponse} from './model-download';
 import {PointerTap} from './pointer-tap';
-import {isDarkStage,type Atlas,type SceneState} from './atlas';
-interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[];captureRef?:{current:(() => PosterCapture | null) | null}}
-export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots,captureRef}:Props){
+import {isDarkStage,type Atlas,type Part,type SceneState} from './atlas';
+interface Props {atlas:Atlas;state:SceneState;onSelect:(id:string)=>void;onProgress:(n:number)=>void;onError:(s:string)=>void;hotspots?:{part:string;title:string;text:string}[];captureRef?:{current:(() => PosterCapture | null) | null};pilot?:Pilot|null}
+export default function BuildingScene({atlas,state,onSelect,onProgress,onError,hotspots,captureRef,pilot}:Props){
  const host=useRef<HTMLDivElement>(null),latest=useRef(state),select=useRef(onSelect),hotspotRef=useRef(hotspots);
  latest.current=state;select.current=onSelect;hotspotRef.current=hotspots;
  useEffect(()=>{
   const el=host.current!;let disposed=false,frame=0,dirty=true,ready=false,lastView='',lastReset=-1,lastIsolate='',lastFocus='',layoutKey='',amount=0,lastPoster=false,lastScaleFigures=false,lastDiscs=false,lastPlinth=false,lastShadow=false;
+  // Pilot (Floors and Tour modes): the Colosseum was first, the Empire
+  // State Building second. Non-pilot buildings have no pilot and never
+  // enter Floors or Tour mode, so the pilot layer helpers below are
+  // empty for them and the pilot code paths never run.
+  const pilotLayers=pilot?.layers??[];
+  const floorGap=pilot?.floorGap??0.38;
+  const layerCount=pilotLayers.length;
+  const layerOf=(p:Part)=>pilot?pilot.layerOf(p):2;
   let lastState:SceneState|null=null;
   const abort=new AbortController();
   let renderer:T.WebGLRenderer;
@@ -126,7 +134,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // Colosseum pilot: floor labels for Floors mode, anchored to the left edge
   // of each layer at its lifted height.
   const floorLabelLayer=document.createElement('div');floorLabelLayer.className='floor-label-layer';el.appendChild(floorLabelLayer);
-  const floorLabels=COLOSSEUM_LAYERS.map(l=>{const d=document.createElement('div');d.className='floor-label';d.textContent=l.label;d.hidden=true;floorLabelLayer.appendChild(d);return d;});
+  const floorLabels=pilotLayers.map(l=>{const d=document.createElement('div');d.className='floor-label';d.textContent=l.label;d.hidden=true;floorLabelLayer.appendChild(d);return d;});
   // Round 4: the leader lines are gone. The floor labels on the model
   // (above) are the layer names now; the lines' dots floated in mid-air
   // in every re-test, and the lines ran off the bottom of the panel.
@@ -175,8 +183,8 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // dark across the ring's span and fades at both edges, so the band
   // has soft edges instead of a hard outline.
   const shadowRingTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d')!;const grad=g.createRadialGradient(64,64,6,64,64,64);grad.addColorStop(0,'rgb(0,0,0)');grad.addColorStop(0.45,'rgb(0,0,0)');grad.addColorStop(0.58,'rgb(235,235,235)');grad.addColorStop(0.88,'rgb(235,235,235)');grad.addColorStop(1,'rgb(0,0,0)');g.fillStyle=grad;g.fillRect(0,0,128,128);return new T.CanvasTexture(c);})();
-  const layerFoot=COLOSSEUM_LAYERS.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
-  const layerTops=COLOSSEUM_LAYERS.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(colosseumLayer(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
+  const layerFoot=pilotLayers.map((_,li)=>{let rx=0.1,rz=0.1;atlas.parts.forEach(p=>{if(layerOf(p)===li){rx=Math.max(rx,Math.abs(p.bounds[0][0]),Math.abs(p.bounds[1][0]));rz=Math.max(rz,Math.abs(p.bounds[0][2]),Math.abs(p.bounds[1][2]));}});return {x:rx,z:rz};});
+  const layerTops=pilot?.layerTops??pilotLayers.map((_,li)=>{let top=-Infinity;atlas.parts.forEach(p=>{if(layerOf(p)===li)top=Math.max(top,p.bounds[1][1]);});return top===-Infinity?modelCenter.y:top;});
   // Round 5: a contact shadow must sit ON the surface below its layer.
   // layerTops is the tallest part in the layer, not the surface below:
   // the arena shadow floated above the pavement (the hypogeum top is
@@ -193,12 +201,15 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // wide flat parts (podium ring, marble passage, arena wall, and in
   // Detailed the bronze balustrade). The fence, gates and boxes are
   // vertical elements that rise through the shadow, which is correct.
-  const arenaFloorTop=Math.max(0,...atlas.parts.filter(p=>{if(colosseumLayer(p)!==1)return false;const b=p.bounds;return Math.max(Math.abs(b[0][0]),Math.abs(b[1][0]))>0.5&&Math.max(Math.abs(b[0][2]),Math.abs(b[1][2]))>0.3;}).map(p=>p.bounds[1][1]));
-  const receiverTop=[pavementTop,arenaFloorTop,layerTops[2]];
-  const contactDiscs=COLOSSEUM_LAYERS.map((_,li)=>{
-   // The seating shadow (li 2) is a ring: see shadowRingTex above.
+  const arenaFloorTop=pilot?.slug==='colosseum'?Math.max(0,...atlas.parts.filter(p=>{if(layerOf(p)!==1)return false;const b=p.bounds;return Math.max(Math.abs(b[0][0]),Math.abs(b[1][0]))>0.5&&Math.max(Math.abs(b[0][2]),Math.abs(b[1][2]))>0.3;}).map(p=>p.bounds[1][1])):0;
+  // Colosseum: a contact shadow must sit ON the surface below its layer,
+  // and the receiver surfaces are the pavement and the arena floor
+  // itself, not the layer tops. Other pilots use the layer below's top.
+  const receiverTop=pilot?.slug==='colosseum'?[pavementTop,arenaFloorTop,layerTops[2]]:layerTops;
+  const contactDiscs=pilotLayers.map((_,li)=>{
+   // The Colosseum seating shadow (li 2) is a ring: see shadowRingTex above.
    // The other layers keep their full discs.
-   const isSeatingShadow=li===2;
+   const isSeatingShadow=pilot?.slug==='colosseum'&&li===2;
    const d=new T.Mesh(isSeatingShadow?new T.RingGeometry(0.52,1,64):new T.CircleGeometry(1,64),new T.MeshBasicMaterial({color:0x0a0f14,transparent:true,opacity:isSeatingShadow?0.6:0.5,alphaMap:isSeatingShadow?shadowRingTex:shadowTex,depthWrite:false}));
    d.rotation.x=-Math.PI/2;
    // The bottom layer is not lifted: its disc is a contact halo on the
@@ -280,11 +291,11 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // sits 232px from the bottom, just above the tall pilot dock). Reserve
    // more bottom space here so the stack clears the caption.
    const floorsMode=latest.current.mode==='floors';
-   const reservedW=mobile?40:340,reservedH=mobile?350:(floorsMode?430:270);
+   const reservedW=mobile?40:340,reservedH=mobile?350:(floorsMode?(pilot?.floorsReservedH??430):270);
    const availW=Math.max(160,el.clientWidth-reservedW),availH=Math.max(160,el.clientHeight-reservedH);
    const fitDistance=Math.max(modelSize.y,modelSize.x/(availW/availH),modelSize.z)/(2*Math.tan(halfFov));
    const normalDistance=Math.max(mobile?4.5:2.5,fitDistance*1.3);
-   const reservedHeight=mobile?350:(floorsMode?430:270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
+   const reservedHeight=mobile?350:(floorsMode?(pilot?.floorsReservedH??430):270);const availableAspect=Math.max(.35,(el.clientWidth-(mobile?40:340))/Math.max(160,el.clientHeight-reservedHeight));const atlasDistance=Math.max(packingHeight,packingWidth/availableAspect)/(2*Math.tan(halfFov))*(el.clientHeight/Math.max(160,el.clientHeight-reservedHeight))*1.08;
    const distance=T.MathUtils.lerp(normalDistance,Math.max(.2,atlasDistance),extent);if(extent>.8)view='front';
    // Round 5: in Floors mode the camera looks down at the stack from
    // above, so each layer's top surface reads, including the arena sand
@@ -309,8 +320,8 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // while the attic stays below the top buttons. Calibrated from the
    // renders: 0.18 of offset moves the stack about 27px at this
    // distance, and the extra bottom reserve shrinks it a little more.
-   const liftCenter=(latest.current.mode==='floors')?FLOOR_GAP*(COLOSSEUM_LAYERS.length-1)*amount/2:0;
-   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?0.28+0.38*amount:0);
+   const liftCenter=(latest.current.mode==='floors')?floorGap*(layerCount-1)*amount/2:0;
+   const targetY=modelCenter.y+liftCenter-((latest.current.mode==='floors')?(pilot?.floorsAim?.base??0.28)+(pilot?.floorsAim?.slope??0.38)*amount:0);
    controls.target.set(extent>.1&&el.clientWidth>767?-packingWidth*.12:0,targetY,0);camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();dirty=true;
   };
   const resize=()=>{layoutKey='';lastState=null;renderer.setPixelRatio(Math.min(devicePixelRatio,el.clientWidth<768||el.clientHeight<600?1.5:2));camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();renderer.setSize(el.clientWidth,el.clientHeight);fit(latest.current.view,amount);};const observer=new ResizeObserver(resize);observer.observe(el);
@@ -334,7 +345,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   // label floating in empty space. This replaces layerAnchors, whose
   // right-edge points the leader dots were drawn on, floating in mid-air.
   const layerLabelPoints=():({x:number;y:number}|null)[]=>{
-   return COLOSSEUM_LAYERS.map((_,li)=>{
+   return pilotLayers.map((_,li)=>{
     // Round 5: the arena label anchors to the arena disc itself, the
     // sand surface's left edge at sand level. The layer-top anchor put
     // it left of the disc and above the sand: the layer's top is the
@@ -344,7 +355,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // keep the layer-edge anchor, which the live test confirmed.
     const arenaDisc=li===1&&sandHalf>0;
     const ax=arenaDisc?-(sandHalf-0.03):-layerFoot[li].x-0.08;
-    const ay=arenaDisc?sandTop+li*FLOOR_GAP*amount:layerTops[li]+li*FLOOR_GAP*amount;
+    const ay=arenaDisc?sandTop+li*floorGap*amount:layerTops[li]+li*floorGap*amount;
     projected.set(ax,ay,0).project(camera);
     if(projected.z<-1||projected.z>1)return null;
     return {x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2};
@@ -353,6 +364,12 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   const clock=new T.Clock();let lastExtent=-1;
   const animate=()=>{
    if(disposed)return;frame=requestAnimationFrame(animate);const dt=Math.min(clock.getDelta(),.05),s=latest.current;
+   // Floors-mode camera pull-back curve: the pilot may override the
+   // default (amount - 0.3) / 0.7, which only starts pulling back at
+   // 0.3. The Empire State uses a square root so the tall stack fits
+   // at mid separation. Only applies in Floors mode; Explode keeps
+   // the default curve, and the Colosseum has no override.
+   const extentFor=(a:number)=>{if((s.mode??'explode')==='floors'&&pilot?.floorsExtent)return pilot.floorsExtent(a);return Math.max(0,(a-.3)/.7);};
    // Poster pilot: dark slate stage, warm key light, soft shadows, stone
    // variation. Applies on change only; other buildings never set poster.
    const posterOn=s.poster??false;
@@ -387,7 +404,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     key.castShadow=wantShadow;
     dirty=true;
    }
-   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate||lastState?.highlight!==s.highlight||lastState?.highlightSector!==s.highlightSector;
+   const changed=lastState?.visible!==s.visible||lastState?.selected!==s.selected||lastState?.isolate!==s.isolate||lastState?.highlight!==s.highlight||lastState?.highlightSector!==s.highlightSector||lastState?.focus!==s.focus;
    const moving=Math.abs(amount-s.explode)>.0001;
    if(moving){amount=T.MathUtils.damp(amount,s.explode,8,dt);dirty=true;}
    if(changed||moving||lastExtent<0){
@@ -400,9 +417,9 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     const visibleParts=atlas.parts.filter(p=>s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
     const nextLayoutKey=(s.mode??'explode')+':'+visibleParts.map(p=>p.id).join(',')+':'+camera.aspect.toFixed(3);
     if(nextLayoutKey!==layoutKey){
-     if((s.mode??'explode')==='floors'){packingWidth=modelSize.x;packingHeight=modelSize.y+FLOOR_GAP*(COLOSSEUM_LAYERS.length-1);}
+     if((s.mode??'explode')==='floors'){packingWidth=modelSize.x;packingHeight=modelSize.y+floorGap*(layerCount-1);}
      else{const layout=createExplosionLayout(visibleParts,camera.aspect,atlas.spread??1);packingWidth=layout.width;packingHeight=layout.height;atlas.parts.forEach((p,i)=>{const cell=layout.cells.get(p.id);offsets[i]=cell?new T.Vector3(cell.x,cell.y+1,0):centers[i].clone();});}
-     layoutKey=nextLayoutKey;if(amount>.05&&!s.isolate)fit(s.view,Math.max(0,(amount-.3)/.7));}
+     layoutKey=nextLayoutKey;if(amount>.05&&!s.isolate&&!s.focus)fit(s.view,extentFor(amount));}
 
     const systems=atlas.systems,systemCount=Math.max(1,systems.length);
     // Round 5: the velarium sail panels form a flat canopy over the
@@ -429,9 +446,17 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // any top-down sightline to the arena, the box or the grid below
     // passes through them. The masts and ropes stay.
     const focusIsBox=!!s.focus&&atlas.parts.some(q=>s.focus!.ids.includes(q.id)&&/imperial box \(pulvinar\)/i.test(q.name));
+    // Pilot tour concealment: the focus part's name decides which
+    // systems and named parts stay hidden while the stop is active, so
+    // an interior subject reads (the Empire State lobby stops hide the
+    // base and the lobby shell; the elevator stop hides the tower
+    // envelope). Cleared when the tour moves on or exits.
+    const concealPart=s.focus?atlas.parts.find(q=>s.focus!.ids.includes(q.id)):undefined;
+    const concealedSystems=new Set(concealPart&&pilot?pilot.concealedSystems(concealPart.name):[]);
+    const concealedParts=new Set(concealPart&&pilot?pilot.concealedParts(concealPart.name).map(n=>n.toLowerCase()):[]);
     atlas.parts.forEach((p,i)=>{
      const c=centers[i],destination=offsets[i];let dx=0,dy=0,dz=0;
-     if((s.mode??'explode')==='floors'){dy=colosseumLayer(p)*FLOOR_GAP*amount;}
+     if((s.mode??'explode')==='floors'){dy=layerOf(p)*floorGap*amount;}
      else{
       const group=Math.max(0,systems.findIndex(sys=>sys.id===p.system)),angle=group/systemCount*Math.PI*2;
       if(amount<=.45){const t=amount/.45;dx=Math.sin(angle)*t*.48;dy=(c.y-1)*t*.28;dz=Math.cos(angle)*t*.48;}
@@ -442,16 +467,17 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      // arena layer and read as floating debris, so they stay hidden here.
      // They remain visible in Explode mode and in the Tour, where the
      // fallen wall is a stop of its own.
-     const floorsHidden=(s.mode??'explode')==='floors'&&(p.system==='ruin'||p.system==='materials');
+     const floorsHidden=(s.mode??'explode')==='floors'&&(pilot?.floorsHiddenSystems.includes(p.system)??false);
      const sailsHidden=(focusIsSand||focusIsHypogeum||focusIsBox)&&p.system==='velarium'&&/sail/i.test(p.name);
      const floorHidden=focusIsHypogeum&&/sand surface|floor planks|podium ring|arena wall|arena fence|balustrade/i.test(p.name);
-     const shown=!floorsHidden&&!sailsHidden&&!floorHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
+     const pilotHidden=concealedSystems.has(p.system)||concealedParts.has(p.name.toLowerCase());
+     const shown=!floorsHidden&&!sailsHidden&&!floorHidden&&!pilotHidden&&(s.isolate?selection.has(p.id):visible.has(p.system)||selection.has(p.id));
      const selected=selection.has(p.id);data.set([dx,dy,dz,shown?1:0],i*4);selectedData[i*4]=selected?255:0;highlightData[i*4]=highlight.has(p.id)?255:0;
      markerPositions.set(data[i*4+3]>.5?[c.x+dx,c.y+dy,c.z+dz]:[10000,10000,10000],i*3);const mesh=pickers[i];if(mesh){mesh.position.set(dx,dy,dz);mesh.updateMatrix();mesh.updateMatrixWorld(true);}
     });partTexture.needsUpdate=true;selectionTexture.needsUpdate=true;highlightTexture.needsUpdate=true;markerGeometry.attributes.position.needsUpdate=true;lastState=s;lastExtent=amount;dirty=true;
    }
    if(s.view!==lastView||s.reset!==lastReset){fit(s.view,amount);lastView=s.view;lastReset=s.reset;}
-   if(moving&&!s.isolate)fit(amount>.5?'front':s.view,Math.max(0,(amount-.3)/.7));
+   if(moving&&!s.isolate&&!s.focus)fit(amount>.5?'front':s.view,extentFor(amount));
    const isolateKey=s.isolate?s.selected.join(',')+':'+s.reset+':'+s.inspectorOpen+':'+camera.aspect:'';
    if(isolateKey!==lastIsolate||(s.isolate&&moving)){
     if(s.isolate){const box=new T.Box3();atlas.parts.forEach((p,i)=>{if(s.selected.includes(p.id))box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
@@ -500,6 +526,20 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
      const isHypogeum=!!focusPart&&/hypogeum central corridor/i.test(focusPart.name);
      if(isHypogeum){
       atlas.parts.forEach((p,i)=>{if(p.system==='hypogeum')box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});
+     }
+     // Empire State pilot: two stops frame a whole system, not one part.
+     // The elevator stop frames the full core (the one bank is a thin
+     // slab); the mast stop frames the whole spire (the tier is one small
+     // part of it). Widen the focus box to the system, the way the
+     // hypogeum stop widens to its network. The setback stop keeps the
+     // single terrace as its focus: the box centre is then the terrace
+     // itself, so it sits at the viewport centre clear of the tour card
+     // while the stepped profile rises above it. The focus part stays
+     // the single hotspot part, so the concealment still keys off it.
+     if(pilot?.slug==='empire-state'&&focusPart){
+      const fl=focusPart.name.toLowerCase();
+      const sys=fl==='express elevator bank'?'elevators':fl==='mooring mast tier one'?'mast':null;
+      if(sys){atlas.parts.forEach((p,i)=>{if(p.system===sys)box.union(bounds[i].clone().translate(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])));});}
      }
      if(!box.isEmpty()){
       const center=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());
@@ -584,6 +624,37 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
        const off=new T.Vector3(-0.50,0.29,0.59);
        distance=off.length();dir=off.normalize();
       }
+      // Empire State pilot: per-stop framing, calibrated from the renders.
+      // Round 1: the lobby stops framed from above, so the sightline
+      // passed through the shaft facade and the motifs and relief hid
+      // behind it. They frame low now, near lobby height, through the
+      // hidden base and the hidden steel frame (its low-rise column grid
+      // stood in front of both subjects). The elevator and mast stops
+      // frame their whole system (the box was widened above). The
+      // elevator fit (2.9) covers the full core height (2.063) with the
+      // camera near the core's mid-height: a higher angle put the camera
+      // above the core and cropped its top behind the tour card. The
+      // mast fit (0.65) shows the spire's base above the tour card. The
+      // setback stop keeps the single terrace as its focus and a fit of
+      // 2.72, which puts the 85th-floor setback in frame above the
+      // terrace while the terrace itself sits at the viewport centre,
+      // clear of the tour card. The railing fit (1.0) frames the deck
+      // and the crown above it: the railing alone is a thin ring and
+      // reads as a line without its deck for context. The relief fit
+      // (0.3) is tighter now that the escalators in front of it are
+      // hidden. The eagles keep the round-1 framing, which read on the
+      // first render.
+      if(pilot?.slug==='empire-state'&&focusPart){
+       const fl=focusPart.name.toLowerCase();
+       const esbFit=(f:number)=>Math.max(.07,f/(2*Math.tan(halfFov))*1.35);
+       if(fl==='concrete entry eagles'){dir=new T.Vector3(1,0.18,0.3).normalize();distance=esbFit(0.5);}
+       else if(fl==='bronze narrative motifs'){dir=new T.Vector3(0.15,0.08,-1).normalize();distance=esbFit(0.25);}
+       else if(fl==='aluminum building relief'){dir=new T.Vector3(1,0.08,0.15).normalize();distance=esbFit(0.3);}
+       else if(fl==='express elevator bank'){dir=new T.Vector3(0.4,0.05,1).normalize();distance=esbFit(2.9);}
+       else if(fl==='tier 1 setback terrace'){dir=new T.Vector3(0.4,0.18,1).normalize();distance=esbFit(2.72);}
+       else if(fl==='86th floor open deck railing'){dir=new T.Vector3(0.35,0.3,1).normalize();distance=esbFit(1.0);}
+       else if(fl==='mooring mast tier one'){dir=new T.Vector3(0.3,0.45,1).normalize();distance=esbFit(0.65);}
+      }
       controls.maxDistance=Math.max(40,distance*2);
       controls.target.copy(center);
       camera.position.copy(center).addScaledVector(dir,distance);
@@ -602,13 +673,13 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // toggle appears to do nothing.
    const showFigures=!!s.scaleFigures&&ready&&!s.isolate&&(s.mode??'explode')!=='tour'&&((s.mode??'explode')==='floors'||amount<.05);
    figures.visible=showFigures;
-   if(showFigures)figures.position.y=sandTop+((s.mode??'explode')==='floors'?FLOOR_GAP*amount:0);
+   if(showFigures)figures.position.y=sandTop+((s.mode??'explode')==='floors'?floorGap*amount:0);
    if(showFigures!==lastScaleFigures){lastScaleFigures=showFigures;dirty=true;}
    // Round 4: contact shadows ride the receiver layer's lift, in Floors
    // mode live and in the poster stage. The bottom layer's disc is a
    // contact halo on the platform.
    const showDiscs=ready&&!s.isolate&&(s.mode??'explode')==='floors'&&amount>.05;
-   contactDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:receiverTop[li-1]+(li-1)*FLOOR_GAP*amount+0.004;});
+   contactDiscs.forEach((d,li)=>{if(!d)return;d.visible=showDiscs;if(showDiscs)d.position.y=li===0?0.004:receiverTop[li-1]+(li-1)*floorGap*amount+0.004;});
    if(showDiscs!==lastDiscs){lastDiscs=showDiscs;dirty=true;}
    if(dirty){renderer.render(scene,camera);targets=[];if(amount>.45){const hasSolid=atlas.parts.some((p,i)=>data[i*4+3]>.5);atlas.parts.forEach((p,i)=>{if(data[i*4+3]<.5)return;let left=Infinity,right=-Infinity,top=Infinity,bottom=-Infinity;for(let corner=0;corner<8;corner++){projected.set(p.bounds[(corner&1)?1:0][0]+data[i*4],p.bounds[(corner&2)?1:0][1]+data[i*4+1],p.bounds[(corner&4)?1:0][2]+data[i*4+2]).project(camera);const x=(projected.x+1)*el.clientWidth/2,y=(1-projected.y)*el.clientHeight/2;left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}projected.copy(centers[i]).add(new T.Vector3(data[i*4],data[i*4+1],data[i*4+2])).project(camera);if(projected.z< -1||projected.z>1)return;targets.push({index:i,x:(projected.x+1)*el.clientWidth/2,y:(1-projected.y)*el.clientHeight/2,left,right,top,bottom});});}
    // Story hotspots follow their part (assembled or exploded). Round 5:
@@ -632,9 +703,9 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
    // row margins the lines needed pushed the Hypogeum row below the fold.
    if((s.mode??'explode')==='floors'&&ready&&amount>.05){
     const points=layerLabelPoints();
-    COLOSSEUM_LAYERS.forEach((_,li)=>{
+    pilotLayers.forEach((_,li)=>{
      const lab=floorLabels[li];
-     const anyVisible=atlas.parts.some((p,i)=>colosseumLayer(p)===li&&data[i*4+3]>.5);
+     const anyVisible=atlas.parts.some((p,i)=>layerOf(p)===li&&data[i*4+3]>.5);
      const pt=points[li];
      if(!anyVisible||!pt){lab.hidden=true;return;}
      lab.hidden=false;
@@ -678,7 +749,7 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
     // instead of a stack of overlapping discs. Framed to fit the wide plan
     // inset after the poster's cover crop of the viewport render.
     zeroOffsets();
-    atlas.parts.forEach((p,i)=>{const li=colosseumLayer(p);if(li===1||li===3)data[i*4+3]=0;});
+    atlas.parts.forEach((p,i)=>{const li=layerOf(p);if(li===1||li===3)data[i*4+3]=0;});
     partTexture.needsUpdate=true;
     const insetAspect=368/150;
     const planVh=Math.max(modelSize.x*1.12,modelSize.z*1.12*insetAspect)/camera.aspect;
@@ -724,6 +795,6 @@ export default function BuildingScene({atlas,state,onSelect,onProgress,onError,h
   };animate();
   const contextLost=(e:Event)=>{e.preventDefault();onError('The 3D session was paused by your device. Reload to continue.');};renderer.domElement.addEventListener('webglcontextlost',contextLost);
   return()=>{disposed=true;abort.abort();cancelAnimationFrame(frame);observer.disconnect();controls.dispose();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());depthMaterial.dispose();scene.traverse(o=>{if(o instanceof T.Mesh&&!geometries.includes(o.geometry)){o.geometry.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(m=>m.dispose());}});env.dispose();partTexture.dispose();selectionTexture.dispose();highlightTexture.dispose();markerGeometry.dispose();markerMaterial.dispose();shadowTex.dispose();shadowRingTex.dispose();hover.remove();hotspotLayer.remove();floorLabelLayer.remove();if(captureRef)captureRef.current=null;renderer.dispose();renderer.domElement.remove();};
- },[atlas]);
+ },[atlas,pilot]);
  return <div className="scene" ref={host}/>;
 }
